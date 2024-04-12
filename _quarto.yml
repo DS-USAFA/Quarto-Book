@@ -1,0 +1,60 @@
+project:
+  type: book
+
+book:
+  title: "Computational Probability and Statistics"
+  reader-mode: true
+  page-footer:
+    left: |
+      Computation Probability and Statistics by Hitt, Horton, and Warner
+    right: |
+      This book was built with <a href="https://quarto.org/">Quarto</a>.
+  author:
+    - Brianna Hitt 
+    - Ken Horton
+    - Bradley Warner
+  date: now
+  chapters: 
+    - index.qmd
+    - 00-Objectives.qmd
+    - part: "Descriptive Statistical Modeling"
+      chapters:
+        - 01-Data-Case-Study.qmd
+        - 02-Data-Basics.qmd
+        - 03-Overview-of-Data-Collection-Principles.qmd
+        - 04-Studies.qmd
+        - 05-Numerical-Data.qmd
+        - 06-Categorical-Data.qmd
+    - part: "Probability Modeling"
+      chapters:
+        - 07-Probability-Case-Study.qmd
+        - 08-Probability-Rules.qmd
+        - 09-Conditional-Probability.qmd
+        - 10-Discrete-Random-Variables.qmd
+        - 11-Continuous-Random-Variables.qmd
+        - 12-Named-Discrete-Distributions.qmd
+        - 13-Named-Continuous-Distributions.qmd
+        
+    - part: "Advanced Probability"
+      chapters:   
+        - 14-Multivariate-Distributions.qmd     
+        - 15-Multivariate-Expectation.qmd
+        - 16-Transformations.qmd
+        - 17-Estimation-Methods.qmd
+        - references.qmd
+cover-image: Cover_Majors.png
+favicon: Cover_Majors.png
+biblio-style: apalike
+bibliography: [book.bib, packages.bib]
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 3
+#    toc-expand: true
+  pdf:
+    documentclass: scrreprt
+
+editor: visual
+

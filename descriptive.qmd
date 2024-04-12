@@ -1,0 +1,3 @@
+# Descriptive Statistical Models {#DESC .unnumbered}
+
+Our goal in this part of the book is to give you an overview of the first part of using data to make a decision. This section introduces ideas on data wrangling, exploring data, summarizing data both visually and numerically, and finally types of studies.
