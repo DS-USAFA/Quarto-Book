@@ -409,8 +409,8 @@ categorical variables:
 1 small (72.1%), none (14%) ...                
 
 quantitative variables:  
-     name   class min Q1 median Q3 max       mean        sd    n missing
-...1 spam numeric   0  0      0  0   1 0.09359857 0.2913066 3921       0</code></pre>
+  name   class min Q1 median Q3 max       mean        sd    n missing
+1 spam numeric   0  0      0  0   1 0.09359857 0.2913066 3921       0</code></pre>
 </div>
 </div>
 <p>Notice the use of the <code>pipe</code> operator and how it adds to the ease of reading the code. The <code>select()</code> function allows us to narrow down the columns/variables to the two of interest. Then <code>inspect()</code> gives us information about those variables. We read from top line; we start with the data set <code>email</code>, input it into <code>select()</code> and select variables from it, and then use <code>inspect()</code> to summarize the variables.</p>
@@ -602,7 +602,7 @@ Figure&nbsp;6.2: Bar chart of the <code>number</code> variable as a proportion.
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="06-Categorical-Data_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="06-Categorical-Data_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -889,14 +889,14 @@ Figure&nbsp;6.8: A pie chart for <code>number</code> in the email data set.
 <div class="cell-output cell-output-stdout">
 <pre><code>
 quantitative variables:  
-           name   class   min       Q1 median    Q3     max     mean        sd
-...1    pop2000 numeric    67 11223.50  24621 61775 9519338 89649.99 292547.67
-...2    pop2010 numeric    82 11114.50  25872 66780 9818605 98262.04 312946.70
-...3 med_income numeric 19351 36956.25  42450 49144  115574 44274.12  11547.49
-        n missing
-...1 3139       3
-...2 3142       0
-...3 3142       0</code></pre>
+        name   class   min       Q1 median    Q3     max     mean        sd
+1    pop2000 numeric    67 11223.50  24621 61775 9519338 89649.99 292547.67
+2    pop2010 numeric    82 11114.50  25872 66780 9818605 98262.04 312946.70
+3 med_income numeric 19351 36956.25  42450 49144  115574 44274.12  11547.49
+     n missing
+1 3139       3
+2 3142       0
+3 3142       0</code></pre>
 </div>
 </div>
 <p>Notice that three counties are missing population values for the year 2000, reported as <code>NA</code>. Let’s remove them and find which counties increased in population by creating a new variable.</p>
@@ -932,14 +932,14 @@ categorical variables:
 1 Gain (65%), Loss (35%)                       
 
 quantitative variables:  
-           name   class   min       Q1  median      Q3     max     mean
-...1    pop2000 numeric    67 11217.25 24608.0 61783.5 9519338 89669.37
-...2    pop2010 numeric    82 11127.00 25872.0 66972.0 9818605 98359.23
-...3 med_income numeric 19351 36950.00 42443.5 49120.0  115574 44253.24
-            sd    n missing
-...1 292592.28 3138       0
-...2 313133.28 3138       0
-...3  11528.95 3138       0</code></pre>
+        name   class   min       Q1  median      Q3     max     mean        sd
+1    pop2000 numeric    67 11217.25 24608.0 61783.5 9519338 89669.37 292592.28
+2    pop2010 numeric    82 11127.00 25872.0 66972.0 9818605 98359.23 313133.28
+3 med_income numeric 19351 36950.00 42443.5 49120.0  115574 44253.24  11528.95
+     n missing
+1 3138       0
+2 3138       0
+3 3138       0</code></pre>
 </div>
 </div>
 <p>The <strong>side-by-side box plot</strong> is a traditional tool for comparing across groups. An example is shown in <a href="#fig-sbysbox61" class="quarto-xref">Figure&nbsp;<span>6.9</span></a> where there are two box plots, one for each group, drawn on the same scale.</p>

@@ -431,7 +431,7 @@ Let <span class="math inline">\(X\)</span> be a continuous random variable with 
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(Fx<span class="ot">&lt;-</span><span class="fu">antiD</span>(<span class="dv">2</span><span class="sc">*</span>x<span class="sc">~</span>x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>function (x, C = 0) 
-1 * x^2 + C</code></pre>
+x^2 + C</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -571,10 +571,10 @@ In <code>R</code> for our example, this looks like the following.</p>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 quantitative variables:  
-     name   class         min        Q1    median        Q3       max      mean
-...1 sqrt numeric 0.005321359 0.4977011 0.7084257 0.8656665 0.9999873 0.6669452
-            sd     n missing
-...1 0.2358056 10000       0</code></pre>
+  name   class         min        Q1    median        Q3       max      mean
+1 sqrt numeric 0.005321359 0.4977011 0.7084257 0.8656665 0.9999873 0.6669452
+         sd     n missing
+1 0.2358056 10000       0</code></pre>
 </div>
 </div>
 <div style="page-break-after: always;"></div>
