@@ -42,6 +42,11 @@ book:
         - 15-Multivariate-Expectation.qmd
         - 16-Transformations.qmd
         - 17-Estimation-Methods.qmd
+        
+    - part: "Statistical Modeling - Inference"
+      chapters:  
+        - 18-Inference-Case-Study.qmd
+        - 19-Hypothesis-Testing-Simulation.qmd
         - references.qmd
 cover-image: Cover_Majors.png
 favicon: Cover_Majors.png

@@ -1,6 +1,5 @@
 # Transformations {#TRANSF}
 
-
 ```{r}
 #| include: false
 #| message: false
@@ -118,7 +117,6 @@ integrate(y_pdf,0,1)
 Notice that since the domain of the original random variable was non-negative, the squared function had an inverse.
 
 The pdf of the random variable $Y$ is plotted in @fig-pdf161.
-
 
 ```{r}
 #| label: "fig-pdf161"

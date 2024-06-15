@@ -4,7 +4,7 @@
 
 1)  Use `R` for basic analysis and visualization.
 
-2)  Compile a pdf file report from a RMD file in R.
+2)  Compile a pdf file report from a RMD or qmd file in R.
 
 ## Introduction to descriptive statistical modeling
 
