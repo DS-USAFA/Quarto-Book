@@ -548,5 +548,85 @@
       "Probability Modeling",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Conditional Probability</span>"
     ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Computational Probability and Statistics",
+    "section": "",
+    "text": "Preface\nThis book is based on the notes we created for our students as part of a one semester course on probability and statistics. We developed these notes from three primary resources. The most important is the Openintro Introductory Statistics with Randomization and Simulation (Diez, Barr, and Çetinkaya-Rundel 2014) book. In parts, we have used their notes and homework problems. However, in most cases we have altered their work to fit our needs. The second most important book for our work is Introduction to Probability and Statistics Using R (Kerns 2010). Finally, we have used some examples, code, and ideas from the first edition of Prium’s book, Foundations and Applications of Statistics: An Introduction Using R (R. J. Pruim 2011).",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "index.html#who-is-this-book-for",
+    "href": "index.html#who-is-this-book-for",
+    "title": "Computational Probability and Statistics",
+    "section": "Who is this book for?",
+    "text": "Who is this book for?\nWe designed this book for the study of statistics that maximizes computational ideas while minimizing algebraic symbol manipulation. Although we do discuss traditional small-sample, normal-based inference and some of the classical probability distributions, we rely heavily on ideas such as simulation, permutations, and the bootstrap. This means that students with a background in differential and integral calculus will be successful with this book.\nThis book makes extensive using of the R programming language. In particular we focus both on the tidyverse and mosaic packages. We include a significant amount of code in our notes and frequently demonstrate multiple ways of completing a task. We have used this book for junior and sophomore college students.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "index.html#book-structure-and-how-to-use-it",
+    "href": "index.html#book-structure-and-how-to-use-it",
+    "title": "Computational Probability and Statistics",
+    "section": "Book structure and how to use it",
+    "text": "Book structure and how to use it\nThis book is divided into four parts. Each part begins with a case study that introduces many of the main ideas of each part. Each chapter is designed to be a standalone 50 minute lesson. Within each chapter, we give exercises that can be worked in class and we provide learning objectives.\nThis book assumes students have access to R. Finally, we keep the number of homework problems to a reasonable level and assign all problems.\nThe four parts of the book are:\n\nDescriptive Statistical Modeling: This part introduces the student to data collection methods, summary statistics, visual summaries, and exploratory data analysis.\nProbability Modeling: We discuss the foundational ideas of probability, counting methods, and common distributions. We use both calculus and simulation to find moments and probabilities. We introduce basic ideas of multivariate probability. We include method of moments and maximum likelihood estimators.\nInferential Statistical Modeling: We discuss many of the basic inference ideas found in a traditional introductory statistics class but we add ideas of bootstrap and permutation methods.\nPredictive Statistical Modeling: The final part introduces prediction methods, mainly in the form of linear regression. This part also includes inference for regression.\n\nThe learning outcomes for this course are to use computational and mathematical statistical/probabilistic concepts for:\n\nDeveloping probabilistic models.\n\nDeveloping statistical models for description, inference, and prediction.\n\nAdvancing practical and theoretical analytic experience and skills.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "index.html#prerequisites",
+    "href": "index.html#prerequisites",
+    "title": "Computational Probability and Statistics",
+    "section": "Prerequisites",
+    "text": "Prerequisites\nTo take this course, students are expected to have completed calculus up through and including integral calculus. We do have multivariate ideas in the course, but they are easily taught and don’t require calculus III. We don’t assume the students have any programming experience and, thus, we include a great deal of code. We have historically supplemented the course with Data Camp courses. We have also used RStudio Cloud to help students get started in R without the burden of loading and maintaining software.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "index.html#packages",
+    "href": "index.html#packages",
+    "title": "Computational Probability and Statistics",
+    "section": "Packages",
+    "text": "Packages\nThese notes make use of the following packages in R: knitr (Xie 2024), rmarkdown (Allaire et al. 2024), mosaic (R. Pruim, Kaplan, and Horton 2024), tidyverse (Wickham 2023), ISLR (James et al. 2021), vcd (Meyer et al. 2023), ggplot2 (Wickham et al. 2024), MASS (Ripley 2024), openintro (Çetinkaya-Rundel et al. 2024), broom (Robinson, Hayes, and Couch 2024), infer (R-infer?), kableExtra (Zhu 2024), and DT (Xie, Cheng, and Tan 2024).",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "index.html#solutions-manual",
+    "href": "index.html#solutions-manual",
+    "title": "Computational Probability and Statistics",
+    "section": "Solutions Manual",
+    "text": "Solutions Manual\nThe accompanying solutions manual is available here.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "index.html#acknowledgements",
+    "href": "index.html#acknowledgements",
+    "title": "Computational Probability and Statistics",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\n&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD We have been lucky to have numerous open sources to help facilitate this work. Thank you to those who helped to correct mistakes to include Skyler Royse. ======= We have been lucky to have numerous open sources to help facilitate this work. Thank you to those who helped to provide edits including Kris Pruitt, Matt Davis, and Skyler Royse. &gt;&gt;&gt;&gt;&gt;&gt;&gt; 9f35b31e4cd3f5f316488b29698f940e4b83eeef\n\n\n\n\n\n\n\n\n\nThis book is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "index.html#file-creation-information",
+    "href": "index.html#file-creation-information",
+    "title": "Computational Probability and Statistics",
+    "section": "File Creation Information",
+    "text": "File Creation Information\n\nFile creation date: 2024-06-18\nR version 4.4.0 (2024-04-24)\n\n\n\n\n\nAllaire, JJ, Yihui Xie, Christophe Dervieux, Jonathan McPherson, Javier Luraschi, Kevin Ushey, Aron Atkins, et al. 2024. Rmarkdown: Dynamic Documents for r. https://github.com/rstudio/rmarkdown.\n\n\nÇetinkaya-Rundel, Mine, David Diez, Andrew Bray, Albert Y. Kim, Ben Baumer, Chester Ismay, Nick Paterno, and Christopher Barr. 2024. Openintro: Datasets and Supplemental Functions from OpenIntro Textbooks and Labs. http://openintrostat.github.io/openintro/.\n\n\nDiez, David, Christopher Barr, and Mine Çetinkaya-Rundel. 2014. Introductory Statistics with Randomization and Simulation. 1st ed. Openintro. https://www.openintro.org/book/isrs/.\n\n\nJames, Gareth, Daniela Witten, Trevor Hastie, and Rob Tibshirani. 2021. ISLR: Data for an Introduction to Statistical Learning with Applications in r. https://www.statlearning.com.\n\n\nKerns, Jay. 2010. Introductory to Probability and Statistics with r. 1st ed. http://ipsur.r-forge.r-project.org/book/download/IPSUR.pdf.\n\n\nMeyer, David, Achim Zeileis, Kurt Hornik, and Michael Friendly. 2023. Vcd: Visualizing Categorical Data.\n\n\nPruim, Randall J. 2011. Foundations and Applications of Statistics: An Introduction Using r. Vol. 13. American Mathematical Soc.\n\n\nPruim, Randall, Daniel T. Kaplan, and Nicholas J. Horton. 2024. Mosaic: Project MOSAIC Statistics and Mathematics Teaching Utilities. https://github.com/ProjectMOSAIC/mosaic.\n\n\nRipley, Brian. 2024. MASS: Support Functions and Datasets for Venables and Ripley’s MASS. http://www.stats.ox.ac.uk/pub/MASS4/.\n\n\nRobinson, David, Alex Hayes, and Simon Couch. 2024. Broom: Convert Statistical Objects into Tidy Tibbles. https://broom.tidymodels.org/.\n\n\nWickham, Hadley. 2023. Tidyverse: Easily Install and Load the Tidyverse. https://tidyverse.tidyverse.org.\n\n\nWickham, Hadley, Winston Chang, Lionel Henry, Thomas Lin Pedersen, Kohske Takahashi, Claus Wilke, Kara Woo, Hiroaki Yutani, Dewey Dunnington, and Teun van den Brand. 2024. Ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics. https://ggplot2.tidyverse.org.\n\n\nXie, Yihui. 2024. Knitr: A General-Purpose Package for Dynamic Report Generation in r. https://yihui.org/knitr/.\n\n\nXie, Yihui, Joe Cheng, and Xianying Tan. 2024. DT: A Wrapper of the JavaScript Library DataTables. https://github.com/rstudio/DT.\n\n\nZhu, Hao. 2024. kableExtra: Construct Complex Table with Kable and Pipe Syntax. http://haozhu233.github.io/kableExtra/.",
+    "crumbs": [
+      "Preface"
+    ]
   }
 ]
