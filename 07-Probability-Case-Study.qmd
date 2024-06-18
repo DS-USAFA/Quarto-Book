@@ -401,28 +401,3 @@ set.seed(20)
 We could not solve this problem of varying frequency of birth days using mathematics, at least as far as we know.
 
 Cool stuff, let's get to learning more about probability models in the next chapters.
-
-## Homework Problems
-
-1.  **Exactly 2 people with the same birthday - Simulation**. Complete a similar analysis for case where exactly 2 people in a room of 23 people have the same birthday. In this exercise you will use a computational simulation.
-
-<!-- -->
-
-a.  Create a new R Markdown file and create a report. Yes, we know you could use this file but we want you to practice generating your own report.\
-b.  Simulate having 23 people in the class with each day of the year equally likely. Find the cases where exactly 2 people have the same birthday, you will have to alter the code from the Notes more than changing 18 to 23.\
-c.  Plot the frequency of occurrences as a bar chart.\
-d.  Estimate the probability of exactly two people having the same birthday.
-
-<!-- -->
-
-2.  **Exactly 2 people with the same birthday - Mathematical**. Repeat problem 1 but do it mathematically. As a big hint, you will need to use the `choose()` function. The idea is that with 23 people we need to choose 2 of them to match. We thus need to multiply, the multiplication rule again, by `choose(23,2)`. If you are having trouble, work with a total of 3 people in the room first.
-
-<!-- -->
-
-a.  Find a formula to determine the exact probability of exactly 2 people in a room of 23 having the same birthday.\
-b.  Generalize your solution to any number `n` people in the room and create a function.\
-c.  Vectorize the function.\
-d.  Plot the probability of exactly 2 people having the same birthday versus number of people in the room.\
-e.  Comment on the shape of the curve and explain it.
-
-## [Solutions Manual](https://ds-usafa.github.io/CPS-Solutions-Manual/CS2.html) {.unnumbered}

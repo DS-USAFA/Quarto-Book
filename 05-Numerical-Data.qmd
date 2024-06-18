@@ -265,7 +265,6 @@ x2 <- c(rchisq(22, 5.8), rnorm(40, 16.5, 2))
 x3 <- c(rchisq(20, 3), rnorm(35, 12), rnorm(42, 18, 1.5))
 ```
 
-
 ```{r}
 #| label: "fig-histmulti"
 #| echo: false
@@ -284,8 +283,6 @@ ggplot(data, aes(x = value)) +
   theme_minimal() +  # Optional: adjust theme for aesthetics
   theme(legend.position = "none")
 ```
-
-
 
 > **Exercise**:\
 > Height measurements of young students and adult teachers at a K-3 elementary school were taken. How many modes would you anticipate in this height data set?[^05-numerical-data-13]
@@ -642,59 +639,3 @@ mtext("Number of Characters (in thousands)", 1, 1.9)
 ```
 
 Transformations other than the logarithm can be useful, too. For instance, the square root ($\sqrt{\text{original observation}}$) and inverse $\left(\frac{1}{\text{original observation}}\right)$ are used commonly by statisticians. Common goals in transforming data are to see the data structure differently, reduce skew, assist in modeling, or straighten a nonlinear relationship in a scatterplot.
-
-## Homework Problems
-
-Create an Rmd file for the work including headers, file creation data, and explanation of your work. Make sure your plots have a title and the axes are labeled.
-
-1.  **Mammals exploratory**. Data were collected on 39 species of mammals distributed over 13 taxonomic orders. The data is in the `mammals` data set in the **openintro** package.
-
-<!-- -->
-
-a.  Using the documentation for the `mammals` data set, report the units for the variable `brain_wt`.
-
-b.  Using `inspect()`, how many variables are numeric?
-
-c.  What type of variable is `danger`?
-
-d.  Create a histogram of `total_sleep` and describe the distribution.
-
-e.  Create a boxplot of `life_span` and describe the distribution.
-
-f.  Report the mean and median life span of a mammal.
-
-g.  Calculate the summary statistics for `life_span` broken down by `danger`. What is the standard deviation of life span in danger outcome 5?
-
-<!-- -->
-
-2.  **Mammal life spans**. Continue using the `mammals` data set.
-
-<!-- -->
-
-a.  Create side-by-side boxplots for `life_span` broken down by `exposure`. Note: you will have to change `exposure` to a `factor()`. Report on any findings.
-
-b.  What happened to the median and third quartile in exposure group 4?
-
-c.  Using the same variables, create faceted histograms. What are the shortcomings of this plot?
-
-d.  Create a new variable `exposed` that is a factor with level `Low` if exposure is `1` or `2` and `High` otherwise.
-
-e.  Repeat part c) with the new `exposed` variable. Explain what you see in the plot.
-
-<!-- -->
-
-3.  **Mammal life spans continued**
-
-<!-- -->
-
-a.  Create a scatterplot of life span versus length of gestation.
-
-b.  What type of association is apparent between life span and length of gestation?
-
-c.  What type of association would you expect to see if the axes of the plot were reversed, i.e. if we plotted length of gestation versus life span?
-
-d.  Create the new scatterplot suggested in part c).
-
-e.  Are life span and length of gestation independent? Explain your reasoning.
-
-## [Solutions Manual](https://ds-usafa.github.io/CPS-Solutions-Manual/NUMDATA.html) {.unnumbered}

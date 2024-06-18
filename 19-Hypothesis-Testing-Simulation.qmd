@@ -11,7 +11,6 @@ library(mosaic)
 library(knitr)
 ```
 
-
 ## Objectives
 
 1)  Know and properly use the terminology of a hypothesis test, to include: *null hypothesis*, *alternative hypothesis*, *test statistic*, $p$-value, *randomization test*, *one-sided test*, *two-sided test*, *statistically significant*, *significance level*, *type I error*, *type II error*, *false positive*, *false negative*, *null distribution*, and *sampling distribution*.
@@ -26,7 +25,7 @@ At this point, it is useful to take a look at where we have been in this book an
 
 Next we learned about probability models. These models allowed us to use assumptions and a small number of parameters to make statements about data (a sample) and also to simulate data. We found that there is a close tie between probability models and statistical models. In our first efforts at statistical modeling, we started to use data to create estimates for parameters of a probability model.
 
-Now we are moving more in depth into statistical models. This is going to tie all the ideas together. We are going to use data from a sample and ideas of randomization to make conclusions about a population. This will require probability models, descriptive models, and some new ideas and terminology. We will generate point estimates for a metric designed to answer the research question and then find ways to determine the variability of the metric. In  @fig-prob_stats2, we demonstrate this relationship between probability and statistical models.
+Now we are moving more in depth into statistical models. This is going to tie all the ideas together. We are going to use data from a sample and ideas of randomization to make conclusions about a population. This will require probability models, descriptive models, and some new ideas and terminology. We will generate point estimates for a metric designed to answer the research question and then find ways to determine the variability of the metric. In @fig-prob_stats2, we demonstrate this relationship between probability and statistical models.
 
 ```{r}
 #| echo: false
@@ -520,52 +519,3 @@ This is a summary of the general framework for using hypothesis testing. These a
 4.  Form a conclusion.
 
     Using the $p$-value from the analysis, determine whether the data provide statistically significant evidence against the null hypothesis. Also, be sure to write the conclusion in plain language so casual readers can understand the results.
-
-## Homework Problems
-
-1.  Repeat the analysis of the commercial lengths for basic and premium TV channels in the notes. This time, use a different test statistic.
-
-```{=html}
-<!-- -->
-```
-a.  State the null and alternative hypotheses.
-
-b.  Compute a test statistic. Remember to use something different than what was used in the text.
-
-c.  Determine the $p$-value.
-
-d.  Draw a conclusion.
-
-```{=html}
-<!-- -->
-```
-2.  Is yawning contagious?
-
-An experiment conducted by the *MythBusters*, a science entertainment TV program on the Discovery Channel, tested whether a person can be subconsciously influenced into yawning if another person near them yawns. 50 people were randomly assigned to two groups: 34 to a group where a person near them yawned (treatment) and 16 to a group where there wasn't a person yawning near them (control). The following table shows the results of this experiment.
-
-$$
-\begin{array}{cc|ccc} & & &\textbf{Group}\\ 
-& & \text{Treatment } &  \text{Control} & \text{Total}  \\
-& \hline \text{Yawn}    &   10      & 4     & 14  \\
-\textbf{Result} & \text{Not Yawn}   & 24        & 12        & 36   \\
-    &\text{Total}       & 34        & 16        & 50 \\
-\end{array} 
-$$
-
-The data is in the file `yawn.csv`.
-
-a.  What are the hypotheses?
-
-b.  Calculate the observed difference between the yawning rates under the two scenarios. Yes, we are giving you the test statistic.
-
-c.  Estimate the $p$-value using randomization.
-
-d.  Plot the empirical sampling distribution.
-
-e.  Determine the conclusion of the hypothesis test.
-
-f.  The traditional belief is that yawning is contagious -- one yawn can lead to another yawn, which might lead to another, and so on. In this exercise, there was the option of selecting a one-sided or two-sided test. Which would you recommend (or which did you choose)? Justify your answer in 1-3 sentences.
-
-g.  How did you select your level of significance? Explain in 1-3 sentences.
-
-## [Solutions Manual](https://ds-usafa.github.io/CPS-Solutions-Manual/HYPTESTSIM.html) {.unnumbered}

@@ -35,14 +35,12 @@ book:
         - 11-Continuous-Random-Variables.qmd
         - 12-Named-Discrete-Distributions.qmd
         - 13-Named-Continuous-Distributions.qmd
-        
     - part: "Advanced Probability"
       chapters:   
         - 14-Multivariate-Distributions.qmd     
         - 15-Multivariate-Expectation.qmd
         - 16-Transformations.qmd
         - 17-Estimation-Methods.qmd
-        
     - part: "Statistical Modeling - Inference"
       chapters:  
         - 18-Inference-Case-Study.qmd
