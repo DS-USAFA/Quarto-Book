@@ -385,8 +385,6 @@ window.Quarto = {
   <li><a href="#variance" id="toc-variance" class="nav-link" data-scroll-target="#variance"><span class="header-section-number">10.3.3</span> Variance</a></li>
   <li><a href="#mean-and-variance-of-linear-transformations" id="toc-mean-and-variance-of-linear-transformations" class="nav-link" data-scroll-target="#mean-and-variance-of-linear-transformations"><span class="header-section-number">10.3.4</span> Mean and variance of Linear Transformations</a></li>
   </ul></li>
-  <li><a href="#homework-problems" id="toc-homework-problems" class="nav-link" data-scroll-target="#homework-problems"><span class="header-section-number">10.4</span> Homework Problems</a></li>
-  <li><a href="#solutions-manual" id="toc-solutions-manual" class="nav-link" data-scroll-target="#solutions-manual">Solutions Manual</a></li>
   </ul>
 </nav>
     </div>
@@ -703,78 +701,9 @@ Find the variance of <span class="math inline">\(X\)</span>: the number of heads
 \mbox{Var}(aX+b)=a^2\mbox{Var}(X)
 \]</span></p>
 <p>The proof of this is left as a homework problem.</p>
-</section>
-</section>
-<section id="homework-problems" class="level2" data-number="10.4">
-<h2 data-number="10.4" class="anchored" data-anchor-id="homework-problems"><span class="header-section-number">10.4</span> Homework Problems</h2>
-<ol type="1">
-<li>Suppose we are flipping a fair coin, and the result of a single coin flip is either heads or tails. Let <span class="math inline">\(X\)</span> be a random variable representing the number of flips until the first heads.</li>
-</ol>
-<!-- -->
-<ol type="a">
-<li>Is <span class="math inline">\(X\)</span> discrete or continuous? What is the domain, support, of <span class="math inline">\(X\)</span>?<br>
-</li>
-<li>What values do you <em>expect</em> <span class="math inline">\(X\)</span> to take? What do you think is the average of <span class="math inline">\(X\)</span>? Don’t actually do any formal math, just think about if you were flipping a regular coin, how long it would take you to get the first heads.<br>
-</li>
-<li>Advanced: In <code>R</code>, generate 10,000 observations from <span class="math inline">\(X\)</span>. What is the empirical, from the simulation, pmf? What is the average value of <span class="math inline">\(X\)</span> based on this simulation? Create a bar chart of the proportions. Note: Unlike the example in the Notes, we don’t have the pmf, so you will have to simulate the experiment and using <code>R</code> to find the number of flips until the first heads.</li>
-</ol>
-<p>Note: There are many ways to do this. Below is a description of one approach. It assumes we are extremely unlikely to go past 1000 flips.</p>
-<ul>
-<li><p>First, let’s sample with replacement from the vector c(“H”,“T”), 1000 times with replacement, use <code>sample()</code>.</p></li>
-<li><p>As we did in the reading, use <code>which()</code> and a logical argument to find the first occurrence of a heads.</p></li>
-</ul>
-<ol start="4" type="a">
-<li>Find the theoretical distribution, use math to come up with a closed for solution for the pmf.</li>
-</ol>
-<p>&nbsp;</p>
-<ol start="2" type="1">
-<li>Repeat Problem 1,except part d, but with a different random variable, <span class="math inline">\(Y\)</span>: the number of coin flips until the <em>fifth</em> heads.</li>
-</ol>
-<p>&nbsp;</p>
-<div style="page-break-after: always;"></div>
-<ol start="3" type="1">
-<li>Suppose you are a data analyst for a large international airport. Your boss, the head of the airport, is dismayed that this airport has received negative attention in the press for inefficiencies and sluggishness. In a staff meeting, your boss gives you a week to build a report addressing the “timeliness” at the airport. Your boss is in a big hurry and gives you no further information or guidance on this task.</li>
-</ol>
-<p>Prior to building the report, you will need to conduct some analysis. To aid you in this, create a list of at least three random variables that will help you address timeliness at the airport. For each of your random variables,</p>
-<ol type="a">
-<li>Determine whether it is discrete or continuous.<br>
-</li>
-<li>Report its domain.<br>
-</li>
-<li>What is the experimental unit?<br>
-</li>
-<li>Explain how this random variable will be useful in addressing timeliness at the airport.</li>
-</ol>
-<p>We will provide one example:</p>
-<p>Let <span class="math inline">\(D\)</span> be the difference between a flight’s actual departure and its scheduled departure. This is a continuous random variable, since time can be measured in fractions of minutes. A flight can be early or late, so domain is any real number. The experimental unit is each individual (non-canceled) flight. This is a useful random variable because the average value of <span class="math inline">\(D\)</span> will describe whether flights take off on time. We could also find out how often <span class="math inline">\(D\)</span> exceeds 0 (implying late departure) or how often <span class="math inline">\(D\)</span> exceeds 30 minutes, which could indicate a “very late” departure.</p>
-<ol start="4" type="1">
-<li>Consider the experiment of rolling two fair six-sided dice. Let the random variable <span class="math inline">\(Y\)</span> be the absolute difference between the two numbers that appear upon rolling the dice.</li>
-</ol>
-<!-- -->
-<ol type="a">
-<li>What is the domain/support of <span class="math inline">\(Y\)</span>?<br>
-</li>
-<li>What values do you <em>expect</em> <span class="math inline">\(Y\)</span> to take? What do you think is the average of <span class="math inline">\(Y\)</span>? Don’t actually do any formal math, just think about the experiment.<br>
-</li>
-<li>Find the probability mass function and cumulative distribution function of <span class="math inline">\(Y\)</span>.<br>
-</li>
-<li>Find the expected value and variance of <span class="math inline">\(Y\)</span>.<br>
-</li>
-<li>Advanced: In <code>R</code>, obtain 10,000 realizations of <span class="math inline">\(Y\)</span>. In other words, simulate the roll of two fair dice, record the absolute difference and repeat this 10,000 times. Construct a frequency table of your results (what percentage of time did you get a difference of 0? difference of 1? etc.) Find the mean and variance of your simulated sample of <span class="math inline">\(Y\)</span>. Were they close to your answers in part d?</li>
-</ol>
-<p>&nbsp;</p>
-<ol start="5" type="1">
-<li>Prove the Lemma from the Notes: Let <span class="math inline">\(X\)</span> be a discrete random variable, and let <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> be constants. Show <span class="math inline">\(\mbox{E}(aX + b)=a\mbox{E}(X)+b\)</span>.</li>
-</ol>
-<p>&nbsp;</p>
-<ol start="6" type="1">
-<li>We saw that <span class="math inline">\(\mbox{Var}(X)=\mbox{E}[(X-\mu_X)^2]\)</span>. Show that <span class="math inline">\(\mbox{Var}(X)\)</span> is also equal to <span class="math inline">\(\mbox{E}(X^2)-[\mbox{E}(X)]^2\)</span>.</li>
-</ol>
-</section>
-<section id="solutions-manual" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="solutions-manual"><a href="https://ds-usafa.github.io/CPS-Solutions-Manual/RANDVAR.html">Solutions Manual</a></h2>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

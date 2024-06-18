@@ -377,8 +377,6 @@ window.Quarto = {
   <li><a href="#simulating-the-study" id="toc-simulating-the-study" class="nav-link" data-scroll-target="#simulating-the-study"><span class="header-section-number">18.4.2</span> Simulating the study</a></li>
   <li><a href="#checking-for-independence" id="toc-checking-for-independence" class="nav-link" data-scroll-target="#checking-for-independence"><span class="header-section-number">18.4.3</span> Checking for independence</a></li>
   </ul></li>
-  <li><a href="#homework-problems" id="toc-homework-problems" class="nav-link" data-scroll-target="#homework-problems"><span class="header-section-number">18.5</span> Homework Problems</a></li>
-  <li><a href="#solutions-manual" id="toc-solutions-manual" class="nav-link" data-scroll-target="#solutions-manual">Solutions Manual</a></li>
   </ul>
 </nav>
     </div>
@@ -640,63 +638,9 @@ The original data should shed light on some aspects of the distribution that are
 There were 48 files and 48 supervisors. A total of 35 files were recommended for promotion. We keep this the same in our simulation.</li>
 </ol>
 <p>The remainder of this block expands on the ideas of this case study.</p>
-</section>
-</section>
-<section id="homework-problems" class="level2" data-number="18.5">
-<h2 data-number="18.5" class="anchored" data-anchor-id="homework-problems"><span class="header-section-number">18.5</span> Homework Problems</h2>
-<ol type="1">
-<li><strong>Side effects of Avandia</strong>. Rosiglitazone is the active ingredient in the controversial type~2 diabetes medicine Avandia and has been linked to an increased risk of serious cardiovascular problems such as stroke, heart failure, and death. A common alternative treatment is pioglitazone, the active ingredient in a diabetes medicine called Actos. In a nationwide retrospective observational study of 227,571 Medicare beneficiaries aged 65 years or older, it was found that 2,593 of the 67,593 patients using rosiglitazone and 5,386 of the 159,978 using pioglitazone had serious cardiovascular problems. These data are summarized in the contingency table below.</li>
-</ol>
-<p><span class="math display">\[
-\begin{array}{cc|ccc} &amp; &amp; &amp;\textit{Cardiovascular problems}\\
-&amp; &amp; \text{Yes}  &amp; \text{No} &amp; \textbf{Total}  \\
-&amp; \hline \text{Rosiglitazone}   &amp; 2,593 &amp; 65,000        &amp; 67,593 \\
-\textit{Treatment}&amp; \text{Pioglitazone}     &amp; 5,386     &amp; 154,592   &amp; 159,978  \\
-&amp; \textbf{Total}            &amp; 7,979 &amp; 219,592       &amp; 227,571 \\
-\end{array}
-\]</span></p>
-<p>Determine if each of the following statements is true or false. If false, explain why. The reasoning may be wrong even if the statement’s conclusion is correct. In such cases, the statement should be considered false.</p>
-<ol type="a">
-<li><p>Since more patients on pioglitazone had cardiovascular problems (5,386 vs.&nbsp;2,593), we can conclude that the rate of cardiovascular problems for those on a pioglitazone treatment is higher.</p></li>
-<li><p>The data suggest that diabetic patients who are taking rosiglitazone are more likely to have cardiovascular problems since the rate of incidence was (2,593 / 67,593 = 0.038) 3.8% for patients on this treatment, while it was only (5,386 / 159,978 = 0.034) 3.4% for patients on pioglitazone.</p></li>
-<li><p>The fact that the rate of incidence is higher for the rosiglitazone group proves that rosiglitazone causes serious cardiovascular problems.</p></li>
-<li><p>Based on the information provided so far, we cannot tell if the difference between the rates of incidences is due to a relationship between the two variables or due to chance.</p></li>
-</ol>
-<!-- -->
-<ol start="2" type="1">
-<li><p><strong>Heart transplants</strong>. The Stanford University Heart Transplant Study was conducted to determine whether an experimental heart transplant program increased lifespan. Each patient entering the program was designated an official heart transplant candidate, meaning that he was gravely ill and would most likely benefit from a new heart. Some patients got a transplant and some did not. The variable indicates which group the patients were in; patients in the treatment group got a transplant and those in the control group did not. Another variable called was used to indicate whether or not the patient was alive at the end of the study.</p>
-<p>In the study, of the 34 patients in the control group, 4 were alive at the end of the study. Of the 69 patients in the treatment group, 24 were alive. The contingency table below summarizes these results.</p></li>
-</ol>
-<p><span class="math display">\[
-\begin{array}{cc|ccc} &amp; &amp; &amp;\textit{Group}\\
-&amp; &amp; \text{Control}  &amp; \text{Treatment}  &amp; \textbf{Total}  \\
-&amp; \hline \text{Alive}   &amp; 4     &amp; 24            &amp; 28 \\
-\textit{Outcome}&amp; \text{Dead}   &amp; 30        &amp; 45            &amp; 75  \\
-&amp; \textbf{Total}            &amp; 34        &amp; 69            &amp; 103\\
-\end{array}
-\]</span></p>
-<p>The data is in a file called <code>Stanford_heart_study.csv</code>. Read the data in and answer the following questions.</p>
-<ol type="a">
-<li><p>What proportion of patients in the treatment group and what proportion of patients in the control group died? Note: One approach for investigating whether or not the treatment is effective is to use a randomization technique.</p></li>
-<li><p>What are the claims being tested? Use the same null and alternative hypothesis notation used in the chapter notes.</p></li>
-<li><p>The paragraph below describes the set up for such approach, if we were to do it without using statistical software. Fill in the blanks with a number or phrase, whichever is appropriate.</p></li>
-</ol>
-<blockquote class="blockquote">
-<p>We write <em>alive</em> on _______ cards representing patients who were alive at the end of the study, and <em>dead</em> on _______ cards representing patients who were not. Then, we shuffle these cards and split them into two groups: one group of size _______ representing treatment, and another group of size _______ representing control. We calculate the difference between the proportion of cards in the control and treatment groups (control - treatment), this is just so we have positive observed value, and record this value. We repeat this many times to build a distribution centered at _______. Lastly, we calculate the fraction of simulations where the simulated differences in proportions are _______ or _______. If this fraction of simulations, the empirical <span class="math inline">\(p\)</span>-value, is low, we conclude that it is unlikely to have observed such an outcome by chance and that the null hypothesis should be rejected in favor of the alternative.</p>
-</blockquote>
-<p>Next we will perform the simulation and use results to decide the effectiveness of the transplant program.</p>
-<ol start="4" type="a">
-<li><p>Find observed value of the test statistic, which we decided to use the difference in proportions.</p></li>
-<li><p>Simulate 1000 values of the test statistic by using <code>shuffle()</code> on the variable <code>group</code>.</p></li>
-<li><p>Plot distribution of results. Include a vertical line for the observed value. Clean up the plot as if you were presenting to a decision maker.</p></li>
-<li><p>Find <span class="math inline">\(p\)</span>-value. Think carefully about what more extreme would mean.</p></li>
-<li><p>Decide if the treatment is effective.</p></li>
-</ol>
-</section>
-<section id="solutions-manual" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="solutions-manual"><a href="https://ds-usafa.github.io/CPS-Solutions-Manual/CS3.html">Solutions Manual</a></h2>
 
 
+</section>
 </section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>

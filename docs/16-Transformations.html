@@ -378,8 +378,6 @@ window.Quarto = {
   <li><a href="#simulation" id="toc-simulation" class="nav-link" data-scroll-target="#simulation"><span class="header-section-number">16.2.5</span> Simulation</a></li>
   <li><a href="#multivariate-transformations" id="toc-multivariate-transformations" class="nav-link" data-scroll-target="#multivariate-transformations"><span class="header-section-number">16.2.6</span> Multivariate Transformations</a></li>
   </ul></li>
-  <li><a href="#homework-problems" id="toc-homework-problems" class="nav-link" data-scroll-target="#homework-problems"><span class="header-section-number">16.3</span> Homework Problems</a></li>
-  <li><a href="#solutions-manual" id="toc-solutions-manual" class="nav-link" data-scroll-target="#solutions-manual">Solutions Manual</a></li>
   </ul>
 </nav>
     </div>
@@ -748,70 +746,9 @@ How long should the first person wait so that there is at least a 50% probabilit
 </div>
 </div>
 <p>So it is actually 0.292 hours, 17.5 minutes. So round up and wait 18 minutes.</p>
-</section>
-</section>
-<section id="homework-problems" class="level2" data-number="16.3">
-<h2 data-number="16.3" class="anchored" data-anchor-id="homework-problems"><span class="header-section-number">16.3</span> Homework Problems</h2>
-<ol type="1">
-<li>Let <span class="math inline">\(X\)</span> be a random variable and let <span class="math inline">\(g\)</span> be a function. By this point, it should be clear that <span class="math inline">\(\mbox{E}[g(X)]\)</span> is not necessarily equal to <span class="math inline">\(g(\mbox{E}[X])\)</span>.</li>
-</ol>
-<p>Let <span class="math inline">\(X\sim \textsf{Expon}(\lambda=0.5)\)</span> and <span class="math inline">\(g(X)=X^2\)</span>. We know that <span class="math inline">\(\mbox{E}(X)=\frac{1}{0.5}=2\)</span> so <span class="math inline">\(g(\mbox{E}(X))=\mbox{E}(X)^2=4\)</span>. Use <code>R</code> to find <span class="math inline">\(\mbox{E}[g(X)]\)</span>. Make use of the fact that <code>R</code> has <code>rexp()</code> built into it, so you don’t have to create your own random variable generator.</p>
-<ol start="2" type="1">
-<li><p>Let <span class="math inline">\(X\sim \textsf{Binom}(n,\pi)\)</span>. What is the pmf for <span class="math inline">\(Y = X+3\)</span>? Make sure you specify the domain of <span class="math inline">\(Y\)</span>. [Note, we have used <span class="math inline">\(p\)</span> for the probability of success in a binomial distribution in past chapters but some references use <span class="math inline">\(\pi\)</span> instead.]</p></li>
-<li><p>Let <span class="math inline">\(X\sim \textsf{Expon}(\lambda)\)</span>. Let <span class="math inline">\(Y=X^2\)</span>. Find the pdf of <span class="math inline">\(Y\)</span>.</p></li>
-<li><p>OPTIONAL: In exercise 3, you found the pdf of <span class="math inline">\(Y=X^2\)</span> when <span class="math inline">\(X\sim \textsf{Expon}(\lambda)\)</span>. Rearrange the pdf to show that <span class="math inline">\(Y\sim \textsf{Weibull}\)</span> and find the parameters of that distribution.</p></li>
-<li><p>You are on a team of two. You are both tasked to complete an exercise. The time it takes you, <span class="math inline">\(T_1\)</span>, and likewise, your teammate, <span class="math inline">\(T_2\)</span>, to complete the exercise are independent random variables. Exercise completion time, in minutes, is distributed with the following pdf:</p></li>
-</ol>
-<p><span class="math display">\[
-f_T(t)= \frac{-t}{200}+\frac{3}{20}; 10 \leq t \leq30
-\]</span></p>
-<p><a href="#fig-fig1" class="quarto-xref">Figure&nbsp;<span>16.6</span></a> is a plot of the pdf.</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div id="fig-fig1" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-fig1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="16-Transformations_files/figure-html/fig-fig1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fig1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;16.6: pdf of <span class="math inline">\(T\)</span>
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>We want to find the probability our combined time is less than 40 minutes, <span class="math inline">\(\mbox{P}(T_1 + T_2 &lt; 40)\)</span>. We will solve this in steps in this problem. We are going to use a computational method because the mathematics is long and algebra intensive. You are welcome to try a mathematical solution if you like but we will not provide a mathematical solution.</p>
-<ol type="a">
-<li><p>Use the <code>integrate()</code> function to confirm this is a valid pdf.</p></li>
-<li><p>Find the cdf of <span class="math inline">\(T\)</span> mathematically.</p></li>
-<li><p>To use the cdf to simulate random variables from this distribution, we need the inverse of the cdf which means we have to solve a quadratic equation. We can do this mathematically or just use the function <code>uniroot()</code>. So first, we will make sure we understand how to use <code>uniroot()</code>.</p></li>
-</ol>
-<p>As a check, we know the median of the distribution is approximately 15.857. Here is code to show that 15.857 is approximately the median. We are integrating the pdf from 10 to 15.857 to confirm that this is 0.5.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="cf">function</span>(x)<span class="sc">-</span>x<span class="sc">/</span><span class="dv">200</span><span class="sc">+</span><span class="dv">3</span><span class="sc">/</span><span class="dv">20</span>,<span class="dv">10</span>,<span class="fl">15.857</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>0.4999389 with absolute error &lt; 5.6e-15</code></pre>
-</div>
-</div>
-<p>Use <code>uniroot()</code> and your cdf to confirm that 15.857 is the median.</p>
-<ol start="4" type="a">
-<li>We will create a function to take a random uniform variable on the interval <span class="math inline">\([0,1]\)</span> and return a value of our random variable, <span class="math inline">\(T\)</span>, exercise time. We can then use this function to simulate each of the exercise times and then create a new random variable that is the sum. Complete the <code>R</code> code and check that it returns the median.</li>
-</ol>
-<pre><code>T &lt;- function(y){
-  uniroot(function(x)"YOUR CDF HERE as a function of x"-y,c(10,30))$root
-}</code></pre>
-<p>We made it a function of <span class="math inline">\(y\)</span> since we are using <span class="math inline">\(x\)</span> in our cdf. There are two function calls here, can you see why?</p>
-<ol start="5" type="a">
-<li><p>Vectorize the function you just created using the <code>Vectorize()</code> function. Check that it is vectorized by entering <code>c(.5,.75)</code> into the function. You should get 15.85786 20.00000 as an output.</p></li>
-<li><p>We are ready. Let’s create a data frame with 10000 simulation for our time and another 10000 for our teammates. Remember to set a seed. At this point it may be hard to remember what we have done. The function we created takes as input a vector of random number from a uniform distribution and then applies the inverse cdf to generate a random sample from our given pdf.</p></li>
-<li><p>Do a numerical summary of the data and plot a density plot of your exercise times to give us confidence that we simulated the process correctly.</p></li>
-<li><p>Create the new variable that is the sum of the two exercise time and then find the probability that the sum is less than 40.</p></li>
-</ol>
-</section>
-<section id="solutions-manual" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="solutions-manual"><a href="https://ds-usafa.github.io/CPS-Solutions-Manual/TRANS.html">Solutions Manual</a></h2>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

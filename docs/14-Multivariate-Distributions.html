@@ -375,8 +375,6 @@ window.Quarto = {
   <li><a href="#discrete-random-variables" id="toc-discrete-random-variables" class="nav-link" data-scroll-target="#discrete-random-variables"><span class="header-section-number">14.3.1</span> Discrete random variables</a></li>
   <li><a href="#continuous-random-variables" id="toc-continuous-random-variables" class="nav-link" data-scroll-target="#continuous-random-variables"><span class="header-section-number">14.3.2</span> Continuous random variables</a></li>
   </ul></li>
-  <li><a href="#homework-problems" id="toc-homework-problems" class="nav-link" data-scroll-target="#homework-problems"><span class="header-section-number">14.4</span> Homework Problems</a></li>
-  <li><a href="#solutions-manual" id="toc-solutions-manual" class="nav-link" data-scroll-target="#solutions-manual">Solutions Manual</a></li>
   </ul>
 </nav>
     </div>
@@ -608,73 +606,9 @@ f_{X|Y=y}(x)=\frac{f_{X,Y}(x,y)}{f_Y(y)}=\frac{xy}{2y}=\frac{x}{2}
 <p>Similarly, <span class="math display">\[
 f_{Y|X=x}(y)=\frac{f_{X,Y}(x,y)}{f_X(x)}=\frac{xy}{\frac{x}{2}}=2y\]</span></p>
 <p>where <span class="math inline">\(0 \leq y \leq 1\)</span>.</p>
-</section>
-</section>
-<section id="homework-problems" class="level2" data-number="14.4">
-<h2 data-number="14.4" class="anchored" data-anchor-id="homework-problems"><span class="header-section-number">14.4</span> Homework Problems</h2>
-<ol type="1">
-<li>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be continuous random variables with joint pdf: <span class="math display">\[
-f_{X,Y}(x,y)=x + y
-\]</span></li>
-</ol>
-<p>where <span class="math inline">\(0 \leq x \leq 1\)</span> and <span class="math inline">\(0 \leq y \leq 1\)</span>.</p>
-<ol type="a">
-<li>Verify that <span class="math inline">\(f\)</span> is a valid pdf.<br>
-</li>
-<li>Find the marginal pdfs of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.<br>
-</li>
-<li>Find the conditional pdfs of <span class="math inline">\(X|Y=y\)</span> and <span class="math inline">\(Y|X=x\)</span>.<br>
-</li>
-<li>Find the following probabilities: <span class="math inline">\(\mbox{P}(X&lt;0.5)\)</span>; <span class="math inline">\(\mbox{P}(Y&gt;0.8)\)</span>; <span class="math inline">\(\mbox{P}(X&lt;0.2,Y\geq 0.75)\)</span>; <span class="math inline">\(\mbox{P}(X&lt;0.2|Y\geq 0.75)\)</span>; <span class="math inline">\(\mbox{P}(X&lt;0.2|Y= 0.25)\)</span>; Optional - <span class="math inline">\(\mbox{P}(X\leq Y)\)</span>.</li>
-</ol>
-<!-- -->
-<ol start="2" type="1">
-<li><p>In the reading, we saw an example where <span class="math inline">\(f_X(x)=f_{X|Y=y}(x)\)</span> and <span class="math inline">\(f_Y(y)=f_{Y|X=x}(y)\)</span>. This is not common and is important. What does this imply about <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>?</p></li>
-<li><p>ADVANCED: Recall on an earlier assignment, we came up with random variables to describe timeliness at an airport. Suppose over the course of 210 days, on each day we recorded the number of customer complaints regarding timeliness. Also on each day, we recorded the weather (our airport is located somewhere without snow and without substantial wind). The data are displayed below.</p></li>
-</ol>
-<p><span class="math display">\[
-\begin{array}{cc|cc} &amp; &amp; &amp;\textbf{Weather Status}  
-\\ &amp; &amp; \textbf{Clear} &amp; \textbf{Light Rain} &amp; \textbf{Rain}  
-\\ &amp; \hline0 &amp; 28 &amp; 11 &amp; 4  
-\\ &amp; 1 &amp; 18 &amp; 15 &amp; 8  
-\\ &amp; 2 &amp; 17 &amp; 25 &amp; 12  
-\\ \textbf{# of complaints} &amp; 3 &amp; 13 &amp; 15 &amp; 16  \\
-&amp; 4 &amp; 8 &amp; 8 &amp; 10  
-\\ &amp; 5 &amp; 0 &amp; 1 &amp; 1
-\\ \end{array}
-\]</span></p>
-<p>First, define two random variables for this scenario. One of them (# of complaints) is essentially already a random variable. For the other (weather status) you will need to assign a number to each status.</p>
-<ol type="a">
-<li>Use the table above to build an empirical joint pmf of the two random variables.<br>
-</li>
-<li>Find the marginal pmfs of each random variable.<br>
-</li>
-<li>Find the probability of fewer than 3 complaints.<br>
-</li>
-<li>Find the probability of fewer than 3 complaints given there is no rain.</li>
-</ol>
-<p>&nbsp;</p>
-<p><strong>Optional</strong> for those of you that like Calc III and want a challenge.</p>
-<ol start="4" type="1">
-<li>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be continuous random variables with joint pmf: <span class="math display">\[
-f_{X,Y}(x,y)=1
-\]</span></li>
-</ol>
-<p>where <span class="math inline">\(0 \leq x \leq 1\)</span> and <span class="math inline">\(0 \leq y \leq 2x\)</span>.</p>
-<ol type="a">
-<li>Verify that <span class="math inline">\(f\)</span> is a valid pdf.<br>
-</li>
-<li>Find the marginal pdfs of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.<br>
-</li>
-<li>Find the conditional pdfs of <span class="math inline">\(X|Y=y\)</span> and <span class="math inline">\(Y|X=x\)</span>.<br>
-</li>
-<li>Find the following probabilities: <span class="math inline">\(\mbox{P}(X&lt;0.5)\)</span>; <span class="math inline">\(\mbox{P}(Y&gt;1)\)</span>; <span class="math inline">\(\mbox{P}(X&lt;0.5,Y\leq 0.8)\)</span>; Optional <span class="math inline">\(\mbox{P}(X&lt;0.5|Y= 0.8)\)</span>; <span class="math inline">\(\mbox{P}(Y\leq 1-X)\)</span>. (It would probably help to draw some pictures.)</li>
-</ol>
-</section>
-<section id="solutions-manual" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="solutions-manual"><a href="https://ds-usafa.github.io/CPS-Solutions-Manual/MULTIDISTS.html">Solutions Manual</a></h2>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

@@ -380,8 +380,6 @@ window.Quarto = {
   <li><a href="#general-solution" id="toc-general-solution" class="nav-link" data-scroll-target="#general-solution"><span class="header-section-number">7.4.5</span> General solution</a></li>
   <li><a href="#data-science-approach" id="toc-data-science-approach" class="nav-link" data-scroll-target="#data-science-approach"><span class="header-section-number">7.4.6</span> Data science approach</a></li>
   </ul></li>
-  <li><a href="#homework-problems" id="toc-homework-problems" class="nav-link" data-scroll-target="#homework-problems"><span class="header-section-number">7.5</span> Homework Problems</a></li>
-  <li><a href="#solutions-manual" id="toc-solutions-manual" class="nav-link" data-scroll-target="#solutions-manual">Solutions Manual</a></li>
   </ul>
 </nav>
     </div>
@@ -920,44 +918,9 @@ Figure&nbsp;7.5: Number of births by day of the year for all years.
 </div>
 <p>We could not solve this problem of varying frequency of birth days using mathematics, at least as far as we know.</p>
 <p>Cool stuff, let’s get to learning more about probability models in the next chapters.</p>
-</section>
-</section>
-<section id="homework-problems" class="level2" data-number="7.5">
-<h2 data-number="7.5" class="anchored" data-anchor-id="homework-problems"><span class="header-section-number">7.5</span> Homework Problems</h2>
-<ol type="1">
-<li><strong>Exactly 2 people with the same birthday - Simulation</strong>. Complete a similar analysis for case where exactly 2 people in a room of 23 people have the same birthday. In this exercise you will use a computational simulation.</li>
-</ol>
-<!-- -->
-<ol type="a">
-<li>Create a new R Markdown file and create a report. Yes, we know you could use this file but we want you to practice generating your own report.<br>
-</li>
-<li>Simulate having 23 people in the class with each day of the year equally likely. Find the cases where exactly 2 people have the same birthday, you will have to alter the code from the Notes more than changing 18 to 23.<br>
-</li>
-<li>Plot the frequency of occurrences as a bar chart.<br>
-</li>
-<li>Estimate the probability of exactly two people having the same birthday.</li>
-</ol>
-<!-- -->
-<ol start="2" type="1">
-<li><strong>Exactly 2 people with the same birthday - Mathematical</strong>. Repeat problem 1 but do it mathematically. As a big hint, you will need to use the <code>choose()</code> function. The idea is that with 23 people we need to choose 2 of them to match. We thus need to multiply, the multiplication rule again, by <code>choose(23,2)</code>. If you are having trouble, work with a total of 3 people in the room first.</li>
-</ol>
-<!-- -->
-<ol type="a">
-<li>Find a formula to determine the exact probability of exactly 2 people in a room of 23 having the same birthday.<br>
-</li>
-<li>Generalize your solution to any number <code>n</code> people in the room and create a function.<br>
-</li>
-<li>Vectorize the function.<br>
-</li>
-<li>Plot the probability of exactly 2 people having the same birthday versus number of people in the room.<br>
-</li>
-<li>Comment on the shape of the curve and explain it.</li>
-</ol>
-</section>
-<section id="solutions-manual" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="solutions-manual"><a href="https://ds-usafa.github.io/CPS-Solutions-Manual/CS2.html">Solutions Manual</a></h2>
 
 
+</section>
 </section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>

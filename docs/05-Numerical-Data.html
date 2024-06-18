@@ -379,8 +379,6 @@ window.Quarto = {
   <li><a href="#robust-statistics" id="toc-robust-statistics" class="nav-link" data-scroll-target="#robust-statistics"><span class="header-section-number">5.2.6</span> Robust statistics</a></li>
   <li><a href="#transforming-data" id="toc-transforming-data" class="nav-link" data-scroll-target="#transforming-data"><span class="header-section-number">5.2.7</span> Transforming data</a></li>
   </ul></li>
-  <li><a href="#homework-problems" id="toc-homework-problems" class="nav-link" data-scroll-target="#homework-problems"><span class="header-section-number">5.3</span> Homework Problems</a></li>
-  <li><a href="#solutions-manual" id="toc-solutions-manual" class="nav-link" data-scroll-target="#solutions-manual">Solutions Manual</a></li>
   </ul>
 </nav>
     </div>
@@ -921,53 +919,9 @@ Figure&nbsp;5.14: A scatterplot of <code>line_breaks</code> versus <code>num_cha
 </div>
 </div>
 <p>Transformations other than the logarithm can be useful, too. For instance, the square root (<span class="math inline">\(\sqrt{\text{original observation}}\)</span>) and inverse <span class="math inline">\(\left(\frac{1}{\text{original observation}}\right)\)</span> are used commonly by statisticians. Common goals in transforming data are to see the data structure differently, reduce skew, assist in modeling, or straighten a nonlinear relationship in a scatterplot.</p>
-</section>
-</section>
-<section id="homework-problems" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="homework-problems"><span class="header-section-number">5.3</span> Homework Problems</h2>
-<p>Create an Rmd file for the work including headers, file creation data, and explanation of your work. Make sure your plots have a title and the axes are labeled.</p>
-<ol type="1">
-<li><strong>Mammals exploratory</strong>. Data were collected on 39 species of mammals distributed over 13 taxonomic orders. The data is in the <code>mammals</code> data set in the <strong>openintro</strong> package.</li>
-</ol>
-<!-- -->
-<ol type="a">
-<li><p>Using the documentation for the <code>mammals</code> data set, report the units for the variable <code>brain_wt</code>.</p></li>
-<li><p>Using <code>inspect()</code>, how many variables are numeric?</p></li>
-<li><p>What type of variable is <code>danger</code>?</p></li>
-<li><p>Create a histogram of <code>total_sleep</code> and describe the distribution.</p></li>
-<li><p>Create a boxplot of <code>life_span</code> and describe the distribution.</p></li>
-<li><p>Report the mean and median life span of a mammal.</p></li>
-<li><p>Calculate the summary statistics for <code>life_span</code> broken down by <code>danger</code>. What is the standard deviation of life span in danger outcome 5?</p></li>
-</ol>
-<!-- -->
-<ol start="2" type="1">
-<li><strong>Mammal life spans</strong>. Continue using the <code>mammals</code> data set.</li>
-</ol>
-<!-- -->
-<ol type="a">
-<li><p>Create side-by-side boxplots for <code>life_span</code> broken down by <code>exposure</code>. Note: you will have to change <code>exposure</code> to a <code>factor()</code>. Report on any findings.</p></li>
-<li><p>What happened to the median and third quartile in exposure group 4?</p></li>
-<li><p>Using the same variables, create faceted histograms. What are the shortcomings of this plot?</p></li>
-<li><p>Create a new variable <code>exposed</code> that is a factor with level <code>Low</code> if exposure is <code>1</code> or <code>2</code> and <code>High</code> otherwise.</p></li>
-<li><p>Repeat part c) with the new <code>exposed</code> variable. Explain what you see in the plot.</p></li>
-</ol>
-<!-- -->
-<ol start="3" type="1">
-<li><strong>Mammal life spans continued</strong></li>
-</ol>
-<!-- -->
-<ol type="a">
-<li><p>Create a scatterplot of life span versus length of gestation.</p></li>
-<li><p>What type of association is apparent between life span and length of gestation?</p></li>
-<li><p>What type of association would you expect to see if the axes of the plot were reversed, i.e.&nbsp;if we plotted length of gestation versus life span?</p></li>
-<li><p>Create the new scatterplot suggested in part c).</p></li>
-<li><p>Are life span and length of gestation independent? Explain your reasoning.</p></li>
-</ol>
-</section>
-<section id="solutions-manual" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="solutions-manual"><a href="https://ds-usafa.github.io/CPS-Solutions-Manual/NUMDATA.html">Solutions Manual</a></h2>
 
 
+</section>
 </section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
