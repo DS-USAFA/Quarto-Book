@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.550">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Computational Probability and Statistics - 19&nbsp; Hypothesis Testing with Simulation</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./20-Hypothesis-Testing-ProbDist.html" rel="next">
+<link href="./18-Inference-Case-Study.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./18-Inference-Case-Study.html">Statistical Modeling - Inference</a></li><li class="breadcrumb-item"><a href="./19-Hypothesis-Testing-Simulation.html"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Hypothesis Testing with Simulation</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Computational Probability and Statistics</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/DS-USAFA/Quarto-Book" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00-Objectives.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Objectives</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Descriptive Statistical Modeling</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-Data-Case-Study.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data Case Study</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-Data-Basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Basics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-Overview-of-Data-Collection-Principles.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Overview of Data Collection Principles</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-Studies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Studies</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-Numerical-Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Numerical Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-Categorical-Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Categorical Data</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Probability Modeling</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-Probability-Case-Study.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Probability Case Study</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-Probability-Rules.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Probability Basics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-Conditional-Probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Conditional Probability</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-Discrete-Random-Variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Random Variables</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-Continuous-Random-Variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Continuous Random Variables</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-Named-Discrete-Distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Named Discrete Distributions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-Named-Continuous-Distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Named Continuous Distributions</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Advanced Probability</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14-Multivariate-Distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Multivariate Distributions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./15-Multivariate-Expectation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Multivariate Expectation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./16-Transformations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Transformations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./17-Estimation-Methods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Estimation Methods</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Statistical Modeling - Inference</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./18-Inference-Case-Study.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Inferential Thinking Case Study</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./19-Hypothesis-Testing-Simulation.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Hypothesis Testing with Simulation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./20-Hypothesis-Testing-ProbDist.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Hypothesis Testing with Known Distributions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives"><span class="header-section-number">19.1</span> Objectives</a></li>
+  <li><a href="#decision-making-under-uncertainty" id="toc-decision-making-under-uncertainty" class="nav-link" data-scroll-target="#decision-making-under-uncertainty"><span class="header-section-number">19.2</span> Decision making under uncertainty</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">19.3</span> Introduction</a></li>
+  <li><a href="#hypothesis-testing" id="toc-hypothesis-testing" class="nav-link" data-scroll-target="#hypothesis-testing"><span class="header-section-number">19.4</span> Hypothesis testing</a>
+  <ul class="collapse">
+  <li><a href="#hypothesis-testing-in-the-us-court-system" id="toc-hypothesis-testing-in-the-us-court-system" class="nav-link" data-scroll-target="#hypothesis-testing-in-the-us-court-system"><span class="header-section-number">19.4.1</span> Hypothesis testing in the US court system</a></li>
+  <li><a href="#step-1--state-the-null-and-alternative-hypotheses" id="toc-step-1--state-the-null-and-alternative-hypotheses" class="nav-link" data-scroll-target="#step-1--state-the-null-and-alternative-hypotheses"><span class="header-section-number">19.4.2</span> Step 1- State the null and alternative hypotheses</a></li>
+  <li><a href="#step-2---compute-a-test-statistic." id="toc-step-2---compute-a-test-statistic." class="nav-link" data-scroll-target="#step-2---compute-a-test-statistic."><span class="header-section-number">19.4.3</span> Step 2 - Compute a test statistic.</a></li>
+  <li><a href="#step-3---determine-the-p-value." id="toc-step-3---determine-the-p-value." class="nav-link" data-scroll-target="#step-3---determine-the-p-value."><span class="header-section-number">19.4.4</span> Step 3 - Determine the <span class="math inline">\(p\)</span>-value.</a></li>
+  <li><a href="#step-4---draw-a-conclusion" id="toc-step-4---draw-a-conclusion" class="nav-link" data-scroll-target="#step-4---draw-a-conclusion"><span class="header-section-number">19.4.5</span> Step 4 - Draw a conclusion</a></li>
+  <li><a href="#decision-errors" id="toc-decision-errors" class="nav-link" data-scroll-target="#decision-errors"><span class="header-section-number">19.4.6</span> Decision errors</a></li>
+  <li><a href="#choosing-a-significance-level" id="toc-choosing-a-significance-level" class="nav-link" data-scroll-target="#choosing-a-significance-level"><span class="header-section-number">19.4.7</span> Choosing a significance level</a></li>
+  <li><a href="#introducing-two-sided-hypotheses" id="toc-introducing-two-sided-hypotheses" class="nav-link" data-scroll-target="#introducing-two-sided-hypotheses"><span class="header-section-number">19.4.8</span> Introducing two-sided hypotheses</a></li>
+  </ul></li>
+  <li><a href="#two-sided-hypothesis-test" id="toc-two-sided-hypothesis-test" class="nav-link" data-scroll-target="#two-sided-hypothesis-test"><span class="header-section-number">19.5</span> Two-sided hypothesis test</a>
+  <ul class="collapse">
+  <li><a href="#cpr-example" id="toc-cpr-example" class="nav-link" data-scroll-target="#cpr-example"><span class="header-section-number">19.5.1</span> CPR example</a></li>
+  <li><a href="#step-1---state-the-null-and-alternative-hypotheses" id="toc-step-1---state-the-null-and-alternative-hypotheses" class="nav-link" data-scroll-target="#step-1---state-the-null-and-alternative-hypotheses"><span class="header-section-number">19.5.2</span> Step 1 - State the null and alternative hypotheses</a></li>
+  <li><a href="#step-2---compute-a-test-statistic.-1" id="toc-step-2---compute-a-test-statistic.-1" class="nav-link" data-scroll-target="#step-2---compute-a-test-statistic.-1"><span class="header-section-number">19.5.3</span> Step 2 - Compute a test statistic.</a></li>
+  <li><a href="#step-3---determine-the-p-value.-1" id="toc-step-3---determine-the-p-value.-1" class="nav-link" data-scroll-target="#step-3---determine-the-p-value.-1"><span class="header-section-number">19.5.4</span> Step 3 - Determine the <span class="math inline">\(p\)</span>-value.</a></li>
+  <li><a href="#step-4---draw-a-conclusion-1" id="toc-step-4---draw-a-conclusion-1" class="nav-link" data-scroll-target="#step-4---draw-a-conclusion-1"><span class="header-section-number">19.5.5</span> Step 4 - Draw a conclusion</a></li>
+  <li><a href="#how-to-use-a-hypothesis-test" id="toc-how-to-use-a-hypothesis-test" class="nav-link" data-scroll-target="#how-to-use-a-hypothesis-test"><span class="header-section-number">19.5.6</span> How to use a hypothesis test</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/DS-USAFA/Quarto-Book/edit/main/19-Hypothesis-Testing-Simulation.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./18-Inference-Case-Study.html">Statistical Modeling - Inference</a></li><li class="breadcrumb-item"><a href="./19-Hypothesis-Testing-Simulation.html"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Hypothesis Testing with Simulation</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="HYPTESTSIM" class="quarto-section-identifier"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Hypothesis Testing with Simulation</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="objectives" class="level2" data-number="19.1">
+<h2 data-number="19.1" class="anchored" data-anchor-id="objectives"><span class="header-section-number">19.1</span> Objectives</h2>
+<ol type="1">
+<li><p>Know and properly use the terminology of a hypothesis test, to include: <em>null hypothesis</em>, <em>alternative hypothesis</em>, <em>test statistic</em>, <span class="math inline">\(p\)</span>-value, <em>randomization test</em>, <em>one-sided test</em>, <em>two-sided test</em>, <em>statistically significant</em>, <em>significance level</em>, <em>type I error</em>, <em>type II error</em>, <em>false positive</em>, <em>false negative</em>, <em>null distribution</em>, and <em>sampling distribution</em>.</p></li>
+<li><p>Conduct all four steps of a hypothesis test using randomization.</p></li>
+<li><p>Discuss and explain the ideas of decision errors, one-sided versus two-sided tests, and the choice of a significance level.</p></li>
+</ol>
+</section>
+<section id="decision-making-under-uncertainty" class="level2" data-number="19.2">
+<h2 data-number="19.2" class="anchored" data-anchor-id="decision-making-under-uncertainty"><span class="header-section-number">19.2</span> Decision making under uncertainty</h2>
+<p>At this point, it is useful to take a look at where we have been in this book and where we are going. We did this in the case study, but we want to discuss it again in a little more detail. We first looked at descriptive models to help us understand our data. This also required us to get familiar with software. We learned about graphical summaries, data collection methods, and summary metrics.</p>
+<p>Next we learned about probability models. These models allowed us to use assumptions and a small number of parameters to make statements about data (a sample) and also to simulate data. We found that there is a close tie between probability models and statistical models. In our first efforts at statistical modeling, we started to use data to create estimates for parameters of a probability model.</p>
+<p>Now we are moving more in depth into statistical models. This is going to tie all the ideas together. We are going to use data from a sample and ideas of randomization to make conclusions about a population. This will require probability models, descriptive models, and some new ideas and terminology. We will generate point estimates for a metric designed to answer the research question and then find ways to determine the variability of the metric. In <a href="#fig-prob_stats2" class="quarto-xref">Figure&nbsp;<span>19.1</span></a>, we demonstrate this relationship between probability and statistical models.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-prob_stats2" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-prob_stats2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/Prob_Stats.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-prob_stats2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;19.1: A graphical representation of probability and statistics. In probability, we describe what we expect to happen in a sample if we know the underlying process; in statistics, we don’t know the underlying process, and must infer about the population based on representative samples.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Computational/Mathematical and hypothesis testing/confidence intervals context</strong></p>
+<p>We are going to be using data from a sample of the population to make decisions about the population. There are many approaches and techniques for this. In this book, we will be introducing and exploring different approaches; we are establishing foundations. As you can imagine, these ideas are varied, subtle, and at times difficult. We will just be exposing you to the foundational ideas. We want to make sure you understand that to become an accomplished practitioner, you must master the fundamentals and continue to learn the advanced ideas.</p>
+<p>Historically, there have been two approaches to statistical decision making, hypothesis testing and confidence intervals. At their mathematical foundation, they are equivalent, but, sometimes in practice, they offer different perspectives on the problem. We will learn about both of these approaches.</p>
+<p>The engines that drive the numeric results of a decision making model are either mathematical or computational. In reality, computational methods have mathematics behind them, and mathematical methods often require computer computations. The real distinction between them is the assumptions we are making about our population. Mathematical solutions typically have stricter assumptions, thus leading to a tractable mathematical solution to the sampling distribution of the test statistic, while computational models relax assumptions but may require extensive computational power. Like all problems, there is a trade off to consider when trying to choose which approach is better. There is no one universal best method. Some methods perform better in certain contexts. It is important to understand that computational methods such as the <strong>bootstrap</strong> are <strong>NOT</strong> all you need to know.</p>
+</section>
+<section id="introduction" class="level2" data-number="19.3">
+<h2 data-number="19.3" class="anchored" data-anchor-id="introduction"><span class="header-section-number">19.3</span> Introduction</h2>
+<p>In this chapter we will introduce hypothesis testing. It is really an extension of our last chapter, the case study. We will put more emphasis on terms and core concepts. In this chapter, we will use a computational solution but this will lead us into thinking of mathematical solutions.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> The role of the analyst is always key regardless of the perceived power of the computer. The analyst must take the research question and translate it into a numeric metric for evaluation. The analyst must decide on the type of data and its collection to evaluate the question. The analyst must evaluate the variability in the metric and determine what that means in relation to the original research question. The analyst must propose an answer.</p>
+</section>
+<section id="hypothesis-testing" class="level2" data-number="19.4">
+<h2 data-number="19.4" class="anchored" data-anchor-id="hypothesis-testing"><span class="header-section-number">19.4</span> Hypothesis testing</h2>
+<p>We will continue to emphasize the ideas of hypothesis testing through a data-driven example, but also via analogy to the US court system. So let’s begin our journey.</p>
+<blockquote class="blockquote">
+<p><strong>Example</strong>:<br>
+You are annoyed by TV commercials. You suspect that there were more commercials in the <em>basic</em> TV channels, typically the local area channels, than in the <em>premium</em> channels you pay extra for. To test this claim, hypothesis, you want to collect some data and draw a conclusion. How would you collect this data?</p>
+</blockquote>
+<p>Here is one approach: we watch 20 random half hour shows of live TV. Ten of those hours are basic TV and the other ten are premium. In each case, you record the total length of commercials during each show.</p>
+<blockquote class="blockquote">
+<p><strong>Exercise</strong>: Is this enough data? You decide to have your friends help you, so you actually only watched 5 hours and got the rest of the data from your friends. Is this a problem?</p>
+</blockquote>
+<p>We cannot determine if this is enough data without some type of subject matter knowledge. First, we need to decide what metric to use to determine if a difference exists (more to come on this). Second, we need to decide how big of a difference, from a practical standpoint, is of interest. Is a loss of 1 minute of TV show enough to say there is a difference? How about 5 minutes? These are not statistical questions, but depend on the context of the problem and often require subject matter expertise to answer. Often, data is collected without thought to these considerations. There are several methods that attempt to answer these questions. They are loosely called sample size calculations. This book will not focus on sample size calculations and will leave it to the reader to learn more from other sources. For the second exercise question, the answer depends on the protocol and operating procedures used. If your friends are trained on how to measure the length of commercials, what counts as an ad, and their skills are verified, then it is probably not a problem to use them to collect data. Consistency in measurement is the key.</p>
+<p>The file <code>ads.csv</code> contains the data. Let’s read the data into <code>R</code> and start to summarize. Remember to load the appropriate <code>R</code> packages.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>ads <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/ads.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>ads</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 2
+   basic premium
+   &lt;dbl&gt;   &lt;dbl&gt;
+ 1  6.95    3.38
+ 2 10.0     7.8 
+ 3 10.6     9.42
+ 4 10.2     4.66
+ 5  8.58    5.36
+ 6  7.62    7.63
+ 7  8.23    4.95
+ 8 10.4     8.01
+ 9 11.0     7.8 
+10  8.52    9.58</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(ads)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 10
+Columns: 2
+$ basic   &lt;dbl&gt; 6.950, 10.013, 10.620, 10.150, 8.583, 7.620, 8.233, 10.350, 11…
+$ premium &lt;dbl&gt; 3.383, 7.800, 9.416, 4.660, 5.360, 7.630, 4.950, 8.013, 7.800,…</code></pre>
+</div>
+</div>
+<p>Notice that this data may not be <code>tidy</code>; what does each row represent and is it a single observation? We don’t know how the data was obtained, but if each row represents a different friend who watches one basic and one premium channel, then it is possible this data is <code>tidy</code>. We want each observation to be a single TV show, so let’s clean up, or <code>tidy</code>, our data. Remember to ask yourself “What do I want <code>R</code> to do?” and “What does it need to do this?” We want one column that specifies the channel type and another to specify the total length of the commercials.</p>
+<p>We need <code>R</code> to put, or <em>pivot</em>, the data into a longer form. We need the function <code>pivot_longer()</code>. For more information type <code>vignette("pivot")</code> at the command prompt in <code>R</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>ads <span class="ot">&lt;-</span> ads <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">everything</span>(), <span class="at">names_to =</span> <span class="st">"channel"</span>, <span class="at">values_to =</span> <span class="st">"length"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>ads</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 20 × 2
+   channel length
+   &lt;chr&gt;    &lt;dbl&gt;
+ 1 basic     6.95
+ 2 premium   3.38
+ 3 basic    10.0 
+ 4 premium   7.8 
+ 5 basic    10.6 
+ 6 premium   9.42
+ 7 basic    10.2 
+ 8 premium   4.66
+ 9 basic     8.58
+10 premium   5.36
+11 basic     7.62
+12 premium   7.63
+13 basic     8.23
+14 premium   4.95
+15 basic    10.4 
+16 premium   8.01
+17 basic    11.0 
+18 premium   7.8 
+19 basic     8.52
+20 premium   9.58</code></pre>
+</div>
+</div>
+<p>Looks good. Let’s summarize the data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">inspect</span>(ads)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+categorical variables:  
+     name     class levels  n missing
+1 channel character      2 20       0
+                                   distribution
+1 basic (50%), premium (50%)                   
+
+quantitative variables:  
+    name   class   min     Q1 median      Q3    max    mean       sd  n missing
+1 length numeric 3.383 7.4525  8.123 9.68825 11.016 8.03215 2.121412 20       0</code></pre>
+</div>
+</div>
+<p>This summary is not what we want, since we want to break it down by <code>channel</code> type.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(length <span class="sc">~</span> channel, <span class="at">data =</span> ads)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  channel   min      Q1 median       Q3    max   mean       sd  n missing
+1   basic 6.950 8.30375  9.298 10.30000 11.016 9.2051 1.396126 10       0
+2 premium 3.383 5.05250  7.715  7.95975  9.580 6.8592 2.119976 10       0</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p><strong>Exercise</strong>: Visualize the data using a boxplot.</p>
+</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>ads <span class="sc">%&gt;%</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_boxplot</span>(channel <span class="sc">~</span> length) <span class="sc">%&gt;%</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">title =</span> <span class="st">"Commercial Length"</span>, </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">subtitle =</span> <span class="st">"Random 30 minute shows for 2 channel types"</span>,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">x =</span> <span class="st">"Length"</span>, <span class="at">y =</span> <span class="st">"Channel Type"</span> ) <span class="sc">%&gt;%</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(theme_bw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="19-Hypothesis-Testing-Simulation_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>It appears that the <em>premium</em> channels are skewed to the left. A <code>density</code> plot may help us compare the distributions and see the skewness, <a href="#fig-dens191" class="quarto-xref">Figure&nbsp;<span>19.2</span></a>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>ads <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_dens</span>(<span class="sc">~</span>length, <span class="at">color =</span> <span class="sc">~</span>channel)<span class="sc">%&gt;%</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">title =</span> <span class="st">"Commercial Length"</span>, </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">subtitle =</span> <span class="st">"Random 30 minute shows for 2 channel types"</span>,</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">x =</span> <span class="st">"Length"</span>, <span class="at">y =</span> <span class="st">"Density"</span>, <span class="at">color =</span> <span class="st">"Channel Type"</span> ) <span class="sc">%&gt;%</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(theme_bw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-dens191" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dens191-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="19-Hypothesis-Testing-Simulation_files/figure-html/fig-dens191-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dens191-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;19.2: Commercial length broken down by channel type.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>From this data, it looks like there is a difference between the two type of channels, but we must put the research question into a metric that will allow us to reach a decision. We will do this in a hypothesis test. As a reminder, the steps are</p>
+<ol type="1">
+<li>State the null and alternative hypotheses.<br>
+</li>
+<li>Compute a test statistic.<br>
+</li>
+<li>Determine the <span class="math inline">\(p\)</span>-value.<br>
+</li>
+<li>Draw a conclusion.</li>
+</ol>
+<p>Before doing this, let’s visit an example of hypothesis testing that has become <em>common</em> knowledge for us, the US criminal trial system. We could also use the cadet honor system. This analogy allows us to remember and apply the steps.</p>
+<section id="hypothesis-testing-in-the-us-court-system" class="level3" data-number="19.4.1">
+<h3 data-number="19.4.1" class="anchored" data-anchor-id="hypothesis-testing-in-the-us-court-system"><span class="header-section-number">19.4.1</span> Hypothesis testing in the US court system</h3>
+<p>A US court considers two possible claims about a defendant: she is either innocent or guilty. Imagine you are the prosecutor. If we set these claims up in a hypothesis framework, the null hypothesis is that the defendant is innocent and the alternative hypothesis is that the defendant is guilty. Your job as the prosecutor is to use evidence to demonstrate to the jury that the alternative hypothesis is the reasonable conclusion.</p>
+<p>The jury considers whether the evidence under the null hypothesis, innocence, is so convincing (strong) that there is no reasonable doubt regarding the person’s guilt. That is, the skeptical perspective (null hypothesis) is that the person is innocent until evidence is presented that convinces the jury that the person is guilty (alternative hypothesis).</p>
+<p>Jurors examine the evidence under the assumption of innocence to see whether the evidence is so unlikely that it convincingly shows a defendant is guilty. Notice that if a jury finds a defendant <strong>not guilty</strong>, this does not necessarily mean the jury is confident in the person’s innocence. They are simply not convinced of the alternative that the person is guilty.</p>
+<p>This is also the case with hypothesis testing: even if we fail to reject the null hypothesis, we typically do not accept the null hypothesis as truth. Failing to find strong evidence for the alternative hypothesis is not equivalent to providing evidence that the null hypothesis is true.</p>
+<p>There are two types of mistakes possible in this scenario, letting a guilty person go free and sending an innocent person to jail. The criteria for making the decision, reasonable doubt, establishes the likelihood of those errors.</p>
+<p>Now back to our problem.</p>
+</section>
+<section id="step-1--state-the-null-and-alternative-hypotheses" class="level3" data-number="19.4.2">
+<h3 data-number="19.4.2" class="anchored" data-anchor-id="step-1--state-the-null-and-alternative-hypotheses"><span class="header-section-number">19.4.2</span> Step 1- State the null and alternative hypotheses</h3>
+<p>The first step is to translate the research question into hypotheses. As a reminder, our research question is <em>do premium channels have less ad time than basic channels?</em> In collecting the data, we already decided the total length of time of commercials in a 30 minute show was the correct data for answering this question. We believe that premium channels have less commercial time. However, the null hypothesis, the straw man, has to be the default case that makes it possible to generate a sampling distribution.</p>
+<ol type="i">
+<li><span class="math inline">\(H_0\)</span>: <strong>Null hypothesis</strong>. The distribution of length of commercials for premium and basic channels is the same.</li>
+<li><span class="math inline">\(H_A\)</span>: <strong>Alternative hypothesis</strong>. The distribution of length of commercials for premium and basic channels is different.</li>
+</ol>
+<p>These hypotheses are vague. What does it mean for two distributions to be different and how do we measure and summarize this? Let’s move to the second step and then come back and modify our hypotheses. Notice that the null hypothesis states the distributions are the same. When we generate our sampling distribution of the test statistic, we will do so under this null hypothesis.</p>
+</section>
+<section id="step-2---compute-a-test-statistic." class="level3" data-number="19.4.3">
+<h3 data-number="19.4.3" class="anchored" data-anchor-id="step-2---compute-a-test-statistic."><span class="header-section-number">19.4.3</span> Step 2 - Compute a test statistic.</h3>
+<blockquote class="blockquote">
+<p><strong>Exercise</strong>:<br>
+What type of metric could we use to test for a difference in the distributions of commercial lengths between the two types of channels?</p>
+</blockquote>
+<p>There are many ways for the distributions of lengths of commercials to differ. The easiest is to think of the summary statistics such as mean, median, standard deviation, or some combination of all of these. Historically, for mathematical reasons, it has been common to look at differences in measures of centrality, mean or median. The second consideration is what kind of difference? For example, should we consider a ratio or an actual difference (subtraction)? Again for historical reasons, the difference in means has been used as a measure. To keep things interesting, and to force those with some high school stats experience to think about this problem differently, we are going to use a different metric than has historically been used and taught. This also requires us to write some of our own code. Later, we will ask you to complete the same analysis with a different test statistic, either with your own code or using code from the <strong>mosaic</strong> package.</p>
+<p>Our metric is the ratio of the median length of commercials in basic channels to premium. Thus, our hypotheses are now:</p>
+<p><span class="math inline">\(H_0\)</span>: <strong>Null hypothesis</strong>. The distribution of length of commercials for premium and basic channels is the same.</p>
+<p><span class="math inline">\(H_A\)</span>: <strong>Alternative hypothesis</strong>. The distribution of length of commercials for premium and basic channels is different because the median length of basic channels ads is bigger than for premium channel ads.</p>
+<p>First, let’s calculate the median length of commercials, by channel type, for our data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(length <span class="sc">~</span> channel, <span class="at">data =</span> ads) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  basic premium 
+  9.298   7.715 </code></pre>
+</div>
+</div>
+<p>So, the ratio of median lengths is</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(length <span class="sc">~</span> channel, <span class="at">data =</span> ads)[<span class="dv">1</span>] <span class="sc">/</span> <span class="fu">median</span>(length <span class="sc">~</span> channel, <span class="at">data =</span> ads)[<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   basic 
+1.205185 </code></pre>
+</div>
+</div>
+<p>Let’s put the calculation of the ratio into a function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>metric <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  temp <span class="ot">&lt;-</span> x[<span class="dv">1</span>] <span class="sc">/</span> x[<span class="dv">2</span>]</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>(temp) <span class="ot">&lt;-</span> <span class="st">"test_stat"</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(temp)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">metric</span>(<span class="fu">median</span>(length <span class="sc">~</span> channel, <span class="at">data =</span> ads))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>test_stat 
+ 1.205185 </code></pre>
+</div>
+</div>
+<p>Now, let’s save the observed value of the test statistic in an object.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>obs <span class="ot">&lt;-</span> <span class="fu">metric</span>(<span class="fu">median</span>(length <span class="sc">~</span> channel, <span class="at">data =</span> ads))</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>obs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>test_stat 
+ 1.205185 </code></pre>
+</div>
+</div>
+<p>Here is what we have done; we needed a single number metric to use in evaluating the null and alternative hypotheses. The null hypothesis is that the commercial lengths for the two channel types have the same distribution and the alternative is that they don’t. To measure the alternative hypothesis, we decided to use a ratio of the medians. If the ratio is close to 1, then the medians are not different. There may be other ways in which the distributions are different but we have decided on the ratio of medians for this example.</p>
+</section>
+<section id="step-3---determine-the-p-value." class="level3" data-number="19.4.4">
+<h3 data-number="19.4.4" class="anchored" data-anchor-id="step-3---determine-the-p-value."><span class="header-section-number">19.4.4</span> Step 3 - Determine the <span class="math inline">\(p\)</span>-value.</h3>
+<p>As a reminder, the <span class="math inline">\(p\)</span>-value is the probability of our observed test statistic or something more extreme, given the null hypothesis is true. Since our null hypothesis is that the distributions are the same, we can use a <strong>randomization</strong> test. We will shuffle the channel labels since under the null hypothesis, they are irrelevant. Here is the code for one randomization.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">371</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">metric</span>(<span class="fu">median</span>(length <span class="sc">~</span> <span class="fu">shuffle</span>(channel), <span class="at">data =</span> ads))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>test_stat 
+0.9957097 </code></pre>
+</div>
+</div>
+<p>Let’s generate the empirical sampling distribution of the test statistic we developed. We will perform 1,000 simulations now.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">371</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">do</span>(<span class="dv">1000</span>)<span class="sc">*</span><span class="fu">metric</span>(<span class="fu">median</span>(length <span class="sc">~</span> <span class="fu">shuffle</span>(channel), <span class="at">data =</span> ads))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Next we create a plot of the distribution of the ratio of median commercial lengths in basic and premium channels, assuming they come from the same population, <a href="#fig-hist191" class="quarto-xref">Figure&nbsp;<span>19.3</span></a>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>results <span class="sc">%&gt;%</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_histogram</span>(<span class="sc">~</span>test_stat) <span class="sc">%&gt;%</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_vline</span>(<span class="at">xintercept =</span> obs) <span class="sc">%&gt;%</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_bw</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">x =</span> <span class="st">"Test statistic"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-hist191" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-hist191-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="19-Hypothesis-Testing-Simulation_files/figure-html/fig-hist191-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hist191-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;19.3: Historgram of the sampling distribution by an approxiamte permutation test.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Notice that this distribution is centered on 1 and appears to be roughly symmetrical. The vertical line is our observed value of the test statistic. It seems to be in the tail, and is larger than expected if the channels came from the same distribution. Let’s calculate the <span class="math inline">\(p\)</span>-value.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>results <span class="sc">%&gt;%</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">p_value =</span> <span class="fu">mean</span>(test_stat <span class="sc">&gt;=</span> obs))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  p_value
+1   0.026</code></pre>
+</div>
+</div>
+<p>Before proceeding, we have a technical question: Should we include the observed data in the calculation of the <span class="math inline">\(p\)</span>-value?</p>
+<p>The answer is that most people would conclude that the original data is one of the possible permutations and thus include it. This practice will also ensure that the <span class="math inline">\(p\)</span>-value from a randomization test is never zero. In practice, this simply means adding 1 to both the numerator and denominator. The <strong>mosaic</strong> package has done this for us with the <code>prop1()</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop1</span>(<span class="sc">~</span>(test_stat <span class="sc">&gt;=</span> obs), <span class="at">data =</span> results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> prop_TRUE 
+0.02697303 </code></pre>
+</div>
+</div>
+<p>The test we performed is called a one-sided test because we only checked if the median length for basic channels is larger than that for premium channels. In this case of a one-sided test, more extreme meant a ratio much bigger than 1. A two-sided test is also common, in fact it is more common, and is used if we did not apriori think one channel type had longer commercials than the other. In this case, we find the <span class="math inline">\(p\)</span>-value by doubling the single-sided value. This is because <em>more extreme</em> could have happened in either tail of the sampling distribution.</p>
+</section>
+<section id="step-4---draw-a-conclusion" class="level3" data-number="19.4.5">
+<h3 data-number="19.4.5" class="anchored" data-anchor-id="step-4---draw-a-conclusion"><span class="header-section-number">19.4.5</span> Step 4 - Draw a conclusion</h3>
+<p>Our research question – do premium channels have less ad time than basic channels? – was framed in context of the following hypotheses:</p>
+<p><span class="math inline">\(H_0\)</span>: <strong>Null hypothesis</strong>. The distribution of length of commercials for premium and basic channels is the same.<br>
+<span class="math inline">\(H_A\)</span>: <strong>Alternative hypothesis</strong>. The distribution of length of commercials for premium and basic channels is different because the median length of basic channels ads is bigger than for premium channel ads.</p>
+<p>In our simulations, less than 2.7% of the simulated test statistics were greater than or equal (more extreme relative to the null hypothesis) to the observed test statistic. That is, the observed ratio of 1.2 is a rare event if the distributions of commercial lengths for premium and basic channels truly are the same. By chance alone, we would only expect an observed ratio this large to occur less than 3 in 100 times. When results like these are inconsistent with <span class="math inline">\(H_0\)</span>, we reject <span class="math inline">\(H_0\)</span> in favor of <span class="math inline">\(H_A\)</span>. Here, we reject <span class="math inline">\(H_0\)</span> and conclude there is evidence that the median length of basic channel ads is bigger than that for premium channels.</p>
+<p>The less than 3-in-100 chance is the <span class="math inline">\(p\)</span>-value, which is a probability quantifying the strength of the evidence against the null hypothesis and in favor of the alternative.</p>
+<p>When the <span class="math inline">\(p\)</span>-value is small, i.e.&nbsp;less than a previously set threshold, we say the results are <strong>statistically significant</strong><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. This means the data provide such strong evidence against <span class="math inline">\(H_0\)</span> that we reject the null hypothesis in favor of the alternative hypothesis. The threshold, called the <strong>significance level</strong> and often represented by the Greek letter <span class="math inline">\(\alpha\)</span>, is typically set to <span class="math inline">\(\alpha = 0.05\)</span>, but can vary depending on the field or the application. Using a significance level of <span class="math inline">\(\alpha = 0.05\)</span> in the TV channel study, we can say that the data provided statistically significant evidence against the null hypothesis.</p>
+<blockquote class="blockquote">
+<p>We say that the data provide statistically significant evidence against the null hypothesis if the <span class="math inline">\(p\)</span>-value is less than some reference value, usually <span class="math inline">\(\alpha=0.05\)</span>.</p>
+</blockquote>
+<p>If the null hypothesis is true, unknown to us, the significance level <span class="math inline">\(\alpha\)</span> defines the probability that we will make a Type 1 Error. We will define decision errors in the next section.</p>
+<blockquote class="blockquote">
+<p><em>Side note</em>: What’s so special about 0.05? We often use a threshold of 0.05 to determine whether a result is statistically significant. But why 0.05? Maybe we should use a bigger number, or maybe a smaller number. If you’re a little puzzled, that probably means you’re reading with a critical eye – good job! There are many <a href="http://www.openintro.org/why05%7D%7Bwww.openintro.org/why05">video clips</a> that explain the use of 0.05. Sometimes it’s also a good idea to deviate from the standard. It really depends on the risk that the decision maker wants to accept in terms of the two types of decision errors.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Exercise</strong>:<br>
+Use our <span class="math inline">\(p\)</span>-value and a significance level of 0.05 to make a decision.</p>
+</blockquote>
+<p>Based on our data, if there were really no difference in the distribution of lengths of commercials in 30 minute shows between basic and premium channels then the probability of finding our observed ratio of medians is 0.027. Since this is less than our significance level of <span class="math inline">\(\alpha = 0.05\)</span>, we reject the null in favor of the alternative that the basic channel has longer commercials.</p>
+</section>
+<section id="decision-errors" class="level3" data-number="19.4.6">
+<h3 data-number="19.4.6" class="anchored" data-anchor-id="decision-errors"><span class="header-section-number">19.4.6</span> Decision errors</h3>
+<p>Hypothesis tests are not flawless. Just think of the court system: innocent people are sometimes wrongly convicted and the guilty sometimes walk free. Similarly, data can point to the wrong conclusion. However, what distinguishes statistical hypothesis tests from a court system is that our framework allows us to quantify and control how often the data lead us to the incorrect conclusion.</p>
+<p>There are two competing hypotheses: the null and the alternative. In a hypothesis test, we make a statement about which one might be true, but we might choose incorrectly. There are four possible scenarios in a hypothesis test, which are summarized below.</p>
+<p><span class="math display">\[
+\begin{array}{cc|cc} &amp; &amp; \textbf{Test Conclusion} &amp;\\
+&amp; &amp; \text{do not reject } H_0 &amp;  \text{reject } H_0 \text{ in favor of }H_A  \\
+\textbf{Truth} &amp; \hline H_0 \text{ true} &amp; \text{Correct Decision} &amp;  \text{Type 1 Error}  \\
+&amp; H_A \text{true} &amp; \text{Type 2 Error} &amp; \text{Correct Decision}  \\
+\end{array}
+\]</span></p>
+<p>A <strong>Type 1 error</strong>, also called a <strong>false positive</strong>, is rejecting the null hypothesis when <span class="math inline">\(H_0\)</span> is actually true. Since we rejected the null hypothesis in the gender discrimination (from the Case Study) and the commercial length studies, it is possible that we made a Type 1 error in one or both of those studies. A <strong>Type 2 error</strong>, also called a <strong>false negative</strong>, is failing to reject the null hypothesis when the alternative is actually true. A Type 2 error was not possible in the gender discrimination or commercial length studies because we rejected the null hypothesis.</p>
+<blockquote class="blockquote">
+<p><em>Example</em>:<br>
+In a US court, the defendant is either innocent (<span class="math inline">\(H_0\)</span>) or guilty (<span class="math inline">\(H_A\)</span>). What does a Type 1 error represent in this context? What does a Type 2 error represent?</p>
+</blockquote>
+<p>If the court makes a Type 1 error, this means the defendant is truly innocent (<span class="math inline">\(H_0\)</span> true) but is wrongly convicted. A Type 2 error means the court failed to reject <span class="math inline">\(H_0\)</span> (i.e.&nbsp;failed to convict the person) when she was in fact guilty (<span class="math inline">\(H_A\)</span> true).</p>
+<blockquote class="blockquote">
+<p><strong>Exercise</strong>:<br>
+Consider the commercial length study where we concluded basic channels had longer commercials than premium channels. What would a Type 1 error represent in this context?<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Exercise</strong>:<br>
+How could we reduce the Type 1 error rate in US courts? What influence would this have on the Type 2 error rate?</p>
+</blockquote>
+<p>To lower the Type 1 error rate, we might raise our standard for conviction from “beyond a reasonable doubt” to “beyond a conceivable doubt” so fewer people would be wrongly convicted. However, this would also make it more difficult to convict the people who are actually guilty, so we would make more Type 2 errors.</p>
+<blockquote class="blockquote">
+<p><strong>Exercise</strong>:<br>
+How could we reduce the Type 2 error rate in US courts? What influence would this have on the Type 1 error rate?</p>
+</blockquote>
+<p>To lower the Type 2 error rate, we want to convict more guilty people. We could lower the standards for conviction from “beyond a reasonable doubt” to “beyond a little doubt”. Lowering the bar for guilt will also result in more wrongful convictions, raising the Type 1 error rate.</p>
+<blockquote class="blockquote">
+<p><strong>Exercise</strong>: Think about the cadet honor system, its metric of evaluation, and the impact on the types of decision errors.</p>
+</blockquote>
+<p>These exercises provide an important lesson: if we reduce how often we make one type of error, we generally make more of the other type for a given amount of data, information.</p>
+</section>
+<section id="choosing-a-significance-level" class="level3" data-number="19.4.7">
+<h3 data-number="19.4.7" class="anchored" data-anchor-id="choosing-a-significance-level"><span class="header-section-number">19.4.7</span> Choosing a significance level</h3>
+<p>Choosing a significance level for a test is important in many contexts, and the traditional level is <span class="math inline">\(\alpha = 0.05\)</span>. However, it is sometimes helpful to adjust the significance level based on the application. We may select a level that is smaller or larger than 0.05 depending on the consequences of any conclusions reached from the test.</p>
+<p>If making a Type 1 error is dangerous or especially costly, we should choose a small significance level (e.g.&nbsp;0.01 or 0.001). Under this scenario, we want to be very cautious about rejecting the null hypothesis, so we demand very strong evidence favoring the alternative <span class="math inline">\(H_A\)</span> before we would reject <span class="math inline">\(H_0\)</span>.</p>
+<p>If making a Type 2 error is relatively more dangerous or much more costly than a Type 1 error, then we should choose a higher significance level (e.g.&nbsp;0.10). Here we want to be cautious about failing to reject <span class="math inline">\(H_0\)</span> when the null hypothesis is actually false.</p>
+<p>The significance level selected for a test should reflect the real-world consequences associated with making a Type 1 or Type 2 error.</p>
+</section>
+<section id="introducing-two-sided-hypotheses" class="level3" data-number="19.4.8">
+<h3 data-number="19.4.8" class="anchored" data-anchor-id="introducing-two-sided-hypotheses"><span class="header-section-number">19.4.8</span> Introducing two-sided hypotheses</h3>
+<p>So far we have explored whether women were discriminated against and whether commercials were longer depending on the type of channel. In these two case studies, we’ve actually ignored some possibilities:</p>
+<ol type="1">
+<li>What if <strong>men</strong> are actually discriminated against?<br>
+</li>
+<li>What if ads on premium channels are actually <strong>longer</strong>?</li>
+</ol>
+<p>These possibilities weren’t considered in our hypotheses or analyses. This may have seemed natural since the data pointed in the directions in which we framed the problems. However, there are two dangers if we ignore possibilities that disagree with our data or that conflict with our worldview:</p>
+<ol type="1">
+<li>Framing an alternative hypothesis simply to match the direction that the data point will generally inflate the Type 1 error rate. After all the work we’ve done (and will continue to do) to rigorously control the error rates in hypothesis tests, careless construction of the alternative hypotheses can disrupt that hard work.<br>
+</li>
+<li>If we only use alternative hypotheses that agree with our worldview, then we’re going to be subjecting ourselves to <strong>confirmation bias</strong>, which means we are looking for data that supports our ideas. That’s not very scientific, and we can do better!</li>
+</ol>
+<p>The previous hypothesis tests we’ve seen are called <strong>one-sided hypothesis tests</strong> because they only explored one direction of possibilities. Such hypotheses are appropriate when we are exclusively interested in a single direction, but usually we want to consider all possibilities. To do so, let’s discuss <strong>two-sided hypothesis tests</strong> in the context of a new study that examines the impact of using blood thinners on patients who have undergone cardiopulmonary resuscitation, CPR.</p>
+</section>
+</section>
+<section id="two-sided-hypothesis-test" class="level2" data-number="19.5">
+<h2 data-number="19.5" class="anchored" data-anchor-id="two-sided-hypothesis-test"><span class="header-section-number">19.5</span> Two-sided hypothesis test</h2>
+<p>It is important to distinguish between a <em>two-sided</em> hypothesis test and a <em>one-sided</em> hypothesis test. In a two-sided test, we are concerned with whether or not the population parameter could take a particular value. For parameter <span class="math inline">\(\theta\)</span>, a set of two-sided hypotheses looks like:</p>
+<p><span class="math display">\[
+H_0: \theta=\theta_0 \hspace{1.5cm} H_1: \theta \neq \theta_0
+\]</span> where <span class="math inline">\(\theta_0\)</span> is a particular value the parameter could take on.</p>
+<p>In a one-sided test, we are concerned with whether a parameter exceeds or does not exceed a specific value. A set of one-sided hypotheses looks like:</p>
+<p><span class="math display">\[
+H_0: \theta = \theta_0 \hspace{1.5cm} H_1:\theta &gt; \theta_0
+\]</span> or</p>
+<p><span class="math display">\[
+H_0: \theta = \theta_0 \hspace{1.5cm} H_1:\theta &lt; \theta_0
+\]</span></p>
+<p>In some texts, one-sided null hypotheses include an inequality (<span class="math inline">\(H_0 \leq \theta_0\)</span> or <span class="math inline">\(H_0 \geq \theta_0\)</span>). We have already demonstrated one-sided tests and, in the next example, we will use a two-sided test.</p>
+<section id="cpr-example" class="level3" data-number="19.5.1">
+<h3 data-number="19.5.1" class="anchored" data-anchor-id="cpr-example"><span class="header-section-number">19.5.1</span> CPR example</h3>
+<p>Cardiopulmonary resuscitation (CPR) is a procedure used on individuals suffering a heart attack when other emergency resources are unavailable. This procedure is helpful in providing some blood circulation to keep a person alive, but CPR chest compressions can also cause internal injuries. Internal bleeding and other injuries that can result from CPR complicate additional treatment efforts. For instance, blood thinners may be used to help release a clot that is causing the heart attack once a patient arrives in the hospital. However, blood thinners negatively affect internal injuries.</p>
+<p>Here we consider an experiment with patients who underwent CPR for a heart attack and were subsequently admitted to a hospital.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> Each patient was randomly assigned to either receive a blood thinner (treatment group) or not receive a blood thinner (control group). The outcome variable of interest was whether the patient survived for at least 24 hours.</p>
+</section>
+<section id="step-1---state-the-null-and-alternative-hypotheses" class="level3" data-number="19.5.2">
+<h3 data-number="19.5.2" class="anchored" data-anchor-id="step-1---state-the-null-and-alternative-hypotheses"><span class="header-section-number">19.5.2</span> Step 1 - State the null and alternative hypotheses</h3>
+<blockquote class="blockquote">
+<p><strong>Exercise</strong>: Form hypotheses for this study in plain and statistical language. Let <span class="math inline">\(p_c\)</span> represent the true survival rate of people who do not receive a blood thinner (corresponding to the control group) and <span class="math inline">\(p_t\)</span> represent the survival rate for people receiving a blood thinner (corresponding to the treatment group).</p>
+</blockquote>
+<p>We want to understand whether blood thinners are helpful or harmful. We’ll consider both of these possibilities using a two-sided hypothesis test.</p>
+<p><span class="math inline">\(H_0\)</span>: Blood thinners do not have an overall survival effect; survival rate is independent of experimental treatment group. <span class="math inline">\(p_c - p_t = 0\)</span>.<br>
+<span class="math inline">\(H_A\)</span>: Blood thinners have an impact on survival, either positive or negative, but not zero. <span class="math inline">\(p_c - p_t \neq 0\)</span>.</p>
+<p>Notice here that we accelerated the process by already defining our test statistic, our metric, in the hypothesis. It is the difference in survival rates for the control and treatment groups. This is a similar metric to what we used in the case study. We could use others but this will allow us to use functions from the <strong>mosaic</strong> package and will also help us to understand metrics for mathematically derived sampling distributions.</p>
+<p>There were 50 patients in the experiment who did not receive a blood thinner and 40 patients who did. The study results are in the file <code>blood_thinner.csv</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>thinner <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/blood_thinner.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>thinner</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 90 × 2
+   group     outcome 
+   &lt;chr&gt;     &lt;chr&gt;   
+ 1 treatment survived
+ 2 control   survived
+ 3 control   died    
+ 4 control   died    
+ 5 control   died    
+ 6 treatment survived
+ 7 control   died    
+ 8 control   died    
+ 9 treatment died    
+10 treatment survived
+# ℹ 80 more rows</code></pre>
+</div>
+</div>
+<p>Let’s put the data in a table.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tally</span>(<span class="sc">~</span>group <span class="sc">+</span> outcome, <span class="at">data =</span> thinner, <span class="at">margins =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           outcome
+group       died survived Total
+  control     39       11    50
+  treatment   26       14    40
+  Total       65       25    90</code></pre>
+</div>
+</div>
+</section>
+<section id="step-2---compute-a-test-statistic.-1" class="level3" data-number="19.5.3">
+<h3 data-number="19.5.3" class="anchored" data-anchor-id="step-2---compute-a-test-statistic.-1"><span class="header-section-number">19.5.3</span> Step 2 - Compute a test statistic.</h3>
+<p>The test statistic we have selected is the difference in survival rate between the control group and the treatment group. The following <code>R</code> command finds the observed proportions.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tally</span>(outcome <span class="sc">~</span> group, <span class="at">data =</span> thinner, <span class="at">margins =</span> <span class="cn">TRUE</span>, <span class="at">format =</span> <span class="st">"proportion"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          group
+outcome    control treatment
+  died        0.78      0.65
+  survived    0.22      0.35
+  Total       1.00      1.00</code></pre>
+</div>
+</div>
+<p>Notice the formula we used to get the correct variable in the column for the summary proportions.</p>
+<p>The observed test statistic can now be found.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>obs <span class="ot">&lt;-</span> <span class="fu">diffprop</span>(outcome <span class="sc">~</span> group, <span class="at">data =</span> thinner)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>obs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>diffprop 
+   -0.13 </code></pre>
+</div>
+</div>
+<p>Based on the point estimate, for patients who have undergone CPR outside of the hospital, an additional 13% of these patients survive when they are treated with blood thinners. We wonder if this difference is easily explainable by chance.</p>
+</section>
+<section id="step-3---determine-the-p-value.-1" class="level3" data-number="19.5.4">
+<h3 data-number="19.5.4" class="anchored" data-anchor-id="step-3---determine-the-p-value.-1"><span class="header-section-number">19.5.4</span> Step 3 - Determine the <span class="math inline">\(p\)</span>-value.</h3>
+<p>As we did in the previous two studies, we will simulate what type of differences we might see from chance alone under the null hypothesis. By randomly assigning <em>treatment</em> and <em>control</em> stickers to the patients’ files, we get a new grouping. If we repeat this simulation 10,000 times, we can build a <strong>null distribution</strong> of the differences. This is our empirical sampling distribution, the distribution of differences simulated under the null hypothesis.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">655</span>)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">do</span>(<span class="dv">10000</span>)<span class="sc">*</span><span class="fu">diffprop</span>(outcome <span class="sc">~</span> <span class="fu">shuffle</span>(group), <span class="at">data =</span> thinner)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><a href="#fig-dens912" class="quarto-xref">Figure&nbsp;<span>19.4</span></a> is a histogram of the estimated sampling distribution.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>results <span class="sc">%&gt;%</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_histogram</span>(<span class="sc">~</span>diffprop) <span class="sc">%&gt;%</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_vline</span>(<span class="at">xintercept =</span> obs) <span class="sc">%&gt;%</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_bw</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">x =</span> <span class="st">"Test statistic"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-dens912" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dens912-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="19-Hypothesis-Testing-Simulation_files/figure-html/fig-dens912-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dens912-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;19.4: Histogram of the estimated sampling distribution.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Notice how it is centered on zero, the assumption of no difference. Also notice that it is unimodal and symmetric. We will use this when we develop mathematical sampling distributions. We now calculate the proportion of simulated differences that are less than or equal to the observed difference.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop1</span>(<span class="sc">~</span>(diffprop <span class="sc">&lt;=</span> obs), <span class="at">data =</span> results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>prop_TRUE 
+0.1283872 </code></pre>
+</div>
+</div>
+<p>The left tail area is about 0.128. (Note: it is only a coincidence that our <span class="math inline">\(p\)</span>-value is approximately 0.13 and we also have <span class="math inline">\(\hat{p}_c - \hat{p}_t= -0.13\)</span>.) However, contrary to how we calculated the <span class="math inline">\(p\)</span>-value in previous studies, the <span class="math inline">\(p\)</span>-value of this test is not 0.128!</p>
+<p>The <span class="math inline">\(p\)</span>-value is defined as the probability we observe a result at least as favorable to the alternative hypothesis as the observed result (i.e.&nbsp;the observed difference). In this case, any differences greater than or equal to 0.13 would provide equally strong evidence favoring the alternative hypothesis as differences less than or equal to -0.13. A difference of 0.13 would correspond to 13% higher survival rate in the treatment group than the control group.</p>
+<p>There is something different in this study than in the past studies: in this study, we are particularly interested in whether blood thinners increase <strong>or</strong> decrease the risk of death in patients who undergo CPR before arriving at the hospital.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
+<p>For a two-sided test, we take the single tail (in this case, 0.128) and double it to get the <span class="math inline">\(p\)</span>-value: 0.256.</p>
+</section>
+<section id="step-4---draw-a-conclusion-1" class="level3" data-number="19.5.5">
+<h3 data-number="19.5.5" class="anchored" data-anchor-id="step-4---draw-a-conclusion-1"><span class="header-section-number">19.5.5</span> Step 4 - Draw a conclusion</h3>
+<p>Since this <span class="math inline">\(p\)</span>-value is larger than 0.05, we fail to reject the null hypothesis. That is, we do not find statistically significant evidence that the blood thinner has any influence on survival of patients who undergo CPR prior to arriving at the hospital. Once again, we can discuss the causal conclusion since this is an experiment.</p>
+<blockquote class="blockquote">
+<p><strong>Default to a two-sided test</strong> We want to be rigorous and keep an open mind when we analyze data and evidence. In general, you should default to using a two-sided test when conducting hypothesis tests. Use a one-sided hypothesis test only if you truly have interest in only one direction.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Computing a</strong> <span class="math inline">\(p\)</span>-value for a two-sided test<br>
+First compute the <span class="math inline">\(p\)</span>-value for one tail of the distribution, then double that value to get the two-sided <span class="math inline">\(p\)</span>-value. That’s it!</p>
+</blockquote>
+<p>It is never okay to change two-sided tests to one-sided tests after observing the data.</p>
+<blockquote class="blockquote">
+<p><strong>Hypothesis tests should be set up before seeing the data</strong><br>
+After observing data, it can be tempting to turn a two-sided test into a one-sided test. Avoid this temptation. Hypotheses and the significance level should be set up <strong>before</strong> observing the data.</p>
+</blockquote>
+</section>
+<section id="how-to-use-a-hypothesis-test" class="level3" data-number="19.5.6">
+<h3 data-number="19.5.6" class="anchored" data-anchor-id="how-to-use-a-hypothesis-test"><span class="header-section-number">19.5.6</span> How to use a hypothesis test</h3>
+<p>This is a summary of the general framework for using hypothesis testing. These are the same steps as before, with just slightly different wording.</p>
+<ol type="1">
+<li><p>Frame the research question in terms of hypotheses.</p>
+<p>Hypothesis tests are appropriate for research questions that can be summarized in two competing hypotheses. The null hypothesis (<span class="math inline">\(H_0\)</span>) usually represents a skeptical perspective or a perspective of no difference. The alternative hypothesis (<span class="math inline">\(H_A\)</span>) usually represents a new view or a difference.</p></li>
+<li><p>Collect data with an observational study or experiment.</p>
+<p>If a research question can be formed into two hypotheses, we can collect data to run a hypothesis test. If the research question focuses on associations between variables but does not concern causation, we would run an observational study. If the research question seeks a causal connection between two or more variables, then an experiment should be used if possible.</p></li>
+<li><p>Analyze the data.</p>
+<p>Choose an analysis technique appropriate for the data and identify the <span class="math inline">\(p\)</span>-value. So far, we’ve only seen one analysis technique: randomization. We’ll encounter several new methods suitable for many other contexts.</p></li>
+<li><p>Form a conclusion.</p>
+<p>Using the <span class="math inline">\(p\)</span>-value from the analysis, determine whether the data provide statistically significant evidence against the null hypothesis. Also, be sure to write the conclusion in plain language so casual readers can understand the results.</p></li>
+</ol>
+
+
+</section>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>In our opinion, this is how things developed historically. However, since computational tools prior to machine computers, humans in most cases, were limited and expensive, there was a shift to mathematical solutions. The relatively recent increase and availability in machine computational power has led to a shift back to computational methods. Thus, some people think mathematical methods predate computational methods, but that is not the case.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Some experts in the field of statistics are uncomfortable with using a significance level to declare that something is <strong>statistically significant</strong>. The choice of a significance level (discussed more in a later section) can be somewhat arbitrary. If you conduct a hypothesis test with a <span class="math inline">\(p\)</span>-value of 0.051 and chose a significance level of 0.05, are your results really <strong>non-significant</strong> compared to getting a <span class="math inline">\(p\)</span>-value of 0.049? For this reason, some experts shy away from the term <strong>statistically significant</strong> and instead describe detectable or discernable effects/differences.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Making a Type 1 error in this context would mean that there is no difference in commercial length between basic and premium channels, despite the strong evidence (the data suggesting otherwise) found in the observational study. Notice that this does <strong>not</strong> necessarily mean something was wrong with the data or that we made a computational mistake. Sometimes data simply point us to the wrong conclusion, which is why scientific studies are often repeated to check initial findings. Replication is part of the scientific method.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>“Efficacy and safety of thrombolytic therapy after initially unsuccessful cardiopulmonary resuscitation: a prospective clinical trial.” The Lancet, 2001.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Observed control survival rate: <span class="math inline">\(p_c = \frac{11}{50} = 0.22\)</span>. Observed treatment survival rate: <span class="math inline">\(p_t = \frac{14}{40} = 0.35\)</span>. Observed difference: <span class="math inline">\(\hat{p}_c - \hat{p}_t = 0.22 - 0.35 = -0.13\)</span>.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Realistically, we probably are interested in either direction in the past studies as well, and so we should have used the approach we now discuss in this section. However, for simplicity and the sake of not introducing too many concepts at once, we skipped over these details in earlier sections.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./18-Inference-Case-Study.html" class="pagination-link" aria-label="Inferential Thinking Case Study">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Inferential Thinking Case Study</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./20-Hypothesis-Testing-ProbDist.html" class="pagination-link" aria-label="Hypothesis Testing with Known Distributions">
+        <span class="nav-page-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Hypothesis Testing with Known Distributions</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Computation Probability and Statistics by Hitt, Horton, and Warner</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/DS-USAFA/Quarto-Book/edit/main/19-Hypothesis-Testing-Simulation.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

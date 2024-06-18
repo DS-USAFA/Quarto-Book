@@ -15,7 +15,6 @@ book:
     - Brianna Hitt 
     - Ken Horton
   date: now
-  downloads: pdf
   repo-url: https://github.com/DS-USAFA/Quarto-Book
   repo-actions: edit
   chapters: 
