@@ -46,7 +46,6 @@ The accompanying solutions manual is available [here](https://ds-usafa.github.io
 
 We have been lucky to have numerous open sources to help facilitate this work. Thank you to those who helped to correct mistakes to include Skyler Royse.
 
-
 ```{r echo=FALSE, out.width="10%"}
 knitr::include_graphics("./figures/by-nc-sa.png")  
 ```

@@ -47,6 +47,7 @@ book:
       chapters:  
         - 18-Inference-Case-Study.qmd
         - 19-Hypothesis-Testing-Simulation.qmd
+        - 20-Hypothesis-Testing-ProbDist.qmd
         - references.qmd
 cover-image: Cover_Majors.png
 favicon: Cover_Majors.png
