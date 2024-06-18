@@ -16,7 +16,6 @@ library(tidyverse)
 library(mosaic)
 ```
 
-
 ## Named distributions
 
 In the previous two chapters, we introduced the concept of random variables, distribution functions, and expectations. In some cases, the nature of an experiment may yield random variables with common distributions. In these cases, we can rely on easy-to-use distribution functions and built-in `R` functions in order to calculate probabilities and quantiles.
@@ -155,7 +154,7 @@ To learn more about these functions, type `?` followed the function in the conso
 > **Exercise**:\
 > Use the built-in functions for the binomial distribution to plot the pmf of $X$ from the previous example. Also, use the built-in functions to compute the probabilities from the example.
 
-@fig-binom 
+@fig-binom
 
 ```{r}
 #| label: "fig-binom"
@@ -255,8 +254,6 @@ gf_dist("pois",lambda=2.8) %>%
 
 @fig-pois2 is the cdf of the same Poisson random variable in @fig-pois.
 
-
-
 ```{r}
 #| label: "fig-pois2"
 #| fig-align: "center"
@@ -304,91 +301,3 @@ dhyper(6,8,12,6)
 ##P(2 <= X <=5)
 sum(dhyper(2:5,8,12,6))
 ```
-
-## Homework Problems
-
-For each of the problems below, ***1)*** define a random variable that will help you answer the question, ***2)*** state the distribution and parameters of that random variable; ***3)*** determine the expected value and variance of that random variable, and ***4)*** use that random variable to answer the question.
-
-We will demonstrate using 1a and 1b.
-
-1.  The T-6 training aircraft is used during UPT. Suppose that on each training sortie, aircraft return with a maintenance-related failure at a rate of 1 per 100 sorties.
-
-```{=html}
-<!-- -->
-```
-a.  Find the probability of no maintenance failures in 15 sorties.
-
-$X$: the number of maintenance failures in 15 sorties.
-
-$X\sim \textsf{Bin}(n=15,p=0.01)$
-
-$\mbox{E}(X)=15*0.01=0.15$ and $\mbox{Var}(X)=15*0.01*0.99=0.1485$.
-
-$\mbox{P}(\mbox{No mainteance failures})=\mbox{P}(X=0)={15\choose 0}0.01^0(1-0.01)^{15}=0.99^{15}$
-
-```{r}
-0.99^15
-
-## or 
-dbinom(0,15,0.01)
-```
-
-This probability makes sense, since the expected value is fairly low. Because, on average, only 0.15 failures would occur every 15 trials, 0 failures would be a very common result. Graphically, the pmf looks like @fig-hw1a.
-
-```{r}
-#| label: "fig-hw1a"
-#| fig-align: "center"
-#| fig-cap: "The pmf for binomail in Homework Problem 1a."
-gf_dist("binom",size=15,prob=0.01) %>%
-  gf_theme(theme_bw()) %>%
-  gf_labs(x="X",y="P(X=x)")
-```
-
-b.  Find the probability of at least two maintenance failures in 15 sorties.
-
-We can use the same $X$ as above. Now, we are looking for $\mbox{P}(X\geq 2)$. This is equivalent to finding $1-\mbox{P}(X\leq 1)$:
-
-```{r}
-## Directly
-1-(0.99^15 + 15*0.01*0.99^14)
-
-## or, using R
-sum(dbinom(2:15,15,0.01))
-
-## or
-1-sum(dbinom(0:1,15,0.01))
-
-## or
-1-pbinom(1,15,0.01)
-
-## or 
-pbinom(1,15,0.01,lower.tail = F)
-```
-
-c.  Find the probability of at least 30 successful (no mx failures) sorties before the first failure.\
-d.  Find the probability of at least 50 successful sorties before the third failure.
-
-```{=html}
-<!-- -->
-```
-2.  On a given Saturday, suppose vehicles arrive at the USAFA North Gate according to a Poisson process at a rate of 40 arrivals per hour.
-
-```{=html}
-<!-- -->
-```
-a.  Find the probability no vehicles arrive in 10 minutes.\
-b.  Find the probability at least 50 vehicles arrive in an hour.\
-c.  Find the probability that at least 5 minutes will pass before the next arrival.
-
-```{=html}
-<!-- -->
-```
-3.  Suppose there are 12 male and 7 female cadets in a classroom. I select 5 completely at random (without replacement).
-
-```{=html}
-<!-- -->
-```
-a.  Find the probability I select no female cadets.\
-b.  Find the probability I select more than 2 female cadets.
-
-## [Solutions Manual](https://ds-usafa.github.io/CPS-Solutions-Manual/DISCRETENAMED.html) {.unnumbered}

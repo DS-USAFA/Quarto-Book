@@ -7,7 +7,6 @@
 \newcommand{\Prob}{\mbox{P}}
 \newcommand*\diff{\mathop{}\!\mathrm{d}}
 ```
-
 ```{r}
 #| message: false
 #| echo: false
@@ -286,61 +285,3 @@ Why not use $\binom{13}{2}$ instead of $\binom{13}{1}\binom{12}{1}$?[^08-probabi
 [^08-probability-rules-2]: Because this implies the order selection of the ranks does not matter. In other words, this assumes that for example 3 Kings and 2 fours is the same full house as 3 fours and 2 Kings. This is not true so we break the rank selection about essentially making it a permutation.
 
 We have just determined that a full house has a lower probability of occurring than a flush. This is why in gambling, a flush is valued less than a full house.
-
-## Homework Problems
-
-1.  Let $A$, $B$ and $C$ be events such that $\mbox{P}(A)=0.5$, $\mbox{P}(B)=0.3$, and $\mbox{P}(C)=0.4$. Also, we know that $\mbox{P}(A \cap B)=0.2$, $\mbox{P}(B \cap C)=0.12$, $\mbox{P}(A \cap C)=0.1$, and $\mbox{P}(A \cap B \cap C)=0.05$. Find the following:
-
-<!-- -->
-
-a.  $\mbox{P}(A\cup B)$\
-b.  $\mbox{P}(A\cup B \cup C)$\
-c.  $\mbox{P}(B'\cap C')$\
-d.  $\mbox{P}(A\cup (B\cap C))$\
-e.  $\mbox{P}((A\cup B \cup C)\cap (A\cap B \cap C)')$
-
-<!-- -->
-
-2.  Consider the example of the family in the reading. What is the probability that the family has at least one boy?
-
-3.  The Birthday Problem Revisited.
-
-<!-- -->
-
-a.  Suppose there are $n=20$ students in a classroom. My birthday, the instructor, is April 3rd. What is the probability that at least one student shares my birthday? Assume only 365 days in a year and assume that all birthdays are equally likely.\
-b.  In `R`, find the probability that at least one other person shares my birthday for each value of $n$ from 1 to 300. Plot these probabilities with $n$ on the $x$-axis and probability on the $y$-axis. At what value of $n$ would the probability be at least 50%?
-
-<!-- -->
-
-<!-- -->
-
-4.  Consider the license plate example from the reading.
-
-<!-- -->
-
-a.  What is the probability that a license plate contains **exactly** one "B"?\
-b.  What is the probability that a license plate contains **at least one** "B"?
-
-<!-- -->
-
-5.  Consider the party example in the reading.
-
-<!-- -->
-
-a.  Suppose 8 people showed up to the party dressed as zombies. What is the probability that all three awards are won by people dressed as zombies?\
-b.  What is the probability that zombies win "most creative" and "funniest" but not "scariest"?
-
-<!-- -->
-
-6.  Consider the cards example from the reading.
-
-<!-- -->
-
-a.  How many ways can we obtain a "two pairs" (2 of one number, 2 of another, and the final different)?\
-b.  What is the probability of drawing a "four of a kind" (four cards of the same value)?
-
-<!-- -->
-
-7.  Advanced Question: Consider rolling 5 dice. What is the **probability** of a pour resulting in a full house?
-
-## [Solutions Manual](https://ds-usafa.github.io/CPS-Solutions-Manual/PROBRULES.html) {.unnumbered}
