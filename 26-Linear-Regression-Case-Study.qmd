@@ -1,6 +1,5 @@
 # Linear Regression Case Study {#sec-CS4}
 
-
 ```{r}
 #| echo: false
 #| message: false
@@ -256,8 +255,7 @@ summary(m2)
 
 $$
   \hat{\text{hf\_score}} = 5.45660 + 0.30707 \times \text{pf\_expression\_control}
-$$ 
-As the political pressure increases by one unit, the **average** human freedom score increases by 0.307.
+$$ As the political pressure increases by one unit, the **average** human freedom score increases by 0.307.
 
 ## Prediction and prediction errors
 
@@ -394,4 +392,3 @@ Yes, the width of the plot seems constant.
 ## Brief summary
 
 This case study introduced simple linear regression. We look at the criteria to find a best fit linear line between two variables. We also used `R` to fit the line. We examined the output from `R` and used it to explain and predict with our model. In the remainder of this block we will develop these ideas further and extend to multiple predictors and binary outcomes. This is a perfect introduction for Math 378.
-

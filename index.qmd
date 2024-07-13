@@ -38,25 +38,20 @@ To take this course, students are expected to have completed calculus up through
 
 These notes make use of the following packages in `R`: **knitr** [@R-knitr], **rmarkdown** [@R-rmarkdown], **mosaic** [@R-mosaic], **tidyverse** [@R-tidyverse], **ISLR** [@R-ISLR], **vcd** [@R-vcd], **ggplot2** [@R-ggplot2], **MASS** [@R-MASS], **openintro** [@R-openintro], **broom** [@R-broom], **infer** [@R-infer], **kableExtra** [@R-kableExtra], and **DT** [@R-DT].
 
-## Solutions Manual {.unnumbered}
-
-The accompanying solutions manual is available [here](https://ds-usafa.github.io/CPS-Solutions-Manual/).
-
 ## Acknowledgements
 
-<<<<<<< HEAD
-We have been lucky to have numerous open sources to help facilitate this work. Thank you to those who helped to correct mistakes to include Skyler Royse.
-=======
 We have been lucky to have numerous open sources to help facilitate this work. Thank you to those who helped to provide edits including Kris Pruitt, Matt Davis, and Skyler Royse.
->>>>>>> 9f35b31e4cd3f5f316488b29698f940e4b83eeef
 
-```{r echo=FALSE, out.width="10%"}
+```{r}
+#| echo: false 
+#| out-width: 10%
 knitr::include_graphics("./figures/by-nc-sa.png")  
 ```
 
 This book is licensed under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/).
 
-```{r include=FALSE}
+```{r}
+#| include: false 
 # automatically create a bib database for R packages
 knitr::write_bib(c(
   .packages(), 'bookdown', 'knitr', 'rmarkdown','mosaic','vcd','ISLR','tidyverse','ggplot2','MASS','openintro','broom','infer','ISLR','kableExtra','DT'
@@ -68,7 +63,10 @@ knitr::write_bib(c(
 -   File creation date: `r Sys.Date()`
 -   `r R.version.string`
 
-```{r warning=FALSE,message=FALSE,include=FALSE}
+```{r}
+#| warning: false 
+#| message: false 
+#| include: false 
 library(knitr)
 library(kableExtra)
 library(DT)
