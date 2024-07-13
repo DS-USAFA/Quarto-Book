@@ -63,6 +63,8 @@ knitr::write_bib(c(
 -   File creation date: `r Sys.Date()`
 -   `r R.version.string`
 
+## References
+
 ```{r}
 #| warning: false 
 #| message: false 
