@@ -62,11 +62,10 @@ book:
         - 30-Simulation-Based-Linear-Regression.qmd
         - 31-Multiple-Linear-Regression.qmd
         - 32-Logistic-Regression.qmd
-        - reference.qmd
 cover-image: Cover_Majors.png
 favicon: Cover_Majors.png
 biblio-style: apalike
-bibliography: [book.bib, packages.bib]
+bibliography: [book.bib, packages.bib, references.bib]
 
 
 format:

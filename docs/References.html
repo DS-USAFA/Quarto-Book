@@ -6,12 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Bradley Warner">
-<meta name="author" content="Brianna Hitt">
-<meta name="author" content="Ken Horton">
-<meta name="dcterms.date" content="2024-07-13">
 
-<title>Computational Probability and Statistics</title>
+<title>Computational Probability and Statistics - 33&nbsp; References</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,27 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -54,7 +30,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./00-Objectives.html" rel="next">
+<link href="./32-Logistic-Regression.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -104,7 +80,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./26-Linear-Regression-Case-Study.html">Statistical Modeling - Prediction</a></li><li class="breadcrumb-item"><a href="./References.html"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">References</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -139,7 +115,7 @@ div.csl-indent {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
@@ -394,6 +370,12 @@ div.csl-indent {
  <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Logistic Regression</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./References.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">References</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -406,45 +388,23 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a>
-  <ul class="collapse">
-  <li><a href="#who-is-this-book-for" id="toc-who-is-this-book-for" class="nav-link" data-scroll-target="#who-is-this-book-for">Who is this book for?</a></li>
-  <li><a href="#book-structure-and-how-to-use-it" id="toc-book-structure-and-how-to-use-it" class="nav-link" data-scroll-target="#book-structure-and-how-to-use-it">Book structure and how to use it</a></li>
-  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites">Prerequisites</a></li>
-  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages">Packages</a></li>
-  <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
-  <li><a href="#file-creation-information" id="toc-file-creation-information" class="nav-link" data-scroll-target="#file-creation-information">File Creation Information</a></li>
-  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link active" data-scroll-target="#references"><span class="header-section-number">33.0.1</span> References</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/DS-USAFA/Quarto-Book/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/DS-USAFA/Quarto-Book/edit/main/References.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./26-Linear-Regression-Case-Study.html">Statistical Modeling - Prediction</a></li><li class="breadcrumb-item"><a href="./References.html"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">References</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Computational Probability and Statistics</h1>
+<h1 class="title"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">References</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Authors</div>
-    <div class="quarto-title-meta-contents">
-             <p>Bradley Warner </p>
-             <p>Brianna Hitt </p>
-             <p>Ken Horton </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">July 13, 2024</p>
-    </div>
-  </div>
   
     
   </div>
@@ -454,116 +414,10 @@ div.csl-indent {
 </header>
 
 
-
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1><p><img src="Cover_Majors.png" title="Computational Probability and Statistics" class="quarto-cover-image img-fluid"></p>
-<p>This book is based on the notes we created for our students as part of a one semester course on probability and statistics. We developed these notes from three primary resources. The most important is the Openintro Introductory Statistics with Randomization and Simulation <span class="citation" data-cites="ointrorand">(<a href="#ref-ointrorand" role="doc-biblioref">Diez, Barr, and Çetinkaya-Rundel 2014</a>)</span> book. In parts, we have used their notes and homework problems. However, in most cases we have altered their work to fit our needs. The second most important book for our work is Introduction to Probability and Statistics Using R <span class="citation" data-cites="ipsur">(<a href="#ref-ipsur" role="doc-biblioref">Kerns 2010</a>)</span>. Finally, we have used some examples, code, and ideas from the first edition of Prium’s book, Foundations and Applications of Statistics: An Introduction Using R <span class="citation" data-cites="pruim2011foundations">(<a href="#ref-pruim2011foundations" role="doc-biblioref">R. J. Pruim 2011</a>)</span>.</p>
-<section id="who-is-this-book-for" class="level2">
-<h2 class="anchored" data-anchor-id="who-is-this-book-for">Who is this book for?</h2>
-<p>We designed this book for the study of statistics that maximizes computational ideas while minimizing algebraic symbol manipulation. Although we do discuss traditional small-sample, normal-based inference and some of the classical probability distributions, we rely heavily on ideas such as simulation, permutations, and the bootstrap. This means that students with a background in differential and integral calculus will be successful with this book.</p>
-<p>This book makes extensive using of the <code>R</code> programming language. In particular we focus both on the <strong>tidyverse</strong> and <strong>mosaic</strong> packages. We include a significant amount of code in our notes and frequently demonstrate multiple ways of completing a task. We have used this book for junior and sophomore college students.</p>
-</section>
-<section id="book-structure-and-how-to-use-it" class="level2">
-<h2 class="anchored" data-anchor-id="book-structure-and-how-to-use-it">Book structure and how to use it</h2>
-<p>This book is divided into four parts. Each part begins with a case study that introduces many of the main ideas of each part. Each chapter is designed to be a standalone 50 minute lesson. Within each chapter, we give exercises that can be worked in class and we provide learning objectives.</p>
-<p>This book assumes students have access to <code>R</code>. Finally, we keep the number of homework problems to a reasonable level and assign all problems.</p>
-<p>The four parts of the book are:</p>
-<ol type="1">
-<li><p>Descriptive Statistical Modeling: This part introduces the student to data collection methods, summary statistics, visual summaries, and exploratory data analysis.</p></li>
-<li><p>Probability Modeling: We discuss the foundational ideas of probability, counting methods, and common distributions. We use both calculus and simulation to find moments and probabilities. We introduce basic ideas of multivariate probability. We include method of moments and maximum likelihood estimators.</p></li>
-<li><p>Inferential Statistical Modeling: We discuss many of the basic inference ideas found in a traditional introductory statistics class but we add ideas of bootstrap and permutation methods.</p></li>
-<li><p>Predictive Statistical Modeling: The final part introduces prediction methods, mainly in the form of linear regression. This part also includes inference for regression.</p></li>
-</ol>
-<p>The learning outcomes for this course are to use computational and mathematical statistical/probabilistic concepts for:</p>
-<ol type="a">
-<li>Developing probabilistic models.<br>
-</li>
-<li>Developing statistical models for description, inference, and prediction.<br>
-</li>
-<li>Advancing practical and theoretical analytic experience and skills.</li>
-</ol>
-</section>
-<section id="prerequisites" class="level2">
-<h2 class="anchored" data-anchor-id="prerequisites">Prerequisites</h2>
-<p>To take this course, students are expected to have completed calculus up through and including integral calculus. We do have multivariate ideas in the course, but they are easily taught and don’t require calculus III. We don’t assume the students have any programming experience and, thus, we include a great deal of code. We have historically supplemented the course with <a href="http://datacamp.com/">Data Camp</a> courses. We have also used <a href="http://rstudio.cloud">RStudio Cloud</a> to help students get started in <code>R</code> without the burden of loading and maintaining software.</p>
-</section>
-<section id="packages" class="level2">
-<h2 class="anchored" data-anchor-id="packages">Packages</h2>
-<p>These notes make use of the following packages in <code>R</code>: <strong>knitr</strong> <span class="citation" data-cites="R-knitr">(<a href="#ref-R-knitr" role="doc-biblioref">Xie 2024</a>)</span>, <strong>rmarkdown</strong> <span class="citation" data-cites="R-rmarkdown">(<a href="#ref-R-rmarkdown" role="doc-biblioref">Allaire et al. 2024</a>)</span>, <strong>mosaic</strong> <span class="citation" data-cites="R-mosaic">(<a href="#ref-R-mosaic" role="doc-biblioref">R. Pruim, Kaplan, and Horton 2024</a>)</span>, <strong>tidyverse</strong> <span class="citation" data-cites="R-tidyverse">(<a href="#ref-R-tidyverse" role="doc-biblioref">Wickham 2023</a>)</span>, <strong>ISLR</strong> <span class="citation" data-cites="R-ISLR">(<a href="#ref-R-ISLR" role="doc-biblioref">James et al. 2021</a>)</span>, <strong>vcd</strong> <span class="citation" data-cites="R-vcd">(<a href="#ref-R-vcd" role="doc-biblioref">Meyer et al. 2023</a>)</span>, <strong>ggplot2</strong> <span class="citation" data-cites="R-ggplot2">(<a href="#ref-R-ggplot2" role="doc-biblioref">Wickham et al. 2024</a>)</span>, <strong>MASS</strong> <span class="citation" data-cites="R-MASS">(<a href="#ref-R-MASS" role="doc-biblioref">Ripley 2024</a>)</span>, <strong>openintro</strong> <span class="citation" data-cites="R-openintro">(<a href="#ref-R-openintro" role="doc-biblioref">Çetinkaya-Rundel et al. 2024</a>)</span>, <strong>broom</strong> <span class="citation" data-cites="R-broom">(<a href="#ref-R-broom" role="doc-biblioref">Robinson, Hayes, and Couch 2024</a>)</span>, <strong>infer</strong> <span class="citation" data-cites="R-infer">(<a href="#ref-R-infer" role="doc-biblioref">Bray et al. 2024</a>)</span>, <strong>kableExtra</strong> <span class="citation" data-cites="R-kableExtra">(<a href="#ref-R-kableExtra" role="doc-biblioref">Zhu 2024</a>)</span>, and <strong>DT</strong> <span class="citation" data-cites="R-DT">(<a href="#ref-R-DT" role="doc-biblioref">Xie, Cheng, and Tan 2024</a>)</span>.</p>
-</section>
-<section id="acknowledgements" class="level2">
-<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
-<p>We have been lucky to have numerous open sources to help facilitate this work. Thank you to those who helped to provide edits including Kris Pruitt, Matt Davis, and Skyler Royse.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="./figures/by-nc-sa.png" class="img-fluid figure-img" style="width:10.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>This book is licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
-</section>
-<section id="file-creation-information" class="level2">
-<h2 class="anchored" data-anchor-id="file-creation-information">File Creation Information</h2>
-<ul>
-<li>File creation date: 2024-07-13</li>
-<li>R version 4.4.0 (2024-04-24)</li>
-</ul>
+<section id="references" class="level3" data-number="33.0.1">
+<h3 data-number="33.0.1" class="anchored" data-anchor-id="references"><span class="header-section-number">33.0.1</span> References</h3>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-R-rmarkdown" class="csl-entry" role="listitem">
-Allaire, JJ, Yihui Xie, Christophe Dervieux, Jonathan McPherson, Javier Luraschi, Kevin Ushey, Aron Atkins, et al. 2024. <em>Rmarkdown: Dynamic Documents for r</em>. <a href="https://github.com/rstudio/rmarkdown">https://github.com/rstudio/rmarkdown</a>.
-</div>
-<div id="ref-R-infer" class="csl-entry" role="listitem">
-Bray, Andrew, Chester Ismay, Evgeni Chasnovski, Simon Couch, Ben Baumer, and Mine Cetinkaya-Rundel. 2024. <em>Infer: Tidy Statistical Inference</em>. <a href="https://github.com/tidymodels/infer">https://github.com/tidymodels/infer</a>.
-</div>
-<div id="ref-R-openintro" class="csl-entry" role="listitem">
-Çetinkaya-Rundel, Mine, David Diez, Andrew Bray, Albert Y. Kim, Ben Baumer, Chester Ismay, Nick Paterno, and Christopher Barr. 2024. <em>Openintro: Datasets and Supplemental Functions from OpenIntro Textbooks and Labs</em>. <a href="http://openintrostat.github.io/openintro/">http://openintrostat.github.io/openintro/</a>.
-</div>
-<div id="ref-ointrorand" class="csl-entry" role="listitem">
-Diez, David, Christopher Barr, and Mine Çetinkaya-Rundel. 2014. <em>Introductory Statistics with Randomization and Simulation</em>. 1st ed. Openintro. <a href="https://www.openintro.org/book/isrs/">https://www.openintro.org/book/isrs/</a>.
-</div>
-<div id="ref-R-ISLR" class="csl-entry" role="listitem">
-James, Gareth, Daniela Witten, Trevor Hastie, and Rob Tibshirani. 2021. <em>ISLR: Data for an Introduction to Statistical Learning with Applications in r</em>. <a href="https://www.statlearning.com">https://www.statlearning.com</a>.
-</div>
-<div id="ref-ipsur" class="csl-entry" role="listitem">
-Kerns, Jay. 2010. <em>Introductory to Probability and Statistics with r</em>. 1st ed. <a href="http://ipsur.r-forge.r-project.org/book/download/IPSUR.pdf">http://ipsur.r-forge.r-project.org/book/download/IPSUR.pdf</a>.
-</div>
-<div id="ref-R-vcd" class="csl-entry" role="listitem">
-Meyer, David, Achim Zeileis, Kurt Hornik, and Michael Friendly. 2023. <em>Vcd: Visualizing Categorical Data</em>.
-</div>
-<div id="ref-pruim2011foundations" class="csl-entry" role="listitem">
-Pruim, Randall J. 2011. <em>Foundations and Applications of Statistics: An Introduction Using r</em>. Vol. 13. American Mathematical Soc.
-</div>
-<div id="ref-R-mosaic" class="csl-entry" role="listitem">
-Pruim, Randall, Daniel T. Kaplan, and Nicholas J. Horton. 2024. <em>Mosaic: Project MOSAIC Statistics and Mathematics Teaching Utilities</em>. <a href="https://github.com/ProjectMOSAIC/mosaic">https://github.com/ProjectMOSAIC/mosaic</a>.
-</div>
-<div id="ref-R-MASS" class="csl-entry" role="listitem">
-Ripley, Brian. 2024. <em>MASS: Support Functions and Datasets for Venables and Ripley’s MASS</em>. <a href="http://www.stats.ox.ac.uk/pub/MASS4/">http://www.stats.ox.ac.uk/pub/MASS4/</a>.
-</div>
-<div id="ref-R-broom" class="csl-entry" role="listitem">
-Robinson, David, Alex Hayes, and Simon Couch. 2024. <em>Broom: Convert Statistical Objects into Tidy Tibbles</em>. <a href="https://broom.tidymodels.org/">https://broom.tidymodels.org/</a>.
-</div>
-<div id="ref-R-tidyverse" class="csl-entry" role="listitem">
-Wickham, Hadley. 2023. <em>Tidyverse: Easily Install and Load the Tidyverse</em>. <a href="https://tidyverse.tidyverse.org">https://tidyverse.tidyverse.org</a>.
-</div>
-<div id="ref-R-ggplot2" class="csl-entry" role="listitem">
-Wickham, Hadley, Winston Chang, Lionel Henry, Thomas Lin Pedersen, Kohske Takahashi, Claus Wilke, Kara Woo, Hiroaki Yutani, Dewey Dunnington, and Teun van den Brand. 2024. <em>Ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics</em>. <a href="https://ggplot2.tidyverse.org">https://ggplot2.tidyverse.org</a>.
-</div>
-<div id="ref-R-knitr" class="csl-entry" role="listitem">
-Xie, Yihui. 2024. <em>Knitr: A General-Purpose Package for Dynamic Report Generation in r</em>. <a href="https://yihui.org/knitr/">https://yihui.org/knitr/</a>.
-</div>
-<div id="ref-R-DT" class="csl-entry" role="listitem">
-Xie, Yihui, Joe Cheng, and Xianying Tan. 2024. <em>DT: A Wrapper of the JavaScript Library DataTables</em>. <a href="https://github.com/rstudio/DT">https://github.com/rstudio/DT</a>.
-</div>
-<div id="ref-R-kableExtra" class="csl-entry" role="listitem">
-Zhu, Hao. 2024. <em>kableExtra: Construct Complex Table with Kable and Pipe Syntax</em>. <a href="http://haozhu233.github.io/kableExtra/">http://haozhu233.github.io/kableExtra/</a>.
-</div>
-</div>
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -978,11 +832,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./32-Logistic-Regression.html" class="pagination-link" aria-label="Logistic Regression">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Logistic Regression</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./00-Objectives.html" class="pagination-link" aria-label="Objectives">
-        <span class="nav-page-text">Objectives</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
@@ -993,7 +847,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/DS-USAFA/Quarto-Book/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/DS-USAFA/Quarto-Book/edit/main/References.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
