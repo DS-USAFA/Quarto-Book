@@ -1,4 +1,4 @@
-# Continuous Random Variables {#CONRANDVAR}
+# Continuous Random Variables {#sec-CONRANDVAR}
 
 ## Objectives
 

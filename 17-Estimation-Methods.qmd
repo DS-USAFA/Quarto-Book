@@ -1,4 +1,4 @@
-# Estimation Methods {#EST}
+# Estimation Methods {#sec-EST}
 
 ```{r}
 #| include: false

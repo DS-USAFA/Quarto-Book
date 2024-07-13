@@ -1,4 +1,4 @@
-# Data Basics {#DB}
+# Data Basics {#sec-DB}
 
 ```{r}
 #| warning: false

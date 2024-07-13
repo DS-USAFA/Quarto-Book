@@ -1,4 +1,4 @@
-# Multivariate Expectation {#MULTIEXP}
+# Multivariate Expectation {#sec-MULTIEXP}
 
 ```{r}
 #| include: false

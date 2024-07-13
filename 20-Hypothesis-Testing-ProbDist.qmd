@@ -1,4 +1,4 @@
-# Hypothesis Testing with Known Distributions {#HYPTESTDIST}
+# Hypothesis Testing with Known Distributions {#sec-HYPTESTDIST}
 
 ```{r}
 #| echo: false
@@ -52,7 +52,7 @@ Now before we use simulation, let's frame this as a probability model. The rando
 
 ### Step 3 - Determine the $p$-value
 
-We now want to find the $p$-value as $2 \cdot \Prob(X \leq 42)$ where $X$ is a binomial random variable with $p = 0.5$ and $n = 120$. Again, the $p$-value is the probability of the observed data or something more extreme, given the null hypothesis is true. Here, the null hypothesis being true implies that the probability of success is 0.50. We will use `R` to get the one-sided $p$-value and then double it to get the two-sided $p$-value for the problem. We selected $\Prob(X \leq 42)$ because "more extreme" means the observed values and values further from what you would get if the null hypothesis were true, which is 60 for this problem.
+We now want to find the $p$-value as $2 \cdot \mbox{P}(X \leq 42)$ where $X$ is a binomial random variable with $p = 0.5$ and $n = 120$. Again, the $p$-value is the probability of the observed data or something more extreme, given the null hypothesis is true. Here, the null hypothesis being true implies that the probability of success is 0.50. We will use `R` to get the one-sided $p$-value and then double it to get the two-sided $p$-value for the problem. We selected $\mbox{P}(X \leq 42)$ because "more extreme" means the observed values and values further from what you would get if the null hypothesis were true, which is 60 for this problem.
 
 ```{r}
 2*pbinom(42, 120, prob = 0.5)
@@ -192,25 +192,25 @@ In this example, we can think of the data as coming from a **hypergeometric** di
 
 ### Step 3 - Determine the $p$-value.
 
-In this case, we want to find $\Prob(X \leq 11)$ (the observed number of control patients that survived) and double it since it is a two-sided test.
+In this case, we want to find $\mbox{P}(X \leq 11)$ (the observed number of control patients that survived) and double it since it is a two-sided test.
 
 ```{r}
 2*phyper(11, 50, 40, 25)
 ```
 
-Note: We could have picked the lower right cell as the reference cell. But now I want the $\Prob(X \geq 14)$ (the observed number of treatment patients that survived) with the appropriate change in parameter values. Notice we get the same answer.
+Note: We could have picked the lower right cell as the reference cell. But now I want the $\mbox{P}(X \geq 14)$ (the observed number of treatment patients that survived) with the appropriate change in parameter values. Notice we get the same answer.
 
 ```{r}
 2*(1 - phyper(13, 40, 50, 25))
 ```
 
-We could do the same thing for the other two cells. Here we find $\Prob(X \leq 26)$ (the observed number of treatment patients that did not survive).
+We could do the same thing for the other two cells. Here we find $\mbox{P}(X \leq 26)$ (the observed number of treatment patients that did not survive).
 
 ```{r}
 2*phyper(26, 40, 50, 65)
 ```
 
-Here we find $\Prob(X \geq 39)$ (the observed number of control patients that did not survive).
+Here we find $\mbox{P}(X \geq 39)$ (the observed number of control patients that did not survive).
 
 ```{r}
 2*(1 - phyper(38, 50, 40, 65))
@@ -222,7 +222,7 @@ Here we find $\Prob(X \geq 39)$ (the observed number of control patients that di
 fisher.test(tally(~group + outcome, data = thinner))
 ```
 
-The $p$-value is slightly different since the **hypergeometric** distribution is not symmetric. For this reason, doubling the $p$-value from the single side result is not quite right. The algorithm in `fisher.test()` finds and adds all probabilities less than or equal to value of $\Prob(X = 11)$, see @fig-dens203. Using `fisher.test()` gives the correct $p$-value.
+The $p$-value is slightly different since the **hypergeometric** distribution is not symmetric. For this reason, doubling the $p$-value from the single side result is not quite right. The algorithm in `fisher.test()` finds and adds all probabilities less than or equal to value of $\mbox{P}(X = 11)$, see @fig-dens203. Using `fisher.test()` gives the correct $p$-value.
 
 ```{r}
 #| label: "fig-dens203"
@@ -450,76 +450,3 @@ In this chapter, we used probability models to help us make decisions from data.
 We also found that the choice of test statistic has an impact on our decision. Even though we get valid $p$-values and the desired Type 1 error rate, if the information in the data is not used to its fullest, we will lose power. Note: **power** is the probability of correctly rejecting the null hypothesis when the alternative hypothesis is true.
 
 In the next chapter, we will learn about mathematical solutions to finding the sampling distribution. The key difference in all these methods is the selection of the test statistic and the assumptions made to derive a sampling distribution.
-
-## Homework Problems
-
-1.  Repeat the analysis of the yawning data from last chapter, but this time use the hypergeometric distribution.
-
-    Is yawning contagious?
-
-    An experiment conducted by the *MythBusters*, a science entertainment TV program on the Discovery Channel, tested if a person can be subconsciously influenced into yawning if another person near them yawns. 50 people were randomly assigned to two groups: 34 to a group where a person near them yawned (treatment) and 16 to a group where there wasn't a person yawning near them (control). The following table shows the results of this experiment.
-
-$$
-\begin{array}{cc|ccc} & & &\textbf{Group}\\ 
-& & \text{Treatment } &  \text{Control} & \text{Total}  \\
-& \hline \text{Yawn}    &   10      & 4     & 14  \\
-\textbf{Result} & \text{Not Yawn}   & 24        & 12        & 36   \\
-    &\text{Total}       & 34        & 16        & 50 \\
-\end{array} 
-$$
-
-The data is in the file `yawn.csv`.
-
-a.  What are the hypotheses?
-
-b.  Choose a cell, and calculate the observed statistic.
-
-c.  Find the $p$-value using the hypergeometric distribution.
-
-d.  Plot the the sampling distribution.
-
-e.  Determine the conclusion of the hypothesis test.
-
-f.  Compare your results with the randomization test.
-
-<!-- -->
-
-2.  Repeat the analysis of the golf ball data using a different test statistic.
-
-    Use a level of significance of 0.05.
-
-<!-- -->
-
-a.  State the null and alternative hypotheses.
-
-b.  Compute a test statistic.
-
-c.  Determine the $p$-value.
-
-d.  Draw a conclusion.
-
-<!-- -->
-
-3.  Body Temperature
-
-Shoemaker[^20-hypothesis-testing-probdist-5] cites a paper from the American Medical Association[^20-hypothesis-testing-probdist-6] that questions conventional wisdom that the average body temperature of a human is 98.6 degrees Fahrenheit. One of the main points of the original article is that the traditional mean of 98.6 is, in essence, 100 years out of date. The authors cite problems with the original study's methodology, diurnal fluctuations (up to 0.9 degrees F per day), and unreliable thermometers. The authors believe the average human body temperature is less than 98.6. Conduct a hypothesis test.
-
-[^20-hypothesis-testing-probdist-5]: L. Shoemaker Allen (1996) What's Normal? – Temperature, Gender, and Heart Rate, Journal of Statistics Education, 4:2
-
-[^20-hypothesis-testing-probdist-6]: Mackowiak, P. A., Wasserman, S. S., and Levine, M. M. (1992), "A Critical Appraisal of 98.6 Degrees F, the Upper Limit of the Normal Body Temperature, and Other Legacies of Carl Reinhold August Wunderlich," Journal of the American Medical Association, 268, 1578-1580.
-
-a.  State the null and alternative hypotheses.
-
-b.  State the significance level that will be used.
-
-c.  Load the data from the file "temperature.csv" and generate summary statistics and a boxplot of the temperature data. We will not be using gender or heart rate for this problem.
-
-d.  Compute a test statistic. We are going to help you with this part. We cannot do a randomization test since we don't have a second variable. It would be nice to use the mean as a test statistic but we don't yet know the sampling distribution of the sample mean.
-
-    Let's get clever. If the distribution of the sample is symmetric (this is an assumption but look at the boxplot and summary statistics to determine if you are comfortable with it), then under the null hypothesis, the observed values should be equally likely to either be greater or less than 98.6. Thus, our test statistic is the number of cases that have a positive difference between 98.6 and the observed value. This will be a binomial distribution with a probability of success (having a positive difference) of 0.5. You must also account for the possibility that there are observations of 98.6 in the data.
-
-e.  Determine the $p$-value.
-
-f.  Draw a conclusion.
-
-## [Solutions Manual](https://ds-usafa.github.io/CPS-Solutions-Manual/HYPTESTDIST.html) {.unnumbered}

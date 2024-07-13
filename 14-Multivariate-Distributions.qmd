@@ -1,4 +1,4 @@
-# Multivariate Distributions {#MULTIDISTS}
+# Multivariate Distributions {#sec-MULTIDISTS}
 
 ## Objectives
 

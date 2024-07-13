@@ -1,4 +1,4 @@
-# Named Discrete Distributions {#DISCRETENAMED}
+# Named Discrete Distributions {#sec-DISCRETENAMED}
 
 ## Objectives
 

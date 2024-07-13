@@ -1,4 +1,4 @@
-# Inferential Thinking Case Study {#CS3}
+# Inferential Thinking Case Study {#sec-CS3}
 
 ```{r}
 #| echo: false

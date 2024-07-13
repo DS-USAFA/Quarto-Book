@@ -1,4 +1,4 @@
-# Hypothesis Testing with Simulation {#HYPTESTSIM}
+# Hypothesis Testing with Simulation {#sec-HYPTESTSIM}
 
 ```{r}
 #| echo: false
@@ -519,5 +519,3 @@ This is a summary of the general framework for using hypothesis testing. These a
 4.  Form a conclusion.
 
     Using the $p$-value from the analysis, determine whether the data provide statistically significant evidence against the null hypothesis. Also, be sure to write the conclusion in plain language so casual readers can understand the results.
-
-

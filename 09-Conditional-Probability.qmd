@@ -1,4 +1,4 @@
-# Conditional Probability {#CONDPROB}
+# Conditional Probability {#sec-CONDPROB}
 
 ## Objectives
 

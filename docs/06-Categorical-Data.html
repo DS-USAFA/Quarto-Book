@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.550">
+<meta name="generator" content="quarto-1.4.557">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -105,7 +105,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -355,6 +355,53 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./21-Central-Limit-Theorem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Hypothesis Testing with the Central Limit Theorem</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./22-Additional-Hypothesis-Tests.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Additional Hypothesis Tests</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./23-Analysis-of-Variance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Analysis of Variance</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./24-Confidence-Intervals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Confidence Intervals</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./25-Bootstrap.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Bootstrap</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Statistical Modeling - Prediction</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./26-Linear-Regression-Case-Study.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Linear Regression Case Study</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
@@ -388,7 +435,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-Data-Case-Study.html">Descriptive Statistical Modeling</a></li><li class="breadcrumb-item"><a href="./06-Categorical-Data.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Categorical Data</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="CATDATA" class="quarto-section-identifier"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Categorical Data</span></span></h1>
+<h1 class="title"><span id="sec-CATDATA" class="quarto-section-identifier"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Categorical Data</span></span></h1>
 </div>
 
 
@@ -442,7 +489,7 @@ quantitative variables:
 </div>
 </div>
 <p>Notice the use of the <code>pipe</code> operator and how it adds to the ease of reading the code. The <code>select()</code> function allows us to narrow down the columns/variables to the two of interest. Then <code>inspect()</code> gives us information about those variables. We read from top line; we start with the data set <code>email</code>, input it into <code>select()</code> and select variables from it, and then use <code>inspect()</code> to summarize the variables.</p>
-<p>As indicated above, <code>number</code> is a categorical variable (a <em>factor</em>) that describes whether an email contains no numbers, only small numbers (values under 1 million), or at least one big number (a value of 1 million or more). The variable <code>spam</code> is a numeric variable, where <code>1</code> indicates the email is spam and <code>0</code> indicates the email is not spam. To treat <code>spam</code> as categorical, we will want to change it to a <em>factor</em>, but first we will build a table that summarizes data for the two variables (<a href="#tbl-contin1" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-contin1</span></a>). This table is called a <strong>contingency table</strong><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Each value in the table represents the number of times a particular combination of variable outcomes occurred.</p>
+<p>As indicated above, <code>number</code> is a categorical variable (a <em>factor</em>) that describes whether an email contains no numbers, only small numbers (values under 1 million), or at least one big number (a value of 1 million or more). The variable <code>spam</code> is a numeric variable, where <code>1</code> indicates the email is spam and <code>0</code> indicates the email is not spam. To treat <code>spam</code> as categorical, we will want to change it to a <em>factor</em>, but first we will build a table that summarizes data for the two variables (<a href="#tbl-contin1" class="quarto-xref">Table&nbsp;<span>6.1</span></a>). This table is called a <strong>contingency table</strong><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Each value in the table represents the number of times a particular combination of variable outcomes occurred.</p>
 <div class="cell">
 <div id="tbl-contin1" class="cell quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -451,8 +498,7 @@ Table&nbsp;6.1: A contingency table for the `email` data.
 </figcaption>
 <div aria-describedby="tbl-contin1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div>
-<table class="do-not-create-environment cell table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <colgroup>
 <col style="width: 20%">
 <col style="width: 20%">
@@ -504,7 +550,6 @@ Number
 </table>
 
 
-</div>
 </div>
 </div>
 </figure>
@@ -581,7 +626,7 @@ spam       none small  big Total
  14.0  72.1  13.9 </code></pre>
 </div>
 </div>
-<p>A bar plot is a common way to display a single categorical variable. <a href="#fig-bar61" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-bar61</span></a> shows a <strong>bar plot</strong> for the <code>number</code> variable.</p>
+<p>A bar plot is a common way to display a single categorical variable. <a href="#fig-bar61" class="quarto-xref">Figure&nbsp;<span>6.1</span></a> shows a <strong>bar plot</strong> for the <code>number</code> variable.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>email <span class="sc">%&gt;%</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_bar</span>(<span class="sc">~</span>number) <span class="sc">%&gt;%</span></span>
@@ -600,7 +645,7 @@ Figure&nbsp;6.1: Bar chart of the <code>number</code> variable.
 </div>
 </div>
 </div>
-<p>Next, the counts are converted into proportions (e.g., <span class="math inline">\(549 / 3921 = 0.140\)</span> for <code>none</code>) in <a href="#fig-bar62" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-bar62</span></a>.</p>
+<p>Next, the counts are converted into proportions (e.g., <span class="math inline">\(549 / 3921 = 0.140\)</span> for <code>none</code>) in <a href="#fig-bar62" class="quarto-xref">Figure&nbsp;<span>6.2</span></a>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>email <span class="sc">%&gt;%</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_props</span>(<span class="sc">~</span>number) <span class="sc">%&gt;%</span></span>
@@ -736,7 +781,7 @@ number       spam  not spam
 <section id="segmented-bar-and-mosaic-plots" class="level3" data-number="6.2.3">
 <h3 data-number="6.2.3" class="anchored" data-anchor-id="segmented-bar-and-mosaic-plots"><span class="header-section-number">6.2.3</span> Segmented bar and mosaic plots</h3>
 <p>Contingency tables using column proportions are especially useful for examining how two categorical variables are related. Segmented bar and mosaic plots provide a way to visualize the information in these tables.</p>
-<p>A <strong>segmented bar plot</strong> is a graphical display of contingency table information. For example, a segmented bar plot representing the table with <code>number</code> in the columns is shown in <a href="#fig-barseg61" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-barseg61</span></a>, where we have first created a bar plot using the <code>number</code> variable and then separated each group by the levels of <code>spam</code> using the <code>fill</code> argument.</p>
+<p>A <strong>segmented bar plot</strong> is a graphical display of contingency table information. For example, a segmented bar plot representing the table with <code>number</code> in the columns is shown in <a href="#fig-barseg61" class="quarto-xref">Figure&nbsp;<span>6.3</span></a>, where we have first created a bar plot using the <code>number</code> variable and then separated each group by the levels of <code>spam</code> using the <code>fill</code> argument.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>email <span class="sc">%&gt;%</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_bar</span>(<span class="sc">~</span>number, <span class="at">fill =</span> <span class="sc">~</span>spam) <span class="sc">%&gt;%</span></span>
@@ -755,7 +800,7 @@ Figure&nbsp;6.3: Segmented bar plot for numbers found in <code>emails</code>, wh
 </div>
 </div>
 </div>
-<p>The column proportions of the table have been translated into a standardized segmented bar plot in <a href="#fig-barseg62" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-barseg62</span></a>, which is a helpful visualization of the fraction of spam emails within each level of <code>number</code>.</p>
+<p>The column proportions of the table have been translated into a standardized segmented bar plot in <a href="#fig-barseg62" class="quarto-xref">Figure&nbsp;<span>6.4</span></a>, which is a helpful visualization of the fraction of spam emails within each level of <code>number</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>email <span class="sc">%&gt;%</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_props</span>(<span class="sc">~</span>number, <span class="at">fill =</span> <span class="sc">~</span>spam, <span class="at">position =</span> <span class="st">'fill'</span>) <span class="sc">%&gt;%</span></span>
@@ -768,7 +813,7 @@ Figure&nbsp;6.3: Segmented bar plot for numbers found in <code>emails</code>, wh
 <img src="06-Categorical-Data_files/figure-html/fig-barseg62-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-barseg62-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.4: Standardized version of <a href="#fig-barseg61" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-barseg61</span></a>.
+Figure&nbsp;6.4: Standardized version of <a href="#fig-barseg61" class="quarto-xref">Figure&nbsp;<span>6.3</span></a>.
 </figcaption>
 </figure>
 </div>
@@ -778,10 +823,10 @@ Figure&nbsp;6.4: Standardized version of <a href="#fig-barseg61" class="quarto-x
 <p><em>Example</em>:<br>
 Examine both of the segmented bar plots. Which is more useful?<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
 </blockquote>
-<p>Since the proportion of spam changes across the groups in <a href="#fig-barseg62" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-barseg62</span></a>, we can conclude the variables are dependent, which is something we were also able to discern using table proportions. Because both the <code>none</code> and <code>big</code> groups have relatively few observations compared to the <code>small</code> group, the association is more difficult to see in <a href="#fig-barseg61" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-barseg61</span></a>.</p>
+<p>Since the proportion of spam changes across the groups in <a href="#fig-barseg62" class="quarto-xref">Figure&nbsp;<span>6.4</span></a>, we can conclude the variables are dependent, which is something we were also able to discern using table proportions. Because both the <code>none</code> and <code>big</code> groups have relatively few observations compared to the <code>small</code> group, the association is more difficult to see in <a href="#fig-barseg61" class="quarto-xref">Figure&nbsp;<span>6.3</span></a>.</p>
 <p>In other cases, a segmented bar plot that is not standardized will be more useful in communicating important information. Before settling on a particular segmented bar plot, create standardized and non-standardized forms and decide which is more effective at communicating features of the data.</p>
 <p>A <strong>mosaic plot</strong> is a graphical display of contingency table information that is similar to a bar plot for one variable or a segmented bar plot when using two variables. It seems strange, but mosaic plots are not part of the <strong>mosaic</strong> package. We must load another set of packages called <strong>vcd</strong> and <strong>vcdExtra</strong>. Mosaic plots help to visualize the pattern of associations among variables in two-way and larger tables. Mosaic plots are controversial because they rely on the perception of area; human vision is not good at distinguishing areas.</p>
-<p>We introduce mosaic plots as another way to visualize contingency tables. <a href="#fig-mosaic61" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-mosaic61</span></a> shows a one-variable mosaic plot for the <code>number</code> variable. Each row represents a level of <code>number</code>, and the row heights correspond to the proportion of emails of each number type. For instance, there are fewer emails with no numbers than emails with only small numbers, so the <code>none</code> outcome row is shorter in height. In general, mosaic plots use box <em>areas</em> to represent the number of observations. Since there is only one variable, the widths are all constant. Thus area is simply related to row height making this visual easy to read.</p>
+<p>We introduce mosaic plots as another way to visualize contingency tables. <a href="#fig-mosaic61" class="quarto-xref">Figure&nbsp;<span>6.5</span></a> shows a one-variable mosaic plot for the <code>number</code> variable. Each row represents a level of <code>number</code>, and the row heights correspond to the proportion of emails of each number type. For instance, there are fewer emails with no numbers than emails with only small numbers, so the <code>none</code> outcome row is shorter in height. In general, mosaic plots use box <em>areas</em> to represent the number of observations. Since there is only one variable, the widths are all constant. Thus area is simply related to row height making this visual easy to read.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vcd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -800,7 +845,7 @@ Figure&nbsp;6.5: Mosaic plot where emails are grouped by the <code>number</code>
 </div>
 </div>
 </div>
-<p>This one-variable mosaic plot can be further divided into pieces as in <a href="#fig-mosaic62" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-mosaic62</span></a> using the <code>spam</code> variable. The first variable in the formula is used to determine row height. That is, each row is split proportionally according to the fraction of emails in each number category. These heights are similar to those in <a href="#fig-mosaic61" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-mosaic61</span></a>. Next, each row is split horizontally according to the proportion of emails that were spam in that number group. For example, the second row, representing emails with only small numbers, was divided into emails that were spam (left) and not spam (right). The area of the rectangles represents the overall proportions in the table, where each cell count is divided by the total count. First, we will generate the table and then represent it as a mosaic plot.</p>
+<p>This one-variable mosaic plot can be further divided into pieces as in <a href="#fig-mosaic62" class="quarto-xref">Figure&nbsp;<span>6.6</span></a> using the <code>spam</code> variable. The first variable in the formula is used to determine row height. That is, each row is split proportionally according to the fraction of emails in each number category. These heights are similar to those in <a href="#fig-mosaic61" class="quarto-xref">Figure&nbsp;<span>6.5</span></a>. Next, each row is split horizontally according to the proportion of emails that were spam in that number group. For example, the second row, representing emails with only small numbers, was divided into emails that were spam (left) and not spam (right). The area of the rectangles represents the overall proportions in the table, where each cell count is divided by the total count. First, we will generate the table and then represent it as a mosaic plot.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tally</span>(<span class="sc">~</span>number <span class="sc">+</span> spam, <span class="at">data =</span> email, <span class="at">format =</span> <span class="st">'proportion'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -844,7 +889,7 @@ Figure&nbsp;6.7: Mosaic plot with <code>spam</code> as the first (row) variable.
 </div>
 </div>
 </div>
-<p>To completely understand the mosaic plot as shown in <a href="#fig-mosaic63" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-mosaic63</span></a>, let’s first find the proportions of <code>spam</code>.</p>
+<p>To completely understand the mosaic plot as shown in <a href="#fig-mosaic63" class="quarto-xref">Figure&nbsp;<span>6.7</span></a>, let’s first find the proportions of <code>spam</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tally</span>(<span class="sc">~</span>spam, <span class="at">data =</span> email, <span class="at">format =</span> <span class="st">"proportion"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -865,11 +910,11 @@ number       spam  not spam
   Total 1.0000000 1.0000000</code></pre>
 </div>
 </div>
-<p>However, because it is more insightful for this application to consider the fraction of spam in each category of the <code>number</code> variable, we prefer <a href="#fig-mosaic62" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-mosaic62</span></a>.</p>
+<p>However, because it is more insightful for this application to consider the fraction of spam in each category of the <code>number</code> variable, we prefer <a href="#fig-mosaic62" class="quarto-xref">Figure&nbsp;<span>6.6</span></a>.</p>
 </section>
 <section id="the-only-pie-chart-you-will-see-in-this-book-hopefully" class="level3" data-number="6.2.4">
 <h3 data-number="6.2.4" class="anchored" data-anchor-id="the-only-pie-chart-you-will-see-in-this-book-hopefully"><span class="header-section-number">6.2.4</span> The only pie chart you will see in this book, hopefully</h3>
-<p>While pie charts are well known, they are typically not as useful as other charts in a data analysis. A <strong>pie chart</strong> is shown in <a href="#fig-pie61" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-pie61</span></a>. It is generally more difficult to compare group sizes in a pie chart than in a bar plot, especially when categories have nearly identical counts or proportions. Just as human vision is bad at distinguishing areas, human vision is also bad at distinguishing angles. In the case of the <em>none</em> and <em>big</em> categories, the difference is so slight you may be unable to distinguish any difference in group sizes.</p>
+<p>While pie charts are well known, they are typically not as useful as other charts in a data analysis. A <strong>pie chart</strong> is shown in <a href="#fig-pie61" class="quarto-xref">Figure&nbsp;<span>6.8</span></a>. It is generally more difficult to compare group sizes in a pie chart than in a bar plot, especially when categories have nearly identical counts or proportions. Just as human vision is bad at distinguishing areas, human vision is also bad at distinguishing angles. In the case of the <em>none</em> and <em>big</em> categories, the difference is so slight you may be unable to distinguish any difference in group sizes.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pie</span>(<span class="fu">table</span>(email<span class="sc">$</span>number), <span class="at">col =</span> COL[<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>)], <span class="at">radius =</span> <span class="fl">0.75</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -970,7 +1015,7 @@ quantitative variables:
 3 3138       0</code></pre>
 </div>
 </div>
-<p>The <strong>side-by-side box plot</strong> is a traditional tool for comparing across groups. An example is shown in <a href="#fig-sbysbox61" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-sbysbox61</span></a> where there are two box plots, one for each group, drawn on the same scale.</p>
+<p>The <strong>side-by-side box plot</strong> is a traditional tool for comparing across groups. An example is shown in <a href="#fig-sbysbox61" class="quarto-xref">Figure&nbsp;<span>6.9</span></a> where there are two box plots, one for each group, drawn on the same scale.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>cc_reduced <span class="sc">%&gt;%</span></span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_boxplot</span>(med_income <span class="sc">~</span> pop_gain,</span>
@@ -991,7 +1036,7 @@ Figure&nbsp;6.9: Side-by-side box plot for median household income, where the co
 </div>
 </div>
 </div>
-<p>Another useful plotting method uses <strong>density plots</strong> to compare numerical data across groups. A histogram bins data but is highly dependent on the number and boundary of the bins. A density plot also estimates the distribution of a numerical variable but does this by estimating the density of data points in a small window around each data point. The overall curve is the sum of this small density estimate. A density plot can be thought of as a smooth version of the histogram. Several options go into a density estimate, such as the width of the window and type of smoothing function. These ideas are beyond the scope here and we will just use the default options. <a href="#fig-dens61" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-dens61</span></a> is a plot of the two density curves.</p>
+<p>Another useful plotting method uses <strong>density plots</strong> to compare numerical data across groups. A histogram bins data but is highly dependent on the number and boundary of the bins. A density plot also estimates the distribution of a numerical variable but does this by estimating the density of data points in a small window around each data point. The overall curve is the sum of this small density estimate. A density plot can be thought of as a smooth version of the histogram. Several options go into a density estimate, such as the width of the window and type of smoothing function. These ideas are beyond the scope here and we will just use the default options. <a href="#fig-dens61" class="quarto-xref">Figure&nbsp;<span>6.10</span></a> is a plot of the two density curves.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>cc_reduced <span class="sc">%&gt;%</span></span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_dens</span>(<span class="sc">~</span>med_income, <span class="at">color =</span> <span class="sc">~</span>pop_gain, <span class="at">lwd =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
@@ -1016,7 +1061,7 @@ Use the box plots and density plots to compare the incomes for counties across t
 </blockquote>
 <blockquote class="blockquote">
 <p><strong>Exercise</strong>:<br>
-What components of <a href="#fig-sbysbox61" class="quarto-xref">Figures&nbsp;<span class="quarto-unresolved-ref ref-noprefix">fig-sbysbox61</span></a>, <a href="#fig-dens61" class="quarto-xref"><span class="quarto-unresolved-ref ref-noprefix">fig-dens61</span></a> do you find most useful?<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></p>
+What components of <a href="#fig-sbysbox61" class="quarto-xref">Figures&nbsp;<span>6.9</span></a>, <a href="#fig-dens61" class="quarto-xref"><span>6.10</span></a> do you find most useful?<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></p>
 </blockquote>
 
 
@@ -1031,7 +1076,7 @@ What components of <a href="#fig-sbysbox61" class="quarto-xref">Figures&nbsp;<sp
 <li id="fn4"><p>This is the proportion of <code>not spam</code> emails that had a small number in it.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn5"><p>From the help menu on the data, HTML is coded as a 1.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn6"><p>The table with <code>number</code> in the columns will probably be most useful. This table makes it easier to see that emails with small numbers are spam about 5.9% of the time (relatively rare). In contrast, we see that about 27.1% of emails with no numbers are spam, and 9.2% of emails with big numbers are spam.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn7"><p><a href="#fig-barseg61" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-barseg61</span></a> contains more information, but <a href="#fig-barseg62" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-barseg62</span></a> presents the information more clearly. This second plot makes it clear that emails with no number have a relatively high rate of spam email – about 27%! On the other hand, less than 10% of emails with small or big numbers are spam.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p><a href="#fig-barseg61" class="quarto-xref">Figure&nbsp;<span>6.3</span></a> contains more information, but <a href="#fig-barseg62" class="quarto-xref">Figure&nbsp;<span>6.4</span></a> presents the information more clearly. This second plot makes it clear that emails with no number have a relatively high rate of spam email – about 27%! On the other hand, less than 10% of emails with small or big numbers are spam.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn8"><p>Answers may vary a little. The counties with population gains tend to have higher income (median of about $45,000) versus counties without a gain (median of about $40,000). The variability is also slightly larger for the population gain group. This is evident in the IQR, which is about 50% bigger in the <em>gain</em> group. Both distributions show slight to moderate right skew and are unimodal. There is a secondary small bump at about $60,000 for the <em>no gain</em> group, visible in the density plot, that seems out of place. (Looking into the data set, we would find that 8 of these 15 counties are in Alaska and Texas.) The box plots indicate there are many observations far above the median in each group, though we should anticipate that many observations will fall beyond the whiskers when using such a large data set.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn9"><p>The side-by-side box plots are especially useful for comparing centers and spreads, while the density plots are more useful for seeing distribution shape, skew, and groups of anomalies.<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
@@ -1117,6 +1162,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -1151,7 +1214,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');

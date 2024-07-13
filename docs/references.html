@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.550">
+<meta name="generator" content="quarto-1.4.557">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -49,7 +49,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./20-Hypothesis-Testing-ProbDist.html" rel="prev">
+<link href="./26-Linear-Regression-Case-Study.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -99,7 +99,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./18-Inference-Case-Study.html">Statistical Modeling - Inference</a></li><li class="breadcrumb-item"><a href="./references.html">References</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./26-Linear-Regression-Case-Study.html">Statistical Modeling - Prediction</a></li><li class="breadcrumb-item"><a href="./references.html">References</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -308,6 +308,53 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./21-Central-Limit-Theorem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Hypothesis Testing with the Central Limit Theorem</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./22-Additional-Hypothesis-Tests.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Additional Hypothesis Tests</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./23-Analysis-of-Variance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Analysis of Variance</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./24-Confidence-Intervals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Confidence Intervals</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./25-Bootstrap.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Bootstrap</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Statistical Modeling - Prediction</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./26-Linear-Regression-Case-Study.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Linear Regression Case Study</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">References</span></a>
   </div>
@@ -325,7 +372,7 @@ div.csl-indent {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./18-Inference-Case-Study.html">Statistical Modeling - Inference</a></li><li class="breadcrumb-item"><a href="./references.html">References</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./26-Linear-Regression-Case-Study.html">Statistical Modeling - Prediction</a></li><li class="breadcrumb-item"><a href="./references.html">References</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">References</h1>
 </div>
@@ -345,9 +392,73 @@ div.csl-indent {
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-R-rmarkdown" class="csl-entry" role="listitem">
+Allaire, JJ, Yihui Xie, Christophe Dervieux, Jonathan McPherson, Javier
+Luraschi, Kevin Ushey, Aron Atkins, et al. 2024. <em>Rmarkdown: Dynamic
+Documents for r</em>. <a href="https://github.com/rstudio/rmarkdown">https://github.com/rstudio/rmarkdown</a>.
+</div>
+<div id="ref-R-openintro" class="csl-entry" role="listitem">
+Çetinkaya-Rundel, Mine, David Diez, Andrew Bray, Albert Y. Kim, Ben
+Baumer, Chester Ismay, Nick Paterno, and Christopher Barr. 2024.
+<em>Openintro: Datasets and Supplemental Functions from OpenIntro
+Textbooks and Labs</em>. <a href="http://openintrostat.github.io/openintro/">http://openintrostat.github.io/openintro/</a>.
+</div>
+<div id="ref-ointrorand" class="csl-entry" role="listitem">
+Diez, David, Christopher Barr, and Mine Çetinkaya-Rundel. 2014.
+<em>Introductory Statistics with Randomization and Simulation</em>. 1st
+ed. Openintro. <a href="https://www.openintro.org/book/isrs/">https://www.openintro.org/book/isrs/</a>.
+</div>
+<div id="ref-R-ISLR" class="csl-entry" role="listitem">
+James, Gareth, Daniela Witten, Trevor Hastie, and Rob Tibshirani. 2021.
+<em>ISLR: Data for an Introduction to Statistical Learning with
+Applications in r</em>. <a href="https://www.statlearning.com">https://www.statlearning.com</a>.
+</div>
+<div id="ref-ipsur" class="csl-entry" role="listitem">
+Kerns, Jay. 2010. <em>Introductory to Probability and Statistics with
+r</em>. 1st ed. <a href="http://ipsur.r-forge.r-project.org/book/download/IPSUR.pdf">http://ipsur.r-forge.r-project.org/book/download/IPSUR.pdf</a>.
+</div>
+<div id="ref-R-vcd" class="csl-entry" role="listitem">
+Meyer, David, Achim Zeileis, Kurt Hornik, and Michael Friendly. 2023.
+<em>Vcd: Visualizing Categorical Data</em>.
+</div>
 <div id="ref-pruim2011foundations" class="csl-entry" role="listitem">
 Pruim, Randall J. 2011. <em>Foundations and Applications of Statistics:
 An Introduction Using r</em>. Vol. 13. American Mathematical Soc.
+</div>
+<div id="ref-R-mosaic" class="csl-entry" role="listitem">
+Pruim, Randall, Daniel T. Kaplan, and Nicholas J. Horton. 2024.
+<em>Mosaic: Project MOSAIC Statistics and Mathematics Teaching
+Utilities</em>. <a href="https://github.com/ProjectMOSAIC/mosaic">https://github.com/ProjectMOSAIC/mosaic</a>.
+</div>
+<div id="ref-R-MASS" class="csl-entry" role="listitem">
+Ripley, Brian. 2024. <em>MASS: Support Functions and Datasets for
+Venables and Ripley’s MASS</em>. <a href="http://www.stats.ox.ac.uk/pub/MASS4/">http://www.stats.ox.ac.uk/pub/MASS4/</a>.
+</div>
+<div id="ref-R-broom" class="csl-entry" role="listitem">
+Robinson, David, Alex Hayes, and Simon Couch. 2024. <em>Broom: Convert
+Statistical Objects into Tidy Tibbles</em>. <a href="https://broom.tidymodels.org/">https://broom.tidymodels.org/</a>.
+</div>
+<div id="ref-R-tidyverse" class="csl-entry" role="listitem">
+Wickham, Hadley. 2023. <em>Tidyverse: Easily Install and Load the
+Tidyverse</em>. <a href="https://tidyverse.tidyverse.org">https://tidyverse.tidyverse.org</a>.
+</div>
+<div id="ref-R-ggplot2" class="csl-entry" role="listitem">
+Wickham, Hadley, Winston Chang, Lionel Henry, Thomas Lin Pedersen,
+Kohske Takahashi, Claus Wilke, Kara Woo, Hiroaki Yutani, Dewey
+Dunnington, and Teun van den Brand. 2024. <em>Ggplot2: Create Elegant
+Data Visualisations Using the Grammar of Graphics</em>. <a href="https://ggplot2.tidyverse.org">https://ggplot2.tidyverse.org</a>.
+</div>
+<div id="ref-R-knitr" class="csl-entry" role="listitem">
+Xie, Yihui. 2024. <em>Knitr: A General-Purpose Package for Dynamic
+Report Generation in r</em>. <a href="https://yihui.org/knitr/">https://yihui.org/knitr/</a>.
+</div>
+<div id="ref-R-DT" class="csl-entry" role="listitem">
+Xie, Yihui, Joe Cheng, and Xianying Tan. 2024. <em>DT: A Wrapper of the
+JavaScript Library DataTables</em>. <a href="https://github.com/rstudio/DT">https://github.com/rstudio/DT</a>.
+</div>
+<div id="ref-R-kableExtra" class="csl-entry" role="listitem">
+Zhu, Hao. 2024. <em>kableExtra: Construct Complex Table with Kable and
+Pipe Syntax</em>. <a href="http://haozhu233.github.io/kableExtra/">http://haozhu233.github.io/kableExtra/</a>.
 </div>
 </div>
 
@@ -433,6 +544,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -467,7 +596,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -743,8 +876,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./20-Hypothesis-Testing-ProbDist.html" class="pagination-link" aria-label="Hypothesis Testing with Known Distributions">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Hypothesis Testing with Known Distributions</span></span>
+      <a href="./26-Linear-Regression-Case-Study.html" class="pagination-link" aria-label="Linear Regression Case Study">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Linear Regression Case Study</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

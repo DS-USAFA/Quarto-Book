@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.550">
+<meta name="generator" content="quarto-1.4.557">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -103,7 +103,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -353,6 +353,53 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./21-Central-Limit-Theorem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Hypothesis Testing with the Central Limit Theorem</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./22-Additional-Hypothesis-Tests.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Additional Hypothesis Tests</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./23-Analysis-of-Variance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Analysis of Variance</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./24-Confidence-Intervals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Confidence Intervals</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./25-Bootstrap.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Bootstrap</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Statistical Modeling - Prediction</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./26-Linear-Regression-Case-Study.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Linear Regression Case Study</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
@@ -388,7 +435,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-Data-Case-Study.html">Descriptive Statistical Modeling</a></li><li class="breadcrumb-item"><a href="./05-Numerical-Data.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Numerical Data</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="NUMDATA" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Numerical Data</span></span></h1>
+<h1 class="title"><span id="sec-NUMDATA" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Numerical Data</span></span></h1>
 </div>
 
 
@@ -419,7 +466,7 @@ window.Quarto = {
 <p>This chapter introduces techniques for exploring and summarizing numerical variables. The <code>email50</code> and <code>mlb</code> data sets from the <strong>openintro</strong> package and a subset of <code>county_complete</code> from the <strong>usdata</strong> package provide rich opportunities for examples. Recall that outcomes of numerical variables are numbers on which it is reasonable to perform basic arithmetic operations. For example, the <code>pop2010</code> variable, which represents the population of counties in 2010, is numerical since we can sensibly discuss the difference or ratio of the populations in two counties. On the other hand, area codes and zip codes are not numerical.</p>
 <section id="scatterplots-for-paired-data" class="level3" data-number="5.2.1">
 <h3 data-number="5.2.1" class="anchored" data-anchor-id="scatterplots-for-paired-data"><span class="header-section-number">5.2.1</span> Scatterplots for paired data</h3>
-<p>A <strong>scatterplot</strong> provides a case-by-case view of data for two numerical variables. In <a href="#fig-scat5" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-scat5</span></a>, we again present a scatterplot used to examine how federal spending and poverty are related in the <code>county</code> data set.</p>
+<p>A <strong>scatterplot</strong> provides a case-by-case view of data for two numerical variables. In <a href="#fig-scat5" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>, we again present a scatterplot used to examine how federal spending and poverty are related in the <code>county</code> data set.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-scat5" class="quarto-figure quarto-figure-center quarto-float anchored">
@@ -434,7 +481,7 @@ Figure&nbsp;5.1: A scatterplot showing fed_spend against poverty. Owsley County 
 </div>
 </div>
 </div>
-<p>Another scatterplot is shown in <a href="#fig-scat52" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-scat52</span></a>, comparing the number of <code>line_breaks</code> and number of characters, <code>num_char</code>, in emails for the <code>email50</code> data set. In any scatterplot, each point represents a single case. Since there are 50 cases in <code>email50</code>, there are 50 points in <a href="#fig-scat52" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-scat52</span></a>.</p>
+<p>Another scatterplot is shown in <a href="#fig-scat52" class="quarto-xref">Figure&nbsp;<span>5.2</span></a>, comparing the number of <code>line_breaks</code> and number of characters, <code>num_char</code>, in emails for the <code>email50</code> data set. In any scatterplot, each point represents a single case. Since there are 50 cases in <code>email50</code>, there are 50 points in <a href="#fig-scat52" class="quarto-xref">Figure&nbsp;<span>5.2</span></a>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-scat52" class="quarto-figure quarto-figure-center quarto-float anchored">
@@ -449,14 +496,14 @@ Figure&nbsp;5.2: A scatterplot of <code>line_breaks</code> versus <code>num_char
 </div>
 </div>
 </div>
-<p>To put the number of characters in perspective, this paragraph in the text has 357 characters. Looking at <a href="#fig-scat52" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-scat52</span></a>, it seems that some emails are incredibly long! Upon further investigation, we would actually find that most of the long emails use the HTML format, which means most of the characters in those emails are used to format the email rather than provide text.</p>
+<p>To put the number of characters in perspective, this paragraph in the text has 357 characters. Looking at <a href="#fig-scat52" class="quarto-xref">Figure&nbsp;<span>5.2</span></a>, it seems that some emails are incredibly long! Upon further investigation, we would actually find that most of the long emails use the HTML format, which means most of the characters in those emails are used to format the email rather than provide text.</p>
 <blockquote class="blockquote">
 <p><strong>Exercise</strong>:<br>
 What do scatterplots reveal about the data, and how might they be useful?<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 </blockquote>
 <blockquote class="blockquote">
 <p><em>Example</em>:<br>
-Consider a new data set of 54 cars with two variables: vehicle price and weight.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> A scatterplot of vehicle price versus weight is shown in <a href="#fig-scat53" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-scat53</span></a>. What can be said about the relationship between these variables?</p>
+Consider a new data set of 54 cars with two variables: vehicle price and weight.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> A scatterplot of vehicle price versus weight is shown in <a href="#fig-scat53" class="quarto-xref">Figure&nbsp;<span>5.3</span></a>. What can be said about the relationship between these variables?</p>
 </blockquote>
 <div class="cell">
 <div class="cell-output-display">
@@ -480,7 +527,7 @@ Describe two variables that would have a horseshoe-shaped association in a scatt
 </section>
 <section id="dot-plots-and-the-mean" class="level3" data-number="5.2.2">
 <h3 data-number="5.2.2" class="anchored" data-anchor-id="dot-plots-and-the-mean"><span class="header-section-number">5.2.2</span> Dot plots and the mean</h3>
-<p>Sometimes two variables are one too many: only one variable may be of interest. In these cases, a dot plot provides the most basic of displays. A <strong>dot plot</strong> is a one-variable scatterplot; an example using the number of characters from 50 emails is shown in <a href="#fig-dot5" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-dot5</span></a>.</p>
+<p>Sometimes two variables are one too many: only one variable may be of interest. In these cases, a dot plot provides the most basic of displays. A <strong>dot plot</strong> is a one-variable scatterplot; an example using the number of characters from 50 emails is shown in <a href="#fig-dot5" class="quarto-xref">Figure&nbsp;<span>5.4</span></a>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-dot5" class="quarto-figure quarto-figure-center quarto-float anchored">
@@ -539,7 +586,7 @@ We might like to compute the average income per person in the US. To do so, we m
       0       0       1 </code></pre>
 </div>
 </div>
-<p>These binned counts are plotted as bars in <a href="#fig-hist5" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-hist5</span></a> in what is called a <strong>histogram</strong><a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>.</p>
+<p>These binned counts are plotted as bars in <a href="#fig-hist5" class="quarto-xref">Figure&nbsp;<span>5.5</span></a> in what is called a <strong>histogram</strong><a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-hist5" class="quarto-figure quarto-figure-center quarto-float anchored">
@@ -555,7 +602,7 @@ Figure&nbsp;5.5: A histogram of <code>num_char</code>. This distribution is very
 </div>
 </div>
 <p>Histograms provide a view of the <strong>data density</strong>. Higher bars represent where the data are relatively more dense. For instance, there are many more emails between 0 and 10,000 characters than emails between 10,000 and 20,000 characters in the data set. The bars make it easy to see how the density of the data changes relative to the number of characters.</p>
-<p>Histograms are especially convenient for describing the shape of the data distribution. <a href="#fig-hist5" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-hist5</span></a> shows that most emails have a relatively small number of characters, while fewer emails have a very large number of characters. When data trail off to the right in this way and have a longer right <strong>tail</strong>, the shape is said to be <strong>right skewed</strong>.<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></p>
+<p>Histograms are especially convenient for describing the shape of the data distribution. <a href="#fig-hist5" class="quarto-xref">Figure&nbsp;<span>5.5</span></a> shows that most emails have a relatively small number of characters, while fewer emails have a very large number of characters. When data trail off to the right in this way and have a longer right <strong>tail</strong>, the shape is said to be <strong>right skewed</strong>.<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></p>
 <p>Data sets with the reverse characteristic – a long, thin tail to the left – are said to be <strong>left skewed</strong>. We also say that such a distribution has a long left tail. Data sets that show roughly equal trailing off in both directions are called <strong>symmetric</strong>.</p>
 <blockquote class="blockquote">
 <p><strong>Long tails to identify skew</strong><br>
@@ -563,7 +610,7 @@ When data trail off in one direction, the distribution has a <strong>long tail</
 </blockquote>
 <blockquote class="blockquote">
 <p><strong>Exercise</strong>:<br>
-Take a look at the dot plot above, <a href="#fig-dot5" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-dot5</span></a>. Can you see the skew in the data? Is it easier to see the skew in this histogram or the dot plots?<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></p>
+Take a look at the dot plot above, <a href="#fig-dot5" class="quarto-xref">Figure&nbsp;<span>5.4</span></a>. Can you see the skew in the data? Is it easier to see the skew in this histogram or the dot plots?<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></p>
 </blockquote>
 <blockquote class="blockquote">
 <p><strong>Exercise</strong>:<br>
@@ -599,7 +646,7 @@ Look at the help menu for <code>gf_histogram</code> and change the x-axis label,
    color = "black", fill = "cyan") %&gt;%
    gf_theme(theme_classic())</code></pre>
 <p>In addition to looking at whether a distribution is skewed or symmetric, histograms can be used to identify modes. A <strong>mode</strong> is represented by a prominent peak in the distribution.<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a> There is only one prominent peak in the histogram of <code>num_char</code>.</p>
-<p><a href="#fig-histmulti" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-histmulti</span></a> shows histograms that have one, two, or three prominent peaks. Such distributions are called <strong>unimodal</strong>, <strong>bimodal</strong>, and <strong>multimodal</strong>, respectively. Any distribution with more than 2 prominent peaks is called multimodal. Notice that there was one prominent peak in the unimodal distribution with a second less prominent peak that was not counted since the separation between the two peaks is relatively small, and it only differs from its neighboring bins by a few observations.</p>
+<p><a href="#fig-histmulti" class="quarto-xref">Figure&nbsp;<span>5.6</span></a> shows histograms that have one, two, or three prominent peaks. Such distributions are called <strong>unimodal</strong>, <strong>bimodal</strong>, and <strong>multimodal</strong>, respectively. Any distribution with more than 2 prominent peaks is called multimodal. Notice that there was one prominent peak in the unimodal distribution with a second less prominent peak that was not counted since the separation between the two peaks is relatively small, and it only differs from its neighboring bins by a few observations.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-histmulti" class="quarto-figure quarto-figure-center quarto-float anchored">
@@ -708,17 +755,17 @@ Figure&nbsp;5.9: The final plot with mean 0 and standard deviation 1.
 </div>
 <blockquote class="blockquote">
 <p><strong>Exercise</strong>:<br>
-Earlier, the concept of shape of a distribution was introduced. A good description of the shape of a distribution should include modality and whether the distribution is symmetric or skewed to one side. Using the three figures, <a href="#fig-hist53" class="quarto-xref">Figures&nbsp;<span class="quarto-unresolved-ref ref-noprefix">fig-hist53</span></a>, <a href="#fig-hist54" class="quarto-xref"><span class="quarto-unresolved-ref ref-noprefix">fig-hist54</span></a>, <a href="#fig-hist55" class="quarto-xref"><span class="quarto-unresolved-ref ref-noprefix">fig-hist55</span></a> as examples, explain why such a description is important.<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a></p>
+Earlier, the concept of shape of a distribution was introduced. A good description of the shape of a distribution should include modality and whether the distribution is symmetric or skewed to one side. Using the three figures, <a href="#fig-hist53" class="quarto-xref">Figures&nbsp;<span>5.7</span></a>, <a href="#fig-hist54" class="quarto-xref"><span>5.8</span></a>, <a href="#fig-hist55" class="quarto-xref"><span>5.9</span></a> as examples, explain why such a description is important.<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a></p>
 </blockquote>
 <blockquote class="blockquote">
 <p><em>Example</em>:<br>
-Describe the distribution of the <code>num_char</code> variable using the histogram in <a href="#fig-hist5" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-hist5</span></a>. The description should incorporate the center, variability, and shape of the distribution, and it should also be placed in context: the number of characters in emails. Also note any especially unusual cases/observations.<a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a></p>
+Describe the distribution of the <code>num_char</code> variable using the histogram in <a href="#fig-hist5" class="quarto-xref">Figure&nbsp;<span>5.5</span></a>. The description should incorporate the center, variability, and shape of the distribution, and it should also be placed in context: the number of characters in emails. Also note any especially unusual cases/observations.<a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a></p>
 </blockquote>
 <p>In practice, the variance and standard deviation are sometimes used as a means to an end, where the <em>end</em> is being able to accurately estimate the uncertainty associated with a sample statistic. For example, later in the book we will use the variance and standard deviation to assess how close the sample mean is to the population mean.</p>
 </section>
 <section id="box-plots-quartiles-and-the-median" class="level3" data-number="5.2.5">
 <h3 data-number="5.2.5" class="anchored" data-anchor-id="box-plots-quartiles-and-the-median"><span class="header-section-number">5.2.5</span> Box plots, quartiles, and the median</h3>
-<p>A <strong>box plot</strong> summarizes a data set using five statistics, while also plotting unusual observations. <a href="#fig-box" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-box</span></a> provides an annotated vertical dot plot alongside a box plot of the <code>num_char</code> variable from the <code>email50</code> data set.</p>
+<p>A <strong>box plot</strong> summarizes a data set using five statistics, while also plotting unusual observations. <a href="#fig-box" class="quarto-xref">Figure&nbsp;<span>5.10</span></a> provides an annotated vertical dot plot alongside a box plot of the <code>num_char</code> variable from the <code>email50</code> data set.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-box" class="quarto-figure quarto-figure-center quarto-float anchored">
@@ -733,12 +780,12 @@ Figure&nbsp;5.10: A vertical dot plot next to a labeled box plot for the number 
 </div>
 </div>
 </div>
-<p>The first step in building a box plot is drawing a dark line denoting the <strong>median</strong>, which splits the data in half. <a href="#fig-box" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-box</span></a> shows 50% of the data falling below the median (red dashes) and the other 50% falling above the median (blue open circles). There are 50 character counts in the data set (an even number) so the data are perfectly split into two groups of 25. We take the median in this case to be the average of the two observations closest to the <span class="math inline">\(50^{th}\)</span> percentile: <span class="math inline">\((\text{6,768} + \text{7,012}) / 2 = \text{6,890}\)</span>. When there are an odd number of observations, there will be exactly one observation that splits the data into two halves, and in this case that observation is the median (no average needed).</p>
+<p>The first step in building a box plot is drawing a dark line denoting the <strong>median</strong>, which splits the data in half. <a href="#fig-box" class="quarto-xref">Figure&nbsp;<span>5.10</span></a> shows 50% of the data falling below the median (red dashes) and the other 50% falling above the median (blue open circles). There are 50 character counts in the data set (an even number) so the data are perfectly split into two groups of 25. We take the median in this case to be the average of the two observations closest to the <span class="math inline">\(50^{th}\)</span> percentile: <span class="math inline">\((\text{6,768} + \text{7,012}) / 2 = \text{6,890}\)</span>. When there are an odd number of observations, there will be exactly one observation that splits the data into two halves, and in this case that observation is the median (no average needed).</p>
 <blockquote class="blockquote">
 <p><strong>Median: the number in the middle</strong><br>
 If the data are ordered from smallest to largest, the <strong>median</strong> is the observation in the middle. If there are an even number of observations, there will be two values in the middle, and the median is taken as their average.</p>
 </blockquote>
-<p>The second step in building a box plot is drawing a rectangle to represent the middle 50% of the data. The total length of the box, shown vertically in <a href="#fig-box" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-box</span></a>, is called the <strong>interquartile range</strong> (IQR, for short). It, like the standard deviation, is a measure of variability in the data. The more variable the data, the larger the standard deviation and IQR. The two boundaries of the box are called the <strong>first quartile</strong> (the <span class="math inline">\(25^{th}\)</span> percentile, i.e.&nbsp;25% of the data fall below this value) and the <strong>third quartile</strong> (the <span class="math inline">\(75^{th}\)</span> percentile), and these are often labeled <span class="math inline">\(Q_1\)</span> and <span class="math inline">\(Q_3\)</span>, respectively.</p>
+<p>The second step in building a box plot is drawing a rectangle to represent the middle 50% of the data. The total length of the box, shown vertically in <a href="#fig-box" class="quarto-xref">Figure&nbsp;<span>5.10</span></a>, is called the <strong>interquartile range</strong> (IQR, for short). It, like the standard deviation, is a measure of variability in the data. The more variable the data, the larger the standard deviation and IQR. The two boundaries of the box are called the <strong>first quartile</strong> (the <span class="math inline">\(25^{th}\)</span> percentile, i.e.&nbsp;25% of the data fall below this value) and the <strong>third quartile</strong> (the <span class="math inline">\(75^{th}\)</span> percentile), and these are often labeled <span class="math inline">\(Q_1\)</span> and <span class="math inline">\(Q_3\)</span>, respectively.</p>
 <blockquote class="blockquote">
 <p><strong>Interquartile range (IQR)</strong><br>
 The IQR is the length of the box in a box plot. It is computed as <span class="math display">\[ IQR = Q_3 - Q_1 \]</span> where <span class="math inline">\(Q_1\)</span> and <span class="math inline">\(Q_3\)</span> are the <span class="math inline">\(25^{th}\)</span> and <span class="math inline">\(75^{th}\)</span> percentiles, respectively.</p>
@@ -747,7 +794,7 @@ The IQR is the length of the box in a box plot. It is computed as <span class="m
 <p><strong>Exercise</strong>:<br>
 What percent of the data fall between <span class="math inline">\(Q_1\)</span> and the median? What percent is between the median and <span class="math inline">\(Q_3\)</span>?<a href="#fn17" class="footnote-ref" id="fnref17" role="doc-noteref"><sup>17</sup></a></p>
 </blockquote>
-<p>Extending out from the box, the <strong>whiskers</strong> attempt to capture the data outside of the box, however, their reach is never allowed to be more than <span class="math inline">\(1.5\times IQR\)</span>.<a href="#fn18" class="footnote-ref" id="fnref18" role="doc-noteref"><sup>18</sup></a> They capture everything within this reach. In <a href="#fig-box" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-box</span></a>, the upper whisker does not extend to the last three points, which are beyond <span class="math inline">\(Q_3 + 1.5\times IQR\)</span>, and so it extends only to the last point below this limit. The lower whisker stops at the lowest value, 33, since there is no additional data to reach; the lower whisker’s limit is not shown in the figure because the plot does not extend down to <span class="math inline">\(Q_1 - 1.5\times IQR\)</span>. In a sense, the box is like the body of the box plot and the whiskers are like its arms trying to reach the rest of the data.</p>
+<p>Extending out from the box, the <strong>whiskers</strong> attempt to capture the data outside of the box, however, their reach is never allowed to be more than <span class="math inline">\(1.5\times IQR\)</span>.<a href="#fn18" class="footnote-ref" id="fnref18" role="doc-noteref"><sup>18</sup></a> They capture everything within this reach. In <a href="#fig-box" class="quarto-xref">Figure&nbsp;<span>5.10</span></a>, the upper whisker does not extend to the last three points, which are beyond <span class="math inline">\(Q_3 + 1.5\times IQR\)</span>, and so it extends only to the last point below this limit. The lower whisker stops at the lowest value, 33, since there is no additional data to reach; the lower whisker’s limit is not shown in the figure because the plot does not extend down to <span class="math inline">\(Q_1 - 1.5\times IQR\)</span>. In a sense, the box is like the body of the box plot and the whiskers are like its arms trying to reach the rest of the data.</p>
 <p>Any observation that lies beyond the whiskers is labeled with a dot. The purpose of labeling these points – instead of just extending the whiskers to the minimum and maximum observed values – is to help identify any observations that appear to be unusually distant from the rest of the data. Unusually distant observations are called <strong>outliers</strong>. In this case, it would be reasonable to classify the emails with character counts of 41,623, 42,793, and 64,401 as outliers since they are numerically distant from most of the data.</p>
 <blockquote class="blockquote">
 <p><strong>Outliers are extreme</strong><br>
@@ -766,7 +813,7 @@ The observation with value 64,401, an outlier, was found to be an accurate obser
 </blockquote>
 <blockquote class="blockquote">
 <p><strong>Exercise</strong>:<br>
-Using <a href="#fig-box" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-box</span></a>, estimate the following values for <code>num_char</code> in the <code>email50</code> data set:<br>
+Using <a href="#fig-box" class="quarto-xref">Figure&nbsp;<span>5.10</span></a>, estimate the following values for <code>num_char</code> in the <code>email50</code> data set:<br>
 (a) <span class="math inline">\(Q_1\)</span>,<br>
 (b) <span class="math inline">\(Q_3\)</span>, and<br>
 (c) IQR.<a href="#fn20" class="footnote-ref" id="fnref20" role="doc-noteref"><sup>20</sup></a></p>
@@ -801,7 +848,7 @@ Using <a href="#fig-box" class="quarto-xref">Figure&nbsp;<span class="quarto-unr
 </section>
 <section id="robust-statistics" class="level3" data-number="5.2.6">
 <h3 data-number="5.2.6" class="anchored" data-anchor-id="robust-statistics"><span class="header-section-number">5.2.6</span> Robust statistics</h3>
-<p>How are the <em>sample statistics</em> of the <code>num_char</code> data set affected by the observation with value 64,401? What would we see if this email wasn’t present in the data set? What would happen to these <em>summary statistics</em> if the observation at 64,401 had been even larger, say 150,000? These scenarios are plotted alongside the original data in <a href="#fig-box2" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-box2</span></a>, and sample statistics are computed in <code>R</code>.</p>
+<p>How are the <em>sample statistics</em> of the <code>num_char</code> data set affected by the observation with value 64,401? What would we see if this email wasn’t present in the data set? What would happen to these <em>summary statistics</em> if the observation at 64,401 had been even larger, say 150,000? These scenarios are plotted alongside the original data in <a href="#fig-box2" class="quarto-xref">Figure&nbsp;<span>5.11</span></a>, and sample statistics are computed in <code>R</code>.</p>
 <p>First, we create a new data frame containing the three scenarios: 1) the original data, 2) the data with the extreme observation dropped, and 3) the data with the extreme observation increased.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># code to create the `robust` data frame</span></span>
@@ -870,7 +917,7 @@ The distribution of vehicle prices tends to be right skewed, with a few luxury a
 </section>
 <section id="transforming-data" class="level3" data-number="5.2.7">
 <h3 data-number="5.2.7" class="anchored" data-anchor-id="transforming-data"><span class="header-section-number">5.2.7</span> Transforming data</h3>
-<p>When data are very strongly skewed, we sometimes transform them so they are easier to model. Consider the histogram of Major League Baseball players’ salaries from 2010, which is shown in <a href="#fig-hist510" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-hist510</span></a>.</p>
+<p>When data are very strongly skewed, we sometimes transform them so they are easier to model. Consider the histogram of Major League Baseball players’ salaries from 2010, which is shown in <a href="#fig-hist510" class="quarto-xref">Figure&nbsp;<span>5.12</span></a>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-hist510" class="quarto-figure quarto-figure-center quarto-float anchored">
@@ -889,7 +936,7 @@ Figure&nbsp;5.12: Histogram of MLB player salaries for 2010, in millions of doll
 <p><em>Example</em>:<br>
 The histogram of MLB player salaries is somewhat useful because we can see that the data are extremely skewed and centered (as gauged by the median) at about $1 million. What about this plot is not useful?<a href="#fn25" class="footnote-ref" id="fnref25" role="doc-noteref"><sup>25</sup></a></p>
 </blockquote>
-<p>There are some standard transformations that are often applied when much of the data cluster near zero (relative to the larger values in the data set) and all observations are positive. A <strong>transformation</strong> is a rescaling of the data using a function. For instance, a plot of the natural logarithm<a href="#fn26" class="footnote-ref" id="fnref26" role="doc-noteref"><sup>26</sup></a> of player salaries results in a new histogram in <a href="#fig-hist512" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-hist512</span></a>. Transformed data are sometimes easier to work with when applying statistical models because the transformed data are much less skewed and outliers are usually less extreme.</p>
+<p>There are some standard transformations that are often applied when much of the data cluster near zero (relative to the larger values in the data set) and all observations are positive. A <strong>transformation</strong> is a rescaling of the data using a function. For instance, a plot of the natural logarithm<a href="#fn26" class="footnote-ref" id="fnref26" role="doc-noteref"><sup>26</sup></a> of player salaries results in a new histogram in <a href="#fig-hist512" class="quarto-xref">Figure&nbsp;<span>5.13</span></a>. Transformed data are sometimes easier to work with when applying statistical models because the transformed data are much less skewed and outliers are usually less extreme.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-hist512" class="quarto-figure quarto-figure-center quarto-float anchored">
@@ -904,7 +951,7 @@ Figure&nbsp;5.13: Histogram of the log-transformed MLB player salaries for 2010.
 </div>
 </div>
 </div>
-<p>Transformations can also be applied to one or both variables in a scatterplot. A scatterplot of the original <code>line_breaks</code> and <code>num_char</code> variables is shown in <a href="#fig-scat52" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-scat52</span></a> above. We can see a positive association between the variables and that many observations are clustered near zero. Later in this text, we might want to use a straight line to model the data. However, we’ll find that the data in their current state cannot be modeled very well. <a href="#fig-scat513" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-scat513</span></a> shows a scatterplot where both <code>line_breaks</code> and <code>num_char</code> have been transformed using a natural log (log base <span class="math inline">\(e\)</span>) transformation. While there is a positive association in each plot, the transformed data show a steadier trend, which is easier to model than the original (un-transformed) data.</p>
+<p>Transformations can also be applied to one or both variables in a scatterplot. A scatterplot of the original <code>line_breaks</code> and <code>num_char</code> variables is shown in <a href="#fig-scat52" class="quarto-xref">Figure&nbsp;<span>5.2</span></a> above. We can see a positive association between the variables and that many observations are clustered near zero. Later in this text, we might want to use a straight line to model the data. However, we’ll find that the data in their current state cannot be modeled very well. <a href="#fig-scat513" class="quarto-xref">Figure&nbsp;<span>5.14</span></a> shows a scatterplot where both <code>line_breaks</code> and <code>num_char</code> have been transformed using a natural log (log base <span class="math inline">\(e\)</span>) transformation. While there is a positive association in each plot, the transformed data show a steadier trend, which is easier to model than the original (un-transformed) data.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-scat513" class="quarto-figure quarto-figure-center quarto-float anchored">
@@ -1036,6 +1083,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -1070,7 +1135,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');

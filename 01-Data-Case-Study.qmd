@@ -1,4 +1,4 @@
-# Data Case Study {#CS1}
+# Data Case Study {#sec-CS1}
 
 ## Objectives
 

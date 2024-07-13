@@ -1,4 +1,4 @@
-# Named Continuous Distributions {#CONTNNAMED}
+# Named Continuous Distributions {#sec-CONTNNAMED}
 
 ## Objectives
 

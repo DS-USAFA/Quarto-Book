@@ -1,4 +1,4 @@
-# Random Variables {#RANDVAR}
+# Random Variables {#sec-RANDVAR}
 
 ## Objectives
 

@@ -1,4 +1,4 @@
-# Studies {#STUDY}
+# Studies {#sec-STUDY}
 
 ```{r}
 #| echo: false

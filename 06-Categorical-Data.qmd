@@ -1,4 +1,4 @@
-# Categorical Data {#CATDATA}
+# Categorical Data {#sec-CATDATA}
 
 ## Objectives
 

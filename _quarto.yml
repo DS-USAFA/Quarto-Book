@@ -48,6 +48,14 @@ book:
         - 18-Inference-Case-Study.qmd
         - 19-Hypothesis-Testing-Simulation.qmd
         - 20-Hypothesis-Testing-ProbDist.qmd
+        - 21-Central-Limit-Theorem.qmd
+        - 22-Additional-Hypothesis-Tests.qmd
+        - 23-Analysis-of-Variance.qmd
+        - 24-Confidence-Intervals.qmd
+        - 25-Bootstrap.qmd
+    - part: "Statistical Modeling - Prediction"
+      chapters:  
+        - 26-Linear-Regression-Case-Study.qmd
         - references.qmd
 cover-image: Cover_Majors.png
 favicon: Cover_Majors.png
