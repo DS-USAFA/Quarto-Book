@@ -1,4 +1,4 @@
-# Linear Regression Inference {#LRINF}
+# Linear Regression Inference {#sec-LRINF}
 
 ```{r}
 #| echo: false
@@ -26,13 +26,13 @@ In this chapter we discuss uncertainty in the estimates of the slope and y-inter
 
 ### Regression
 
-Last chapter, we introduced linear models using the simple linear regression model: 
+Last chapter, we introduced linear models using the simple linear regression model:
 
 $$
 Y=\beta_0+\beta_1X+e
 $$
 
-where now we assume the error term follows a normal distribution with mean 0 and constant standard deviation $\sigma$. Using the method of least squares, which does not require the assumption of normality, we obtain estimates of $\beta_0$ and $\beta_1$: 
+where now we assume the error term follows a normal distribution with mean 0 and constant standard deviation $\sigma$. Using the method of least squares, which does not require the assumption of normality, we obtain estimates of $\beta_0$ and $\beta_1$:
 
 $$
 \hat{\beta}_1 = {\sum x_i y_i - n\bar{x}\bar{y} \over \sum x_i^2 -n\bar{x}^2}
@@ -54,7 +54,7 @@ The reason this model returns the expected value of the response at the given va
 
 $$
 E(Y|X=x)=E(\beta_0+\beta_1x+e)=Y=\beta_0+\beta_1x+E(e)=\beta_0+\beta_1x
-$$ 
+$$
 
 because $\beta_0$, $\beta_1$, and $x$ are constants.
 
@@ -62,12 +62,12 @@ It should be abundantly clear by now that $\hat{Y}_*$, $\hat{\beta}_0$, and $\ha
 
 ### Review of assumptions
 
-We will review the assumptions of the least squares model because they are important for inference. Refer to Figure \@ref(fig:assump271-fig), which plots the linear regression in the top row and the residuals in the second row. We generally assume the following:
+We will review the assumptions of the least squares model because they are important for inference. Refer to @fig-assump271, which plots the linear regression in the top row and the residuals in the second row. We generally assume the following:
 
-1.  **Fit**. The data should show a linear trend. If there is a nonlinear trend, a transformation of the explanatory variable or a more advanced regression method should be applied. When looking at the residual plot, if the trend is linear, we should see a spread of points that are flat. The left column of Figure \@ref(fig:assump271-fig) is an example of a nonlinear relationship. The top plot is the regression plot and we can see what looks like a quadratic relationship instead of a linear one. The residual plot, the plot in the lower left corner of Figure \@ref(fig:assump271-fig), also exhibits this non-linear trend.\
-2.  **Nearly normal residuals**. Generally the residuals must be nearly normal to use a $t$ or $F$ for inference. When this assumption is found to be unreasonable, it is usually because of **outliers** or concerns about **influential** points. An example of non-normal residuals is shown in the second column of Figure \@ref(fig:assump271-fig). A **qq** plot is also useful as a diagnostic tool as we have seen. We can still use the **bootstrap** as an inference tool if the normality assumption is unreasonable.\
-3.  **Constant variability**. The variability of points around the least squares line remains roughly constant. An example of non-constant variability is shown in the third panel of Figure \@ref(fig:assump271-fig). The constant variability assumption is needed for the $t$ and $F$ distributions. It is not required for the bootstrap method.\
-4.  **Independent observations**. Be cautious about applying regression to data collected sequentially in what is called a **time series**. Such data may have an underlying structure that should be considered in a model and analysis. An example of a time series where independence is violated is shown in the fourth panel of Figure \@ref(fig:assump271-fig). More advanced methods are required for time series data even including using a bootstrap.
+1.  **Fit**. The data should show a linear trend. If there is a nonlinear trend, a transformation of the explanatory variable or a more advanced regression method should be applied. When looking at the residual plot, if the trend is linear, we should see a spread of points that are flat. The left column of @fig-assump271 is an example of a nonlinear relationship. The top plot is the regression plot and we can see what looks like a quadratic relationship instead of a linear one. The residual plot, the plot in the lower left corner of @fig-assump271, also exhibits this non-linear trend.\
+2.  **Nearly normal residuals**. Generally the residuals must be nearly normal to use a $t$ or $F$ for inference. When this assumption is found to be unreasonable, it is usually because of **outliers** or concerns about **influential** points. An example of non-normal residuals is shown in the second column of @fig-assump271. A **qq** plot is also useful as a diagnostic tool as we have seen. We can still use the **bootstrap** as an inference tool if the normality assumption is unreasonable.\
+3.  **Constant variability**. The variability of points around the least squares line remains roughly constant. An example of non-constant variability is shown in the third panel of @fig-assump271. The constant variability assumption is needed for the $t$ and $F$ distributions. It is not required for the bootstrap method.\
+4.  **Independent observations**. Be cautious about applying regression to data collected sequentially in what is called a **time series**. Such data may have an underlying structure that should be considered in a model and analysis. An example of a time series where independence is violated is shown in the fourth panel of @fig-assump271. More advanced methods are required for time series data even including using a bootstrap.
 
 In a later chapter we will explore more regression diagnostics.
 
@@ -234,10 +234,11 @@ makeTubeAdv <- function(x, y, Z=2, R=1, col='#00000022', border='#00000000', typ
 }
 ```
 
-```{r assump271-fig}
+```{r}
 #| echo: false 
 #| message: false 
 #| fig-cap: "Plots of linear regression and residual to illustrate the assumptions of the model."
+#| label: "fig-assump271"
 
 data(COL)
 
@@ -362,7 +363,7 @@ As we learned in the last block, if we replace population standard deviation ($\
 
 $$
 {\hat{\beta}_1-\beta_1 \over {\hat \sigma \over \sqrt{ \sum (x_i-\bar{x})^2}}}\sim \textsf{t}\left(n-2\right)
-$$ 
+$$
 
 We only have $n-2$ degrees of freedom because in the estimation of $\sigma^2$ we had to estimate two parameters, $\beta_0$ and $\beta_1$.
 
@@ -420,10 +421,12 @@ Let's predict calories from the carbohydrate content.
 > **Exercise**:\
 > Create a scatterplot of calories and carbohydrate, carbs, content.
 
-Figure \@ref(fig:scat271-fig) is the scatterplot.
+@fig-scat271 is the scatterplot.
 
 ```{r scat271-fig}
 #| fig-cap: "Scatterplot of calories and carbohydrate content in Starbucks' products."
+#| label: "fig-scat271"
+#| warning: false
 starbucks %>%
   gf_point(calories~carb) %>%
   gf_labs(x="Carbohydrates",y="Calories") %>%
@@ -455,7 +458,7 @@ Our estimate of the slope is 4.297 with a standard error of 0.5424. Just for dem
 
 $$
 {\hat{\beta}_1-0 \over {\hat \sigma \over \sqrt{ \sum (x_i-\bar{x})^2}}}
-$$ 
+$$
 
 The denominator is the standard error of the estimate. The estimate of the residual standard deviation is reported in the last line as 78.26. But it is just the square root of the sum of squared residuals divided by the degrees of freedom.
 
@@ -539,10 +542,12 @@ $$
 
 ### Starbucks
 
-Continuing with the `Starbucks` example. In plotting the data, we can have `R` plot the confidence and prediction bands, Figure \@ref(fig:ci271-fig). We will observe the width of both of these intervals increase as we move away from the center of the data and also that prediction intervals are wider than the confidence interval.
+Continuing with the `Starbucks` example. In plotting the data, we can have `R` plot the confidence and prediction bands, @fig-ci271. We will observe the width of both of these intervals increase as we move away from the center of the data and also that prediction intervals are wider than the confidence interval.
 
-```{r ci271-fig}
+```{r}
 #| fig-cap: "Confidence and predictions bands for linear regression model of calories and carbs in Starbucks' products."
+#| warning: false
+#| label: "fig-ci271"
 starbucks %>%
   gf_point(calories~carb) %>%
   gf_labs(x="Carbohydrates",y="Calories") %>%

@@ -1,4 +1,4 @@
-# Linear Regression Basics
+# Linear Regression Basics {#sec-LRBASICS}
 
 ```{r}
 #| echo: false
@@ -80,6 +80,8 @@ We think the head and total length variables are linearly associated. Possums wi
 
 ```{r scat261-fig}
 #| fig-cap: "A scatterplot of possum total length and head length."
+#| label: "fig-scat261"
+#| warning: false
 
 possum %>%
   gf_point(head_l~total_l) %>%
@@ -87,7 +89,7 @@ possum %>%
   gf_theme(theme_classic())
 ```
 
-From Figure \@ref(fig:scat261-fig), we see that the relationship is not perfectly linear; however, it could be helpful to partially explain the connection between these variables with a straight line. Since some longer possums will have shorter heads and some shorter possums will have longer heads, there is no straight line that can go through all the data points. We expect some deviation from the linear fit. This deviation is represented by random variable $e$ (this is not the Euler number), which we refer to as an error term or residual:
+From @fig-scat261, we see that the relationship is not perfectly linear; however, it could be helpful to partially explain the connection between these variables with a straight line. Since some longer possums will have shorter heads and some shorter possums will have longer heads, there is no straight line that can go through all the data points. We expect some deviation from the linear fit. This deviation is represented by random variable $e$ (this is not the Euler number), which we refer to as an error term or residual:
 
 $$
 Y=\beta_0+\beta_1X+e
@@ -117,11 +119,13 @@ We could fit the linear relationship by eye like we did in the case study and ob
 
 [^27-linear-regression-basics-1]: If you want to do try this again use the `plot_ss()` from the last chapter.
 
-We begin by thinking about what we mean by "best". Mathematically, we want a line that has small residuals. There are multiple methods, but the most common is the *method of least squares*. In this method, our goal is to find the values of $\beta_0$ and $\beta_1$ that minimize the squared vertical distance between the points and the resulting line, the **residuals**. See \@ref(fig:resid1-fig) for a visual representation involving only four observations from *made up* data.
+We begin by thinking about what we mean by "best". Mathematically, we want a line that has small residuals. There are multiple methods, but the most common is the *method of least squares*. In this method, our goal is to find the values of $\beta_0$ and $\beta_1$ that minimize the squared vertical distance between the points and the resulting line, the **residuals**. See @fig-resid1 for a visual representation involving only four observations from *made up* data.
 
 ```{r resid1-fig}
 #| echo: false 
+#| warning: false
 #| fig-cap: "An illustration of the least squares method."
+#| label: "fig-resid1"
 
 x<-c(1,2,3,4)
 y<-c(2,1.2,4,3)
@@ -185,7 +189,7 @@ $$
 
 where $R$ is the correlation between the two variables, and $s_x$ and $s_y$ are the sample standard deviations of the explanatory variable and response, respectively. Thus the slope is proportional to the correlation.
 
-You may also be interested in estimating $\sigma$, the standard deviation of the error: 
+You may also be interested in estimating $\sigma$, the standard deviation of the error:
 
 $$
 \hat{\sigma}=\sqrt{{1\over{n-2}} \sum_{i=1}^n \hat{e}_i^2}
@@ -221,10 +225,12 @@ The model object, `poss_mod`, contains much more information. Using the `names()
 names(poss_mod)
 ```
 
-Figure \@ref(fig:scat262-fig) is a plot the data points and least squares line together.
+@fig-scat262 is a plot the data points and least squares line together.
 
 ```{r scat262-fig}
 #| fig-cap: "A scatterplot of possum total length and head length including a regression line."
+#| label: "fig-scat262"
+#| warning: false
 
 possum %>%
   gf_point( head_l ~ total_l) %>%
@@ -300,10 +306,12 @@ cars_mod <- lm(dist~speed,data=cars)
 summary(cars_mod)
 ```
 
-Figure \@ref(fig:scat263-fig) is a scatterplot of the `cars` data set.
+@fig-scat263 is a scatterplot of the `cars` data set.
 
 ```{r scat263-fig}
 #| fig-cap: "A scatterplot of speed and stopping distance."
+#| label: "fig-scat263"
+#| warning: false
 
 cars %>%
   gf_point(dist~speed) %>%
@@ -328,11 +336,12 @@ The estimated standard deviation of the error (residual), $\hat{\sigma}$ is equa
 
 Anytime we build a model, there are assumptions behind it that, if violated, could invalidate the conclusions of the model. In the description of simple linear regression, we briefly mentioned these assumptions. Next chapter, we will discuss how to validate these assumptions.
 
-**Fit**. When we build a simple linear regression, we assume that the relationship between the response and the predictor is as we specify in the fit formula. This in simple linear regression is often just a linear relationship. Suppose two variables are non-linearly related, see \@ref(fig:resid2-fig). While we could build a linear regression model between the two, the resulting model would not be very useful. If we built a model with the fit formulated as a quadratic, a similar plot of the residuals would look flat. We will discuss this more in a later chapter.
+**Fit**. When we build a simple linear regression, we assume that the relationship between the response and the predictor is as we specify in the fit formula. This in simple linear regression is often just a linear relationship. Suppose two variables are non-linearly related, see @fig-resid2. While we could build a linear regression model between the two, the resulting model would not be very useful. If we built a model with the fit formulated as a quadratic, a similar plot of the residuals would look flat. We will discuss this more in a later chapter.
 
-```{r resid2-fig}
+```{r}
 #| echo: false 
 #| fig-cap: "An example of non-linear relationship between two variables fitted with a linear regression line."
+#| label: "fig-resid2"
 
 set.seed(2003)
 x<-runif(50,1,5)
@@ -344,10 +353,12 @@ abline(a=b0,b=b1)
 text(2.5,2,paste("y=",round(b0,3),"+",round(b1,3),"* x"))
 ```
 
-**Independent Observations**. Another assumption is that all observations in a data set are independent of one another. A common way this assumption is violated is by using time as the predictor variable. For example, suppose we were interested in how an individual's weight changes over time. While it may be tempting to plot this and fit a regression line through the data, the resulting model is inappropriate, as simple linear regression assumes that each observation is independent. Figure \@ref(fig:resid3-fig) shows correlated data fitted with a linear regression line.
+**Independent Observations**. Another assumption is that all observations in a data set are independent of one another. A common way this assumption is violated is by using time as the predictor variable. For example, suppose we were interested in how an individual's weight changes over time. While it may be tempting to plot this and fit a regression line through the data, the resulting model is inappropriate, as simple linear regression assumes that each observation is independent. @fig-resid3 shows correlated data fitted with a linear regression line.
 
 ```{r resid3-fig}
 #| echo: false 
+#| label: "fig-resid3"
+#| warning: false
 #| fig-cap: "A scatterplot of correlated data fit using a linear regression model with the assumption of independence."
 
 set.seed(2003)
@@ -375,10 +386,12 @@ The last three assumptions are important not necessarily for estimating the rela
 
 One purpose of residual plots is to identify characteristics or patterns still apparent in data after fitting a model. These can help to evaluate the assumptions.
 
-Figure \@ref(fig:resid4-fig) shows three scatterplots with linear models in the first row and residual plots in the second row.
+@fig-resid4 shows three scatterplots with linear models in the first row and residual plots in the second row.
 
 ```{r resid4-fig}
 #| echo: false 
+#| label: "fig-resid4"
+#| warning: false
 #| fig-cap: "Residual plots and associated scatterplots."
 
 data(COL)

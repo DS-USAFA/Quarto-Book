@@ -2,36 +2,33 @@
 
 ## Objectives
 
-1) Obtain parameter estimates of a simple linear regression model, given a sample of data.   
+1)  Obtain parameter estimates of a simple linear regression model, given a sample of data.
 
-2) Interpret the coefficients of a simple linear regression.  
+2)  Interpret the coefficients of a simple linear regression.
 
-3) Create a scatterplot with a regression line in R.  
+3)  Create a scatterplot with a regression line in R.
 
-4) Explain and check the assumptions of linear regression.   
+4)  Explain and check the assumptions of linear regression.
 
-5) Use and be able to explain all new terminology, to include: *response*, *predictor*, *linear regression*, *simple linear regression*, *coefficients*, *residual*, *extrapolation*.  
-
+5)  Use and be able to explain all new terminology, to include: *response*, *predictor*, *linear regression*, *simple linear regression*, *coefficients*, *residual*, *extrapolation*.
 
 ## Linear regression models
 
-The rest of this block will serve as a brief introduction to linear models. In general, a model estimates the relationship between one variable (a **response**) and one or more other variables (**predictors**). Models typically serve two purposes: *prediction* and *inference*. A model allows us to predict the value of a response given particular values of predictors. Also, a model allows us to make inferences about the relationship between the response and the predictors. 
+The rest of this block will serve as a brief introduction to linear models. In general, a model estimates the relationship between one variable (a **response**) and one or more other variables (**predictors**). Models typically serve two purposes: *prediction* and *inference*. A model allows us to predict the value of a response given particular values of predictors. Also, a model allows us to make inferences about the relationship between the response and the predictors.
 
-Not all models are used or built on the same principles. Some models are better for inference and others are better for prediction. Some models are better for qualitative responses and others are better for quantitative responses. Also, many models require making assumptions about the nature of the relationship between variables. If these assumptions are violated, the model loses usefulness. In a machine learning course, a wide array of models are discussed but most are used for the purpose of prediction. 
+Not all models are used or built on the same principles. Some models are better for inference and others are better for prediction. Some models are better for qualitative responses and others are better for quantitative responses. Also, many models require making assumptions about the nature of the relationship between variables. If these assumptions are violated, the model loses usefulness. In a machine learning course, a wide array of models are discussed but most are used for the purpose of prediction.
 
-In this block, we will focus on *linear models* and the use of linear regression to produce and evaluate the model. Linear regression is a very powerful statistical technique. Many people have some familiarity with regression just from reading the news, where graphs with straight lines are overlaid on scatterplots, much like we did in the last chapter. Linear models can be used for prediction or to evaluate whether there is a linear relationship between two numerical variables.  
+In this block, we will focus on *linear models* and the use of linear regression to produce and evaluate the model. Linear regression is a very powerful statistical technique. Many people have some familiarity with regression just from reading the news, where graphs with straight lines are overlaid on scatterplots, much like we did in the last chapter. Linear models can be used for prediction or to evaluate whether there is a linear relationship between two numerical variables.
 
-Suppose we were interested in exploring the relationship between one response variable ($Y$) and one predictor variable ($X$). We can postulate a linear relationship between the two:
-$$
+Suppose we were interested in exploring the relationship between one response variable ($Y$) and one predictor variable ($X$). We can postulate a linear relationship between the two: $$
 Y=\beta_0+\beta_1 X
 $$
 
-A linear model can be expanded to include multiple predictor variables:
-$$
+A linear model can be expanded to include multiple predictor variables: $$
 Y=\beta_0+\beta_1X_1+\beta_2X_2+...+\beta_pX_p
 $$
 
-This model is often referred to as a **linear regression** model. (When there is only one predictor variable, we often refer to it as a **simple linear regression** model.) The $\beta_j$ terms are referred to as **coefficients**. Note that the coefficients are **parameters** and thus represented as Greek letters. We typically don't know the true values of $\beta_j$, so we have to estimate them with samples from the population of $X$ and $Y$, our data. Estimating these parameters and using them for prediction and inference will be the majority of the work of this last block.  
+This model is often referred to as a **linear regression** model. (When there is only one predictor variable, we often refer to it as a **simple linear regression** model.) The $\beta_j$ terms are referred to as **coefficients**. Note that the coefficients are **parameters** and thus represented as Greek letters. We typically don't know the true values of $\beta_j$, so we have to estimate them with samples from the population of $X$ and $Y$, our data. Estimating these parameters and using them for prediction and inference will be the majority of the work of this last block.
 
 We consider the models above to be linear models because they are linear in the **parameters**. This means that the following model is also a linear model:
 
@@ -41,11 +38,10 @@ $$
 
 Technically, we can write the parameters as a vector and the predictor or explanatory variables as a matrix. The response will then be an inner product of this vector and matrix and thus a linear combination.
 
-Even if we expect two random variables $X$ and $Y$ to share a linear relationship, we don't expect it to be perfect. There will be some scatter around the estimated line. For example, consider the head length and total length of 104 brushtail possums from Australia. The data is in the file `possum.csv` in the `data` folder. 
+Even if we expect two random variables $X$ and $Y$ to share a linear relationship, we don't expect it to be perfect. There will be some scatter around the estimated line. For example, consider the head length and total length of 104 brushtail possums from Australia. The data is in the file `possum.csv` in the `data` folder.
 
->**Exercise**:  
-Read in the data from `data/possum.csv` and look at the first few rows of data.
-
+> **Exercise**:\
+> Read in the data from `data/possum.csv` and look at the first few rows of data.
 
 ```{r message=FALSE,warning=FALSE}
 possum<-read_csv("data/possum.csv")
@@ -59,12 +55,10 @@ glimpse(possum)
 head(possum)
 ```
 
+We think the head and total length variables are linearly associated. Possums with an above average total length also tend to have above average head lengths. To visualize this data, we will use a scatterplot. We have used scatterplots multiple times in this book. Scatterplots are a graphical technique to present two numerical variables simultaneously. Such plots permit the relationship between the variables to be examined with ease. The following figure shows a scatterplot for the head length and total length of the possums. Each point represents a single possum from the data.
 
-We think the head and total length variables are linearly associated. Possums with an above average total length also tend to have above average head lengths. To visualize this data, we will use a scatterplot. We have used scatterplots multiple times in this book. Scatterplots are a graphical technique to present two numerical variables simultaneously. Such plots permit the relationship between the variables to be examined with ease. The following figure shows a scatterplot for the head length and total length of the possums. Each point represents a single possum from the data. 
-
-
->**Exercise**:  
-Create a scatterplot of head length and total length.
+> **Exercise**:\
+> Create a scatterplot of head length and total length.
 
 ```{r scat261-fig,fig.cap="A scatterplot of possum total length and head length."}
 possum %>%
@@ -83,7 +77,7 @@ For our problem, $Y$ is head length and $X$ is total length.
 
 In general we have:
 
-$$ \text{Data} = \text{Fit} + \text{Residual} $$ 
+$$ \text{Data} = \text{Fit} + \text{Residual} $$
 
 and what will change in our modeling process is how we specify the $\text{Fit}$.
 
@@ -91,17 +85,19 @@ The error term is assumed to follow a normal distribution with mean 0 and consta
 
 ### Estimation
 
-We want to describe the relationship between the head length and total length variables in the possum data set using a line. In this example, we will use the total length as the predictor variable, $x$, to predict a possum's head length, $y$. Just as a side note, the choice of the predictor and response are not arbitrary. The response is typically what we want to predict or in the case of experiments is the causal  result of the predictor(s). 
+We want to describe the relationship between the head length and total length variables in the possum data set using a line. In this example, we will use the total length as the predictor variable, $x$, to predict a possum's head length, $y$. Just as a side note, the choice of the predictor and response are not arbitrary. The response is typically what we want to predict or in the case of experiments is the causal result of the predictor(s).
 
-In the possum data we have $n = 104$ observations: $(x_1,y_1), (x_2,y_2),...,(x_{104},y_{104})$. Then for each observation the implied linear model is:  
+In the possum data we have $n = 104$ observations: $(x_1,y_1), (x_2,y_2),...,(x_{104},y_{104})$. Then for each observation the implied linear model is:
 
 $$
 y_i=\beta_0+\beta x_i + e_i
 $$
 
-We could fit the linear relationship by eye like we did in the case study and obtain estimates of the slope and intercept but this is too ad hoc.^[If you want to do try this again use the `plot_ss()` from the last chapter.]  So, given a set of data like the `possum`, how do we actually obtain estimates of $\beta_0$ and $\beta_1$? What is the **best** fit line?  
+We could fit the linear relationship by eye like we did in the case study and obtain estimates of the slope and intercept but this is too ad hoc.[^27-linear-regression-basics-1] So, given a set of data like the `possum`, how do we actually obtain estimates of $\beta_0$ and $\beta_1$? What is the **best** fit line?
 
-We begin by thinking about what we mean by "best". Mathematically, we want a line that has small residuals. There are multiple methods, but the most common is the *method of least squares*. In this method, our goal is to find the values of $\beta_0$ and $\beta_1$ that minimize the squared vertical distance between the points and the resulting line, the **residuals**. See \@ref(fig:resid1-fig) for a visual representation involving only four observations from *made up* data. 
+[^27-linear-regression-basics-1]: If you want to do try this again use the `plot_ss()` from the last chapter.
+
+We begin by thinking about what we mean by "best". Mathematically, we want a line that has small residuals. There are multiple methods, but the most common is the *method of least squares*. In this method, our goal is to find the values of $\beta_0$ and $\beta_1$ that minimize the squared vertical distance between the points and the resulting line, the **residuals**. See \@ref(fig:resid1-fig) for a visual representation involving only four observations from *made up* data.
 
 ```{r resid1-fig,echo=F,fig.cap="An illustration of the least squares method."}
 x<-c(1,2,3,4)
@@ -124,18 +120,19 @@ text(3,2,expression(hat(beta)[1]==slope))
 
 Our criterion for best is the estimates of slope and intercept that minimize the sum of the squared residuals:
 
-$$e_{1}^2 + e_{2}^2 + \dots + e_{n}^2$$ 
+$$e_{1}^2 + e_{2}^2 + \dots + e_{n}^2$$
 
-The following are three possible reasons to choose the least squares criterion over other criteria such as the sum of the absolute value of residuals:  
+The following are three possible reasons to choose the least squares criterion over other criteria such as the sum of the absolute value of residuals:
 
-i. It is the most commonly used method.  
-ii. Computing a line based on least squares was much easier by hand when computers were not available.  
-iii. In many applications, a residual twice as large as another residual is more than twice as bad. For example, being off by 4 is usually more than twice as bad as being off by 2. Squaring the residuals accounts for this discrepancy.  
+i.  It is the most commonly used method.\
+ii. Computing a line based on least squares was much easier by hand when computers were not available.\
+iii. In many applications, a residual twice as large as another residual is more than twice as bad. For example, being off by 4 is usually more than twice as bad as being off by 2. Squaring the residuals accounts for this discrepancy.
 
-The first two reasons are largely for tradition and convenience; the last reason explains why least squares is typically helpful.^[There are applications where least absolute deviation may be more useful, and there are plenty of other criteria we might consider. However, this book only applies the least squares criterion. Math 378: Applied Statistical Learning (the follow-on course at USAFA) will look at other criteria such as a shrinkage method called the lasso.]
+The first two reasons are largely for tradition and convenience; the last reason explains why least squares is typically helpful.[^27-linear-regression-basics-2]
 
-So, we need to find $\beta_0$ and $\beta_1$ that minimize the expression, observed minus expected:
-$$
+[^27-linear-regression-basics-2]: There are applications where least absolute deviation may be more useful, and there are plenty of other criteria we might consider. However, this book only applies the least squares criterion. Math 378: Applied Statistical Learning (the follow-on course at USAFA) will look at other criteria such as a shrinkage method called the lasso.
+
+So, we need to find $\beta_0$ and $\beta_1$ that minimize the expression, observed minus expected: $$
 \sum_{i=1}^n (y_i-\beta_0-\beta_1 x_i)^2
 $$
 
@@ -145,9 +142,9 @@ $$
 \hat{\beta}_0=\bar{y}-\hat{\beta}_1\bar{x}
 $$
 
-Notice that this implies that the line will always go through the point $\left(\bar{x},\bar{y} \right)$. As a reminder $\bar{x}$ is the sample mean of the explanatory variable and $\bar{y}$ is the sample mean of the response.  
+Notice that this implies that the line will always go through the point $\left(\bar{x},\bar{y} \right)$. As a reminder $\bar{x}$ is the sample mean of the explanatory variable and $\bar{y}$ is the sample mean of the response.
 
-And 
+And
 
 $$
 \hat{\beta}_1 = {\sum x_i y_i - n\bar{x}\bar{y} \over{\sum x_i^2 -n\bar{x}^2}}
@@ -161,17 +158,15 @@ $$
 
 where $R$ is the correlation between the two variables, and $s_x$ and $s_y$ are the sample standard deviations of the explanatory variable and response, respectively. Thus the slope is proportional to the correlation.
 
-
-You may also be interested in estimating $\sigma$, the standard deviation of the error:
-$$
+You may also be interested in estimating $\sigma$, the standard deviation of the error: $$
 \hat{\sigma}=\sqrt{{1\over{n-2}} \sum_{i=1}^n \hat{e}_i^2}
 $$
 
 where $\hat{e}_i$ is the observed $i$th **residual** ($\hat{e}_i=y_i-\hat{\beta}_0-\hat{\beta}_1x_i$). This estimate is based only on the assumption of constant variance.
 
-### Possum example  
+### Possum example
 
-We will let `R` do the heavy work of minimizing the sum of squares. The function is `lm()` as we learned in the case study. This function needs a formula and data for input. The formula notation should be easy for us since we have worked with formulas so much in the **mosaic** package. 
+We will let `R` do the heavy work of minimizing the sum of squares. The function is `lm()` as we learned in the case study. This function needs a formula and data for input. The formula notation should be easy for us since we have worked with formulas so much in the **mosaic** package.
 
 First create the model:
 
@@ -191,13 +186,11 @@ We can get more information using the `summary()` function:
 summary(poss_mod)
 ```
 
-
 The model object, `poss_mod`, contains much more information. Using the `names()` function on the model objects, gives you a list of other quantities available, such as residuals.
 
 ```{r}
 names(poss_mod)
 ```
-
 
 Figure \@ref(fig:scat262-fig) is a plot the data points and least squares line together.
 
@@ -210,7 +203,6 @@ possum %>%
   gf_theme(theme_classic()) 
 ```
 
-
 ### Interpretation
 
 Interpreting parameters in a regression model is often one of the most important steps in the analysis. The intercept term, $\beta_0$, is usually uninteresting. It represents the **average** value of the response when the predictor is 0. Unless we center our predictor variable around 0, the actual value of the intercept is usually not important; it typically just gives the slope more flexibility to fit the data. The slope term, $\beta_1$ represents the **average** increase in the response variable per unit increase in the predictor variable. We keep using the word **average** in our discussion. With the assumption of a mean of 0 for the residuals, which least squares ensures with a line going through the point $\left(\bar{x},\bar{y} \right)$, the output of the model is the expected or average response for the given input. Mathematically we have:
@@ -219,18 +211,17 @@ $$
 E(Y|X=x)=E(\beta_0+\beta_1x+e) = E(\beta_0+\beta_1x)+E(e)=\beta_0+\beta_1x
 $$
 
-Predicting a value of the response variable simply becomes a matter of substituting the value of the predictor variable into the estimated regression equation. Again, it is important to note that for a given value of $x$, the predicted response, $\hat{y}$ is what we expect the average value of $y$ to be given that specific value of the predictor. 
+Predicting a value of the response variable simply becomes a matter of substituting the value of the predictor variable into the estimated regression equation. Again, it is important to note that for a given value of $x$, the predicted response, $\hat{y}$ is what we expect the average value of $y$ to be given that specific value of the predictor.
 
 > **Exercise**: The slope and intercept estimates for the possum data are 0.5729 and 42.7098. What do these numbers really mean, interpret them?
 
-Interpreting the slope parameter is helpful in almost any application. For each additional 1 cm of total length of a possum, we would expect the possum's head to be 0.5729 mm longer on average. Note that a longer total length corresponds to longer head because the slope coefficient is positive. We must be cautious in this interpretation: while there is a real association, we cannot interpret a causal connection between the variables because these data are observational. That is, increasing a possum's total length may not cause the possum's head to be longer. 
+Interpreting the slope parameter is helpful in almost any application. For each additional 1 cm of total length of a possum, we would expect the possum's head to be 0.5729 mm longer on average. Note that a longer total length corresponds to longer head because the slope coefficient is positive. We must be cautious in this interpretation: while there is a real association, we cannot interpret a causal connection between the variables because these data are observational. That is, increasing a possum's total length may not cause the possum's head to be longer.
 
 The estimated intercept $b_0=42.7$ describes the average head length of a possum with zero total length! The meaning of the intercept is irrelevant to this application since a possum can not practically have a total length of 0.
 
-Earlier we noted a relationship between the slope estimate and the correlation coefficient estimate. 
+Earlier we noted a relationship between the slope estimate and the correlation coefficient estimate.
 
->**Exercise** 
-Find the slope from the correlation and standard deviations.
+> **Exercise** Find the slope from the correlation and standard deviations.
 
 ```{r}
 possum %>%
@@ -238,16 +229,15 @@ possum %>%
             sd_total=sd(total_l),slope=correlation*sd_head/sd_total)
 ```
 
-
 ### Extrapolation is dangerous
 
-> "When those blizzards hit the East Coast this winter, it proved to my satisfaction that global warming was a fraud. That snow was freezing cold. But in an alarming trend, temperatures this spring have risen. Consider this: On February $6^{th}$ it was 10 degrees. Today it hit almost 80. At this rate, by August it will be 220 degrees. So clearly folks the climate debate rages on."
-*Stephen Colbert*
-April 6th, 2010^[http://www.colbertnation.com/the-colbert-report-videos/269929/]
+> "When those blizzards hit the East Coast this winter, it proved to my satisfaction that global warming was a fraud. That snow was freezing cold. But in an alarming trend, temperatures this spring have risen. Consider this: On February $6^{th}$ it was 10 degrees. Today it hit almost 80. At this rate, by August it will be 220 degrees. So clearly folks the climate debate rages on." *Stephen Colbert* April 6th, 2010[^27-linear-regression-basics-3]
 
-Linear models can be used to approximate the relationship between two variables and are built on an observed random sample.  These models have real limitations as linear regression is simply a modeling framework. The truth is almost always much more complex than our simple line. *Extrapolation* occurs when one tries to make a prediction of a response given a value of the predictor that is outside the range of values used to build the model. We only have information about the relationship between two variables in the region around our observed data. We do not know how the data outside of our limited window will behave. Be careful about extrapolating. 
+[^27-linear-regression-basics-3]: http://www.colbertnation.com/the-colbert-report-videos/269929/
 
-### Reading computer output  
+Linear models can be used to approximate the relationship between two variables and are built on an observed random sample. These models have real limitations as linear regression is simply a modeling framework. The truth is almost always much more complex than our simple line. *Extrapolation* occurs when one tries to make a prediction of a response given a value of the predictor that is outside the range of values used to build the model. We only have information about the relationship between two variables in the region around our observed data. We do not know how the data outside of our limited window will behave. Be careful about extrapolating.
+
+### Reading computer output
 
 We stored the results of our linear regression model for the possum data in the object `poss_mod` but it provided only the bare minimum of information. We can get more information using the function `summary()`.
 
@@ -255,12 +245,11 @@ We stored the results of our linear regression model for the possum data in the 
 summary(poss_mod)
 ```
 
-The first line repeats the model formula. The second line is a descriptive summary of the residuals, plots of the residuals are more useful than this summary. We then have a table of the model fit. The first column of numbers provides estimates for $\beta_0$ and $\beta_1$, respectively. For the next columns, we'll describe the meaning of the columns using the second row, which corresponds to information about the slope estimate. Again, the first column provides the point estimate for $\beta_1$. The second column is a standard error for this point estimate. The third column is a $t$ test statistic for the null hypothesis that $\beta_1 = 0$: $T=9.657$. The last column is the $p$-value for the $t$ test statistic for the null hypothesis $\beta_1=0$ and a two-sided alternative hypothesis. We will get into more of these details in the next chapters.   
+The first line repeats the model formula. The second line is a descriptive summary of the residuals, plots of the residuals are more useful than this summary. We then have a table of the model fit. The first column of numbers provides estimates for $\beta_0$ and $\beta_1$, respectively. For the next columns, we'll describe the meaning of the columns using the second row, which corresponds to information about the slope estimate. Again, the first column provides the point estimate for $\beta_1$. The second column is a standard error for this point estimate. The third column is a $t$ test statistic for the null hypothesis that $\beta_1 = 0$: $T=9.657$. The last column is the $p$-value for the $t$ test statistic for the null hypothesis $\beta_1=0$ and a two-sided alternative hypothesis. We will get into more of these details in the next chapters.
 
-The row with the residual standard error is an estimate of the unexplained variance. The next rows give a summary of the model fit and we will discuss in the next chapters.  
+The row with the residual standard error is an estimate of the unexplained variance. The next rows give a summary of the model fit and we will discuss in the next chapters.
 
 In the `tidyverse` we may want to have the table above in a `tibble`. The **broom** package, which we have seen before, helps with this effort.
-
 
 ```{r}
 library(broom)
@@ -270,18 +259,17 @@ library(broom)
 tidy(poss_mod)
 ```
 
+> **Exercise**:\
+> The `cars` dataset (built-in to `R`) contains 50 observations of 2 variables. The data give the speed of cars (in mph) and the corresponding distance (in feet) that it took to stop. Attempt to answer the following questions.
 
-> **Exercise**:  
-The `cars` dataset (built-in to `R`) contains 50 observations of 2 variables. The data give the speed of cars (in mph) and the corresponding distance (in feet) that it took to stop. Attempt to answer the following questions. 
-
-a) Build a simple linear regression model fitting distance against speed. 
+a)  Build a simple linear regression model fitting distance against speed.
 
 ```{r}
 cars_mod <- lm(dist~speed,data=cars)
 summary(cars_mod)
 ```
 
-Figure \@ref(fig:scat263-fig) is a scatterplot of the `cars` data set.  
+Figure \@ref(fig:scat263-fig) is a scatterplot of the `cars` data set.
 
 ```{r scat263-fig,fig.cap="A scatterplot of speed and stopping distance."}
 cars %>%
@@ -291,23 +279,23 @@ cars %>%
   gf_theme(theme_bw())
 ```
 
-As expected, it appears that for larger speeds, stopping distance is greater. 
+As expected, it appears that for larger speeds, stopping distance is greater.
 
-b) Report and interpret the estimated model coefficients. 
+b)  Report and interpret the estimated model coefficients.
 
-The estimated intercept term, $\hat{\beta}_0$ is equal to -17.6. This estimate doesn't have a helpful interpretation. Technically, it is the estimated average stopping distance for speed 0. However, "stopping distance" doesn't make sense when a car has no speed. Also, a negative stopping distance doesn't make sense. Furthermore, a speed of 0 is outside of the observed speeds in the data set, so even if a speed of 0 made sense, it is outside the scope of this data and thus an extrapolation. 
+The estimated intercept term, $\hat{\beta}_0$ is equal to -17.6. This estimate doesn't have a helpful interpretation. Technically, it is the estimated average stopping distance for speed 0. However, "stopping distance" doesn't make sense when a car has no speed. Also, a negative stopping distance doesn't make sense. Furthermore, a speed of 0 is outside of the observed speeds in the data set, so even if a speed of 0 made sense, it is outside the scope of this data and thus an extrapolation.
 
-The estimated slope term, $\hat{\beta}_1$ is equal to 3.9. This means that for an increase of one mph, we expect stopping distance to increase by 3.9 feet, on average. 
+The estimated slope term, $\hat{\beta}_1$ is equal to 3.9. This means that for an increase of one mph, we expect stopping distance to increase by 3.9 feet, on average.
 
-c) Report the estimated common standard deviation of the residuals. 
+c)  Report the estimated common standard deviation of the residuals.
 
-The estimated standard deviation of the error (residual), $\hat{\sigma}$ is equal to 15.4. 
+The estimated standard deviation of the error (residual), $\hat{\sigma}$ is equal to 15.4.
 
 ### Assumptions
 
-Anytime we build a model, there are assumptions behind it that, if violated, could invalidate the conclusions of the model. In the description of simple linear regression, we briefly mentioned these assumptions. Next chapter, we will discuss how to validate these assumptions. 
+Anytime we build a model, there are assumptions behind it that, if violated, could invalidate the conclusions of the model. In the description of simple linear regression, we briefly mentioned these assumptions. Next chapter, we will discuss how to validate these assumptions.
 
-**Fit**. When we build a simple linear regression, we assume that the relationship between the response and the predictor is as we specify in the fit formula. This in simple linear regression is often just a linear relationship. Suppose two variables are non-linearly related, see \@ref(fig:resid2-fig). While we could build a linear regression model between the two, the resulting model would not be very useful. If we built a model with the fit formulated as a quadratic, a similar plot of the residuals would look flat. We will discuss this more in a later chapter. 
+**Fit**. When we build a simple linear regression, we assume that the relationship between the response and the predictor is as we specify in the fit formula. This in simple linear regression is often just a linear relationship. Suppose two variables are non-linearly related, see \@ref(fig:resid2-fig). While we could build a linear regression model between the two, the resulting model would not be very useful. If we built a model with the fit formulated as a quadratic, a similar plot of the residuals would look flat. We will discuss this more in a later chapter.
 
 ```{r resid2-fig,echo=F,fig.cap="An example of non-linear relationship between two variables fitted with a linear regression line."}
 set.seed(2003)
@@ -338,17 +326,17 @@ abline(a=b0,b=b1)
 text(10,196,paste("y=",round(b0,3),"+",round(b1,3),"* x"))
 ```
 
-**Constant Error Variance**. In simple linear regression, we assume that the residuals come from a normal distribution with mean 0 and constant standard deviation $\sigma$. Violation of this assumption is usually manifested as a "megaphone" pattern in the scatterplot. Specifically, as the value of the predictor increases, the variance in the response also increases, resulting in greater spread for larger values of the predictor.  
+**Constant Error Variance**. In simple linear regression, we assume that the residuals come from a normal distribution with mean 0 and constant standard deviation $\sigma$. Violation of this assumption is usually manifested as a "megaphone" pattern in the scatterplot. Specifically, as the value of the predictor increases, the variance in the response also increases, resulting in greater spread for larger values of the predictor.
 
-**Normality of Errors**. Again, we assume that the residuals are normally distributed. Normality of residuals is not easy to see graphically, so we have to use other diagnostics to check this assumption. 
+**Normality of Errors**. Again, we assume that the residuals are normally distributed. Normality of residuals is not easy to see graphically, so we have to use other diagnostics to check this assumption.
 
-The last three assumptions are important not necessarily for estimating the relationship, but for *inferring* about the relationship. In future chapters, we will discuss how to use a model for prediction, and how to build a confidence/prediction interval around a prediction. Also, we will discuss inference about the coefficient estimates in a model. Violation of one of the last three assumptions will impact our ability to conduct inference about the population parameters. 
+The last three assumptions are important not necessarily for estimating the relationship, but for *inferring* about the relationship. In future chapters, we will discuss how to use a model for prediction, and how to build a confidence/prediction interval around a prediction. Also, we will discuss inference about the coefficient estimates in a model. Violation of one of the last three assumptions will impact our ability to conduct inference about the population parameters.
 
-### Residual plots 
+### Residual plots
 
-One purpose of residual plots is to identify characteristics or patterns still apparent in data after fitting a model. These can help to evaluate the assumptions. 
+One purpose of residual plots is to identify characteristics or patterns still apparent in data after fitting a model. These can help to evaluate the assumptions.
 
-Figure \@ref(fig:resid4-fig) shows three scatterplots with linear models in the first row and residual plots in the second row. 
+Figure \@ref(fig:resid4-fig) shows three scatterplots with linear models in the first row and residual plots in the second row.
 
 ```{r resid4-fig,echo=FALSE,fig.cap="Residual plots and associated scatterplots."}
 data(COL)
@@ -401,28 +389,27 @@ The second data set shows a pattern in the residuals. There is some curvature in
 
 In the last plot the spread, variance of the data, seems to increase as the explanatory variable increases. We can see this clearly in the residual plot. To make inference using the $t$ or $F$ distribution would require a transformation to equalize the variance.
 
-### Summary  
+### Summary
 
 We have introduced the ideas of linear regression in this chapter. There are many new terms as well as new `R` functions to learn. We will continue to use these ideas in the remainder of this block of material. Next we will learn about inference and prediction.
 
 ## Homework Problems
 
-1. Nutrition at Starbucks  
+1.  Nutrition at Starbucks
 
 In the `data` folder is a file named `starbucks.csv`. Use it to answer the questions below.
 
-a. Create a scatterplot of number of calories and amount of carbohydrates.  
-b. Describe the relationship in the graph.  
-c. In this scenario, what are the explanatory and response variables?  
-d. Why might we want to fit a regression line to these data?  
-e. Create a scatterplot of number of calories and amount of carbohydrates with the regression line included.  
-f. Using 'lm()` fit a least squares line to the data.  
-g. Report and interpret the slope coefficient.    
-h. For a menu item with 51 g of carbs, what is the estimated calorie count?  
-i. Could we use the model for a menu item with 100 g of carbs?  
-j. Does the assumption of constant variance seem reasonable for this problem?  
-k. Verify that the line passes through the mean carb and mean calories, do this mathematically.  
-l. What is the estimate of the standard deviation of the residuals? How could you use this information?
+a.  Create a scatterplot of number of calories and amount of carbohydrates.\
+b.  Describe the relationship in the graph.\
+c.  In this scenario, what are the explanatory and response variables?\
+d.  Why might we want to fit a regression line to these data?\
+e.  Create a scatterplot of number of calories and amount of carbohydrates with the regression line included.\
+f.  Using 'lm()\` fit a least squares line to the data.\
+g.  Report and interpret the slope coefficient.\
+h.  For a menu item with 51 g of carbs, what is the estimated calorie count?\
+i.  Could we use the model for a menu item with 100 g of carbs?\
+j.  Does the assumption of constant variance seem reasonable for this problem?\
+k.  Verify that the line passes through the mean carb and mean calories, do this mathematically.\
+l.  What is the estimate of the standard deviation of the residuals? How could you use this information?
 
-
-## [Solutions Manual](https://ds-usafa.github.io/CPS-Solutions-Manual/LRBASICS.html) {-}
+## [Solutions Manual](https://ds-usafa.github.io/CPS-Solutions-Manual/LRBASICS.html) {.unnumbered}

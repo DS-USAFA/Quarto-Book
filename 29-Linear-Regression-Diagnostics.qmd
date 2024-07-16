@@ -1,4 +1,4 @@
-# Regression Diagnostics {#LRDIAG}
+# Regression Diagnostics {#sec-LRDIAG}
 
 ```{r}
 #| echo: false
@@ -97,11 +97,12 @@ starbucks %>%
   summarize(correlation=cor(carb,calories),correlation_squared=correlation^2)
 ```
 
-As a review, Figure \@ref(fig:cor-fig) below shows eight plots and their corresponding correlations. Only when the relationship is perfectly linear is the correlation either -1 or 1. If the relationship is strong and positive, the correlation will be near +1. If it is strong and negative, it will be near -1. If there is no apparent linear relationship between the variables, then the correlation will be near zero.
+As a review, @fig-cor below shows eight plots and their corresponding correlations. Only when the relationship is perfectly linear is the correlation either -1 or 1. If the relationship is strong and positive, the correlation will be near +1. If it is strong and negative, it will be near -1. If there is no apparent linear relationship between the variables, then the correlation will be near zero.
 
-```{r cor-fig}
+```{r}
 #| echo: false 
 #| fig-cap: "Scatterplots demonstrating different correlations."
+#| label: "fig-cor"
 library(openintro)
 data(COL)
 data(possum)
@@ -185,7 +186,7 @@ $H_a$: At least one coefficient not equal to 0.
 
 where $p$ is the number of predictors in the model. Just like in ANOVA, this is a simultaneous test of all coefficients and does not inform us which one(s) are different from 0.
 
-The $F$-statistic is given by 
+The $F$-statistic is given by
 
 $$
 {n-p-1 \over p}{\sum (\hat{y}_i-\bar{y})^2\over \sum e_i^2}
@@ -230,10 +231,11 @@ Applying the `plot()` function to an "lm" object provides several graphs that al
 -   a plot of residuals against leverages,\
 -   and a plot of Cook's distances against leverage/(1-leverage).
 
-By default, the first three and the fifth are provided by applying `plot()` to an "lm" object. To obtain all four at once, simply use `plot(my.model)` at the command line, Figure \@ref(fig:diag281-fig).
+By default, the first three and the fifth are provided by applying `plot()` to an "lm" object. To obtain all four at once, simply use `plot(my.model)` at the command line.
 
-```{r diag281-fig}
+```{r}
 #| fig-cap: "Regression diagnostic plots."
+#| label: "fig-diag281"
 #| fig-show: hold
 #| out-width: 50%
 plot(star_mod)
@@ -243,10 +245,12 @@ However, it's best to walk through each of these four plots in our Starbucks exa
 
 ### Residuals vs Fitted
 
-By providing a number in the `which` option, we can select the plot we want, Figure \@ref(fig:diag282-fig) is the first diagnostic plot.
+By providing a number in the `which` option, we can select the plot we want, @fig-diag282 is the first diagnostic plot.
 
-```{r diag282-fig}
+```{r}
 #| fig-cap: "A diagnostic residual plot."
+#| warning: false
+#| label: "fig-diag282"
 plot(star_mod,which = 1)
 ```
 
@@ -258,12 +262,14 @@ Note: the points that are labeled are points with a high residual value. They ar
 
 As it's name suggests, this plot evaluates the normality of the residuals. We have seen and used this plot several times in this book. Remember if the number of data points is small, this plot has a greatly reduced effectiveness.
 
-```{r diag283-fig}
+```{r}
 #| fig-cap: "The quantile-quantile plot for checking normality."
+#| warning: false
+#| label: "fig-diag283"
 plot(star_mod,which = 2)
 ```
 
-Along the $y$-axis are the actual standardized residuals. Along the $x$-axis is where those points should be if the residuals were actually normally distributed. Ideally, the dots should fall along the diagonal dashed line. In Figure \@ref(fig:diag283-fig), it appears there is some skewness to the right or just longer tails than a normal distribution. We can tell this because for the smaller residuals, they don't increase as they should to match a normal distribution, the points are above the line. This is concerning.
+Along the $y$-axis are the actual standardized residuals. Along the $x$-axis is where those points should be if the residuals were actually normally distributed. Ideally, the dots should fall along the diagonal dashed line. In @fig-diag283, it appears there is some skewness to the right or just longer tails than a normal distribution. We can tell this because for the smaller residuals, they don't increase as they should to match a normal distribution, the points are above the line. This is concerning.
 
 ### Scale-Location Plot
 
@@ -275,12 +281,14 @@ $$
 
 This plot illustrates the spread of the residuals over the entire range of the predictor. We are using fitted values because this will generalize well if we have more than one predictor.
 
-```{r diag284-fig}
+```{r}
 #| fig-cap: "A scale-location diagnostic residual plot."
+#| warning: false
+#| label: "fig-diag284"
 plot(star_mod,which=3)
 ```
 
-A straight horizontal red line indicates constant error variance. In this case, Figure \@ref(fig:diag284-fig), there is some indication error variance is higher for lower carb counts.
+A straight horizontal red line indicates constant error variance. In this case, @fig-diag284, there is some indication error variance is higher for lower carb counts.
 
 ## Outliers and leverage
 
@@ -293,11 +301,13 @@ In regression, there are two types of outliers:\
 An outlier is a **influential point** if it drastically alters the regression output. For example by causing large changes in the estimated slope or hypothesis $p$-values, if it is omitted.
 
 > **Exercise**:\
-> There are six plots shown in Figure \@ref(fig:resid282-fig) along with the least squares line and residual plots. For each scatterplot and residual plot pair, identify any obvious outliers and note how they influence the least squares line. Recall that an outlier is any point that doesn't appear to belong with the vast majority of the other points.
+> There are six plots shown in @fig-resid282 along with the least squares line and residual plots. For each scatterplot and residual plot pair, identify any obvious outliers and note how they influence the least squares line. Recall that an outlier is any point that doesn't appear to belong with the vast majority of the other points.
 
-```{r resid282-fig}
+```{r}
 #| echo: false 
+#| warning: false
 #| fig-cap: "Examples of outliers and leverage points."
+#| label: "fig-resid282"
 library(openintro)
 data(COL)
 data(possum)
@@ -375,7 +385,7 @@ par(mar=c(0.25,0.25,0.25,0.25))
 5)  There is no obvious trend in the main cloud of points and the outlier on the right appears to largely control the slope of the least squares line. This point is an outlier in both the response and predictor. It is a highly influential point.\
 6)  There is one outlier in both the response and predictor, thus a leverage point, far from the cloud, however, it falls quite close to the least squares line and does not appear to be very influential.
 
-Examining the residual plots in Figure \@ref(fig:resid282-fig), you will probably find that there is some trend in the main clouds of (3) and (4). In these cases, the outliers influenced the slope of the least squares lines. In (5), data with no clear trend were assigned a line with a large trend simply due to one outlier!
+Examining the residual plots in @fig-resid282, you will probably find that there is some trend in the main clouds of (3) and (4). In these cases, the outliers influenced the slope of the least squares lines. In (5), data with no clear trend were assigned a line with a large trend simply due to one outlier!
 
 > Leverage\
 > Points that fall horizontally away from the center of the cloud tend to pull harder on the line, so we call them points with **high leverage**.
@@ -388,12 +398,13 @@ A point can be an outlier but not a leverage point as we have already discussed.
 
 The residuals vs leverage plot is a good way to identify influential observations. Sometimes, influential observations are representative of the population, but they could also indicate an error in recording data, or an otherwise unrepresentative outlier. It could be worth looking into these cases.
 
-```{r diag286-fig}
+```{r}
 #| fig-cap: "Diagnostic plots for Starbucks regression model."
+#| label: "fig-diag286"
 plot(star_mod,5)
 ```
 
-Figure \@ref(fig:diag286-fig) helps us to find influential cases, those leverage points that impact the estimated slope. Unlike the other plots, patterns are not relevant. We watch out for outlying values at the upper right corner or at the lower right corner. Those spots are the places where cases can be influential against a regression line. Look for cases outside of a dashed line, Cook’s distance. In our particular plot, a dotted line for Cook's distance was outside the bounds of the plot and thus did not come into play. When cases are outside of the Cook’s distance (meaning they have high Cook’s distance scores), the cases are influential to the regression results. The regression results will be altered if we exclude those cases. In this example, there are no points that tend to have undue influence.
+@fig-diag286 helps us to find influential cases, those leverage points that impact the estimated slope. Unlike the other plots, patterns are not relevant. We watch out for outlying values at the upper right corner or at the lower right corner. Those spots are the places where cases can be influential against a regression line. Look for cases outside of a dashed line, Cook’s distance. In our particular plot, a dotted line for Cook's distance was outside the bounds of the plot and thus did not come into play. When cases are outside of the Cook’s distance (meaning they have high Cook’s distance scores), the cases are influential to the regression results. The regression results will be altered if we exclude those cases. In this example, there are no points that tend to have undue influence.
 
 ### What If Our Assumptions Are Violated
 

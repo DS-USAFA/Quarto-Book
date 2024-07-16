@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.557">
+<meta name="generator" content="quarto-1.5.54">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Computational Probability and Statistics - 31&nbsp; Multiple Linear Regression</title>
+<title>31&nbsp; Multiple Linear Regression – Computational Probability and Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -141,13 +141,13 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./26-Linear-Regression-Case-Study.html">Statistical Modeling - Prediction</a></li><li class="breadcrumb-item"><a href="./31-Multiple-Linear-Regression.html"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Multiple Linear Regression</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -191,9 +191,9 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Descriptive Statistical Modeling</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -238,9 +238,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Probability Modeling</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -291,9 +291,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">Advanced Probability</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -326,9 +326,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text">Statistical Modeling - Inference</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -385,9 +385,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
  <span class="menu-text">Statistical Modeling - Prediction</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -434,12 +434,6 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Logistic Regression</span></span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./33-Reference.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">33-Reference.html</span></span></a>
-  </div>
-</li>
       </ul>
   </li>
     </ul>
@@ -476,7 +470,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./26-Linear-Regression-Case-Study.html">Statistical Modeling - Prediction</a></li><li class="breadcrumb-item"><a href="./31-Multiple-Linear-Regression.html"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Multiple Linear Regression</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="LRMULTI" class="quarto-section-identifier"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Multiple Linear Regression</span></span></h1>
+<h1 class="title"><span id="sec-LRMULTI" class="quarto-section-identifier"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Multiple Linear Regression</span></span></h1>
 </div>
 
 
@@ -596,15 +590,19 @@ quantitative variables:
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_bw</span>()) <span class="sc">%&gt;%</span></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">title=</span><span class="st">"Ebay Auction Prices"</span>,<span class="at">x=</span><span class="st">"Condition"</span>, <span class="at">y=</span><span class="st">"Total Price"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="31-Multiple-Linear-Regression_files/figure-html/box301-fig-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Total price of Mario Kart on Ebay for each condition.</figcaption>
+<div id="fig-box301" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-box301-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="31-Multiple-Linear-Regression_files/figure-html/fig-box301-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-box301-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;31.1: Total price of Mario Kart on Ebay for each condition.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>We have several outliers that may impact our analysis, Figure @ref(fig:box301-fig).</p>
+<p>We have several outliers that may impact our analysis, <a href="#fig-box301" class="quarto-xref">Figure&nbsp;<span>31.1</span></a>.</p>
 <p>Now let’s build the model.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>mario_mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(total_pr<span class="sc">~</span>cond,<span class="at">data=</span>mariokart)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -636,17 +634,21 @@ F-statistic: 2.325 on 1 and 141 DF,  p-value: 0.1296</code></pre>
 <p><span class="math display">\[
 \hat{\text{totalprice}} = 53.771 - 6.623 \times \text{condused}
 \]</span></p>
-<p>A scatterplot for price versus game condition is shown in Figure @ref(fig:scat301-fig). Since the predictor is binary, the scatterplot is not appropriate but we will look at it for reference.</p>
+<p>A scatterplot for price versus game condition is shown in <a href="#fig-scat301" class="quarto-xref">Figure&nbsp;<span>31.2</span></a>. Since the predictor is binary, the scatterplot is not appropriate but we will look at it for reference.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>mariokart <span class="sc">%&gt;%</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_point</span>(total_pr<span class="sc">~</span>cond) <span class="sc">%&gt;%</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_classic</span>()) <span class="sc">%&gt;%</span></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">title=</span><span class="st">"Ebay Auction Prices"</span>,<span class="at">x=</span><span class="st">"Condition"</span>, <span class="at">y=</span><span class="st">"Total Price"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="31-Multiple-Linear-Regression_files/figure-html/scat301-fig-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Scatterplot of total price of Mario Kart on Ebay versus condition.</figcaption>
+<div id="fig-scat301" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-scat301-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="31-Multiple-Linear-Regression_files/figure-html/fig-scat301-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scat301-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;31.2: Scatterplot of total price of Mario Kart on Ebay versus condition.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -678,7 +680,7 @@ F-statistic: 2.325 on 1 and 141 DF,  p-value: 0.1296</code></pre>
 # ℹ 3 more variables: stock_photo &lt;fct&gt;, wheels &lt;dbl&gt;, title &lt;chr&gt;</code></pre>
 </div>
 </div>
-<p>If you look at the variable <code>title</code> there were additional items in the sale for these two observations. Let’s remove those two outliers and run the model again. Note that the reason we are removing them is not because they are annoying us and messing up our model. It is because we don’t think they are representative of the population of interest. Figure @ref(fig:scat302-fig) is a boxplot of the data with the outliers dropped.</p>
+<p>If you look at the variable <code>title</code> there were additional items in the sale for these two observations. Let’s remove those two outliers and run the model again. Note that the reason we are removing them is not because they are annoying us and messing up our model. It is because we don’t think they are representative of the population of interest. <a href="#fig-scat302" class="quarto-xref">Figure&nbsp;<span>31.3</span></a> is a boxplot of the data with the outliers dropped.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>mariokart_new <span class="ot">&lt;-</span> mariokart <span class="sc">%&gt;%</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(total_pr <span class="sc">&lt;=</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span> </span>
@@ -702,10 +704,14 @@ F-statistic: 2.325 on 1 and 141 DF,  p-value: 0.1296</code></pre>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_bw</span>()) <span class="sc">%&gt;%</span></span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">title=</span><span class="st">"Ebay Auction Prices"</span>,<span class="at">subtitle=</span><span class="st">"Outliers removed"</span>,<span class="at">x=</span><span class="st">"Condition"</span>, <span class="at">y=</span><span class="st">"Total Price"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="31-Multiple-Linear-Regression_files/figure-html/scat302-fig-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Boxplot of total price and condition with outliers removed.</figcaption>
+<div id="fig-scat302" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-scat302-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="31-Multiple-Linear-Regression_files/figure-html/fig-scat302-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scat302-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;31.3: Boxplot of total price and condition with outliers removed.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -746,14 +752,18 @@ F-statistic: 75.03 on 1 and 139 DF,  p-value: 1.056e-14</code></pre>
 <p><strong>Exercise</strong>:<br>
 Does the linear model seem reasonable? Which assumptions should you check?</p>
 </blockquote>
-<p>The model does seem reasonable in the sense that the assumptions on the errors is plausible. The residuals indicate some skewness to the right which may be driven predominantly by the skewness in the new items, Figure @ref(fig:qq301-fig).</p>
+<p>The model does seem reasonable in the sense that the assumptions on the errors is plausible. The residuals indicate some skewness to the right which may be driven predominantly by the skewness in the new items, <a href="#fig-qq301" class="quarto-xref">Figure&nbsp;<span>31.4</span></a>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mario_mod2,<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="31-Multiple-Linear-Regression_files/figure-html/qq301-fig-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Check of normality using quantile-quantile plot.</figcaption>
+<div id="fig-qq301" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-qq301-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="31-Multiple-Linear-Regression_files/figure-html/fig-qq301-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-qq301-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;31.4: Check of normality using quantile-quantile plot.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -762,27 +772,35 @@ Does the linear model seem reasonable? Which assumptions should you check?</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mario_mod2,<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="31-Multiple-Linear-Regression_files/figure-html/diag301-fig-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Residual plot to assess equal variance assumption.</figcaption>
+<div id="fig-diag301" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-diag301-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="31-Multiple-Linear-Regression_files/figure-html/fig-diag301-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-diag301-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;31.5: Residual plot to assess equal variance assumption.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>From Figure @ref(fig:diag301-fig), equal variance seems reasonable.</p>
+<p>From <a href="#fig-diag301" class="quarto-xref">Figure&nbsp;<span>31.5</span></a>, equal variance seems reasonable.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mario_mod2,<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="31-Multiple-Linear-Regression_files/figure-html/diag302-fig-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Residual plot for checking leverage points.</figcaption>
+<div id="fig-diag302" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-diag302-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="31-Multiple-Linear-Regression_files/figure-html/fig-diag302-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-diag302-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;31.6: Residual plot for checking leverage points.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>No high leverage points, Figure @ref(fig:diag302-fig).</p>
+<p>No high leverage points, <a href="#fig-diag302" class="quarto-xref">Figure&nbsp;<span>31.6</span></a>.</p>
 <p>No need to check linearity, we only have two different values for the explanatory variable.</p>
 <blockquote class="blockquote">
 <p><em>Example</em>: Interpretation<br>
@@ -801,13 +819,8 @@ Interpret the coefficient for the game’s condition in the model. Is this coeff
         \beta_4 \times  \text{wheels}
 \]</span></p>
 <p>or:</p>
-<p><span class="math display">\[\begin{equation}
-\hat{y}
-    = \beta_0 + \beta_1 x_1 + \beta_2 x_2 +
-        \beta_3 x_3 + \beta_4 x_4
-  (\#eq:multilr)
-\end{equation}\]</span></p>
-<p>In Equation @ref(eq:multilr), <span class="math inline">\(y\)</span> represents the total price, <span class="math inline">\(x_1\)</span> indicates whether the game is new, <span class="math inline">\(x_2\)</span> indicates whether a stock photo was used, <span class="math inline">\(x_3\)</span> is the duration of the auction, and <span class="math inline">\(x_4\)</span> is the number of Wii wheels included with the game. Just as with the single predictor case, a multiple regression model may be missing important components or it might not precisely represent the relationship between the outcome and the available explanatory variables. While no model is perfect, we wish to explore the possibility that this model may fit the data reasonably well.</p>
+<p><span id="eq-31a"><span class="math display">\[\hat{y} = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_3 + \beta_4 x_4 \tag{31.1}\]</span></span></p>
+<p>In <a href="#eq-31a" class="quarto-xref">Equation&nbsp;<span>31.1</span></a>, <span class="math inline">\(y\)</span> represents the total price, <span class="math inline">\(x_1\)</span> indicates whether the game is new, <span class="math inline">\(x_2\)</span> indicates whether a stock photo was used, <span class="math inline">\(x_3\)</span> is the duration of the auction, and <span class="math inline">\(x_4\)</span> is the number of Wii wheels included with the game. Just as with the single predictor case, a multiple regression model may be missing important components or it might not precisely represent the relationship between the outcome and the available explanatory variables. While no model is perfect, we wish to explore the possibility that this model may fit the data reasonably well.</p>
 <p>We estimate the parameters <span class="math inline">\(\beta_0\)</span>, <span class="math inline">\(\beta_1\)</span>, …, <span class="math inline">\(\beta_4\)</span> in the same way as we did in the case of a single predictor. We select <span class="math inline">\(b_0\)</span>, <span class="math inline">\(b_1\)</span>, …, <span class="math inline">\(b_4\)</span> that minimize the sum of the squared residuals:</p>
 <p><span class="math display">\[
 \text{SSE} = e_1^2 + e_2^2 + \dots + e_{141}^2
@@ -852,9 +865,14 @@ F-statistic: 87.01 on 4 and 136 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 <p>Which we can summarize in a tibble using the <strong>broom</strong> package.</p>
 <div class="cell">
+<div id="tbl-tab301" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-tab301-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;31.1: Multiple regression coefficients.
+</figcaption>
+<div aria-describedby="tbl-tab301-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<caption>Multiple regression coefficients.</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">term</th>
@@ -904,7 +922,10 @@ F-statistic: 87.01 on 4 and 136 DF,  p-value: &lt; 2.2e-16</code></pre>
 </table>
 </div>
 </div>
-<p>Using this output, Table @ref(tab:tab301), we identify the point estimates <span class="math inline">\(b_i\)</span> of each <span class="math inline">\(\beta_i\)</span>, just as we did in the one-predictor case.</p>
+</figure>
+</div>
+</div>
+<p>Using this output, <a href="#tbl-tab301" class="quarto-xref">Table&nbsp;<span>31.1</span></a>, we identify the point estimates <span class="math inline">\(b_i\)</span> of each <span class="math inline">\(\beta_i\)</span>, just as we did in the one-predictor case.</p>
 <blockquote class="blockquote">
 <p><strong>Multiple regression model</strong><br>
 A multiple regression model is a linear model with many predictors.</p>
@@ -1001,7 +1022,7 @@ R^2 = 1 - \frac{\text{sum of squares of residuals}}{\text{sum of squares of the 
 </div>
 <p>This strategy for estimating <span class="math inline">\(R^2\)</span> is acceptable when there is just a single variable. However, it becomes less helpful when there are many variables. The regular <span class="math inline">\(R^2\)</span> is actually a biased estimate of the amount of variability explained by the model. To get a better estimate, we use the adjusted <span class="math inline">\(R^2\)</span>.</p>
 <blockquote class="blockquote">
-<p><strong>Adjusted <span class="math inline">\(\mathbf{R^2}\)</span> as a tool for model assessment</strong>:<br>
+<p><strong>Adjusted</strong> <span class="math inline">\(\mathbf{R^2}\)</span> as a tool for model assessment:<br>
 The adjusted <span class="math inline">\(\mathbf{R^2}\)</span> is computed as: <span class="math display">\[
 R_{adj}^{2} = 1-\frac{\text{sum of squares of residuals} / (n-k-1)}{\text{sum of squares of the outcome} / (n-1)}
 \]</span> where <span class="math inline">\(n\)</span> is the number of cases used to fit the model and <span class="math inline">\(k\)</span> is the number of predictor variables in the model.</p>
@@ -1127,13 +1148,13 @@ F-statistic: 174.4 on 2 and 138 DF,  p-value: &lt; 2.2e-16</code></pre>
 </section>
 <section id="diagnostics" class="level3" data-number="31.3.7">
 <h3 data-number="31.3.7" class="anchored" data-anchor-id="diagnostics"><span class="header-section-number">31.3.7</span> Diagnostics</h3>
-<p>The diagnostics for the model are similar to what we did in a previous chapter. Nothing in these plots gives us concern; however, there is one leverage point, Figure @ref(fig:diag305-fig).</p>
+<p>The diagnostics for the model are similar to what we did in a previous chapter. Nothing in these plots gives us concern; however, there is one leverage point.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mario_mod_multi3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="31-Multiple-Linear-Regression_files/figure-html/diag305-fig-1.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<p><img src="31-Multiple-Linear-Regression_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid figure-img" style="width:50.0%"></p>
 <figcaption>Diagnostic residual plots for multiple regression model.</figcaption>
 </figure>
 </div>
@@ -1141,7 +1162,7 @@ F-statistic: 174.4 on 2 and 138 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="31-Multiple-Linear-Regression_files/figure-html/diag305-fig-2.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<p><img src="31-Multiple-Linear-Regression_files/figure-html/unnamed-chunk-35-2.png" class="img-fluid figure-img" style="width:50.0%"></p>
 <figcaption>Diagnostic residual plots for multiple regression model.</figcaption>
 </figure>
 </div>
@@ -1149,7 +1170,7 @@ F-statistic: 174.4 on 2 and 138 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="31-Multiple-Linear-Regression_files/figure-html/diag305-fig-3.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<p><img src="31-Multiple-Linear-Regression_files/figure-html/unnamed-chunk-35-3.png" class="img-fluid figure-img" style="width:50.0%"></p>
 <figcaption>Diagnostic residual plots for multiple regression model.</figcaption>
 </figure>
 </div>
@@ -1157,7 +1178,7 @@ F-statistic: 174.4 on 2 and 138 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="31-Multiple-Linear-Regression_files/figure-html/diag305-fig-4.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<p><img src="31-Multiple-Linear-Regression_files/figure-html/unnamed-chunk-35-4.png" class="img-fluid figure-img" style="width:50.0%"></p>
 <figcaption>Diagnostic residual plots for multiple regression model.</figcaption>
 </figure>
 </div>
@@ -1222,7 +1243,7 @@ Multiple R-squared:  0.2775,    Adjusted R-squared:  0.2738
 F-statistic: 76.22 on 2 and 397 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
-<p>Let’s plot the data and the regression line. The impact of putting in the categorical variable <code>Student</code> is to just shift the intercept. The slope remains the same, Figure @ref(fig:scat305-fig).</p>
+<p>Let’s plot the data and the regression line. The impact of putting in the categorical variable <code>Student</code> is to just shift the intercept. The slope remains the same, <a href="#fig-scat305" class="quarto-xref">Figure&nbsp;<span>31.7</span></a>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(credit_mod1) <span class="sc">%&gt;%</span></span>
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_point</span>(Balance<span class="sc">~</span>Income,<span class="at">color=</span><span class="sc">~</span>Student) <span class="sc">%&gt;%</span></span>
@@ -1230,10 +1251,14 @@ F-statistic: 76.22 on 2 and 397 DF,  p-value: &lt; 2.2e-16</code></pre>
 <span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_line</span>(.fitted<span class="sc">~</span>Income,<span class="at">data=</span><span class="fu">subset</span>(<span class="fu">augment</span>(credit_mod1), Student <span class="sc">==</span> <span class="st">"No"</span>),<span class="at">color=</span><span class="sc">~</span>Student) <span class="sc">%&gt;%</span></span>
 <span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_bw</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="31-Multiple-Linear-Regression_files/figure-html/scat305-fig-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Scatterplot of credit card balance for income and student status.</figcaption>
+<div id="fig-scat305" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-scat305-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="31-Multiple-Linear-Regression_files/figure-html/fig-scat305-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scat305-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;31.7: Scatterplot of credit card balance for income and student status.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1286,15 +1311,19 @@ F-statistic:  51.3 on 3 and 396 DF,  p-value: &lt; 2.2e-16</code></pre>
 <span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_line</span>(.fitted<span class="sc">~</span>Income,<span class="at">data=</span><span class="fu">subset</span>(<span class="fu">augment</span>(credit_mod2), Student <span class="sc">==</span> <span class="st">"No"</span>),<span class="at">color=</span><span class="sc">~</span>Student) <span class="sc">%&gt;%</span></span>
 <span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_bw</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="31-Multiple-Linear-Regression_files/figure-html/scat306-fig-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Scatterplot of credit card balance for income and student status with an interaction term.</figcaption>
+<div id="fig-scat306" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-scat306-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="31-Multiple-Linear-Regression_files/figure-html/fig-scat306-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scat306-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;31.8: Scatterplot of credit card balance for income and student status with an interaction term.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Now we have a different slope and intercept for each case of the <code>Student</code> variable, Figure @ref(fig:scat306-fig). Thus there is a synergy or interaction between these variables. The student status changes the impact of <code>Income</code> on <code>Balance</code>. If you are a student, then for every increase in income of 1 the balance increase by 4.219 on average. If you are not a student, every increase in income of 1 increases the average balance by 6.2182.</p>
+<p>Now we have a different slope and intercept for each case of the <code>Student</code> variable, <a href="#fig-scat306" class="quarto-xref">Figure&nbsp;<span>31.8</span></a>. Thus there is a synergy or interaction between these variables. The student status changes the impact of <code>Income</code> on <code>Balance</code>. If you are a student, then for every increase in income of 1 the balance increase by 4.219 on average. If you are not a student, every increase in income of 1 increases the average balance by 6.2182.</p>
 <p>Furthermore, if you suspect that perhaps a curved relationship exists between two variables, we could include a higher order term. As an example, let’s add a quadratic term for <code>Income</code> to our model (without the interaction). To do this in <code>R</code>, we need to wrap the higher order term in <code>I()</code>. If we include a higher order term, we usually want to include the lower order terms as well; a better approach is to make the decision on what to include using predictive performance.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>credit_mod3<span class="ot">&lt;-</span><span class="fu">lm</span>(Balance<span class="sc">~</span>Income<span class="sc">+</span><span class="fu">I</span>(Income<span class="sc">^</span><span class="dv">2</span>),<span class="at">data=</span>Credit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1329,15 +1358,19 @@ F-statistic: 54.88 on 2 and 397 DF,  p-value: &lt; 2.2e-16</code></pre>
 <span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_line</span>(.fitted<span class="sc">~</span>Income) <span class="sc">%&gt;%</span></span>
 <span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_bw</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="31-Multiple-Linear-Regression_files/figure-html/scat307-fig-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Scatterplot of credit card balance for income with a quadratic fit.</figcaption>
+<div id="fig-scat307" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-scat307-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="31-Multiple-Linear-Regression_files/figure-html/fig-scat307-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scat307-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;31.9: Scatterplot of credit card balance for income with a quadratic fit.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>There is not much of a quadratic relationship, Figure @ref(fig:scat307-fig).</p>
+<p>There is not much of a quadratic relationship, <a href="#fig-scat307" class="quarto-xref">Figure&nbsp;<span>31.9</span></a>.</p>
 <section id="summary" class="level3" data-number="31.4.1">
 <h3 data-number="31.4.1" class="anchored" data-anchor-id="summary"><span class="header-section-number">31.4.1</span> Summary</h3>
 <p>In this chapter we have extended the linear regression model by allowing multiple predictors. This allows us to account for confounding variables and make more sophisticated models. The interpretation and evaluation of the model changes.</p>
@@ -1394,18 +1427,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1437,7 +1459,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -1445,7 +1489,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {

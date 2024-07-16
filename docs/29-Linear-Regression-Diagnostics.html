@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.557">
+<meta name="generator" content="quarto-1.5.54">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Computational Probability and Statistics - 29&nbsp; Regression Diagnostics</title>
+<title>29&nbsp; Regression Diagnostics – Computational Probability and Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -141,13 +141,13 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./26-Linear-Regression-Case-Study.html">Statistical Modeling - Prediction</a></li><li class="breadcrumb-item"><a href="./29-Linear-Regression-Diagnostics.html"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Regression Diagnostics</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -191,9 +191,9 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Descriptive Statistical Modeling</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -238,9 +238,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Probability Modeling</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -291,9 +291,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">Advanced Probability</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -326,9 +326,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text">Statistical Modeling - Inference</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -385,9 +385,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
  <span class="menu-text">Statistical Modeling - Prediction</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -434,12 +434,6 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Logistic Regression</span></span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./33-Reference.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">33-Reference.html</span></span></a>
-  </div>
-</li>
       </ul>
   </li>
     </ul>
@@ -480,7 +474,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./26-Linear-Regression-Case-Study.html">Statistical Modeling - Prediction</a></li><li class="breadcrumb-item"><a href="./29-Linear-Regression-Diagnostics.html"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Regression Diagnostics</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="LRDIAG" class="quarto-section-identifier"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Regression Diagnostics</span></span></h1>
+<h1 class="title"><span id="sec-LRDIAG" class="quarto-section-identifier"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Regression Diagnostics</span></span></h1>
 </div>
 
 
@@ -591,13 +585,17 @@ F-statistic: 62.77 on 1 and 75 DF,  p-value: 1.673e-11</code></pre>
 1       0.675               0.456</code></pre>
 </div>
 </div>
-<p>As a review, Figure @ref(fig:cor-fig) below shows eight plots and their corresponding correlations. Only when the relationship is perfectly linear is the correlation either -1 or 1. If the relationship is strong and positive, the correlation will be near +1. If it is strong and negative, it will be near -1. If there is no apparent linear relationship between the variables, then the correlation will be near zero.</p>
+<p>As a review, <a href="#fig-cor" class="quarto-xref">Figure&nbsp;<span>29.1</span></a> below shows eight plots and their corresponding correlations. Only when the relationship is perfectly linear is the correlation either -1 or 1. If the relationship is strong and positive, the correlation will be near +1. If it is strong and negative, it will be near -1. If there is no apparent linear relationship between the variables, then the correlation will be near zero.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="29-Linear-Regression-Diagnostics_files/figure-html/cor-fig-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Scatterplots demonstrating different correlations.</figcaption>
+<div id="fig-cor" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cor-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="29-Linear-Regression-Diagnostics_files/figure-html/fig-cor-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cor-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;29.1: Scatterplots demonstrating different correlations.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -666,38 +664,54 @@ If a linear model has a very strong negative relationship with a correlation of 
 </li>
 <li>and a plot of Cook’s distances against leverage/(1-leverage).</li>
 </ul>
-<p>By default, the first three and the fifth are provided by applying <code>plot()</code> to an “lm” object. To obtain all four at once, simply use <code>plot(my.model)</code> at the command line, Figure @ref(fig:diag281-fig).</p>
+<p>By default, the first three and the fifth are provided by applying <code>plot()</code> to an “lm” object. To obtain all four at once, simply use <code>plot(my.model)</code> at the command line.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(star_mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="29-Linear-Regression-Diagnostics_files/figure-html/diag281-fig-1.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<figcaption>Regression diagnostic plots.</figcaption>
+<div id="fig-diag281-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-diag281-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="29-Linear-Regression-Diagnostics_files/figure-html/fig-diag281-1.png" class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-diag281-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;29.2: Regression diagnostic plots.
+</figcaption>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="29-Linear-Regression-Diagnostics_files/figure-html/diag281-fig-2.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<figcaption>Regression diagnostic plots.</figcaption>
+<div id="fig-diag281-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-diag281-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="29-Linear-Regression-Diagnostics_files/figure-html/fig-diag281-2.png" class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-diag281-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;29.3: Regression diagnostic plots.
+</figcaption>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="29-Linear-Regression-Diagnostics_files/figure-html/diag281-fig-3.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<figcaption>Regression diagnostic plots.</figcaption>
+<div id="fig-diag281-3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-diag281-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="29-Linear-Regression-Diagnostics_files/figure-html/fig-diag281-3.png" class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-diag281-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;29.4: Regression diagnostic plots.
+</figcaption>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="29-Linear-Regression-Diagnostics_files/figure-html/diag281-fig-4.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<figcaption>Regression diagnostic plots.</figcaption>
+<div id="fig-diag281-4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-diag281-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="29-Linear-Regression-Diagnostics_files/figure-html/fig-diag281-4.png" class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-diag281-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;29.5: Regression diagnostic plots.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -706,14 +720,18 @@ If a linear model has a very strong negative relationship with a correlation of 
 </section>
 <section id="residuals-vs-fitted" class="level3" data-number="29.4.2">
 <h3 data-number="29.4.2" class="anchored" data-anchor-id="residuals-vs-fitted"><span class="header-section-number">29.4.2</span> Residuals vs Fitted</h3>
-<p>By providing a number in the <code>which</code> option, we can select the plot we want, Figure @ref(fig:diag282-fig) is the first diagnostic plot.</p>
+<p>By providing a number in the <code>which</code> option, we can select the plot we want, <a href="#fig-diag282" class="quarto-xref">Figure&nbsp;<span>29.6</span></a> is the first diagnostic plot.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(star_mod,<span class="at">which =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="29-Linear-Regression-Diagnostics_files/figure-html/diag282-fig-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>A diagnostic residual plot.</figcaption>
+<div id="fig-diag282" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-diag282-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="29-Linear-Regression-Diagnostics_files/figure-html/fig-diag282-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-diag282-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;29.6: A diagnostic residual plot.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -727,15 +745,19 @@ If a linear model has a very strong negative relationship with a correlation of 
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(star_mod,<span class="at">which =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="29-Linear-Regression-Diagnostics_files/figure-html/diag283-fig-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>The quantile-quantile plot for checking normality.</figcaption>
+<div id="fig-diag283" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-diag283-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="29-Linear-Regression-Diagnostics_files/figure-html/fig-diag283-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-diag283-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;29.7: The quantile-quantile plot for checking normality.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Along the <span class="math inline">\(y\)</span>-axis are the actual standardized residuals. Along the <span class="math inline">\(x\)</span>-axis is where those points should be if the residuals were actually normally distributed. Ideally, the dots should fall along the diagonal dashed line. In Figure @ref(fig:diag283-fig), it appears there is some skewness to the right or just longer tails than a normal distribution. We can tell this because for the smaller residuals, they don’t increase as they should to match a normal distribution, the points are above the line. This is concerning.</p>
+<p>Along the <span class="math inline">\(y\)</span>-axis are the actual standardized residuals. Along the <span class="math inline">\(x\)</span>-axis is where those points should be if the residuals were actually normally distributed. Ideally, the dots should fall along the diagonal dashed line. In <a href="#fig-diag283" class="quarto-xref">Figure&nbsp;<span>29.7</span></a>, it appears there is some skewness to the right or just longer tails than a normal distribution. We can tell this because for the smaller residuals, they don’t increase as they should to match a normal distribution, the points are above the line. This is concerning.</p>
 </section>
 <section id="scale-location-plot" class="level3" data-number="29.4.4">
 <h3 data-number="29.4.4" class="anchored" data-anchor-id="scale-location-plot"><span class="header-section-number">29.4.4</span> Scale-Location Plot</h3>
@@ -747,15 +769,19 @@ e^{'}_i=\frac{e_i}{s}
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(star_mod,<span class="at">which=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="29-Linear-Regression-Diagnostics_files/figure-html/diag284-fig-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>A scale-location diagnostic residual plot.</figcaption>
+<div id="fig-diag284" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-diag284-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="29-Linear-Regression-Diagnostics_files/figure-html/fig-diag284-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-diag284-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;29.8: A scale-location diagnostic residual plot.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>A straight horizontal red line indicates constant error variance. In this case, Figure @ref(fig:diag284-fig), there is some indication error variance is higher for lower carb counts.</p>
+<p>A straight horizontal red line indicates constant error variance. In this case, <a href="#fig-diag284" class="quarto-xref">Figure&nbsp;<span>29.8</span></a>, there is some indication error variance is higher for lower carb counts.</p>
 </section>
 </section>
 <section id="outliers-and-leverage" class="level2" data-number="29.5">
@@ -767,14 +793,18 @@ e^{'}_i=\frac{e_i}{s}
 <p>An outlier is a <strong>influential point</strong> if it drastically alters the regression output. For example by causing large changes in the estimated slope or hypothesis <span class="math inline">\(p\)</span>-values, if it is omitted.</p>
 <blockquote class="blockquote">
 <p><strong>Exercise</strong>:<br>
-There are six plots shown in Figure @ref(fig:resid282-fig) along with the least squares line and residual plots. For each scatterplot and residual plot pair, identify any obvious outliers and note how they influence the least squares line. Recall that an outlier is any point that doesn’t appear to belong with the vast majority of the other points.</p>
+There are six plots shown in <a href="#fig-resid282" class="quarto-xref">Figure&nbsp;<span>29.9</span></a> along with the least squares line and residual plots. For each scatterplot and residual plot pair, identify any obvious outliers and note how they influence the least squares line. Recall that an outlier is any point that doesn’t appear to belong with the vast majority of the other points.</p>
 </blockquote>
 <div class="cell">
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="29-Linear-Regression-Diagnostics_files/figure-html/resid282-fig-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Examples of outliers and leverage points.</figcaption>
+<div id="fig-resid282" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-resid282-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="29-Linear-Regression-Diagnostics_files/figure-html/fig-resid282-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-resid282-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;29.9: Examples of outliers and leverage points.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -792,7 +822,7 @@ There are six plots shown in Figure @ref(fig:resid282-fig) along with the least 
 </li>
 <li>There is one outlier in both the response and predictor, thus a leverage point, far from the cloud, however, it falls quite close to the least squares line and does not appear to be very influential.</li>
 </ol>
-<p>Examining the residual plots in Figure @ref(fig:resid282-fig), you will probably find that there is some trend in the main clouds of (3) and (4). In these cases, the outliers influenced the slope of the least squares lines. In (5), data with no clear trend were assigned a line with a large trend simply due to one outlier!</p>
+<p>Examining the residual plots in <a href="#fig-resid282" class="quarto-xref">Figure&nbsp;<span>29.9</span></a>, you will probably find that there is some trend in the main clouds of (3) and (4). In these cases, the outliers influenced the slope of the least squares lines. In (5), data with no clear trend were assigned a line with a large trend simply due to one outlier!</p>
 <blockquote class="blockquote">
 <p>Leverage<br>
 Points that fall horizontally away from the center of the cloud tend to pull harder on the line, so we call them points with <strong>high leverage</strong>.</p>
@@ -805,15 +835,19 @@ Points that fall horizontally away from the center of the cloud tend to pull har
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(star_mod,<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="29-Linear-Regression-Diagnostics_files/figure-html/diag286-fig-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Diagnostic plots for Starbucks regression model.</figcaption>
+<div id="fig-diag286" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-diag286-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="29-Linear-Regression-Diagnostics_files/figure-html/fig-diag286-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-diag286-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;29.10: Diagnostic plots for Starbucks regression model.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Figure @ref(fig:diag286-fig) helps us to find influential cases, those leverage points that impact the estimated slope. Unlike the other plots, patterns are not relevant. We watch out for outlying values at the upper right corner or at the lower right corner. Those spots are the places where cases can be influential against a regression line. Look for cases outside of a dashed line, Cook’s distance. In our particular plot, a dotted line for Cook’s distance was outside the bounds of the plot and thus did not come into play. When cases are outside of the Cook’s distance (meaning they have high Cook’s distance scores), the cases are influential to the regression results. The regression results will be altered if we exclude those cases. In this example, there are no points that tend to have undue influence.</p>
+<p><a href="#fig-diag286" class="quarto-xref">Figure&nbsp;<span>29.10</span></a> helps us to find influential cases, those leverage points that impact the estimated slope. Unlike the other plots, patterns are not relevant. We watch out for outlying values at the upper right corner or at the lower right corner. Those spots are the places where cases can be influential against a regression line. Look for cases outside of a dashed line, Cook’s distance. In our particular plot, a dotted line for Cook’s distance was outside the bounds of the plot and thus did not come into play. When cases are outside of the Cook’s distance (meaning they have high Cook’s distance scores), the cases are influential to the regression results. The regression results will be altered if we exclude those cases. In this example, there are no points that tend to have undue influence.</p>
 </section>
 <section id="what-if-our-assumptions-are-violated" class="level3" data-number="29.5.2">
 <h3 data-number="29.5.2" class="anchored" data-anchor-id="what-if-our-assumptions-are-violated"><span class="header-section-number">29.5.2</span> What If Our Assumptions Are Violated</h3>
@@ -869,18 +903,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -912,7 +935,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -920,7 +965,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {

@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.557">
+<meta name="generator" content="quarto-1.5.54">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Computational Probability and Statistics - 28&nbsp; Linear Regression Inference</title>
+<title>28&nbsp; Linear Regression Inference – Computational Probability and Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -141,13 +141,13 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./26-Linear-Regression-Case-Study.html">Statistical Modeling - Prediction</a></li><li class="breadcrumb-item"><a href="./28-Linear-Regression-Inference.html"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Linear Regression Inference</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -191,9 +191,9 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Descriptive Statistical Modeling</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -238,9 +238,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Probability Modeling</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -291,9 +291,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">Advanced Probability</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -326,9 +326,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text">Statistical Modeling - Inference</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -385,9 +385,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
  <span class="menu-text">Statistical Modeling - Prediction</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -434,12 +434,6 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Logistic Regression</span></span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./References.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">References</span></span></a>
-  </div>
-</li>
       </ul>
   </li>
     </ul>
@@ -476,7 +470,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./26-Linear-Regression-Case-Study.html">Statistical Modeling - Prediction</a></li><li class="breadcrumb-item"><a href="./28-Linear-Regression-Inference.html"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Linear Regression Inference</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="LRINF" class="quarto-section-identifier"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Linear Regression Inference</span></span></h1>
+<h1 class="title"><span id="sec-LRINF" class="quarto-section-identifier"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Linear Regression Inference</span></span></h1>
 </div>
 
 
@@ -531,23 +525,27 @@ E(Y|X=x)=E(\beta_0+\beta_1x+e)=Y=\beta_0+\beta_1x+E(e)=\beta_0+\beta_1x
 </section>
 <section id="review-of-assumptions" class="level3" data-number="28.2.2">
 <h3 data-number="28.2.2" class="anchored" data-anchor-id="review-of-assumptions"><span class="header-section-number">28.2.2</span> Review of assumptions</h3>
-<p>We will review the assumptions of the least squares model because they are important for inference. Refer to Figure @ref(fig:assump271-fig), which plots the linear regression in the top row and the residuals in the second row. We generally assume the following:</p>
+<p>We will review the assumptions of the least squares model because they are important for inference. Refer to <a href="#fig-assump271" class="quarto-xref">Figure&nbsp;<span>28.1</span></a>, which plots the linear regression in the top row and the residuals in the second row. We generally assume the following:</p>
 <ol type="1">
-<li><strong>Fit</strong>. The data should show a linear trend. If there is a nonlinear trend, a transformation of the explanatory variable or a more advanced regression method should be applied. When looking at the residual plot, if the trend is linear, we should see a spread of points that are flat. The left column of Figure @ref(fig:assump271-fig) is an example of a nonlinear relationship. The top plot is the regression plot and we can see what looks like a quadratic relationship instead of a linear one. The residual plot, the plot in the lower left corner of Figure @ref(fig:assump271-fig), also exhibits this non-linear trend.<br>
+<li><strong>Fit</strong>. The data should show a linear trend. If there is a nonlinear trend, a transformation of the explanatory variable or a more advanced regression method should be applied. When looking at the residual plot, if the trend is linear, we should see a spread of points that are flat. The left column of <a href="#fig-assump271" class="quarto-xref">Figure&nbsp;<span>28.1</span></a> is an example of a nonlinear relationship. The top plot is the regression plot and we can see what looks like a quadratic relationship instead of a linear one. The residual plot, the plot in the lower left corner of <a href="#fig-assump271" class="quarto-xref">Figure&nbsp;<span>28.1</span></a>, also exhibits this non-linear trend.<br>
 </li>
-<li><strong>Nearly normal residuals</strong>. Generally the residuals must be nearly normal to use a <span class="math inline">\(t\)</span> or <span class="math inline">\(F\)</span> for inference. When this assumption is found to be unreasonable, it is usually because of <strong>outliers</strong> or concerns about <strong>influential</strong> points. An example of non-normal residuals is shown in the second column of Figure @ref(fig:assump271-fig). A <strong>qq</strong> plot is also useful as a diagnostic tool as we have seen. We can still use the <strong>bootstrap</strong> as an inference tool if the normality assumption is unreasonable.<br>
+<li><strong>Nearly normal residuals</strong>. Generally the residuals must be nearly normal to use a <span class="math inline">\(t\)</span> or <span class="math inline">\(F\)</span> for inference. When this assumption is found to be unreasonable, it is usually because of <strong>outliers</strong> or concerns about <strong>influential</strong> points. An example of non-normal residuals is shown in the second column of <a href="#fig-assump271" class="quarto-xref">Figure&nbsp;<span>28.1</span></a>. A <strong>qq</strong> plot is also useful as a diagnostic tool as we have seen. We can still use the <strong>bootstrap</strong> as an inference tool if the normality assumption is unreasonable.<br>
 </li>
-<li><strong>Constant variability</strong>. The variability of points around the least squares line remains roughly constant. An example of non-constant variability is shown in the third panel of Figure @ref(fig:assump271-fig). The constant variability assumption is needed for the <span class="math inline">\(t\)</span> and <span class="math inline">\(F\)</span> distributions. It is not required for the bootstrap method.<br>
+<li><strong>Constant variability</strong>. The variability of points around the least squares line remains roughly constant. An example of non-constant variability is shown in the third panel of <a href="#fig-assump271" class="quarto-xref">Figure&nbsp;<span>28.1</span></a>. The constant variability assumption is needed for the <span class="math inline">\(t\)</span> and <span class="math inline">\(F\)</span> distributions. It is not required for the bootstrap method.<br>
 </li>
-<li><strong>Independent observations</strong>. Be cautious about applying regression to data collected sequentially in what is called a <strong>time series</strong>. Such data may have an underlying structure that should be considered in a model and analysis. An example of a time series where independence is violated is shown in the fourth panel of Figure @ref(fig:assump271-fig). More advanced methods are required for time series data even including using a bootstrap.</li>
+<li><strong>Independent observations</strong>. Be cautious about applying regression to data collected sequentially in what is called a <strong>time series</strong>. Such data may have an underlying structure that should be considered in a model and analysis. An example of a time series where independence is violated is shown in the fourth panel of <a href="#fig-assump271" class="quarto-xref">Figure&nbsp;<span>28.1</span></a>. More advanced methods are required for time series data even including using a bootstrap.</li>
 </ol>
 <p>In a later chapter we will explore more regression diagnostics.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="28-Linear-Regression-Inference_files/figure-html/assump271-fig-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Plots of linear regression and residual to illustrate the assumptions of the model.</figcaption>
+<div id="fig-assump271" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-assump271-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="28-Linear-Regression-Inference_files/figure-html/fig-assump271-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-assump271-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;28.1: Plots of linear regression and residual to illustrate the assumptions of the model.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -655,17 +653,21 @@ quantitative variables:
 <p><strong>Exercise</strong>:<br>
 Create a scatterplot of calories and carbohydrate, carbs, content.</p>
 </blockquote>
-<p>Figure @ref(fig:scat271-fig) is the scatterplot.</p>
+<p><a href="#fig-scat271" class="quarto-xref">Figure&nbsp;<span>28.2</span></a> is the scatterplot.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>starbucks <span class="sc">%&gt;%</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_point</span>(calories<span class="sc">~</span>carb) <span class="sc">%&gt;%</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">x=</span><span class="st">"Carbohydrates"</span>,<span class="at">y=</span><span class="st">"Calories"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_classic</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="28-Linear-Regression-Inference_files/figure-html/scat271-fig-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Scatterplot of calories and carbohydrate content in Starbucks’ products.</figcaption>
+<div id="fig-scat271" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-scat271-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="28-Linear-Regression-Inference_files/figure-html/fig-scat271-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scat271-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;28.2: Scatterplot of calories and carbohydrate content in Starbucks’ products.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -801,7 +803,7 @@ Y_{new}\in \left(\hat Y_* \pm t_{\alpha/2,n-2}\hat \sigma \sqrt{1+{1\over n}+{(x
 \]</span></p>
 <section id="starbucks-1" class="level3" data-number="28.4.1">
 <h3 data-number="28.4.1" class="anchored" data-anchor-id="starbucks-1"><span class="header-section-number">28.4.1</span> Starbucks</h3>
-<p>Continuing with the <code>Starbucks</code> example. In plotting the data, we can have <code>R</code> plot the confidence and prediction bands, Figure @ref(fig:ci271-fig). We will observe the width of both of these intervals increase as we move away from the center of the data and also that prediction intervals are wider than the confidence interval.</p>
+<p>Continuing with the <code>Starbucks</code> example. In plotting the data, we can have <code>R</code> plot the confidence and prediction bands, <a href="#fig-ci271" class="quarto-xref">Figure&nbsp;<span>28.3</span></a>. We will observe the width of both of these intervals increase as we move away from the center of the data and also that prediction intervals are wider than the confidence interval.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>starbucks <span class="sc">%&gt;%</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_point</span>(calories<span class="sc">~</span>carb) <span class="sc">%&gt;%</span></span>
@@ -809,19 +811,15 @@ Y_{new}\in \left(\hat Y_* \pm t_{\alpha/2,n-2}\hat \sigma \sqrt{1+{1\over n}+{(x
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_lm</span>(<span class="at">stat=</span><span class="st">"lm"</span>,<span class="at">interval=</span><span class="st">"confidence"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_lm</span>(<span class="at">stat=</span><span class="st">"lm"</span>,<span class="at">interval=</span><span class="st">"prediction"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_classic</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Using the `size` aesthetic with geom_ribbon was deprecated in ggplot2 3.4.0.
-ℹ Please use the `linewidth` aesthetic instead.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Using the `size` aesthetic with geom_line was deprecated in ggplot2 3.4.0.
-ℹ Please use the `linewidth` aesthetic instead.</code></pre>
-</div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="28-Linear-Regression-Inference_files/figure-html/ci271-fig-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Confidence and predictions bands for linear regression model of calories and carbs in Starbucks’ products.</figcaption>
+<div id="fig-ci271" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ci271-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="28-Linear-Regression-Inference_files/figure-html/fig-ci271-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ci271-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;28.3: Confidence and predictions bands for linear regression model of calories and carbs in Starbucks’ products.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -829,8 +827,8 @@ Y_{new}\in \left(\hat Y_* \pm t_{\alpha/2,n-2}\hat \sigma \sqrt{1+{1\over n}+{(x
 <p>We have not done diagnostics yet and it may be that using a linear regression model for this data may not be appropriate. But for the sake of learning we will continue. To find these confidence intervals we need a value for <code>carb</code> so let’s use 60 and 70.</p>
 <p>We create a data frame with the new values of <code>carb</code> in it. Then we will use the <code>predict</code> function to find the confidence interval. Using the option <code>interval</code> set to <code>confidence</code> will return a confidence interval for the average calorie content for each value in the new data frame.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>new_carb <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">carb=</span><span class="fu">c</span>(<span class="dv">60</span>,<span class="dv">70</span>))</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(star_mod, <span class="at">newdata =</span> new_carb, <span class="at">interval =</span> <span class="st">'confidence'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>new_carb <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">carb=</span><span class="fu">c</span>(<span class="dv">60</span>,<span class="dv">70</span>))</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(star_mod, <span class="at">newdata =</span> new_carb, <span class="at">interval =</span> <span class="st">'confidence'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       fit      lwr      upr
 1 403.8455 379.7027 427.9883
@@ -839,7 +837,7 @@ Y_{new}\in \left(\hat Y_* \pm t_{\alpha/2,n-2}\hat \sigma \sqrt{1+{1\over n}+{(x
 </div>
 <p>Or using the <strong>broom</strong> package.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(star_mod,<span class="at">newdata=</span>new_carb,<span class="at">interval=</span><span class="st">"confidence"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(star_mod,<span class="at">newdata=</span>new_carb,<span class="at">interval=</span><span class="st">"confidence"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 4
    carb .fitted .lower .upper
@@ -855,8 +853,8 @@ Y_{new}\in \left(\hat Y_* \pm t_{\alpha/2,n-2}\hat \sigma \sqrt{1+{1\over n}+{(x
 <p>We are 95% confident that the average calories in a Starbucks’ menu item with 70 grams carbs is between 414.4 and 479.3.</p>
 <p>For the prediction interval, we simply need to change the option in <code>interval</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>new_carb <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">carb=</span><span class="fu">c</span>(<span class="dv">60</span>,<span class="dv">70</span>))</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(star_mod, <span class="at">newdata =</span> new_carb, <span class="at">interval =</span> <span class="st">'prediction'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>new_carb <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">carb=</span><span class="fu">c</span>(<span class="dv">60</span>,<span class="dv">70</span>))</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(star_mod, <span class="at">newdata =</span> new_carb, <span class="at">interval =</span> <span class="st">'prediction'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       fit      lwr      upr
 1 403.8455 246.0862 561.6048
@@ -869,7 +867,7 @@ Y_{new}\in \left(\hat Y_* \pm t_{\alpha/2,n-2}\hat \sigma \sqrt{1+{1\over n}+{(x
 </blockquote>
 <p>We changed the confidence level. Since we are less confident, the interval will be narrower than the 95% prediction interval we just calculated.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(star_mod, <span class="at">newdata =</span> new_carb, <span class="at">level=</span><span class="fl">0.9</span>, <span class="at">interval =</span> <span class="st">'prediction'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(star_mod, <span class="at">newdata =</span> new_carb, <span class="at">level=</span><span class="fl">0.9</span>, <span class="at">interval =</span> <span class="st">'prediction'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       fit      lwr      upr
 1 403.8455 271.9565 535.7345
@@ -922,18 +920,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -965,7 +952,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -973,7 +982,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {

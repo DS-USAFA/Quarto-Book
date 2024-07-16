@@ -1,4 +1,4 @@
-# Logistic Regression {#LOGREG}
+# Logistic Regression {#sec-LOGREG}
 
 ```{r setup}
 #| include: false 
@@ -16,14 +16,13 @@ library(knitr)
 
 ## Objectives
 
-1) Using `R`, conduct logistic regression, interpret the output, and perform model selection.  
+1)  Using `R`, conduct logistic regression, interpret the output, and perform model selection.
 
-2) Write the logistic regression model and predict outputs for given inputs.  
+2)  Write the logistic regression model and predict outputs for given inputs.
 
-3) Find confidence intervals for parameter estimates and predictions.  
+3)  Find confidence intervals for parameter estimates and predictions.
 
-4) Create and interpret a confusion matrix.  
-
+4)  Create and interpret a confusion matrix.
 
 ## Logistic regression introduction
 
@@ -31,13 +30,15 @@ In this chapter we introduce **logistic regression** as a tool for building mode
 
 GLMs can be thought of as a two-stage modeling approach. We first model the response variable using a probability distribution, such as the binomial or Poisson distribution. Second, we model the parameter of the distribution using a collection of predictors and a special form of multiple regression.
 
-To explore and explain these ideas, we will again use the Ebay auctions of a video game called **Mario Kart** for the Nintendo Wii. Remember, the data set is in the file `mariokart.csv` and includes results from 141 auctions.^[Diez DM, Barr CD, and \c{C}etinkaya-Rundel M. 2012. `openintro`: OpenIntro data sets and supplemental functions. http://cran.r-project.org/web/packages/openintro] 
+To explore and explain these ideas, we will again use the Ebay auctions of a video game called **Mario Kart** for the Nintendo Wii. Remember, the data set is in the file `mariokart.csv` and includes results from 141 auctions.[^32-logistic-regression-1]
 
-In this chapter, we want the outcome variable of interest to be game condition, `cond`. In Chapter \@ref(LRMULTI) we used the total price of an auction as the response. We are moving from a quantitative response to a binary qualitative variable. If we were only interested in determining if an association exists between the variables `cond` and `total_pr`, we could use linear regression with `total_pr` as the response. However, in this problem we want to predict game condition. We will start by reviewing some of the previous models and then introduce logistic regression. We will finish with a multiple logistic regression model, more than one predictor. 
+[^32-logistic-regression-1]: Diez DM, Barr CD, and \c{C}etinkaya-Rundel M. 2012. `openintro`: OpenIntro data sets and supplemental functions. http://cran.r-project.org/web/packages/openintro
+
+In this chapter, we want the outcome variable of interest to be game condition, `cond`. In @sec-LRMULTI we used the total price of an auction as the response. We are moving from a quantitative response to a binary qualitative variable. If we were only interested in determining if an association exists between the variables `cond` and `total_pr`, we could use linear regression with `total_pr` as the response. However, in this problem we want to predict game condition. We will start by reviewing some of the previous models and then introduce logistic regression. We will finish with a multiple logistic regression model, more than one predictor.
 
 ### Mario Kart data
 
-Read the data and summarize. 
+Read the data and summarize.
 
 ```{r}
 #| warning: false
@@ -53,11 +54,11 @@ inspect(mariokart)
 
 We are again only interested in `total_pr`, `cond`, `stock_photo`, `duration`, and `wheels`. These variables are described in the following list:
 
-1. `total_pr`: final auction price plus shipping costs, in US dollars  
-2. `cond`: a two-level categorical factor variable  
-3. `stock_photo`: a two-level categorical factor variable  
-4. `duration`: the length of the auction, in days, taking values from 1 to 10  
-5. `wheels`: the number of Wii wheels included with the auction (a **Wii wheel** is a plastic racing wheel that holds the Wii controller and is an optional but helpful accessory for playing Mario Kart) 
+1.  `total_pr`: final auction price plus shipping costs, in US dollars\
+2.  `cond`: a two-level categorical factor variable\
+3.  `stock_photo`: a two-level categorical factor variable\
+4.  `duration`: the length of the auction, in days, taking values from 1 to 10\
+5.  `wheels`: the number of Wii wheels included with the auction (a **Wii wheel** is a plastic racing wheel that holds the Wii controller and is an optional but helpful accessory for playing Mario Kart)
 
 Remember that we removed a couple of outlier sales that included multiple items. Before we start let's clean up the data again to include removing those outliers.
 
@@ -77,26 +78,26 @@ Next let's summarize the data.
 inspect(mariokart)
 ```
 
-### Analyzing contingency table  
+### Analyzing contingency table
 
-As a review and introduction to logistic regression, let's analyze the relationship between game condition and stock photo. 
+As a review and introduction to logistic regression, let's analyze the relationship between game condition and stock photo.
 
 ```{r}
 tally(cond ~ stock_photo, data = mariokart, margins = TRUE, 
       format = "proportion")
 ```
 
-We could analyze this by comparing the proportion of new condition games for each stock photo value using both randomization, empirical $p$-values, and the central limit theorem. We will just use an exact permutation test, **Fisher Exact Test**, which just uses the hypergeometric distribution.  
+We could analyze this by comparing the proportion of new condition games for each stock photo value using both randomization, empirical $p$-values, and the central limit theorem. We will just use an exact permutation test, **Fisher Exact Test**, which just uses the hypergeometric distribution.
 
 ```{r}
 fisher.test(tally(~cond + stock_photo, data = mariokart))
 ```
 
-Clearly, these variables are not independent of each other. This model does not gives us much more information so let's move to logistic regression.  
+Clearly, these variables are not independent of each other. This model does not gives us much more information so let's move to logistic regression.
 
 ### Modeling the probability of an event
 
-The outcome variable for a GLM is denoted by $Y_i$, where the index $i$ is used to represent observation $i$. In the Mario Kart application, $Y_i$ will be used to represent whether the game condition $i$ is new ($Y_i=1$) or used ($Y_i=0$). 
+The outcome variable for a GLM is denoted by $Y_i$, where the index $i$ is used to represent observation $i$. In the Mario Kart application, $Y_i$ will be used to represent whether the game condition $i$ is new ($Y_i=1$) or used ($Y_i=0$).
 
 The predictor variables are represented as follows: $x_{1,i}$ is the value of variable 1 for observation $i$, $x_{2,i}$ is the value of variable 2 for observation $i$, and so on.
 
@@ -106,20 +107,20 @@ The logistic regression model relates the probability a game is new ($p_i$) to v
 
 $$
 \text{transformation}(p_{i}) = \beta_0 + \beta_1x_{1,i} + \beta_2 x_{2,i} + \cdots \beta_k x_{k,i}
-$$ 
+$$
 
 We want to choose a transformation that makes practical and mathematical sense. For example, we want a transformation that makes the range of possibilities on the left hand side of the above equation equal to the range of possibilities for the right hand side. If there was no transformation for this equation, the left hand side could only take values between 0 and 1, but the right hand side could take values outside of this range. A common transformation for $p_i$ is the **logit transformation**, which may be written as
 
 $$
 \text{logit}(p_i) = \log_{e}\left( \frac{p_i}{1-p_i} \right)
-$$  
+$$
 
 Below, we expand the equation using the logit transformation of $p_i$:
 
 $$
 \log_{e}\left( \frac{p_i}{1-p_i} \right)
-	= \beta_0 + \beta_1 x_{1,i} + \beta_2 x_{2,i} + \cdots + \beta_k x_{k,i}
-$$  
+    = \beta_0 + \beta_1 x_{1,i} + \beta_2 x_{2,i} + \cdots + \beta_k x_{k,i}
+$$
 
 Solving for $p_i$ we get the logistic function:
 
@@ -127,11 +128,12 @@ $$
 p_i = \frac{1}{1+e^{-(\beta_0 + \beta_1 x_{1,i} + \beta_2 x_{2,i} + \cdots + \beta_k x_{k,i})}}
 $$
 
-The logistic function is shown in Figure \@ref(fig:logit-fig). 
+The logistic function is shown in @fig-logit.
 
-```{r logit-fig}
+```{r}
 #| echo: false
 #| fig-cap: "Logistic function with some example points plotted."
+#| label: "fig-logit"
 
 library(openintro)
 data(COL)
@@ -198,13 +200,13 @@ text(-0.33, 0.42, "(-0.329, 0.418)", cex = 0.6, pos = 2, col = COL[5])
 
 ```
 
-Notice the output of the `logistic` function restricts the values between 0 and 1. The curve is fairly flat on the edges with a sharp rise in the center. There are other functions that achieve this same result. However, for reasons beyond the scope of this book, the logit function has desirable mathematical properties that relate to making sure all the common GLMs fall within the exponential family of distributions. This topic is at the graduate school level and not needed for our studies. 
+Notice the output of the `logistic` function restricts the values between 0 and 1. The curve is fairly flat on the edges with a sharp rise in the center. There are other functions that achieve this same result. However, for reasons beyond the scope of this book, the logit function has desirable mathematical properties that relate to making sure all the common GLMs fall within the exponential family of distributions. This topic is at the graduate school level and not needed for our studies.
 
 In our Mario Kart example, there are 4 predictor variables, so $k = 4$. This nonlinear model isn't very intuitive, but it still has some resemblance to multiple regression, and we can fit this model using software. In fact, once we look at results from software, it will start to feel like we're back in multiple regression, even if the interpretation of the coefficients is more complex.
 
 ### First model - intercept only
 
-Here we create a model with just an intercept.  
+Here we create a model with just an intercept.
 
 In `R` we use the `glm()` function to fit a logistic regression model. It has the same formula format as `lm` but also requires a `family` argument. Since our response is binary, we use `binomial`. If we wanted to use `glm()` for linear regression assuming normally distributed residual, the family argument would be `gaussian`. This implies that multiple linear regression with the assumption of normally distributed errors is a special case of a generalized linear model. In `R`, the response is a 0/1 variable, we can control the outcome of interest, the 1, by using a logical argument in the formula.
 
@@ -214,37 +216,30 @@ First to understand the output of logistic regression, let's just run a model wi
 mario_mod1 <- glm(cond == "new" ~ 1, data = mariokart, family = "binomial")
 ```
 
-Let's get regression output using the `summary()` function.  
+Let's get regression output using the `summary()` function.
 
 ```{r}
 summary(mario_mod1)
-```  
+```
 
-This looks similar to the regression output we saw in previous chapters. However, the model has a different, nonlinear, form. Remember, Equation \@ref(eq:logistic) is the general form of the model.
+This looks similar to the regression output we saw in previous chapters. However, the model has a different, nonlinear, form. Remember, @eq-logistic is the general form of the model.
 
-\begin{equation} 
-  \log_{e}\left( \frac{p_i}{1-p_i} \right)
-	= \beta_0 + \beta_1 x_{1,i} + \beta_2 x_{2,i} + \cdots + \beta_k x_{k,i}
-  (\#eq:logistic)
-\end{equation} 
+$$  \log_{e}\left( \frac{p_i}{1-p_i} \right)
+    = \beta_0 + \beta_1 x_{1,i} + \beta_2 x_{2,i} + \cdots + \beta_k x_{k,i}$${#eq-logistic}
 
-Thus using the output of `R`, Equation \@ref(eq:logistic2) is the estimated model.
+Thus using the output of `R`, @eq-logistic2 is the estimated model.
 
-\begin{equation}
-\log\left( \frac{p_i}{1-p_i} \right) = -0.329 
-  (\#eq:logistic2)
-\end{equation} 
+$$\log\left( \frac{p_i}{1-p_i} \right) = -0.329$${\#eq-logistic2}
 
-Solving Equation \@ref(eq:logistic2) for $p_i$: $\frac{e^{-0.329}}{1 + e^{-0.329}} = 0.418$. This is the estimated probability of the game condition being new. This point is plotted in Figure \@ref(fig:logit-fig). We can also check this result using a summary table.
+Solving @eq-logistic2 for $p_i$: $\frac{e^{-0.329}}{1 + e^{-0.329}} = 0.418$. This is the estimated probability of the game condition being new. This point is plotted in @fig-logit. We can also check this result using a summary table.
 
 ```{r}
 tally(~cond, data = mariokart, format = "proportion")
 ```
 
-
 ### Second model - stock_photo
 
-Now that we are starting to understand the logistic regression model. Let's add a predictor variable, `stock_photo`. Again, we have many methods to determine if a relationship between two categorical variables exists, logistic regression is another method. 
+Now that we are starting to understand the logistic regression model. Let's add a predictor variable, `stock_photo`. Again, we have many methods to determine if a relationship between two categorical variables exists, logistic regression is another method.
 
 ```{r}
 mario_mod2 <- glm(cond == "new" ~ stock_photo, data = mariokart,
@@ -255,7 +250,7 @@ mario_mod2 <- glm(cond == "new" ~ stock_photo, data = mariokart,
 summary(mario_mod2)
 ```
 
-Examining the **$p$-value** associated with the coefficient for `stock_photo`, we can see that it is significant. Thus we reject the null hypothesis that the coefficient is zero. There is a relationship between `cond` and `stock_photo`, as we found with the Fisher's test.
+Examining the $p$-value associated with the coefficient for `stock_photo`, we can see that it is significant. Thus we reject the null hypothesis that the coefficient is zero. There is a relationship between `cond` and `stock_photo`, as we found with the Fisher's test.
 
 We can use the **broom** package to summarize the output and generate model fits.
 
@@ -285,8 +280,7 @@ exp(-2.079442) / (1 + exp(-2.079442))
 exp(-2.079442 + 2.174752) / (1 + exp(-2.079442 + 2.174752))
 ```
 
-> **Exercise**: 
-Fit a logistic regression model with `cond` as used and `stock_photo` as a predictor.
+> **Exercise**: Fit a logistic regression model with `cond` as used and `stock_photo` as a predictor.
 
 We repeat the code from above.
 
@@ -295,12 +289,11 @@ mario_mod3 <- glm(cond == "used" ~ stock_photo, data = mariokart,
                  family = "binomial")
 ```
 
-
 ```{r}
 tidy(mario_mod3)
 ```
 
-Again, let's convert these coefficients to estimated probabilities using the `augment()` function. 
+Again, let's convert these coefficients to estimated probabilities using the `augment()` function.
 
 ```{r}
 augment(mario_mod3,
@@ -308,50 +301,39 @@ augment(mario_mod3,
         type.predict = "response")
 ```
 
-This matches the output from the `tally()` function we observed above.  
+This matches the output from the `tally()` function we observed above.
 
-Notice that it was not important whether we select new or used condition as the desired outcome. In either case, the logistic regression model returns the conditional probability given the value of the predictor.  
+Notice that it was not important whether we select new or used condition as the desired outcome. In either case, the logistic regression model returns the conditional probability given the value of the predictor.
 
-### Interpreting the coefficients  
+### Interpreting the coefficients
 
-At this point it seems that we created a great deal of work just to get the same results that we had from other methods. However, the logistic regression model allows us to add other predictors and it also gives us standard errors for the parameter estimates.  
+At this point it seems that we created a great deal of work just to get the same results that we had from other methods. However, the logistic regression model allows us to add other predictors and it also gives us standard errors for the parameter estimates.
 
-Let's first discuss the interpretation of coefficients. As a reminder, the fitted coefficients are reported from the model summary.  
+Let's first discuss the interpretation of coefficients. As a reminder, the fitted coefficients are reported from the model summary.
 
 ```{r}
 tidy(mario_mod2)
 ```
 
-The variable `stock_photo` takes on the values 0 and 1, the value 1 of indicates the sale had a stock photo. The logistic regression model we are fitting is Equation \@ref(eq:logistic4).
+The variable `stock_photo` takes on the values 0 and 1, the value 1 of indicates the sale had a stock photo. The logistic regression model we are fitting is @eq-logistic4.
 
+$$\log_{e}\left( \frac{p_{new}}{1-p_{new}} \right)
+    = \beta_0 + \beta_1 \mbox{stock photo}$${#eq-logistic4}
 
-\begin{equation} 
-  \log_{e}\left( \frac{p_{new}}{1-p_{new}} \right)
-	= \beta_0 + \beta_1 \mbox{stock_photo}  
-  (\#eq:logistic4)
-\end{equation} 
-
-If the photo is not a stock photo then the model is Equation \@ref(eq:logistic5). The left-hand side is the natural logarithm of the odds, where odds are the ratio of the probability of success divided by the probability of failure.   
+If the photo is not a stock photo then the model is @eq-logistic5. The left-hand side is the natural logarithm of the odds, where odds are the ratio of the probability of success divided by the probability of failure.\
 $$
 \log_{e}\left( \frac{p_{\mbox{new|stock photo}}}{1-p_{\mbox{new|stock photo}}} \right)
-	= \beta_0 + \beta_1   
+    = \beta_0 + \beta_1   
 $$
 
-\begin{equation} 
-  \log_{e}\left( \frac{p_{\mbox{new|no stock photo}}}{1-p_{\mbox{new|no stock photo}}} \right)
-	= \beta_0   
-  (\#eq:logistic5)
-\end{equation} 
+$$\log_{e}\left( \frac{p_{\mbox{new|no stock photo}}}{1-p_{\mbox{new|no stock photo}}} \right)= \beta_0$${#eq-logistic5}
+    
+If we have a stock photo, the variable `stock_photo` is 1. Then @eq-logistic6 is the resulting model.
 
-If we have a stock photo, the variable `stock_photo` is 1. Then Equation \@ref(eq:logistic6) is the resulting model.
+$$ \log_{e}\left( \frac{p_{\mbox{new|stock photo}}}{1-p_{\mbox{new|stock photo}}} \right)
+    = \beta_0 + \beta_1$${#eq-logistic6}
 
-\begin{equation} 
- \log_{e}\left( \frac{p_{\mbox{new|stock photo}}}{1-p_{\mbox{new|stock photo}}} \right)
-	= \beta_0 + \beta_1   
-  (\#eq:logistic6)
-\end{equation} 
-
-Thus the difference of these gives an interpretation of the $\beta_1$ coefficient, it is the log odds ratio as is shown in the derivation that follows.  
+Thus the difference of these gives an interpretation of the $\beta_1$ coefficient, it is the log odds ratio as is shown in the derivation that follows.
 
 $$
 \log_{e}\left( \frac{p_{\mbox{new|stock photo}}}{1-p_{\mbox{new|stock photo}}} \right) 
@@ -370,23 +352,23 @@ $$
 \text{Relative Risk} = \left(\frac{p_{\mbox{new|stock photo}}}{p_{\mbox{new|no stock photo}}} \right) 
 $$
 
-### Comparing models  
+### Comparing models
 
-Just as is the case for linear regression, we can compare nested models. When we examine the output of model there is a line with the **residual deviance**. This model is not fit using least squares but using maximum likelihood. Deviance is 2 times the negative of the log likelihood. We negate the log likelihood so that maximizing the log likelihood is equivalent to minimizing the negation. This allows the same thought process of minimizing deviance as we had for minimizing residual sum of squares. The multiplication by 2 is because an asymptotic argument shows that 2 times the negative log likelihood is approximately distributed as a Chi-square random variable. 
+Just as is the case for linear regression, we can compare nested models. When we examine the output of model there is a line with the **residual deviance**. This model is not fit using least squares but using maximum likelihood. Deviance is 2 times the negative of the log likelihood. We negate the log likelihood so that maximizing the log likelihood is equivalent to minimizing the negation. This allows the same thought process of minimizing deviance as we had for minimizing residual sum of squares. The multiplication by 2 is because an asymptotic argument shows that 2 times the negative log likelihood is approximately distributed as a Chi-square random variable.
 
 ```{r}
 summary(mario_mod2)
 ```
 
-Similar to linear regression, we can use the `anova()` function to compare nested models. 
+Similar to linear regression, we can use the `anova()` function to compare nested models.
 
 ```{r}
 anova(mario_mod1, mario_mod2, test = "Chisq")
 ```
 
-Adding, `stock_photo` is a statistically significant result. The $p$-value is different from the `summary()` function, because it assumes the coefficient follows a normal distribution. Different assumptions, but the same conclusion.   
+Adding, `stock_photo` is a statistically significant result. The $p$-value is different from the `summary()` function, because it assumes the coefficient follows a normal distribution. Different assumptions, but the same conclusion.
 
-The use of $p$-value to pick a best model uses statistical assumptions to select the features. Another approach is to use a predictive measure. In machine learning contexts, we use many different predictive performance measures for model selection but many are based on a **confusion matrix**.  
+The use of $p$-value to pick a best model uses statistical assumptions to select the features. Another approach is to use a predictive measure. In machine learning contexts, we use many different predictive performance measures for model selection but many are based on a **confusion matrix**.
 
 A confusion matrix generates a 2 by 2 matrix of predicted outcomes versus actual outcomes. For logistic regression, the output is a probability of success. To convert this to 0/1 outcome we pick a threshold. It is common to use 0.5 as the threshold. Probabilities above 0.5 are considered a success, in the context of our problem a new game. Let's generate the confusion matrix.
 
@@ -400,37 +382,37 @@ augment(mario_mod2, type.predict = "response") %>%
 
 One single number summary metric is accuracy. In this case the model was correct on $32 + 55$ out of the 141 cases, or 61.7% are correct.
 
-This looks like the same table we get comparing `cond` to `stock_photo`. This is the case because of the binary nature of the predictor. We only have two probability values in our prediction. 
+This looks like the same table we get comparing `cond` to `stock_photo`. This is the case because of the binary nature of the predictor. We only have two probability values in our prediction.
 
 ```{r}
 tally(~cond + stock_photo, data = mariokart)
 ```
 
-If we change the threshold we get a different accuracy. In a machine learning course, we learn about other metrics such as area under the ROC curve. Back to our problem, let's add another variable to see if we can improve the model.  
+If we change the threshold we get a different accuracy. In a machine learning course, we learn about other metrics such as area under the ROC curve. Back to our problem, let's add another variable to see if we can improve the model.
 
-## Multiple logistic regression  
+## Multiple logistic regression
 
-Let's add `total_pr` to the model. This model is something that we could not have done in the previous models we learned about.  
+Let's add `total_pr` to the model. This model is something that we could not have done in the previous models we learned about.
 
 ```{r}
 mario_mod4 <- glm(cond == "new" ~ stock_photo + total_pr,
                   data = mariokart, family = "binomial")
 ```
 
-Notice that we use the same formula syntax as we had done with linear regression. 
+Notice that we use the same formula syntax as we had done with linear regression.
 
 ```{r}
 summary(mario_mod4)
 ```
 
-From the summary, both `stock_photo` and `total_pr` are statistically significant.  
+From the summary, both `stock_photo` and `total_pr` are statistically significant.
 
-> **Exercise**:  
-Interpret the coefficient associated with the predictor `total_pr`. 
+> **Exercise**:\
+> Interpret the coefficient associated with the predictor `total_pr`.
 
-For one dollar increase in total price of the auction, the odds ratio increases by $exp(\beta_2)$, 1.21, for a given condition of the stock photo variable.  
+For one dollar increase in total price of the auction, the odds ratio increases by $exp(\beta_2)$, 1.21, for a given condition of the stock photo variable.
 
-This is similar to an interpretation we had for multiple linear regression. We had to specify that the other predictors are held constant and then we increased the variable of interest by one unit.     
+This is similar to an interpretation we had for multiple linear regression. We had to specify that the other predictors are held constant and then we increased the variable of interest by one unit.
 
 Besides using individual predictor $p$-values to assess the model, can also use a confusion matrix.
 
@@ -442,22 +424,22 @@ augment(mario_mod4, type.predict = "response") %>%
   table()
 ```
 
-For our new model, the accuracy improved to $71 + 43$ out of the 141 cases, or 80.9.7%. Without a measure of variability, we don't know if this is significant improvement or just the variability in the modeling procedure. On the surface, it appears to be an improvement.    
+For our new model, the accuracy improved to $71 + 43$ out of the 141 cases, or 80.9.7%. Without a measure of variability, we don't know if this is significant improvement or just the variability in the modeling procedure. On the surface, it appears to be an improvement.
 
 As we experiment to improve the model, let's use a quadratic term in our model.
 
 ```{r}
 mario_mod5 <- glm(cond == "new" ~ stock_photo + poly(total_pr, 2),
                   data = mariokart, family = "binomial")
-```  
+```
 
-Using the individual $p$-values, it appears that a quadratic term is significant but it is marginal. 
+Using the individual $p$-values, it appears that a quadratic term is significant but it is marginal.
 
 ```{r}
 summary(mario_mod5)
 ```
 
-We get a similar result if we use the `anova()` function.  
+We get a similar result if we use the `anova()` function.
 
 ```{r}
 anova(mario_mod4, mario_mod5, test = "Chi")
@@ -473,9 +455,7 @@ augment(mario_mod5, type.predict = "response") %>%
   table()
 ```
 
-
-Almost any classifier will have some error. In the model above, we have decided that it is okay to allow up to 9\%, 13 out of 141, of the games for sale to be classified as new when they are really used. If we wanted to make it a little harder to classify an item as new, we could use a cutoff, threshold, of 0.75. This would have two effects. Because it raises the standard for what can be classified as new, it reduces the number of used games that are classified as new. However, it will also fail to correctly classify an increased fraction of new games as new, see the code below. No matter the complexity and the confidence we might have in our model, these practical considerations are absolutely crucial to making a helpful classification model. Without them, we could actually do more harm than good by using our statistical model. This tradeoff is similar to the one we found between Type 1 and Type 2 errors. Notice that the accuracy has also dropped slightly.  
-
+Almost any classifier will have some error. In the model above, we have decided that it is okay to allow up to 9%, 13 out of 141, of the games for sale to be classified as new when they are really used. If we wanted to make it a little harder to classify an item as new, we could use a cutoff, threshold, of 0.75. This would have two effects. Because it raises the standard for what can be classified as new, it reduces the number of used games that are classified as new. However, it will also fail to correctly classify an increased fraction of new games as new, see the code below. No matter the complexity and the confidence we might have in our model, these practical considerations are absolutely crucial to making a helpful classification model. Without them, we could actually do more harm than good by using our statistical model. This tradeoff is similar to the one we found between Type 1 and Type 2 errors. Notice that the accuracy has also dropped slightly.
 
 ```{r}
 augment(mario_mod5, type.predict = "response") %>%
@@ -485,9 +465,9 @@ augment(mario_mod5, type.predict = "response") %>%
   table()
 ```
 
-In a machine learning course, we learn about better methods to assess predictive accuracy as well as more sophisticated methods to transform and adapt our predictor variables.  
+In a machine learning course, we learn about better methods to assess predictive accuracy as well as more sophisticated methods to transform and adapt our predictor variables.
 
-> **Exercise** Find the probability that an auctioned game is new if the total price is 50 and it uses a stock photo.  
+> **Exercise** Find the probability that an auctioned game is new if the total price is 50 and it uses a stock photo.
 
 It is not clear how to use the coefficients in the regression output since `R` is performing a transformation on `total_pr` variable. Let's approach this in two ways. First we will use the `augment()` function to do the hard work.
 
@@ -499,18 +479,20 @@ augment(mario_mod5,
 
 We predict that the probability of the game being new if it uses a stock photo and the total price is 50 is 69.3%.
 
-If we want to recreate the calculation, we need to use a **raw** polynomial.  
+If we want to recreate the calculation, we need to use a **raw** polynomial.
 
 ```{r}
 mario_mod6 <- glm(cond == "new" ~ stock_photo + total_pr + I(total_pr^2),
                   data = mariokart, family = "binomial")
 tidy(mario_mod6)
 ```
+
 We can calculate the link as a linear combination, an inner product of coefficients and values.
 
 $$
 -30.67 + 2.04 + 0.969 * 50 -0.007*50^2 = 0.814
 $$
+
 ```{r}
 tidy(mario_mod6) %>%
   select(estimate) %>% 
@@ -521,7 +503,7 @@ Using the inverse transform of the logit function, we find the probability of th
 
 $$
 \frac{\ e^{.814}\ }{\ 1\ +\ e^{.814}\ } = 0.693
-$$ 
+$$
 
 ```{r}
 exp(.814) / (1 + exp(.814))
@@ -529,16 +511,16 @@ exp(.814) / (1 + exp(.814))
 
 ### Diagnostics for logistic regression
 
-The assumptions for logistic regression and the diagnostic tools are similar to what we found for linear regression. However, with the binary nature of the outcome, we often need large data sets to check. We will not devote much time to performing diagnostics for logistic regression because we are interested in using it as a predictive model. The assumptions are: 
+The assumptions for logistic regression and the diagnostic tools are similar to what we found for linear regression. However, with the binary nature of the outcome, we often need large data sets to check. We will not devote much time to performing diagnostics for logistic regression because we are interested in using it as a predictive model. The assumptions are:
 
-1. Each predictor $x_i$ is linearly related to logit$(p_i)$ if all other predictors are held constant. This is similar to our linear fit diagnostic in linear multiple regression.  
-2. Each outcome $Y_i$ is independent of the other outcomes.  
-3. There are no influential data points.  
-4. Multicollinearity is minimal.  
+1.  Each predictor $x_i$ is linearly related to logit$(p_i)$ if all other predictors are held constant. This is similar to our linear fit diagnostic in linear multiple regression.\
+2.  Each outcome $Y_i$ is independent of the other outcomes.\
+3.  There are no influential data points.\
+4.  Multicollinearity is minimal.
 
-## Confidence intervals  
+## Confidence intervals
 
-In this section we will generate confidence intervals. This section is experimental since we are not sure how `do()` from the **mosaic** package will work with the `glm()` function, but let's experiment.  
+In this section we will generate confidence intervals. This section is experimental since we are not sure how `do()` from the **mosaic** package will work with the `glm()` function, but let's experiment.
 
 ### Confidence intervals for a parameter
 
@@ -548,13 +530,13 @@ First, let's use the `R` built-in function `confint()` to find the confidence in
 confint(mario_mod4)
 ```
 
-These are not symmetric around the estimate because the method is using a profile-likelihood method. We can get symmetric intervals based on the central limit theorem using the function `confint.default()`. 
+These are not symmetric around the estimate because the method is using a profile-likelihood method. We can get symmetric intervals based on the central limit theorem using the function `confint.default()`.
 
 ```{r}
 confint.default(mario_mod4)
 ```
 
-These results are close. We recommend using the profile-likelihood method. 
+These results are close. We recommend using the profile-likelihood method.
 
 Now, let's work with the `do()` function to determine if we can get similar results.
 
@@ -588,7 +570,7 @@ results <- do(1000)*glm(cond == "new" ~ stock_photo + total_pr,
 head(results)
 ```
 
-Now we will plot the bootstrap sampling distribution on the  parameter associated with `total_pr`.
+Now we will plot the bootstrap sampling distribution on the parameter associated with `total_pr`.
 
 ```{r}
 results %>%
@@ -596,9 +578,9 @@ results %>%
   gf_theme(theme_bw()) %>%
   gf_labs(title = "Bootstrap sampling distribtuion",
           x = "total price paramater estimate")
-```  
+```
 
-The printout from the logistic regression model assumes normality for the sampling distribution of the `total_pr` coefficient, but it appears to be positively skewed, skewed to the right. The 95% confidence interval found using `cdata()`. 
+The printout from the logistic regression model assumes normality for the sampling distribution of the `total_pr` coefficient, but it appears to be positively skewed, skewed to the right. The 95% confidence interval found using `cdata()`.
 
 ```{r}
 cdata(~total_pr, data = results)
@@ -608,7 +590,7 @@ This result is closer to the result from profile-likelihood. Since the interval 
 
 ### Confidence intervals for probability of success
 
-We can use the results from the bootstrap to get a confidence interval on probability of success. We will calculate a confidence for a game with a stock photo and total price of $50. As a reminder, the probability of the game being new is 0.69. 
+We can use the results from the bootstrap to get a confidence interval on probability of success. We will calculate a confidence for a game with a stock photo and total price of \$50. As a reminder, the probability of the game being new is 0.69.
 
 ```{r}
 augment(mario_mod5,
@@ -616,12 +598,11 @@ augment(mario_mod5,
         type.predict = "response")
 ```
 
-The key is to use the coefficient from each resampled data set to calculate a probability of success. 
+The key is to use the coefficient from each resampled data set to calculate a probability of success.
 
 ```{r}
 head(results)
 ```
-
 
 ```{r}
 results_pred <- results %>% 
@@ -632,10 +613,8 @@ results_pred <- results %>%
 cdata(~pred, data = results_pred)
 ```
 
-We are 95% confident that expected probability a game with a stock photo and a total price of $50 is between 50.4\% and 74.4\%.
+We are 95% confident that expected probability a game with a stock photo and a total price of \$50 is between 50.4% and 74.4%.
 
+## Summary
 
-## Summary  
-
-In this chapter, we learned how to extend linear models to outcomes that are binary. We built and interpreted models. We also used resampling to find confidence intervals. 
-
+In this chapter, we learned how to extend linear models to outcomes that are binary. We built and interpreted models. We also used resampling to find confidence intervals.
