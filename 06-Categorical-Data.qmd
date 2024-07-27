@@ -14,13 +14,15 @@ library(mosaic)
 library(usdata)
 ```
 
-1)  Define and use properly in context all new terminology, to include: *factor*, *contingency table*, *marginal counts*, *joint counts*, *frequency table*, *relative frequency table*, *bar plot*, *conditioning*, *segmented bar plot*, *mosaic plot*, *pie chart*, *side-by-side box plot*, *density plot*.
+1)  Differentiate between various statistical terminologies such as *factor, contingency table, marginal counts, joint counts, frequency table, relative frequency table, bar plot, conditioning, segmented bar plot, mosaic plot, pie chart, side-by-side box plot,* and *density plot*, and construct examples to demonstrate their proper use in context.
 
-2)  In `R`, generate tables for categorical variable(s).
+2)  Using `R`, generate and interpret tables for categorical variables.
 
-3)  In `R`, generate appropriate graphical summaries of categorical and numerical variables.
+3)  Using `R`, generate and interpret summary statistics for numerical variables by groups.
 
-4)  Interpret and explain output both graphically and numerically.
+4)  Create and evaluate graphical summaries of both categorical and numerical variables using `R`, selecting the most appropriate visualization techniques for different types of data and research questions.
+
+5)  Synthesize numerical and graphical summaries to provide interpretations and explanations of a data set.
 
 ```{r echo=FALSE,results='hide',warning=FALSE,message=FALSE}
 library(vcd)
@@ -402,7 +404,7 @@ cc_reduced %>%
   gf_theme(theme_bw())
 ```
 
-Another useful plotting method uses **density plots** to compare numerical data across groups. A histogram bins data but is highly dependent on the number and boundary of the bins. A density plot also estimates the distribution of a numerical variable but does this by estimating the density of data points in a small window around each data point. The overall curve is the sum of this small density estimate. A density plot can be thought of as a smooth version of the histogram. Several options go into a density estimate, such as the width of the window and type of smoothing function. These ideas are beyond the scope here and we will just use the default options. @fig-dens61 is a plot of the two density curves.
+@fig-dens61 is a plot of the two density curves as another way of comparing median income by whether there was a population gain or loss.
 
 ```{r}
 #| label: "fig-dens61"
