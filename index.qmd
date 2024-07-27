@@ -2,6 +2,8 @@
 
 This book is based on the notes we created for our students as part of a one semester course on probability and statistics. We developed these notes from three primary resources. The most important is the Openintro Introductory Statistics with Randomization and Simulation [@ointrorand] book. In parts, we have used their notes and homework problems. However, in most cases we have altered their work to fit our needs. The second most important book for our work is Introduction to Probability and Statistics Using R [@ipsur]. Finally, we have used some examples, code, and ideas from the first edition of Prium's book, Foundations and Applications of Statistics: An Introduction Using R [@pruim2011foundations].
 
+In a 2024 reorganization of our inference block, we added a chapter on sampling distributions. The materials for this chapter are borrowed from the sampling distributions lessons by Skew the Script. We have used their materials with minor modifications to transform the lesson activities into a book chapter. 
+
 ## Who is this book for?
 
 We designed this book for the study of statistics that maximizes computational ideas while minimizing algebraic symbol manipulation. Although we do discuss traditional small-sample, normal-based inference and some of the classical probability distributions, we rely heavily on ideas such as simulation, permutations, and the bootstrap. This means that students with a background in differential and integral calculus will be successful with this book.
@@ -32,7 +34,7 @@ c.  Advancing practical and theoretical analytic experience and skills.
 
 ## Prerequisites
 
-To take this course, students are expected to have completed calculus up through and including integral calculus. We do have multivariate ideas in the course, but they are easily taught and don't require calculus III. We don't assume the students have any programming experience and, thus, we include a great deal of code. We have historically supplemented the course with [Data Camp](http://datacamp.com/) courses. We have also used [RStudio Cloud](http://rstudio.cloud) to help students get started in `R` without the burden of loading and maintaining software.
+To take this course, students are expected to have completed calculus up through and including integral calculus. We do have multivariate ideas in the course, but they are easily taught and don't require previous exposure to calculus III (multivariable calculus). We don't assume the students have any programming experience and, thus, we include a great deal of code. We have historically supplemented the course with [Data Camp](http://datacamp.com/) courses. We have also used [Posit Cloud](http://posit.cloud) to help students get started in `R` without the burden of loading and maintaining software.
 
 ## Packages
 
@@ -40,7 +42,7 @@ These notes make use of the following packages in `R`: **knitr** [@R-knitr], **r
 
 ## Acknowledgements
 
-We have been lucky to have numerous open sources to help facilitate this work. Thank you to those who helped to provide edits including Kris Pruitt, Matt Davis, and Skyler Royse.
+We have been lucky to have numerous open sources to help facilitate this work. Thank you to those who helped to provide edits including Jessica Hauschild, Justin Graham, Kris Pruitt, Matt Davis, and Skyler Royse.
 
 ```{r}
 #| echo: false 

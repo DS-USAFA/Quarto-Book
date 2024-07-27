@@ -47,10 +47,10 @@ book:
       chapters:  
         - 18-Inference-Case-Study.qmd
         - 25-Bootstrap.qmd
-        - 24-Confidence-Intervals.qmd
         - 19-Hypothesis-Testing-Simulation.qmd
-        - 21-Central-Limit-Theorem.qmd
         - 20-Hypothesis-Testing-ProbDist.qmd
+        - 21-Central-Limit-Theorem.qmd
+        - 24-Confidence-Intervals.qmd
         - 22-Additional-Hypothesis-Tests.qmd
         - 23-Analysis-of-Variance.qmd
     - part: "Statistical Modeling - Prediction"
