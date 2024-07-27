@@ -17,15 +17,17 @@ library(knitr)
 
 ## Objectives
 
-1)  Create and interpret a model with multiple predictors and check assumptions.
+1)  Generate and interpret the coefficients of a multiple linear regression model. Asses the assumptions underlying multiple linear regression models.
 
-2)  Generate and interpret confidence intervals for estimates.
+2)  Write the estimates multiple linear regression model and calculate and interpret the predicted response for given values of the predictors.
 
-3)  Explain adjusted $R^2$ and multi-collinearity.
+3)  Generate and interpret confidence intervals for parameter estimates in a multiple linear regression model.
 
-4)  Interpret regression coefficients for a linear model with multiple predictors.
+4)  Generate and interpret confidence and prediction intervals for predicted values in a multiple linear regression model.
 
-5)  Build and interpret models with higher order terms.
+5)  Explain the concepts of adjusted R-squared and multicollinearity in the context of multiple linear regression.
+
+6)  Develop and interpret multiple linear regression models that include higher-order terms, such as polynomial terms or interaction effects.
 
 ## Introduction to multiple regression
 
@@ -220,9 +222,7 @@ $$
 
 or:
 
-
 $$\hat{y} = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_3 + \beta_4 x_4$$ {#eq-31a}
-
 
 In @eq-31a, $y$ represents the total price, $x_1$ indicates whether the game is new, $x_2$ indicates whether a stock photo was used, $x_3$ is the duration of the auction, and $x_4$ is the number of Wii wheels included with the game. Just as with the single predictor case, a multiple regression model may be missing important components or it might not precisely represent the relationship between the outcome and the available explanatory variables. While no model is perfect, we wish to explore the possibility that this model may fit the data reasonably well.
 

@@ -14,15 +14,15 @@ library(knitr)
 
 ## Objectives
 
-1)  Obtain parameter estimates of a simple linear regression model, given a sample of data.
+1)  Differentiate between various statistical terminologies such as *response, predictor, linear regression, simple linear regression, coefficients, residual,* and *extrapolation*, and construct examples to demonstrate their proper use in context.
 
-2)  Interpret the coefficients of a simple linear regression.
+2)  Estimate the parameters of a simple linear regression model using a given sample of data.
 
-3)  Create a scatterplot with a regression line in R.
+3)  Interpret the coefficients of a simple linear regression model.
 
-4)  Explain and check the assumptions of linear regression.
+4)  Create and evaluate scatterplots with regression lines.
 
-5)  Use and be able to explain all new terminology, to include: *response*, *predictor*, *linear regression*, *simple linear regression*, *coefficients*, *residual*, *extrapolation*.
+5)  Identify and assess the assumptions underlying linear regression models.
 
 ## Linear regression models
 

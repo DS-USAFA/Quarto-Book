@@ -16,13 +16,13 @@ library(knitr)
 
 ## Objectives
 
-1)  Using the bootstrap, generate confidence intervals and estimates of standard error for parameter estimates from a linear regression model.
+1)  Apply the bootstrap to generate and interpret confidence intervals and estimates of standard error for parameter estimates in a linear regression model.
 
-2)  Generate and interpret bootstrap confidence intervals for predicted values.
+2)  Apply the bootstrap to generate and interpret confidence intervals for predicted values from a linear regression model.
 
-3)  Generate bootstrap samples from sampling rows of the data and from sampling residuals, and explain why you might prefer one method over the other.
+3)  Generate bootstrap samples using two methods: sampling rows of the data and sampling residuals. Justify why you might prefer one method over the other.
 
-4)  Interpret regression coefficients for a linear model with a categorical explanatory variable.
+4)  Generate and interpret regression coefficients in a linear regression model with categorical explanatory variables.
 
 ## Introduction
 
@@ -149,7 +149,6 @@ cdata(~r.squared,data=results)
 ```
 
 And the bootstrap sampling distribution of $R^2$ is displayed in @fig-hist292.
-
 
 ```{r hist292-fig}
 #| warning: false 

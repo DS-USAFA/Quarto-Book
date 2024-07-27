@@ -14,11 +14,11 @@ library(knitr)
 
 ## Objectives
 
-1)  Given a simple linear regression model, conduct inference on the coefficients $\beta_0$ and $\beta_1$.
+1)  Apply statistical inference methods for $\beta_0$ and $\beta_1$, and evaluate the implications for the predictor-response relationship.
 
-2)  Given a simple linear regression model, calculate the predicted response for a given value of the predictor.
+2)  Write the estimated simple linear regression model and calculate and interpret the predicted response for a given value of the predictor.
 
-3)  Build and interpret confidence and prediction intervals for values of the response variable.
+3)  Construct and interpret confidence and prediction intervals for the response variable.
 
 ## Introduction
 
