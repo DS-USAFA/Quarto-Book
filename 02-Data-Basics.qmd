@@ -16,13 +16,13 @@ library(broom)
 
 ## Objectives
 
-1)  Define and use properly in context all new terminology, to include: *case*, *variables*, *data frame*, *associated variables*, *independent*, and *discrete* and *continuous variables*.
+1)  Differentiate between various statistical terminologies such as *case, observational unit, variables, data frame, tidy data, numerical variable, discrete numeric variable, continuous numeric variable, categorical variable, levels, scatterplot, associated variables*, and *independent*, and construct examples to demonstrate their proper use in context.
 
-2)  Identify and define the different types of variables.
+2)  Within a given dataset, evaluate different types of variables and justify their classifications (e.g. categorical, discrete numerical, continuous numerical).
 
-3)  Given a study description, describe the research question.
+3)  Given a study description, develop an appropriate research question and justify the organization of data as tidy.
 
-4)  In `R`, create a scatterplot and determine the association of two numerical variables from the plot.
+4)  Create and interpret scatterplots using `R` to analyze the relationship between two numerical variables by evaluating the strength and direction of the association.
 
 ## Data basics
 
@@ -43,9 +43,7 @@ library(openintro)
 
 @tbl-db1 shows 4 rows of the `email50` data set and we have elected to only list 5 variables for ease of observation.
 
-Each row in the table represents a single email or **case**.[^02-data-basics-1] The columns represent **variables**, which represent characteristics for each of the cases (emails). For example, the first row represents email 1, which is not spam, contains 21,705 characters, 551 line breaks, is written in HTML format, and contains only small numbers.
-
-[^02-data-basics-1]: A case is also sometimes called a **unit of observation** or an **observational unit**.
+Each row in the table represents a single email or **case**. A case is also sometimes called a **unit of observation** or an **observational unit**. The columns represent **variables**, which represent characteristics for each of the cases (emails). For example, the first row represents email 1, which is not spam, contains 21,705 characters, 551 line breaks, is written in HTML format, and contains only small numbers.
 
 ```{r}
 #| label: "tbl-db1"
@@ -75,11 +73,11 @@ In practice, it is especially important to ask clarifying questions to ensure im
 
 (Note that not all data sets will have associated documentation; the authors of **openintro** package included this documentation with the `email50` data set contained in the package.)
 
-The data in `email50` represent a **data matrix**, or in `R` terminology a **data frame** or **tibble** [^02-data-basics-2], which is a common way to organize data. Each row of a data matrix corresponds to a unique case, and each column corresponds to a variable. This is called **tidy data**.[^02-data-basics-3] The data frame for the stroke study introduced in the previous chapter had patients as the cases and there were three variables recorded for each patient. If we are thinking of patients as the unit of observation, then this data is tidy.
+The data in `email50` represent a **data matrix**, or in `R` terminology a **data frame** or **tibble** [^02-data-basics-1], which is a common way to organize data. Each row of a data matrix corresponds to a unique case, and each column corresponds to a variable. This is called **tidy data**.[^02-data-basics-2] The data frame for the stroke study introduced in the previous chapter had patients as the cases and there were three variables recorded for each patient. If we are thinking of patients as the unit of observation, then this data is tidy.
 
-[^02-data-basics-2]: A tibble is a data frame with attributes for such things as better display and printing.
+[^02-data-basics-1]: A tibble is a data frame with attributes for such things as better display and printing.
 
-[^02-data-basics-3]: Tidy data is data in which each row corresponds to a unique case and each column represents a single variable. For more information on tidy data, see the *Simply Statistics* blog and the *R for Data Science* book by Hadley Wickham and Garrett Grolemund.
+[^02-data-basics-2]: Tidy data is data in which each row corresponds to a unique case and each column represents a single variable. For more information on tidy data, see the *Simply Statistics* blog and the *R for Data Science* book by Hadley Wickham and Garrett Grolemund.
 
 ```{r echo=FALSE,message=FALSE}
 stent_study <- read_csv("data/stent_study.csv")
@@ -112,11 +110,11 @@ Why ensure that your data is tidy? There are two main advantages:
 Data frames are a convenient way to record and store data. If another individual or case is added to the data set, an additional row can be easily added. Similarly, another column can be added for a new variable.
 
 > **Exercise**:\
-> We consider a publicly available data set that summarizes information about the 3,142 counties in the United States, and we create a data set called `county_subset` data set. This data set will include information about each county: its name, the state where it resides, its population in 2000 and 2010, per capita federal spending, poverty rate, and four additional characteristics. We create this data object in the code following this description. The parent data set is part of the `usdata` library and is called `county_complete`. The variables are summarized in the help menu built into the **usdata** package[^02-data-basics-4]. How might these data be organized in a data matrix? [^02-data-basics-5]
+> We consider a publicly available data set that summarizes information about the 3,142 counties in the United States, and we create a data set called `county_subset` data set. This data set will include information about each county: its name, the state where it resides, its population in 2000 and 2010, per capita federal spending, poverty rate, and four additional characteristics. We create this data object in the code following this description. The parent data set is part of the `usdata` library and is called `county_complete`. The variables are summarized in the help menu built into the **usdata** package[^02-data-basics-3]. How might these data be organized in a data matrix? [^02-data-basics-4]
 
-[^02-data-basics-4]: [These data were collected from the US Census website.](http://quickfacts.census.gov/qfd/index.html)
+[^02-data-basics-3]: [These data were collected from the US Census website.](http://quickfacts.census.gov/qfd/index.html)
 
-[^02-data-basics-5]: Each county may be viewed as a case, and there are ten pieces of information recorded for each case. A table with 3,142 rows and 10 columns could hold these data, where each row represents a county and each column represents a particular piece of information.
+[^02-data-basics-4]: Each county may be viewed as a case, and there are ten pieces of information recorded for each case. A table with 3,142 rows and 10 columns could hold these data, where each row represents a county and each column represents a particular piece of information.
 
 Using `R` we will create our data object. First we load the library `usdata`.
 
@@ -190,14 +188,14 @@ Finally, consider a hypothetical variable on education, which describes the high
 @fig-tax captures this classification of variables we have described.
 
 > **Exercise**:\
-> Data were collected about students in a statistics course. Three variables were recorded for each student: number of siblings, student height, and whether the student had previously taken a statistics course. Classify each of the variables as continuous numerical, discrete numerical, or categorical.[^02-data-basics-6]
+> Data were collected about students in a statistics course. Three variables were recorded for each student: number of siblings, student height, and whether the student had previously taken a statistics course. Classify each of the variables as continuous numerical, discrete numerical, or categorical.[^02-data-basics-5]
 
-[^02-data-basics-6]: The number of siblings and student height represent numerical variables. Because the number of siblings is a count, it is discrete. Height varies continuously, so it is a continuous numerical variable. The last variable classifies students into two categories -- those who have and those who have not taken a statistics course -- which makes this variable categorical.
+[^02-data-basics-5]: The number of siblings and student height represent numerical variables. Because the number of siblings is a count, it is discrete. Height varies continuously, so it is a continuous numerical variable. The last variable classifies students into two categories -- those who have and those who have not taken a statistics course -- which makes this variable categorical.
 
 > **Exercise**:\
-> Consider the variables `group` and `outcome30` from the stent study in the case study chapter. Are these numerical or categorical variables? [^02-data-basics-7]
+> Consider the variables `group` and `outcome30` from the stent study in the case study chapter. Are these numerical or categorical variables? [^02-data-basics-6]
 
-[^02-data-basics-7]: There are only two possible values for each variable, and in both cases they describe categories. Thus, each is a categorical variable.
+[^02-data-basics-6]: There are only two possible values for each variable, and in both cases they describe categories. Thus, each is a categorical variable.
 
 ### Relationships between variables
 
@@ -206,9 +204,9 @@ Many analyses are motivated by a researcher looking for a relationship between t
 1.  Is federal spending, on average, higher or lower in counties with high rates of poverty?\
 2.  If homeownership is lower than the national average in one county, will the percent of multi-unit structures in that county likely be above or below the national average?
 
-To answer these questions, data must be collected, such as the `county_complete` data set. Examining summary statistics could provide insights for each of the two questions about counties. Graphs can be used to visually summarize data and are useful for answering such questions as well.
+These are what statisticians refer to as **research questions**, specific and measurable questions that guide the data collection and analysis process. To answer these questions, data must be collected, such as the `county_complete` data set. Examining summary statistics could provide insights for each of the two questions about counties. Graphs can be used to visually summarize data and are useful for answering such questions as well.
 
-Scatterplots are one type of graph used to study the relationship between two numerical variables. @fig-pov1 compares the variables `fed_spend` and `poverty`. Each point on the plot represents a single county. For instance, the highlighted dot corresponds to County 1088 in the `county_subset` data set: Owsley County, Kentucky, which had a poverty rate of 41.5% and federal spending of \$21.50 per capita. The dense cloud in the scatterplot suggests a relationship between the two variables: counties with a high poverty rate also tend to have slightly more federal spending. We might brainstorm as to why this relationship exists and investigate each idea to determine which is the most reasonable explanation.
+**Scatterplots** are one type of graph used to study the relationship between two numerical variables. @fig-pov1 compares the variables `fed_spend` and `poverty`. Each point on the plot represents a single county. For instance, the highlighted dot corresponds to County 1088 in the `county_subset` data set: Owsley County, Kentucky, which had a poverty rate of 41.5% and federal spending of \$21.50 per capita. The dense cloud in the scatterplot suggests a relationship between the two variables: counties with a high poverty rate also tend to have slightly more federal spending. We might brainstorm as to why this relationship exists and investigate each idea to determine which is the most reasonable explanation.
 
 ```{r}
 #| label: "fig-pov1"
@@ -232,9 +230,9 @@ text(43, 29, "32 counties with higher\nfederal spending are not shown", cex = 0.
 ```
 
 > **Exercise**:\
-> Examine the variables in the `email50` data set. Create two research questions about the relationships between these variables that are of interest to you.[^02-data-basics-8]
+> Examine the variables in the `email50` data set. Create two research questions about the relationships between these variables that are of interest to you.[^02-data-basics-7]
 
-[^02-data-basics-8]: Two sample questions: (1) Intuition suggests that if there are many line breaks in an email then there would also tend to be many characters: does this hold true? (2) Is there a connection between whether an email format is plain text (versus HTML) and whether it is a spam message?
+[^02-data-basics-7]: Two sample questions: (1) Intuition suggests that if there are many line breaks in an email then there would also tend to be many characters: does this hold true? (2) Is there a connection between whether an email format is plain text (versus HTML) and whether it is a spam message?
 
 The `fed_spend` and `poverty` variables are said to be associated because the plot shows a discernible pattern. When two variables show some connection with one another, they are called **associated variables**. Associated variables can also be called **dependent** variables and vice-versa.
 
