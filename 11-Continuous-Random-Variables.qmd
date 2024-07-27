@@ -2,11 +2,11 @@
 
 ## Objectives
 
-1)  Define and properly use in context all new terminology, to include: *probability density function (pdf)* and *cumulative distribution function (cdf)* for continuous random variables.
+1)  Differentiate between various statistical terminologies such as *probability density function (pdf)* and *cumulative distribution function (cdf)* for continuous random variables, and construct examples to demonstrate their proper use in context.
 
-2)  Given a continuous random variable, find probabilities using the pdf and/or the cdf.
+2)  For a given continuous random variable, derive and interpret the probability density function (pdf) and apply this function to calculate the probabilities of various events.
 
-3)  Find the mean and variance of a continuous random variable.
+3)  Calculate and interpret the moments, such as the expected value/mean and variance, of a continuous random variable.
 
 ```{r}
 #| echo: false

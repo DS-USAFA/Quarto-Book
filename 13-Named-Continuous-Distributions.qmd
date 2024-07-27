@@ -2,13 +2,13 @@
 
 ## Objectives
 
-1)  Recognize when to use common continuous distributions (Uniform, Exponential Normal, and Beta), identify parameters, and find moments.
+1)  Differentiate between common continuous distributions (Uniform, Exponential, Normal) by identifying their parameters, assumptions, and moments. Evaluate scenarios to determine the most appropriate distribution to model various types of data.
 
-2)  Use `R` to calculate probabilities and quantiles involving random variables with common continuous distributions.
+2)  Apply `R` to calculate probabilities and quantiles, and simulate random variables for common continuous distributions.
 
-3)  Understand the relationship between the Poisson process and the Poisson & Exponential distributions.
+3)  Explain the relationship between the Poisson process and the Poisson and Exponential distributions, and describe how these distributions model different aspects of the same process.
 
-4)  Know when to apply and then use the memory-less property.
+4)  Apply the memory-less property in context of the Exponential distribution and use it to simplify probability calculations.
 
 ```{r}
 #| echo: false

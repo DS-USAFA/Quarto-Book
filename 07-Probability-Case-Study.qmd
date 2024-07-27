@@ -14,7 +14,7 @@ library(mosaic)
 
 1)  Use `R` to simulate a probabilistic model.
 
-2)  Use basic counting methods.
+2)  Gain an introduction to probabilistic thinking through computational, mathematical, and data science approaches.
 
 ## Introduction to probability models
 

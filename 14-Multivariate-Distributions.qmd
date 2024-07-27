@@ -2,11 +2,11 @@
 
 ## Objectives
 
-1)  Define (and distinguish between) the terms *joint probability mass/density function*, *marginal pmf/pdf*, and *conditional pmf/pdf*.
+1)  Differentiate between j*oint probability mass/density functions (pmf/pdf), marginal pmfs/pdfs*, and *conditional pmfs/pdfs*, and provide real-world examples to illustrate these concepts and their differences.
 
-2)  Given a joint pmf/pdf, obtain the marginal and conditional pmfs/pdfs.
+2)  For a given joint pmf/pdf, derive the marginal and conditional pmfs/pdfs through summation or integration or using `R`.
 
-3)  Use joint, marginal and conditional pmfs/pdfs to obtain probabilities.
+3)  Apply joint, marginal, and conditional pmfs/pdfs to calculate probabilities of events involving multiple random variables.
 
 ```{r}
 #| echo: false

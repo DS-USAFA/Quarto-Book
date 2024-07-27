@@ -15,9 +15,11 @@ library(mosaicCalc)
 
 ## Objectives
 
-1)  Given a discrete random variable, determine the distribution of a transformation of that random variable.\
-2)  Given a continuous random variable, use the cdf method to determine the distribution of a transformation of that random variable.\
-3)  Use simulation methods to find the distribution of a transform of single or multivariate random variables.
+1)  Determine the distribution of a transformed discrete random variable using appropriate methods, and use it to calculate probabilities.
+
+2)  Determine the distribution of a transformed continuous random variable using appropriate methods, and use it to calculate probabilities.
+
+3)  Determine the distribution of a transformation of multivariate random variables using simulation, and use it to calculate probabilities.
 
 ## Transformations
 

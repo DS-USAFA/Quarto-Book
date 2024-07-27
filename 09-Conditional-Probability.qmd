@@ -2,10 +2,13 @@
 
 ## Objectives
 
-1)  Define conditional probability and distinguish it from joint probability.\
-2)  Find a conditional probability using its definition.\
-3)  Using conditional probability, determine whether two events are independent.\
-4)  Apply Bayes' Rule mathematically and via simulation.
+1)  Define and differentiate between conditional probability and joint probability, and provide real-world examples to illustrate these concepts and their differences.
+
+2)  Calculate conditional probabilities from given data or scenarios using their formal definition, and interpret these probabilities in the context of practical examples.
+
+3)  Using conditional probability, determine whether two events are independent and justify your conclusion with appropriate calculations and reasoning.
+
+4)  Apply Bayes' Rule to solve problems both mathematically and through simulation usinng `R`.
 
 ```{=tex}
 \newcommand{\E}{\mbox{E}}

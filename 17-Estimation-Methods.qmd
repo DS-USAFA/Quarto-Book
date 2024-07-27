@@ -17,10 +17,13 @@ library(knitr)
 
 ## Objectives
 
-1)  Obtain a method of moments estimate of a parameter or set of parameters.\
-2)  Given a random sample from a distribution, obtain the likelihood function.\
-3)  Obtain a maximum likelihood estimate of a parameter or set of parameters.\
-4)  Determine if an estimator is unbiased.
+1)  Apply the method of moments to estimate parameters or sets of parameters from given data.
+
+2)  Derive the likelihood function for a given random sample from a distribution.
+
+3)  Derive a maximum likelihood estimate of a parameter or set of parameters.
+
+4)  Calculate and interpret the bias of an estimator by analyzing its expected value relative to the true parameter.
 
 ## Transition
 
