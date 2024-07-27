@@ -3,4 +3,4 @@ title: "References"
 bibliography: [book.bib, packages.bib, references.bib]
 ---
 
-### References 
+### References {.unnumbered}

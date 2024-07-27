@@ -2,7 +2,7 @@
 
 This book is based on the notes we created for our students as part of a one semester course on probability and statistics. We developed these notes from three primary resources. The most important is the Openintro Introductory Statistics with Randomization and Simulation [@ointrorand] book. In parts, we have used their notes and homework problems. However, in most cases we have altered their work to fit our needs. The second most important book for our work is Introduction to Probability and Statistics Using R [@ipsur]. Finally, we have used some examples, code, and ideas from the first edition of Prium's book, Foundations and Applications of Statistics: An Introduction Using R [@pruim2011foundations].
 
-In a 2024 reorganization of our inference block, we added a chapter on sampling distributions. The materials for this chapter are borrowed from the sampling distributions lessons by Skew the Script. We have used their materials with minor modifications to transform the lesson activities into a book chapter. 
+In a 2024 reorganization of our inference block, we added a chapter on sampling distributions. The materials for this chapter are borrowed from the sampling distributions lessons by [Skew the Script](https://skewthescript.org/). We have used their materials with minor modifications to transform the lesson activities into a book chapter.
 
 ## Who is this book for?
 
@@ -64,8 +64,6 @@ knitr::write_bib(c(
 
 -   File creation date: `r Sys.Date()`
 -   `r R.version.string`
-
-## References
 
 ```{r}
 #| warning: false 

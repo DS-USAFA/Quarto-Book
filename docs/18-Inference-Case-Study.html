@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./19-Hypothesis-Testing-Simulation.html" rel="next">
+<link href="./25-Bootstrap.html" rel="next">
 <link href="./17-Estimation-Methods.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -341,44 +341,44 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./25-Bootstrap.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Bootstrap</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./19-Hypothesis-Testing-Simulation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Hypothesis Testing with Simulation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Hypothesis Testing with Simulation</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./20-Hypothesis-Testing-ProbDist.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Hypothesis Testing with Known Distributions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Hypothesis Testing with Known Distributions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./21-Central-Limit-Theorem.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Hypothesis Testing with the Central Limit Theorem</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./22-Additional-Hypothesis-Tests.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Additional Hypothesis Tests</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./23-Analysis-of-Variance.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Analysis of Variance</span></span></a>
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Hypothesis Testing with the Central Limit Theorem</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./24-Confidence-Intervals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Confidence Intervals</span></span></a>
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Confidence Intervals</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./25-Bootstrap.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Bootstrap</span></span></a>
+  <a href="./22-Additional-Hypothesis-Tests.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Additional Hypothesis Tests</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./23-Analysis-of-Variance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Analysis of Variance</span></span></a>
   </div>
 </li>
       </ul>
@@ -631,7 +631,7 @@ shuffle(gender) promoted not_promoted Total
 </section>
 <section id="checking-for-independence" class="level3" data-number="18.4.3">
 <h3 data-number="18.4.3" class="anchored" data-anchor-id="checking-for-independence"><span class="header-section-number">18.4.3</span> Checking for independence</h3>
-<p>We computed one possible difference under the null hypothesis in the exercise above, which represents one difference due to chance. Repeating the simulation, we get another difference due to chance: -0.042. And another: 0.208. And so on until we repeat the simulation enough times that we have a good idea of what represents the <strong>distribution of differences from chance alone</strong>. That is, the difference if there really is no relationship between gender and the promotion decision. We are using a simulation when there is actually a finite number of permutations of the <code>gender</code> label. From Chapter @ref(PROBRULES) on counting, we have 48 labels of which 24 are <code>male</code> and 24 are <code>female</code>. Thus the total number of ways to arrange the labels differently is:</p>
+<p>We computed one possible difference under the null hypothesis in the exercise above, which represents one difference due to chance. Repeating the simulation, we get another difference due to chance: -0.042. And another: 0.208. And so on until we repeat the simulation enough times that we have a good idea of what represents the <strong>distribution of differences from chance alone</strong>. That is, the difference if there really is no relationship between gender and the promotion decision. We are using a simulation when there is actually a finite number of permutations of the <code>gender</code> label. From <a href="08-Probability-Rules.html" class="quarto-xref"><span>Chapter 8</span></a> on counting, we have 48 labels of which 24 are <code>male</code> and 24 are <code>female</code>. Thus the total number of ways to arrange the labels differently is:</p>
 <p><span class="math display">\[
 \frac{48!}{24!\cdot24!} \approx 3.2 \cdot 10^{13}
 \]</span></p>
@@ -647,7 +647,7 @@ shuffle(gender) promoted not_promoted Total
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2022</span>)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">do</span>(<span class="dv">10000</span>)<span class="sc">*</span><span class="fu">diffprop</span>(decision <span class="sc">~</span> <span class="fu">shuffle</span>(gender), <span class="at">data =</span> discrim)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>In Figure @ref(fig:teststat1-fig), we will insert a vertical line at the value of our observed difference.</p>
+<p>In <a href="#fig-teststat1" class="quarto-xref">Figure&nbsp;<span>18.1</span></a>, we will insert a vertical line at the value of our observed difference.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>results <span class="sc">%&gt;%</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_histogram</span>(<span class="sc">~</span>diffprop) <span class="sc">%&gt;%</span></span>
@@ -657,10 +657,14 @@ shuffle(gender) promoted not_promoted Total
 <span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">title =</span> <span class="st">"Gender discrimination in hiring permutation test"</span>,</span>
 <span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">subtitle =</span> <span class="st">"Test statistic is difference in promotion for female and male"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="18-Inference-Case-Study_files/figure-html/teststat1-fig-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Distribution of test statistic.</figcaption>
+<div id="fig-teststat1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-teststat1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="18-Inference-Case-Study_files/figure-html/fig-teststat1-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-teststat1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;18.1: Distribution of test statistic
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1160,8 +1164,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./19-Hypothesis-Testing-Simulation.html" class="pagination-link" aria-label="Hypothesis Testing with Simulation">
-        <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Hypothesis Testing with Simulation</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./25-Bootstrap.html" class="pagination-link" aria-label="Bootstrap">
+        <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Bootstrap</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

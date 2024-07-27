@@ -9,7 +9,7 @@
 <meta name="author" content="Bradley Warner">
 <meta name="author" content="Brianna Hitt">
 <meta name="author" content="Ken Horton">
-<meta name="dcterms.date" content="2024-07-16">
+<meta name="dcterms.date" content="2024-07-27">
 
 <title>Computational Probability and Statistics</title>
 <style>
@@ -307,14 +307,14 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./24-Confidence-Intervals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Confidence Intervals</span></span></a>
+  <a href="./19-Hypothesis-Testing-Simulation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Hypothesis Testing with Simulation</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./19-Hypothesis-Testing-Simulation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Hypothesis Testing with Simulation</span></span></a>
+  <a href="./20-Hypothesis-Testing-ProbDist.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Hypothesis Testing with Known Distributions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -325,8 +325,8 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./20-Hypothesis-Testing-ProbDist.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Hypothesis Testing with Known Distributions</span></span></a>
+  <a href="./24-Confidence-Intervals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Confidence Intervals</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -394,6 +394,12 @@ div.csl-indent {
  <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Logistic Regression</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./References.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">References</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -414,7 +420,6 @@ div.csl-indent {
   <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages">Packages</a></li>
   <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
   <li><a href="#file-creation-information" id="toc-file-creation-information" class="nav-link" data-scroll-target="#file-creation-information">File Creation Information</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/DS-USAFA/Quarto-Book/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
@@ -443,7 +448,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">July 16, 2024</p>
+      <p class="date">July 27, 2024</p>
     </div>
   </div>
   
@@ -459,6 +464,7 @@ div.csl-indent {
 <section id="preface" class="level1 unnumbered">
 <h1 class="unnumbered">Preface</h1><p><img src="Cover_Majors.png" title="Computational Probability and Statistics" class="quarto-cover-image img-fluid"></p>
 <p>This book is based on the notes we created for our students as part of a one semester course on probability and statistics. We developed these notes from three primary resources. The most important is the Openintro Introductory Statistics with Randomization and Simulation <span class="citation" data-cites="ointrorand">(<a href="#ref-ointrorand" role="doc-biblioref">Diez, Barr, and Çetinkaya-Rundel 2014</a>)</span> book. In parts, we have used their notes and homework problems. However, in most cases we have altered their work to fit our needs. The second most important book for our work is Introduction to Probability and Statistics Using R <span class="citation" data-cites="ipsur">(<a href="#ref-ipsur" role="doc-biblioref">Kerns 2010</a>)</span>. Finally, we have used some examples, code, and ideas from the first edition of Prium’s book, Foundations and Applications of Statistics: An Introduction Using R <span class="citation" data-cites="pruim2011foundations">(<a href="#ref-pruim2011foundations" role="doc-biblioref">R. J. Pruim 2011</a>)</span>.</p>
+<p>In a 2024 reorganization of our inference block, we added a chapter on sampling distributions. The materials for this chapter are borrowed from the sampling distributions lessons by <a href="https://skewthescript.org/">Skew the Script</a>. We have used their materials with minor modifications to transform the lesson activities into a book chapter.</p>
 <section id="who-is-this-book-for" class="level2">
 <h2 class="anchored" data-anchor-id="who-is-this-book-for">Who is this book for?</h2>
 <p>We designed this book for the study of statistics that maximizes computational ideas while minimizing algebraic symbol manipulation. Although we do discuss traditional small-sample, normal-based inference and some of the classical probability distributions, we rely heavily on ideas such as simulation, permutations, and the bootstrap. This means that students with a background in differential and integral calculus will be successful with this book.</p>
@@ -486,7 +492,7 @@ div.csl-indent {
 </section>
 <section id="prerequisites" class="level2">
 <h2 class="anchored" data-anchor-id="prerequisites">Prerequisites</h2>
-<p>To take this course, students are expected to have completed calculus up through and including integral calculus. We do have multivariate ideas in the course, but they are easily taught and don’t require calculus III. We don’t assume the students have any programming experience and, thus, we include a great deal of code. We have historically supplemented the course with <a href="http://datacamp.com/">Data Camp</a> courses. We have also used <a href="http://rstudio.cloud">RStudio Cloud</a> to help students get started in <code>R</code> without the burden of loading and maintaining software.</p>
+<p>To take this course, students are expected to have completed calculus up through and including integral calculus. We do have multivariate ideas in the course, but they are easily taught and don’t require previous exposure to calculus III (multivariable calculus). We don’t assume the students have any programming experience and, thus, we include a great deal of code. We have historically supplemented the course with <a href="http://datacamp.com/">Data Camp</a> courses. We have also used <a href="http://posit.cloud">Posit Cloud</a> to help students get started in <code>R</code> without the burden of loading and maintaining software.</p>
 </section>
 <section id="packages" class="level2">
 <h2 class="anchored" data-anchor-id="packages">Packages</h2>
@@ -494,7 +500,7 @@ div.csl-indent {
 </section>
 <section id="acknowledgements" class="level2">
 <h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
-<p>We have been lucky to have numerous open sources to help facilitate this work. Thank you to those who helped to provide edits including Kris Pruitt, Matt Davis, and Skyler Royse.</p>
+<p>We have been lucky to have numerous open sources to help facilitate this work. Thank you to those who helped to provide edits including Jessica Hauschild, Justin Graham, Kris Pruitt, Matt Davis, and Skyler Royse.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -509,12 +515,9 @@ div.csl-indent {
 <section id="file-creation-information" class="level2">
 <h2 class="anchored" data-anchor-id="file-creation-information">File Creation Information</h2>
 <ul>
-<li>File creation date: 2024-07-16</li>
+<li>File creation date: 2024-07-27</li>
 <li>R version 4.4.0 (2024-04-24)</li>
 </ul>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">

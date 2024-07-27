@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>23&nbsp; Analysis of Variance – Computational Probability and Statistics</title>
+<title>25&nbsp; Analysis of Variance – Computational Probability and Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./24-Confidence-Intervals.html" rel="next">
+<link href="./26-Linear-Regression-Case-Study.html" rel="next">
 <link href="./22-Additional-Hypothesis-Tests.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -144,7 +144,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./18-Inference-Case-Study.html">Statistical Modeling - Inference</a></li><li class="breadcrumb-item"><a href="./23-Analysis-of-Variance.html"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Analysis of Variance</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./18-Inference-Case-Study.html">Statistical Modeling - Inference</a></li><li class="breadcrumb-item"><a href="./23-Analysis-of-Variance.html"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Analysis of Variance</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -341,44 +341,44 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./25-Bootstrap.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Bootstrap</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./19-Hypothesis-Testing-Simulation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Hypothesis Testing with Simulation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Hypothesis Testing with Simulation</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./20-Hypothesis-Testing-ProbDist.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Hypothesis Testing with Known Distributions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Hypothesis Testing with Known Distributions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./21-Central-Limit-Theorem.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Hypothesis Testing with the Central Limit Theorem</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./22-Additional-Hypothesis-Tests.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Additional Hypothesis Tests</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./23-Analysis-of-Variance.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Analysis of Variance</span></span></a>
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Hypothesis Testing with the Central Limit Theorem</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./24-Confidence-Intervals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Confidence Intervals</span></span></a>
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Confidence Intervals</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./25-Bootstrap.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Bootstrap</span></span></a>
+  <a href="./22-Additional-Hypothesis-Tests.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Additional Hypothesis Tests</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./23-Analysis-of-Variance.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Analysis of Variance</span></span></a>
   </div>
 </li>
       </ul>
@@ -446,12 +446,12 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives"><span class="header-section-number">23.1</span> Objectives</a></li>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">23.2</span> Introduction</a></li>
-  <li><a href="#comparing-more-than-two-means" id="toc-comparing-more-than-two-means" class="nav-link" data-scroll-target="#comparing-more-than-two-means"><span class="header-section-number">23.3</span> Comparing more than two means</a>
+  <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives"><span class="header-section-number">25.1</span> Objectives</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">25.2</span> Introduction</a></li>
+  <li><a href="#comparing-more-than-two-means" id="toc-comparing-more-than-two-means" class="nav-link" data-scroll-target="#comparing-more-than-two-means"><span class="header-section-number">25.3</span> Comparing more than two means</a>
   <ul class="collapse">
-  <li><a href="#mlb-batting-performance" id="toc-mlb-batting-performance" class="nav-link" data-scroll-target="#mlb-batting-performance"><span class="header-section-number">23.3.1</span> MLB batting performance</a></li>
-  <li><a href="#analysis-of-variance-anova-and-the-f-test" id="toc-analysis-of-variance-anova-and-the-f-test" class="nav-link" data-scroll-target="#analysis-of-variance-anova-and-the-f-test"><span class="header-section-number">23.3.2</span> Analysis of variance (ANOVA) and the F test</a></li>
+  <li><a href="#mlb-batting-performance" id="toc-mlb-batting-performance" class="nav-link" data-scroll-target="#mlb-batting-performance"><span class="header-section-number">25.3.1</span> MLB batting performance</a></li>
+  <li><a href="#analysis-of-variance-anova-and-the-f-test" id="toc-analysis-of-variance-anova-and-the-f-test" class="nav-link" data-scroll-target="#analysis-of-variance-anova-and-the-f-test"><span class="header-section-number">25.3.2</span> Analysis of variance (ANOVA) and the F test</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/DS-USAFA/Quarto-Book/edit/main/23-Analysis-of-Variance.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
@@ -459,9 +459,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./18-Inference-Case-Study.html">Statistical Modeling - Inference</a></li><li class="breadcrumb-item"><a href="./23-Analysis-of-Variance.html"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Analysis of Variance</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./18-Inference-Case-Study.html">Statistical Modeling - Inference</a></li><li class="breadcrumb-item"><a href="./23-Analysis-of-Variance.html"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Analysis of Variance</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-ANOVA" class="quarto-section-identifier"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Analysis of Variance</span></span></h1>
+<h1 class="title"><span id="sec-ANOVA" class="quarto-section-identifier"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Analysis of Variance</span></span></h1>
 </div>
 
 
@@ -478,20 +478,20 @@ window.Quarto = {
 </header>
 
 
-<section id="objectives" class="level2" data-number="23.1">
-<h2 data-number="23.1" class="anchored" data-anchor-id="objectives"><span class="header-section-number">23.1</span> Objectives</h2>
+<section id="objectives" class="level2" data-number="25.1">
+<h2 data-number="25.1" class="anchored" data-anchor-id="objectives"><span class="header-section-number">25.1</span> Objectives</h2>
 <ol type="1">
 <li><p>Conduct and interpret a hypothesis test for equality of two or more means using both permutation and the <span class="math inline">\(F\)</span> distribution.</p></li>
 <li><p>Know and check the assumptions for ANOVA.</p></li>
 </ol>
 </section>
-<section id="introduction" class="level2" data-number="23.2">
-<h2 data-number="23.2" class="anchored" data-anchor-id="introduction"><span class="header-section-number">23.2</span> Introduction</h2>
+<section id="introduction" class="level2" data-number="25.2">
+<h2 data-number="25.2" class="anchored" data-anchor-id="introduction"><span class="header-section-number">25.2</span> Introduction</h2>
 <p>In the last chapter, we learned about the chi-squared distribution, and used both mathematically derived tests (Pearson’s chi-squared test) and randomization tests to determine whether two categorical variables are independent. We also examined settings with one categorical and one numerical variable, testing for equality of means and equality of variances in two samples.</p>
 <p>In this chapter, we will learn how to compare more than two means simultaneously.</p>
 </section>
-<section id="comparing-more-than-two-means" class="level2" data-number="23.3">
-<h2 data-number="23.3" class="anchored" data-anchor-id="comparing-more-than-two-means"><span class="header-section-number">23.3</span> Comparing more than two means</h2>
+<section id="comparing-more-than-two-means" class="level2" data-number="25.3">
+<h2 data-number="25.3" class="anchored" data-anchor-id="comparing-more-than-two-means"><span class="header-section-number">25.3</span> Comparing more than two means</h2>
 <p>In contrast to last chapter, we now want to compare means across more than two groups. Again, we have two variables, where one is continuous (numerical) and the other is categorical. We might initially think to do pairwise comparisons, such as two sample t-tests, as a solution. Suppose we have three groups for which we want to compare means. We might be tempted to compare the first mean with the second, then the first mean with the third, and then finally compare the second and third means, for a total of three comparisons. However, this strategy can be treacherous. If we have many groups and do many comparisons, the Type 1 error is inflated and it is likely that we will eventually find a difference just by chance, even if there is no difference in the populations.</p>
 <p>In this chapter, we will learn a new method called <strong>analysis of variance</strong> (ANOVA) and a new test statistic called the <span class="math inline">\(F\)</span> statistic. ANOVA uses a single hypothesis test to determine whether the means across many groups are equal. The hypotheses are:</p>
 <p><span class="math inline">\(H_0\)</span>: The mean outcome is the same across all groups. In statistical notation, <span class="math inline">\(\mu_1 = \mu_2 = \cdots = \mu_k\)</span> where <span class="math inline">\(\mu_i\)</span> represents the mean of the outcome for observations in category <span class="math inline">\(i\)</span>.<br>
@@ -505,8 +505,8 @@ window.Quarto = {
 <li>the variability across the groups is about equal.</li>
 </ol>
 <p>When these three conditions are met, we may perform an ANOVA, using the <span class="math inline">\(F\)</span> distribution, to determine whether the data provide strong evidence against the null hypothesis that all the group means, <span class="math inline">\(\mu_i\)</span>, are equal.</p>
-<section id="mlb-batting-performance" class="level3" data-number="23.3.1">
-<h3 data-number="23.3.1" class="anchored" data-anchor-id="mlb-batting-performance"><span class="header-section-number">23.3.1</span> MLB batting performance</h3>
+<section id="mlb-batting-performance" class="level3" data-number="25.3.1">
+<h3 data-number="25.3.1" class="anchored" data-anchor-id="mlb-batting-performance"><span class="header-section-number">25.3.1</span> MLB batting performance</h3>
 <p>Let’s revisit the MLB batting performance example. We would like to discern whether there are real differences between the batting performance of baseball players according to their position. We will now consider all four positions from the dataset: outfielder (<code>OF</code>), infielder (<code>IF</code>), designated hitter (<code>DH</code>), and catcher (<code>C</code>). The data is available in the <code>mlb_obp.csv</code> file. As a reminder, batting performance is measured by on-base percentage.</p>
 <p>Read the data into <code>R</code>.</p>
 <div class="cell">
@@ -552,7 +552,7 @@ quantitative variables:
 <p><strong>Exercise</strong>:<br>
 Construct side-by-side boxplots.</p>
 </blockquote>
-<p><a href="25-Bootstrap.html#fig-box231" class="quarto-xref">Figure&nbsp;<span>25.1</span></a> shows the side-by-side boxplots for all four positions.</p>
+<p><a href="#fig-box231" class="quarto-xref">Figure&nbsp;<span>25.1</span></a> shows the side-by-side boxplots for all four positions.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-box231" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -561,7 +561,7 @@ Construct side-by-side boxplots.</p>
 <img src="23-Analysis-of-Variance_files/figure-html/fig-box231-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-box231-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;23.1: Boxplots of on-base percentage by position played.
+Figure&nbsp;25.1: Boxplots of on-base percentage by position played.
 </figcaption>
 </figure>
 </div>
@@ -577,8 +577,8 @@ Figure&nbsp;23.1: Boxplots of on-base percentage by position played.
 <p>Suppose we are to measure the aptitude for students in 20 classes of a large elementary school at the beginning of the year. In this school, all students are randomly assigned to classrooms, so any differences we observe between the classes at the start of the year are completely due to chance. However, with so many groups, we will probably observe a few groups that look rather different from each other. If we select only the classes that look really different, we will probably make the wrong conclusion that the assignment wasn’t random. While we might only formally test differences for a few pairs of classes, we informally evaluated the other classes by eye before choosing the most extreme cases for a comparison.</p>
 <p>In the next section, we will learn how to use the <span class="math inline">\(F\)</span> statistic and ANOVA to test whether observed differences in means could have happened just by chance, even if there was no true difference in the respective population means.</p>
 </section>
-<section id="analysis-of-variance-anova-and-the-f-test" class="level3" data-number="23.3.2">
-<h3 data-number="23.3.2" class="anchored" data-anchor-id="analysis-of-variance-anova-and-the-f-test"><span class="header-section-number">23.3.2</span> Analysis of variance (ANOVA) and the F test</h3>
+<section id="analysis-of-variance-anova-and-the-f-test" class="level3" data-number="25.3.2">
+<h3 data-number="25.3.2" class="anchored" data-anchor-id="analysis-of-variance-anova-and-the-f-test"><span class="header-section-number">25.3.2</span> Analysis of variance (ANOVA) and the F test</h3>
 <p>The method of analysis of variance (ANOVA) in this context focuses on answering one question: is the variability in the sample means so large that it seems unlikely to be from chance alone? This question is different from earlier testing procedures because we will <em>simultaneously</em> consider many groups, and evaluate whether their sample means differ more than we would expect from natural variation. We call this variability the <strong>mean square between groups</strong> (<span class="math inline">\(MSG\)</span>), and it has an associated degrees of freedom, <span class="math inline">\(df_{G} = k - 1\)</span>, when there are <span class="math inline">\(k\)</span> groups. The <span class="math inline">\(MSG\)</span> can be thought of as a scaled variance formula for means. If the null hypothesis is true, any variation in the sample means is due to chance and shouldn’t be too large. We typically use software to find the <span class="math inline">\(MSG\)</span>; however, the mathematical derivation follows. Let <span class="math inline">\(\bar{x}_i\)</span> represent the mean outcome for observations in group <span class="math inline">\(i\)</span>, and let <span class="math inline">\(\bar{x}\)</span> represent the mean outcome across all groups. Then, the mean square between groups is computed as</p>
 <p><span class="math display">\[
 MSG = \frac{1}{df_{G}}SSG = \frac{1}{k - 1}\sum_{i = 1}^{k} n_{i}\left(\bar{x}_{i} - \bar{x}\right)^2,
@@ -596,7 +596,7 @@ SSE = SST - SSG = (n_1 - 1)s_1^2 + (n_2 - 1)s_2^2 + \cdots + (n_k - 1)s_k^2,
 <p><span class="math display">\[F = \frac{MSG}{MSE}\]</span></p>
 <p>The <span class="math inline">\(MSG\)</span> represents a measure of the between-group variability, and <span class="math inline">\(MSE\)</span> measures the variability within each of the groups. Using a randomization test, we could also look at the difference in the mean squared errors as a test statistic instead of the ratio.</p>
 <p>We can use the <span class="math inline">\(F\)</span> statistic to evaluate the hypotheses in what is called an <strong>F test</strong>. A <span class="math inline">\(p\)</span>-value can be computed from the <span class="math inline">\(F\)</span> statistic using an <span class="math inline">\(F\)</span> distribution, which has two associated parameters: <span class="math inline">\(df_{1}\)</span> and <span class="math inline">\(df_{2}\)</span>. For the <span class="math inline">\(F\)</span> statistic in ANOVA, <span class="math inline">\(df_{1} = df_{G}\)</span> and <span class="math inline">\(df_{2}= df_{E}\)</span>. The <span class="math inline">\(F\)</span> statistic is really a ratio of chi-squared random variables.</p>
-<p>The <span class="math inline">\(F\)</span> distribution, shown in <a href="#fig-dens232" class="quarto-xref">Figure&nbsp;<span>23.2</span></a>, takes on positive values and is right skewed, like the chi-squared distribution. The larger the observed variability in the sample means (<span class="math inline">\(MSG\)</span>) relative to the within-group observations (<span class="math inline">\(MSE\)</span>), the larger <span class="math inline">\(F\)</span> will be and the stronger the evidence against the null hypothesis. Because larger values of <span class="math inline">\(F\)</span> represent stronger evidence against the null hypothesis, we use the upper tail of the distribution to compute a <span class="math inline">\(p\)</span>-value.</p>
+<p>The <span class="math inline">\(F\)</span> distribution, shown in <a href="#fig-dens232" class="quarto-xref">Figure&nbsp;<span>25.2</span></a>, takes on positive values and is right skewed, like the chi-squared distribution. The larger the observed variability in the sample means (<span class="math inline">\(MSG\)</span>) relative to the within-group observations (<span class="math inline">\(MSE\)</span>), the larger <span class="math inline">\(F\)</span> will be and the stronger the evidence against the null hypothesis. Because larger values of <span class="math inline">\(F\)</span> represent stronger evidence against the null hypothesis, we use the upper tail of the distribution to compute a <span class="math inline">\(p\)</span>-value.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-dens232" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -605,7 +605,7 @@ SSE = SST - SSG = (n_1 - 1)s_1^2 + (n_2 - 1)s_2^2 + \cdots + (n_k - 1)s_k^2,
 <img src="23-Analysis-of-Variance_files/figure-html/fig-dens232-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dens232-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;23.2: The F distribution.
+Figure&nbsp;25.2: The F distribution.
 </figcaption>
 </figure>
 </div>
@@ -615,8 +615,8 @@ Figure&nbsp;23.2: The F distribution.
 <p><strong>The</strong> <span class="math inline">\(F\)</span> statistic and the <span class="math inline">\(F\)</span> test<br>
 Analysis of variance (ANOVA) is used to test whether the mean outcome differs across two or more groups. ANOVA uses a test statistic <span class="math inline">\(F\)</span>, which represents a standardized ratio of variability in the sample means (across the groups), relative to the variability within the groups. If <span class="math inline">\(H_0\)</span> is true and the model assumptions are satisfied, the statistic <span class="math inline">\(F\)</span> follows an <span class="math inline">\(F\)</span> distribution with parameters <span class="math inline">\(df_{1} = k - 1\)</span> and <span class="math inline">\(df_{2} = n - k\)</span>. The upper tail of the <span class="math inline">\(F\)</span> distribution is used to represent the <span class="math inline">\(p\)</span>-value.</p>
 </blockquote>
-<section id="anova" class="level4" data-number="23.3.2.1">
-<h4 data-number="23.3.2.1" class="anchored" data-anchor-id="anova"><span class="header-section-number">23.3.2.1</span> ANOVA</h4>
+<section id="anova" class="level4" data-number="25.3.2.1">
+<h4 data-number="25.3.2.1" class="anchored" data-anchor-id="anova"><span class="header-section-number">25.3.2.1</span> ANOVA</h4>
 <p>We will use <code>R</code> to perform the calculations for the ANOVA. But let’s check our assumptions first.</p>
 <p>There are three conditions we must check before conducting an ANOVA: 1) all observations must be independent, 2) the data in each group must be nearly normal, and 3) the variance within each group must be approximately equal.</p>
 <blockquote class="blockquote">
@@ -627,7 +627,7 @@ All observations must be independent. More specifically, observations must be in
 <p><strong>Approximately normal</strong><br>
 As with one- and two-sample testing for means, the normality assumption is especially important when the sample size is quite small. When we have larger data sets (and larger groups) and there are no extreme outliers, the normality condition is not usually a concern. The normal probability plots (quantile-quantile plots) for each group of the MLB data are shown below; there is some deviation from normality for infielders, but this isn’t a substantial concern since there are over 150 observations in that group and the outliers are not extreme. Sometimes in ANOVA, there are so many groups or so few observations per group that checking normality for each group isn’t reasonable. One solution is to combine the groups into one set of data. First, calculate the <strong>residuals</strong> of the baseball data, which are calculated by taking the observed values and subtracting the corresponding group means. For example, an outfielder with OBP of 0.435 would have a residual of <span class="math inline">\(0.435 - \bar{x}_{OF} = 0.082\)</span>. Then, to check the normality condition, create a normal probability plot using all the residuals simultaneously.</p>
 </blockquote>
-<p><a href="#fig-qq233" class="quarto-xref">Figure&nbsp;<span>23.3</span></a> is the quantile-quantile plot to assess the normality assumption.</p>
+<p><a href="#fig-qq233" class="quarto-xref">Figure&nbsp;<span>25.3</span></a> is the quantile-quantile plot to assess the normality assumption.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-qq233" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -636,7 +636,7 @@ As with one- and two-sample testing for means, the normality assumption is espec
 <img src="23-Analysis-of-Variance_files/figure-html/fig-qq233-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-qq233-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;23.3: Quantile-quantile plot for two-sample test of means.
+Figure&nbsp;25.3: Quantile-quantile plot for two-sample test of means.
 </figcaption>
 </figure>
 </div>
@@ -667,7 +667,7 @@ Residuals   323 0.4080 0.001263               </code></pre>
 <pre><code>[1] 0.1147443</code></pre>
 </div>
 </div>
-<p><a href="#fig-dens234" class="quarto-xref">Figure&nbsp;<span>23.4</span></a> is a plot of the <span class="math inline">\(F\)</span> distribution with the observed <span class="math inline">\(F\)</span> test statistic shown as a red line.</p>
+<p><a href="#fig-dens234" class="quarto-xref">Figure&nbsp;<span>25.4</span></a> is a plot of the <span class="math inline">\(F\)</span> distribution with the observed <span class="math inline">\(F\)</span> test statistic shown as a red line.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-dens234" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -676,15 +676,15 @@ Residuals   323 0.4080 0.001263               </code></pre>
 <img src="23-Analysis-of-Variance_files/figure-html/fig-dens234-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dens234-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;23.4: The F distribution.
+Figure&nbsp;25.4: The F distribution.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="permutation-test" class="level4" data-number="23.3.2.2">
-<h4 data-number="23.3.2.2" class="anchored" data-anchor-id="permutation-test"><span class="header-section-number">23.3.2.2</span> Permutation test</h4>
+<section id="permutation-test" class="level4" data-number="25.3.2.2">
+<h4 data-number="25.3.2.2" class="anchored" data-anchor-id="permutation-test"><span class="header-section-number">25.3.2.2</span> Permutation test</h4>
 <p>We can repeat the same analysis using a permutation test. We will first run it using a ratio of variances (mean squares) and then, for interest, as a difference in variances.</p>
 <p>We need a way to extract the mean squares from the output. The <strong>broom</strong> package contains a function called <code>tidy()</code> that cleans up output from functions and makes them into data frames.</p>
 <div class="cell">
@@ -747,7 +747,7 @@ Figure&nbsp;23.4: The F distribution.
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">do</span>(<span class="dv">1000</span>)<span class="sc">*</span>(<span class="fu">f_stat</span>(mlb_obp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The above code is slow in executing because the <strong>tidyverse</strong> functions inside our <code>f_stat()</code> function are slow.</p>
-<p><a href="#fig-hist235" class="quarto-xref">Figure&nbsp;<span>23.5</span></a> is a plot of the sampling distribution from the randomization test. The <span class="math inline">\(F\)</span> distribution is overlaid as a dark blue curve.</p>
+<p><a href="#fig-hist235" class="quarto-xref">Figure&nbsp;<span>25.5</span></a> is a plot of the sampling distribution from the randomization test. The <span class="math inline">\(F\)</span> distribution is overlaid as a dark blue curve.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-hist235" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -756,7 +756,7 @@ Figure&nbsp;23.4: The F distribution.
 <img src="23-Analysis-of-Variance_files/figure-html/fig-hist235-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hist235-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;23.5: The sampling distribution of the ratio of variances randomization test statistic.
+Figure&nbsp;25.5: The sampling distribution of the ratio of variances randomization test statistic.
 </figcaption>
 </figure>
 </div>
@@ -784,7 +784,7 @@ Figure&nbsp;23.5: The sampling distribution of the ratio of variances randomizat
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">5321</span>)</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">do</span>(<span class="dv">1000</span>)<span class="sc">*</span>(<span class="fu">f_stat2</span>(mlb_obp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><a href="#fig-hist236" class="quarto-xref">Figure&nbsp;<span>23.6</span></a> is the plot of the sampling distribution of the difference in variances.</p>
+<p><a href="#fig-hist236" class="quarto-xref">Figure&nbsp;<span>25.6</span></a> is the plot of the sampling distribution of the difference in variances.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-hist236" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -793,7 +793,7 @@ Figure&nbsp;23.5: The sampling distribution of the ratio of variances randomizat
 <img src="23-Analysis-of-Variance_files/figure-html/fig-hist236-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hist236-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;23.6: The sampling distribution of the difference in variances randomization test statistic.
+Figure&nbsp;25.6: The sampling distribution of the difference in variances randomization test statistic.
 </figcaption>
 </figure>
 </div>
@@ -1258,12 +1258,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./22-Additional-Hypothesis-Tests.html" class="pagination-link" aria-label="Additional Hypothesis Tests">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Additional Hypothesis Tests</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Additional Hypothesis Tests</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./24-Confidence-Intervals.html" class="pagination-link" aria-label="Confidence Intervals">
-        <span class="nav-page-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Confidence Intervals</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./26-Linear-Regression-Case-Study.html" class="pagination-link" aria-label="Linear Regression Case Study">
+        <span class="nav-page-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Linear Regression Case Study</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

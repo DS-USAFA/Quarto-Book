@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>19&nbsp; Hypothesis Testing with Simulation – Computational Probability and Statistics</title>
+<title>21&nbsp; Hypothesis Testing with Simulation – Computational Probability and Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./20-Hypothesis-Testing-ProbDist.html" rel="next">
-<link href="./18-Inference-Case-Study.html" rel="prev">
+<link href="./21-Central-Limit-Theorem.html" rel="next">
+<link href="./24-Confidence-Intervals.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -144,7 +144,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./18-Inference-Case-Study.html">Statistical Modeling - Inference</a></li><li class="breadcrumb-item"><a href="./19-Hypothesis-Testing-Simulation.html"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Hypothesis Testing with Simulation</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./18-Inference-Case-Study.html">Statistical Modeling - Inference</a></li><li class="breadcrumb-item"><a href="./19-Hypothesis-Testing-Simulation.html"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Hypothesis Testing with Simulation</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -341,44 +341,44 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./19-Hypothesis-Testing-Simulation.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Hypothesis Testing with Simulation</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./20-Hypothesis-Testing-ProbDist.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Hypothesis Testing with Known Distributions</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./21-Central-Limit-Theorem.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Hypothesis Testing with the Central Limit Theorem</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./22-Additional-Hypothesis-Tests.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Additional Hypothesis Tests</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./23-Analysis-of-Variance.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Analysis of Variance</span></span></a>
+  <a href="./25-Bootstrap.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Bootstrap</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./24-Confidence-Intervals.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Confidence Intervals</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Confidence Intervals</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./25-Bootstrap.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Bootstrap</span></span></a>
+  <a href="./19-Hypothesis-Testing-Simulation.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Hypothesis Testing with Simulation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./21-Central-Limit-Theorem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Hypothesis Testing with the Central Limit Theorem</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./20-Hypothesis-Testing-ProbDist.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Hypothesis Testing with Known Distributions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./22-Additional-Hypothesis-Tests.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Additional Hypothesis Tests</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./23-Analysis-of-Variance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Analysis of Variance</span></span></a>
   </div>
 </li>
       </ul>
@@ -446,28 +446,28 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives"><span class="header-section-number">19.1</span> Objectives</a></li>
-  <li><a href="#decision-making-under-uncertainty" id="toc-decision-making-under-uncertainty" class="nav-link" data-scroll-target="#decision-making-under-uncertainty"><span class="header-section-number">19.2</span> Decision making under uncertainty</a></li>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">19.3</span> Introduction</a></li>
-  <li><a href="#hypothesis-testing" id="toc-hypothesis-testing" class="nav-link" data-scroll-target="#hypothesis-testing"><span class="header-section-number">19.4</span> Hypothesis testing</a>
+  <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives"><span class="header-section-number">21.1</span> Objectives</a></li>
+  <li><a href="#decision-making-under-uncertainty" id="toc-decision-making-under-uncertainty" class="nav-link" data-scroll-target="#decision-making-under-uncertainty"><span class="header-section-number">21.2</span> Decision making under uncertainty</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">21.3</span> Introduction</a></li>
+  <li><a href="#hypothesis-testing" id="toc-hypothesis-testing" class="nav-link" data-scroll-target="#hypothesis-testing"><span class="header-section-number">21.4</span> Hypothesis testing</a>
   <ul class="collapse">
-  <li><a href="#hypothesis-testing-in-the-us-court-system" id="toc-hypothesis-testing-in-the-us-court-system" class="nav-link" data-scroll-target="#hypothesis-testing-in-the-us-court-system"><span class="header-section-number">19.4.1</span> Hypothesis testing in the US court system</a></li>
-  <li><a href="#step-1--state-the-null-and-alternative-hypotheses" id="toc-step-1--state-the-null-and-alternative-hypotheses" class="nav-link" data-scroll-target="#step-1--state-the-null-and-alternative-hypotheses"><span class="header-section-number">19.4.2</span> Step 1- State the null and alternative hypotheses</a></li>
-  <li><a href="#step-2---compute-a-test-statistic." id="toc-step-2---compute-a-test-statistic." class="nav-link" data-scroll-target="#step-2---compute-a-test-statistic."><span class="header-section-number">19.4.3</span> Step 2 - Compute a test statistic.</a></li>
-  <li><a href="#step-3---determine-the-p-value." id="toc-step-3---determine-the-p-value." class="nav-link" data-scroll-target="#step-3---determine-the-p-value."><span class="header-section-number">19.4.4</span> Step 3 - Determine the <span class="math inline">\(p\)</span>-value.</a></li>
-  <li><a href="#step-4---draw-a-conclusion" id="toc-step-4---draw-a-conclusion" class="nav-link" data-scroll-target="#step-4---draw-a-conclusion"><span class="header-section-number">19.4.5</span> Step 4 - Draw a conclusion</a></li>
-  <li><a href="#decision-errors" id="toc-decision-errors" class="nav-link" data-scroll-target="#decision-errors"><span class="header-section-number">19.4.6</span> Decision errors</a></li>
-  <li><a href="#choosing-a-significance-level" id="toc-choosing-a-significance-level" class="nav-link" data-scroll-target="#choosing-a-significance-level"><span class="header-section-number">19.4.7</span> Choosing a significance level</a></li>
-  <li><a href="#introducing-two-sided-hypotheses" id="toc-introducing-two-sided-hypotheses" class="nav-link" data-scroll-target="#introducing-two-sided-hypotheses"><span class="header-section-number">19.4.8</span> Introducing two-sided hypotheses</a></li>
+  <li><a href="#hypothesis-testing-in-the-us-court-system" id="toc-hypothesis-testing-in-the-us-court-system" class="nav-link" data-scroll-target="#hypothesis-testing-in-the-us-court-system"><span class="header-section-number">21.4.1</span> Hypothesis testing in the US court system</a></li>
+  <li><a href="#step-1--state-the-null-and-alternative-hypotheses" id="toc-step-1--state-the-null-and-alternative-hypotheses" class="nav-link" data-scroll-target="#step-1--state-the-null-and-alternative-hypotheses"><span class="header-section-number">21.4.2</span> Step 1- State the null and alternative hypotheses</a></li>
+  <li><a href="#step-2---compute-a-test-statistic." id="toc-step-2---compute-a-test-statistic." class="nav-link" data-scroll-target="#step-2---compute-a-test-statistic."><span class="header-section-number">21.4.3</span> Step 2 - Compute a test statistic.</a></li>
+  <li><a href="#step-3---determine-the-p-value." id="toc-step-3---determine-the-p-value." class="nav-link" data-scroll-target="#step-3---determine-the-p-value."><span class="header-section-number">21.4.4</span> Step 3 - Determine the <span class="math inline">\(p\)</span>-value.</a></li>
+  <li><a href="#step-4---draw-a-conclusion" id="toc-step-4---draw-a-conclusion" class="nav-link" data-scroll-target="#step-4---draw-a-conclusion"><span class="header-section-number">21.4.5</span> Step 4 - Draw a conclusion</a></li>
+  <li><a href="#decision-errors" id="toc-decision-errors" class="nav-link" data-scroll-target="#decision-errors"><span class="header-section-number">21.4.6</span> Decision errors</a></li>
+  <li><a href="#choosing-a-significance-level" id="toc-choosing-a-significance-level" class="nav-link" data-scroll-target="#choosing-a-significance-level"><span class="header-section-number">21.4.7</span> Choosing a significance level</a></li>
+  <li><a href="#introducing-two-sided-hypotheses" id="toc-introducing-two-sided-hypotheses" class="nav-link" data-scroll-target="#introducing-two-sided-hypotheses"><span class="header-section-number">21.4.8</span> Introducing two-sided hypotheses</a></li>
   </ul></li>
-  <li><a href="#two-sided-hypothesis-test" id="toc-two-sided-hypothesis-test" class="nav-link" data-scroll-target="#two-sided-hypothesis-test"><span class="header-section-number">19.5</span> Two-sided hypothesis test</a>
+  <li><a href="#two-sided-hypothesis-test" id="toc-two-sided-hypothesis-test" class="nav-link" data-scroll-target="#two-sided-hypothesis-test"><span class="header-section-number">21.5</span> Two-sided hypothesis test</a>
   <ul class="collapse">
-  <li><a href="#cpr-example" id="toc-cpr-example" class="nav-link" data-scroll-target="#cpr-example"><span class="header-section-number">19.5.1</span> CPR example</a></li>
-  <li><a href="#step-1---state-the-null-and-alternative-hypotheses" id="toc-step-1---state-the-null-and-alternative-hypotheses" class="nav-link" data-scroll-target="#step-1---state-the-null-and-alternative-hypotheses"><span class="header-section-number">19.5.2</span> Step 1 - State the null and alternative hypotheses</a></li>
-  <li><a href="#step-2---compute-a-test-statistic.-1" id="toc-step-2---compute-a-test-statistic.-1" class="nav-link" data-scroll-target="#step-2---compute-a-test-statistic.-1"><span class="header-section-number">19.5.3</span> Step 2 - Compute a test statistic.</a></li>
-  <li><a href="#step-3---determine-the-p-value.-1" id="toc-step-3---determine-the-p-value.-1" class="nav-link" data-scroll-target="#step-3---determine-the-p-value.-1"><span class="header-section-number">19.5.4</span> Step 3 - Determine the <span class="math inline">\(p\)</span>-value.</a></li>
-  <li><a href="#step-4---draw-a-conclusion-1" id="toc-step-4---draw-a-conclusion-1" class="nav-link" data-scroll-target="#step-4---draw-a-conclusion-1"><span class="header-section-number">19.5.5</span> Step 4 - Draw a conclusion</a></li>
-  <li><a href="#how-to-use-a-hypothesis-test" id="toc-how-to-use-a-hypothesis-test" class="nav-link" data-scroll-target="#how-to-use-a-hypothesis-test"><span class="header-section-number">19.5.6</span> How to use a hypothesis test</a></li>
+  <li><a href="#cpr-example" id="toc-cpr-example" class="nav-link" data-scroll-target="#cpr-example"><span class="header-section-number">21.5.1</span> CPR example</a></li>
+  <li><a href="#step-1---state-the-null-and-alternative-hypotheses" id="toc-step-1---state-the-null-and-alternative-hypotheses" class="nav-link" data-scroll-target="#step-1---state-the-null-and-alternative-hypotheses"><span class="header-section-number">21.5.2</span> Step 1 - State the null and alternative hypotheses</a></li>
+  <li><a href="#step-2---compute-a-test-statistic.-1" id="toc-step-2---compute-a-test-statistic.-1" class="nav-link" data-scroll-target="#step-2---compute-a-test-statistic.-1"><span class="header-section-number">21.5.3</span> Step 2 - Compute a test statistic.</a></li>
+  <li><a href="#step-3---determine-the-p-value.-1" id="toc-step-3---determine-the-p-value.-1" class="nav-link" data-scroll-target="#step-3---determine-the-p-value.-1"><span class="header-section-number">21.5.4</span> Step 3 - Determine the <span class="math inline">\(p\)</span>-value.</a></li>
+  <li><a href="#step-4---draw-a-conclusion-1" id="toc-step-4---draw-a-conclusion-1" class="nav-link" data-scroll-target="#step-4---draw-a-conclusion-1"><span class="header-section-number">21.5.5</span> Step 4 - Draw a conclusion</a></li>
+  <li><a href="#how-to-use-a-hypothesis-test" id="toc-how-to-use-a-hypothesis-test" class="nav-link" data-scroll-target="#how-to-use-a-hypothesis-test"><span class="header-section-number">21.5.6</span> How to use a hypothesis test</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/DS-USAFA/Quarto-Book/edit/main/19-Hypothesis-Testing-Simulation.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
@@ -475,9 +475,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./18-Inference-Case-Study.html">Statistical Modeling - Inference</a></li><li class="breadcrumb-item"><a href="./19-Hypothesis-Testing-Simulation.html"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Hypothesis Testing with Simulation</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./18-Inference-Case-Study.html">Statistical Modeling - Inference</a></li><li class="breadcrumb-item"><a href="./19-Hypothesis-Testing-Simulation.html"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Hypothesis Testing with Simulation</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-HYPTESTSIM" class="quarto-section-identifier"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Hypothesis Testing with Simulation</span></span></h1>
+<h1 class="title"><span id="sec-HYPTESTSIM" class="quarto-section-identifier"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Hypothesis Testing with Simulation</span></span></h1>
 </div>
 
 
@@ -494,19 +494,19 @@ window.Quarto = {
 </header>
 
 
-<section id="objectives" class="level2" data-number="19.1">
-<h2 data-number="19.1" class="anchored" data-anchor-id="objectives"><span class="header-section-number">19.1</span> Objectives</h2>
+<section id="objectives" class="level2" data-number="21.1">
+<h2 data-number="21.1" class="anchored" data-anchor-id="objectives"><span class="header-section-number">21.1</span> Objectives</h2>
 <ol type="1">
 <li><p>Know and properly use the terminology of a hypothesis test, to include: <em>null hypothesis</em>, <em>alternative hypothesis</em>, <em>test statistic</em>, <span class="math inline">\(p\)</span>-value, <em>randomization test</em>, <em>one-sided test</em>, <em>two-sided test</em>, <em>statistically significant</em>, <em>significance level</em>, <em>type I error</em>, <em>type II error</em>, <em>false positive</em>, <em>false negative</em>, <em>null distribution</em>, and <em>sampling distribution</em>.</p></li>
 <li><p>Conduct all four steps of a hypothesis test using randomization.</p></li>
 <li><p>Discuss and explain the ideas of decision errors, one-sided versus two-sided tests, and the choice of a significance level.</p></li>
 </ol>
 </section>
-<section id="decision-making-under-uncertainty" class="level2" data-number="19.2">
-<h2 data-number="19.2" class="anchored" data-anchor-id="decision-making-under-uncertainty"><span class="header-section-number">19.2</span> Decision making under uncertainty</h2>
+<section id="decision-making-under-uncertainty" class="level2" data-number="21.2">
+<h2 data-number="21.2" class="anchored" data-anchor-id="decision-making-under-uncertainty"><span class="header-section-number">21.2</span> Decision making under uncertainty</h2>
 <p>At this point, it is useful to take a look at where we have been in this book and where we are going. We did this in the case study, but we want to discuss it again in a little more detail. We first looked at descriptive models to help us understand our data. This also required us to get familiar with software. We learned about graphical summaries, data collection methods, and summary metrics.</p>
 <p>Next we learned about probability models. These models allowed us to use assumptions and a small number of parameters to make statements about data (a sample) and also to simulate data. We found that there is a close tie between probability models and statistical models. In our first efforts at statistical modeling, we started to use data to create estimates for parameters of a probability model.</p>
-<p>Now we are moving more in depth into statistical models. This is going to tie all the ideas together. We are going to use data from a sample and ideas of randomization to make conclusions about a population. This will require probability models, descriptive models, and some new ideas and terminology. We will generate point estimates for a metric designed to answer the research question and then find ways to determine the variability of the metric. In <a href="#fig-prob_stats2" class="quarto-xref">Figure&nbsp;<span>19.1</span></a>, we demonstrate this relationship between probability and statistical models.</p>
+<p>Now we are moving more in depth into statistical models. This is going to tie all the ideas together. We are going to use data from a sample and ideas of randomization to make conclusions about a population. This will require probability models, descriptive models, and some new ideas and terminology. We will generate point estimates for a metric designed to answer the research question and then find ways to determine the variability of the metric. In <a href="#fig-prob_stats2" class="quarto-xref">Figure&nbsp;<span>21.1</span></a>, we demonstrate this relationship between probability and statistical models.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-prob_stats2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -515,7 +515,7 @@ window.Quarto = {
 <img src="figures/Prob_Stats.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-prob_stats2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;19.1: A graphical representation of probability and statistics. In probability, we describe what we expect to happen in a sample if we know the underlying process; in statistics, we don’t know the underlying process, and must infer about the population based on representative samples.
+Figure&nbsp;21.1: A graphical representation of probability and statistics. In probability, we describe what we expect to happen in a sample if we know the underlying process; in statistics, we don’t know the underlying process, and must infer about the population based on representative samples.
 </figcaption>
 </figure>
 </div>
@@ -526,12 +526,12 @@ Figure&nbsp;19.1: A graphical representation of probability and statistics. In p
 <p>Historically, there have been two approaches to statistical decision making, hypothesis testing and confidence intervals. At their mathematical foundation, they are equivalent, but, sometimes in practice, they offer different perspectives on the problem. We will learn about both of these approaches.</p>
 <p>The engines that drive the numeric results of a decision making model are either mathematical or computational. In reality, computational methods have mathematics behind them, and mathematical methods often require computer computations. The real distinction between them is the assumptions we are making about our population. Mathematical solutions typically have stricter assumptions, thus leading to a tractable mathematical solution to the sampling distribution of the test statistic, while computational models relax assumptions but may require extensive computational power. Like all problems, there is a trade off to consider when trying to choose which approach is better. There is no one universal best method. Some methods perform better in certain contexts. It is important to understand that computational methods such as the <strong>bootstrap</strong> are <strong>NOT</strong> all you need to know.</p>
 </section>
-<section id="introduction" class="level2" data-number="19.3">
-<h2 data-number="19.3" class="anchored" data-anchor-id="introduction"><span class="header-section-number">19.3</span> Introduction</h2>
+<section id="introduction" class="level2" data-number="21.3">
+<h2 data-number="21.3" class="anchored" data-anchor-id="introduction"><span class="header-section-number">21.3</span> Introduction</h2>
 <p>In this chapter we will introduce hypothesis testing. It is really an extension of our last chapter, the case study. We will put more emphasis on terms and core concepts. In this chapter, we will use a computational solution but this will lead us into thinking of mathematical solutions.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> The role of the analyst is always key regardless of the perceived power of the computer. The analyst must take the research question and translate it into a numeric metric for evaluation. The analyst must decide on the type of data and its collection to evaluate the question. The analyst must evaluate the variability in the metric and determine what that means in relation to the original research question. The analyst must propose an answer.</p>
 </section>
-<section id="hypothesis-testing" class="level2" data-number="19.4">
-<h2 data-number="19.4" class="anchored" data-anchor-id="hypothesis-testing"><span class="header-section-number">19.4</span> Hypothesis testing</h2>
+<section id="hypothesis-testing" class="level2" data-number="21.4">
+<h2 data-number="21.4" class="anchored" data-anchor-id="hypothesis-testing"><span class="header-section-number">21.4</span> Hypothesis testing</h2>
 <p>We will continue to emphasize the ideas of hypothesis testing through a data-driven example, but also via analogy to the US court system. So let’s begin our journey.</p>
 <blockquote class="blockquote">
 <p><strong>Example</strong>:<br>
@@ -648,7 +648,7 @@ quantitative variables:
 </div>
 </div>
 </div>
-<p>It appears that the <em>premium</em> channels are skewed to the left. A <code>density</code> plot may help us compare the distributions and see the skewness, <a href="#fig-dens191" class="quarto-xref">Figure&nbsp;<span>19.2</span></a>.</p>
+<p>It appears that the <em>premium</em> channels are skewed to the left. A <code>density</code> plot may help us compare the distributions and see the skewness, <a href="#fig-dens191" class="quarto-xref">Figure&nbsp;<span>21.2</span></a>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>ads <span class="sc">%&gt;%</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_dens</span>(<span class="sc">~</span>length, <span class="at">color =</span> <span class="sc">~</span>channel)<span class="sc">%&gt;%</span></span>
@@ -663,7 +663,7 @@ quantitative variables:
 <img src="19-Hypothesis-Testing-Simulation_files/figure-html/fig-dens191-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dens191-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;19.2: Commercial length broken down by channel type.
+Figure&nbsp;21.2: Commercial length broken down by channel type.
 </figcaption>
 </figure>
 </div>
@@ -680,8 +680,8 @@ Figure&nbsp;19.2: Commercial length broken down by channel type.
 <li>Draw a conclusion.</li>
 </ol>
 <p>Before doing this, let’s visit an example of hypothesis testing that has become <em>common</em> knowledge for us, the US criminal trial system. We could also use the cadet honor system. This analogy allows us to remember and apply the steps.</p>
-<section id="hypothesis-testing-in-the-us-court-system" class="level3" data-number="19.4.1">
-<h3 data-number="19.4.1" class="anchored" data-anchor-id="hypothesis-testing-in-the-us-court-system"><span class="header-section-number">19.4.1</span> Hypothesis testing in the US court system</h3>
+<section id="hypothesis-testing-in-the-us-court-system" class="level3" data-number="21.4.1">
+<h3 data-number="21.4.1" class="anchored" data-anchor-id="hypothesis-testing-in-the-us-court-system"><span class="header-section-number">21.4.1</span> Hypothesis testing in the US court system</h3>
 <p>A US court considers two possible claims about a defendant: she is either innocent or guilty. Imagine you are the prosecutor. If we set these claims up in a hypothesis framework, the null hypothesis is that the defendant is innocent and the alternative hypothesis is that the defendant is guilty. Your job as the prosecutor is to use evidence to demonstrate to the jury that the alternative hypothesis is the reasonable conclusion.</p>
 <p>The jury considers whether the evidence under the null hypothesis, innocence, is so convincing (strong) that there is no reasonable doubt regarding the person’s guilt. That is, the skeptical perspective (null hypothesis) is that the person is innocent until evidence is presented that convinces the jury that the person is guilty (alternative hypothesis).</p>
 <p>Jurors examine the evidence under the assumption of innocence to see whether the evidence is so unlikely that it convincingly shows a defendant is guilty. Notice that if a jury finds a defendant <strong>not guilty</strong>, this does not necessarily mean the jury is confident in the person’s innocence. They are simply not convinced of the alternative that the person is guilty.</p>
@@ -689,8 +689,8 @@ Figure&nbsp;19.2: Commercial length broken down by channel type.
 <p>There are two types of mistakes possible in this scenario, letting a guilty person go free and sending an innocent person to jail. The criteria for making the decision, reasonable doubt, establishes the likelihood of those errors.</p>
 <p>Now back to our problem.</p>
 </section>
-<section id="step-1--state-the-null-and-alternative-hypotheses" class="level3" data-number="19.4.2">
-<h3 data-number="19.4.2" class="anchored" data-anchor-id="step-1--state-the-null-and-alternative-hypotheses"><span class="header-section-number">19.4.2</span> Step 1- State the null and alternative hypotheses</h3>
+<section id="step-1--state-the-null-and-alternative-hypotheses" class="level3" data-number="21.4.2">
+<h3 data-number="21.4.2" class="anchored" data-anchor-id="step-1--state-the-null-and-alternative-hypotheses"><span class="header-section-number">21.4.2</span> Step 1- State the null and alternative hypotheses</h3>
 <p>The first step is to translate the research question into hypotheses. As a reminder, our research question is <em>do premium channels have less ad time than basic channels?</em> In collecting the data, we already decided the total length of time of commercials in a 30 minute show was the correct data for answering this question. We believe that premium channels have less commercial time. However, the null hypothesis, the straw man, has to be the default case that makes it possible to generate a sampling distribution.</p>
 <ol type="i">
 <li><span class="math inline">\(H_0\)</span>: <strong>Null hypothesis</strong>. The distribution of length of commercials for premium and basic channels is the same.</li>
@@ -698,8 +698,8 @@ Figure&nbsp;19.2: Commercial length broken down by channel type.
 </ol>
 <p>These hypotheses are vague. What does it mean for two distributions to be different and how do we measure and summarize this? Let’s move to the second step and then come back and modify our hypotheses. Notice that the null hypothesis states the distributions are the same. When we generate our sampling distribution of the test statistic, we will do so under this null hypothesis.</p>
 </section>
-<section id="step-2---compute-a-test-statistic." class="level3" data-number="19.4.3">
-<h3 data-number="19.4.3" class="anchored" data-anchor-id="step-2---compute-a-test-statistic."><span class="header-section-number">19.4.3</span> Step 2 - Compute a test statistic.</h3>
+<section id="step-2---compute-a-test-statistic." class="level3" data-number="21.4.3">
+<h3 data-number="21.4.3" class="anchored" data-anchor-id="step-2---compute-a-test-statistic."><span class="header-section-number">21.4.3</span> Step 2 - Compute a test statistic.</h3>
 <blockquote class="blockquote">
 <p><strong>Exercise</strong>:<br>
 What type of metric could we use to test for a difference in the distributions of commercial lengths between the two types of channels?</p>
@@ -750,8 +750,8 @@ What type of metric could we use to test for a difference in the distributions o
 </div>
 <p>Here is what we have done; we needed a single number metric to use in evaluating the null and alternative hypotheses. The null hypothesis is that the commercial lengths for the two channel types have the same distribution and the alternative is that they don’t. To measure the alternative hypothesis, we decided to use a ratio of the medians. If the ratio is close to 1, then the medians are not different. There may be other ways in which the distributions are different but we have decided on the ratio of medians for this example.</p>
 </section>
-<section id="step-3---determine-the-p-value." class="level3" data-number="19.4.4">
-<h3 data-number="19.4.4" class="anchored" data-anchor-id="step-3---determine-the-p-value."><span class="header-section-number">19.4.4</span> Step 3 - Determine the <span class="math inline">\(p\)</span>-value.</h3>
+<section id="step-3---determine-the-p-value." class="level3" data-number="21.4.4">
+<h3 data-number="21.4.4" class="anchored" data-anchor-id="step-3---determine-the-p-value."><span class="header-section-number">21.4.4</span> Step 3 - Determine the <span class="math inline">\(p\)</span>-value.</h3>
 <p>As a reminder, the <span class="math inline">\(p\)</span>-value is the probability of our observed test statistic or something more extreme, given the null hypothesis is true. Since our null hypothesis is that the distributions are the same, we can use a <strong>randomization</strong> test. We will shuffle the channel labels since under the null hypothesis, they are irrelevant. Here is the code for one randomization.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">371</span>)</span>
@@ -766,7 +766,7 @@ What type of metric could we use to test for a difference in the distributions o
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">371</span>)</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">do</span>(<span class="dv">1000</span>)<span class="sc">*</span><span class="fu">metric</span>(<span class="fu">median</span>(length <span class="sc">~</span> <span class="fu">shuffle</span>(channel), <span class="at">data =</span> ads))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Next we create a plot of the distribution of the ratio of median commercial lengths in basic and premium channels, assuming they come from the same population, <a href="#fig-hist191" class="quarto-xref">Figure&nbsp;<span>19.3</span></a>.</p>
+<p>Next we create a plot of the distribution of the ratio of median commercial lengths in basic and premium channels, assuming they come from the same population, <a href="#fig-hist191" class="quarto-xref">Figure&nbsp;<span>21.3</span></a>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>results <span class="sc">%&gt;%</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_histogram</span>(<span class="sc">~</span>test_stat) <span class="sc">%&gt;%</span></span>
@@ -780,7 +780,7 @@ What type of metric could we use to test for a difference in the distributions o
 <img src="19-Hypothesis-Testing-Simulation_files/figure-html/fig-hist191-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hist191-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;19.3: Historgram of the sampling distribution by an approxiamte permutation test.
+Figure&nbsp;21.3: Historgram of the sampling distribution by an approxiamte permutation test.
 </figcaption>
 </figure>
 </div>
@@ -806,8 +806,8 @@ Figure&nbsp;19.3: Historgram of the sampling distribution by an approxiamte perm
 </div>
 <p>The test we performed is called a one-sided test because we only checked if the median length for basic channels is larger than that for premium channels. In this case of a one-sided test, more extreme meant a ratio much bigger than 1. A two-sided test is also common, in fact it is more common, and is used if we did not apriori think one channel type had longer commercials than the other. In this case, we find the <span class="math inline">\(p\)</span>-value by doubling the single-sided value. This is because <em>more extreme</em> could have happened in either tail of the sampling distribution.</p>
 </section>
-<section id="step-4---draw-a-conclusion" class="level3" data-number="19.4.5">
-<h3 data-number="19.4.5" class="anchored" data-anchor-id="step-4---draw-a-conclusion"><span class="header-section-number">19.4.5</span> Step 4 - Draw a conclusion</h3>
+<section id="step-4---draw-a-conclusion" class="level3" data-number="21.4.5">
+<h3 data-number="21.4.5" class="anchored" data-anchor-id="step-4---draw-a-conclusion"><span class="header-section-number">21.4.5</span> Step 4 - Draw a conclusion</h3>
 <p>Our research question – do premium channels have less ad time than basic channels? – was framed in context of the following hypotheses:</p>
 <p><span class="math inline">\(H_0\)</span>: <strong>Null hypothesis</strong>. The distribution of length of commercials for premium and basic channels is the same.<br>
 <span class="math inline">\(H_A\)</span>: <strong>Alternative hypothesis</strong>. The distribution of length of commercials for premium and basic channels is different because the median length of basic channels ads is bigger than for premium channel ads.</p>
@@ -827,8 +827,8 @@ Use our <span class="math inline">\(p\)</span>-value and a significance level of
 </blockquote>
 <p>Based on our data, if there were really no difference in the distribution of lengths of commercials in 30 minute shows between basic and premium channels then the probability of finding our observed ratio of medians is 0.027. Since this is less than our significance level of <span class="math inline">\(\alpha = 0.05\)</span>, we reject the null in favor of the alternative that the basic channel has longer commercials.</p>
 </section>
-<section id="decision-errors" class="level3" data-number="19.4.6">
-<h3 data-number="19.4.6" class="anchored" data-anchor-id="decision-errors"><span class="header-section-number">19.4.6</span> Decision errors</h3>
+<section id="decision-errors" class="level3" data-number="21.4.6">
+<h3 data-number="21.4.6" class="anchored" data-anchor-id="decision-errors"><span class="header-section-number">21.4.6</span> Decision errors</h3>
 <p>Hypothesis tests are not flawless. Just think of the court system: innocent people are sometimes wrongly convicted and the guilty sometimes walk free. Similarly, data can point to the wrong conclusion. However, what distinguishes statistical hypothesis tests from a court system is that our framework allows us to quantify and control how often the data lead us to the incorrect conclusion.</p>
 <p>There are two competing hypotheses: the null and the alternative. In a hypothesis test, we make a statement about which one might be true, but we might choose incorrectly. There are four possible scenarios in a hypothesis test, which are summarized below.</p>
 <p><span class="math display">\[
@@ -863,15 +863,15 @@ How could we reduce the Type 2 error rate in US courts? What influence would thi
 </blockquote>
 <p>These exercises provide an important lesson: if we reduce how often we make one type of error, we generally make more of the other type for a given amount of data, information.</p>
 </section>
-<section id="choosing-a-significance-level" class="level3" data-number="19.4.7">
-<h3 data-number="19.4.7" class="anchored" data-anchor-id="choosing-a-significance-level"><span class="header-section-number">19.4.7</span> Choosing a significance level</h3>
+<section id="choosing-a-significance-level" class="level3" data-number="21.4.7">
+<h3 data-number="21.4.7" class="anchored" data-anchor-id="choosing-a-significance-level"><span class="header-section-number">21.4.7</span> Choosing a significance level</h3>
 <p>Choosing a significance level for a test is important in many contexts, and the traditional level is <span class="math inline">\(\alpha = 0.05\)</span>. However, it is sometimes helpful to adjust the significance level based on the application. We may select a level that is smaller or larger than 0.05 depending on the consequences of any conclusions reached from the test.</p>
 <p>If making a Type 1 error is dangerous or especially costly, we should choose a small significance level (e.g.&nbsp;0.01 or 0.001). Under this scenario, we want to be very cautious about rejecting the null hypothesis, so we demand very strong evidence favoring the alternative <span class="math inline">\(H_A\)</span> before we would reject <span class="math inline">\(H_0\)</span>.</p>
 <p>If making a Type 2 error is relatively more dangerous or much more costly than a Type 1 error, then we should choose a higher significance level (e.g.&nbsp;0.10). Here we want to be cautious about failing to reject <span class="math inline">\(H_0\)</span> when the null hypothesis is actually false.</p>
 <p>The significance level selected for a test should reflect the real-world consequences associated with making a Type 1 or Type 2 error.</p>
 </section>
-<section id="introducing-two-sided-hypotheses" class="level3" data-number="19.4.8">
-<h3 data-number="19.4.8" class="anchored" data-anchor-id="introducing-two-sided-hypotheses"><span class="header-section-number">19.4.8</span> Introducing two-sided hypotheses</h3>
+<section id="introducing-two-sided-hypotheses" class="level3" data-number="21.4.8">
+<h3 data-number="21.4.8" class="anchored" data-anchor-id="introducing-two-sided-hypotheses"><span class="header-section-number">21.4.8</span> Introducing two-sided hypotheses</h3>
 <p>So far we have explored whether women were discriminated against and whether commercials were longer depending on the type of channel. In these two case studies, we’ve actually ignored some possibilities:</p>
 <ol type="1">
 <li>What if <strong>men</strong> are actually discriminated against?<br>
@@ -887,8 +887,8 @@ How could we reduce the Type 2 error rate in US courts? What influence would thi
 <p>The previous hypothesis tests we’ve seen are called <strong>one-sided hypothesis tests</strong> because they only explored one direction of possibilities. Such hypotheses are appropriate when we are exclusively interested in a single direction, but usually we want to consider all possibilities. To do so, let’s discuss <strong>two-sided hypothesis tests</strong> in the context of a new study that examines the impact of using blood thinners on patients who have undergone cardiopulmonary resuscitation, CPR.</p>
 </section>
 </section>
-<section id="two-sided-hypothesis-test" class="level2" data-number="19.5">
-<h2 data-number="19.5" class="anchored" data-anchor-id="two-sided-hypothesis-test"><span class="header-section-number">19.5</span> Two-sided hypothesis test</h2>
+<section id="two-sided-hypothesis-test" class="level2" data-number="21.5">
+<h2 data-number="21.5" class="anchored" data-anchor-id="two-sided-hypothesis-test"><span class="header-section-number">21.5</span> Two-sided hypothesis test</h2>
 <p>It is important to distinguish between a <em>two-sided</em> hypothesis test and a <em>one-sided</em> hypothesis test. In a two-sided test, we are concerned with whether or not the population parameter could take a particular value. For parameter <span class="math inline">\(\theta\)</span>, a set of two-sided hypotheses looks like:</p>
 <p><span class="math display">\[
 H_0: \theta=\theta_0 \hspace{1.5cm} H_1: \theta \neq \theta_0
@@ -901,13 +901,13 @@ H_0: \theta = \theta_0 \hspace{1.5cm} H_1:\theta &gt; \theta_0
 H_0: \theta = \theta_0 \hspace{1.5cm} H_1:\theta &lt; \theta_0
 \]</span></p>
 <p>In some texts, one-sided null hypotheses include an inequality (<span class="math inline">\(H_0 \leq \theta_0\)</span> or <span class="math inline">\(H_0 \geq \theta_0\)</span>). We have already demonstrated one-sided tests and, in the next example, we will use a two-sided test.</p>
-<section id="cpr-example" class="level3" data-number="19.5.1">
-<h3 data-number="19.5.1" class="anchored" data-anchor-id="cpr-example"><span class="header-section-number">19.5.1</span> CPR example</h3>
+<section id="cpr-example" class="level3" data-number="21.5.1">
+<h3 data-number="21.5.1" class="anchored" data-anchor-id="cpr-example"><span class="header-section-number">21.5.1</span> CPR example</h3>
 <p>Cardiopulmonary resuscitation (CPR) is a procedure used on individuals suffering a heart attack when other emergency resources are unavailable. This procedure is helpful in providing some blood circulation to keep a person alive, but CPR chest compressions can also cause internal injuries. Internal bleeding and other injuries that can result from CPR complicate additional treatment efforts. For instance, blood thinners may be used to help release a clot that is causing the heart attack once a patient arrives in the hospital. However, blood thinners negatively affect internal injuries.</p>
 <p>Here we consider an experiment with patients who underwent CPR for a heart attack and were subsequently admitted to a hospital.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> Each patient was randomly assigned to either receive a blood thinner (treatment group) or not receive a blood thinner (control group). The outcome variable of interest was whether the patient survived for at least 24 hours.</p>
 </section>
-<section id="step-1---state-the-null-and-alternative-hypotheses" class="level3" data-number="19.5.2">
-<h3 data-number="19.5.2" class="anchored" data-anchor-id="step-1---state-the-null-and-alternative-hypotheses"><span class="header-section-number">19.5.2</span> Step 1 - State the null and alternative hypotheses</h3>
+<section id="step-1---state-the-null-and-alternative-hypotheses" class="level3" data-number="21.5.2">
+<h3 data-number="21.5.2" class="anchored" data-anchor-id="step-1---state-the-null-and-alternative-hypotheses"><span class="header-section-number">21.5.2</span> Step 1 - State the null and alternative hypotheses</h3>
 <blockquote class="blockquote">
 <p><strong>Exercise</strong>: Form hypotheses for this study in plain and statistical language. Let <span class="math inline">\(p_c\)</span> represent the true survival rate of people who do not receive a blood thinner (corresponding to the control group) and <span class="math inline">\(p_t\)</span> represent the survival rate for people receiving a blood thinner (corresponding to the treatment group).</p>
 </blockquote>
@@ -950,8 +950,8 @@ group       died survived Total
 </div>
 </div>
 </section>
-<section id="step-2---compute-a-test-statistic.-1" class="level3" data-number="19.5.3">
-<h3 data-number="19.5.3" class="anchored" data-anchor-id="step-2---compute-a-test-statistic.-1"><span class="header-section-number">19.5.3</span> Step 2 - Compute a test statistic.</h3>
+<section id="step-2---compute-a-test-statistic.-1" class="level3" data-number="21.5.3">
+<h3 data-number="21.5.3" class="anchored" data-anchor-id="step-2---compute-a-test-statistic.-1"><span class="header-section-number">21.5.3</span> Step 2 - Compute a test statistic.</h3>
 <p>The test statistic we have selected is the difference in survival rate between the control group and the treatment group. The following <code>R</code> command finds the observed proportions.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tally</span>(outcome <span class="sc">~</span> group, <span class="at">data =</span> thinner, <span class="at">margins =</span> <span class="cn">TRUE</span>, <span class="at">format =</span> <span class="st">"proportion"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -975,14 +975,14 @@ outcome    control treatment
 </div>
 <p>Based on the point estimate, for patients who have undergone CPR outside of the hospital, an additional 13% of these patients survive when they are treated with blood thinners. We wonder if this difference is easily explainable by chance.</p>
 </section>
-<section id="step-3---determine-the-p-value.-1" class="level3" data-number="19.5.4">
-<h3 data-number="19.5.4" class="anchored" data-anchor-id="step-3---determine-the-p-value.-1"><span class="header-section-number">19.5.4</span> Step 3 - Determine the <span class="math inline">\(p\)</span>-value.</h3>
+<section id="step-3---determine-the-p-value.-1" class="level3" data-number="21.5.4">
+<h3 data-number="21.5.4" class="anchored" data-anchor-id="step-3---determine-the-p-value.-1"><span class="header-section-number">21.5.4</span> Step 3 - Determine the <span class="math inline">\(p\)</span>-value.</h3>
 <p>As we did in the previous two studies, we will simulate what type of differences we might see from chance alone under the null hypothesis. By randomly assigning <em>treatment</em> and <em>control</em> stickers to the patients’ files, we get a new grouping. If we repeat this simulation 10,000 times, we can build a <strong>null distribution</strong> of the differences. This is our empirical sampling distribution, the distribution of differences simulated under the null hypothesis.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">655</span>)</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">do</span>(<span class="dv">10000</span>)<span class="sc">*</span><span class="fu">diffprop</span>(outcome <span class="sc">~</span> <span class="fu">shuffle</span>(group), <span class="at">data =</span> thinner)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><a href="#fig-dens912" class="quarto-xref">Figure&nbsp;<span>19.4</span></a> is a histogram of the estimated sampling distribution.</p>
+<p><a href="#fig-dens912" class="quarto-xref">Figure&nbsp;<span>21.4</span></a> is a histogram of the estimated sampling distribution.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>results <span class="sc">%&gt;%</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_histogram</span>(<span class="sc">~</span>diffprop) <span class="sc">%&gt;%</span></span>
@@ -996,7 +996,7 @@ outcome    control treatment
 <img src="19-Hypothesis-Testing-Simulation_files/figure-html/fig-dens912-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dens912-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;19.4: Histogram of the estimated sampling distribution.
+Figure&nbsp;21.4: Histogram of the estimated sampling distribution.
 </figcaption>
 </figure>
 </div>
@@ -1015,8 +1015,8 @@ Figure&nbsp;19.4: Histogram of the estimated sampling distribution.
 <p>There is something different in this study than in the past studies: in this study, we are particularly interested in whether blood thinners increase <strong>or</strong> decrease the risk of death in patients who undergo CPR before arriving at the hospital.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
 <p>For a two-sided test, we take the single tail (in this case, 0.128) and double it to get the <span class="math inline">\(p\)</span>-value: 0.256.</p>
 </section>
-<section id="step-4---draw-a-conclusion-1" class="level3" data-number="19.5.5">
-<h3 data-number="19.5.5" class="anchored" data-anchor-id="step-4---draw-a-conclusion-1"><span class="header-section-number">19.5.5</span> Step 4 - Draw a conclusion</h3>
+<section id="step-4---draw-a-conclusion-1" class="level3" data-number="21.5.5">
+<h3 data-number="21.5.5" class="anchored" data-anchor-id="step-4---draw-a-conclusion-1"><span class="header-section-number">21.5.5</span> Step 4 - Draw a conclusion</h3>
 <p>Since this <span class="math inline">\(p\)</span>-value is larger than 0.05, we fail to reject the null hypothesis. That is, we do not find statistically significant evidence that the blood thinner has any influence on survival of patients who undergo CPR prior to arriving at the hospital. Once again, we can discuss the causal conclusion since this is an experiment.</p>
 <blockquote class="blockquote">
 <p><strong>Default to a two-sided test</strong> We want to be rigorous and keep an open mind when we analyze data and evidence. In general, you should default to using a two-sided test when conducting hypothesis tests. Use a one-sided hypothesis test only if you truly have interest in only one direction.</p>
@@ -1031,8 +1031,8 @@ First compute the <span class="math inline">\(p\)</span>-value for one tail of t
 After observing data, it can be tempting to turn a two-sided test into a one-sided test. Avoid this temptation. Hypotheses and the significance level should be set up <strong>before</strong> observing the data.</p>
 </blockquote>
 </section>
-<section id="how-to-use-a-hypothesis-test" class="level3" data-number="19.5.6">
-<h3 data-number="19.5.6" class="anchored" data-anchor-id="how-to-use-a-hypothesis-test"><span class="header-section-number">19.5.6</span> How to use a hypothesis test</h3>
+<section id="how-to-use-a-hypothesis-test" class="level3" data-number="21.5.6">
+<h3 data-number="21.5.6" class="anchored" data-anchor-id="how-to-use-a-hypothesis-test"><span class="header-section-number">21.5.6</span> How to use a hypothesis test</h3>
 <p>This is a summary of the general framework for using hypothesis testing. These are the same steps as before, with just slightly different wording.</p>
 <ol type="1">
 <li><p>Frame the research question in terms of hypotheses.</p>
@@ -1483,13 +1483,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./18-Inference-Case-Study.html" class="pagination-link" aria-label="Inferential Thinking Case Study">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Inferential Thinking Case Study</span></span>
+      <a href="./24-Confidence-Intervals.html" class="pagination-link" aria-label="Confidence Intervals">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Confidence Intervals</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./20-Hypothesis-Testing-ProbDist.html" class="pagination-link" aria-label="Hypothesis Testing with Known Distributions">
-        <span class="nav-page-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Hypothesis Testing with Known Distributions</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./21-Central-Limit-Theorem.html" class="pagination-link" aria-label="Hypothesis Testing with the Central Limit Theorem">
+        <span class="nav-page-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Hypothesis Testing with the Central Limit Theorem</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

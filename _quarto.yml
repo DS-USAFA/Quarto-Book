@@ -62,6 +62,7 @@ book:
         - 30-Simulation-Based-Linear-Regression.qmd
         - 31-Multiple-Linear-Regression.qmd
         - 32-Logistic-Regression.qmd
+        - References.qmd
 cover-image: Cover_Majors.png
 favicon: Cover_Majors.png
 biblio-style: apalike
