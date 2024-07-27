@@ -16,13 +16,13 @@ library(knitr)
 
 ## Objectives
 
-1)  Using `R`, conduct logistic regression, interpret the output, and perform model selection.
+1)  Apply logistic regression using `R` to analyze binary outcome data. Interpret the regression output, and perform model selection.
 
-2)  Write the logistic regression model and predict outputs for given inputs.
+2)  Write the estimated logistic regression, and calculate and interpret the predicted outputs for given values of the predictors.
 
-3)  Find confidence intervals for parameter estimates and predictions.
+3)  Calculate and interpret confidence intervals for parameter estimates and predicted probabilities in a logistic regression model.
 
-4)  Create and interpret a confusion matrix.
+4)  Generate and analyze a confusion matrix to evaluate the performance of a logistic regression model.
 
 ## Logistic regression introduction
 
@@ -225,11 +225,11 @@ summary(mario_mod1)
 This looks similar to the regression output we saw in previous chapters. However, the model has a different, nonlinear, form. Remember, @eq-logistic is the general form of the model.
 
 $$  \log_{e}\left( \frac{p_i}{1-p_i} \right)
-    = \beta_0 + \beta_1 x_{1,i} + \beta_2 x_{2,i} + \cdots + \beta_k x_{k,i}$${#eq-logistic}
+    = \beta_0 + \beta_1 x_{1,i} + \beta_2 x_{2,i} + \cdots + \beta_k x_{k,i}$$ {#eq-logistic}
 
 Thus using the output of `R`, @eq-logistic2 is the estimated model.
 
-$$\log\left( \frac{p_i}{1-p_i} \right) = -0.329$${\#eq-logistic2}
+$$\log\left( \frac{p_i}{1-p_i} \right) = -0.329$$ {#eq-logistic2}
 
 Solving @eq-logistic2 for $p_i$: $\frac{e^{-0.329}}{1 + e^{-0.329}} = 0.418$. This is the estimated probability of the game condition being new. This point is plotted in @fig-logit. We can also check this result using a summary table.
 
@@ -318,7 +318,7 @@ tidy(mario_mod2)
 The variable `stock_photo` takes on the values 0 and 1, the value 1 of indicates the sale had a stock photo. The logistic regression model we are fitting is @eq-logistic4.
 
 $$\log_{e}\left( \frac{p_{new}}{1-p_{new}} \right)
-    = \beta_0 + \beta_1 \mbox{stock photo}$${#eq-logistic4}
+    = \beta_0 + \beta_1 \mbox{stock photo}$$ {#eq-logistic4}
 
 If the photo is not a stock photo then the model is @eq-logistic5. The left-hand side is the natural logarithm of the odds, where odds are the ratio of the probability of success divided by the probability of failure.\
 $$
@@ -326,12 +326,12 @@ $$
     = \beta_0 + \beta_1   
 $$
 
-$$\log_{e}\left( \frac{p_{\mbox{new|no stock photo}}}{1-p_{\mbox{new|no stock photo}}} \right)= \beta_0$${#eq-logistic5}
-    
+$$\log_{e}\left( \frac{p_{\mbox{new|no stock photo}}}{1-p_{\mbox{new|no stock photo}}} \right)= \beta_0$$ {#eq-logistic5}
+
 If we have a stock photo, the variable `stock_photo` is 1. Then @eq-logistic6 is the resulting model.
 
 $$ \log_{e}\left( \frac{p_{\mbox{new|stock photo}}}{1-p_{\mbox{new|stock photo}}} \right)
-    = \beta_0 + \beta_1$${#eq-logistic6}
+    = \beta_0 + \beta_1$$ {#eq-logistic6}
 
 Thus the difference of these gives an interpretation of the $\beta_1$ coefficient, it is the log odds ratio as is shown in the derivation that follows.
 
