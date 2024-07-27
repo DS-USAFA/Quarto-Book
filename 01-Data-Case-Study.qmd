@@ -2,9 +2,9 @@
 
 ## Objectives
 
-1)  Use `R` for basic analysis and visualization.
+1.  Use `R` for basic analysis and visualization.
 
-2)  Compile a pdf file report from a RMD or qmd file in R.
+2.  Compile a PDF report using `knitr`.
 
 ## Introduction to descriptive statistical modeling
 

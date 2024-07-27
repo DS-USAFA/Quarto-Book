@@ -13,11 +13,11 @@ library(mosaic)
 
 ## Objectives
 
-1)  Define and use properly in context all new terminology, to include: *population*, *sample*, *anecdotal evidence*, *bias*, *simple random sample*, *systematic sample*, *non-response bias*, *representative sample*, *convenience sample*, *explanatory variable*, *response variable*, *observational study*, *cohort*, *experiment*, *randomized experiment*, and *placebo*.
+1)  Differentiate between various statistical terminologies such as *population, sample, anecdotal evidence, bias, simple random sample, systematic sample, representative sample, non-response bias, convenience sample, explanatory variable,* *response variable, observational study, cohort, experiment, randomized experiment,* and *placebo*, and construct examples to demonstrate their proper use in context.
 
-2)  From a description of a research project, be able to describe the population of interest, the generalizability of the study, the explanatory and response variables, whether it is observational or experimental, and determine the type of sample.
+2)  Evaluate descriptions of research project to identify the population of interest, assess the generalizability of the study, determine the explanatory and response variables, classify the study as observational or experimental, and determine the type of sample used.
 
-3)  In the context of a problem, explain how to conduct a sample for the different types of sampling procedures.
+3)  Design and justify sampling procedures for various research contexts, comparing the strengths and weaknesses of different sampling methods (simple random, systematic, convenience, etc.) and proposing improvements to minimize bias and enhance representativeness.
 
 ## Overview of data collection principles
 

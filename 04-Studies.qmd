@@ -14,17 +14,17 @@ library(usdata)
 
 ## Objectives
 
-1)  Define and use properly in context all new terminology, to include: *confounding variable*, *prospective study*, *retrospective study*, *simple random sampling*, *stratified sampling*, *strata*, *cluster sampling*, *multistage sampling*, *experiment*, *randomized experiment*, *control*, *replicate*, *blocking*, *blocks*, *treatment group*, *control group*, *blinded study*, *placebo*, *placebo effect*, and *double-blind*.
+1)  Differentiate between various statistical terminologies such as *observational study, confounding variable, prospective study, retrospective study, simple random sampling, stratified sampling, strata, cluster sampling, multistage sampling, experiment, randomized experiment, control, replicate, blocking, treatment group, control group, blinded study, placebo, placebo effect,* and *double-blind*, and construct examples to demonstrate their proper use in context.
 
-2)  Given a study description, be able to describe the study using correct terminology.
+2)  Evaluate study descriptions using appropriate terminology, and analyze the study design for potential biases or confounding variables.
 
-3)  Given a scenario, describe flaws in reasoning and propose study and sampling designs.
+3)  Given a scenario, identify and assess flaws in reasoning, and propose robust study and sampling methodologies to address these flaws.
 
-## Observation studies, sampling strategies, and experiments
+## Observational studies, sampling strategies, and experiments
 
 ### Observational studies
 
-Generally, data in observational studies are collected only by monitoring what occurs, while experiments require the primary explanatory variable in a study be assigned for each subject by the researchers.
+Generally, data in **observational studies** are collected only by monitoring what occurs, while experiments require the primary explanatory variable in a study be assigned for each subject by the researchers.
 
 Making causal conclusions based on experiments is often reasonable. However, making the same causal conclusions based on observational data can be treacherous and is not recommended. Thus, observational studies are generally only sufficient to show associations.
 
