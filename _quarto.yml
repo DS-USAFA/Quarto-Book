@@ -60,9 +60,8 @@ book:
         - 28-Linear-Regression-Inference.qmd
         - 29-Linear-Regression-Diagnostics.qmd
         - 30-Simulation-Based-Linear-Regression.qmd
-        - 31-Multiple-Linear-Regression.qmd 
-        - 32-Logistic-Regression.qmd 
-    - References.qmd 
+        - 31-Multiple-Linear-Regression.qmd
+        - 32-Logistic-Regression.qmd
 cover-image: Cover_Majors.png
 favicon: Cover_Majors.png
 biblio-style: apalike
