@@ -46,6 +46,7 @@ book:
     - part: "Statistical Modeling - Inference"
       chapters:  
         - 18-Inference-Case-Study.qmd
+        - 18B-Sampling-Distributions.qmd
         - 25-Bootstrap.qmd
         - 19-Hypothesis-Testing-Simulation.qmd
         - 20-Hypothesis-Testing-ProbDist.qmd
