@@ -9,6 +9,10 @@ library(mosaic)
 library(tidyverse)
 ```
 
+## Objectives
+
+-   Insert objectives here.
+
 Companies such as Pew Research frequently conduct polls as a way to understand the state of public opinion or knowledge on many topics, including politics, scientific understanding, brand recognition, and more. The ultimate goal in taking a poll is generally to use the responses to estimate the opinion or knowledge of the broader population.
 
 ## Point estimates and error
@@ -33,7 +37,7 @@ Suppose the proportion of American adults who support the expansion of solar ene
 
 Any volunteers to conduct this simulation? Probably not. Running this simulation with 250 million pieces of paper would be time-consuming and very costly, but we can simulate it using computer code.
 
-For the purposes of this book, we'll create a population with only 2.5 million individuals. In this simulation, the sample gave a point estimate of $\hat{p}^1 = 0.893$. We know the population proportion for the simulation was $p = 0.88$, so we know the estimate had an error of $0.893 - 0.88 = +0.013$.
+For the purposes of this book, we'll create a population with only 2.5 million individuals. In this simulation, the sample gave a point estimate of $\hat{p}_1 = 0.893$. We know the population proportion for the simulation was $p = 0.88$, so we know the estimate had an error of $0.893 - 0.88 = +0.013$.
 
 ```{r}
 # 1. Create a set of 2.5 million entries, 
@@ -53,7 +57,7 @@ sampled_entries <- sample(possible_entries, size = 1000)
 sum(sampled_entries == "support") / 1000
 ```
 
-One simulation isn't enough to get a great sense of the distribution of estimates we might expect in the simulation, so we should run more simulations. In a second simulation, we get $\hat{p}^2 = 0.885$, which has an error of $+0.005$. In another, $\hat{p}^3 = 0.878$ for an error of $-0.002$. And in another, an estimate of $\hat{p}^4 = 0.859$ with an error of $-0.021$. With the help of a computer, we've run the simulation 10,000 times and created a histogram of the results from all 10,000 simulations in @fig-hist-support.
+One simulation isn't enough to get a great sense of the distribution of estimates we might expect in the simulation, so we should run more simulations. In a second simulation, we get $\hat{p}_2 = 0.885$, which has an error of $+0.005$. In another, $\hat{p}_3 = 0.878$ for an error of $-0.002$. And in another, an estimate of $\hat{p}_4 = 0.859$ with an error of $-0.021$. With the help of a computer, we've run the simulation 10,000 times and created a histogram of the results from all 10,000 simulations in @fig-hist-support.
 
 ```{r}
 #| cache: true 
@@ -73,7 +77,7 @@ solar_results %>%
   gf_theme(theme_classic())
 ```
 
-This distribution of sample proportions is called a sampling distribution. We can characterize this sampling distribution as follows:
+This distribution of a statistic, in this case the sample proportion, is called a **sampling distribution**. We can characterize this sampling distribution as follows:
 
 **Center.** The center of the distribution is $\bar{x}_p = 0.880$, which is the same as the parameter. Notice that the simulation mimicked a simple random sample of the population, which is a straightforward sampling strategy that helps avoid sampling bias.
 
@@ -121,7 +125,7 @@ sampled_values
 mean(sampled_values)
 ```
 
-Again, one simulation isn't enough to understand the distribution of means we might expect, so we should run more simulations. In a few further simulations, we get $\bar{x}_2 = 3$, $\bar{x}3 = 4.8$*,* $\bar{x}3 = 2.4$, and $\bar{x}_4 = 2.6$. With the help of a computer, we've run the simulation 10,000 times and created a histogram of the results from all 10,000 simulations in @fig-hist-die.
+Again, one simulation isn't enough to understand the distribution of means we might expect, so we should run more simulations. In a few further simulations, we get $\bar{x}_2 = 3$, $\bar{x}_3 = 4.8$*,* $\bar{x}_4 = 2.4$, and $\bar{x}_5 = 2.6$. With the help of a computer, we've run the simulation 10,000 times and created a histogram of the results from all 10,000 simulations in @fig-hist-die.
 
 ```{r}
 #| cache: true 
