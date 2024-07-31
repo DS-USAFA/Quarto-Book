@@ -15,7 +15,25 @@ library(tidyverse)
 2.  Construct a sampling distribution for various statistics, including the sample mean, using `R`.
 3.  Using a sampling distribution, make decisions about the population. In other words, understand the effect of sampling variation on our estimates.
 
-## Introduction
+## Decision making under uncertainty
+
+At this point, it is useful to take a look at where we have been in this book and where we are going. We did this in the case study, but we want to discuss it again in a little more detail. We first looked at descriptive models to help us understand our data. This also required us to get familiar with software. We learned about graphical summaries, data collection methods, and summary metrics.
+
+Next we learned about probability models. These models allowed us to use assumptions and a small number of parameters to make statements about data (a sample) and also to simulate data. We found that there is a close tie between probability models and statistical models. In our first efforts at statistical modeling, we started to use data to create estimates for parameters of a probability model.
+
+Now we are moving more in depth into statistical models. This is going to tie all the ideas together. We are going to use data from a sample and ideas of randomization to make conclusions about a population. This will require probability models, descriptive models, and some new ideas and terminology. We will generate point estimates for a metric designed to answer the research question and then find ways to determine the variability of the metric. In @fig-prob_stats2, we demonstrate this relationship between probability and statistical models.
+
+```{r}
+#| echo: false
+#| label: "fig-prob_stats2"
+#| fig-align: "center"
+#| fig-height: 2
+#| fig-width: 3
+#| fig-cap: "A graphical representation of probability and statistics. In probability, we describe what we expect to happen in a sample if we know the underlying process; in statistics, we don't know the underlying process, and must infer about the population based on representative samples."
+include_graphics("figures/Prob_Stats.png")
+```
+
+## Introduction 
 
 Companies such as Pew Research frequently conduct polls as a way to understand the state of public opinion or knowledge on many topics, including politics, scientific understanding, brand recognition, and more. The ultimate goal in taking a poll is generally to use the responses to estimate the opinion or knowledge of the broader population.
 
