@@ -12,7 +12,7 @@ library(mosaic)
 
 ## Objectives
 
-1)  Define and use properly in context all new terminology, to include: *point estimate*, *null hypothesis*, *alternative hypothesis*, *hypothesis test*, *randomization*, *permutation test*, *test statistic*, and $p$-value.
+1)  Using bootstrap methods, obtain and interpret a confidence interval for an unknown parameter, based on a random sample.
 
 2)  Conduct a hypothesis test using a randomization test, to include all 4 steps.
 
@@ -22,7 +22,7 @@ We now have the foundation to move on to statistical modeling, both inferential 
 
 ## Foundation for inference
 
-Suppose a professor randomly splits the students in class into two groups: students on the left and students on the right. If $\hat{p}_{_L}$ and $\hat{p}_{_R}$ represent the proportion of students who own an Apple product on the left and right, respectively, would you be surprised if $\hat{p}_{_L}$ did not *exactly* equal $\hat{p}_{_R}$?
+Suppose a professor randomly splits the students in class into two groups: students on the left and students on the right. If $\hat{p}_{_L}$ and $\hat{p}_{_R}$ represent the proportion of students who own an Apple product (e.g., iPad, iPod, iPhone, AirPods, Apple Watch, etc.) on the left and right, respectively, would you be surprised if $\hat{p}_{_L}$ did not *exactly* equal $\hat{p}_{_R}$?
 
 While the proportions would probably be close to each other, they are probably not exactly the same. We would probably observe a small difference due to *chance*.
 
@@ -33,7 +33,7 @@ While the proportions would probably be close to each other, they are probably n
 
 Studying randomness of this form is a key focus of statistical modeling. In this block, we'll explore this type of randomness in the context of several applications, and we'll learn new tools and ideas that can be applied to help make decisions from data.
 
-## Randomization case study: gender discrimination
+## Case study: gender discrimination
 
 We consider a study investigating gender discrimination in the 1970s, which is set in the context of personnel decisions within a bank.[^18-inference-case-study-2] The research question we hope to answer is, "Are females discriminated against in promotion decisions made by male managers?"
 
@@ -330,11 +330,15 @@ The observed difference of -29.2% is a rare (low probability) event if there tru
 
 In our analysis, we determined that there was only a \~ 2% probability of obtaining a test statistic where the difference between female and male promotion proportions was 29.2% or larger assuming gender had no impact. So we conclude the data provide sufficient evidence of gender discrimination against women by the supervisors. In this case, we reject the null hypothesis in favor of the alternative hypothesis.
 
+## From Bootstrap to Hypothesis Testing: Key Insights
+
 Both the hypothesis test and the bootstrap method provide insights into the difference in promotion rates. The bootstrap method offers a confidence interval, giving a range of plausible values, while the hypothesis test provides a p-value indicating the strength of evidence against the null hypothesis. Both methods led us to the same conclusion. The bootstrap confidence interval was entirely negative, not including zero, which led us to conclude that the true difference in proportions is different from zero, with females being promoted less often. The hypothesis test provided sufficient evidence to reject the null hypothesis, concluding that the observed difference in promotion rates was very unlikely to result from chance alone and that, instead, there is sufficient evidence of discrimination due to gender. While many researchers seem to prefer hypothesis testing and the associated $p$-values, confidence intervals provide a range of plausible values while also equipping us to make decisions. Together, these two methods enhance our understanding and help us make informed decisions based on the data.
+
+> **Exercise:** What is the difference between the sampling we conduct for the bootstrap procedure and the sampling we perform in a hypothesis test with simulation? Explain it in your own words.
 
 Statistical inference is the practice of making decisions and conclusions from data in the context of uncertainty. Errors do occur, just like rare events, and the data set at hand might lead us to the wrong conclusion. While a given data set may not always lead us to a correct conclusion, statistical inference gives us tools to control and evaluate how often these errors occur.
 
-Let's summarize what we did in this case study. We had a research question and some data to test the question. We then performed a bootstrap and a hypothesis test. In the bootstrap, we sampled with replacement from the original sample, calculated a statistic of interest, and repeated this process many times so that we could generate a bootstrap distribution. With the bootstrap distribution, we could then estimate the standard error of the statistic and calculate confidence intervals.
+Let's summarize what we did in this case study. We had a research question and some data to test the question. We then performed a bootstrap and a hypothesis test. In the bootstrap, we sampled with replacement from the original sample, calculated a statistic of interest, and repeated this process many times so that we could generate a bootstrap distribution. We could then estimate the standard error of the statistic and calculate confidence intervals.
 
 In the hypothesis test, we performed a randomization test to make a decision, following these four steps:
 
@@ -346,9 +350,9 @@ In the hypothesis test, we performed a randomization test to make a decision, fo
 When creating a randomization distribution, we attempted to satisfy three guiding principles.
 
 1.  Be consistent with the null hypothesis.\
-    We need to simulate a world in which the null hypothesis is true. If we don’t do this, we won’t be testing our null hypothesis. In our problem, we assumed gender and promotion were independent.\
+    We need to simulate a world in which the null hypothesis is true. If we don’t do this, we won’t be testing our null hypothesis. In our problem, we assumed gender and promotion were independent.
 2.  Use the data in the original sample.\
-    The original data should shed light on some aspects of the distribution that are not determined by the null hypothesis. For our problem, we used the difference in promotion rates. The data does not give us the distribution direction, but it gives us an idea that there is a large difference.\
+    The original data should shed light on some aspects of the distribution that are not determined by the null hypothesis. For our problem, we used the difference in promotion rates. The data does not give us the distribution direction, but it gives us an idea that there is a large difference.
 3.  Reflect the way the original data were collected.\
     There were 48 files and 48 supervisors. A total of 35 files were recommended for promotion. We keep this the same in our simulation.
 
