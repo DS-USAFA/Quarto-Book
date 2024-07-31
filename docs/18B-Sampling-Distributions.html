@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.54">
+<meta name="generator" content="quarto-1.5.53">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>19&nbsp; Point Estimates and Sampling Variability – Computational Probability and Statistics</title>
+<title>19&nbsp; Sampling Distributions – Computational Probability and Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -164,7 +164,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./18-Inference-Case-Study.html">Statistical Modeling - Inference</a></li><li class="breadcrumb-item"><a href="./18B-Sampling-Distributions.html"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Point Estimates and Sampling Variability</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./18-Inference-Case-Study.html">Statistical Modeling - Inference</a></li><li class="breadcrumb-item"><a href="./18B-Sampling-Distributions.html"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Sampling Distributions</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -362,7 +362,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./18B-Sampling-Distributions.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Point Estimates and Sampling Variability</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Sampling Distributions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -472,12 +472,15 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#point-estimates-and-error" id="toc-point-estimates-and-error" class="nav-link active" data-scroll-target="#point-estimates-and-error"><span class="header-section-number">19.1</span> Point estimates and error</a></li>
-  <li><a href="#understanding-the-variability-of-a-point-estimate" id="toc-understanding-the-variability-of-a-point-estimate" class="nav-link" data-scroll-target="#understanding-the-variability-of-a-point-estimate"><span class="header-section-number">19.2</span> Understanding the variability of a point estimate</a></li>
-  <li><a href="#sampling-distributions-case-study-rolling-the-dice" id="toc-sampling-distributions-case-study-rolling-the-dice" class="nav-link" data-scroll-target="#sampling-distributions-case-study-rolling-the-dice"><span class="header-section-number">19.3</span> Sampling distributions case study: rolling the dice</a></li>
-  <li><a href="#sampling-distributions-case-study-gerrymandering" id="toc-sampling-distributions-case-study-gerrymandering" class="nav-link" data-scroll-target="#sampling-distributions-case-study-gerrymandering"><span class="header-section-number">19.4</span> Sampling distributions case study: gerrymandering</a>
+  <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives"><span class="header-section-number">19.1</span> Objectives</a></li>
+  <li><a href="#decision-making-under-uncertainty" id="toc-decision-making-under-uncertainty" class="nav-link" data-scroll-target="#decision-making-under-uncertainty"><span class="header-section-number">19.2</span> Decision making under uncertainty</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">19.3</span> Introduction</a></li>
+  <li><a href="#point-estimates-and-error" id="toc-point-estimates-and-error" class="nav-link" data-scroll-target="#point-estimates-and-error"><span class="header-section-number">19.4</span> Point estimates and error</a></li>
+  <li><a href="#understanding-the-variability-of-a-point-estimate" id="toc-understanding-the-variability-of-a-point-estimate" class="nav-link" data-scroll-target="#understanding-the-variability-of-a-point-estimate"><span class="header-section-number">19.5</span> Understanding the variability of a point estimate</a></li>
+  <li><a href="#sampling-distributions-case-study-rolling-the-dice" id="toc-sampling-distributions-case-study-rolling-the-dice" class="nav-link" data-scroll-target="#sampling-distributions-case-study-rolling-the-dice"><span class="header-section-number">19.6</span> Sampling distributions case study: rolling the dice</a></li>
+  <li><a href="#sampling-distributions-case-study-gerrymandering" id="toc-sampling-distributions-case-study-gerrymandering" class="nav-link" data-scroll-target="#sampling-distributions-case-study-gerrymandering"><span class="header-section-number">19.7</span> Sampling distributions case study: gerrymandering</a>
   <ul class="collapse">
-  <li><a href="#the-statisticians-answer-simulation" id="toc-the-statisticians-answer-simulation" class="nav-link" data-scroll-target="#the-statisticians-answer-simulation"><span class="header-section-number">19.4.1</span> The statistician’s answer: simulation</a></li>
+  <li><a href="#the-statisticians-answer-simulation" id="toc-the-statisticians-answer-simulation" class="nav-link" data-scroll-target="#the-statisticians-answer-simulation"><span class="header-section-number">19.7.1</span> The statistician’s answer: simulation</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/DS-USAFA/Quarto-Book/edit/main/18B-Sampling-Distributions.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
@@ -485,9 +488,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./18-Inference-Case-Study.html">Statistical Modeling - Inference</a></li><li class="breadcrumb-item"><a href="./18B-Sampling-Distributions.html"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Point Estimates and Sampling Variability</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./18-Inference-Case-Study.html">Statistical Modeling - Inference</a></li><li class="breadcrumb-item"><a href="./18B-Sampling-Distributions.html"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Sampling Distributions</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-SAMPVAR" class="quarto-section-identifier"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Point Estimates and Sampling Variability</span></span></h1>
+<h1 class="title"><span id="sec-SAMPVAR" class="quarto-section-identifier"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Sampling Distributions</span></span></h1>
 </div>
 
 
@@ -565,15 +568,46 @@ Attaching package: 'mosaic'</code></pre>
 ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
 </div>
+<section id="objectives" class="level2" data-number="19.1">
+<h2 data-number="19.1" class="anchored" data-anchor-id="objectives"><span class="header-section-number">19.1</span> Objectives</h2>
+<ol type="1">
+<li>Differentiate between various statistical terminologies such as <em>point estimate, parameter, sampling error, bias, sampling distribution,</em> and <em>standard error</em>, and construct examples to demonstrate their proper use in context.</li>
+<li>Construct a sampling distribution for various statistics, including the sample mean, using <code>R</code>.</li>
+<li>Using a sampling distribution, make decisions about the population. In other words, understand the effect of sampling variation on our estimates.</li>
+</ol>
+</section>
+<section id="decision-making-under-uncertainty" class="level2" data-number="19.2">
+<h2 data-number="19.2" class="anchored" data-anchor-id="decision-making-under-uncertainty"><span class="header-section-number">19.2</span> Decision making under uncertainty</h2>
+<p>At this point, it is useful to take a look at where we have been in this book and where we are going. We did this in the case study, but we want to discuss it again in a little more detail. We first looked at descriptive models to help us understand our data. This also required us to get familiar with software. We learned about graphical summaries, data collection methods, and summary metrics.</p>
+<p>Next we learned about probability models. These models allowed us to use assumptions and a small number of parameters to make statements about data (a sample) and also to simulate data. We found that there is a close tie between probability models and statistical models. In our first efforts at statistical modeling, we started to use data to create estimates for parameters of a probability model.</p>
+<p>Now we are moving more in depth into statistical models. This is going to tie all the ideas together. We are going to use data from a sample and ideas of randomization to make conclusions about a population. This will require probability models, descriptive models, and some new ideas and terminology. We will generate point estimates for a metric designed to answer the research question and then find ways to determine the variability of the metric. In <a href="#fig-prob_stats2" class="quarto-xref">Figure&nbsp;<span>19.1</span></a>, we demonstrate this relationship between probability and statistical models.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-prob_stats2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-prob_stats2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/Prob_Stats.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-prob_stats2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;19.1: A graphical representation of probability and statistics. In probability, we describe what we expect to happen in a sample if we know the underlying process; in statistics, we don’t know the underlying process, and must infer about the population based on representative samples.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="introduction" class="level2" data-number="19.3">
+<h2 data-number="19.3" class="anchored" data-anchor-id="introduction"><span class="header-section-number">19.3</span> Introduction</h2>
 <p>Companies such as Pew Research frequently conduct polls as a way to understand the state of public opinion or knowledge on many topics, including politics, scientific understanding, brand recognition, and more. The ultimate goal in taking a poll is generally to use the responses to estimate the opinion or knowledge of the broader population.</p>
-<section id="point-estimates-and-error" class="level2" data-number="19.1">
-<h2 data-number="19.1" class="anchored" data-anchor-id="point-estimates-and-error"><span class="header-section-number">19.1</span> Point estimates and error</h2>
-<p>Suppose a poll suggested the US President’s approval rating is 45%. We would consider 45% to be a <strong>point estimate</strong> of the approval rating we might see if we collected responses from the entire population. This entire-population response proportion is generally referred to as the <strong>parameter</strong> of interest. When the parameter is a proportion, it is often denoted by <span class="math inline">\(p\)</span>, and we often refer to the sample proportion as <span class="math inline">\(\hat{p}\)</span> (pronounced <em>p-hat</em>). Unless we collect responses from every individual in the population, <span class="math inline">\(p\)</span> remains unknown, and we use <span class="math inline">\(\hat{p}\)</span> as our estimate of <span class="math inline">\(p\)</span>. The difference we observe from the poll versus the parameter is called the <strong>error</strong> in the estimate. Generally, the error consists of two aspects: sampling error and bias.</p>
-<p><strong>Sampling error</strong>, sometimes called <em>sampling uncertainty</em>, describes how much an estimate will tend to vary from one sample to the next. For instance, the estimate from one sample might be 1% too low while in another it may be 3% too high. Much of statistics, including much of this book, is focused on understanding and quantifying sampling error, and we will find it useful to consider a sample’s size to help us quantify this error; the <strong>sample size</strong> is often represented by the letter <span class="math inline">\(n\)</span>.</p>
+</section>
+<section id="point-estimates-and-error" class="level2" data-number="19.4">
+<h2 data-number="19.4" class="anchored" data-anchor-id="point-estimates-and-error"><span class="header-section-number">19.4</span> Point estimates and error</h2>
+<p>Suppose a poll suggested the US President’s approval rating is 45%. We would consider 45% to be a <strong>point estimate</strong> of the approval rating we might see if we collected responses from the entire population. This entire-population response proportion is generally referred to as the <strong>parameter</strong> of interest. When the parameter is a proportion, it is often denoted by <span class="math inline">\(p\)</span>, and we often refer to the sample proportion as <span class="math inline">\(\hat{p}\)</span> (pronounced <em>p-hat</em>). Unless we collect responses from every individual in the population, <span class="math inline">\(p\)</span> remains unknown, and we use <span class="math inline">\(\hat{p}\)</span> as our estimate of <span class="math inline">\(p\)</span>. The difference we observe from the poll versus the parameter is called the error in the estimate. Generally, the error consists of two aspects: sampling error and bias.</p>
+<p><strong>Sampling error</strong>, sometimes called <em>sampling uncertainty</em>, describes how much an estimate will tend to vary from one sample to the next. For instance, the estimate from one sample might be 1% too low while in another it may be 3% too high. Much of statistics, including much of this book, is focused on understanding and quantifying sampling error, and we will find it useful to consider a sample’s size to help us quantify this error; the sample size is often represented by the letter <span class="math inline">\(n\)</span>.</p>
 <p><strong>Bias</strong> describes a systematic tendency to over- or under-estimate the true population value. For example, if we were taking a student poll asking about support for a new college stadium, we’d probably get a biased estimate of the stadium’s level of student support by wording the question as, <em>Do you support your school by supporting funding for the new stadium?</em> We try to minimize bias through thoughtful data collection procedures, which were discussed previously and are the topic of many other books.</p>
 </section>
-<section id="understanding-the-variability-of-a-point-estimate" class="level2" data-number="19.2">
-<h2 data-number="19.2" class="anchored" data-anchor-id="understanding-the-variability-of-a-point-estimate"><span class="header-section-number">19.2</span> Understanding the variability of a point estimate</h2>
+<section id="understanding-the-variability-of-a-point-estimate" class="level2" data-number="19.5">
+<h2 data-number="19.5" class="anchored" data-anchor-id="understanding-the-variability-of-a-point-estimate"><span class="header-section-number">19.5</span> Understanding the variability of a point estimate</h2>
 <p>Suppose the proportion of American adults who support the expansion of solar energy is <span class="math inline">\(p = 0.88\)</span>, which is our parameter of interest. If we were to take a poll of 1000 American adults on this topic, the estimate would not be perfect, but how close might we expect the sample proportion in the poll would be to 88%? We want to understand, <em>how does the sample proportion</em> <span class="math inline">\(\hat{p}\)</span> behave when the true population proportion is 0.88.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Let’s find out! We can simulate responses we would get from a simple random sample of 1000 American adults, which is only possible because we know the actual support for expanding solar energy is 0.88. Here’s how we might go about constructing such a simulation:</p>
 <ol type="1">
 <li><p>There were about 250 million American adults in 2018. On 250 million pieces of paper, write “support” on 88% of them and “not” on the other 12%.</p></li>
@@ -581,7 +615,7 @@ Attaching package: 'mosaic'</code></pre>
 <li><p>Compute the fraction of the sample that say “support”.</p></li>
 </ol>
 <p>Any volunteers to conduct this simulation? Probably not. Running this simulation with 250 million pieces of paper would be time-consuming and very costly, but we can simulate it using computer code.</p>
-<p>For the purposes of this book, we’ll create a population with only 2.5 million individuals. In this simulation, the sample gave a point estimate of <span class="math inline">\(\hat{p}^1 = 0.893\)</span>. We know the population proportion for the simulation was <span class="math inline">\(p = 0.88\)</span>, so we know the estimate had an error of <span class="math inline">\(0.893 - 0.88 = +0.013\)</span>.</p>
+<p>For the purposes of this book, we’ll create a population with only 2.5 million individuals. In this simulation, the sample gave a point estimate of <span class="math inline">\(\hat{p}_1 = 0.893\)</span>. We know the population proportion for the simulation was <span class="math inline">\(p = 0.88\)</span>, so we know the estimate had an error of <span class="math inline">\(0.893 - 0.88 = +0.013\)</span>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Create a set of 2.5 million entries, </span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">#    where 88% of them are "support" and 12% are "not". </span></span>
@@ -601,7 +635,7 @@ Attaching package: 'mosaic'</code></pre>
 <pre><code>[1] 0.893</code></pre>
 </div>
 </div>
-<p>One simulation isn’t enough to get a great sense of the distribution of estimates we might expect in the simulation, so we should run more simulations. In a second simulation, we get <span class="math inline">\(\hat{p}^2 = 0.885\)</span>, which has an error of <span class="math inline">\(+0.005\)</span>. In another, <span class="math inline">\(\hat{p}^3 = 0.878\)</span> for an error of <span class="math inline">\(-0.002\)</span>. And in another, an estimate of <span class="math inline">\(\hat{p}^4 = 0.859\)</span> with an error of <span class="math inline">\(-0.021\)</span>. With the help of a computer, we’ve run the simulation 10,000 times and created a histogram of the results from all 10,000 simulations in <a href="#fig-hist-support" class="quarto-xref">Figure&nbsp;<span>19.1</span></a>.</p>
+<p>One simulation isn’t enough to get a great sense of the distribution of estimates we might expect in the simulation, so we should run more simulations. In a second simulation, we get <span class="math inline">\(\hat{p}_2 = 0.885\)</span>, which has an error of <span class="math inline">\(+0.005\)</span>. In another, <span class="math inline">\(\hat{p}_3 = 0.878\)</span> for an error of <span class="math inline">\(-0.002\)</span>. And in another, an estimate of <span class="math inline">\(\hat{p}_4 = 0.859\)</span> with an error of <span class="math inline">\(-0.021\)</span>. With the help of a computer, we’ve run the simulation 10,000 times and created a histogram of the results from all 10,000 simulations in <a href="#fig-hist-support" class="quarto-xref">Figure&nbsp;<span>19.2</span></a>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Repeat steps 2 and 3 10,000 times.</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2024</span>)</span>
@@ -627,7 +661,7 @@ Attaching package: 'mosaic'</code></pre>
 </div>
 </div>
 </div>
-<p>This distribution of sample proportions is called a sampling distribution. We can characterize this sampling distribution as follows:</p>
+<p>This distribution of a statistic, in this case the sample proportion, is called a <strong>sampling distribution</strong>. We can characterize this sampling distribution as follows:</p>
 <p><strong>Center.</strong> The center of the distribution is <span class="math inline">\(\bar{x}_p = 0.880\)</span>, which is the same as the parameter. Notice that the simulation mimicked a simple random sample of the population, which is a straightforward sampling strategy that helps avoid sampling bias.</p>
 <p><strong>Spread.</strong> The standard deviation of the distribution is <span class="math inline">\(s_{\hat{p}} = 0.010\)</span>. When we’re talking about a sampling distribution or the variability of a point estimate, we typically use the term <strong>standard error</strong> rather than standard deviation.</p>
 <p><strong>Shape.</strong> The distribution is symmetric and bell-shaped, and it <em>resembles a normal distribution</em>.</p>
@@ -651,8 +685,8 @@ Sampling distributions are never observed, but we keep them in mind
 <p>Intuitively, it seems like more data is better than less data, and generally that is correct! The typical error when <span class="math inline">\(p = 0.88\)</span> and <span class="math inline">\(n = 50\)</span> would be larger than the error we would expect when <span class="math inline">\(n = 1000\)</span>.</p>
 <p>The above exercise highlights an important property we will see again and again: a bigger sample tends to provide a more precise point estimate than a smaller sample.</p>
 </section>
-<section id="sampling-distributions-case-study-rolling-the-dice" class="level2" data-number="19.3">
-<h2 data-number="19.3" class="anchored" data-anchor-id="sampling-distributions-case-study-rolling-the-dice"><span class="header-section-number">19.3</span> Sampling distributions case study: rolling the dice</h2>
+<section id="sampling-distributions-case-study-rolling-the-dice" class="level2" data-number="19.6">
+<h2 data-number="19.6" class="anchored" data-anchor-id="sampling-distributions-case-study-rolling-the-dice"><span class="header-section-number">19.6</span> Sampling distributions case study: rolling the dice</h2>
 <p>Let’s consider a standard six-sided die and define a random variable <span class="math inline">\(X\)</span> as the result of a single die roll. The sample space is <span class="math inline">\(S = \{1, 2, 3, 4, 5, 6\}\)</span> and each outcome has an equal probability of <span class="math inline">\(1/6\)</span>. The expected value of <span class="math inline">\(X\)</span> is easily found to be <span class="math inline">\(E(X) = 3.5\)</span>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
 <p>We will take a sample by rolling the die <span class="math inline">\(n = 5\)</span> times. We will then compute the mean of each sample. We can easily set up this process in <code>R</code>. Our first sample is <span class="math inline">\(\{2, 5, 5, 4, 1\}\)</span> with a mean value of <span class="math inline">\(\bar{x}_1 = 3.4\)</span>.</p>
 <div class="cell">
@@ -676,7 +710,7 @@ Sampling distributions are never observed, but we keep them in mind
 <pre><code>[1] 3.4</code></pre>
 </div>
 </div>
-<p>Again, one simulation isn’t enough to understand the distribution of means we might expect, so we should run more simulations. In a few further simulations, we get <span class="math inline">\(\bar{x}_2 = 3\)</span>, <span class="math inline">\(\bar{x}3 = 4.8\)</span><em>,</em> <span class="math inline">\(\bar{x}3 = 2.4\)</span>, and <span class="math inline">\(\bar{x}_4 = 2.6\)</span>. With the help of a computer, we’ve run the simulation 10,000 times and created a histogram of the results from all 10,000 simulations in <a href="#fig-hist-die" class="quarto-xref">Figure&nbsp;<span>19.2</span></a>.</p>
+<p>Again, one simulation isn’t enough to understand the distribution of means we might expect, so we should run more simulations. In a few further simulations, we get <span class="math inline">\(\bar{x}_2 = 3\)</span>, <span class="math inline">\(\bar{x}_3 = 4.8\)</span><em>,</em> <span class="math inline">\(\bar{x}_4 = 2.4\)</span>, and <span class="math inline">\(\bar{x}_5 = 2.6\)</span>. With the help of a computer, we’ve run the simulation 10,000 times and created a histogram of the results from all 10,000 simulations in <a href="#fig-hist-die" class="quarto-xref">Figure&nbsp;<span>19.3</span></a>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Repeat steps 2 and 3 10,000 times.</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2024</span>)</span>
@@ -709,20 +743,20 @@ Sampling distributions are never observed, but we keep them in mind
 <p><strong>Shape.</strong> The distribution is symmetric and bell-shaped, and it again <em>resembles a normal distribution</em>.</p>
 <p>In contrast to our first example of support for solar energy, we have a population mean of <span class="math inline">\(\mu = 3.5\)</span> and a much smaller sample size of <span class="math inline">\(n = 5\)</span>. Even so, the sample mean is a good estimate of the population mean and the histogram of sample mean values again looks similar to that of a normal distribution.</p>
 </section>
-<section id="sampling-distributions-case-study-gerrymandering" class="level2" data-number="19.4">
-<h2 data-number="19.4" class="anchored" data-anchor-id="sampling-distributions-case-study-gerrymandering"><span class="header-section-number">19.4</span> Sampling distributions case study: gerrymandering</h2>
+<section id="sampling-distributions-case-study-gerrymandering" class="level2" data-number="19.7">
+<h2 data-number="19.7" class="anchored" data-anchor-id="sampling-distributions-case-study-gerrymandering"><span class="header-section-number">19.7</span> Sampling distributions case study: gerrymandering</h2>
 <p>Gerrymandering is the practice of drawing the boundaries of electoral districts in a way that gives one political party an unfair advantage over others. This manipulation can influence the outcomes of elections, allowing the controlling party to maintain or increase its power, even if it doesn’t have majority support among the voters.</p>
 <p>To get a real sense of how gerrymandering works, try it out yourself! Use <a href="http://polytrope.com/district">this simulation</a> to practice gerrymandering, but stop after the 6th challenge.</p>
 <p>At this point, you might be wondering: <em>Why can’t we just make everything <strong>proportional</strong>? For example, if 60% of people in a state support Republicans, let’s just make 6 out of their 10 representatives Republican!</em>” Unfortunately, it’s not so simple.</p>
 <p>Let’s consider the state of Idaho. Idaho has two congressional districts, so the state gets two House representatives. In a typical election, Democrats earn 34% and Republicans earn 66% of major party votes. Both Idaho representatives are almost always Republicans <span class="citation" data-cites="AlarmRedistIdaho">(<a href="#ref-AlarmRedistIdaho" role="doc-biblioref">Alarm Redistricting 2024</a>)</span>.</p>
-<p><a href="#fig-idaho" class="quarto-xref">Figure&nbsp;<span>19.3</span></a> displays the vote patterns broken down by census tracts of roughly equal population size.</p>
+<p><a href="#fig-idaho" class="quarto-xref">Figure&nbsp;<span>19.4</span></a> displays the vote patterns broken down by census tracts of roughly equal population size.</p>
 <div id="fig-idaho" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-idaho-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/Idaho.PNG" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-idaho-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;19.3: Districting map of the state of Idaho.
+Figure&nbsp;19.4: Districting map of the state of Idaho.
 </figcaption>
 </figure>
 </div>
@@ -731,8 +765,8 @@ Figure&nbsp;19.3: Districting map of the state of Idaho.
 </blockquote>
 <p>Because 34% and 66% are closer to 50% than they are to 0% or 100%, the most proportional representation would come from one Republican and one Democrat representative.</p>
 <p>In order to give one seat to a Democrat though, we would have to make a district that looks like a snake, winding its way from the southwest corner north towards Boise and then east towards the other blue patches. Even if we wanted to make this district, it may not be possible (since all districts have to have roughly equal population sizes). Many states, including Idaho have constraints on how districts can be drawn. In Idaho, districts must be contiguous, have equal populations, be geographically compact, preserve county and municipality boundaries as much as possible, not be drawn to favor party or incumbents, and connect counties based on highways. Plus, representing a “snake” district isn’t ideal; because of the strange layout, people in different parts of the district may face different issues and have highly different desires. This would lead to less than ideal representation in government.</p>
-<section id="the-statisticians-answer-simulation" class="level3" data-number="19.4.1">
-<h3 data-number="19.4.1" class="anchored" data-anchor-id="the-statisticians-answer-simulation"><span class="header-section-number">19.4.1</span> The statistician’s answer: simulation</h3>
+<section id="the-statisticians-answer-simulation" class="level3" data-number="19.7.1">
+<h3 data-number="19.7.1" class="anchored" data-anchor-id="the-statisticians-answer-simulation"><span class="header-section-number">19.7.1</span> The statistician’s answer: simulation</h3>
 <p>Between balancing the need for party representation (proportionality) and the need for geographic representation (no weird shapes), the Supreme Court has struggled to set a consistent standard for evaluating maps. So, in 2019, a group of mathematicians got together and wrote a <a href="https://mggg.org/amicus">Supreme Court brief</a> that proposed a new <strong>simulation method</strong> for map evaluation:</p>
 <ul>
 <li><p>Have a computer draw a bunch of randomly simulated maps under two rules: a) districts have equal population sizes, and b) no weird shapes.</p></li>
@@ -751,7 +785,7 @@ Figure&nbsp;19.3: Districting map of the state of Idaho.
 </figcaption>
 </figure>
 </div>
-<p>We get started by selecting the state of Virginia in the applet. The actual Virginia map of Congressional districts is displayed for us in the applet and in <a href="#fig-virginia-actual" class="quarto-xref">Figure&nbsp;<span>19.4</span></a>. Out of 11 total districts, seven are Democrat-leaning. Let’s add one sample. Based on the redistricting rules (e.g., districts have equal populations and no weird shapes), the app provides a single simulated map shown in <a href="#fig-virginia-sample1" class="quarto-xref">Figure&nbsp;<span>19.5</span></a>.</p>
+<p>We get started by selecting the state of Virginia in the applet. The actual Virginia map of Congressional districts is displayed for us in the applet and in <a href="#fig-virginia-actual" class="quarto-xref">Figure&nbsp;<span>19.5</span></a>. Out of 11 total districts, seven are Democrat-leaning. Let’s add one sample. Based on the redistricting rules (e.g., districts have equal populations and no weird shapes), the app provides a single simulated map shown in <a href="#fig-virginia-sample1" class="quarto-xref">Figure&nbsp;<span>19.6</span></a>.</p>
 <div id="fig-virginia-sample1" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-virginia-sample1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -762,7 +796,7 @@ Figure&nbsp;19.3: Districting map of the state of Idaho.
 </figure>
 </div>
 <p>The applet also plots the number of Democrat-leaning districts, in this case seven, for us on a bar chart. We can continue to add one, three, ten, 30, or 100 sample redistricting maps to these results by clicking the appropriate button in the applet. When generating three or more samples at a time, the applet displays the last three simulated redistricting maps for comparison.</p>
-<p>After adding 1,000 samples (for a total of 1,001 samples), we have results that look similar to those shown in <a href="#fig-virginia-res1000" class="quarto-xref">Figure&nbsp;<span>19.6</span></a>. What we’ve done here is create a <strong>sampling distribution</strong> for the number of Democrat-leaning districts in the state of Virginia by sampling 1,001 redistricting maps.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> In the applet, we’re able to compare the actual number of Democrat-leaning districts to our sampling distribution. Virginia appears to have a fair map. The legislature’s map projects seven Democrat-leaning districts, and the vast majority of simulations ($664/1001 = 66.3%) also had seven Democrat-leaning districts or fewer. So, the actual Virginia map is not unusual. There is little evidence that Republicans gerrymandered the state.</p>
+<p>After adding 1,000 samples (for a total of 1,001 samples), we have results that look similar to those shown in <a href="#fig-virginia-res1000" class="quarto-xref">Figure&nbsp;<span>19.7</span></a>. What we’ve done here is create a sampling distribution for the number of Democrat-leaning districts in the state of Virginia by sampling 1,001 redistricting maps.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> In the applet, we’re able to compare the actual number of Democrat-leaning districts to our sampling distribution. Virginia appears to have a fair map. The legislature’s map projects seven Democrat-leaning districts, and the vast majority of simulations ($664/1001 = 66.3%) also had seven Democrat-leaning districts or fewer. So, the actual Virginia map is not unusual. There is little evidence that Republicans gerrymandered the state.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-virginia-res1000" class="quarto-float quarto-figure quarto-figure-center anchored" width="672">

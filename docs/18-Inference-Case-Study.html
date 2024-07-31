@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.54">
+<meta name="generator" content="quarto-1.5.53">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -342,7 +342,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./18B-Sampling-Distributions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Point Estimates and Sampling Variability</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Sampling Distributions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -455,7 +455,7 @@ window.Quarto = {
   <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives"><span class="header-section-number">18.1</span> Objectives</a></li>
   <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">18.2</span> Introduction</a></li>
   <li><a href="#foundation-for-inference" id="toc-foundation-for-inference" class="nav-link" data-scroll-target="#foundation-for-inference"><span class="header-section-number">18.3</span> Foundation for inference</a></li>
-  <li><a href="#randomization-case-study-gender-discrimination" id="toc-randomization-case-study-gender-discrimination" class="nav-link" data-scroll-target="#randomization-case-study-gender-discrimination"><span class="header-section-number">18.4</span> Randomization case study: gender discrimination</a>
+  <li><a href="#case-study-gender-discrimination" id="toc-case-study-gender-discrimination" class="nav-link" data-scroll-target="#case-study-gender-discrimination"><span class="header-section-number">18.4</span> Case study: gender discrimination</a>
   <ul class="collapse">
   <li><a href="#variability-within-data" id="toc-variability-within-data" class="nav-link" data-scroll-target="#variability-within-data"><span class="header-section-number">18.4.1</span> Variability within data</a></li>
   <li><a href="#the-bootstrap" id="toc-the-bootstrap" class="nav-link" data-scroll-target="#the-bootstrap"><span class="header-section-number">18.4.2</span> The bootstrap</a></li>
@@ -463,6 +463,7 @@ window.Quarto = {
   <li><a href="#simulating-the-study" id="toc-simulating-the-study" class="nav-link" data-scroll-target="#simulating-the-study"><span class="header-section-number">18.4.4</span> Simulating the study</a></li>
   <li><a href="#checking-for-independence" id="toc-checking-for-independence" class="nav-link" data-scroll-target="#checking-for-independence"><span class="header-section-number">18.4.5</span> Checking for independence</a></li>
   </ul></li>
+  <li><a href="#from-bootstrap-to-hypothesis-testing-key-insights" id="toc-from-bootstrap-to-hypothesis-testing-key-insights" class="nav-link" data-scroll-target="#from-bootstrap-to-hypothesis-testing-key-insights"><span class="header-section-number">18.5</span> From Bootstrap to Hypothesis Testing: Key Insights</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/DS-USAFA/Quarto-Book/edit/main/18-Inference-Case-Study.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -491,7 +492,7 @@ window.Quarto = {
 <section id="objectives" class="level2" data-number="18.1">
 <h2 data-number="18.1" class="anchored" data-anchor-id="objectives"><span class="header-section-number">18.1</span> Objectives</h2>
 <ol type="1">
-<li><p>Define and use properly in context all new terminology, to include: <em>point estimate</em>, <em>null hypothesis</em>, <em>alternative hypothesis</em>, <em>hypothesis test</em>, <em>randomization</em>, <em>permutation test</em>, <em>test statistic</em>, and <span class="math inline">\(p\)</span>-value.</p></li>
+<li><p>Using bootstrap methods, obtain and interpret a confidence interval for an unknown parameter, based on a random sample.</p></li>
 <li><p>Conduct a hypothesis test using a randomization test, to include all 4 steps.</p></li>
 </ol>
 </section>
@@ -501,7 +502,7 @@ window.Quarto = {
 </section>
 <section id="foundation-for-inference" class="level2" data-number="18.3">
 <h2 data-number="18.3" class="anchored" data-anchor-id="foundation-for-inference"><span class="header-section-number">18.3</span> Foundation for inference</h2>
-<p>Suppose a professor randomly splits the students in class into two groups: students on the left and students on the right. If <span class="math inline">\(\hat{p}_{_L}\)</span> and <span class="math inline">\(\hat{p}_{_R}\)</span> represent the proportion of students who own an Apple product on the left and right, respectively, would you be surprised if <span class="math inline">\(\hat{p}_{_L}\)</span> did not <em>exactly</em> equal <span class="math inline">\(\hat{p}_{_R}\)</span>?</p>
+<p>Suppose a professor randomly splits the students in class into two groups: students on the left and students on the right. If <span class="math inline">\(\hat{p}_{_L}\)</span> and <span class="math inline">\(\hat{p}_{_R}\)</span> represent the proportion of students who own an Apple product (e.g., iPad, iPod, iPhone, AirPods, Apple Watch, etc.) on the left and right, respectively, would you be surprised if <span class="math inline">\(\hat{p}_{_L}\)</span> did not <em>exactly</em> equal <span class="math inline">\(\hat{p}_{_R}\)</span>?</p>
 <p>While the proportions would probably be close to each other, they are probably not exactly the same. We would probably observe a small difference due to <em>chance</em>.</p>
 <blockquote class="blockquote">
 <p><strong>Exercise</strong>:<br>
@@ -509,8 +510,8 @@ If we don’t think the side of the room a person sits on in class is related to
 </blockquote>
 <p>Studying randomness of this form is a key focus of statistical modeling. In this block, we’ll explore this type of randomness in the context of several applications, and we’ll learn new tools and ideas that can be applied to help make decisions from data.</p>
 </section>
-<section id="randomization-case-study-gender-discrimination" class="level2" data-number="18.4">
-<h2 data-number="18.4" class="anchored" data-anchor-id="randomization-case-study-gender-discrimination"><span class="header-section-number">18.4</span> Randomization case study: gender discrimination</h2>
+<section id="case-study-gender-discrimination" class="level2" data-number="18.4">
+<h2 data-number="18.4" class="anchored" data-anchor-id="case-study-gender-discrimination"><span class="header-section-number">18.4</span> Case study: gender discrimination</h2>
 <p>We consider a study investigating gender discrimination in the 1970s, which is set in the context of personnel decisions within a bank.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> The research question we hope to answer is, “Are females discriminated against in promotion decisions made by male managers?”</p>
 <section id="variability-within-data" class="level3" data-number="18.4.1">
 <h3 data-number="18.4.1" class="anchored" data-anchor-id="variability-within-data"><span class="header-section-number">18.4.1</span> Variability within data</h3>
@@ -639,7 +640,7 @@ gender   promoted not_promoted Total
 -0.1643357 </code></pre>
 </div>
 </div>
-<p>We repeat this process many times. The collection of sample statistics comprises a <strong>bootstrap distribution</strong> of the sample statistic. This procedure typically works quite well, provided the original sample is representative of the population. More details on the advantages and disadvantages of the bootstrap are discussed in <a href="25-Bootstrap.html" class="quarto-xref"><span>Chapter 20</span></a>.</p>
+<p>We repeat this process many times. The collection of sample statistics comprises a <strong>bootstrap distribution</strong> of the sample statistic. This procedure typically works quite well, provided the original sample is representative of the population. More details on the advantages and disadvantages of the bootstrap are discussed in <a href="#sec-BOOT" class="quarto-xref"><span class="quarto-unresolved-ref">sec-BOOT</span></a>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">630</span>)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>boot_results <span class="ot">&lt;-</span> <span class="fu">do</span>(<span class="dv">10000</span>)<span class="sc">*</span><span class="fu">diffprop</span>(decision <span class="sc">~</span> gender, <span class="at">data =</span> <span class="fu">resample</span>(discrim))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -658,7 +659,7 @@ Figure&nbsp;18.1: The sampling distribution of the difference in promotion rates
 </div>
 </div>
 </div>
-<p><a href="#fig-boot-dist" class="quarto-xref">Figure&nbsp;<span>18.1</span></a> displays the bootstrap distribution, which is centered at -29.2%. This is the observed difference in promotion rates from our original sample, show as a black vertical line. The distribution also appears bell-shaped and symmetric.</p>
+<p><a href="#fig-boot-dist" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-boot-dist</span></a> displays the bootstrap distribution, which is centered at -29.2%. This is the observed difference in promotion rates from our original sample, show as a black vertical line. The distribution also appears bell-shaped and symmetric.</p>
 <p>Now that we have completed the bootstrap procedure, we can use the bootstrap distribution to estimate the standard error of the statistic of interest, the difference in promotion rates. One way to do this is to look at our favorite summary statistics using the <code>favstats()</code> function.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(<span class="sc">~</span>diffprop, <span class="at">data =</span> boot_results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -767,7 +768,7 @@ shuffle(gender) promoted not_promoted Total
 </section>
 <section id="checking-for-independence" class="level3" data-number="18.4.5">
 <h3 data-number="18.4.5" class="anchored" data-anchor-id="checking-for-independence"><span class="header-section-number">18.4.5</span> Checking for independence</h3>
-<p>We computed one possible difference under the null hypothesis in the exercise above, which represents one difference due to chance. Repeating the simulation, we get another difference due to chance: -0.042. And another: 0.208. And so on until we repeat the simulation enough times that we have a good idea of what represents the <strong>distribution of differences from chance alone</strong>. That is, we want the distribution of the difference if there really is no relationship between gender and the promotion decision. This is also known as the <strong>null distribution</strong>. We are using a simulation when there is actually a finite number of permutations of the <code>gender</code> label. From <a href="08-Probability-Rules.html" class="quarto-xref"><span>Chapter 8</span></a> on counting, we have 48 labels of which 24 are <code>male</code> and 24 are <code>female</code>. Thus the total number of ways to arrange the labels differently is:</p>
+<p>We computed one possible difference under the null hypothesis in the exercise above, which represents one difference due to chance. Repeating the simulation, we get another difference due to chance: -0.042. And another: 0.208. And so on until we repeat the simulation enough times that we have a good idea of what represents the <strong>distribution of differences from chance alone</strong>. That is, we want the distribution of the difference if there really is no relationship between gender and the promotion decision. This is also known as the <strong>null distribution</strong>. We are using a simulation when there is actually a finite number of permutations of the <code>gender</code> label. From <a href="#sec-PROBRULES" class="quarto-xref"><span class="quarto-unresolved-ref">sec-PROBRULES</span></a> on counting, we have 48 labels of which 24 are <code>male</code> and 24 are <code>female</code>. Thus the total number of ways to arrange the labels differently is:</p>
 <p><span class="math display">\[
 \frac{48!}{24!\cdot24!} \approx 3.2 \cdot 10^{13}
 \]</span></p>
@@ -783,7 +784,7 @@ shuffle(gender) promoted not_promoted Total
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2022</span>)</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">do</span>(<span class="dv">10000</span>)<span class="sc">*</span><span class="fu">diffprop</span>(decision <span class="sc">~</span> <span class="fu">shuffle</span>(gender), <span class="at">data =</span> discrim)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>In <a href="#fig-teststat1" class="quarto-xref">Figure&nbsp;<span>18.2</span></a>, we will insert a vertical line at the value of our observed difference.</p>
+<p>In <a href="#fig-teststat1" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-teststat1</span></a>, we will insert a vertical line at the value of our observed difference.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>results <span class="sc">%&gt;%</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_histogram</span>(<span class="sc">~</span>diffprop) <span class="sc">%&gt;%</span></span>
@@ -822,9 +823,16 @@ How often would you observe a difference as extreme as -29.2% (-0.292) according
 <p>In our simulations, only 2.6% of the simulated test statistics were less than or equal to the observed test statistic, as or more extreme relative to the null hypothesis. Such a low probability indicates that observing such a large difference in proportions from chance alone is rare. This probability is known as a <span class="math inline">\(p\)</span>-value. The <span class="math inline">\(p\)</span>-value is a conditional probability, the probability of the observed value or more extreme given that the null hypothesis is true.</p>
 <p>The observed difference of -29.2% is a rare (low probability) event if there truly is no impact from listing gender in the personnel files. When we conduct formal studies, we reject a skeptical position (<span class="math inline">\(H_0\)</span>) if the data strongly conflict with that position.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
 <p>In our analysis, we determined that there was only a ~ 2% probability of obtaining a test statistic where the difference between female and male promotion proportions was 29.2% or larger assuming gender had no impact. So we conclude the data provide sufficient evidence of gender discrimination against women by the supervisors. In this case, we reject the null hypothesis in favor of the alternative hypothesis.</p>
+</section>
+</section>
+<section id="from-bootstrap-to-hypothesis-testing-key-insights" class="level2" data-number="18.5">
+<h2 data-number="18.5" class="anchored" data-anchor-id="from-bootstrap-to-hypothesis-testing-key-insights"><span class="header-section-number">18.5</span> From Bootstrap to Hypothesis Testing: Key Insights</h2>
 <p>Both the hypothesis test and the bootstrap method provide insights into the difference in promotion rates. The bootstrap method offers a confidence interval, giving a range of plausible values, while the hypothesis test provides a p-value indicating the strength of evidence against the null hypothesis. Both methods led us to the same conclusion. The bootstrap confidence interval was entirely negative, not including zero, which led us to conclude that the true difference in proportions is different from zero, with females being promoted less often. The hypothesis test provided sufficient evidence to reject the null hypothesis, concluding that the observed difference in promotion rates was very unlikely to result from chance alone and that, instead, there is sufficient evidence of discrimination due to gender. While many researchers seem to prefer hypothesis testing and the associated <span class="math inline">\(p\)</span>-values, confidence intervals provide a range of plausible values while also equipping us to make decisions. Together, these two methods enhance our understanding and help us make informed decisions based on the data.</p>
+<blockquote class="blockquote">
+<p><strong>Exercise:</strong> What is the difference between the sampling we conduct for the bootstrap procedure and the sampling we perform in a hypothesis test with simulation? Explain it in your own words.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
+</blockquote>
 <p>Statistical inference is the practice of making decisions and conclusions from data in the context of uncertainty. Errors do occur, just like rare events, and the data set at hand might lead us to the wrong conclusion. While a given data set may not always lead us to a correct conclusion, statistical inference gives us tools to control and evaluate how often these errors occur.</p>
-<p>Let’s summarize what we did in this case study. We had a research question and some data to test the question. We then performed a bootstrap and a hypothesis test. In the bootstrap, we sampled with replacement from the original sample, calculated a statistic of interest, and repeated this process many times so that we could generate a bootstrap distribution. With the bootstrap distribution, we could then estimate the standard error of the statistic and calculate confidence intervals.</p>
+<p>Let’s summarize what we did in this case study. We had a research question and some data to test the question. We then performed a bootstrap and a hypothesis test. In the bootstrap, we sampled with replacement from the original sample, calculated a statistic of interest, and repeated this process many times so that we could generate a bootstrap distribution. We could then estimate the standard error of the statistic and calculate confidence intervals.</p>
 <p>In the hypothesis test, we performed a randomization test to make a decision, following these four steps:</p>
 <ol type="1">
 <li>State the null and alternative hypotheses.</li>
@@ -835,18 +843,15 @@ How often would you observe a difference as extreme as -29.2% (-0.292) according
 <p>When creating a randomization distribution, we attempted to satisfy three guiding principles.</p>
 <ol type="1">
 <li>Be consistent with the null hypothesis.<br>
-We need to simulate a world in which the null hypothesis is true. If we don’t do this, we won’t be testing our null hypothesis. In our problem, we assumed gender and promotion were independent.<br>
-</li>
+We need to simulate a world in which the null hypothesis is true. If we don’t do this, we won’t be testing our null hypothesis. In our problem, we assumed gender and promotion were independent.</li>
 <li>Use the data in the original sample.<br>
-The original data should shed light on some aspects of the distribution that are not determined by the null hypothesis. For our problem, we used the difference in promotion rates. The data does not give us the distribution direction, but it gives us an idea that there is a large difference.<br>
-</li>
+The original data should shed light on some aspects of the distribution that are not determined by the null hypothesis. For our problem, we used the difference in promotion rates. The data does not give us the distribution direction, but it gives us an idea that there is a large difference.</li>
 <li>Reflect the way the original data were collected.<br>
 There were 48 files and 48 supervisors. A total of 35 files were recommended for promotion. We keep this the same in our simulation.</li>
 </ol>
 <p>The remainder of this block expands on the ideas of this case study.</p>
 
 
-</section>
 </section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
@@ -857,6 +862,8 @@ There were 48 files and 48 supervisors. A total of 35 files were recommended for
 <li id="fn4"><p>The test procedure we employ in this section is formally called a <strong>permutation test</strong>.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn5"><p><span class="math inline">\(18/24 - 17/24 = 0.042\)</span> or about 4.2% in favor of the men. This difference due to chance is much smaller than the difference observed in the actual groups.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn6"><p>This reasoning does not generally extend to anecdotal observations. Each of us observes incredibly rare events every day, events we could not possibly hope to predict. However, in the non-rigorous setting of anecdotal evidence, almost anything may appear to be a rare event, so the idea of looking for rare events in day-to-day activities is treacherous. For example, we might look at the lottery: there was only a 1 in 176 million chance that the Mega Millions numbers for the largest jackpot in history (March 30, 2012) would be (2, 4, 23, 38, 46) with a Mega ball of (23), but nonetheless those numbers came up! However, no matter what numbers had turned up, they would have had the same incredibly rare odds. That is, <strong>any set of numbers we could have observed would ultimately be incredibly rare</strong>. This type of situation is typical of our daily lives: each possible event in itself seems incredibly rare, but if we consider every alternative, those outcomes are also incredibly rare. We should be cautious not to misinterpret such anecdotal evidence.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>In the bootstrap, we sample with replacement from the original data. We do this by sampling entire rows from the original data, so that the <strong>original observations remain intact</strong>. In our bootstrap sample, some observations may appear more than once while others may be left out. Thus, the marginal counts (e.g., the number of individuals promoted or not promoted) may differ from those in the original data.</p>
+<p>In a randomization test, the <strong>marginal counts</strong> <strong>remain</strong> <strong>fixed</strong> but we randomize from the original observations in a manner that ignores the observed relationship between the explanatory and response variables. Imagine having 35 slots for individuals being promoted and 13 slots for individuals not being promoted. We shuffle and distribute male and female files into the slots for promoted and not promoted. In this process, we ignore the observed promotion status for each file as we place files into the slots. Thus, it is possible that the samples in our randomization test include observations that did not exist in the original data.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
@@ -1288,8 +1295,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./18B-Sampling-Distributions.html" class="pagination-link" aria-label="Point Estimates and Sampling Variability">
-        <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Point Estimates and Sampling Variability</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./18B-Sampling-Distributions.html" class="pagination-link" aria-label="Sampling Distributions">
+        <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Sampling Distributions</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

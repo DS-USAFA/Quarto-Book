@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.54">
+<meta name="generator" content="quarto-1.5.53">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -342,7 +342,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./18B-Sampling-Distributions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Point Estimates and Sampling Variability</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Sampling Distributions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -453,28 +453,25 @@ window.Quarto = {
    
   <ul>
   <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives"><span class="header-section-number">20.1</span> Objectives</a></li>
-  <li><a href="#confidence-intervals" id="toc-confidence-intervals" class="nav-link" data-scroll-target="#confidence-intervals"><span class="header-section-number">20.2</span> Confidence intervals</a></li>
+  <li><a href="#computational-vs.-mathematical-inference-methods" id="toc-computational-vs.-mathematical-inference-methods" class="nav-link" data-scroll-target="#computational-vs.-mathematical-inference-methods"><span class="header-section-number">20.2</span> Computational vs.&nbsp;mathematical inference methods</a></li>
   <li><a href="#bootstrapping" id="toc-bootstrapping" class="nav-link" data-scroll-target="#bootstrapping"><span class="header-section-number">20.3</span> Bootstrapping</a></li>
   <li><a href="#bootstrap-example" id="toc-bootstrap-example" class="nav-link" data-scroll-target="#bootstrap-example"><span class="header-section-number">20.4</span> Bootstrap example</a>
   <ul class="collapse">
-  <li><a href="#using-traditional-mathematical-methods" id="toc-using-traditional-mathematical-methods" class="nav-link" data-scroll-target="#using-traditional-mathematical-methods"><span class="header-section-number">20.4.1</span> Using traditional mathematical methods</a></li>
-  <li><a href="#bootstrap" id="toc-bootstrap" class="nav-link" data-scroll-target="#bootstrap"><span class="header-section-number">20.4.2</span> Bootstrap</a></li>
+  <li><a href="#summary-statistics" id="toc-summary-statistics" class="nav-link" data-scroll-target="#summary-statistics"><span class="header-section-number">20.4.1</span> Summary statistics</a></li>
+  <li><a href="#generating-a-bootstrap-distribution" id="toc-generating-a-bootstrap-distribution" class="nav-link" data-scroll-target="#generating-a-bootstrap-distribution"><span class="header-section-number">20.4.2</span> Generating a bootstrap distribution</a></li>
+  <li><a href="#estimating-the-variability-of-a-statistic" id="toc-estimating-the-variability-of-a-statistic" class="nav-link" data-scroll-target="#estimating-the-variability-of-a-statistic"><span class="header-section-number">20.4.3</span> Estimating the variability of a statistic</a></li>
   </ul></li>
-  <li><a href="#non-standard-sample-statistics" id="toc-non-standard-sample-statistics" class="nav-link" data-scroll-target="#non-standard-sample-statistics"><span class="header-section-number">20.5</span> Non-standard sample statistics</a>
+  <li><a href="#confidence-intervals" id="toc-confidence-intervals" class="nav-link" data-scroll-target="#confidence-intervals"><span class="header-section-number">20.5</span> Confidence intervals</a>
   <ul class="collapse">
-  <li><a href="#sample-median" id="toc-sample-median" class="nav-link" data-scroll-target="#sample-median"><span class="header-section-number">20.5.1</span> Sample median</a></li>
-  <li><a href="#summary-of-the-bootstrap" id="toc-summary-of-the-bootstrap" class="nav-link" data-scroll-target="#summary-of-the-bootstrap"><span class="header-section-number">20.5.2</span> Summary of the bootstrap</a></li>
+  <li><a href="#capturing-the-population-parameter" id="toc-capturing-the-population-parameter" class="nav-link" data-scroll-target="#capturing-the-population-parameter"><span class="header-section-number">20.5.1</span> Capturing the population parameter</a></li>
+  <li><a href="#constructing-a-confidence-interval" id="toc-constructing-a-confidence-interval" class="nav-link" data-scroll-target="#constructing-a-confidence-interval"><span class="header-section-number">20.5.2</span> Constructing a confidence interval</a></li>
   </ul></li>
-  <li><a href="#culminating-example" id="toc-culminating-example" class="nav-link" data-scroll-target="#culminating-example"><span class="header-section-number">20.6</span> Culminating example</a>
+  <li><a href="#non-standard-sample-statistics" id="toc-non-standard-sample-statistics" class="nav-link" data-scroll-target="#non-standard-sample-statistics"><span class="header-section-number">20.6</span> Non-standard sample statistics</a>
   <ul class="collapse">
-  <li><a href="#help-example" id="toc-help-example" class="nav-link" data-scroll-target="#help-example"><span class="header-section-number">20.6.1</span> HELP example</a></li>
-  <li><a href="#randomization-test" id="toc-randomization-test" class="nav-link" data-scroll-target="#randomization-test"><span class="header-section-number">20.6.2</span> Randomization test</a></li>
-  <li><a href="#traditional-mathematical-methods" id="toc-traditional-mathematical-methods" class="nav-link" data-scroll-target="#traditional-mathematical-methods"><span class="header-section-number">20.6.3</span> Traditional mathematical methods</a></li>
-  <li><a href="#hypothesis-tests" id="toc-hypothesis-tests" class="nav-link" data-scroll-target="#hypothesis-tests"><span class="header-section-number">20.6.4</span> Hypothesis tests</a></li>
-  <li><a href="#confidence-intervals-1" id="toc-confidence-intervals-1" class="nav-link" data-scroll-target="#confidence-intervals-1"><span class="header-section-number">20.6.5</span> Confidence intervals</a></li>
-  <li><a href="#bootstrap-1" id="toc-bootstrap-1" class="nav-link" data-scroll-target="#bootstrap-1"><span class="header-section-number">20.6.6</span> Bootstrap</a></li>
+  <li><a href="#sample-median" id="toc-sample-median" class="nav-link" data-scroll-target="#sample-median"><span class="header-section-number">20.6.1</span> Sample median</a></li>
+  <li><a href="#summary-of-the-bootstrap" id="toc-summary-of-the-bootstrap" class="nav-link" data-scroll-target="#summary-of-the-bootstrap"><span class="header-section-number">20.6.2</span> Summary of the bootstrap</a></li>
+  <li><a href="#frequently-asked-questions" id="toc-frequently-asked-questions" class="nav-link" data-scroll-target="#frequently-asked-questions"><span class="header-section-number">20.6.3</span> Frequently asked questions</a></li>
   </ul></li>
-  <li><a href="#frequently-asked-questions" id="toc-frequently-asked-questions" class="nav-link" data-scroll-target="#frequently-asked-questions"><span class="header-section-number">20.7</span> Frequently asked questions</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/DS-USAFA/Quarto-Book/edit/main/25-Bootstrap.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -503,36 +500,31 @@ window.Quarto = {
 <section id="objectives" class="level2" data-number="20.1">
 <h2 data-number="20.1" class="anchored" data-anchor-id="objectives"><span class="header-section-number">20.1</span> Objectives</h2>
 <ol type="1">
-<li><p>Use the bootstrap to estimate the standard error of a sample statistic.</p></li>
-<li><p>Using bootstrap methods, obtain and interpret a confidence interval for an unknown parameter, based on a random sample.</p></li>
-<li><p>Describe the advantages, disadvantages, and assumptions behind bootstrapping for confidence intervals.</p></li>
+<li><p>Differentiate between various statistical terminologies such as <em>sampling distribution, bootstrapping, bootstrap distribution, resample,</em> <em>sampling</em> <em>with replacement</em>, and <em>standard error</em>, and construct examples to demonstrate their proper use in context.</p></li>
+<li><p>Apply the bootstrap technique to estimate the standard error of a sample statistic.</p></li>
+<li><p>Utilize bootstrap methods to construct and interpret confidence intervals for unknown parameters from random samples.</p></li>
+<li><p>Analyze and discuss the advantages, disadvantages, and underlying assumptions of bootstrapping for constructing confidence intervals.</p></li>
 </ol>
 </section>
-<section id="confidence-intervals" class="level2" data-number="20.2">
-<h2 data-number="20.2" class="anchored" data-anchor-id="confidence-intervals"><span class="header-section-number">20.2</span> Confidence intervals</h2>
-<p>In <a href="24-Confidence-Intervals.html" class="quarto-xref"><span>Chapter 23</span></a>, we introduced the concept of confidence intervals. As a reminder, confidence intervals are used to describe uncertainty around an estimate of a parameter. A confidence interval can be interpreted as a range of feasible values for an unknown parameter, given a representative sample of the population.</p>
-<p>Recall the four general steps of building a confidence interval:</p>
-<ol type="1">
-<li><p>Identify the parameter you would like to estimate.</p></li>
-<li><p>Identify a good estimate for that parameter.</p></li>
-<li><p>Determine the distribution of your estimate or a function of your estimate.</p></li>
-<li><p>Use this distribution to obtain a range of feasible values (confidence interval) for the parameter.</p></li>
-</ol>
-<p>We previously used the central limit theorem to determine the distribution of our estimate. In this chapter, we will build <em>bootstrap distribution</em>s for our sample estimates.</p>
+<section id="computational-vs.-mathematical-inference-methods" class="level2" data-number="20.2">
+<h2 data-number="20.2" class="anchored" data-anchor-id="computational-vs.-mathematical-inference-methods"><span class="header-section-number">20.2</span> Computational vs.&nbsp;mathematical inference methods</h2>
+<p>We are going to be using data from a sample of the population to make decisions about the population. There are many approaches and techniques for this. In this book, we will be introducing and exploring different approaches; we are establishing foundations. As you can imagine, these ideas are varied, subtle, and at times difficult. We will just be exposing you to the foundational ideas. We want to make sure you understand that to become an accomplished practitioner, you must master the fundamentals and continue to learn the advanced ideas.</p>
+<p>Historically, there have been two approaches to statistical decision making, hypothesis testing and confidence intervals. At their mathematical foundation, they are equivalent, but, sometimes in practice, they offer different perspectives on the problem. We will learn about both of these approaches.</p>
+<p>The engines that drive the numeric results of a decision making model are either mathematical or computational. In reality, computational methods have mathematics behind them, and mathematical methods often require computer computations. The real distinction between them is the assumptions we are making about our population. Mathematical solutions typically have stricter assumptions, thus leading to a tractable mathematical solution to the sampling distribution of the test statistic, while computational models relax assumptions but may require extensive computational power. Like all problems, there is a trade off to consider when trying to choose which approach is better. There is no one universal best method. Some methods perform better in certain contexts. It is important to understand that computational methods such as the <strong>bootstrap</strong> are <strong>NOT</strong> all you need to know.</p>
 </section>
 <section id="bootstrapping" class="level2" data-number="20.3">
 <h2 data-number="20.3" class="anchored" data-anchor-id="bootstrapping"><span class="header-section-number">20.3</span> Bootstrapping</h2>
-<p>In many contexts, the sampling distribution of a sample statistic is either unknown or subject to assumptions. For example, if we wanted to obtain a 95% confidence interval on the <em>mean</em>, we know its distribution but are subject to the assumption that the underlying population distribution is approximately normal. Imagine instead we wanted to obtain a 95% confidence interval on the <em>median</em> of a population. The central limit theorem does not apply to the median; we don’t know its distribution.</p>
-<p>The theory required to quantify the uncertainty of the sample median is complex. In an ideal world, we would sample data from the population again and recompute the median with this new sample. Then we could do it again. And again. And so on until we get enough median estimates that we have a good sense of the precision of our original estimate. This is an ideal world where sampling data is free or extremely inexpensive. That is rarely the case, which poses a challenge to this “resample from the population” approach.</p>
-<p>However, we can sample from the sample. <em>Bootstrapping</em> allows us to simulate the sampling distribution by <strong>resampling</strong> from the sample. Suppose <span class="math inline">\(x_1, x_2, ..., x_n\)</span> is an i.i.d. random sample from the population. First, we define the empirical distribution function of <span class="math inline">\(X\)</span> by assigning an equal probability to each <span class="math inline">\(x_i\)</span>. Then, we sample from this empirical probability mass function. Thus, we are treating our sample as a discrete uniform random variable, and sampling from our original sample <em>with replacement</em>.</p>
-<p>The general procedure for bootstrapping is to sample with replacement from the original sample, calculate and record the sample statistic for that bootstrapped sample, then repeat the process many times. The collection of sample statistics comprises a <em>bootstrap distribution</em> of the sample statistic. Generally, this procedure works quite well, provided that the original sample is representative of the population. Otherwise, any bias or misrepresentation is simply amplified throughout the bootstrap process. Further, for very small sample sizes, bootstrap distributions become “choppy” and hard to interpret. Thus, in small sample cases, we must use permutation or mathematical methods to determine the sampling distribution.</p>
-<p>Once we have completed the procedure, the bootstrap distribution can be used to build a confidence interval for the population parameter or estimate the standard error. <strong>Note that we are not using the bootstrap to find</strong> <span class="math inline">\(p\)</span>-values.</p>
+<p><em>Bootstrapping</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> is a powerful statistical method that allows us to estimate the sampling distribution of a statistic by resampling with replacement from the original data. This technique is particularly useful when the theoretical distribution of a statistic is complex or unknown.</p>
+<p>The theory required to quantify the uncertainty of a statistic such as the sample median is complex. In an ideal world, we would sample data from the population and compute the median with this sample. Then we could sample again from the population and recompute the media with this new sample. Then we could do it again. And again. And so on until we get enough median estimates that we have a good sense of the precision of our original estimate. This is an ideal world where sampling data is free or extremely inexpensive. That is rarely the case, which poses a challenge to this “resample from the population” approach.</p>
+<p>However, we can sample from the sample we already have. <em>Bootstrapping</em> allows us to simulate the <em>sampling distribution</em> by <strong>resampling</strong> from the original sample. Suppose <span class="math inline">\(x_1, x_2, ..., x_n\)</span> is an i.i.d. random sample from the population. First, we define the empirical distribution function of <span class="math inline">\(X\)</span> by assigning an equal probability to each <span class="math inline">\(x_i\)</span>. Then, we sample from this empirical probability mass function. Thus, we are treating our sample as a discrete uniform random variable, and sampling from our original sample <em>with replacement</em>.</p>
+<p>The general procedure for bootstrapping is to sample with replacement from the original sample, calculate and record the sample statistic for that bootstrapped sample, then repeat the process many times. The collection of sample statistics comprises a <em>bootstrap distribution</em> of the sample statistic. Generally, this procedure works quite well, provided the original sample is representative of the population. Otherwise, any bias or misrepresentation is simply amplified throughout the bootstrap process. Further, for very small sample sizes, bootstrap distributions become “choppy” and hard to interpret. Thus, in small sample cases, we must use permutation or mathematical methods to determine the sampling distribution.</p>
+<p>Once we have completed the procedure, the bootstrap distribution can be used to build a confidence interval for the population parameter or estimate the standard error.</p>
 </section>
 <section id="bootstrap-example" class="level2" data-number="20.4">
 <h2 data-number="20.4" class="anchored" data-anchor-id="bootstrap-example"><span class="header-section-number">20.4</span> Bootstrap example</h2>
-<p>To help us understand the bootstrap, let’s use an example of a single mean. We would like to estimate the mean height of students at a local college. We collect a sample of size 50 (stored in vector <code>heights</code> below).</p>
+<p>To help us understand the bootstrap, let’s use an example of a single mean. We would like to estimate the mean height of students at a local college. We collect a sample of size 50 (stored in the vector <code>heights</code> below).</p>
 <blockquote class="blockquote">
-<p><strong>Exercise</strong> Using both a traditional method, via the CLT or the t-distribution, and the bootstrap method, find 95% confidence intervals for <span class="math inline">\(\mu\)</span>. Compare the two intervals.</p>
+<p><strong>Exercise</strong> Using the bootstrap method, generate an approximation of the sampling distribution for the true mean height, <span class="math inline">\(\mu\)</span>. Use it to estimate the variability of the mean and find 95% confidence intervals for <span class="math inline">\(\mu\)</span>.</p>
 </blockquote>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>heights <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">62.0</span>, <span class="fl">73.8</span>, <span class="fl">59.8</span>, <span class="fl">66.9</span>, <span class="fl">75.6</span>, <span class="fl">63.3</span>, <span class="fl">64.0</span>, <span class="fl">63.1</span>, <span class="fl">65.0</span>, <span class="fl">67.2</span>, </span>
@@ -541,7 +533,9 @@ window.Quarto = {
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>             <span class="fl">71.7</span>, <span class="fl">75.9</span>, <span class="fl">81.7</span>, <span class="fl">76.5</span>, <span class="fl">77.8</span>, <span class="fl">75.0</span>, <span class="fl">64.6</span>, <span class="fl">59.4</span>, <span class="fl">60.7</span>, <span class="fl">69.2</span>, </span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>             <span class="fl">78.2</span>, <span class="fl">65.7</span>, <span class="fl">69.6</span>, <span class="fl">80.0</span>, <span class="fl">67.6</span>, <span class="fl">73.0</span>, <span class="fl">65.3</span>, <span class="fl">67.6</span>, <span class="fl">66.2</span>, <span class="fl">69.6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Let’s look at the data. <a href="23-Analysis-of-Variance.html#fig-box231" class="quarto-xref">Figure&nbsp;<span>25.1</span></a> and <a href="#fig-dens231" class="quarto-xref">Figure&nbsp;<span>20.2</span></a> show a boxplot and density plot of the heights, respectively.</p>
+<section id="summary-statistics" class="level3" data-number="20.4.1">
+<h3 data-number="20.4.1" class="anchored" data-anchor-id="summary-statistics"><span class="header-section-number">20.4.1</span> Summary statistics</h3>
+<p>Let’s look at the data. <a href="23-Analysis-of-Variance.html#fig-box231" class="quarto-xref">Figure&nbsp;<span>26.1</span></a> and <a href="#fig-dens231" class="quarto-xref">Figure&nbsp;<span>20.2</span></a> show a boxplot and density plot of the heights, respectively.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-box231" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -570,7 +564,7 @@ Figure&nbsp;20.2: Density plot of heights of local college students.
 </div>
 </div>
 </div>
-<p>The distribution of heights looks bimodal. There are likely both men and women in this sample, and thus we have two different population distributions of heights.</p>
+<p>The distribution of heights looks bimodal. There are likely both male and female students in this sample, and thus we have two different population distributions of heights. We can also use <code>favstats()</code> to examine some of our favorite statistics.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(<span class="sc">~</span>heights)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -578,34 +572,12 @@ Figure&nbsp;20.2: Density plot of heights of local college students.
  54.9 64.7   67.6 74.675 81.7 68.938 6.345588 50       0</code></pre>
 </div>
 </div>
-<section id="using-traditional-mathematical-methods" class="level3" data-number="20.4.1">
-<h3 data-number="20.4.1" class="anchored" data-anchor-id="using-traditional-mathematical-methods"><span class="header-section-number">20.4.1</span> Using traditional mathematical methods</h3>
-<p>The data comes from less than 10% of the population, so we feel good about the assumption of independence. However, the data is bimodal and clearly does not come from a normal distribution. The sample size is larger, so this may help us. We will use the <span class="math inline">\(t\)</span>-distribution and CLT, and compare our results with the bootstrap.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(<span class="fu">t_test</span>(<span class="sc">~</span>heights))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  mean of x   lower   upper level
-1    68.938 67.1346 70.7414  0.95</code></pre>
-</div>
-</div>
-<p>We can also calculate the confidence interval by hand.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Using t</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(heights)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>sd <span class="ot">&lt;-</span> <span class="fu">sd</span>(heights)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(heights)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>tval <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="fl">0.975</span>, n <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>xbar <span class="sc">+</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>)<span class="sc">*</span>tval<span class="sc">*</span>sd<span class="sc">/</span><span class="fu">sqrt</span>(n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 67.1346 70.7414</code></pre>
-</div>
-</div>
 <p>If we want to use the <code>tidyverse</code>, we must convert <code>heights</code> to a data frame.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>heights <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">height =</span> heights)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>heights <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">height =</span> heights)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(heights)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(heights)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 1
   height
@@ -618,69 +590,30 @@ Figure&nbsp;20.2: Density plot of heights of local college students.
 6   63.3</code></pre>
 </div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>heights <span class="sc">%&gt;%</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(height), <span class="at">stand_dev =</span> <span class="fu">sd</span>(height), <span class="at">n =</span> <span class="fu">n</span>(),</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">ci =</span> mean <span class="sc">+</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>)<span class="sc">*</span><span class="fu">qt</span>(<span class="fl">0.975</span>, n <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">*</span>stand_dev<span class="sc">/</span><span class="fu">sqrt</span>(n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Returning more (or less) than 1 row per `summarise()` group was deprecated in
-dplyr 1.1.0.
-ℹ Please use `reframe()` instead.
-ℹ When switching from `summarise()` to `reframe()`, remember that `reframe()`
-  always returns an ungrouped data frame and adjust accordingly.</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 4
-   mean stand_dev     n    ci
-  &lt;dbl&gt;     &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt;
-1  68.9      6.35    50  67.1
-2  68.9      6.35    50  70.7</code></pre>
-</div>
-</div>
-<p>Using the CLT, we have:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>heights <span class="sc">%&gt;%</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(height), <span class="at">stand_dev =</span> <span class="fu">sd</span>(height), <span class="at">n =</span> <span class="fu">n</span>(),</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">ci =</span> mean <span class="sc">+</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>)<span class="sc">*</span><span class="fu">qnorm</span>(<span class="fl">0.975</span>)<span class="sc">*</span>stand_dev<span class="sc">/</span><span class="fu">sqrt</span>(n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Returning more (or less) than 1 row per `summarise()` group was deprecated in
-dplyr 1.1.0.
-ℹ Please use `reframe()` instead.
-ℹ When switching from `summarise()` to `reframe()`, remember that `reframe()`
-  always returns an ungrouped data frame and adjust accordingly.</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 4
-   mean stand_dev     n    ci
-  &lt;dbl&gt;     &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt;
-1  68.9      6.35    50  67.2
-2  68.9      6.35    50  70.7</code></pre>
-</div>
-</div>
-<p>This is not much different from the results using the <span class="math inline">\(t\)</span>-distribution.</p>
 </section>
-<section id="bootstrap" class="level3" data-number="20.4.2">
-<h3 data-number="20.4.2" class="anchored" data-anchor-id="bootstrap"><span class="header-section-number">20.4.2</span> Bootstrap</h3>
-<p>The idea behind the bootstrap is that we will get an estimate of the distribution for the statistic of interest by sampling the original data with replacement. We must sample under the same scheme as the original data was collected. In <code>R</code>, we will use the <code>resample()</code> function from the <strong>mosaic</strong> package. There are entire packages dedicated to resampling, such as <strong>boot</strong>, and there is a great deal of information about these types of packages online.</p>
-<p>When applied to a dataframe, the <code>resample()</code> function samples rows with replacement to produce a new data frame with the same number of rows as the original. Some rows will be duplicated and others will be missing.</p>
+<section id="generating-a-bootstrap-distribution" class="level3" data-number="20.4.2">
+<h3 data-number="20.4.2" class="anchored" data-anchor-id="generating-a-bootstrap-distribution"><span class="header-section-number">20.4.2</span> Generating a bootstrap distribution</h3>
+<p>The idea behind the bootstrap is that we will get an estimate of the distribution for the statistic of interest (also called the sampling distribution) by sampling the original data with replacement. We must sample under the same scheme with which the original data was collected. In <code>R</code>, we will use the <code>resample()</code> function from the <strong>mosaic</strong> package. There are entire packages dedicated to resampling, such as <strong>boot</strong>, and there is a great deal of information about these types of packages online for the interested learner.</p>
+<p>When applied to a dataframe, the <code>resample()</code> function samples rows with replacement to produce a new data frame with the same number of rows as the original. It’s important to note that the rows from the original data set remain intact. However, some rows may be duplicated and others may be missing entirely from the bootstrap sample.</p>
 <p>To illustrate, let’s use <code>resample()</code> on the first 10 positive integers.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">305</span>)</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">resample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">305</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">resample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 8 7 8 1 4 4 2 2 6 9</code></pre>
 </div>
 </div>
-<p>Notice that 8, 4 and 2 appeared at least twice. The numbers 3 and 5 did not appear at all. This is a single bootstrap replicate of the data.</p>
-<p>We then calculate a point estimate on the bootstrap replicate. We repeat this process a large number of times, 1,000 or maybe even 10,000 times. The collection of the point estimates is called the bootstrap distribution. For the sample mean, ideally, the bootstrap distribution should be unimodal, roughly symmetric, and centered at the original estimate.</p>
-<p>Let’s generate the bootstrap distribution for our <code>heights</code> data.</p>
+<p>Notice that observations 2, 4, and 8 appear at least twice. Observations 3 and 5 do not appear at all. This is a single bootstrap replicate of the data.</p>
+<p>We then calculate a point estimate, or statistic of interest, on the bootstrap replicate. We repeat this process a large number of times (e.g., 1,000 or 10,000 times). The collection of the point estimates is called the bootstrap distribution.</p>
+<p>For the sample mean, ideally, the bootstrap distribution should be unimodal, roughly symmetric, and centered at the original estimate.</p>
+<p>Let’s generate the bootstrap distribution for the mean using our <code>heights</code> data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2115</span>)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>boot_results <span class="ot">&lt;-</span> <span class="fu">do</span>(<span class="dv">1000</span>)<span class="sc">*</span><span class="fu">mean</span>(<span class="sc">~</span>height, <span class="at">data =</span> <span class="fu">resample</span>(heights))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2115</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>boot_results <span class="ot">&lt;-</span> <span class="fu">do</span>(<span class="dv">1000</span>)<span class="sc">*</span><span class="fu">mean</span>(<span class="sc">~</span>height, <span class="at">data =</span> <span class="fu">resample</span>(heights))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The first few rows of the results are:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(boot_results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(boot_results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    mean
 1 68.390
@@ -691,8 +624,8 @@ dplyr 1.1.0.
 6 68.424</code></pre>
 </div>
 </div>
-<p>The <code>do()</code> function, by default, gives the column name of the last function used, in this case <code>mean()</code>. This is an unfortunate name as it can cause us some confusion.</p>
-<p><a href="#fig-boot251" class="quarto-xref">Figure&nbsp;<span>20.3</span></a> is a plot of the bootstrap sampling distribution. The observed mean from our original sample is shown as a black line.</p>
+<p>The <code>do()</code> function, by default, gives the column name of the last function used, in this case <code>mean()</code>. This is an unfortunate name as it can lead to some confusion.</p>
+<p><a href="#fig-boot251" class="quarto-xref">Figure&nbsp;<span>20.3</span></a> is a plot of the bootstrap distribution. The observed mean from our original sample is shown as a black line.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-boot251" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -707,28 +640,60 @@ Figure&nbsp;20.3: The sampling distribution approximated using a bootstrap distr
 </div>
 </div>
 </div>
-<p>We can also look at a summary of the bootstrap distribution:</p>
+</section>
+<section id="estimating-the-variability-of-a-statistic" class="level3" data-number="20.4.3">
+<h3 data-number="20.4.3" class="anchored" data-anchor-id="estimating-the-variability-of-a-statistic"><span class="header-section-number">20.4.3</span> Estimating the variability of a statistic</h3>
+<p>The standard deviation of our statistic, the mean in this case, is also known as the <em>standard error</em>. Functions like <code>favstats()</code> or <code>sd()</code> can be used to calculate the standard error from the bootstrap distribution.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(<span class="sc">~</span>mean, <span class="at">data =</span> boot_results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(<span class="sc">~</span>mean, <span class="at">data =</span> boot_results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    min      Q1 median    Q3  max     mean        sd    n missing
  65.684 68.3915 68.976 69.55 72.3 68.96724 0.9040555 1000       0</code></pre>
 </div>
 </div>
-<p>From here, there are two ways we can calculate a confidence interval. The first is called the percentile method, where we go into the bootstrap distribution and find the appropriate quantiles to construct a confidence interval. The second is called the <span class="math inline">\(t\)</span> interval with bootstrap error. In this second method, we construct a confidence interval like we would using the CLT, except we use the bootstrap estimate of the standard error.</p>
-<section id="bootstrap-percentile" class="level4" data-number="20.4.2.1">
-<h4 data-number="20.4.2.1" class="anchored" data-anchor-id="bootstrap-percentile"><span class="header-section-number">20.4.2.1</span> Bootstrap percentile</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(<span class="sc">~</span>mean, <span class="at">data =</span> boot_results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9040555</code></pre>
+</div>
+</div>
+<p>Here we see the standard error of the mean is approximately 0.904.</p>
+</section>
+</section>
+<section id="confidence-intervals" class="level2" data-number="20.5">
+<h2 data-number="20.5" class="anchored" data-anchor-id="confidence-intervals"><span class="header-section-number">20.5</span> Confidence intervals</h2>
+<p>A point estimate provides a single plausible value for a parameter. However, a point estimate is rarely perfect; usually there is some error in the estimate. We just showed how to estimate the variability in a point estimate by generating a bootstrap distribution and using it to estimate the standard error of the statistic. In addition to supplying a point estimate of a parameter, the next logical step would be to provide a plausible <em>range of values</em> for the parameter.</p>
+<section id="capturing-the-population-parameter" class="level3" data-number="20.5.1">
+<h3 data-number="20.5.1" class="anchored" data-anchor-id="capturing-the-population-parameter"><span class="header-section-number">20.5.1</span> Capturing the population parameter</h3>
+<p>A plausible range of values for the population parameter is called a <strong>confidence interval</strong>. Using only a point estimate is like fishing in a murky lake with a spear, and using a confidence interval is like fishing with a net. We can throw a spear where we saw a fish, but we will probably miss. On the other hand, if we toss a net in that area, we have a good chance of catching the fish.</p>
+<p>If we report a point estimate, we probably will not hit the exact population parameter. On the other hand, if we report a range of plausible values – a confidence interval – we have a good shot at capturing the parameter.</p>
+<blockquote class="blockquote">
+<p><strong>Exercise</strong>: If we want to be very certain we capture the population parameter, should we use a wider interval or a smaller interval?<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+</blockquote>
+</section>
+<section id="constructing-a-confidence-interval" class="level3" data-number="20.5.2">
+<h3 data-number="20.5.2" class="anchored" data-anchor-id="constructing-a-confidence-interval"><span class="header-section-number">20.5.2</span> Constructing a confidence interval</h3>
+<p>Generally, what you should know about building confidence intervals is laid out in the following steps:</p>
+<ol type="1">
+<li><p>Identify the parameter you would like to estimate (e.g., the population mean, <span class="math inline">\(\mu\)</span>).</p></li>
+<li><p>Identify a good estimate for that parameter (e.g., the sample mean, <span class="math inline">\(\bar{X}\)</span>).</p></li>
+<li><p>Determine the distribution of your estimate, or a function of your estimate. One way to do this is by generating the bootstrap distribution of your estimate.</p></li>
+<li><p>Use this distribution to obtain a range of feasible values (a confidence interval) for the parameter.</p></li>
+</ol>
+<section id="bootstrap-percentile-method" class="level4" data-number="20.5.2.1">
+<h4 data-number="20.5.2.1" class="anchored" data-anchor-id="bootstrap-percentile-method"><span class="header-section-number">20.5.2.1</span> Bootstrap percentile method</h4>
+<p>We can now calculate a confidence interval using the bootstrap percentile method, where we examine the bootstrap distribution and find the values corresponding to percentiles of interest<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> to construct a confidence interval.</p>
 <p>For a 95% confidence interval, we simply want the middle 95% of the bootstrap distribution. That is, we want the 2.5 and 97.5 percentiles of the bootstrap distribution. The function <code>cdata()</code> makes this easy for us by specifying the probability for the confidence interval desired.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cdata</span>(<span class="sc">~</span>mean, <span class="at">data =</span> boot_results, <span class="at">p =</span> <span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cdata</span>(<span class="sc">~</span>mean, <span class="at">data =</span> boot_results, <span class="at">p =</span> <span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       lower   upper central.p
 2.5% 67.2197 70.7964      0.95</code></pre>
 </div>
 </div>
-<p>We can also use the <code>qdata()</code> function, which gives the quantiles corresponding to the specified probabilities.</p>
+<p>We can also use the <code>qdata()</code> function, which gives the values corresponding to the specified percentiles.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qdata</span>(<span class="sc">~</span>mean, <span class="at">data =</span> boot_results, <span class="at">p =</span> <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qdata</span>(<span class="sc">~</span>mean, <span class="at">data =</span> boot_results, <span class="at">p =</span> <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   2.5%   97.5% 
 67.2197 70.7964 </code></pre>
@@ -736,62 +701,21 @@ Figure&nbsp;20.3: The sampling distribution approximated using a bootstrap distr
 </div>
 <p>Both functions result in the same 95% confidence interval.</p>
 </section>
-<section id="t-interval-with-bootstrap-standard-error" class="level4" data-number="20.4.2.2">
-<h4 data-number="20.4.2.2" class="anchored" data-anchor-id="t-interval-with-bootstrap-standard-error"><span class="header-section-number">20.4.2.2</span> <span class="math inline">\(t\)</span> interval with bootstrap standard error</h4>
-<p>Since the bootstrap distribution looks like a <span class="math inline">\(t\)</span> distribution, we can use a <span class="math inline">\(t\)</span> interval with the bootstrap standard error. The standard deviation of the bootstrap distribution is the bootstrap standard error of the sample mean. We will not have to divide by <span class="math inline">\(\sqrt{n}\)</span> since we are dealing with the distribution of the mean directly. We simply find the standard deviation of the bootstrap distribution and use it as the standard error in the confidence interval.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(boot_results<span class="sc">$</span>mean)</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>SE <span class="ot">&lt;-</span> <span class="fu">sd</span>(boot_results<span class="sc">$</span>mean)</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>xbar <span class="sc">+</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>)<span class="sc">*</span><span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="dv">49</span>)<span class="sc">*</span>SE</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 67.15047 70.78401</code></pre>
-</div>
-</div>
-<p>We could of course use <code>tidyverse</code> but we must change the column name so that the <code>mean</code> column and the <code>mean()</code> function don’t conflict with each other.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>boot_results <span class="sc">%&gt;%</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">stat =</span> mean) <span class="sc">%&gt;%</span></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(stat), <span class="at">stand_dev =</span> <span class="fu">sd</span>(stat), </span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">ci =</span> mean <span class="sc">+</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>)<span class="sc">*</span><span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="dv">49</span>)<span class="sc">*</span>stand_dev)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Returning more (or less) than 1 row per `summarise()` group was deprecated in
-dplyr 1.1.0.
-ℹ Please use `reframe()` instead.
-ℹ When switching from `summarise()` to `reframe()`, remember that `reframe()`
-  always returns an ungrouped data frame and adjust accordingly.</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>      mean stand_dev       ci
-1 68.96724 0.9040555 67.15047
-2 68.96724 0.9040555 70.78401</code></pre>
-</div>
-</div>
-<p>Of course, there is a single built-in function to make this easier for us. The <code>confint()</code> function used with the bootstrap results can provide confidence intervals using both methods.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(boot_results, <span class="at">method =</span> <span class="fu">c</span>(<span class="st">"percentile"</span>, <span class="st">"stderr"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  name    lower    upper level     method estimate margin.of.error df
-1 mean 67.21970 70.79640  0.95 percentile   68.938              NA NA
-2 mean 67.15047 70.78401  0.95     stderr   68.938        1.816768 49</code></pre>
-</div>
-</div>
-<p>The <span class="math inline">\(t\)</span> interval with the bootstrap standard error is the more accurate method of calculating a bootstrap confidence interval. However, the percentile method usually results in a very similar interval and the standard error method can only be used when the bootstrap distribution is roughly shaped like a <span class="math inline">\(t\)</span> distribution. You can learn more about bootstrap confidence intervals online.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 </section>
 </section>
-</section>
-<section id="non-standard-sample-statistics" class="level2" data-number="20.5">
-<h2 data-number="20.5" class="anchored" data-anchor-id="non-standard-sample-statistics"><span class="header-section-number">20.5</span> Non-standard sample statistics</h2>
-<p>One of the huge advantages of simulation-based methods is the ability to build confidence intervals for parameters whose estimates don’t have known sampling distributions, or when the distributions are difficult to derive.</p>
-<section id="sample-median" class="level3" data-number="20.5.1">
-<h3 data-number="20.5.1" class="anchored" data-anchor-id="sample-median"><span class="header-section-number">20.5.1</span> Sample median</h3>
-<p>Consider the height data again. The observed sample median was 67.6. We would like to know the true median student height and use a confidence interval for the estimate. However, we have no idea of the sampling distribution of the median. We can use bootstrapping to obtain an empirical distribution of the median.</p>
+<section id="non-standard-sample-statistics" class="level2" data-number="20.6">
+<h2 data-number="20.6" class="anchored" data-anchor-id="non-standard-sample-statistics"><span class="header-section-number">20.6</span> Non-standard sample statistics</h2>
+<p>One of the huge advantages of simulation-based methods is the ability to build confidence intervals for parameters whose estimates don’t have known sampling distributions, or when the distributions are difficult to derive. In essence, the bootstrap method allows us estimate the sampling distribution and standard error of any statistic of interest.</p>
+<section id="sample-median" class="level3" data-number="20.6.1">
+<h3 data-number="20.6.1" class="anchored" data-anchor-id="sample-median"><span class="header-section-number">20.6.1</span> Sample median</h3>
+<p>Consider the <code>heights</code> data again. The observed sample median was 67.6. We would like to know the true median student height and generate a confidence interval for the estimate. However, we have no idea of the sampling distribution of the median. We can use bootstrapping to obtain an empirical distribution of the median.</p>
 <blockquote class="blockquote">
 <p><strong>Exercise</strong>:<br>
 Find a 90% confidence interval for the median height of students at a local college.</p>
 </blockquote>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">427</span>)</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>boot_results <span class="ot">&lt;-</span> <span class="fu">do</span>(<span class="dv">10000</span>)<span class="sc">*</span><span class="fu">median</span>(<span class="sc">~</span>height, <span class="at">data =</span> <span class="fu">resample</span>(heights))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">427</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>boot_results <span class="ot">&lt;-</span> <span class="fu">do</span>(<span class="dv">10000</span>)<span class="sc">*</span><span class="fu">median</span>(<span class="sc">~</span>height, <span class="at">data =</span> <span class="fu">resample</span>(heights))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -807,347 +731,41 @@ Figure&nbsp;20.4: The sampling distribution approximated using a bootstrap distr
 </div>
 </div>
 </div>
-<p>From <a href="#fig-boot252" class="quarto-xref">Figure&nbsp;<span>20.4</span></a>, the bootstrap sampling distribution is not symmetrical so the <span class="math inline">\(t\)</span> interval approach may not be advisable. We will still calculate the confidence interval based on both approaches to compare the results.</p>
+<p>Now that we have the bootstrap distribution, we can generate a confidence interval using the percentile method.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cdata</span>(<span class="sc">~</span>median, <span class="at">data =</span> boot_results, <span class="at">p =</span> <span class="fl">0.90</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cdata</span>(<span class="sc">~</span>median, <span class="at">data =</span> boot_results, <span class="at">p =</span> <span class="fl">0.90</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   lower upper central.p
 5%  65.8 70.65       0.9</code></pre>
 </div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(boot_results, <span class="at">method =</span> <span class="fu">c</span>(<span class="st">"percentile"</span>, <span class="st">"stderr"</span>), <span class="at">level =</span> <span class="fl">0.9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>    name   lower   upper level     method estimate margin.of.error
-1 median 65.8000 70.6500   0.9 percentile     67.6              NA
-2 median 65.4648 70.1297   0.9     stderr     67.6        2.332455</code></pre>
-</div>
-</div>
-<p>There is a little difference between these two methods but not as large as we may have expected. Based on the percentile confidence interval, we are 95% confident that the median student height is between 65.8 and 70.65 inches.</p>
+<p>We are 95% confident that the median student height is between 65.8 and 70.65 inches.</p>
 </section>
-<section id="summary-of-the-bootstrap" class="level3" data-number="20.5.2">
-<h3 data-number="20.5.2" class="anchored" data-anchor-id="summary-of-the-bootstrap"><span class="header-section-number">20.5.2</span> Summary of the bootstrap</h3>
-<p>The key idea behind the bootstrap is that we estimate the population with the sample. This is called the <em>plug in principle</em>: if something is unknown, then substitute an estimate of it. We can then generate new samples from this population estimate. The bootstrap does not improve the accuracy of the original estimate. In fact, the bootstrap distribution is centered on the original sample estimate. Instead, we only get information about the variability of the sample estimate. We are not calculating <span class="math inline">\(p\)</span>-values, but are estimating the standard error and/or calculating confidence intervals.</p>
-<p>Some people are suspicious that we are using the data over and over again. But remember, we are just getting estimates of variability. In traditional statistics, when we calculate the sample standard deviation, we are using sample mean. Thus, we are using the data twice. Always think of the bootstrap as providing a way to find the variability in an estimate.</p>
+<section id="summary-of-the-bootstrap" class="level3" data-number="20.6.2">
+<h3 data-number="20.6.2" class="anchored" data-anchor-id="summary-of-the-bootstrap"><span class="header-section-number">20.6.2</span> Summary of the bootstrap</h3>
+<p>The key idea behind the bootstrap is that we estimate the population with the sample. This is called the <em>plug in principle</em>: if a value is unknown, then substitute an estimate of the value. We can then generate new samples from this population estimate. The bootstrap does not improve the accuracy of the original estimate. In fact, the bootstrap distribution is centered on the original sample estimate. Instead, we only get information about the variability of the sample estimate. We are then estimating the standard error and/or calculating confidence intervals.</p>
+<p>Some people are suspicious of the bootstrap because we are using the data over and over again. But remember, we are just getting estimates of variability. In traditional statistics, when we calculate the sample standard deviation, we are using the sample mean. Thus, we are using the data twice. Always think of the bootstrap as providing a way to find the variability in an estimate.</p>
 </section>
-</section>
-<section id="culminating-example" class="level2" data-number="20.6">
-<h2 data-number="20.6" class="anchored" data-anchor-id="culminating-example"><span class="header-section-number">20.6</span> Culminating example</h2>
-<p>To bring together all the ideas we have learned so far in this block, we will work an example of testing for a difference of two means. In our opinion, the easiest method to understand is the permutation test and the most difficult is the one based on the mathematical derivation, because of the assumptions necessary to get a mathematical solution for the sampling distribution. We will also introduce how to use the bootstrap to get a confidence interval.</p>
-<section id="help-example" class="level3" data-number="20.6.1">
-<h3 data-number="20.6.1" class="anchored" data-anchor-id="help-example"><span class="header-section-number">20.6.1</span> HELP example</h3>
-<p>Let’s return to the Health Evaluation and Linkage to Primary Care data set, <code>HELPrct</code> in the <strong>mosaicData</strong> package. Previously, we looked at whether there was a difference in <code>substance</code> of abuse between males and females.</p>
-<p>We are now interested in whether there is a difference between male and female ages. Let’s first take a look at the data to refresh our memory.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"HELPrct"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>HELP_sub <span class="ot">&lt;-</span> HELPrct <span class="sc">%&gt;%</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(age, sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(age <span class="sc">~</span> sex, <span class="at">data =</span> HELP_sub)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     sex min Q1 median   Q3 max     mean       sd   n missing
-1 female  21 31     35 40.5  58 36.25234 7.584858 107       0
-2   male  19 30     35 40.0  60 35.46821 7.750110 346       0</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-box253" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-box253-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="25-Bootstrap_files/figure-html/fig-box253-1.png" class="img-fluid figure-img" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-box253-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;20.5: The distribution of age in the HELP study by gender.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-hist254" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-hist254-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="25-Bootstrap_files/figure-html/fig-hist254-1.png" class="img-fluid figure-img" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hist254-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;20.6: The distribution of age in the HELP study by gender.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p><a href="#fig-box253" class="quarto-xref">Figure&nbsp;<span>20.5</span></a> and <a href="#fig-hist254" class="quarto-xref">Figure&nbsp;<span>20.6</span></a> indicate there might be a slight difference in the means, but is it statistically significant?</p>
-</section>
-<section id="randomization-test" class="level3" data-number="20.6.2">
-<h3 data-number="20.6.2" class="anchored" data-anchor-id="randomization-test"><span class="header-section-number">20.6.2</span> Randomization test</h3>
-<p>The randomization test (approximation of a permutation test) is ideally suited for a hypothesis test. So, we will conduct this first and then see if we can generate a confidence interval.</p>
-<p>The hypotheses are:</p>
-<p><span class="math inline">\(H_0\)</span>: There is no difference in average age for men and women in the detoxification unit. In statistical notation: <span class="math inline">\(\mu_{male} - \mu_{female} = 0\)</span>, where <span class="math inline">\(\mu_{female}\)</span> represents the mean age for female inpatients and <span class="math inline">\(\mu_{male}\)</span> represents the mean age for male inpatients.</p>
-<p><span class="math inline">\(H_A\)</span>: There is some difference in average age for men and women in the detoxification unit (<span class="math inline">\(\mu_{male} - \mu_{female} \neq 0\)</span>).</p>
-<p>Let’s perform a randomization test. The mean age by sex is again shown below.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(age <span class="sc">~</span> sex, <span class="at">data =</span> HELP_sub)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     sex min Q1 median   Q3 max     mean       sd   n missing
-1 female  21 31     35 40.5  58 36.25234 7.584858 107       0
-2   male  19 30     35 40.0  60 35.46821 7.750110 346       0</code></pre>
-</div>
-</div>
-<p>We calculate the observed difference in the mean ages. Notice we are subtracting the mean female age from the mean male age.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>obs_stat <span class="ot">&lt;-</span> <span class="fu">diffmean</span>(age <span class="sc">~</span> sex, <span class="at">data =</span> HELP_sub)</span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>obs_stat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  diffmean 
--0.7841284 </code></pre>
-</div>
-</div>
-<p>Under the null hypothesis, there is no difference in the average age for men and women. So, we shuffle the <code>sex</code> labels around to generate a sampling distribution under the null.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">345</span>)</span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">do</span>(<span class="dv">10000</span>)<span class="sc">*</span><span class="fu">diffmean</span>(age <span class="sc">~</span> <span class="fu">shuffle</span>(sex), <span class="at">data =</span> HELP_sub)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(<span class="sc">~</span>diffmean, <span class="at">data =</span> results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>       min         Q1     median     Q3      max        mean        sd     n
- -3.378154 -0.5638809 0.01120955 0.5863 3.486224 0.009350908 0.8492454 10000
- missing
-       0</code></pre>
-</div>
-</div>
-<p>The sampling distribution is centered on the null hypothesized value of 0, more or less, and the standard deviation is 0.849. This is an estimate of the variability of the difference in mean ages. The observed difference in means is shown as a red line on the sampling distribution in <a href="#fig-hist255" class="quarto-xref">Figure&nbsp;<span>20.7</span></a>.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-hist255" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-hist255-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="25-Bootstrap_files/figure-html/fig-hist255-1.png" class="img-fluid figure-img" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hist255-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;20.7: The approximate sampling distribution of the difference of means from a bootstrap process.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>Our test statistic does not appear to be too extreme. Now, we calculate a two-sided <span class="math inline">\(p\)</span>-value.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span><span class="fu">prop1</span>(<span class="sc">~</span>(diffmean <span class="sc">&lt;=</span> obs_stat), <span class="at">data =</span> results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>prop_TRUE 
-0.3523648 </code></pre>
-</div>
-</div>
-<p>Based on this <span class="math inline">\(p\)</span>-value, we fail to reject the null hypothesis. There is not enough evidence to say that the mean age for men and women is different.</p>
-<p>Now, to construct a confidence interval based on the randomization, we have to be careful and think about this. The object <code>results</code> has the distribution of the difference in means, assuming there is no difference. To get a confidence interval, we want to center this distribution on the observed difference in means and not on zero. We will do this by adding the observed difference in means to the randomization results, and then find the percentile confidence interval.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cdata</span>(<span class="sc">~</span>(diffmean <span class="sc">+</span> obs_stat), <span class="at">data =</span> results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>         lower     upper central.p
-2.5% -2.449246 0.8789368      0.95</code></pre>
-</div>
-</div>
-<p>We are 95% confident that the true difference in mean ages between male and female participants in the study is between -2.45 and 0.88. Because 0 is contained in the confidence interval, we fail to reject the null hypothesis. There is not enough evidence to say that the mean age for men and women is different.</p>
-<p>Note that we are assuming the test statistic can be transformed. It turns out that the percentile method for a confidence interval is transformation invariant, so we can perform the transformation of shifting the null sampling distribution by the observed value.</p>
-</section>
-<section id="traditional-mathematical-methods" class="level3" data-number="20.6.3">
-<h3 data-number="20.6.3" class="anchored" data-anchor-id="traditional-mathematical-methods"><span class="header-section-number">20.6.3</span> Traditional mathematical methods</h3>
-<p>Using the CLT or the <span class="math inline">\(t\)</span> distribution becomes difficult, because we have to find a way to calculate the standard error. There have been many proposed methods, and you are welcome to research them, but we will only present a couple of ideas in this section. Let’s summarize the process for both hypothesis testing and confidence intervals in the case of the difference of two means using the <span class="math inline">\(t\)</span> distribution. You may recall some of the ideas for a two-sample <span class="math inline">\(t\)</span> test (hypothesis test) from Chapter @ref(ADDTESTS).</p>
-</section>
-<section id="hypothesis-tests" class="level3" data-number="20.6.4">
-<h3 data-number="20.6.4" class="anchored" data-anchor-id="hypothesis-tests"><span class="header-section-number">20.6.4</span> Hypothesis tests</h3>
-<p>When applying the <span class="math inline">\(t\)</span> distribution for a hypothesis test, we proceed as follows:</p>
-<ol type="1">
-<li><p>State the appropriate hypotheses.</p></li>
-<li><p>Verify the conditions for using the <span class="math inline">\(t\)</span> distribution.</p>
-<p>For a difference of means, when the data are not paired: each sample mean must separately satisfy the one-sample conditions for the <span class="math inline">\(t\)</span> distribution, and the data in each group must also be independent. Just like in the one-sample case, slight skewness will not be a problem for larger sample sizes. We can have moderate skewness and be fine if our sample is 30 or more. We can have extreme skewness if our sample is 60 or more.</p></li>
-<li><p>Compute the point estimate of interest, the standard error, and the degrees of freedom.</p></li>
-<li><p>Compute the <span class="math inline">\(T\)</span> test statistic and <span class="math inline">\(p\)</span>-value.</p></li>
-<li><p>Make a conclusion based on the <span class="math inline">\(p\)</span>-value, and write a conclusion in context of the problem and in plain language so that anyone can understand the results.</p></li>
-</ol>
-<p>We’ve added the extra step of checking the assumptions here.</p>
-</section>
-<section id="confidence-intervals-1" class="level3" data-number="20.6.5">
-<h3 data-number="20.6.5" class="anchored" data-anchor-id="confidence-intervals-1"><span class="header-section-number">20.6.5</span> Confidence intervals</h3>
-<p>Similarly, the following is how we generally compute a confidence interval using the <span class="math inline">\(t\)</span> distribution:</p>
-<ol type="1">
-<li><p>Verify conditions for using the <span class="math inline">\(t\)</span> distribution. (See above.)</p></li>
-<li><p>Compute the point estimate of interest, the standard error, the degrees of freedom, and <span class="math inline">\(t^{\star}_{df}\)</span> (the critical value or number of standard deviations needed for the confidence interval).</p></li>
-<li><p>Calculate the confidence interval using the general formula, <span class="math inline">\(\text{point estimate} \pm\ t_{df}^{\star} SE\)</span>.</p></li>
-<li><p>Put the conclusions in context of the problem and in plain language, so even non-statisticians can understand the results.</p></li>
-</ol>
-<p>If the assumptions above are met, each sample mean can itself be modeled using a <span class="math inline">\(t\)</span> distribution. If the samples are independent, then the sample difference of two means, <span class="math inline">\(\bar{x}_1 - \bar{x}_2\)</span>, can be modeled using the <span class="math inline">\(t\)</span> distribution and the standard error is</p>
-<p><span class="math display">\[SE_{\bar{x}_{1} - \bar{x}_{2}} = \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}\]</span></p>
-<p>To calculate the degrees of freedom, we can use statistical software or, conservatively, use the smaller of <span class="math inline">\(n_1 - 1\)</span> and <span class="math inline">\(n_2 - 1\)</span>.</p>
-<section id="results" class="level4" data-number="20.6.5.1">
-<h4 data-number="20.6.5.1" class="anchored" data-anchor-id="results"><span class="header-section-number">20.6.5.1</span> Results</h4>
-<p>Back to the HELP data, the men and women were independent of each other. Additionally, the distributions in each population don’t show any clear deviations from normality. There is some slight skewness but the sample size reduces this concern, see <a href="#fig-qq256" class="quarto-xref">Figure&nbsp;<span>20.8</span></a>. Finally, within each group we also need independence. If each group represents less than 10% of the population, we are good to go on this. This condition might be difficult to verify.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-qq256" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-qq256-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="25-Bootstrap_files/figure-html/fig-qq256-1.png" class="img-fluid figure-img" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-qq256-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;20.8: The quantile-quantile plots to check the normality assumption.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>The distribution of males tends to have longer tails than a normal distribution, and the female distribution is skewed to the right. The sample sizes are large enough that this does not worry us. Below are the summary statistics by <code>sex</code> once more.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(age <span class="sc">~</span> sex, <span class="at">data =</span> HELP_sub)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     sex min Q1 median   Q3 max     mean       sd   n missing
-1 female  21 31     35 40.5  58 36.25234 7.584858 107       0
-2   male  19 30     35 40.0  60 35.46821 7.750110 346       0</code></pre>
-</div>
-</div>
-<p>Let’s find the confidence interval first. We use the smaller of <span class="math inline">\(n_1 - 1\)</span> and <span class="math inline">\(n_2 - 1\)</span> as the degrees of freedom: <span class="math inline">\(df = 106\)</span>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>(<span class="fl">35.47</span> <span class="sc">-</span> <span class="fl">36.25</span>) <span class="sc">+</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>)<span class="sc">*</span><span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="dv">106</span>)<span class="sc">*</span><span class="fu">sqrt</span>(<span class="fl">7.58</span><span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> <span class="dv">107</span> <span class="sc">+</span> <span class="fl">7.75</span><span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> <span class="dv">346</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] -2.4512328  0.8912328</code></pre>
-</div>
-</div>
-<p>This result is very close to the interval we got with the permutation test.</p>
-<p>Now, let’s find the <span class="math inline">\(p\)</span>-value for the hypothesis test.</p>
-<p>The test statistic is:</p>
-<p><span class="math display">\[T \ =\ \frac{\text{point estimate} - \text{null value}}{SE}\]</span></p>
-<p><span class="math display">\[ = \frac{(35.47 - 36.25) - 0}{\sqrt{\left( \frac{7.58^2}{107}+ \frac{7.75^2}{346}\right)}}\ =\ - 0.92976 \]</span> We again use <span class="math inline">\(df = 106\)</span>. The <span class="math inline">\(p\)</span>-value is:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span><span class="fu">pt</span>(<span class="sc">-</span><span class="fl">0.92976</span>, <span class="dv">106</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.3546079</code></pre>
-</div>
-</div>
-<p>The results in <code>R</code> are slightly different due to the calculation of the degrees of freedom.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t_test</span>(age <span class="sc">~</span> sex, <span class="at">data =</span> HELP_sub)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Welch Two Sample t-test
-
-data:  age by sex
-t = 0.92976, df = 179.74, p-value = 0.3537
-alternative hypothesis: true difference in means between group female and group male is not equal to 0
-95 percent confidence interval:
- -0.8800365  2.4482932
-sample estimates:
-mean in group female   mean in group male 
-            36.25234             35.46821 </code></pre>
-</div>
-</div>
-<p>Notice that the degrees of freedom is not an integer. This is because it is a weighted average of the two different samples sizes and standard deviations. This method is called the Satterthwaite approximation. Additionally, the confidence interval is slightly different because <code>t_test()</code> subtracted the mean age for men from the mean age for women. Still, the confidence interval and <span class="math inline">\(p\)</span>-value lead us to the same results as before – we fail to reject the null hypothesis.</p>
-</section>
-<section id="pooled-standard-deviation" class="level4" data-number="20.6.5.2">
-<h4 data-number="20.6.5.2" class="anchored" data-anchor-id="pooled-standard-deviation"><span class="header-section-number">20.6.5.2</span> Pooled standard deviation</h4>
-<p>Occasionally, two populations will have standard deviations that are so similar they can be treated as identical. This is an assumption of equal variance in each group. For example, historical data or a well-understood biological mechanism may justify this strong assumption. In such cases, we can make the <span class="math inline">\(t\)</span> distribution approach slightly more precise by using a pooled standard deviation.</p>
-<p>The <strong>pooled standard deviation</strong> of two groups is a way to use data from both samples to better estimate the standard deviation and standard error. If <span class="math inline">\(s_1\)</span> and <span class="math inline">\(s_2\)</span> are the standard deviations of groups 1 and 2, respectively, and there are good reasons to believe that the population standard deviations are equal, then we can obtain an improved estimate of the group variances by pooling their data:</p>
-<p><span class="math display">\[ s_{pooled}^2 = \frac{s_1^2\times (n_1 - 1) + s_2^2\times (n_2 - 1)}{n_1 + n_2 - 2}\]</span></p>
-<p>where <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span> are the sample sizes of groups 1 and 2, as before. To use this new estimate, we substitute <span class="math inline">\(s_{pooled}^2\)</span> in place of <span class="math inline">\(s_1^2\)</span> and <span class="math inline">\(s_2^2\)</span> in the standard error formula, and we use an updated formula for the degrees of freedom: <span class="math display">\[df = n_1 + n_2 - 2\]</span></p>
-<p>The benefits of pooling the standard deviation are realized through obtaining a better estimate of the standard deviation for each group and using a larger degrees of freedom parameter for the <span class="math inline">\(t\)</span> distribution. Both of these changes may permit a more accurate model of the sampling distribution of <span class="math inline">\(\bar{x}_1 - \bar{x}_2\)</span>.</p>
-<blockquote class="blockquote">
-<p><strong>Caution</strong><br>
-Pooling standard deviations should be done only after careful research.</p>
-</blockquote>
-<p>A pooled standard deviation is only appropriate when background research indicates the population standard deviations are nearly equal. When the sample size is large and the condition may be adequately checked with data, the benefits of pooling the standard deviations greatly diminishes.</p>
-<p>In <code>R</code> we can test the difference of two means with equal variance using the <code>var.equal</code> argument.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t_test</span>(age <span class="sc">~</span> sex, <span class="at">data =</span> HELP_sub, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Two Sample t-test
-
-data:  age by sex
-t = 0.91923, df = 451, p-value = 0.3585
-alternative hypothesis: true difference in means between group female and group male is not equal to 0
-95 percent confidence interval:
- -0.8922735  2.4605303
-sample estimates:
-mean in group female   mean in group male 
-            36.25234             35.46821 </code></pre>
-</div>
-</div>
-<p>Since our sample sizes are so large, this did not have a big impact on the results.</p>
-</section>
-</section>
-<section id="bootstrap-1" class="level3" data-number="20.6.6">
-<h3 data-number="20.6.6" class="anchored" data-anchor-id="bootstrap-1"><span class="header-section-number">20.6.6</span> Bootstrap</h3>
-<p>Finally, we will construct a confidence interval through the use of the bootstrap. In this problem, we have to be careful and sample within each group. Compare the following two bootstrap samples.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(age <span class="sc">~</span> sex, <span class="at">data =</span> <span class="fu">resample</span>(HELP_sub))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     sex min Q1 median    Q3 max     mean       sd   n missing
-1 female  21 30     33 38.75  50 34.64706 6.267387 102       0
-2   male  19 29     33 39.00  59 34.74359 7.833066 351       0</code></pre>
-</div>
-</div>
-<p>and</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(age <span class="sc">~</span> sex, <span class="at">data =</span> <span class="fu">resample</span>(HELP_sub, <span class="at">groups =</span> sex))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     sex min Q1 median   Q3 max     mean       sd   n missing
-1 female  22 31     34 39.5  57 35.60748 6.901951 107       0
-2   male  20 31     35 41.0  60 35.94798 8.039227 346       0</code></pre>
-</div>
-</div>
-<p>Notice in the second line of code, we are keeping the groups the same size by sampling within the <code>sex</code> variable.</p>
-<p>Now, let’s get our bootstrap distribution.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2527</span>)</span>
-<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">do</span>(<span class="dv">1000</span>)<span class="sc">*</span><span class="fu">diffmean</span>(age <span class="sc">~</span> sex, <span class="at">data =</span> <span class="fu">resample</span>(HELP_sub, <span class="at">groups =</span> sex))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><a href="#fig-boot257" class="quarto-xref">Figure&nbsp;<span>20.9</span></a> is our sampling distribution from the bootstrap.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-boot257" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-boot257-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="25-Bootstrap_files/figure-html/fig-boot257-1.png" class="img-fluid figure-img" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-boot257-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;20.9: Bootstrap distribution of the difference in means.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cdata</span>(<span class="sc">~</span>diffmean, <span class="at">p =</span> <span class="fl">0.95</span>, <span class="at">data =</span> results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>         lower     upper central.p
-2.5% -2.394406 0.8563786      0.95</code></pre>
-</div>
-</div>
-<p>Again, we find similar results with the percentile confidence interval.</p>
-</section>
-</section>
-<section id="frequently-asked-questions" class="level2" data-number="20.7">
-<h2 data-number="20.7" class="anchored" data-anchor-id="frequently-asked-questions"><span class="header-section-number">20.7</span> Frequently asked questions</h2>
+<section id="frequently-asked-questions" class="level3" data-number="20.6.3">
+<h3 data-number="20.6.3" class="anchored" data-anchor-id="frequently-asked-questions"><span class="header-section-number">20.6.3</span> Frequently asked questions</h3>
 <ol type="1">
 <li><p>Are there more types of bootstrap techniques?</p>
 <p>Yes! There are many excellent bootstrap techniques. We have only chosen to present two bootstrap techniques that could be explained in a single chapter and that are also reasonably reliable. There are many adjustments that can be made to speed up and improve accuracy. Packages such as <strong>resample</strong> and <strong>boot</strong> are more appropriate for these situations.</p></li>
 <li><p>I’ve heard the percentile bootstrap is very robust.</p>
-<p>It is a <strong>commonly</strong> held belief that the percentile bootstrap is a robust bootstrap method. That is false. The percentile method is one of the least reliable bootstrap methods. However, it is easy to use and understand and can give a first attempt at a solution before more accurate methods, like the standard error method, are used.</p></li>
+<p>It is a <strong>commonly</strong> held belief that the percentile bootstrap is a robust bootstrap method. That is false. The percentile method is one of the least reliable bootstrap methods. However, it is easy to use and understand and can give a first attempt at a solution before more accurate methods, like the standard error method, are used. We’ll learn more about the standard error method in a later chapter.</p></li>
 <li><p>I should use 1,000 replicates in my bootstrap and permutation tests, right?</p>
 <p>The randomization and bootstrap distributions involve a random component from the sampling process, and thus <span class="math inline">\(p\)</span>-values and confidence intervals computed from the same data will vary. The amount of this <strong>Monte Carlo</strong> variability depends on the number of replicates used to create the randomization or bootstrap distribution. It is important that we not use too few, as this will introduce too much random noise into <span class="math inline">\(p\)</span>-value and confidence interval calculations. But each replicate costs time, and the marginal gain for each additional replicate decreases as the number of replicates increases. There is little reason to use millions of replicates (unless the goal is to estimate very small <span class="math inline">\(p\)</span>-values). We generally use roughly 1,000 replicates for routine or preliminary work, and increase this to 10,000 replicates when we want to reduce the effects of Monte Carlo variability.</p></li>
 </ol>
 
 
 </section>
+</section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn1"><p>Also, see resources like <em>Statistical Inference via Data Science</em> by Chester Ismay and Albert Kim.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>The term <em>bootstrapping</em>&nbsp;comes from the phrase “pulling oneself up by one’s bootstraps,” which is credited to the 18th century story of Baron Munchausen who supposedly pulled himself out of a swamp by tugging on his own bootstraps. It implies performing an apparently impossible task. The bootstrap method was created by Bradley Efron in 1979 and was named in this way because it relies on the data itself to generate estimates of sampling distributions.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>If we want to be more certain we will capture the fish, we should use a wider net. Likewise, we use a wider confidence interval if we want to be more certain that we capture the parameter. A higher level of confidence implies a wider interval.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>The values corresponding to the percentiles of interest are also known as <em>quantiles</em>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
@@ -1574,8 +1192,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./18B-Sampling-Distributions.html" class="pagination-link" aria-label="Point Estimates and Sampling Variability">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Point Estimates and Sampling Variability</span></span>
+      <a href="./18B-Sampling-Distributions.html" class="pagination-link" aria-label="Sampling Distributions">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Sampling Distributions</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
