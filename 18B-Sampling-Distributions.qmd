@@ -1,4 +1,4 @@
-# Point Estimates and Sampling Variability {#sec-SAMPVAR}
+# Sampling Distributions {#sec-SAMPVAR}
 
 ```{r}
 #| echo: false
@@ -11,7 +11,11 @@ library(tidyverse)
 
 ## Objectives
 
--   Point estimate, parameter, sampling error, sampling distribution, standard error, bias
+1.  Differentiate between various statistical terminologies such as *point estimate, parameter, sampling error, bias, sampling distribution,* and *standard error*, and construct examples to demonstrate their proper use in context.
+2.  Construct a sampling distribution for various statistics, including the sample mean, using `R`.
+3.  Using a sampling distribution, make decisions about the population. In other words, understand the effect of sampling variation on our estimates.
+
+## Introduction
 
 Companies such as Pew Research frequently conduct polls as a way to understand the state of public opinion or knowledge on many topics, including politics, scientific understanding, brand recognition, and more. The ultimate goal in taking a poll is generally to use the responses to estimate the opinion or knowledge of the broader population.
 

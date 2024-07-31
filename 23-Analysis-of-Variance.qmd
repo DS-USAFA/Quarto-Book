@@ -1,6 +1,5 @@
 # Analysis of Variance {#sec-ANOVA}
 
-
 ```{r}
 #| echo: false
 #| message: false
@@ -14,9 +13,7 @@ library(knitr)
 
 ## Objectives
 
-1)  Conduct and interpret a hypothesis test for equality of two or more means using both permutation and the $F$ distribution.
-
-2)  Know and check the assumptions for ANOVA.
+1)  Conduct and interpret a hypothesis test for equality of two or more means using both permutation and the $F$ distribution. Evaluate the assumptions of ANOVA.
 
 ## Introduction
 

@@ -13,9 +13,9 @@ library(knitr)
 
 ## Objectives
 
-1)  Know and properly use the terminology of a hypothesis test, to include: *permutation test*, *exact test*, *null hypothesis*, *alternative hypothesis*, *test statistic*, $p$-value, and *power*.
+1)  Differentiate between various statistical terminologies such as *permutation test, exact test, null hypothesis, alternative hypothesis, test statistic, p-value*, and *power*, and construct examples to demonstrate their proper use in context.
 
-2)  Conduct all four steps of a hypothesis test using probability models.
+2)  Apply and evaluate all four steps of a hypothesis test using probability models: formulating hypotheses, calculating a test statistic, determining the p-value through randomization, and making a decision based on the test outcome.
 
 ## Hypothesis testing using probability models
 

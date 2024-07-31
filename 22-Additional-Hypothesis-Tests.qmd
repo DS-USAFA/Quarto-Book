@@ -1,6 +1,5 @@
 # Additional Hypothesis Tests {#sec-ADDTESTS}
 
-
 ```{r}
 #| echo: false
 #| message: false
@@ -14,15 +13,11 @@ library(knitr)
 
 ## Objectives
 
-1)  Conduct and interpret a goodness of fit test using both Pearson's chi-squared and randomization to evaluate the independence between two categorical variables.
+1)  Conduct and interpret a goodness of fit test using both Pearson's chi-squared and randomization to evaluate the independence between two categorical variables. Evaluate the assumptions for Pearson's chi-square test.
 
-2)  Explain how the chi-squared distribution relates to the normal distribution, where it is used, and how changing parameters impacts the shape of the distribution.
+2)  Analyze the relationship between the chi-squared and normal distributions, explain usage contexts, and evaluate the effects of changing degrees of freedom on the chi-squared distribution using visualizations.
 
-3)  Conduct and interpret a hypothesis test for equality of two means and equality of two variances using both permutation and the CLT.
-
-4)  Conduct and interpret a hypothesis test for paired data.
-
-5)  Know and check the assumptions for Pearson's chi-square and two-sample $t$ tests.
+3)  Conduct and interpret a hypothesis test for equality of two means and equality of two variances using both permutation and the CLT. Evaluate the assumptions for two-sample t-tests.
 
 ## Introduction
 
@@ -629,4 +624,3 @@ The two-sided $p$-value is
 You should notice that the $p$-value for the two-sample $t$-test is smaller than the $p$-value obtained here. That is because the $p$-value for the two-sample $t$-test involves more assumptions. Still, our results here are consistent with those using the difference of means randomization test and the two-sample $t$-test.
 
 In the next chapter, we will learn how to use the $F$ statistic and ANOVA to test whether there are differences in more than two means simultaneously.
-

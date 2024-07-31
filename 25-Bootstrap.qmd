@@ -13,11 +13,13 @@ library(knitr)
 
 ## Objectives
 
-1)  Use the bootstrap to estimate the standard error of a sample statistic.
+1)  Differentiate between various statistical terminologies such as *sampling distribution, bootstrap distribution, resample,* and *sampling* with replacement, and construct examples to demonstrate their proper use in context.
 
-2)  Using bootstrap methods, obtain and interpret a confidence interval for an unknown parameter, based on a random sample.
+2)  Apply the bootstrap technique to estimate the standard error of a sample statistic.
 
-3)  Describe the advantages, disadvantages, and assumptions behind bootstrapping for confidence intervals.
+3)  Utilize bootstrap methods to construct and interpret confidence intervals for unknown parameters from random samples.
+
+4)  Analyze and discuss the advantages, disadvantages, and underlying assumptions of bootstrapping for constructing confidence intervals.
 
 ## Confidence intervals
 

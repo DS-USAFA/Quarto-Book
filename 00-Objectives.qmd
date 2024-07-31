@@ -158,69 +158,71 @@
 
 ## Inferential Statistical Modeling {.unnumbered}
 
-### 18 - Hypothesis Testing Case Study {.unnumbered}
+### 18 - Inferential Thinking Case Study {.unnumbered}
 
-1)  Define and use properly in context all new terminology, to include: *point estimate*, *null hypothesis*, *alternative hypothesis*, *hypothesis test*, *randomization*, *permutation test*, *test statistic*, and $p$-value.
+1)  Using bootstrap methods, obtain and interpret a confidence interval for an unknown parameter, based on a random sample.
 
 2)  Conduct a hypothesis test using a randomization test, to include all 4 steps.
 
+### 18B - Sampling Distributions
+
+1.  Differentiate between various statistical terminologies such as *point estimate, parameter, sampling error, bias, sampling distribution,* and *standard error*, and construct examples to demonstrate their proper use in context.
+2.  Construct a sampling distribution for various statistics, including the sample mean, using `R`.
+3.  Using a sampling distribution, make decisions about the population. In other words, understand the effect of sampling variation on our estimates.
+
+### 25 - Bootstrap {.unnumbered}
+
+1)  Differentiate between various statistical terminologies such as *sampling distribution, bootstrap distribution, resample,* and *sampling* with replacement, and construct examples to demonstrate their proper use in context.
+
+2)  Apply the bootstrap technique to estimate the standard error of a sample statistic.
+
+3)  Utilize bootstrap methods to construct and interpret confidence intervals for unknown parameters from random samples.
+
+4)  Analyze and discuss the advantages, disadvantages, and underlying assumptions of bootstrapping for constructing confidence intervals.
+
 ### 19 - Hypothesis Testing with Simulation {.unnumbered}
 
-1)  Know and properly use the terminology of a hypothesis test, to include: *null hypothesis*, *alternative hypothesis*, *test statistic*, $p$-value, *randomization test*, *one-sided test*, *two-sided test*, *statistically significant*, *significance level*, *type I error*, *type II error*, *false positive*, *false negative*, *null distribution*, and *sampling distribution*.
+1)  Differentiate between various statistical terminologies such as *null hypothesis, alternative hypothesis, test statistic, p-value, randomization test, one-sided test, two-sided test, statistically significant, significance level, type I error, type II error, false positive, false negative, null distribution,* and *sampling distribution*, and construct examples to demonstrate their proper use in context.
 
-2)  Conduct all four steps of a hypothesis test using randomization.
+2)  Apply and evaluate all four steps of a hypothesis test using randomization methods: formulating hypotheses, calculating a test statistic, determining the p-value through randomization, and making a decision based on the test outcome.
 
-3)  Discuss and explain the ideas of decision errors, one-sided versus two-sided tests, and the choice of a significance level.
+3)  Analyze and discuss the concepts of decision errors (type I and type II errors), the differences between one-sided and two-sided tests, and the impact of choosing a significance level. Evaluate how these factors influence the conclusions and reliability of hypothesis tests and their practical implications in statistical decision-making.
+
+4)  Analyze how confidence intervals and hypothesis testing complement each other in making statistical inferences.
 
 ### 20 - Hypothesis Testing with Known Distributions {.unnumbered}
 
-1)  Know and properly use the terminology of a hypothesis test, to include: *permutation test*, *exact test*, *null hypothesis*, *alternative hypothesis*, *test statistic*, $p$-value, and *power*.
+1)  Differentiate between various statistical terminologies such as *permutation test, exact test, null hypothesis, alternative hypothesis, test statistic, p-value*, and *power*, and construct examples to demonstrate their proper use in context.
 
-2)  Conduct all four steps of a hypothesis test using probability models.
+2)  Apply and evaluate all four steps of a hypothesis test using probability models: formulating hypotheses, calculating a test statistic, determining the p-value through randomization, and making a decision based on the test outcome.
 
 ### 21 - Hypothesis Testing with the Central Limit Theorem {.unnumbered}
 
 1)  Explain the central limit theorem and when it can be used for inference.
 
-2)  Conduct hypothesis tests of a single mean and proportion using the CLT and `R`.
+2)  Apply the CLT to conduct hypothesis tests using `R` and interpret the results with an understanding of the CLT's role in justifying normal approximations.
 
-3)  Explain how the $t$ distribution relates to the normal distribution, where it is used, and how changing parameters impacts the shape of the distribution.
-
-### 22 - Additional Hypothesis Tests {.unnumbered}
-
-1)  Conduct and interpret a goodness of fit test using both Pearson's chi-squared and randomization to evaluate the independence between two categorical variables.
-
-2)  Explain how the chi-squared distribution relates to the normal distribution, where it is used, and how changing parameters impacts the shape of the distribution.
-
-3)  Conduct and interpret a hypothesis test for equality of two means and equality of two variances using both permutation and the CLT.
-
-4)  Conduct and interpret a hypothesis test for paired data.
-
-5)  Know and check the assumptions for Pearson's chi-square and two-sample $t$ tests.
-
-### 23 - Analysis of Variance {.unnumbered}
-
-1)  Conduct and interpret a hypothesis test for equality of two or more means using both permutation and the $F$ distribution.
-
-2)  Know and check the assumptions for ANOVA.
+3)  Analyze the relationship between the $t$-distribution and normal distribution, explain usage contexts, and evaluate how changes in parameters impact their shape and location using visualizations.
 
 ### 24 - Confidence Intervals {.unnumbered}
 
-1)  Using asymptotic methods based on the normal distribution, construct and interpret a confidence interval for an unknown parameter.
+1)  Apply asymptotic methods based on the normal distribution to construct and interpret confidence intervals for unknown parameters.
 
-2)  Describe the relationships between confidence intervals, confidence level, and sample size.
+2)  Analyze the relationships between confidence intervals, confidence level, and sample size.
 
-3)  Describe the relationships between confidence intervals and hypothesis testing.
+3)  Analyze how confidence intervals and hypothesis testing complement each other in making statistical inferences.
 
-4)  Calculate confidence intervals for proportions using three different approaches in `R`: explicit calculation, `binom.test()`, and `prop_test()`.
+### 22 - Additional Hypothesis Tests {.unnumbered}
 
-### 25 - Bootstrap {.unnumbered}
+1)  Conduct and interpret a goodness of fit test using both Pearson's chi-squared and randomization to evaluate the independence between two categorical variables. Evaluate the assumptions for Pearson's chi-square test.
 
-1)  Use the bootstrap to estimate the standard error of a sample statistic.
+2)  Analyze the relationship between the chi-squared and normal distributions, explain usage contexts, and evaluate the effects of changing degrees of freedom on the chi-squared distribution using visualizations.
 
-2)  Using bootstrap methods, obtain and interpret a confidence interval for an unknown parameter, based on a random sample.
+3)  Conduct and interpret a hypothesis test for equality of two means and equality of two variances using both permutation and the CLT. Evaluate the assumptions for two-sample t-tests.
 
-3)  Describe the advantages, disadvantages, and assumptions behind bootstrapping for confidence intervals.
+### 23 - Analysis of Variance {.unnumbered}
+
+1)  Conduct and interpret a hypothesis test for equality of two or more means using both permutation and the $F$ distribution. Evaluate the assumptions of ANOVA.
 
 ## Predictive Statistical Modeling {.unnumbered}
 
