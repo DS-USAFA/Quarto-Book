@@ -13,11 +13,13 @@ library(knitr)
 
 ## Objectives
 
-1)  Know and properly use the terminology of a hypothesis test, to include: *null hypothesis*, *alternative hypothesis*, *test statistic*, $p$-value, *randomization test*, *one-sided test*, *two-sided test*, *statistically significant*, *significance level*, *type I error*, *type II error*, *false positive*, *false negative*, *null distribution*, and *sampling distribution*.
+1)  Differentiate between various statistical terminologies such as *null hypothesis, alternative hypothesis, test statistic, p-value, randomization test, one-sided test, two-sided test, statistically significant, significance level, type I error, type II error, false positive, false negative, null distribution,* and *sampling distribution*, and construct examples to demonstrate their proper use in context.
 
-2)  Conduct all four steps of a hypothesis test using randomization.
+2)  Apply and evaluate all four steps of a hypothesis test using randomization methods: formulating hypotheses, calculating a test statistic, determining the p-value through randomization, and making a decision based on the test outcome.
 
-3)  Discuss and explain the ideas of decision errors, one-sided versus two-sided tests, and the choice of a significance level.
+3)  Analyze and discuss the concepts of decision errors (type I and type II errors), the differences between one-sided and two-sided tests, and the impact of choosing a significance level. Evaluate how these factors influence the conclusions and reliability of hypothesis tests and their practical implications in statistical decision-making.
+
+4)  Analyze how confidence intervals and hypothesis testing complement each other in making statistical inferences.
 
 ## Decision making under uncertainty
 
@@ -47,7 +49,7 @@ The engines that drive the numeric results of a decision making model are either
 
 ## Introduction
 
-In this chapter we will introduce hypothesis testing. It is really an extension of our last chapter, the case study. We will put more emphasis on terms and core concepts. In this chapter, we will use a computational solution but this will lead us into thinking of mathematical solutions.[^19-hypothesis-testing-simulation-1] The role of the analyst is always key regardless of the perceived power of the computer. The analyst must take the research question and translate it into a numeric metric for evaluation. The analyst must decide on the type of data and its collection to evaluate the question. The analyst must evaluate the variability in the metric and determine what that means in relation to the original research question. The analyst must propose an answer.
+In this chapter we will introduce hypothesis testing. It is really an extension of the case study. We will put more emphasis on terms and core concepts. In this chapter, we will use a computational solution but this will lead us into thinking of mathematical solutions.[^19-hypothesis-testing-simulation-1] The role of the analyst is always key regardless of the perceived power of the computer. The analyst must take the research question and translate it into a numeric metric for evaluation. The analyst must decide on the type of data and its collection to evaluate the question. The analyst must evaluate the variability in the metric and determine what that means in relation to the original research question. The analyst must propose an answer.
 
 [^19-hypothesis-testing-simulation-1]: In our opinion, this is how things developed historically. However, since computational tools prior to machine computers, humans in most cases, were limited and expensive, there was a shift to mathematical solutions. The relatively recent increase and availability in machine computational power has led to a shift back to computational methods. Thus, some people think mathematical methods predate computational methods, but that is not the case.
 
