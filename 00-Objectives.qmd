@@ -164,15 +164,15 @@
 
 2)  Conduct a hypothesis test using a randomization test, to include all 4 steps.
 
-### 18B - Sampling Distributions
+### 19 - Sampling Distributions
 
 1.  Differentiate between various statistical terminologies such as *point estimate, parameter, sampling error, bias, sampling distribution,* and *standard error*, and construct examples to demonstrate their proper use in context.
 2.  Construct a sampling distribution for various statistics, including the sample mean, using `R`.
 3.  Using a sampling distribution, make decisions about the population. In other words, understand the effect of sampling variation on our estimates.
 
-### 25 - Bootstrap {.unnumbered}
+### 20 - Bootstrap {.unnumbered}
 
-1)  Differentiate between various statistical terminologies such as *sampling distribution, bootstrap distribution, resample,* and *sampling* with replacement, and construct examples to demonstrate their proper use in context.
+1)  Differentiate between various statistical terminologies such as *sampling distribution, bootstrapping, bootstrap distribution, resample,* *sampling* *with replacement*, and *standard error*, and construct examples to demonstrate their proper use in context.
 
 2)  Apply the bootstrap technique to estimate the standard error of a sample statistic.
 
@@ -180,7 +180,7 @@
 
 4)  Analyze and discuss the advantages, disadvantages, and underlying assumptions of bootstrapping for constructing confidence intervals.
 
-### 19 - Hypothesis Testing with Simulation {.unnumbered}
+### 21 - Hypothesis Testing with Simulation {.unnumbered}
 
 1)  Differentiate between various statistical terminologies such as *null hypothesis, alternative hypothesis, test statistic, p-value, randomization test, one-sided test, two-sided test, statistically significant, significance level, type I error, type II error, false positive, false negative, null distribution,* and *sampling distribution*, and construct examples to demonstrate their proper use in context.
 
@@ -190,13 +190,13 @@
 
 4)  Analyze how confidence intervals and hypothesis testing complement each other in making statistical inferences.
 
-### 20 - Hypothesis Testing with Known Distributions {.unnumbered}
+### 22 - Hypothesis Testing with Known Distributions {.unnumbered}
 
 1)  Differentiate between various statistical terminologies such as *permutation test, exact test, null hypothesis, alternative hypothesis, test statistic, p-value*, and *power*, and construct examples to demonstrate their proper use in context.
 
 2)  Apply and evaluate all four steps of a hypothesis test using probability models: formulating hypotheses, calculating a test statistic, determining the p-value through randomization, and making a decision based on the test outcome.
 
-### 21 - Hypothesis Testing with the Central Limit Theorem {.unnumbered}
+### 23 - Hypothesis Testing with the Central Limit Theorem {.unnumbered}
 
 1)  Explain the central limit theorem and when it can be used for inference.
 
@@ -212,7 +212,7 @@
 
 3)  Analyze how confidence intervals and hypothesis testing complement each other in making statistical inferences.
 
-### 22 - Additional Hypothesis Tests {.unnumbered}
+### 25 - Additional Hypothesis Tests {.unnumbered}
 
 1)  Conduct and interpret a goodness of fit test using both Pearson's chi-squared and randomization to evaluate the independence between two categorical variables. Evaluate the assumptions for Pearson's chi-square test.
 
@@ -220,19 +220,19 @@
 
 3)  Conduct and interpret a hypothesis test for equality of two means and equality of two variances using both permutation and the CLT. Evaluate the assumptions for two-sample t-tests.
 
-### 23 - Analysis of Variance {.unnumbered}
+### 26 - Analysis of Variance {.unnumbered}
 
 1)  Conduct and interpret a hypothesis test for equality of two or more means using both permutation and the $F$ distribution. Evaluate the assumptions of ANOVA.
 
 ## Predictive Statistical Modeling {.unnumbered}
 
-### 26 - Linear Regression Case Study {.unnumbered}
+### 27 - Linear Regression Case Study {.unnumbered}
 
 1)  Using `R`, generate a linear regression model and use it to produce a prediction model.
 
 2)  Using plots, check the assumptions of a linear regression model.
 
-### 27 - Linear Regression Basics {.unnumbered}
+### 28 - Linear Regression Basics {.unnumbered}
 
 1)  Differentiate between various statistical terminologies such as *response, predictor, linear regression, simple linear regression, coefficients, residual,* and *extrapolation*, and construct examples to demonstrate their proper use in context.
 
@@ -244,7 +244,7 @@
 
 5)  Identify and assess the assumptions underlying linear regression models.
 
-### 28 - Linear Regression Inference {.unnumbered}
+### 29 - Linear Regression Inference {.unnumbered}
 
 1)  Apply statistical inference methods for $\beta_0$ and $\beta_1$, and evaluate the implications for the predictor-response relationship.
 
@@ -252,7 +252,7 @@
 
 3)  Construct and interpret confidence and prediction intervals for the response variable.
 
-### 29 - Linear Regression Diagnostics {.unnumbered}
+### 30 - Linear Regression Diagnostics {.unnumbered}
 
 1)  Calculate and interpret the R-squared and F-statistic for a linear regression model. Evaluate these metrics to assess the model's goodness-of-fit and overall significance.
 
@@ -260,7 +260,7 @@
 
 3)  Identify, analyze, and explain the impact of outliers and leverage points in a linear regression model.
 
-### 30 - Simulated-Based Linear Regression {.unnumbered}
+### 31 - Simulated-Based Linear Regression {.unnumbered}
 
 1)  Apply the bootstrap to generate and interpret confidence intervals and estimates of standard error for parameter estimates in a linear regression model.
 
@@ -270,7 +270,7 @@
 
 4)  Generate and interpret regression coefficients in a linear regression model with categorical explanatory variables.
 
-### 31 - Multiple Linear Regression {.unnumbered}
+### 32 - Multiple Linear Regression {.unnumbered}
 
 1)  Generate and interpret the coefficients of a multiple linear regression model. Asses the assumptions underlying multiple linear regression models.
 
@@ -284,7 +284,7 @@
 
 6)  Develop and interpret multiple linear regression models that include higher-order terms, such as polynomial terms or interaction effects.
 
-### 32 - Logistic Regression {.unnumbered}
+### 33 - Logistic Regression {.unnumbered}
 
 1)  Apply logistic regression using `R` to analyze binary outcome data. Interpret the regression output, and perform model selection.
 
