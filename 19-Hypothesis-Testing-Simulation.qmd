@@ -21,32 +21,6 @@ library(knitr)
 
 4)  Analyze how confidence intervals and hypothesis testing complement each other in making statistical inferences.
 
-## Decision making under uncertainty
-
-At this point, it is useful to take a look at where we have been in this book and where we are going. We did this in the case study, but we want to discuss it again in a little more detail. We first looked at descriptive models to help us understand our data. This also required us to get familiar with software. We learned about graphical summaries, data collection methods, and summary metrics.
-
-Next we learned about probability models. These models allowed us to use assumptions and a small number of parameters to make statements about data (a sample) and also to simulate data. We found that there is a close tie between probability models and statistical models. In our first efforts at statistical modeling, we started to use data to create estimates for parameters of a probability model.
-
-Now we are moving more in depth into statistical models. This is going to tie all the ideas together. We are going to use data from a sample and ideas of randomization to make conclusions about a population. This will require probability models, descriptive models, and some new ideas and terminology. We will generate point estimates for a metric designed to answer the research question and then find ways to determine the variability of the metric. In @fig-prob_stats2, we demonstrate this relationship between probability and statistical models.
-
-```{r}
-#| echo: false
-#| label: "fig-prob_stats2"
-#| fig-align: "center"
-#| fig-height: 2
-#| fig-width: 3
-#| fig-cap: "A graphical representation of probability and statistics. In probability, we describe what we expect to happen in a sample if we know the underlying process; in statistics, we don't know the underlying process, and must infer about the population based on representative samples."
-include_graphics("figures/Prob_Stats.png")
-```
-
-**Computational/Mathematical and hypothesis testing/confidence intervals context**
-
-We are going to be using data from a sample of the population to make decisions about the population. There are many approaches and techniques for this. In this book, we will be introducing and exploring different approaches; we are establishing foundations. As you can imagine, these ideas are varied, subtle, and at times difficult. We will just be exposing you to the foundational ideas. We want to make sure you understand that to become an accomplished practitioner, you must master the fundamentals and continue to learn the advanced ideas.
-
-Historically, there have been two approaches to statistical decision making, hypothesis testing and confidence intervals. At their mathematical foundation, they are equivalent, but, sometimes in practice, they offer different perspectives on the problem. We will learn about both of these approaches.
-
-The engines that drive the numeric results of a decision making model are either mathematical or computational. In reality, computational methods have mathematics behind them, and mathematical methods often require computer computations. The real distinction between them is the assumptions we are making about our population. Mathematical solutions typically have stricter assumptions, thus leading to a tractable mathematical solution to the sampling distribution of the test statistic, while computational models relax assumptions but may require extensive computational power. Like all problems, there is a trade off to consider when trying to choose which approach is better. There is no one universal best method. Some methods perform better in certain contexts. It is important to understand that computational methods such as the **bootstrap** are **NOT** all you need to know.
-
 ## Introduction
 
 In this chapter we will introduce hypothesis testing. It is really an extension of the case study. We will put more emphasis on terms and core concepts. In this chapter, we will use a computational solution but this will lead us into thinking of mathematical solutions.[^19-hypothesis-testing-simulation-1] The role of the analyst is always key regardless of the perceived power of the computer. The analyst must take the research question and translate it into a numeric metric for evaluation. The analyst must decide on the type of data and its collection to evaluate the question. The analyst must evaluate the variability in the metric and determine what that means in relation to the original research question. The analyst must propose an answer.
