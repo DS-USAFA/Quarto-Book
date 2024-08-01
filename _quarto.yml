@@ -22,47 +22,47 @@ book:
     - 00-Objectives.qmd
     - part: "Descriptive Statistical Modeling"
       chapters:
-        - 01-Data-Case-Study.qmd
-        - 02-Data-Basics.qmd
-        - 03-Overview-of-Data-Collection-Principles.qmd
-        - 04-Studies.qmd
-        - 05-Numerical-Data.qmd
-        - 06-Categorical-Data.qmd
+        - Data-Case-Study.qmd
+        - Data-Basics.qmd
+        - Overview-of-Data-Collection-Principles.qmd
+        - Studies.qmd
+        - Numerical-Data.qmd
+        - Categorical-Data.qmd
     - part: "Probability Modeling"
       chapters:
-        - 07-Probability-Case-Study.qmd
-        - 08-Probability-Rules.qmd
-        - 09-Conditional-Probability.qmd
-        - 10-Discrete-Random-Variables.qmd
-        - 11-Continuous-Random-Variables.qmd
-        - 12-Named-Discrete-Distributions.qmd
-        - 13-Named-Continuous-Distributions.qmd
+        - Probability-Case-Study.qmd
+        - Probability-Rules.qmd
+        - Conditional-Probability.qmd
+        - Discrete-Random-Variables.qmd
+        - Continuous-Random-Variables.qmd
+        - Named-Discrete-Distributions.qmd
+        - Named-Continuous-Distributions.qmd
     - part: "Advanced Probability"
       chapters:   
-        - 14-Multivariate-Distributions.qmd     
-        - 15-Multivariate-Expectation.qmd
-        - 16-Transformations.qmd
-        - 17-Estimation-Methods.qmd
+        - Multivariate-Distributions.qmd     
+        - Multivariate-Expectation.qmd
+        - Transformations.qmd
+        - Estimation-Methods.qmd
     - part: "Statistical Modeling - Inference"
       chapters:  
-        - 18-Inference-Case-Study.qmd
-        - 18B-Sampling-Distributions.qmd
-        - 25-Bootstrap.qmd
-        - 19-Hypothesis-Testing-Simulation.qmd
-        - 20-Hypothesis-Testing-ProbDist.qmd
-        - 21-Central-Limit-Theorem.qmd
-        - 24-Confidence-Intervals.qmd
-        - 22-Additional-Hypothesis-Tests.qmd
-        - 23-Analysis-of-Variance.qmd
+        - Inference-Case-Study.qmd
+        - Sampling-Distributions.qmd
+        - Bootstrap.qmd
+        - Hypothesis-Testing-Simulation.qmd
+        - Hypothesis-Testing-ProbDist.qmd
+        - Central-Limit-Theorem.qmd
+        - Confidence-Intervals.qmd
+        - Additional-Hypothesis-Tests.qmd
+        - Analysis-of-Variance.qmd
     - part: "Statistical Modeling - Prediction"
       chapters:  
-        - 26-Linear-Regression-Case-Study.qmd
-        - 27-Linear-Regression-Basics.qmd
-        - 28-Linear-Regression-Inference.qmd
-        - 29-Linear-Regression-Diagnostics.qmd
-        - 30-Simulation-Based-Linear-Regression.qmd
-        - 31-Multiple-Linear-Regression.qmd
-        - 32-Logistic-Regression.qmd
+        - Linear-Regression-Case-Study.qmd
+        - Linear-Regression-Basics.qmd
+        - Linear-Regression-Inference.qmd
+        - Linear-Regression-Diagnostics.qmd
+        - Simulation-Based-Linear-Regression.qmd
+        - Multiple-Linear-Regression.qmd
+        - Logistic-Regression.qmd
 cover-image: Cover_Majors.png
 favicon: Cover_Majors.png
 biblio-style: apalike
