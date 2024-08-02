@@ -27,26 +27,26 @@ Suppose a professor randomly splits the students in class into two groups: stude
 While the proportions would probably be close to each other, they are probably not exactly the same. We would probably observe a small difference due to *chance*.
 
 > **Exercise**:\
-> If we don't think the side of the room a person sits on in class is related to whether the person owns an Apple product, what assumption are we making about the relationship between these two variables?[^18-inference-case-study-1]
+> If we don't think the side of the room a person sits on in class is related to whether the person owns an Apple product, what assumption are we making about the relationship between these two variables?[^inference-case-study-1]
 
-[^18-inference-case-study-1]: We would be assuming that these two variables, side of the room and use of Apple product, are **independent**, meaning they are unrelated.
+[^inference-case-study-1]: We would be assuming that these two variables, side of the room and use of Apple product, are **independent**, meaning they are unrelated.
 
 Studying randomness of this form is a key focus of statistical modeling. In this block, we'll explore this type of randomness in the context of several applications, and we'll learn new tools and ideas that can be applied to help make decisions from data.
 
 ## Case study: gender discrimination
 
-We consider a study investigating gender discrimination in the 1970s, which is set in the context of personnel decisions within a bank.[^18-inference-case-study-2] The research question we hope to answer is, "Are females discriminated against in promotion decisions made by male managers?"
+We consider a study investigating gender discrimination in the 1970s, which is set in the context of personnel decisions within a bank.[^inference-case-study-2] The research question we hope to answer is, "Are females discriminated against in promotion decisions made by male managers?"
 
-[^18-inference-case-study-2]: Rosen B and Jerdee T. 1974. "Influence of sex role stereotypes on personnel decisions." Journal of Applied Psychology 59(1):9-14.
+[^inference-case-study-2]: Rosen B and Jerdee T. 1974. "Influence of sex role stereotypes on personnel decisions." Journal of Applied Psychology 59(1):9-14.
 
 ### Variability within data
 
 The participants in this study were 48 male bank supervisors attending a management institute at the University of North Carolina in 1972. They were asked to assume the role of the personnel director of a bank and were given a personnel file to judge whether the person should be promoted to a branch manager position. The files given to the participants were identical, except that half of them indicated the candidate was male and the other half indicated the candidate was female. These files were randomly assigned to the subjects (the bank supervisors).
 
 > **Exercise**:\
-> Is this an observational study or an experiment? How does the type of study impact what can be inferred from the results?[^18-inference-case-study-3]
+> Is this an observational study or an experiment? How does the type of study impact what can be inferred from the results?[^inference-case-study-3]
 
-[^18-inference-case-study-3]: The study is an experiment, as subjects were randomly assigned a male personnel file or a female personnel file. Since this is an experiment, the results can be used to evaluate a causal relationship between gender of a candidate and the promotion decision.
+[^inference-case-study-3]: The study is an experiment, as subjects were randomly assigned a male personnel file or a female personnel file. Since this is an experiment, the results can be used to evaluate a causal relationship between gender of a candidate and the promotion decision.
 
 For each supervisor, we recorded the gender associated with the assigned file and the promotion decision. Using the results of the study summarized in the table below, we would like to evaluate whether females are unfairly discriminated against in promotion decisions. In this study, a smaller proportion of females are promoted than males (0.583 versus 0.875), but it is unclear whether the difference provides **convincing evidence** that females are unfairly discriminated against.
 
@@ -152,9 +152,11 @@ obs
 
 Now that we have the data in the form that we want, we are ready to generate bootstrap samples. We essentially assign an equal probability to each observation in the original sample and sample *with replacement*, ensuring each bootstrap sample is the same size as the original sample. In `R`, we use the `resample()` function from the **mosaic** package to sample rows of the data with replacement. This generates a new data frame with the same number of rows as the original. Some rows may be duplicated and others may be missing.
 
+We'll resample the rows of `discrim`, grouped by `gender`. This maintains the same number of male and female personnel files in the resample.
+
 ```{r}
 set.seed(627)
-resample(discrim)
+resample(discrim, groups = gender)
 ```
 
 Rows 5, 9, 10, 15, 22, 23, 31, 35, 36, 40, and 42 appear at least twice. Several other rows did not appear at all. This is a single bootstrap sample of the data.
@@ -163,18 +165,19 @@ We now calculate a point estimate, a statistic of interest, on the bootstrap sam
 
 ```{r}
 set.seed(627)
-diffprop(decision ~ gender, data = resample(discrim))
+diffprop(decision ~ gender, data = resample(discrim, groups = gender))
 ```
 
 We repeat this process many times. The collection of sample statistics comprises a **bootstrap distribution** of the sample statistic. This procedure typically works quite well, provided the original sample is representative of the population. More details on the advantages and disadvantages of the bootstrap are discussed in @sec-BOOT.
 
 ```{r}
 set.seed(630)
-boot_results <- do(10000)*diffprop(decision ~ gender, data = resample(discrim))
+boot_results <- do(10000)*diffprop(decision ~ gender, 
+                                   data = resample(discrim, groups = gender))
 ```
 
 ```{r}
-#| label: "fig-boot-dist"
+#| label: fig-boot-dist
 #| fig-cap: "The sampling distribution of the difference in promotion rates approximated using a bootstrap distribution. "
 #| echo: false
 boot_results %>% 
@@ -215,13 +218,9 @@ We now have a better understanding of the variability in our statistic of intere
 
 This question is a reminder that the observed outcomes in the sample may not perfectly reflect the true relationships between variables in the underlying population. The point estimate of the difference, 29.2%, is large, but the sample size for the study is small, making it unclear if this observed difference represents discrimination or whether it is simply due to chance. We label these two competing claims, $H_0$ and $H_A$:
 
-$$
-H_0: \textbf{Null hypothesis. }\text{ The variables } gender \text{ and  } decision \text{ are independent. They have no relationship, and the observed difference between the proportion of males and females who were promoted, 29.2%, was due to chance.}
-$$
+$H_0$: **Null hypothesis.** The variables *gender* and *decision* are independent. They have no relationship, and the observed difference between the proportion of males and females who were promoted, 29.2%, was due to chance.
 
-$$
-H_A: \textbf{Alternative hypothesis. }\text{ The variables } gender \text{ and  } decision \text{ are not independent. The difference in promotion rates of 29.2% was not due to chance, and equally qualified females are less likely to be promoted than males.}
-$$
+$H_A$: **Alternative hypothesis.** The variables *gender* and *decision* are not independent. The difference in promotion rates of 29.2% was not due to chance, and equally qualified females are less likely to be promoted than males.
 
 ::: callout-note
 ## Hypothesis testing
@@ -241,9 +240,9 @@ We will choose between these two competing claims by assessing if the data confl
 tally(~gender + decision, discrim, margins = TRUE)
 ```
 
-The table of data shows that 35 bank supervisors recommended promotion and 13 did not. Now, suppose the bankers' decisions were independent of gender, that is the null hypothesis is true. Then, if we conducted the experiment again with a different random assignment of files, differences in promotion rates would be based only on random fluctuation. We can actually perform this **randomization**, which simulates what would have happened if the bankers' decisions had been independent of gender but the files had been distributed differently.[^18-inference-case-study-4] We will walk through the steps next.
+The table of data shows that 35 bank supervisors recommended promotion and 13 did not. Now, suppose the bankers' decisions were independent of gender, that is the null hypothesis is true. Then, if we conducted the experiment again with a different random assignment of files, differences in promotion rates would be based only on random fluctuation. We can actually perform this **randomization**, which simulates what would have happened if the bankers' decisions had been independent of gender but the files had been distributed differently.[^inference-case-study-4] We will walk through the steps next.
 
-[^18-inference-case-study-4]: The test procedure we employ in this section is formally called a **permutation test**.
+[^inference-case-study-4]: The test procedure we employ in this section is formally called a **permutation test**.
 
 To think about this *simulation*, imagine we actually had the personnel files. We thoroughly shuffle 48 personnel files, 24 labeled *male* and 24 labeled *female*, and deal these files into two stacks. We will deal 35 files into the first stack, which will represent the 35 supervisors who recommended promotion. The second stack will have 13 files, representing the 13 supervisors who recommended against promotion. That is, we keep the same number of files in the *promoted* and *not_promoted* categories, and imagine simply shuffling the *male* and *female* labels around. Remember that the files are identical except for the listed gender. This simulation then assumes that gender is not important and, thus, we can randomly assign the files to any of the supervisors. Then, as we did with the original data, we tabulate the results and determine the fraction of *male* and *female* candidates who were promoted. Since we don't actually physically have the files, we will do this shuffle via computer code.
 
@@ -256,9 +255,9 @@ tally(~shuffle(gender) + decision, discrim, margins = TRUE)
 
 The `shuffle()` function randomly rearranges the gender column while keeping the decision column the same. It is really a sampling without replacement. That is, we randomly sample 35 personnel files to be *promoted* and the other 13 personnel files are *not_promoted*.
 
-> **Exercise**: What is the difference in promotion rates between the two simulated groups? How does this compare to the observed difference, 29.2%, from the actual study?[^18-inference-case-study-5]
+> **Exercise**: What is the difference in promotion rates between the two simulated groups? How does this compare to the observed difference, 29.2%, from the actual study?[^inference-case-study-5]
 
-[^18-inference-case-study-5]: $18/24 - 17/24 = 0.042$ or about 4.2% in favor of the men. This difference due to chance is much smaller than the difference observed in the actual groups.
+[^inference-case-study-5]: $18/24 - 17/24 = 0.042$ or about 4.2% in favor of the men. This difference due to chance is much smaller than the difference observed in the actual groups.
 
 Calculating by hand will not help in a simulation, so we must write a function or use an existing one. We will use `diffprop()` from the **mosaic** package. The code to find the difference for the original data is:
 
@@ -298,7 +297,7 @@ results <- do(10000)*diffprop(decision ~ shuffle(gender), data = discrim)
 In @fig-teststat1, we will insert a vertical line at the value of our observed difference.
 
 ```{r}
-#| label: "fig-teststat1"
+#| label: fig-teststat1
 #| warning: false
 #| fig-cap: "Distribution of test statistic"
 results %>%
@@ -324,9 +323,9 @@ results %>%
 
 In our simulations, only 2.6% of the simulated test statistics were less than or equal to the observed test statistic, as or more extreme relative to the null hypothesis. Such a low probability indicates that observing such a large difference in proportions from chance alone is rare. This probability is known as a $p$-value. The $p$-value is a conditional probability, the probability of the observed value or more extreme given that the null hypothesis is true.
 
-The observed difference of -29.2% is a rare (low probability) event if there truly is no impact from listing gender in the personnel files. When we conduct formal studies, we reject a skeptical position ($H_0$) if the data strongly conflict with that position.[^18-inference-case-study-6]
+The observed difference of -29.2% is a rare (low probability) event if there truly is no impact from listing gender in the personnel files. When we conduct formal studies, we reject a skeptical position ($H_0$) if the data strongly conflict with that position.[^inference-case-study-6]
 
-[^18-inference-case-study-6]: This reasoning does not generally extend to anecdotal observations. Each of us observes incredibly rare events every day, events we could not possibly hope to predict. However, in the non-rigorous setting of anecdotal evidence, almost anything may appear to be a rare event, so the idea of looking for rare events in day-to-day activities is treacherous. For example, we might look at the lottery: there was only a 1 in 176 million chance that the Mega Millions numbers for the largest jackpot in history (March 30, 2012) would be (2, 4, 23, 38, 46) with a Mega ball of (23), but nonetheless those numbers came up! However, no matter what numbers had turned up, they would have had the same incredibly rare odds. That is, **any set of numbers we could have observed would ultimately be incredibly rare**. This type of situation is typical of our daily lives: each possible event in itself seems incredibly rare, but if we consider every alternative, those outcomes are also incredibly rare. We should be cautious not to misinterpret such anecdotal evidence.
+[^inference-case-study-6]: This reasoning does not generally extend to anecdotal observations. Each of us observes incredibly rare events every day, events we could not possibly hope to predict. However, in the non-rigorous setting of anecdotal evidence, almost anything may appear to be a rare event, so the idea of looking for rare events in day-to-day activities is treacherous. For example, we might look at the lottery: there was only a 1 in 176 million chance that the Mega Millions numbers for the largest jackpot in history (March 30, 2012) would be (2, 4, 23, 38, 46) with a Mega ball of (23), but nonetheless those numbers came up! However, no matter what numbers had turned up, they would have had the same incredibly rare odds. That is, **any set of numbers we could have observed would ultimately be incredibly rare**. This type of situation is typical of our daily lives: each possible event in itself seems incredibly rare, but if we consider every alternative, those outcomes are also incredibly rare. We should be cautious not to misinterpret such anecdotal evidence.
 
 In our analysis, we determined that there was only a \~ 2% probability of obtaining a test statistic where the difference between female and male promotion proportions was 29.2% or larger assuming gender had no impact. So we conclude the data provide sufficient evidence of gender discrimination against women by the supervisors. In this case, we reject the null hypothesis in favor of the alternative hypothesis.
 
@@ -334,9 +333,9 @@ In our analysis, we determined that there was only a \~ 2% probability of obtain
 
 Both the hypothesis test and the bootstrap method provide insights into the difference in promotion rates. The bootstrap method offers a confidence interval, giving a range of plausible values, while the hypothesis test provides a p-value indicating the strength of evidence against the null hypothesis. Both methods led us to the same conclusion. The bootstrap confidence interval was entirely negative, not including zero, which led us to conclude that the true difference in proportions is different from zero, with females being promoted less often. The hypothesis test provided sufficient evidence to reject the null hypothesis, concluding that the observed difference in promotion rates was very unlikely to result from chance alone and that, instead, there is sufficient evidence of discrimination due to gender. While many researchers seem to prefer hypothesis testing and the associated $p$-values, confidence intervals provide a range of plausible values while also equipping us to make decisions. Together, these two methods enhance our understanding and help us make informed decisions based on the data.
 
-> **Exercise:** What is the difference between the sampling we conduct for the bootstrap procedure and the sampling we perform in a hypothesis test with simulation? Explain it in your own words.[^18-inference-case-study-7]
+> **Exercise:** What is the difference between the sampling we conduct for the bootstrap procedure and the sampling we perform in a hypothesis test with simulation? Explain it in your own words.[^inference-case-study-7]
 
-[^18-inference-case-study-7]: In the bootstrap, we sample with replacement from the original data. We do this by sampling entire rows from the original data, so that the **original observations remain intact**. In our bootstrap sample, some observations may appear more than once while others may be left out. Thus, the marginal counts (e.g., the number of individuals promoted or not promoted) may differ from those in the original data.
+[^inference-case-study-7]: In the bootstrap, we sample with replacement from the original data. We do this by sampling entire rows from the original data, so that the **original observations remain intact**. In our bootstrap sample, some observations may appear more than once while others may be left out. Thus, the marginal counts (e.g., the number of individuals promoted or not promoted) may differ from those in the original data. In our gender discrimination example, we grouped by gender in our resample. This ensures that the number of male and female personnel files remains constant even though the number of individuals promoted or not promoted, *within those groups*, may differ from the original data set.
 
     In a randomization test, the **marginal counts** **remain** **fixed** but we randomize from the original observations in a manner that ignores the observed relationship between the explanatory and response variables. Imagine having 35 slots for individuals being promoted and 13 slots for individuals not being promoted. We shuffle and distribute male and female files into the slots for promoted and not promoted. In this process, we ignore the observed promotion status for each file as we place files into the slots. Thus, it is possible that the samples in our randomization test include observations that did not exist in the original data.
 
