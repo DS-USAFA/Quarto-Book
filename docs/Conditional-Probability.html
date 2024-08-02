@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1&nbsp; Data Case Study – Computational Probability and Statistics</title>
+<title>9&nbsp; Conditional Probability – Computational Probability and Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Data-Basics.html" rel="next">
-<link href="./00-Objectives.html" rel="prev">
+<link href="./Discrete-Random-Variables.html" rel="next">
+<link href="./Probability-Rules.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -144,7 +144,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Data-Case-Study.html">Descriptive Statistical Modeling</a></li><li class="breadcrumb-item"><a href="./Data-Case-Study.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data Case Study</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Probability-Case-Study.html">Probability Modeling</a></li><li class="breadcrumb-item"><a href="./Conditional-Probability.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Conditional Probability</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -200,7 +200,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Data-Case-Study.html" class="sidebar-item-text sidebar-link active">
+  <a href="./Data-Case-Study.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data Case Study</span></span></a>
   </div>
 </li>
@@ -259,7 +259,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Conditional-Probability.html" class="sidebar-item-text sidebar-link">
+  <a href="./Conditional-Probability.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Conditional Probability</span></span></a>
   </div>
 </li>
@@ -452,27 +452,24 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives"><span class="header-section-number">1.1</span> Objectives</a></li>
-  <li><a href="#introduction-to-descriptive-statistical-modeling" id="toc-introduction-to-descriptive-statistical-modeling" class="nav-link" data-scroll-target="#introduction-to-descriptive-statistical-modeling"><span class="header-section-number">1.2</span> Introduction to descriptive statistical modeling</a></li>
-  <li><a href="#the-data-analytic-process" id="toc-the-data-analytic-process" class="nav-link" data-scroll-target="#the-data-analytic-process"><span class="header-section-number">1.3</span> The data analytic process</a></li>
-  <li><a href="#case-study" id="toc-case-study" class="nav-link" data-scroll-target="#case-study"><span class="header-section-number">1.4</span> Case study</a>
+  <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives"><span class="header-section-number">9.1</span> Objectives</a></li>
+  <li><a href="#conditional-probability" id="toc-conditional-probability" class="nav-link" data-scroll-target="#conditional-probability"><span class="header-section-number">9.2</span> Conditional Probability</a></li>
+  <li><a href="#independence" id="toc-independence" class="nav-link" data-scroll-target="#independence"><span class="header-section-number">9.3</span> Independence</a></li>
+  <li><a href="#bayes-rule" id="toc-bayes-rule" class="nav-link" data-scroll-target="#bayes-rule"><span class="header-section-number">9.4</span> Bayes’ Rule</a>
   <ul class="collapse">
-  <li><a href="#research-question" id="toc-research-question" class="nav-link" data-scroll-target="#research-question"><span class="header-section-number">1.4.1</span> Research question</a></li>
-  <li><a href="#collect-the-relevant-data" id="toc-collect-the-relevant-data" class="nav-link" data-scroll-target="#collect-the-relevant-data"><span class="header-section-number">1.4.2</span> Collect the relevant data</a></li>
-  <li><a href="#import-data" id="toc-import-data" class="nav-link" data-scroll-target="#import-data"><span class="header-section-number">1.4.3</span> Import data</a></li>
-  <li><a href="#explore-data" id="toc-explore-data" class="nav-link" data-scroll-target="#explore-data"><span class="header-section-number">1.4.4</span> Explore data</a></li>
-  <li><a href="#visualize-the-data" id="toc-visualize-the-data" class="nav-link" data-scroll-target="#visualize-the-data"><span class="header-section-number">1.4.5</span> Visualize the data</a></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">1.4.6</span> Conclusion</a></li>
+  <li><a href="#approach-using-whole-numbers" id="toc-approach-using-whole-numbers" class="nav-link" data-scroll-target="#approach-using-whole-numbers"><span class="header-section-number">9.4.1</span> Approach using whole numbers</a></li>
+  <li><a href="#mathematical-approach" id="toc-mathematical-approach" class="nav-link" data-scroll-target="#mathematical-approach"><span class="header-section-number">9.4.2</span> Mathematical approach</a></li>
+  <li><a href="#simulation" id="toc-simulation" class="nav-link" data-scroll-target="#simulation"><span class="header-section-number">9.4.3</span> Simulation</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/DS-USAFA/Quarto-Book/edit/main/Data-Case-Study.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/DS-USAFA/Quarto-Book/edit/main/Conditional-Probability.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Data-Case-Study.html">Descriptive Statistical Modeling</a></li><li class="breadcrumb-item"><a href="./Data-Case-Study.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data Case Study</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Probability-Case-Study.html">Probability Modeling</a></li><li class="breadcrumb-item"><a href="./Conditional-Probability.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Conditional Probability</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-CS1" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data Case Study</span></span></h1>
+<h1 class="title"><span id="sec-CONDPROB" class="quarto-section-identifier"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Conditional Probability</span></span></h1>
 </div>
 
 
@@ -489,286 +486,143 @@ window.Quarto = {
 </header>
 
 
-<section id="objectives" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="objectives"><span class="header-section-number">1.1</span> Objectives</h2>
+<section id="objectives" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="objectives"><span class="header-section-number">9.1</span> Objectives</h2>
 <ol type="1">
-<li><p>Use <code>R</code> for basic analysis and visualization.</p></li>
-<li><p>Compile a PDF report using <code>knitr</code>.</p></li>
+<li><p>Define and differentiate between conditional probability and joint probability, and provide real-world examples to illustrate these concepts and their differences.</p></li>
+<li><p>Calculate conditional probabilities from given data or scenarios using their formal definition, and interpret these probabilities in the context of practical examples.</p></li>
+<li><p>Using conditional probability, determine whether two events are independent and justify your conclusion with appropriate calculations and reasoning.</p></li>
+<li><p>Apply Bayes’ Rule to solve problems both mathematically and through simulation usinng <code>R</code>.</p></li>
 </ol>
 </section>
-<section id="introduction-to-descriptive-statistical-modeling" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="introduction-to-descriptive-statistical-modeling"><span class="header-section-number">1.2</span> Introduction to descriptive statistical modeling</h2>
-<p>In this first block of material, we will focus on data types, collection methods, summaries, and visualizations. We also intend to introduce computing via the <code>R</code> package. Programming in <code>R</code> requires some focus early in this book and we will supplement with some online courses. There is relatively little mathematics in this first block.</p>
-</section>
-<section id="the-data-analytic-process" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="the-data-analytic-process"><span class="header-section-number">1.3</span> The data analytic process</h2>
-<p>Scientists seek to answer questions using rigorous methods and careful observations. These observations – collected from the likes of field notes, surveys, and experiments – form the backbone of a statistical investigation and are called <strong>data</strong>. Statistics is the study of how best to collect, analyze, and draw conclusions from data. It is helpful to put statistics in the context of a general process of investigation:</p>
-<ol type="1">
-<li><p>Identify a question or problem.</p></li>
-<li><p>Collect relevant data on the topic.</p></li>
-<li><p>Explore and understand the data.</p></li>
-<li><p>Analyze the data.</p></li>
-<li><p>Form a conclusion.</p></li>
-<li><p>Make decisions based on the conclusion.</p></li>
-</ol>
-<p>This is typical of an explanatory process because it starts with a research question and proceeds. However, sometimes an analysis is exploratory in nature. There is data but not necessarily a research question. The purpose of the analysis is to find interesting features in the data and sometimes generate hypotheses. In this book, we focus on the explanatory aspects of analysis.</p>
-<p>Statistics as a subject focuses on making stages 2-5 objective, rigorous, and efficient. That is, statistics has three primary components:</p>
-<ul>
-<li>How best can we collect data?<br>
-</li>
-<li>How should it be analyzed?<br>
-</li>
-<li>And what can we infer from the analysis?</li>
-</ul>
-<p>The topics scientists investigate are as diverse as the questions they ask. However, many of these investigations can be addressed with a small number of data collection techniques, analytic tools, and fundamental concepts in statistical inference. This chapter provides a glimpse into these and other themes we will encounter throughout the rest of the book.</p>
-</section>
-<section id="case-study" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="case-study"><span class="header-section-number">1.4</span> Case study</h2>
-<p>In this chapter, we will consider an experiment that studies effectiveness of stents in treating patients at risk of stroke. <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Stents are small mesh tubes that are placed inside narrow or weak arteries to assist in patient recovery after cardiac events and reduce the risk of an additional heart attack or death. Many doctors have hoped that there would be similar benefits for patients at risk of stroke. We start by writing the principal question the researchers hope to answer:</p>
-<section id="research-question" class="level3" data-number="1.4.1">
-<h3 data-number="1.4.1" class="anchored" data-anchor-id="research-question"><span class="header-section-number">1.4.1</span> Research question</h3>
+<section id="conditional-probability" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="conditional-probability"><span class="header-section-number">9.2</span> Conditional Probability</h2>
+<p>So far, we’ve covered the basic axioms of probability, the properties of events (set theory) and counting rules. Another important concept, perhaps one of the most important, is conditional probability. Often, we know a certain event or sequence of events has occurred and we are interested in the probability of another event.</p>
 <blockquote class="blockquote">
-<p>Does the use of stents reduce the risk of stroke?</p>
+<p><em>Example</em>:<br>
+Suppose you arrive at a rental car counter and they show you a list of available vehicles, and one is picked for you at random. The sample space in this experiment is <span class="math display">\[
+S=\{\mbox{red sedan}, \mbox{blue sedan}, \mbox{red truck}, \mbox{grey truck}, \mbox{grey SUV}, \mbox{black SUV}, \mbox{blue SUV}\}.
+\]</span></p>
 </blockquote>
-</section>
-<section id="collect-the-relevant-data" class="level3" data-number="1.4.2">
-<h3 data-number="1.4.2" class="anchored" data-anchor-id="collect-the-relevant-data"><span class="header-section-number">1.4.2</span> Collect the relevant data</h3>
-<p>The researchers who asked this question collected data on 451 at-risk patients. Each volunteer patient was randomly assigned to one of two groups:</p>
-<p><strong>Treatment group</strong>. Patients in the treatment group received a stent and medical management. The medical management included medications, management of risk factors, and help in lifestyle modification.</p>
-<p><strong>Control group</strong>. Patients in the control group received the same medical management as the treatment group but did not receive stents.</p>
-<p>Researchers randomly assigned 224 patients to the treatment group and 227 to the control group. In this study, the control group provides a reference point against which we can measure the medical impact of stents in the treatment group.</p>
-<p>This is an experiment and not an observational study. We will learn more about these ideas in this block.</p>
-<p>Researchers studied the effect of stents at two time points: 30 days after enrollment and 365 days after enrollment.</p>
-</section>
-<section id="import-data" class="level3" data-number="1.4.3">
-<h3 data-number="1.4.3" class="anchored" data-anchor-id="import-data"><span class="header-section-number">1.4.3</span> Import data</h3>
-<p>We begin our first use of <code>R</code>.</p>
-<p>If you need to install a package, most likely it will be on CRAN, the Comprehensive R Archive Network. Before a package can be used, it must be installed on the computer (once per computer or account) and loaded into a session (once per <code>R</code> session). When you exit <code>R</code>, the package stays installed on the computer but will not be reloaded when <code>R</code> is started again.</p>
-<p>In summary, <code>R</code> has packages that can be downloaded and installed from online repositories such as CRAN. When you install a package, which only needs to be done once per computer or account, in <code>R</code> all it is doing is placing the source code in a library folder designated during the installation of <code>R</code>. Packages are typically collections of functions and variables that are specific to a certain task or subject matter.</p>
-<p>For example, to install the <strong>mosaic</strong> package, enter:</p>
-<pre><code>install.packages("mosaic") # fetch package from CRAN</code></pre>
-<p>In RStudio, there is a <em>Packages</em> tab that makes it easy to add and maintain packages.</p>
-<p>To use a package in a session, we must load it. This makes it available to the current session only. When you start <code>R</code> again, you will have to load packages again. The command <code>library()</code> with the package name supplied as the argument is all that is needed. For this session, we will load <strong>tidyverse</strong> and <strong>mosaic</strong>. Note: the box below is executing the <code>R</code> commands, this is known as reproducible research since you can see the code and then you can run or modify as you need.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Next read in the data into the working environment.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This code reads the `stent_study.csv` file into the `stent_study` object.</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>stent_study <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/stent_study.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Note on commenting code: It is good practice to comment code. Here are some of the best practices for commenting computer code:</p>
-<p><strong>Comments should explain why code is written the way it is, rather than explaining what the code does.</strong> This means that you should explain the intent of the code, not just the steps that it takes to achieve that intent.<br>
-<strong>Comments should be brief and to the point.</strong> There is no need to write long, rambling comments. Just write enough to explain what the code is doing and why.<br>
-<strong>Comments should be clear and concise.</strong> Use plain language that is easy to understand. Avoid jargon and technical terms that the reader may not be familiar with.<br>
-<strong>Comments should be consistent with the style of the code.</strong> If the code is written in a formal style, then the comments should also be formal. If the code is written in a more informal style, then the comments should be informal.<br>
-<strong>Comments should be up-to-date.</strong> If you make changes to the code, then you should also update the comments to reflect those changes.</p>
-<p>In additional, consider the following practices in writing your code:</p>
-<p><strong>Using a consistent comment style.</strong> This will make it easier for other people to read and understand your code.<br>
-<strong>Using meaningful names for variables and functions.</strong> This will help to reduce the need for comments.<br>
-<strong>Use indentation and whitespace to make your code easier to read.</strong> This will also help to reduce the need for comments.<br>
-<strong>Document your code.</strong> This means writing a separate document that explains the purpose of the code, how to use it, and any known limitations.</p>
-<p>By following these best practices, you can write code that is easy to understand and maintain. This will make your code more reusable and will help to prevent errors.</p>
-<p>Now back to our code. Let’s break this code down. We are reading from a .csv file and assigning the results into an object called <code>stent_study</code>. The assignment arrow <code>&lt;-</code> means we assign what is on the right to what is on the left. The <code>R</code> function we use in this case is <code>read_csv()</code>. When using <code>R</code> functions, you should ask yourself:</p>
-<ol type="1">
-<li><p>What do I want <code>R</code> to do?</p></li>
-<li><p>What information must I provide for <code>R</code> to do this?</p></li>
-</ol>
-<p>We want <code>R</code> to read in a .csv file. We can get help on this function by typing <code>?read_csv</code> or <code>help(read_csv)</code> at the prompt. The only required input to <code>read_csv()</code> is the file location. We have our data stored in a folder called “data” under the working directory. We can determine the working directory by typing <code>getwd()</code> at the prompt.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Similarly, if we wish to change the working directory, we can do so by using the <code>setwd()</code> function:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">'C:/Users/Brianna.Hitt/Documents/ProbStat/Another Folder'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>In <code>R</code> if you use the <code>view()</code>, you will see the data in what looks like a standard spreadsheet.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(stent_study)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="explore-data" class="level3" data-number="1.4.4">
-<h3 data-number="1.4.4" class="anchored" data-anchor-id="explore-data"><span class="header-section-number">1.4.4</span> Explore data</h3>
-<p>Before we attempt to answer the research question, let’s look at the data. We want <code>R</code> to print out the first 10 rows of the data. The appropriate function is <code>head()</code> and it needs the data object. By default, <code>R</code> will output the first 6 rows. By using the <code>n =</code> argument, we can specify how many rows we want to view.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(stent_study, <span class="at">n =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 3
-   group   outcome30 outcome365
-   &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;     
- 1 control no_event  no_event  
- 2 trmt    no_event  no_event  
- 3 control no_event  no_event  
- 4 trmt    no_event  no_event  
- 5 trmt    no_event  no_event  
- 6 control no_event  no_event  
- 7 trmt    no_event  no_event  
- 8 control no_event  no_event  
- 9 control no_event  no_event  
-10 control no_event  no_event  </code></pre>
-</div>
-</div>
-<p>We also want to “inspect” the data. The function is <code>inspect()</code> and <code>R</code> needs the data object <code>stent_study</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">inspect</span>(stent_study)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-categorical variables:  
-        name     class levels   n missing
-1      group character      2 451       0
-2  outcome30 character      2 451       0
-3 outcome365 character      2 451       0
-                                   distribution
-1 control (50.3%), trmt (49.7%)                
-2 no_event (89.8%), stroke (10.2%)             
-3 no_event (83.8%), stroke (16.2%)             </code></pre>
-</div>
-</div>
-<p>To keep things simple, we will only look at the <code>outcome30</code> variable in this case study. We will summarize the data in a table. Later in the book, we will learn to do this using the <strong>tidy</strong> package; for now we use the <strong>mosaic</strong> package. This package makes use of the modeling formula that you will use extensively later in this book. The modeling formula is also used in Math 378.</p>
-<p>We want to summarize the data by making a table. From <code>mosaic</code>, we use the <code>tally()</code> function. Before using this function, we have to understand the basic formula notation that <code>mosaic</code> uses. The basic format is:</p>
-<pre><code>goal(y ~ x, data = MyData, ...) # pseudo-code for the formula template</code></pre>
-<p>We read <code>y ~ x</code> as “y tilde x” and interpret it in the equivalent forms: “y broken down by x”; “y modeled by x”; “y explained by x”; “y depends on x”; or “y accounted for by x.” For graphics, it’s reasonable to read the formula as “y vs.&nbsp;x”, which is exactly the convention used for coordinate axes.</p>
-<p>For this exercise, we want to apply <code>tally()</code> to the variables <code>group</code> and <code>outcome30</code>. In this case it does not matter which we call <code>y</code> and <code>x</code>; however, it is more natural to think of <code>outcome30</code> as a dependent variable.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tally</span>(outcome30 <span class="sc">~</span> group, <span class="at">data =</span> stent_study, <span class="at">margins =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>          group
-outcome30  control trmt
-  no_event     214  191
-  stroke        13   33
-  Total        227  224</code></pre>
-</div>
-</div>
-<p>The <code>margins</code> option totals the columns.</p>
-<p>Of the 224 patients in the treatment group, 33 had a stroke by the end of the first month. Using these two numbers, we can use <code>R</code> to compute the proportion of patients in the treatment group who had a stroke by the end of their first month.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="dv">33</span> <span class="sc">/</span> (<span class="dv">33</span> <span class="sc">+</span> <span class="dv">191</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.1473214</code></pre>
-</div>
-</div>
 <blockquote class="blockquote">
-<p><strong>Exercise</strong>:<br>
-What proportion of the control group had a stroke in the first 30 days of the study? And why is this proportion different from the proportion reported by <code>inspect()</code>?</p>
+<p>What is the probability that a blue vehicle is selected, given a sedan was selected?</p>
 </blockquote>
-<p>Let’s have <code>R</code> calculate proportions for us. Use <code>?</code> or <code>help()</code> to look at the help menu for <code>tally()</code>. Note that one of the option arguments of the <code>tally()</code> function is <code>format =</code>. Setting this equal to <code>proportion</code> will output the proportions instead of the counts.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tally</span>(outcome30 <span class="sc">~</span> group, <span class="at">data =</span> stent_study, <span class="at">format =</span> <span class="st">'proportion'</span>, <span class="at">margins =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>          group
-outcome30     control       trmt
-  no_event 0.94273128 0.85267857
-  stroke   0.05726872 0.14732143
-  Total    1.00000000 1.00000000</code></pre>
-</div>
-</div>
-<p>We can compute summary statistics from the table. A <strong>summary statistic</strong> is a single number summarizing a large amount of data.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> For instance, the primary results of the study after 1 month could be described by two summary statistics: the proportion of people who had a stroke in the treatment group and the proportion of people who had a stroke in the control group.</p>
-<ul>
-<li><p>Proportion who had a stroke in the treatment (stent) group: <span class="math inline">\(33/224 = 0.15 = 15\%\)</span></p></li>
-<li><p>Proportion who had a stroke in the control group: <span class="math inline">\(13/227 = 0.06 = 6\%\)</span></p></li>
-</ul>
+<p>Since we know that a sedan was selected, our sample space has been reduced to just “red sedan” and “blue sedan”. The probability of selecting a blue vehicle out of this sample space is simply 1/2.</p>
+<p>In set notation, let <span class="math inline">\(A\)</span> be the event that a blue vehicle is selected. Let <span class="math inline">\(B\)</span> be the event that a sedan is selected. We are looking for <span class="math inline">\(\mbox{P}(A \mbox{ given } B)\)</span>, which is also written as <span class="math inline">\(\mbox{P}(A|B)\)</span>. By definition, <span class="math display">\[
+\mbox{P}(A|B)=\frac{\mbox{P}(A \cap B)}{\mbox{P}(B)}
+\]</span></p>
+<p>It is important to distinguish between the event <span class="math inline">\(A|B\)</span> and <span class="math inline">\(A \cap B\)</span>. This is a common misunderstanding about probability. <span class="math inline">\(A \cap B\)</span> is the event that an outcome was selected at random from the total sample space, and that outcome was contained in both <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>. On the other hand, <span class="math inline">\(A|B\)</span> assumes the <span class="math inline">\(B\)</span> has occurred, and an outcome was drawn from the remaining sample space, and that outcome was contained in <span class="math inline">\(A\)</span>.</p>
+<p>Another common misunderstanding involves the direction of conditional probability. Specifically, <span class="math inline">\(A|B\)</span> is NOT the same event as <span class="math inline">\(B|A\)</span>. For example, consider a medical test for a disease. The probability that someone tests positive given they had the disease is different than the probability that someone has the disease given they tested positive. We will explore this example further in our Bayes’ Rule section.</p>
 </section>
-<section id="visualize-the-data" class="level3" data-number="1.4.5">
-<h3 data-number="1.4.5" class="anchored" data-anchor-id="visualize-the-data"><span class="header-section-number">1.4.5</span> Visualize the data</h3>
-<p>It is often important to visualize the data. The table is a type of visualization, but in this section we will introduce a graphical method called bar charts.</p>
-<p>We will use the <a href="https://cran.r-project.org/web/packages/ggformula/vignettes/ggformula.html"><strong>ggformula</strong></a> package to visualize the data. It is a wrapper to the <strong>ggplot2</strong> package which is becoming the industry standard for generating professional graphics. However, the interface for <strong>ggplot2</strong> can be difficult to learn and we will ease into it by using <code>ggformula</code>, which makes use of the formula notation introduced above. The <strong>ggformula</strong> package was loaded when we loaded <code>mosaic</code>.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
-<p>To generate a basic graphic, we need to ask ourselves what information we are trying to see, what particular type of graph is best, what corresponding <code>R</code> function to use, and what information that <code>R</code> function needs in order to build a plot. For categorical data, we want a bar chart and the <code>R</code> function <code>gf_bar()</code> needs the data object and the variable(s) of interest.</p>
-<p>Here is our first attempt. In <a href="#fig-first" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-first</span></a>, we leave the <code>y</code> portion of our formula blank. Doing this implies that we simply want to view the number/count of <code>outcome30</code> by type. We will see the two levels of <code>outcome30</code> on the x-axis and counts on the y-axis.</p>
-<p>(ref:ggfbold) Using <strong>ggformula</strong> to create a bar chart.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_bar</span>(<span class="sc">~</span>outcome30, <span class="at">data =</span> stent_study)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="independence" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="independence"><span class="header-section-number">9.3</span> Independence</h2>
+<p>Two events, <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, are said to be independent if the probability of one occurring does not change whether or not the other has occurred. We looked at this last chapter but now we have another way of looking at it using conditional probabilities. For example, let’s say the probability that a randomly selected student has seen the latest superhero movie is 0.55. What if we randomly select a student and we see that he/she is wearing a black backpack? Does that probability change? Likely not, since movie attendance is probably not related to choice of backpack color. These two events are independent.</p>
+<p>Mathematically, <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are considered independent if and only if <span class="math display">\[
+\mbox{P}(A|B)=\mbox{P}(A)
+\]</span></p>
+<p><em>Result</em>: <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent if and only if <span class="math display">\[
+\mbox{P}(A\cap B)=\mbox{P}(A)\mbox{P}(B)
+\]</span></p>
+<p>This follows from the definition of conditional probability and from above: <span class="math display">\[
+\mbox{P}(A|B)=\frac{\mbox{P}(A\cap B)}{\mbox{P}(B)}=\mbox{P}(A)
+\]</span></p>
+<p>Thus, <span class="math inline">\(\mbox{P}(A\cap B)=\mbox{P}(A)\mbox{P}(B)\)</span>.</p>
+<blockquote class="blockquote">
+<p><em>Example</em>: Consider the example above. Recall events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>. Let <span class="math inline">\(A\)</span> be the event that a blue vehicle is selected. Let <span class="math inline">\(B\)</span> be the event that a sedan is selected. Are <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> independent?</p>
+</blockquote>
+<p>No.&nbsp;First, recall that <span class="math inline">\(\mbox{P}(A|B)=0.5\)</span>. The probability of selecting a blue vehicle (<span class="math inline">\(\mbox{P}(A)\)</span>) is <span class="math inline">\(2/7\)</span> (the number of blue vehicles in our sample space divided by 7, the total number vehicles in <span class="math inline">\(S\)</span>). This value is different from 0.5; thus, <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are not independent.</p>
+<p>We could also use the result above to determine whether <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent. Note that <span class="math inline">\(\mbox{P}(A)= 2/7\)</span>. Also, we know that <span class="math inline">\(\mbox{P}(B)=2/7\)</span>. So, <span class="math inline">\(\mbox{P}(A)\mbox{P}(B)=4/49\)</span>. But, <span class="math inline">\(\mbox{P}(A\cap B) = 1/7\)</span>, since there is just one blue sedan in the sample space. <span class="math inline">\(4/49\)</span> is not equal to <span class="math inline">\(1/7\)</span>; thus, <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are not independent.</p>
+</section>
+<section id="bayes-rule" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="bayes-rule"><span class="header-section-number">9.4</span> Bayes’ Rule</h2>
+<p>As mentioned in the introduction to this section, <span class="math inline">\(\mbox{P}(A|B)\)</span> is not the same quantity as <span class="math inline">\(\mbox{P}(B|A)\)</span>. However, if we are given information about <span class="math inline">\(A|B\)</span> and <span class="math inline">\(B\)</span>, we can use Bayes’ Rule to find <span class="math inline">\(\mbox{P}(B|A)\)</span>. Let <span class="math inline">\(B_1, B_2, ..., B_n\)</span> be mutually exclusive and exhaustive events and let <span class="math inline">\(\mbox{P}(A)&gt;0\)</span>. Then, <span class="math display">\[
+\mbox{P}(B_k|A)=\frac{\mbox{P}(A|B_k)\mbox{P}(B_k)}{\sum_{i=1}^n \mbox{P}(A|B_i)\mbox{P}(B_i)}
+\]</span></p>
+<p>Let’s use an example to dig into where this comes from.</p>
+<blockquote class="blockquote">
+<p><em>Example</em>:<br>
+Suppose a doctor has developed a blood test for a certain rare disease (only one out of every 10,000 people have this disease). After careful and extensive evaluation of this blood test, the doctor determined the test’s sensitivity and specificity.</p>
+</blockquote>
+<p><strong>Sensitivity</strong> is the probability of detecting the disease for those who actually have it. Note that this is a conditional probability.</p>
+<p><strong>Specificity</strong> is the probability of correctly identifying “no disease” for those who do not have it. Again, another conditional probability.</p>
+<p>See <a href="#fig-sens" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-sens</span></a> for a visual representation of these terms and others related to what is termed a <strong>confusion matrix</strong>.</p>
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-first" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-sens" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-first-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Data-Case-Study_files/figure-html/fig-first-1.png" class="img-fluid figure-img" width="672">
+<div aria-describedby="fig-sens-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./figures/sensitivity-specificity_corrected.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-first-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1.1: Using <strong>ggformula</strong> to create a bar chart.
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sens-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.1: A table of true results and test results for a hypothetical disease. The terminology is included in the table. These ideas are important when evaluating machine learning classification models.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<blockquote class="blockquote">
-<p><strong>Exercise</strong>:<br>
-Explain <a href="#fig-first" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-first</span></a>.</p>
-</blockquote>
-<p>This plot graphically shows us the total number of “stroke” and the total number of “no_event”. However, this is not what we want. We want to compare the 30-day outcomes for both treatment groups. So, we need to break the data into different groups based on treatment type. In the formula notation, we now update it to the form:</p>
-<pre><code>goal(y ~ x|z, data = MyData, ...) # pseudo-code for the formula template</code></pre>
-<p>We read <code>y ~ x|z</code> as “y tilde x by z” and interpret it in the equivalent forms: “y modeled by x for each z”; “y explained by x within each z”; or “y accounted for by x within z.” For graphics, it’s reasonable to read the formula as “y vs.&nbsp;x for each z”. Figure <a href="#fig-split" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-split</span></a> shows the results.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_bar</span>(<span class="sc">~</span>outcome30<span class="sc">|</span>group, <span class="at">data =</span> stent_study) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div id="fig-split" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-split-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Data-Case-Study_files/figure-html/fig-split-1.png" class="img-fluid figure-img" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-split-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1.2: Bar charts conditioned on the <code>group</code> variable.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<section id="more-advanced-graphics" class="level4" data-number="1.4.5.1">
-<h4 data-number="1.4.5.1" class="anchored" data-anchor-id="more-advanced-graphics"><span class="header-section-number">1.4.5.1</span> More advanced graphics</h4>
-<p>As a prelude for things to come, the above graphic needs work. The labels don’t help and there is no title. We could add color. Does it make more sense to use proportions? Here is the code and results for a better graph, see Figure <a href="#fig-cs1" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-cs1</span></a>. Don’t worry if this seems a bit advanced, but feel free to examine each new component of this code.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This code creates a graph showing the impact of stents on stroke.</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The `gf_props()` function creates a bar graph showing the number of events</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># for each experimental group. The `fill` argument specifies the fill color</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># for each group. The `position = 'fill'` argument specifies that the bars</span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co"># should be filled to the top.</span></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="co"># The `gf_labs()` function adds the title, subtitle, x-axis label, and y-axis</span></span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="co"># label to the graph.</span></span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="co"># The `gf_theme()` function applies a black-and-white theme to the graph.</span></span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>stent_study <span class="sc">%&gt;%</span></span>
-<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_props</span>(<span class="sc">~</span>group, <span class="at">fill =</span> <span class="sc">~</span>outcome30, <span class="at">position =</span> <span class="st">'fill'</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">title =</span> <span class="st">"Impact of Stents of Stroke"</span>,</span>
-<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>          <span class="at">subtitle =</span> <span class="st">'Experiment with 451 Patients'</span>,</span>
-<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>          <span class="at">x =</span> <span class="st">"Experimental Group"</span>,</span>
-<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>          <span class="at">y =</span> <span class="st">"Number of Events"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_bw</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div id="fig-cs1" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-cs1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Data-Case-Study_files/figure-html/fig-cs1-1.png" class="img-fluid figure-img" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cs1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1.3: Better graph.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>Notice that we used the pipe operator, <code>%&gt;%</code>. This operator allows us to string functions together in a manner that makes it easier to read the code. In the above code, we are sending the data object <code>stent_study</code> into the function <code>gf_props()</code> to use as data, so we don’t need the <code>data =</code> argument. In math, this is a composition of functions. Instead of <code>f(g(x))</code> we could use a pipe <code>f(g(x)) = g(x) %&gt;% f()</code>.</p>
+<p>In fact, this test had a sensitivity of 100% and a specificity of 99.9%. Now suppose a patient walks in, the doctor administers the blood test, and it returns positive. What is the probability that that patient actually has the disease?</p>
+<p>This is a classic example of how probability could be misunderstood. Upon reading this question, you might guess that the answer to our question is quite high. After all, this is a nearly perfect test. After exploring the problem more in depth, we find a different result.</p>
+<section id="approach-using-whole-numbers" class="level3" data-number="9.4.1">
+<h3 data-number="9.4.1" class="anchored" data-anchor-id="approach-using-whole-numbers"><span class="header-section-number">9.4.1</span> Approach using whole numbers</h3>
+<p>Without going directly to the formulaic expression above, let’s consider a collection of 100,000 randomly selected people. What do we know?</p>
+<ol type="1">
+<li><p>Based on the prevalence of this disease (one out of every 10,000 people have this disease), we know that 10 of them should have the disease.</p></li>
+<li><p>This test is perfectly sensitive. Thus, of the 10 people that have the disease, all of them test positive.</p></li>
+<li><p>This test has a specificity of 99.9%. Of the 99,990 that don’t have the disease, <span class="math inline">\(0.999*99990\approx 99890\)</span> will test negative. The remaining 100 will test positive.</p></li>
+</ol>
+<p>Thus, of our 100,000 randomly selected people, 110 will test positive. Of these 110, only 10 actually have the disease. Thus, the probability that someone has the disease given they’ve tested positive is actually around <span class="math inline">\(10/110 = 0.0909\)</span>.</p>
 </section>
+<section id="mathematical-approach" class="level3" data-number="9.4.2">
+<h3 data-number="9.4.2" class="anchored" data-anchor-id="mathematical-approach"><span class="header-section-number">9.4.2</span> Mathematical approach</h3>
+<p>Now let’s put this in context of Bayes’ Rule as stated above. First, let’s define some events. Let <span class="math inline">\(D\)</span> be the event that someone has the disease. Thus, <span class="math inline">\(D'\)</span> would be the event that someone does not have the disease. Similarly, let <span class="math inline">\(T\)</span> be the event that someone has tested positive. What do we already know? <span class="math display">\[
+\mbox{P}(D) = 0.0001 \hspace{1cm} \mbox{P}(D')=0.9999
+\]</span> <span class="math display">\[
+\mbox{P}(T|D)= 1 \hspace{1cm} \mbox{P}(T'|D)=0
+\]</span> <span class="math display">\[
+\mbox{P}(T'|D')=0.999 \hspace{1cm} \mbox{P}(T|D') = 0.001
+\]</span></p>
+<p>We are looking for <span class="math inline">\(\mbox{P}(D|T)\)</span>, the probability that someone has the disease, given he/she has tested positive. By the definition of conditional probability, <span class="math display">\[
+\mbox{P}(D|T)=\frac{\mbox{P}(D \cap T)}{\mbox{P}(T)}
+\]</span></p>
+<p>The numerator can be rewritten, again utilizing the definition of conditional probability: <span class="math inline">\(\mbox{P}(D\cap T)=\mbox{P}(T|D)\mbox{P}(D)\)</span>.</p>
+<p>The denominator can be rewritten using the Law of Total Probability (discussed [here][Probability properties]) and then the definition of conditional probability: <span class="math inline">\(\mbox{P}(T)=\mbox{P}(T\cap D) + \mbox{P}(T \cap D') = \mbox{P}(T|D)\mbox{P}(D) + \mbox{P}(T|D')\mbox{P}(D')\)</span>. So, putting it all together, <span class="math display">\[
+\mbox{P}(D|T)=\frac{\mbox{P}(T|D)\mbox{P}(D)}{\mbox{P}(T|D)\mbox{P}(D) + \mbox{P}(T|D')\mbox{P}(D')}
+\]</span></p>
+<p>Now we have stated our problem in the context of quantities we know: <span class="math display">\[
+\mbox{P}(D|T)=\frac{1\cdot 0.0001}{1\cdot 0.0001 + 0.001\cdot 0.9999} = 0.0909
+\]</span></p>
+<p>Note that in the original statement of Bayes’ Rule, we considered <span class="math inline">\(n\)</span> partitions, <span class="math inline">\(B_1, B_2,...,B_n\)</span>. In this example, we only have two: <span class="math inline">\(D\)</span> and <span class="math inline">\(D'\)</span>.</p>
 </section>
-<section id="conclusion" class="level3" data-number="1.4.6">
-<h3 data-number="1.4.6" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">1.4.6</span> Conclusion</h3>
-<p>These two summary statistics (the proportions of people who had a stroke) are useful in looking for differences in the groups, and we are in for a surprise: an additional 9% of patients in the treatment group had a stroke! This is important for two reasons. First, it is contrary to what doctors expected, which was that stents would <em>reduce</em> the rate of strokes. Second, it leads to a statistical question: do the data show a real difference due to the treatment?</p>
-<p>This second question is subtle. Suppose you flip a coin 100 times. While the chance a coin lands heads in any given coin flip is 50%, we probably won’t observe exactly 50 heads. This type of fluctuation is part of almost any type of data generating process. It is possible that the 9% difference in the stent study is due to this natural variation. However, the larger the difference we observe (for a particular sample size), the less believable it is that the difference is due to chance. So what we are really asking is the following: is the difference so large that we should reject the notion that it was due to chance?</p>
-<p>This is a preview of step 4, analyze the data, and step 5, form a conclusion, of the analysis cycle. While we haven’t yet covered statistical tools to fully address these steps, we can comprehend the conclusions of the published analysis: there was compelling evidence of harm by stents in this study of stroke patients.</p>
-<p><strong>Be careful:</strong> Do not generalize the results of this study to all patients and all stents. This study looked at patients with very specific characteristics who volunteered to be a part of this study and who may not be representative of all stroke patients. In addition, there are many types of stents and this study only considered the self-expanding Wingspan stent (Boston Scientific). However, this study does leave us with an important lesson: we should keep our eyes open for surprises.</p>
+<section id="simulation" class="level3" data-number="9.4.3">
+<h3 data-number="9.4.3" class="anchored" data-anchor-id="simulation"><span class="header-section-number">9.4.3</span> Simulation</h3>
+<p>To do the simulation, we can think of it as flipping a coin. First let’s assume we are pulling 1,000,000 people from the population. The probability that any one person has the disease is 0.0001. We will use <code>rflip()</code> to get the 1,000,000 people and designate as no disease or disease.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">43</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">rflip</span>(<span class="dv">1000000</span>,<span class="fl">0.0001</span>,<span class="at">summarize =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>results</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      n heads  tails  prob
+1 1e+06   100 999900 1e-04</code></pre>
+</div>
+</div>
+<p>In this case 100 people had the disease. Now let’s find the positive test results. Of the 100 with the disease, all will test positive. Of those without disease, there is a 0.001 probability of testing positive.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rflip</span>(<span class="fu">as.numeric</span>(results[<span class="st">'tails'</span>]),<span class="at">prob=</span>.<span class="dv">001</span>,<span class="at">summarize =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       n heads  tails  prob
+1 999900   959 998941 0.001</code></pre>
+</div>
+</div>
+<p>Now 959 tested positive. Thus the probability of having the disease given a positive test result is approximately:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dv">100</span><span class="sc">/</span>(<span class="dv">100</span><span class="sc">+</span><span class="dv">959</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.09442871</code></pre>
+</div>
+</div>
 
 
 </section>
-</section>
-<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn1"><p>Chimowitz MI, Lynn MJ, Derdeyn CP, et al.&nbsp;2011. Stenting versus Aggressive Medical Therapy for Intracranial Arterial Stenosis. New England Journal of Medicine 365:993-1003.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>NY Times article reporting on the study: http://www.nytimes.com/2011/09/08/health/research/08stent.html<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>Formally, a summary statistic is a value computed from the data. Some summary statistics are more useful than others.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>https://cran.r-project.org/web/packages/ggformula/vignettes/ggformula-blog.html<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
 </section>
 
 </main> <!-- /main -->
@@ -1194,13 +1048,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./00-Objectives.html" class="pagination-link" aria-label="Objectives">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Objectives</span>
+      <a href="./Probability-Rules.html" class="pagination-link" aria-label="Probability Basics">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Probability Basics</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Data-Basics.html" class="pagination-link" aria-label="Data Basics">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Basics</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./Discrete-Random-Variables.html" class="pagination-link" aria-label="Random Variables">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Random Variables</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1212,7 +1066,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/DS-USAFA/Quarto-Book/edit/main/Data-Case-Study.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/DS-USAFA/Quarto-Book/edit/main/Conditional-Probability.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
