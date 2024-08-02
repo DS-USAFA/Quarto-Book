@@ -457,8 +457,7 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#uniform-distribution" id="toc-uniform-distribution" class="nav-link" data-scroll-target="#uniform-distribution"><span class="header-section-number">13.2.1</span> Uniform distribution</a></li>
   <li><a href="#exponential-distribution" id="toc-exponential-distribution" class="nav-link" data-scroll-target="#exponential-distribution"><span class="header-section-number">13.2.2</span> Exponential distribution</a></li>
-  <li><a href="#memory-less-property" id="toc-memory-less-property" class="nav-link" data-scroll-target="#memory-less-property"><span class="header-section-number">13.2.3</span> Memory-less property</a></li>
-  <li><a href="#normal-distribution" id="toc-normal-distribution" class="nav-link" data-scroll-target="#normal-distribution"><span class="header-section-number">13.2.4</span> Normal distribution</a></li>
+  <li><a href="#normal-distribution" id="toc-normal-distribution" class="nav-link" data-scroll-target="#normal-distribution"><span class="header-section-number">13.2.3</span> Normal distribution</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/DS-USAFA/Quarto-Book/edit/main/Named-Continuous-Distributions.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
@@ -490,6 +489,7 @@ window.Quarto = {
 <ol type="1">
 <li><p>Differentiate between common continuous distributions (Uniform, Exponential, Normal) by identifying their parameters, assumptions, and moments. Evaluate scenarios to determine the most appropriate distribution to model various types of data.</p></li>
 <li><p>Apply <code>R</code> to calculate probabilities and quantiles, and simulate random variables for common continuous distributions.</p></li>
+<li><p>State and apply the empirical rule (68-95-99.7 rule).</p></li>
 <li><p>Explain the relationship between the Poisson process and the Poisson and Exponential distributions, and describe how these distributions model different aspects of the same process.</p></li>
 <li><p>Apply the memory-less property in context of the Exponential distribution and use it to simplify probability calculations.</p></li>
 </ol>
@@ -613,9 +613,8 @@ Figure&nbsp;13.2: The pdf of exponential random variable <span class="math inlin
 </div>
 </div>
 <p>Both from <a href="#fig-exp" class="quarto-xref">Figure&nbsp;<span>13.2</span></a> and the mean and median, we know that the exponential distribution is skewed to the right.</p>
-</section>
-<section id="memory-less-property" class="level3" data-number="13.2.3">
-<h3 data-number="13.2.3" class="anchored" data-anchor-id="memory-less-property"><span class="header-section-number">13.2.3</span> Memory-less property</h3>
+<section id="memory-less-property" class="level4" data-number="13.2.2.1">
+<h4 data-number="13.2.2.1" class="anchored" data-anchor-id="memory-less-property"><span class="header-section-number">13.2.2.1</span> Memory-less property</h4>
 <p>The Poisson process is known for its <em>memory-less</em> property. Essentially, this means that the time until the next arrival is independent of the time since last arrival. Thus, the probability of an arrival within the next 5 minutes is the same regardless of whether an arrival just occurred or an arrival has not occurred for a long time.</p>
 <p>To show this let’s consider random variable <span class="math inline">\(Y\)</span> ( time until the next arrival in minutes) where <span class="math inline">\(Y\sim\textsf{Expon}(\lambda)\)</span>. We will show that, given it has been at least <span class="math inline">\(t\)</span> minutes since the last arrival, the probability we wait at least <span class="math inline">\(y\)</span> additional minutes is equal to the marginal probability that we wait <span class="math inline">\(y\)</span> additional minutes.</p>
 <p>First, note that the cdf of <span class="math inline">\(Y\)</span>, <span class="math inline">\(F_Y(y)=\mbox{P}(Y\leq y)=1-e^{-\lambda y}\)</span>, you should be able to derive this. So, <span class="math display">\[
@@ -641,8 +640,9 @@ Figure&nbsp;13.3: Simulations of Poisson random variable.
 </div>
 <p>In <a href="#fig-sim" class="quarto-xref">Figure&nbsp;<span>13.3</span></a>, the number of events in a box is <span class="math inline">\(X\sim \textsf{Poisson}(\lambda = 5)\)</span>. As you can see, some boxes have more than 5 and some less because 5 is the average number of arrivals. Also note that the spacing is not equal. The 8 different runs are just repeated simulations of the same process. We can see spacing and clusters in each run.</p>
 </section>
-<section id="normal-distribution" class="level3" data-number="13.2.4">
-<h3 data-number="13.2.4" class="anchored" data-anchor-id="normal-distribution"><span class="header-section-number">13.2.4</span> Normal distribution</h3>
+</section>
+<section id="normal-distribution" class="level3" data-number="13.2.3">
+<h3 data-number="13.2.3" class="anchored" data-anchor-id="normal-distribution"><span class="header-section-number">13.2.3</span> Normal distribution</h3>
 <p>The normal distribution (also referred to as Gaussian) is a common distribution found in natural processes. You have likely seen a <em>bell curve</em> in various contexts. The bell curve is often indicative of an underlying normal distribution. There are two parameters of the normal distribution: <span class="math inline">\(\mu\)</span> (the mean of <span class="math inline">\(X\)</span>) and <span class="math inline">\(\sigma\)</span> (the standard deviation of <span class="math inline">\(X\)</span>).</p>
 <p>Suppose a random variable <span class="math inline">\(X\)</span> has a normal distribution with parameters <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>. The pdf of <span class="math inline">\(X\)</span> is given by:</p>
 <p><span class="math display">\[
@@ -663,8 +663,8 @@ Figure&nbsp;13.4: The pdf of Normal for various values of mu and sigma
 </div>
 </div>
 </div>
-<section id="standard-normal" class="level4" data-number="13.2.4.1">
-<h4 data-number="13.2.4.1" class="anchored" data-anchor-id="standard-normal"><span class="header-section-number">13.2.4.1</span> Standard normal</h4>
+<section id="standard-normal" class="level4" data-number="13.2.3.1">
+<h4 data-number="13.2.3.1" class="anchored" data-anchor-id="standard-normal"><span class="header-section-number">13.2.3.1</span> Standard normal</h4>
 <p>When random variable <span class="math inline">\(X\)</span> is normally distributed with <span class="math inline">\(\mu=0\)</span> and <span class="math inline">\(\sigma=1\)</span>, <span class="math inline">\(X\)</span> is said to follow the <em>standard normal</em> distribution. Sometimes, the standard normal pdf is denoted by <span class="math inline">\(\phi(x)\)</span>.</p>
 <p>Note that any normally distributed random variable can be transformed to have the standard normal distribution. Let <span class="math inline">\(X \sim \textsf{Norm}(\mu,\sigma)\)</span>. Then, <span class="math display">\[
 Z=\frac{X-\mu}{\sigma} \sim \textsf{Norm}(0,1)
@@ -679,7 +679,7 @@ Z=\frac{X-\mu}{\sigma} \sim \textsf{Norm}(0,1)
 <p><em>Example</em>:<br>
 Let <span class="math inline">\(X \sim \textsf{Norm}(\mu=200,\sigma=15)\)</span>. Compute <span class="math inline">\(\mbox{P}(X\leq 160)\)</span>, <span class="math inline">\(\mbox{P}(180\leq X &lt; 230)\)</span>, and <span class="math inline">\(\mbox{P}(X&gt;\mu+\sigma)\)</span>. Find the median and 95th percentile of <span class="math inline">\(X\)</span>.</p>
 </blockquote>
-<p>As with the gamma distribution, to find probabilities and quantiles, integration will be difficult, so it’s best to use the built-in <code>R</code> functions:</p>
+<p>To find probabilities and quantiles, integration will be difficult, so it’s best to use the built-in <code>R</code> functions:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Prob(X&lt;=160)</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">160</span>,<span class="dv">200</span>,<span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -707,6 +707,70 @@ Let <span class="math inline">\(X \sim \textsf{Norm}(\mu=200,\sigma=15)\)</span>
 <pre><code>[1] 224.6728</code></pre>
 </div>
 </div>
+</section>
+<section id="the-empirical-rule-68-95-99.7-rule" class="level4" data-number="13.2.3.2">
+<h4 data-number="13.2.3.2" class="anchored" data-anchor-id="the-empirical-rule-68-95-99.7-rule"><span class="header-section-number">13.2.3.2</span> The Empirical Rule (68-95-99.7 Rule)</h4>
+<p>The normal distribution is bell-shaped and symmetrical around the mean, meaning that the left and right sides of the distribution are mirror images. The <strong>empirical rule</strong>, also known as the 68-95-99.7 rule, describes in a little more detail how data is distributed in a normal distribution.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-empirical-rule" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-empirical-rule-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Named-Continuous-Distributions_files/figure-html/fig-empirical-rule-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-empirical-rule-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;13.5: An illustration of the empirical rule (68-95-99.7 rule).
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The 68-95-99.7 rule states the following about the normal distribution:</p>
+<ul>
+<li><p>Approximately 68% of the data falls within one standard deviation of the mean.</p></li>
+<li><p>Approximately 95% of the data falls within two standard deviations of the mean.</p></li>
+<li><p>Approximately 99.7% of the data falls within three standard deviations of the mean.</p></li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>Example:</strong> Suppose the heights of female cadets are normally distributed with a mean <span class="math inline">\(\mu\)</span> of 65 inches and a standard deviation <span class="math inline">\(\sigma\)</span> of 3 inches.</p>
+<ol type="1">
+<li><p>What percent of female cadet heights fall between 62 and 68 inches?</p></li>
+<li><p>Between what heights do 95% of female cadets fall?</p></li>
+<li><p>What percent of female cadet heights fall between 62 and 74 inches?</p></li>
+<li><p>What percent of female cadets are taller than 71 inches?</p></li>
+</ol>
+</blockquote>
+<p>The 68-95-99.7 rule tells us that approximately 68% of female cadet heights will fall between 62 and 68 inches (within one standard deviation of the mean), 95% will fall between 59 and 71 inches (within two standard deviations of the mean), and 99.7% will fall between 56 and 74 inches (within three standard deviations of the mean).</p>
+<p>This information gives us the answers to our first two questions. But how do we figure out what percent of female cadets fall between 62 and 74 inches? It’s always a good idea to draw a picture.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-cadetheight-within" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" width="672">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cadetheight-within-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Named-Continuous-Distributions_files/figure-html/fig-cadetheight-within-1.png" id="fig-cadetheight-within" class="img-fluid quarto-figure quarto-figure-center anchored figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-cadetheight-within-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Remember that the normal distribution is symmetric, meaning the left and right sides (with zero at the middle) are mirror images. So, approximately 50% of the female cadet heights will be greater than the mean of 65 inches. <a href="#fig-cadetheight-within" class="quarto-xref">Figure&nbsp;<span>13.6</span></a> shows the area of interest in our example. Approximately half of 99.7%, 49.85%, of female cadet heights are between 65 and 74 inches. Because 68% of female cadet heights fall between 62 and 68 inches, 34% fall between 62 and 65 inches. Thus, a total of 83.85% of female cadet heights fall between 62 and 74 inches.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-cadetheight-outside" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" width="672">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cadetheight-outside-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Named-Continuous-Distributions_files/figure-html/fig-cadetheight-outside-1.png" id="fig-cadetheight-outside" class="img-fluid quarto-figure quarto-figure-center anchored figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-cadetheight-outside-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>For our last question, <a href="#fig-cadetheight-outside" class="quarto-xref">Figure&nbsp;<span>13.7</span></a> shows the area of interest. We know from the empirical rule that 95% of female cadet heights fall between 59 and 71 inches. This means that 5% of cadet heights fall outside that range. Because the normal distribution is symmetric, 2.5% falls between 59 inches and 2.5% falls above 71 inches.</p>
+<p>While the 68-95-99.7 rule is a powerful tool for normal distributions, its applicability is limited to such distributions. Understanding the shape and properties of the data distribution is crucial before applying this rule or making inferences based on it.</p>
 
 
 </section>

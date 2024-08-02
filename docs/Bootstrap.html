@@ -704,6 +704,34 @@ Figure&nbsp;20.3: The sampling distribution of the mean approximated using a boo
 </div>
 <p>Both functions result in the same 95% confidence interval.</p>
 </section>
+<section id="using-the-bootstrap-standard-error" class="level4" data-number="20.5.2.2">
+<h4 data-number="20.5.2.2" class="anchored" data-anchor-id="using-the-bootstrap-standard-error"><span class="header-section-number">20.5.2.2</span> Using the bootstrap standard error</h4>
+<p>Since the bootstrap distribution is roughly symmetric and bell-shaped, we can use an approximation similar to the empirical rule (68-95-99.7 rule) which states that approximately 95% of data falls within two standard deviations of the mean. In this situation, the standard deviation of the bootstrap distribution is the bootstrap standard error of the sample mean.</p>
+<p>For an approximate 95% confidence interval, we use</p>
+<p><span class="math display">\[
+\text{bootstrap mean} \pm 2 \times \text{standard error}
+\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(boot_results<span class="sc">$</span>mean)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>SE <span class="ot">&lt;-</span> <span class="fu">sd</span>(boot_results<span class="sc">$</span>mean)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>xbar <span class="sc">+</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="dv">2</span>)<span class="sc">*</span>SE</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 67.15913 70.77535</code></pre>
+</div>
+</div>
+<p>We could of course use <strong>tidyverse</strong> as well, but we must change the column name so that the <code>mean</code> column and the <code>mean()</code> function don’t conflict with each other.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>boot_results <span class="sc">%&gt;%</span> </span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">stat =</span> mean) <span class="sc">%&gt;%</span>      <span class="co"># rename the mean column as stat</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(stat), <span class="at">stderr =</span> <span class="fu">sd</span>(stat), </span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">lower =</span> mean <span class="sc">+</span> <span class="sc">-</span><span class="dv">2</span><span class="sc">*</span>stderr, <span class="at">upper =</span> mean <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span>stderr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      mean    stderr    lower    upper
+1 68.96724 0.9040555 67.15913 70.77535</code></pre>
+</div>
+</div>
+<p>This interval is very similar to the one found with the percentile method, but the standard error method can only be used when the bootstrap distribution is approximately symmetric and bell-shaped. You can learn more about bootstrap confidence intervals online.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+</section>
 </section>
 </section>
 <section id="non-standard-sample-statistics" class="level2" data-number="20.6">
@@ -717,8 +745,8 @@ Figure&nbsp;20.3: The sampling distribution of the mean approximated using a boo
 Find a 90% confidence interval for the median height of students at a local college.</p>
 </blockquote>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">427</span>)</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>boot_results <span class="ot">&lt;-</span> <span class="fu">do</span>(<span class="dv">10000</span>)<span class="sc">*</span><span class="fu">median</span>(<span class="sc">~</span>height, <span class="at">data =</span> <span class="fu">resample</span>(heights))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">427</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>boot_results <span class="ot">&lt;-</span> <span class="fu">do</span>(<span class="dv">10000</span>)<span class="sc">*</span><span class="fu">median</span>(<span class="sc">~</span>height, <span class="at">data =</span> <span class="fu">resample</span>(heights))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -736,7 +764,7 @@ Figure&nbsp;20.4: The sampling distribution of the median approximated using a b
 </div>
 <p>Now that we have the bootstrap distribution, we can generate a confidence interval using the percentile method.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cdata</span>(<span class="sc">~</span>median, <span class="at">data =</span> boot_results, <span class="at">p =</span> <span class="fl">0.90</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cdata</span>(<span class="sc">~</span>median, <span class="at">data =</span> boot_results, <span class="at">p =</span> <span class="fl">0.90</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   lower upper central.p
 5%  65.8 70.65       0.9</code></pre>
@@ -748,22 +776,22 @@ Figure&nbsp;20.4: The sampling distribution of the median approximated using a b
 <h3 data-number="20.6.2" class="anchored" data-anchor-id="sample-interquartile-range"><span class="header-section-number">20.6.2</span> Sample interquartile range</h3>
 <p>Remember, the bootstrap method allows us estimate the sampling distribution and standard error of any statistic of interest. So, let’s consider an even less commonly used statistic: the interquartile range (IQR). The interquartile range is calculated as the difference in the third and first quartile, <span class="math inline">\(IQR = Q_3 - Q_1\)</span>. It represents the middle 50% of the data. We can calculate this value using information from <code>favstats()</code> or by using the <code>iqr()</code> function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(<span class="sc">~</span>height, <span class="at">data =</span> heights)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(<span class="sc">~</span>height, <span class="at">data =</span> heights)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  min   Q1 median     Q3  max   mean       sd  n missing
  54.9 64.7   67.6 74.675 81.7 68.938 6.345588 50       0</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">iqr</span>(<span class="sc">~</span>height, <span class="at">data =</span> heights)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">iqr</span>(<span class="sc">~</span>height, <span class="at">data =</span> heights)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 9.975</code></pre>
 </div>
 </div>
 <p>The observed sample IQR is 9.975. We would like to know the true interquartile range of student height and generate a confidence interval for the estimate. We can use bootstrapping to estimate the sampling distribution and standard error of the interquartile range.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">801</span>)</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>boot_results <span class="ot">&lt;-</span> <span class="fu">do</span>(<span class="dv">10000</span>)<span class="sc">*</span><span class="fu">iqr</span>(<span class="sc">~</span>height, <span class="at">data =</span> <span class="fu">resample</span>(heights))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">801</span>)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>boot_results <span class="ot">&lt;-</span> <span class="fu">do</span>(<span class="dv">10000</span>)<span class="sc">*</span><span class="fu">iqr</span>(<span class="sc">~</span>height, <span class="at">data =</span> <span class="fu">resample</span>(heights))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -781,7 +809,7 @@ Figure&nbsp;20.5: The sampling distribution of the IQR approximated using a boot
 </div>
 <p>Now that we have the bootstrap distribution, we can generate a confidence interval using the percentile method.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cdata</span>(<span class="sc">~</span>iqr, <span class="at">data =</span> boot_results, <span class="at">p =</span> <span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cdata</span>(<span class="sc">~</span>iqr, <span class="at">data =</span> boot_results, <span class="at">p =</span> <span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     lower upper central.p
 2.5%   6.5 12.35      0.95</code></pre>
@@ -814,6 +842,7 @@ Figure&nbsp;20.5: The sampling distribution of the IQR approximated using a boot
 <li id="fn1"><p>The term <em>bootstrapping</em>&nbsp;comes from the phrase “pulling oneself up by one’s bootstraps,” which is credited to the 18th century story of Baron Munchausen who supposedly pulled himself out of a swamp by tugging on his own bootstraps. It implies performing an apparently impossible task. The bootstrap method was created by Bradley Efron in 1979 and was named in this way because it relies on the data itself to generate estimates of sampling distributions.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>If we want to be more certain we will capture the fish, we should use a wider net. Likewise, we use a wider confidence interval if we want to be more certain that we capture the parameter. A higher level of confidence implies a wider interval.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p>The values corresponding to the percentiles of interest are also known as <em>quantiles</em>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Also, see resources like <em>Statistical Inference via Data Science</em>&nbsp;by Chester Ismay and Albert Kim.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 

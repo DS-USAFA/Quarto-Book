@@ -610,23 +610,24 @@ gender   promoted not_promoted Total
 </div>
 </div>
 <p>Now that we have the data in the form that we want, we are ready to generate bootstrap samples. We essentially assign an equal probability to each observation in the original sample and sample <em>with replacement</em>, ensuring each bootstrap sample is the same size as the original sample. In <code>R</code>, we use the <code>resample()</code> function from the <strong>mosaic</strong> package to sample rows of the data with replacement. This generates a new data frame with the same number of rows as the original. Some rows may be duplicated and others may be missing.</p>
+<p>We’ll resample the rows of <code>discrim</code>, grouped by <code>gender</code>. This maintains the same number of male and female personnel files in the resample.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">627</span>)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">resample</span>(discrim)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">resample</span>(discrim, <span class="at">groups =</span> gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 48 × 3
    gender decision     orig.id
    &lt;fct&gt;  &lt;fct&gt;        &lt;chr&gt;  
- 1 female promoted     25     
- 2 female promoted     45     
- 3 male   promoted     10     
- 4 male   promoted     28     
- 5 female promoted     33     
- 6 male   promoted     17     
- 7 male   promoted     3      
+ 1 male   promoted     24     
+ 2 male   promoted     17     
+ 3 male   promoted     3      
+ 4 male   promoted     35     
+ 5 male   not_promoted 31     
+ 6 male   promoted     8      
+ 7 male   promoted     37     
  8 male   not_promoted 31     
- 9 male   not_promoted 13     
-10 male   not_promoted 31     
+ 9 male   promoted     24     
+10 male   promoted     8      
 # ℹ 38 more rows</code></pre>
 </div>
 </div>
@@ -634,16 +635,17 @@ gender   promoted not_promoted Total
 <p>We now calculate a point estimate, a statistic of interest, on the bootstrap sample. In our gender discrimination study, our statistic of interest is the difference in promotion rates. We can use the <code>diffprop()</code> function to calculate the difference in promotion rates for a single bootstrap sample.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">627</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">diffprop</span>(decision <span class="sc">~</span> gender, <span class="at">data =</span> <span class="fu">resample</span>(discrim))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">diffprop</span>(decision <span class="sc">~</span> gender, <span class="at">data =</span> <span class="fu">resample</span>(discrim, <span class="at">groups =</span> gender))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  diffprop 
--0.1643357 </code></pre>
+-0.3333333 </code></pre>
 </div>
 </div>
 <p>We repeat this process many times. The collection of sample statistics comprises a <strong>bootstrap distribution</strong> of the sample statistic. This procedure typically works quite well, provided the original sample is representative of the population. More details on the advantages and disadvantages of the bootstrap are discussed in <a href="Bootstrap.html" class="quarto-xref"><span>Chapter 20</span></a>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">630</span>)</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>boot_results <span class="ot">&lt;-</span> <span class="fu">do</span>(<span class="dv">10000</span>)<span class="sc">*</span><span class="fu">diffprop</span>(decision <span class="sc">~</span> gender, <span class="at">data =</span> <span class="fu">resample</span>(discrim))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>boot_results <span class="ot">&lt;-</span> <span class="fu">do</span>(<span class="dv">10000</span>)<span class="sc">*</span><span class="fu">diffprop</span>(decision <span class="sc">~</span> gender, </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">data =</span> <span class="fu">resample</span>(discrim, <span class="at">groups =</span> gender))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -665,7 +667,7 @@ Figure&nbsp;18.1: The sampling distribution of the difference in promotion rates
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(<span class="sc">~</span>diffprop, <span class="at">data =</span> boot_results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   min     Q1     median         Q3       max       mean        sd     n
- -0.75 -0.375 -0.2916667 -0.2083333 0.1796733 -0.2919619 0.1208132 10000
+ -0.75 -0.375 -0.2916667 -0.2083333 0.1666667 -0.2922125 0.1193555 10000
  missing
        0</code></pre>
 </div>
@@ -675,7 +677,7 @@ Figure&nbsp;18.1: The sampling distribution of the difference in promotion rates
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cdata</span>(<span class="sc">~</span>diffprop, <span class="at">data =</span> boot_results, <span class="at">p =</span> <span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          lower       upper central.p
-2.5% -0.5285714 -0.05593676      0.95</code></pre>
+2.5% -0.5416667 -0.04166667      0.95</code></pre>
 </div>
 </div>
 <p>This is the <em>percentile method</em> for finding a 95% confidence interval using the bootstrap distribution. The <code>qdata()</code> function, which gives the quantiles corresponding to specified probabilities, results in the same 95% confidence interval. Other confidence levels can be specified by simply changing the value of the <code>p</code> argument in either function.</p>
@@ -683,7 +685,7 @@ Figure&nbsp;18.1: The sampling distribution of the difference in promotion rates
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qdata</span>(<span class="sc">~</span>diffprop, <span class="at">data =</span> boot_results, <span class="at">p =</span> <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       2.5%       97.5% 
--0.52857143 -0.05593676 </code></pre>
+-0.54166667 -0.04166667 </code></pre>
 </div>
 </div>
 <p>We say that we are 95% confident that the true difference in promotion rates between males and females is between -52.9% and -5.6%, with females being promoted less often.</p>
@@ -695,12 +697,8 @@ Figure&nbsp;18.1: The sampling distribution of the difference in promotion rates
 <h3 data-number="18.4.3" class="anchored" data-anchor-id="hypothesis-testing"><span class="header-section-number">18.4.3</span> Hypothesis testing</h3>
 <p>We now have a better understanding of the variability in our statistic of interest, the difference in promotion rates. We used our bootstrap distribution to estimate the standard error of the statistic and to calculate a confidence interval. Recall that we did this to examine whether the observed difference in promotion rates represents discrimination or comes just from random variability.</p>
 <p>This question is a reminder that the observed outcomes in the sample may not perfectly reflect the true relationships between variables in the underlying population. The point estimate of the difference, 29.2%, is large, but the sample size for the study is small, making it unclear if this observed difference represents discrimination or whether it is simply due to chance. We label these two competing claims, <span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_A\)</span>:</p>
-<p><span class="math display">\[
-H_0: \textbf{Null hypothesis. }\text{ The variables } gender \text{ and  } decision \text{ are independent. They have no relationship, and the observed difference between the proportion of males and females who were promoted, 29.2%, was due to chance.}
-\]</span></p>
-<p><span class="math display">\[
-H_A: \textbf{Alternative hypothesis. }\text{ The variables } gender \text{ and  } decision \text{ are not independent. The difference in promotion rates of 29.2% was not due to chance, and equally qualified females are less likely to be promoted than males.}
-\]</span></p>
+<p><span class="math inline">\(H_0\)</span>: <strong>Null hypothesis.</strong> The variables <em>gender</em>&nbsp;and <em>decision</em>&nbsp;are independent. They have no relationship, and the observed difference between the proportion of males and females who were promoted, 29.2%, was due to chance.</p>
+<p><span class="math inline">\(H_A\)</span>: <strong>Alternative hypothesis.</strong> The variables <em>gender</em>&nbsp;and <em>decision</em>&nbsp;are not independent. The difference in promotion rates of 29.2% was not due to chance, and equally qualified females are less likely to be promoted than males.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -768,7 +766,7 @@ shuffle(gender) promoted not_promoted Total
 </section>
 <section id="checking-for-independence" class="level3" data-number="18.4.5">
 <h3 data-number="18.4.5" class="anchored" data-anchor-id="checking-for-independence"><span class="header-section-number">18.4.5</span> Checking for independence</h3>
-<p>We computed one possible difference under the null hypothesis in the exercise above, which represents one difference due to chance. Repeating the simulation, we get another difference due to chance: -0.042. And another: 0.208. And so on until we repeat the simulation enough times that we have a good idea of what represents the <strong>distribution of differences from chance alone</strong>. That is, we want the distribution of the difference if there really is no relationship between gender and the promotion decision. This is also known as the <strong>null distribution</strong>. We are using a simulation when there is actually a finite number of permutations of the <code>gender</code> label. From <span class="quarto-unresolved-ref">?sec-PROBRULES</span> on counting, we have 48 labels of which 24 are <code>male</code> and 24 are <code>female</code>. Thus the total number of ways to arrange the labels differently is:</p>
+<p>We computed one possible difference under the null hypothesis in the exercise above, which represents one difference due to chance. Repeating the simulation, we get another difference due to chance: -0.042. And another: 0.208. And so on until we repeat the simulation enough times that we have a good idea of what represents the <strong>distribution of differences from chance alone</strong>. That is, we want the distribution of the difference if there really is no relationship between gender and the promotion decision. This is also known as the <strong>null distribution</strong>. We are using a simulation when there is actually a finite number of permutations of the <code>gender</code> label. From <a href="Probability-Rules.html" class="quarto-xref"><span>Chapter 8</span></a> on counting, we have 48 labels of which 24 are <code>male</code> and 24 are <code>female</code>. Thus the total number of ways to arrange the labels differently is:</p>
 <p><span class="math display">\[
 \frac{48!}{24!\cdot24!} \approx 3.2 \cdot 10^{13}
 \]</span></p>
@@ -862,7 +860,7 @@ There were 48 files and 48 supervisors. A total of 35 files were recommended for
 <li id="fn4"><p>The test procedure we employ in this section is formally called a <strong>permutation test</strong>.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn5"><p><span class="math inline">\(18/24 - 17/24 = 0.042\)</span> or about 4.2% in favor of the men. This difference due to chance is much smaller than the difference observed in the actual groups.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn6"><p>This reasoning does not generally extend to anecdotal observations. Each of us observes incredibly rare events every day, events we could not possibly hope to predict. However, in the non-rigorous setting of anecdotal evidence, almost anything may appear to be a rare event, so the idea of looking for rare events in day-to-day activities is treacherous. For example, we might look at the lottery: there was only a 1 in 176 million chance that the Mega Millions numbers for the largest jackpot in history (March 30, 2012) would be (2, 4, 23, 38, 46) with a Mega ball of (23), but nonetheless those numbers came up! However, no matter what numbers had turned up, they would have had the same incredibly rare odds. That is, <strong>any set of numbers we could have observed would ultimately be incredibly rare</strong>. This type of situation is typical of our daily lives: each possible event in itself seems incredibly rare, but if we consider every alternative, those outcomes are also incredibly rare. We should be cautious not to misinterpret such anecdotal evidence.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn7"><p>In the bootstrap, we sample with replacement from the original data. We do this by sampling entire rows from the original data, so that the <strong>original observations remain intact</strong>. In our bootstrap sample, some observations may appear more than once while others may be left out. Thus, the marginal counts (e.g., the number of individuals promoted or not promoted) may differ from those in the original data.</p>
+<li id="fn7"><p>In the bootstrap, we sample with replacement from the original data. We do this by sampling entire rows from the original data, so that the <strong>original observations remain intact</strong>. In our bootstrap sample, some observations may appear more than once while others may be left out. Thus, the marginal counts (e.g., the number of individuals promoted or not promoted) may differ from those in the original data. In our gender discrimination example, we grouped by gender in our resample. This ensures that the number of male and female personnel files remains constant even though the number of individuals promoted or not promoted, <em>within those groups</em>, may differ from the original data set.</p>
 <p>In a randomization test, the <strong>marginal counts</strong> <strong>remain</strong> <strong>fixed</strong> but we randomize from the original observations in a manner that ignores the observed relationship between the explanatory and response variables. Imagine having 35 slots for individuals being promoted and 13 slots for individuals not being promoted. We shuffle and distribute male and female files into the slots for promoted and not promoted. In this process, we ignore the observed promotion status for each file as we place files into the slots. Thus, it is possible that the samples in our randomization test include observations that did not exist in the original data.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
