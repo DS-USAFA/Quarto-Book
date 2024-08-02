@@ -36,7 +36,7 @@ In some sense, we've already explored some of these concepts. In our simulation 
 Statistical models and probability models are not separate. In statistical models we find relationships, the explained portion of variation, and use probability models for the remaining random variation. In @fig-probstats, we demonstrate this relationship between the two types of models. In the first part of our studies, we will use univariate data in statistical models to estimate the parameters of a probability model. From there we will develop more sophisticated models to include multivariate models.
 
 ```{r}
-#| label: "fig-probstats"
+#| label: fig-probstats
 #| echo: false
 #| fig-align: "center"
 #| fig-height: 2
@@ -185,7 +185,7 @@ $$
 @fig-lik1 is a plot of the likelihood function as a function of the unknown parameter $\pi$.
 
 ```{r}
-#| label: "fig-lik1"
+#| label: fig-lik1
 #| echo: false
 #| fig-cap: "Likelihood function for 18 successes in 50 trials"
 #18 heads, 32 tails, order doesn't matter
@@ -247,7 +247,7 @@ library(fastR2)
 The `faithful` data set is preloaded into `R` and contains 272 observations of 2 variables: eruption time in minutes and waiting time until next eruption. If we plot eruption durations, we notice that the distribution appears bimodal, see @fig-hist171.
 
 ```{r}
-#| label: "fig-hist171"
+#| label: fig-hist171
 #| echo: false
 #| fig-cap: "Histogram of eruption durations of Old Faithful."
 faithful %>%

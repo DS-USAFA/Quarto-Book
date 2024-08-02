@@ -27,9 +27,9 @@ Let's use three examples to illustrate the ideas of this chapter.
 
 Here's a game you can try with your friends or family. Pick a simple, well-known song. Tap that tune on your desk, and see if the other person can guess the song. In this simple game, you are the tapper, and the other person is the listener.
 
-A Stanford University graduate student named Elizabeth Newton conducted an experiment using the tapper-listener game.[^20-hypothesis-testing-probdist-1] In her study, she recruited 120 tappers and 120 listeners into the study. About 50% of the tappers expected that the listener would be able to guess the song. Newton wondered, is 50% a reasonable expectation?
+A Stanford University graduate student named Elizabeth Newton conducted an experiment using the tapper-listener game.[^hypothesis-testing-probdist-1] In her study, she recruited 120 tappers and 120 listeners into the study. About 50% of the tappers expected that the listener would be able to guess the song. Newton wondered, is 50% a reasonable expectation?
 
-[^20-hypothesis-testing-probdist-1]: This case study is described in *Made to Stick: Why Some Ideas Survive and Others Die* by Chip and Dan Heath.
+[^hypothesis-testing-probdist-1]: This case study is described in *Made to Stick: Why Some Ideas Survive and Others Die* by Chip and Dan Heath.
 
 ### Step 1- State the null and alternative hypotheses
 
@@ -67,7 +67,7 @@ Based on our data, if the listeners were guessing correct 50% of the time, there
 This decision region looks like the pmf in @fig-dist201. Any observed values inside the red boundary lines would be consistent with the null hypothesis. That is, any observed values inside the red boundary lines would result in a $p$-value larger than 0.05. Any values at the red line or more extreme would be in the rejection region, resulting in a $p$-value smaller than 0.05. We also plotted the observed value in black.
 
 ```{r}
-#| label: "fig-dist201"
+#| label: fig-dist201
 #| warning: false
 #| fig-cap: "Binomial pmf"
 gf_dist("binom", size = 120, prob = 0.5, xlim = c(50, 115)) %>%
@@ -122,7 +122,7 @@ head(results)
 ```
 
 ```{r}
-#| label: "fig-dens202"
+#| label: fig-dens202
 #| warning: false
 #| fig-cap: "The estimated sampling distribution"
 results %>%
@@ -144,14 +144,14 @@ The $p$-value is found using the `prop1` function. In this problem, we really ne
 
 In these 10,000 simulations, we see very few results close to 0.35. Based on our data, if the listeners were guessing correct 50% of the time, there is less than a $0.0012$ probability that only 35% or less or 65% or more listeners would get it right. This $p$-value is much less than 0.05, so we reject that the listeners are guessing correctly half of the time and conclude that the correct-guess rate is different from 50%.
 
-> **Exercise**: In the context of the experiment, what is the $p$-value for the hypothesis test?[^20-hypothesis-testing-probdist-2]
+> **Exercise**: In the context of the experiment, what is the $p$-value for the hypothesis test?[^hypothesis-testing-probdist-2]
 
-[^20-hypothesis-testing-probdist-2]: The $p$-value is the chance of seeing the observed data or something more in favor of the alternative hypothesis (something as or more extreme) given that guessing has a probability of success of 0.5. Since we didn't observe many simulations with even close to just 42 listeners correct, the $p$-value will be small, around 1-in-1000.
+[^hypothesis-testing-probdist-2]: The $p$-value is the chance of seeing the observed data or something more in favor of the alternative hypothesis (something as or more extreme) given that guessing has a probability of success of 0.5. Since we didn't observe many simulations with even close to just 42 listeners correct, the $p$-value will be small, around 1-in-1000.
 
 > **Exercise**:\
-> Do the data provide statistically significant evidence against the null hypothesis? State an appropriate conclusion in the context of the research question.[^20-hypothesis-testing-probdist-3]
+> Do the data provide statistically significant evidence against the null hypothesis? State an appropriate conclusion in the context of the research question.[^hypothesis-testing-probdist-3]
 
-[^20-hypothesis-testing-probdist-3]: The $p$-value is less than 0.05, so we reject the null hypothesis. There is statistically significant evidence, and the data provide strong evidence that the chance a listener will guess the correct tune is different from 50%.
+[^hypothesis-testing-probdist-3]: The $p$-value is less than 0.05, so we reject the null hypothesis. There is statistically significant evidence, and the data provide strong evidence that the chance a listener will guess the correct tune is different from 50%.
 
 ## Cardiopulmonary resuscitation (CPR)
 
@@ -159,9 +159,9 @@ Let's return to the CPR example from last chapter. As a reminder, we will repeat
 
 Cardiopulmonary resuscitation (CPR) is a procedure sometimes used on individuals suffering a heart attack. It is helpful in providing some blood circulation to keep a person alive, but CPR chest compressions can also cause internal injuries, which complicate additional treatment efforts. For instance, blood thinners may be used to help release a clot that is causing the heart attack, but blood thinners negatively affect internal injuries.
 
-Patients who underwent CPR for a heart attack and were subsequently admitted to a hospital[^20-hypothesis-testing-probdist-4] were randomly assigned to either receive a blood thinner (treatment group) or not receive a blood thinner (control group). The outcome variable of interest was whether the patient survived for at least 24 hours.
+Patients who underwent CPR for a heart attack and were subsequently admitted to a hospital[^hypothesis-testing-probdist-4] were randomly assigned to either receive a blood thinner (treatment group) or not receive a blood thinner (control group). The outcome variable of interest was whether the patient survived for at least 24 hours.
 
-[^20-hypothesis-testing-probdist-4]: "Efficacy and safety of thrombolytic therapy after initially unsuccessful cardiopulmonary resuscitation: a prospective clinical trial." The Lancet, 2001.
+[^hypothesis-testing-probdist-4]: "Efficacy and safety of thrombolytic therapy after initially unsuccessful cardiopulmonary resuscitation: a prospective clinical trial." The Lancet, 2001.
 
 ### Step 1- State the null and alternative hypotheses
 
@@ -225,7 +225,7 @@ fisher.test(tally(~group + outcome, data = thinner))
 The $p$-value is slightly different since the **hypergeometric** distribution is not symmetric. For this reason, doubling the $p$-value from the single side result is not quite right. The algorithm in `fisher.test()` finds and adds all probabilities less than or equal to value of $\mbox{P}(X = 11)$, see @fig-dens203. Using `fisher.test()` gives the correct $p$-value.
 
 ```{r}
-#| label: "fig-dens203"
+#| label: fig-dens203
 #| fig-cap: "Hypergeometric pmf showing the cutoff for $p$-value calculation."
 #| warning: false
 gf_dist("hyper", m = 50, n = 40, k = 25) %>%
@@ -363,7 +363,7 @@ results <- do(10000)*diff(range(table(sample(1:4, size = 486, replace = TRUE))))
 @fig-dens204 is a plot of the sampling distribution of the range.
 
 ```{r}
-#| label: "fig-dens204"
+#| label: fig-dens204
 #| warning: false
 #| fig-cap: "Sampling distribution of the range."
 results %>%
@@ -419,7 +419,7 @@ results <- do(10000)*sum(abs(table(sample(1:4, size = 486, replace = TRUE)) - 12
 @fig-dens205 is a plot of the sampling distribution of the absolute value of deviations.
 
 ```{r}
-#| label: "fig-dens205"
+#| label: fig-dens205
 #| warning: false
 #| fig-cap: "Sampling distribution of the absolute deviations."
 results %>%

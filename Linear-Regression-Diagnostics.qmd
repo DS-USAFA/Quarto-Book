@@ -74,9 +74,9 @@ $$
 \underbrace{\sum_{i=1}^n (y_i-\bar{y})^2}_{SS_{\text{Total}}} = \underbrace{\sum_{i=1}^n (\hat{y}_i-\bar y)^2}_{SS_{\text{Regression}}}+\underbrace{\sum_{i=1}^n(y_i-\hat{y}_i)^2}_{SS_{\text{Error}}}
 $$
 
-In other words, the overall variation in $y$ can be separated into two parts: variation due to the linear relationship between $y$ and the predictor variable(s), called $SS_\text{Regression}$, and residual variation (due to random scatter or perhaps a poorly chosen model), called $SS_\text{Error}$. Note: $SS_\text{Error}$ is used to estimate residual standard error in the previous section.[^29-linear-regression-diagnostics-1]
+In other words, the overall variation in $y$ can be separated into two parts: variation due to the linear relationship between $y$ and the predictor variable(s), called $SS_\text{Regression}$, and residual variation (due to random scatter or perhaps a poorly chosen model), called $SS_\text{Error}$. Note: $SS_\text{Error}$ is used to estimate residual standard error in the previous section.[^linear-regression-diagnostics-1]
 
-[^29-linear-regression-diagnostics-1]: $\hat{\sigma}=\sqrt\frac{\sum_{i=1}^n(y_i-\hat{y}_i)^2}{\text{degrees of freedom}}$
+[^linear-regression-diagnostics-1]: $\hat{\sigma}=\sqrt\frac{\sum_{i=1}^n(y_i-\hat{y}_i)^2}{\text{degrees of freedom}}$
 
 $R$-squared simply measures the ratio between $SS_\text{Regression}$ and $SS_\text{Total}$. A common definition of $R$-squared is the proportion of overall variation in the response that is explained by the linear model. $R$-squared can be between 0 and 1. Values of $R$-squared close to 1 indicate a tight fit (little scatter) around the estimated regression line. Value close to 0 indicate the opposite (large remaining scatter).
 
@@ -86,9 +86,9 @@ We can obtain $R$-squared "by hand" or by using the output of the `lm()` functio
 summary(star_mod)$r.squared
 ```
 
-For simple linear regression, $R$-squared is related to **correlation**. We can compute the correlation using a formula, just as we did with the sample mean and standard deviation. However, this formula is rather complex,[^29-linear-regression-diagnostics-2] so we let `R` do the heavy lifting for us.
+For simple linear regression, $R$-squared is related to **correlation**. We can compute the correlation using a formula, just as we did with the sample mean and standard deviation. However, this formula is rather complex,[^linear-regression-diagnostics-2] so we let `R` do the heavy lifting for us.
 
-[^29-linear-regression-diagnostics-2]: Formally, we can compute the correlation for observations $(x_1, y_1)$, $(x_2, y_2)$, ..., $(x_n, y_n)$ using the formula $$
+[^linear-regression-diagnostics-2]: Formally, we can compute the correlation for observations $(x_1, y_1)$, $(x_2, y_2)$, ..., $(x_n, y_n)$ using the formula $$
     R = \frac{1}{n-1}\sum_{i=1}^{n} \frac{x_i-\bar{x}}{s_x}\frac{y_i-\bar{y}}{s_y}
     $$ where $\bar{x}$, $\bar{y}$, $s_x$, and $s_y$ are the sample means and standard deviations for each variable.
 
@@ -102,7 +102,7 @@ As a review, @fig-cor below shows eight plots and their corresponding correlatio
 ```{r}
 #| echo: false 
 #| fig-cap: "Scatterplots demonstrating different correlations."
-#| label: "fig-cor"
+#| label: fig-cor
 library(openintro)
 data(COL)
 data(possum)
@@ -171,9 +171,9 @@ mtext(paste('R =', format(c(round(cor(x,y), 2), 0.01))[1]), side=1, line=1, cex=
 ```
 
 > **Exercise**\
-> If a linear model has a very strong negative relationship with a correlation of -0.97, how much of the variation in the response is explained by the explanatory variable?[^29-linear-regression-diagnostics-3]
+> If a linear model has a very strong negative relationship with a correlation of -0.97, how much of the variation in the response is explained by the explanatory variable?[^linear-regression-diagnostics-3]
 
-[^29-linear-regression-diagnostics-3]: About $R^2 = (-0.97)^2 = 0.94$ or 94% of the variation is explained by the linear model.
+[^linear-regression-diagnostics-3]: About $R^2 = (-0.97)^2 = 0.94$ or 94% of the variation is explained by the linear model.
 
 Note that one of the components of `summary(lm())` function is `adj.r.squared`. This is a value of $R$-squared adjusted for number of predictors. This idea is covered more in depth in a machine learning course.
 
@@ -235,7 +235,7 @@ By default, the first three and the fifth are provided by applying `plot()` to a
 
 ```{r}
 #| fig-cap: "Regression diagnostic plots."
-#| label: "fig-diag281"
+#| label: fig-diag281
 #| fig-show: hold
 #| out-width: 50%
 plot(star_mod)
@@ -250,7 +250,7 @@ By providing a number in the `which` option, we can select the plot we want, @fi
 ```{r}
 #| fig-cap: "A diagnostic residual plot."
 #| warning: false
-#| label: "fig-diag282"
+#| label: fig-diag282
 plot(star_mod,which = 1)
 ```
 
@@ -265,7 +265,7 @@ As it's name suggests, this plot evaluates the normality of the residuals. We ha
 ```{r}
 #| fig-cap: "The quantile-quantile plot for checking normality."
 #| warning: false
-#| label: "fig-diag283"
+#| label: fig-diag283
 plot(star_mod,which = 2)
 ```
 
@@ -284,7 +284,7 @@ This plot illustrates the spread of the residuals over the entire range of the p
 ```{r}
 #| fig-cap: "A scale-location diagnostic residual plot."
 #| warning: false
-#| label: "fig-diag284"
+#| label: fig-diag284
 plot(star_mod,which=3)
 ```
 
@@ -307,7 +307,7 @@ An outlier is a **influential point** if it drastically alters the regression ou
 #| echo: false 
 #| warning: false
 #| fig-cap: "Examples of outliers and leverage points."
-#| label: "fig-resid282"
+#| label: fig-resid282
 library(openintro)
 data(COL)
 data(possum)
@@ -400,7 +400,7 @@ The residuals vs leverage plot is a good way to identify influential observation
 
 ```{r}
 #| fig-cap: "Diagnostic plots for Starbucks regression model."
-#| label: "fig-diag286"
+#| label: fig-diag286
 plot(star_mod,5)
 ```
 

@@ -157,7 +157,7 @@ To learn more about these functions, type `?` followed the function in the conso
 @fig-binom
 
 ```{r}
-#| label: "fig-binom"
+#| label: fig-binom
 #| fig-align: "center"
 #| fig-cap: "The pmf of a binomial random variable"
 gf_dist("binom",size=20,prob=.5) %>%
@@ -244,7 +244,7 @@ qpois(0.95,2.8)
 @fig-pois is a plot of the pmf of a Poisson random variable.
 
 ```{r}
-#| label: "fig-pois"
+#| label: fig-pois
 #| fig-align: "center"
 #| fig-cap: "The pmf of a Poisson random variable."
 gf_dist("pois",lambda=2.8) %>%
@@ -255,7 +255,7 @@ gf_dist("pois",lambda=2.8) %>%
 @fig-pois2 is the cdf of the same Poisson random variable in @fig-pois.
 
 ```{r}
-#| label: "fig-pois2"
+#| label: fig-pois2
 #| fig-align: "center"
 #| fig-cap: "The cdf of the Poisson random variable in @fig-pois"
 gf_dist("pois",lambda=2.8,kind="cdf") %>%
@@ -283,7 +283,7 @@ First we should identify a random variable that will help us with this problem. 
 First, the plot of the pmf of the hypergeometric is in #fig-hyper.
 
 ```{r}
-#| label: "fig-hyper"
+#| label: fig-hyper
 #| fig-align: "center"
 #| fig-cap: "The pmf of a hypergeometric random variable."
 gf_dist("hyper",m=8,n=12,k=6) %>%

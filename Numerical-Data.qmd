@@ -22,7 +22,7 @@ library(mosaic)
 library(usdata)
 ```
 
-```{r warning=FALSE,echo=FALSE,warning=FALSE,message=FALSE}
+```{r warning=FALSE,echo=FALSE}
 county_M377 <- county_complete %>% 
   select(name, state, pop2000, pop2010, fed_spend = fed_spending_2009, 
          poverty = poverty_2010, homeownership = homeownership_2010, 
@@ -40,7 +40,7 @@ This chapter introduces techniques for exploring and summarizing numerical varia
 A **scatterplot** provides a case-by-case view of data for two numerical variables. In @fig-scat5, we again present a scatterplot used to examine how federal spending and poverty are related in the `county` data set.
 
 ```{r}
-#| label: "fig-scat5"
+#| label: fig-scat5
 #| echo: false
 #| fig-cap: "A scatterplot showing fed_spend against poverty. Owsley County of Kentucky, with a poverty rate of 41.5% and federal spending of $21.50 per capita, is highlighted."
 plot(county_M377$poverty, county_M377$fed_spend, 
@@ -64,7 +64,7 @@ text(43, 29,
 Another scatterplot is shown in @fig-scat52, comparing the number of `line_breaks` and number of characters, `num_char`, in emails for the `email50` data set. In any scatterplot, each point represents a single case. Since there are 50 cases in `email50`, there are 50 points in @fig-scat52.
 
 ```{r}
-#| label: "fig-scat52"
+#| label: fig-scat52
 #| echo: false
 #| fig-cap: "A scatterplot of `line_breaks` versus `num_char` for the `email50` data."
 data(COL)
@@ -81,17 +81,17 @@ mtext("Number of Characters (in thousands)", 1, 1.9)
 To put the number of characters in perspective, this paragraph in the text has 357 characters. Looking at @fig-scat52, it seems that some emails are incredibly long! Upon further investigation, we would actually find that most of the long emails use the HTML format, which means most of the characters in those emails are used to format the email rather than provide text.
 
 > **Exercise**:\
-> What do scatterplots reveal about the data, and how might they be useful?[^05-numerical-data-1]
+> What do scatterplots reveal about the data, and how might they be useful?[^numerical-data-1]
 
-[^05-numerical-data-1]: Answers may vary. Scatterplots are helpful in quickly spotting associations between variables, whether those associations represent simple or more complex relationships.
+[^numerical-data-1]: Answers may vary. Scatterplots are helpful in quickly spotting associations between variables, whether those associations represent simple or more complex relationships.
 
 > *Example*:\
-> Consider a new data set of 54 cars with two variables: vehicle price and weight.[^05-numerical-data-2] A scatterplot of vehicle price versus weight is shown in @fig-scat53. What can be said about the relationship between these variables?
+> Consider a new data set of 54 cars with two variables: vehicle price and weight.[^numerical-data-2] A scatterplot of vehicle price versus weight is shown in @fig-scat53. What can be said about the relationship between these variables?
 
-[^05-numerical-data-2]: Subset of data from http://www.amstat.org/publications/jse/v1n1/datasets.lock.html
+[^numerical-data-2]: Subset of data from http://www.amstat.org/publications/jse/v1n1/datasets.lock.html
 
 ```{r}
-#| label: "fig-scat53"
+#| label: fig-scat53
 #| echo: false
 #| fig-cap: "A scatterplot of *price* versus *weight* for 54 cars."
 data(cars93)
@@ -111,15 +111,15 @@ lines(w, p, lty = 2, col = COL[5, 3])
 The relationship is evidently nonlinear, as highlighted by the dashed line. This is different from previous scatterplots we've seen which show relationships that are very linear.
 
 > **Exercise**:\
-> Describe two variables that would have a horseshoe-shaped association in a scatterplot.[^05-numerical-data-3]
+> Describe two variables that would have a horseshoe-shaped association in a scatterplot.[^numerical-data-3]
 
-[^05-numerical-data-3]: Consider the case where your vertical axis represents something "good" and your horizontal axis represents something that is only good in moderation. Health and water consumption fit this description since water becomes toxic when consumed in excessive quantities.
+[^numerical-data-3]: Consider the case where your vertical axis represents something "good" and your horizontal axis represents something that is only good in moderation. Health and water consumption fit this description since water becomes toxic when consumed in excessive quantities.
 
 ### The mean
 
-The **mean**, sometimes called the average, is a common way to measure the center of a **distribution**[^05-numerical-data-4] of data. To find the mean number of characters in the 50 emails, we add up all the character counts and divide by the number of emails. For computational convenience, the number of characters is listed in the thousands and rounded to the first decimal.
+The **mean**, sometimes called the average, is a common way to measure the center of a **distribution**[^numerical-data-4] of data. To find the mean number of characters in the 50 emails, we add up all the character counts and divide by the number of emails. For computational convenience, the number of characters is listed in the thousands and rounded to the first decimal.
 
-[^05-numerical-data-4]: The distribution of a variable is essentially the collection of all values of the variable in the data set. It tells us what values the variable takes on and how often. In the `email50` data set, we used a dotplot to view the distribution of `num_char`.
+[^numerical-data-4]: The distribution of a variable is essentially the collection of all values of the variable in the data set. It tells us what values the variable takes on and how often. In the `email50` data set, we used a dotplot to view the distribution of `num_char`.
 
 $$\bar{x} = \frac{21.7 + 7.0 + \cdots + 15.8}{50} = 11.6$$
 
@@ -137,14 +137,14 @@ The sample mean is often labeled $\bar{x}$. There is a bar over the letter, and 
 where $x_1, x_2, \dots, x_n$ represent the $n$ observed values.
 
 > **Exercise**:\
-> Examine the two equations above. What does $x_1$ correspond to? And $x_2$? Can you infer a general meaning to what $x_i$ might represent?[^05-numerical-data-5]
+> Examine the two equations above. What does $x_1$ correspond to? And $x_2$? Can you infer a general meaning to what $x_i$ might represent?[^numerical-data-5]
 
-[^05-numerical-data-5]: $x_1$ corresponds to the number of characters in the first email in the sample (21.7, in thousands), $x_2$ to the number of characters in the second email (7.0, in thousands), and $x_i$ corresponds to the number of characters in the $i^{th}$ email in the data set.
+[^numerical-data-5]: $x_1$ corresponds to the number of characters in the first email in the sample (21.7, in thousands), $x_2$ to the number of characters in the second email (7.0, in thousands), and $x_i$ corresponds to the number of characters in the $i^{th}$ email in the data set.
 
 > **Exercise**:\
-> What was $n$ in this sample of emails?[^05-numerical-data-6]
+> What was $n$ in this sample of emails?[^numerical-data-6]
 
-[^05-numerical-data-6]: The sample size, $n = 50$.
+[^numerical-data-6]: The sample size, $n = 50$.
 
 The `email50` data set is a sample from a larger population of emails that were received in January and March. We could compute a mean for this population in the same way as the sample mean. However, there is a difference in notation: the population mean has a special label: $\mu$. The symbol $\mu$ is the Greek letter *mu* and represents the average of all observations in the population. Sometimes a subscript, such as $_x$, is used to represent which variable the population mean refers to, e.g. $\mu_x$.
 
@@ -157,9 +157,9 @@ The sample mean, 11.6, may provide a reasonable estimate of $\mu_x$. While this 
 
 The `county` data set is special in that each county actually represents many individual people. If we were to simply average across the `income` variable, we would be treating counties with 5,000 and 5,000,000 residents equally in the calculations. Instead, we should compute the total income for each county, add up all the counties' totals, and then divide by the number of people in all the counties. If we completed these steps with the `county` data, we would find that the per capita income for the US is \$27,348.43. Had we computed the *simple* mean of per capita income across counties, the result would have been just \$22,504.70!
 
-This previous example used what is called a **weighted mean**[^05-numerical-data-7], which will be a key topic in the probability section. As a look ahead, the probability mass function gives the population proportions of each county's mean value, and thus, to find the population mean $\mu$, we will use a weighted mean.
+This previous example used what is called a **weighted mean**[^numerical-data-7], which will be a key topic in the probability section. As a look ahead, the probability mass function gives the population proportions of each county's mean value, and thus, to find the population mean $\mu$, we will use a weighted mean.
 
-[^05-numerical-data-7]: A weighted mean is an average in which some observations contribute more "weight" than others. In the `county` data set, we "weighted" the income for each county by dividing income by the county population.
+[^numerical-data-7]: A weighted mean is an average in which some observations contribute more "weight" than others. In the `county` data set, we "weighted" the income for each county by dividing income by the county population.
 
 ### Histograms and shape
 
@@ -169,12 +169,12 @@ Rather than showing the exact value of each observation for a single variable, t
 table(cut(email50$num_char, breaks = seq(0, 65, 5)))
 ```
 
-These binned counts are plotted as bars in @fig-hist5 in what is called a **histogram**[^05-numerical-data-8].
+These binned counts are plotted as bars in @fig-hist5 in what is called a **histogram**[^numerical-data-8].
 
-[^05-numerical-data-8]: A histogram displays the distribution of a quantitative variable. It shows binned counts, the number of observations in a bin, or range of values.
+[^numerical-data-8]: A histogram displays the distribution of a quantitative variable. It shows binned counts, the number of observations in a bin, or range of values.
 
 ```{r}
-#| label: "fig-hist5"
+#| label: fig-hist5
 #| echo: false
 #| fig-cap: "A histogram of `num_char`. This distribution is very strongly skewed to the right."
 email50 %>%
@@ -186,9 +186,9 @@ email50 %>%
 
 Histograms provide a view of the **data density**. Higher bars represent where the data are relatively more dense. For instance, there are many more emails between 0 and 10,000 characters than emails between 10,000 and 20,000 characters in the data set. The bars make it easy to see how the density of the data changes relative to the number of characters.
 
-Histograms are especially convenient for describing the shape of the data distribution. @fig-hist5 shows that most emails have a relatively small number of characters, while fewer emails have a very large number of characters. When data trail off to the right in this way and have a longer right **tail**, the shape is said to be **right skewed**.[^05-numerical-data-9]
+Histograms are especially convenient for describing the shape of the data distribution. @fig-hist5 shows that most emails have a relatively small number of characters, while fewer emails have a very large number of characters. When data trail off to the right in this way and have a longer right **tail**, the shape is said to be **right skewed**.[^numerical-data-9]
 
-[^05-numerical-data-9]: Other ways to describe data that are skewed to the right: **skewed to the right**, **skewed to the high end**, or **skewed to the positive end**.
+[^numerical-data-9]: Other ways to describe data that are skewed to the right: **skewed to the right**, **skewed to the high end**, or **skewed to the positive end**.
 
 Data sets with the reverse characteristic -- a long, thin tail to the left -- are said to be **left skewed**. We also say that such a distribution has a long left tail. Data sets that show roughly equal trailing off in both directions are called **symmetric**.
 
@@ -228,9 +228,9 @@ email50 %>%
    gf_theme(theme_classic())
 ```
 
-In addition to looking at whether a distribution is skewed or symmetric, histograms can be used to identify modes. A **mode** is represented by a prominent peak in the distribution.[^05-numerical-data-10] There is only one prominent peak in the histogram of `num_char`.
+In addition to looking at whether a distribution is skewed or symmetric, histograms can be used to identify modes. A **mode** is represented by a prominent peak in the distribution.[^numerical-data-10] There is only one prominent peak in the histogram of `num_char`.
 
-[^05-numerical-data-10]: Another definition of mode, which is not typically used in statistics, is the value with the most occurrences. It is common to have *no* observations with the same value in a data set, which makes this other definition useless for many real data sets.
+[^numerical-data-10]: Another definition of mode, which is not typically used in statistics, is the value with the most occurrences. It is common to have *no* observations with the same value in a data set, which makes this other definition useless for many real data sets.
 
 @fig-histmulti shows histograms that have one, two, or three prominent peaks. Such distributions are called **unimodal**, **bimodal**, and **multimodal**, respectively. Any distribution with more than 2 prominent peaks is called multimodal. Notice that there was one prominent peak in the unimodal distribution with a second less prominent peak that was not counted since the separation between the two peaks is relatively small, and it only differs from its neighboring bins by a few observations.
 
@@ -246,7 +246,7 @@ x3 <- c(rchisq(20, 3), rnorm(35, 12), rnorm(42, 18, 1.5))
 ```
 
 ```{r}
-#| label: "fig-histmulti"
+#| label: fig-histmulti
 #| echo: false
 #| fig-cap: "Histograms that demonstrate unimodal, bimodal, and multimodal data."
 
@@ -265,9 +265,9 @@ ggplot(data, aes(x = value)) +
 ```
 
 > **Exercise**:\
-> Height measurements of young students and adult teachers at a K-3 elementary school were taken. How many modes would you anticipate in this height data set?[^05-numerical-data-11]
+> Height measurements of young students and adult teachers at a K-3 elementary school were taken. How many modes would you anticipate in this height data set?[^numerical-data-11]
 
-[^05-numerical-data-11]: There might be two height groups visible in the data set: one for the students and one for the adults. That is, the data are probably bimodal. But it could be multimodal because within each group we may be able to see a difference in males and females.
+[^numerical-data-11]: There might be two height groups visible in the data set: one for the students and one for the adults. That is, the data are probably bimodal. But it could be multimodal because within each group we may be able to see a difference in males and females.
 
 > **Looking for modes**\
 > Looking for modes isn't about finding a clear and correct answer about the number of modes in a distribution, which is why **prominent** is not rigorously defined in these notes. The important part of this examination is to better understand your data and how it might be structured.
@@ -277,7 +277,7 @@ ggplot(data, aes(x = value)) +
 Another useful plotting method uses **density plots** to visualize numerical data. A histogram bins data but is highly dependent on the number and boundary of the bins. A density plot also estimates the distribution of a numerical variable but does this by estimating the density of data points in a small window around each data point. The overall curve is the sum of this small density estimate. A density plot can be thought of as a smooth version of the histogram. Several options go into a density estimate, such as the width of the window and type of smoothing function. These ideas are beyond the scope here and we will just use the default options. @fig-dens5 shows the same distribution of the number of characters but in a smoother way than a histogram.
 
 ```{r}
-#| label: "fig-dens5"
+#| label: fig-dens5
 #| echo: false
 #| fig-cap: "A histogram of `num_char`. This distribution is very strongly skewed to the right."
 email50 %>%
@@ -347,9 +347,9 @@ The sample standard deviation of the number of characters in an email is 13.13 t
 > **Variance and standard deviation**\
 > The variance is roughly the average squared distance from the mean. The standard deviation is the square root of the variance and describes how close the data are to the mean.
 
-Formulas and methods used to compute the variance and standard deviation for a population are similar to those used for a sample.[^05-numerical-data-12] However, like the mean, the population values have special symbols: $\sigma_{}^2$ for the variance and $\sigma$ for the standard deviation. The symbol $\sigma$ is the Greek letter *sigma*.
+Formulas and methods used to compute the variance and standard deviation for a population are similar to those used for a sample.[^numerical-data-12] However, like the mean, the population values have special symbols: $\sigma_{}^2$ for the variance and $\sigma$ for the standard deviation. The symbol $\sigma$ is the Greek letter *sigma*.
 
-[^05-numerical-data-12]: The only difference is that the population variance has a division by $n$ instead of $n - 1$.
+[^numerical-data-12]: The only difference is that the population variance has a division by $n$ instead of $n - 1$.
 
 > **Tip: standard deviation describes variability**\
 > Focus on the conceptual meaning of the standard deviation as a descriptor of variability rather than the formulas. Usually 70% of the data will be within one standard deviation of the mean and about 95% will be within two standard deviations. However, as we have seen, these percentages are not strict rules.
@@ -381,7 +381,7 @@ xR <- c(-1, 1)*max(c(x1, x2, x3))
 ```
 
 ```{r}
-#| label: "fig-hist53"
+#| label: fig-hist53
 #| echo: false
 #| fig-cap: "The first of three very different population distributions with the same mean, 0, and standard deviation, 1."
 gf_histogram(~x1, breaks = c(-1.05, -0.95, 0.95, 1.05), 
@@ -390,7 +390,7 @@ gf_histogram(~x1, breaks = c(-1.05, -0.95, 0.95, 1.05),
 ```
 
 ```{r}
-#| label: "fig-hist54"
+#| label: fig-hist54
 #| echo: false
 #| fig-cap: "The second plot with mean 0 and standard deviation 1."
 gf_histogram(~x2, bins = 25, add = TRUE, probability = TRUE, fill = COL[1], 
@@ -398,7 +398,7 @@ gf_histogram(~x2, bins = 25, add = TRUE, probability = TRUE, fill = COL[1],
 ```
 
 ```{r}
-#| label: "fig-hist55"
+#| label: fig-hist55
 #| echo: false
 #| fig-cap: "The final plot with mean 0 and standard deviation 1."
 gf_histogram(~x3, bins = 25, add = TRUE, probability = TRUE, fill = COL[1], 
@@ -406,14 +406,14 @@ gf_histogram(~x3, bins = 25, add = TRUE, probability = TRUE, fill = COL[1],
 ```
 
 > **Exercise**:\
-> Earlier, the concept of shape of a distribution was introduced. A good description of the shape of a distribution should include modality and whether the distribution is symmetric or skewed to one side. Using the three figures, [Figures @fig-hist53; -@fig-hist54; -@fig-hist55] as examples, explain why such a description is important.[^05-numerical-data-13]
+> Earlier, the concept of shape of a distribution was introduced. A good description of the shape of a distribution should include modality and whether the distribution is symmetric or skewed to one side. Using the three figures, [Figures @fig-hist53; -@fig-hist54; -@fig-hist55] as examples, explain why such a description is important.[^numerical-data-13]
 
-[^05-numerical-data-13]: Starting with Figure \@ref(fig:hist53-fig), the three figures show three distributions that look quite different, but all have the same mean, variance, and standard deviation. Using modality, we can distinguish between the first plot (bimodal) and the last two (unimodal). Using skewness, we can distinguish between the last plot (right skewed) and the first two. While a picture, like a histogram, tells a more complete story, we can use modality and shape (symmetry/skew) to characterize basic information about a distribution.
+[^numerical-data-13]: Starting with Figure \@ref(fig:hist53-fig), the three figures show three distributions that look quite different, but all have the same mean, variance, and standard deviation. Using modality, we can distinguish between the first plot (bimodal) and the last two (unimodal). Using skewness, we can distinguish between the last plot (right skewed) and the first two. While a picture, like a histogram, tells a more complete story, we can use modality and shape (symmetry/skew) to characterize basic information about a distribution.
 
 > *Example*:\
-> Describe the distribution of the `num_char` variable using the histogram in @fig-hist5. The description should incorporate the center, variability, and shape of the distribution, and it should also be placed in context: the number of characters in emails. Also note any especially unusual cases/observations.[^05-numerical-data-14]
+> Describe the distribution of the `num_char` variable using the histogram in @fig-hist5. The description should incorporate the center, variability, and shape of the distribution, and it should also be placed in context: the number of characters in emails. Also note any especially unusual cases/observations.[^numerical-data-14]
 
-[^05-numerical-data-14]: The distribution of email character counts is unimodal and very strongly skewed to the high end (right skewed). Many of the counts fall near the mean at 11,600, and most fall within one standard deviation (13,130) of the mean. There is one exceptionally long email with about 65,000 characters.
+[^numerical-data-14]: The distribution of email character counts is unimodal and very strongly skewed to the high end (right skewed). Many of the counts fall near the mean at 11,600, and most fall within one standard deviation (13,130) of the mean. There is one exceptionally long email with about 65,000 characters.
 
 In practice, the variance and standard deviation are sometimes used as a means to an end, where the *end* is being able to accurately estimate the uncertainty associated with a sample statistic. For example, later in the book we will use the variance and standard deviation to assess how close the sample mean is to the population mean.
 
@@ -422,7 +422,7 @@ In practice, the variance and standard deviation are sometimes used as a means t
 A **box plot** summarizes a data set using five statistics, while also plotting unusual observations. @fig-box provides an annotated vertical dot plot alongside a box plot of the `num_char` variable from the `email50` data set.
 
 ```{r}
-#| label: "fig-box"
+#| label: fig-box
 #| echo: false
 #| fig-cap: "A vertical dot plot next to a labeled box plot for the number of characters in 50 emails. The median (6,890), splits the data into the bottom 50% and the top 50%, marked in the dot plot by horizontal dashes and open circles, respectively."
 data(email50)
@@ -482,13 +482,13 @@ The second step in building a box plot is drawing a rectangle to represent the m
 > The IQR is the length of the box in a box plot. It is computed as $$ IQR = Q_3 - Q_1 $$ where $Q_1$ and $Q_3$ are the $25^{th}$ and $75^{th}$ percentiles, respectively.
 
 > **Exercise**:\
-> What percent of the data fall between $Q_1$ and the median? What percent is between the median and $Q_3$?[^05-numerical-data-15]
+> What percent of the data fall between $Q_1$ and the median? What percent is between the median and $Q_3$?[^numerical-data-15]
 
-[^05-numerical-data-15]: Since $Q_1$ and $Q_3$ capture the middle 50% of the data and the median splits the data in the middle, 25% of the data fall between $Q_1$ and the median, and another 25% fall between the median and $Q_3$.
+[^numerical-data-15]: Since $Q_1$ and $Q_3$ capture the middle 50% of the data and the median splits the data in the middle, 25% of the data fall between $Q_1$ and the median, and another 25% fall between the median and $Q_3$.
 
-Extending out from the box, the **whiskers** attempt to capture the data outside of the box, however, their reach is never allowed to be more than $1.5\times IQR$.[^05-numerical-data-16] They capture everything within this reach. In @fig-box, the upper whisker does not extend to the last three points, which are beyond $Q_3 + 1.5\times IQR$, and so it extends only to the last point below this limit. The lower whisker stops at the lowest value, 33, since there is no additional data to reach; the lower whisker's limit is not shown in the figure because the plot does not extend down to $Q_1 - 1.5\times IQR$. In a sense, the box is like the body of the box plot and the whiskers are like its arms trying to reach the rest of the data.
+Extending out from the box, the **whiskers** attempt to capture the data outside of the box, however, their reach is never allowed to be more than $1.5\times IQR$.[^numerical-data-16] They capture everything within this reach. In @fig-box, the upper whisker does not extend to the last three points, which are beyond $Q_3 + 1.5\times IQR$, and so it extends only to the last point below this limit. The lower whisker stops at the lowest value, 33, since there is no additional data to reach; the lower whisker's limit is not shown in the figure because the plot does not extend down to $Q_1 - 1.5\times IQR$. In a sense, the box is like the body of the box plot and the whiskers are like its arms trying to reach the rest of the data.
 
-[^05-numerical-data-16]: While the choice of exactly 1.5 is arbitrary, it is the most commonly used value for box plots.
+[^numerical-data-16]: While the choice of exactly 1.5 is arbitrary, it is the most commonly used value for box plots.
 
 Any observation that lies beyond the whiskers is labeled with a dot. The purpose of labeling these points -- instead of just extending the whiskers to the minimum and maximum observed values -- is to help identify any observations that appear to be unusually distant from the rest of the data. Unusually distant observations are called **outliers**. In this case, it would be reasonable to classify the emails with character counts of 41,623, 42,793, and 64,401 as outliers since they are numerically distant from most of the data.
 
@@ -502,17 +502,17 @@ Any observation that lies beyond the whiskers is labeled with a dot. The purpose
 > 3. Providing insight into interesting properties of the data.
 
 > **Exercise**:\
-> The observation with value 64,401, an outlier, was found to be an accurate observation. What would such an observation suggest about the nature of character counts in emails?[^05-numerical-data-17]
+> The observation with value 64,401, an outlier, was found to be an accurate observation. What would such an observation suggest about the nature of character counts in emails?[^numerical-data-17]
 
-[^05-numerical-data-17]: That occasionally there may be very long emails.
+[^numerical-data-17]: That occasionally there may be very long emails.
 
 > **Exercise**:\
 > Using @fig-box, estimate the following values for `num_char` in the `email50` data set:\
 > (a) $Q_1$,\
 > (b) $Q_3$, and\
-> (c) IQR.[^05-numerical-data-18]
+> (c) IQR.[^numerical-data-18]
 
-[^05-numerical-data-18]: These visual estimates will vary a little from one person to the next: $Q_1$ \~ 3,000, $Q_3$ \~ 15,000, IQR = $Q_3 - Q_1$ \~ 12,000. (The true values: \$Q_1 = \$ 2,536, \$Q_3 = \$ 15,411, IQR = 12,875.)
+[^numerical-data-18]: These visual estimates will vary a little from one person to the next: $Q_1$ \~ 3,000, $Q_3$ \~ 15,000, IQR = $Q_3 - Q_1$ \~ 12,000. (The true values: \$Q_1 = \$ 2,536, \$Q_3 = \$ 15,411, IQR = 12,875.)
 
 Of course, `R` can calculate these summary statistics for us. First, we will do these calculations individually and then in one function call. Remember to ask yourself what you want `R` to do and what it needs to do this.
 
@@ -549,7 +549,7 @@ head(robust)
 Now, we create a side-by-side boxplots for each scenario.
 
 ```{r}
-#| label: "fig-box2"
+#| label: fig-box2
 #| fig-cap: "Box plots of the original character count data and two modified data sets, one where the outlier at 64,401 is dropped and one where its value is increased."
 gf_boxplot(value ~ group, data = robust, xlab = "Data Group",
            ylab = "Number of Characters (in thousands)") %>%
@@ -565,31 +565,31 @@ favstats(value ~ group, data = robust)
 Notice by using the formula notation, we were able to calculate the summary statistics within each group.
 
 > **Exercise**:\
-> (a) Which is affected more by extreme observations, the mean or median? The data summary may be helpful.[^05-numerical-data-19]\
-> (b) Which is affected more by extreme observations, the standard deviation or IQR?[^05-numerical-data-20]
+> (a) Which is affected more by extreme observations, the mean or median? The data summary may be helpful.[^numerical-data-19]\
+> (b) Which is affected more by extreme observations, the standard deviation or IQR?[^numerical-data-20]
 
-[^05-numerical-data-19]: The mean is affected more.
+[^numerical-data-19]: The mean is affected more.
 
-[^05-numerical-data-20]: The standard deviation is affected more.
+[^numerical-data-20]: The standard deviation is affected more.
 
 The median and IQR are called **robust statistics** because extreme observations have little effect on their values. The mean and standard deviation are affected much more by changes in extreme observations.
 
 > *Example*:\
-> The median and IQR do not change much under the three scenarios above. Why might this be the case?[^05-numerical-data-21]
+> The median and IQR do not change much under the three scenarios above. Why might this be the case?[^numerical-data-21]
 
-[^05-numerical-data-21]: The median and IQR are only sensitive to numbers near $Q_1$, the median, and $Q_3$. Since values in these regions are relatively stable -- there aren't large jumps between observations -- the median and IQR estimates are also quite stable.
+[^numerical-data-21]: The median and IQR are only sensitive to numbers near $Q_1$, the median, and $Q_3$. Since values in these regions are relatively stable -- there aren't large jumps between observations -- the median and IQR estimates are also quite stable.
 
 > **Exercise**:\
-> The distribution of vehicle prices tends to be right skewed, with a few luxury and sports cars lingering out into the right tail. If you were searching for a new car and cared about price, should you be more interested in the mean or median price of vehicles sold, assuming you are in the market for a regular car?[^05-numerical-data-22]
+> The distribution of vehicle prices tends to be right skewed, with a few luxury and sports cars lingering out into the right tail. If you were searching for a new car and cared about price, should you be more interested in the mean or median price of vehicles sold, assuming you are in the market for a regular car?[^numerical-data-22]
 
-[^05-numerical-data-22]: Buyers of a *regular car* should be more concerned about the median price. High-end car sales can drastically inflate the mean price while the median will be more robust to the influence of those sales.
+[^numerical-data-22]: Buyers of a *regular car* should be more concerned about the median price. High-end car sales can drastically inflate the mean price while the median will be more robust to the influence of those sales.
 
 ### Transforming data
 
 When data are very strongly skewed, we sometimes transform them so they are easier to model. Consider the histogram of Major League Baseball players' salaries from 2010, which is shown in @fig-hist510.
 
 ```{r}
-#| label: "fig-hist510"
+#| label: fig-hist510
 #| echo: false
 #| fig-cap: "Histogram of MLB player salaries for 2010, in millions of dollars."
 gf_histogram(~salary / 1000, data = mlb, main = "", bins = 15, 
@@ -599,16 +599,16 @@ gf_histogram(~salary / 1000, data = mlb, main = "", bins = 15,
 ```
 
 > *Example*:\
-> The histogram of MLB player salaries is somewhat useful because we can see that the data are extremely skewed and centered (as gauged by the median) at about \$1 million. What about this plot is not useful?[^05-numerical-data-23]
+> The histogram of MLB player salaries is somewhat useful because we can see that the data are extremely skewed and centered (as gauged by the median) at about \$1 million. What about this plot is not useful?[^numerical-data-23]
 
-[^05-numerical-data-23]: Most of the data are collected into one bin in the histogram and the data are so strongly skewed that many details in the data are obscured.
+[^numerical-data-23]: Most of the data are collected into one bin in the histogram and the data are so strongly skewed that many details in the data are obscured.
 
-There are some standard transformations that are often applied when much of the data cluster near zero (relative to the larger values in the data set) and all observations are positive. A **transformation** is a rescaling of the data using a function. For instance, a plot of the natural logarithm[^05-numerical-data-24] of player salaries results in a new histogram in @fig-hist512. Transformed data are sometimes easier to work with when applying statistical models because the transformed data are much less skewed and outliers are usually less extreme.
+There are some standard transformations that are often applied when much of the data cluster near zero (relative to the larger values in the data set) and all observations are positive. A **transformation** is a rescaling of the data using a function. For instance, a plot of the natural logarithm[^numerical-data-24] of player salaries results in a new histogram in @fig-hist512. Transformed data are sometimes easier to work with when applying statistical models because the transformed data are much less skewed and outliers are usually less extreme.
 
-[^05-numerical-data-24]: Statisticians often write the natural logarithm as $\log$. You might be more familiar with it being written as $\ln$.
+[^numerical-data-24]: Statisticians often write the natural logarithm as $\log$. You might be more familiar with it being written as $\ln$.
 
 ```{r}
-#| label: "fig-hist512"
+#| label: fig-hist512
 #| echo: false
 #| fig-cap: "Histogram of the log-transformed MLB player salaries for 2010."
 gf_histogram(~log(salary / 1000), data = mlb, bins = 15, 
@@ -620,7 +620,7 @@ gf_histogram(~log(salary / 1000), data = mlb, bins = 15,
 Transformations can also be applied to one or both variables in a scatterplot. A scatterplot of the original `line_breaks` and `num_char` variables is shown in @fig-scat52 above. We can see a positive association between the variables and that many observations are clustered near zero. Later in this text, we might want to use a straight line to model the data. However, we'll find that the data in their current state cannot be modeled very well. @fig-scat513 shows a scatterplot where both `line_breaks` and `num_char` have been transformed using a natural log (log base $e$) transformation. While there is a positive association in each plot, the transformed data show a steadier trend, which is easier to model than the original (un-transformed) data.
 
 ```{r}
-#| label: "fig-scat513"
+#| label: fig-scat513
 #| echo: false
 #| fig-cap: "A scatterplot of `line_breaks` versus `num_char` for the `email50` data, where both variables have been log-transformed."
 data(COL)

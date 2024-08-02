@@ -29,9 +29,9 @@ A plausible range of values for the population parameter is called a **confidenc
 
 If we report a point estimate, we probably will not hit the exact population parameter. On the other hand, if we report a range of plausible values -- a confidence interval -- we have a good shot at capturing the parameter.
 
-> **Exercise**: If we want to be very certain we capture the population parameter, should we use a wider interval or a smaller interval?[^24-confidence-intervals-1]
+> **Exercise**: If we want to be very certain we capture the population parameter, should we use a wider interval or a smaller interval?[^confidence-intervals-1]
 
-[^24-confidence-intervals-1]: If we want to be more certain we will capture the fish, we should use a wider net. Likewise, we use a wider confidence interval if we want to be more certain that we capture the parameter. A higher level of confidence implies a wider interval.
+[^confidence-intervals-1]: If we want to be more certain we will capture the fish, we should use a wider net. Likewise, we use a wider confidence interval if we want to be more certain that we capture the parameter. A higher level of confidence implies a wider interval.
 
 ### Constructing a confidence interval
 
@@ -90,7 +90,7 @@ $$
 where $z_{\alpha/2}$ is such that $\Prob(Z\geq z_{\alpha/2}) = \alpha/2$, where $Z\sim \textsf{Norm}(0,1)$. See @fig-dens241 for an illustration.
 
 ```{r}
-#| label: "fig-dens241"
+#| label: fig-dens241
 #| warning: false
 #| echo: false
 #| fig-cap: "The pdf of a standard normal distribution, showing the idea of how to develop a confidence interval." 
@@ -190,9 +190,9 @@ As a reminder, we need to be careful with the interpretation of the confidence i
 
 > **Important Note**: There is a link between hypothesis testing and confidence intervals. A confidence interval provides us with a range of feasible values for the parameter. In hypothesis testing, we are trying to determine whether the null hypothesized value is a feasible value of the parameter. Remember when we used the body temperature data in a hypothesis test, the null hypothesis was $H_0$: The average body temperature is 98.6 degrees Fahrenheit, $\mu = 98.6$. This null hypothesized value is not inside the interval, so we could reject the null hypothesis with this confidence interval and conclude that 98.6 degrees is not a feasible value of the true mean body temperature.
 
-We could also use `R` to find the confidence interval and conduct the hypothesis test. Notice that the connection between confidence intervals and hypothesis testing is reinforced here; we can use the `t_test()` function to conduct a $t$-test and to calculate a confidence interval.[^24-confidence-intervals-2] Read about the function `t_test()` in the help menu to determine why we used the `mu` option.
+We could also use `R` to find the confidence interval and conduct the hypothesis test. Notice that the connection between confidence intervals and hypothesis testing is reinforced here; we can use the `t_test()` function to conduct a $t$-test and to calculate a confidence interval.[^confidence-intervals-2] Read about the function `t_test()` in the help menu to determine why we used the `mu` option.
 
-[^24-confidence-intervals-2]: We could also find a bootstrap confidence interval here. Then, if the bootstrap distribution looks like a $t$ distribution, we can use a $t$ interval with the bootstrap estimate of the standard error.
+[^confidence-intervals-2]: We could also find a bootstrap confidence interval here. Then, if the bootstrap distribution looks like a $t$ distribution, we can use a $t$ interval with the bootstrap estimate of the standard error.
 
 ```{r}
 t_test(~temperature, data = temperature, mu = 98.6)
@@ -234,7 +234,7 @@ confint(t_test(~temperature, data = temperature, alternative = "less"))
 Notice that the probability in `qt()` has been adjusted to calculate $t_{1 - \alpha}$. Additionally, the upper bound in the one-sided interval is smaller than the upper bound in the two-sided interval because all 0.05 is going into the upper tail. See @fig-dens242 for an illustration of a one-sided interval.
 
 ```{r}
-#| label: "fig-dens242"
+#| label: fig-dens242
 #| warning: false
 #| echo: false
 #| fig-cap: "The pdf of a standard normal distribution, showing the idea of how to develop a one-sided confidence interval." 
@@ -337,9 +337,9 @@ where $p_{\text{control}}$ and $p_{\text{treatment}}$ are the proportion of pati
 
 $$SE \approx \sqrt{\frac{0.22(1 - 0.22)}{50} + \frac{0.35(1 - 0.35)}{40}} = 0.0955$$
 
-It is close to the pooled value[^24-confidence-intervals-3] because of the nearly equal sample sizes.
+It is close to the pooled value[^confidence-intervals-3] because of the nearly equal sample sizes.
 
-[^24-confidence-intervals-3]: When the null hypothesis is that $p_1 - p_2 = 0$, we sometimes use the *pooled proportion* to check the success-failure condition and calculate the standard error. In our example, the pooled proportion is $$\hat{p}_{\text{pooled}} = \frac{11 + 14}{90} = 0.278$$ The success-failure condition is met and the standard error (using the pooled proportion) is 0.09501. We leave it to the reader to find out more about using pooled standard deviations with two samples.
+[^confidence-intervals-3]: When the null hypothesis is that $p_1 - p_2 = 0$, we sometimes use the *pooled proportion* to check the success-failure condition and calculate the standard error. In our example, the pooled proportion is $$\hat{p}_{\text{pooled}} = \frac{11 + 14}{90} = 0.278$$ The success-failure condition is met and the standard error (using the pooled proportion) is 0.09501. We leave it to the reader to find out more about using pooled standard deviations with two samples.
 
 The critical value is again found from the normal quantile.
 
@@ -381,9 +381,9 @@ $$\text{point estimate}\ \pm\ 1.96\times SE $$
 
 There are three components to this interval: the point estimate, "1.96", and the standard error. The choice of $1.96\times SE$, which is also called **margin of error**, was based on capturing 95% of the data because the estimate is within 1.96 standard errors of the true value about 95% of the time. The choice of 1.96 corresponds to a 95% confidence level. Thinking back to the 68-95-99.7 rule for the normal distribution (see the homework in Chapter \@ref(CONTNNAMED)) may be helpful here as well.
 
-> **Exercise**: If $X$ is a normally distributed random variable, how often will $X$ be within 2.58 standard deviations of the mean?[^24-confidence-intervals-4]
+> **Exercise**: If $X$ is a normally distributed random variable, how often will $X$ be within 2.58 standard deviations of the mean?[^confidence-intervals-4]
 
-[^24-confidence-intervals-4]: This is equivalent to asking how often a standard normal variable will be greater than -2.58 but less than 2.58. To determine this probability, look up -2.58 and 2.58 in `R` using `pnorm()` (0.0049 and 0.9951). Thus, there is a $0.9951-0.0049 \approx 0.99$ probability that the unobserved random variable $X$ will be within 2.58 standard deviations of the mean.
+[^confidence-intervals-4]: This is equivalent to asking how often a standard normal variable will be greater than -2.58 but less than 2.58. To determine this probability, look up -2.58 and 2.58 in `R` using `pnorm()` (0.0049 and 0.9951). Thus, there is a $0.9951-0.0049 \approx 0.99$ probability that the unobserved random variable $X$ will be within 2.58 standard deviations of the mean.
 
 To create a 99% confidence interval, change 1.96 in the 95% confidence interval formula to be $2.58$. We can use `qnorm()` to calculate this value. Remember that `qnorm()` uses the lower tail probability, so if we want 0.99 probability in the middle of the interval, we need to use 0.995 in the function. Follow the same reasoning to calculate confidence intervals with different confidence levels.
 
@@ -395,9 +395,9 @@ The normal approximation is crucial to the precision of these confidence interva
 
 ## Changing the sample size
 
-> **Exercise**: By how much do we have to increase the sample size in order to reduce the margin of error by half?[^24-confidence-intervals-5]
+> **Exercise**: By how much do we have to increase the sample size in order to reduce the margin of error by half?[^confidence-intervals-5]
 
-[^24-confidence-intervals-5]: We need to multiply the sample size by four in order to reduce the standard error, and hence, the margin of error, by half. This is because $\sqrt{n}$ is in the denominator of the standard error. If we wanted to reduce the margin of error to one-third of its value, we would need to multiply the sample size by nine.
+[^confidence-intervals-5]: We need to multiply the sample size by four in order to reduce the standard error, and hence, the margin of error, by half. This is because $\sqrt{n}$ is in the denominator of the standard error. If we wanted to reduce the margin of error to one-third of its value, we would need to multiply the sample size by nine.
 
 The equation for a confidence interval for a mean is
 

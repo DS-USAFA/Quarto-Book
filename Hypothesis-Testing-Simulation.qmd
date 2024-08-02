@@ -23,9 +23,9 @@ library(knitr)
 
 ## Introduction
 
-In this chapter we will introduce hypothesis testing. It is really an extension of the case study. We will put more emphasis on terms and core concepts. In this chapter, we will use a computational solution but this will lead us into thinking of mathematical solutions.[^19-hypothesis-testing-simulation-1] The role of the analyst is always key regardless of the perceived power of the computer. The analyst must take the research question and translate it into a numeric metric for evaluation. The analyst must decide on the type of data and its collection to evaluate the question. The analyst must evaluate the variability in the metric and determine what that means in relation to the original research question. The analyst must propose an answer.
+In this chapter we will introduce hypothesis testing. It is really an extension of the case study. We will put more emphasis on terms and core concepts. In this chapter, we will use a computational solution but this will lead us into thinking of mathematical solutions.[^hypothesis-testing-simulation-1] The role of the analyst is always key regardless of the perceived power of the computer. The analyst must take the research question and translate it into a numeric metric for evaluation. The analyst must decide on the type of data and its collection to evaluate the question. The analyst must evaluate the variability in the metric and determine what that means in relation to the original research question. The analyst must propose an answer.
 
-[^19-hypothesis-testing-simulation-1]: In our opinion, this is how things developed historically. However, since computational tools prior to machine computers, humans in most cases, were limited and expensive, there was a shift to mathematical solutions. The relatively recent increase and availability in machine computational power has led to a shift back to computational methods. Thus, some people think mathematical methods predate computational methods, but that is not the case.
+[^hypothesis-testing-simulation-1]: In our opinion, this is how things developed historically. However, since computational tools prior to machine computers, humans in most cases, were limited and expensive, there was a shift to mathematical solutions. The relatively recent increase and availability in machine computational power has led to a shift back to computational methods. Thus, some people think mathematical methods predate computational methods, but that is not the case.
 
 ## Hypothesis testing
 
@@ -105,7 +105,7 @@ It appears that the *premium* channels are skewed to the left. A `density` plot 
 
 ```{r}
 #| fig-cap: "Commercial length broken down by channel type."
-#| label: "fig-dens191"
+#| label: fig-dens191
 ads %>%
   gf_dens(~length, color = ~channel)%>%
   gf_labs(title = "Commercial Length", 
@@ -214,8 +214,8 @@ results <- do(1000)*metric(median(length ~ shuffle(channel), data = ads))
 Next we create a plot of the distribution of the ratio of median commercial lengths in basic and premium channels, assuming they come from the same population, @fig-hist191.
 
 ```{r}
-#| label: "fig-hist191"
-#| fig-cap: "Historgram of the sampling distribution by an approxiamte permutation test."
+#| label: fig-hist191
+#| fig-cap: "Histogram of the sampling distribution by an approxiamte permutation test."
 #| warning: false
 results %>%
   gf_histogram(~test_stat) %>%
@@ -252,9 +252,9 @@ In our simulations, less than 2.7% of the simulated test statistics were greater
 
 The less than 3-in-100 chance is the $p$-value, which is a probability quantifying the strength of the evidence against the null hypothesis and in favor of the alternative.
 
-When the $p$-value is small, i.e. less than a previously set threshold, we say the results are **statistically significant**[^19-hypothesis-testing-simulation-2]. This means the data provide such strong evidence against $H_0$ that we reject the null hypothesis in favor of the alternative hypothesis. The threshold, called the **significance level** and often represented by the Greek letter $\alpha$, is typically set to $\alpha = 0.05$, but can vary depending on the field or the application. Using a significance level of $\alpha = 0.05$ in the TV channel study, we can say that the data provided statistically significant evidence against the null hypothesis.
+When the $p$-value is small, i.e. less than a previously set threshold, we say the results are **statistically significant**[^hypothesis-testing-simulation-2]. This means the data provide such strong evidence against $H_0$ that we reject the null hypothesis in favor of the alternative hypothesis. The threshold, called the **significance level** and often represented by the Greek letter $\alpha$, is typically set to $\alpha = 0.05$, but can vary depending on the field or the application. Using a significance level of $\alpha = 0.05$ in the TV channel study, we can say that the data provided statistically significant evidence against the null hypothesis.
 
-[^19-hypothesis-testing-simulation-2]: Some experts in the field of statistics are uncomfortable with using a significance level to declare that something is **statistically significant**. The choice of a significance level (discussed more in a later section) can be somewhat arbitrary. If you conduct a hypothesis test with a $p$-value of 0.051 and chose a significance level of 0.05, are your results really **non-significant** compared to getting a $p$-value of 0.049? For this reason, some experts shy away from the term **statistically significant** and instead describe detectable or discernable effects/differences.
+[^hypothesis-testing-simulation-2]: Some experts in the field of statistics are uncomfortable with using a significance level to declare that something is **statistically significant**. The choice of a significance level (discussed more in a later section) can be somewhat arbitrary. If you conduct a hypothesis test with a $p$-value of 0.051 and chose a significance level of 0.05, are your results really **non-significant** compared to getting a $p$-value of 0.049? For this reason, some experts shy away from the term **statistically significant** and instead describe detectable or discernable effects/differences.
 
 > We say that the data provide statistically significant evidence against the null hypothesis if the $p$-value is less than some reference value, usually $\alpha=0.05$.
 
@@ -289,9 +289,9 @@ A **Type 1 error**, also called a **false positive**, is rejecting the null hypo
 If the court makes a Type 1 error, this means the defendant is truly innocent ($H_0$ true) but is wrongly convicted. A Type 2 error means the court failed to reject $H_0$ (i.e. failed to convict the person) when she was in fact guilty ($H_A$ true).
 
 > **Exercise**:\
-> Consider the commercial length study where we concluded basic channels had longer commercials than premium channels. What would a Type 1 error represent in this context?[^19-hypothesis-testing-simulation-3]
+> Consider the commercial length study where we concluded basic channels had longer commercials than premium channels. What would a Type 1 error represent in this context?[^hypothesis-testing-simulation-3]
 
-[^19-hypothesis-testing-simulation-3]: Making a Type 1 error in this context would mean that there is no difference in commercial length between basic and premium channels, despite the strong evidence (the data suggesting otherwise) found in the observational study. Notice that this does **not** necessarily mean something was wrong with the data or that we made a computational mistake. Sometimes data simply point us to the wrong conclusion, which is why scientific studies are often repeated to check initial findings. Replication is part of the scientific method.
+[^hypothesis-testing-simulation-3]: Making a Type 1 error in this context would mean that there is no difference in commercial length between basic and premium channels, despite the strong evidence (the data suggesting otherwise) found in the observational study. Notice that this does **not** necessarily mean something was wrong with the data or that we made a computational mistake. Sometimes data simply point us to the wrong conclusion, which is why scientific studies are often repeated to check initial findings. Replication is part of the scientific method.
 
 > **Exercise**:\
 > How could we reduce the Type 1 error rate in US courts? What influence would this have on the Type 2 error rate?
@@ -355,9 +355,9 @@ In some texts, one-sided null hypotheses include an inequality ($H_0 \leq \theta
 
 Cardiopulmonary resuscitation (CPR) is a procedure used on individuals suffering a heart attack when other emergency resources are unavailable. This procedure is helpful in providing some blood circulation to keep a person alive, but CPR chest compressions can also cause internal injuries. Internal bleeding and other injuries that can result from CPR complicate additional treatment efforts. For instance, blood thinners may be used to help release a clot that is causing the heart attack once a patient arrives in the hospital. However, blood thinners negatively affect internal injuries.
 
-Here we consider an experiment with patients who underwent CPR for a heart attack and were subsequently admitted to a hospital.[^19-hypothesis-testing-simulation-4] Each patient was randomly assigned to either receive a blood thinner (treatment group) or not receive a blood thinner (control group). The outcome variable of interest was whether the patient survived for at least 24 hours.
+Here we consider an experiment with patients who underwent CPR for a heart attack and were subsequently admitted to a hospital.[^hypothesis-testing-simulation-4] Each patient was randomly assigned to either receive a blood thinner (treatment group) or not receive a blood thinner (control group). The outcome variable of interest was whether the patient survived for at least 24 hours.
 
-[^19-hypothesis-testing-simulation-4]: "Efficacy and safety of thrombolytic therapy after initially unsuccessful cardiopulmonary resuscitation: a prospective clinical trial." The Lancet, 2001.
+[^hypothesis-testing-simulation-4]: "Efficacy and safety of thrombolytic therapy after initially unsuccessful cardiopulmonary resuscitation: a prospective clinical trial." The Lancet, 2001.
 
 ### Step 1 - State the null and alternative hypotheses
 
@@ -412,9 +412,9 @@ tally(outcome ~ group, data = thinner, margins = TRUE, format = "proportion")
 
 Notice the formula we used to get the correct variable in the column for the summary proportions.
 
-The observed test statistic can now be found.[^19-hypothesis-testing-simulation-5]
+The observed test statistic can now be found.[^hypothesis-testing-simulation-5]
 
-[^19-hypothesis-testing-simulation-5]: Observed control survival rate: $p_c = \frac{11}{50} = 0.22$. Observed treatment survival rate: $p_t = \frac{14}{40} = 0.35$. Observed difference: $\hat{p}_c - \hat{p}_t = 0.22 - 0.35 = -0.13$.
+[^hypothesis-testing-simulation-5]: Observed control survival rate: $p_c = \frac{11}{50} = 0.22$. Observed treatment survival rate: $p_t = \frac{14}{40} = 0.35$. Observed difference: $\hat{p}_c - \hat{p}_t = 0.22 - 0.35 = -0.13$.
 
 ```{r}
 obs <- diffprop(outcome ~ group, data = thinner)
@@ -436,7 +436,7 @@ results <- do(10000)*diffprop(outcome ~ shuffle(group), data = thinner)
 @fig-dens912 is a histogram of the estimated sampling distribution.
 
 ```{r}
-#| label: "fig-dens912"
+#| label: fig-dens912
 #| warning: false
 #| fig-cap: "Histogram of the estimated sampling distribution."
 results %>%
@@ -456,9 +456,9 @@ The left tail area is about 0.128. (Note: it is only a coincidence that our $p$-
 
 The $p$-value is defined as the probability we observe a result at least as favorable to the alternative hypothesis as the observed result (i.e. the observed difference). In this case, any differences greater than or equal to 0.13 would provide equally strong evidence favoring the alternative hypothesis as differences less than or equal to -0.13. A difference of 0.13 would correspond to 13% higher survival rate in the treatment group than the control group.
 
-There is something different in this study than in the past studies: in this study, we are particularly interested in whether blood thinners increase **or** decrease the risk of death in patients who undergo CPR before arriving at the hospital.[^19-hypothesis-testing-simulation-6]
+There is something different in this study than in the past studies: in this study, we are particularly interested in whether blood thinners increase **or** decrease the risk of death in patients who undergo CPR before arriving at the hospital.[^hypothesis-testing-simulation-6]
 
-[^19-hypothesis-testing-simulation-6]: Realistically, we probably are interested in either direction in the past studies as well, and so we should have used the approach we now discuss in this section. However, for simplicity and the sake of not introducing too many concepts at once, we skipped over these details in earlier sections.
+[^hypothesis-testing-simulation-6]: Realistically, we probably are interested in either direction in the past studies as well, and so we should have used the approach we now discuss in this section. However, for simplicity and the sake of not introducing too many concepts at once, we skipped over these details in earlier sections.
 
 For a two-sided test, we take the single tail (in this case, 0.128) and double it to get the $p$-value: 0.256.
 

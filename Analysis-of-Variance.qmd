@@ -72,9 +72,9 @@ favstats(obp ~ position, data = mlb_obp)
 
 The means for each group are pretty similar to each other.
 
-> **Exercise**: The null hypothesis under consideration is the following: $\mu_{OF} = \mu_{IF} = \mu_{DH} = \mu_{C}$. Write the null and corresponding alternative hypotheses in plain language.[^23-analysis-of-variance-1]
+> **Exercise**: The null hypothesis under consideration is the following: $\mu_{OF} = \mu_{IF} = \mu_{DH} = \mu_{C}$. Write the null and corresponding alternative hypotheses in plain language.[^analysis-of-variance-1]
 
-[^23-analysis-of-variance-1]: $H_0$: The average on-base percentage is equal across the four positions. $H_A$: The average on-base percentage varies across some (or all) groups. That is, the average on-base percentage for at least one position is different.
+[^analysis-of-variance-1]: $H_0$: The average on-base percentage is equal across the four positions. $H_A$: The average on-base percentage varies across some (or all) groups. That is, the average on-base percentage for at least one position is different.
 
 > **Exercise**:\
 > Construct side-by-side boxplots.
@@ -82,7 +82,7 @@ The means for each group are pretty similar to each other.
 @fig-box231 shows the side-by-side boxplots for all four positions.
 
 ```{r}
-#| label: "fig-box231"
+#| label: fig-box231
 #| warning: false
 #| echo: false
 #| fig-cap: "Boxplots of on-base percentage by position played." 
@@ -141,7 +141,7 @@ We can use the $F$ statistic to evaluate the hypotheses in what is called an **F
 The $F$ distribution, shown in @fig-dens232, takes on positive values and is right skewed, like the chi-squared distribution. The larger the observed variability in the sample means ($MSG$) relative to the within-group observations ($MSE$), the larger $F$ will be and the stronger the evidence against the null hypothesis. Because larger values of $F$ represent stronger evidence against the null hypothesis, we use the upper tail of the distribution to compute a $p$-value.
 
 ```{r}
-#| label: "fig-dens232"
+#| label: fig-dens232
 #| warning: false
 #| echo: false
 #| fig-cap: "The F distribution." 
@@ -167,7 +167,7 @@ There are three conditions we must check before conducting an ANOVA: 1) all obse
 @fig-qq233 is the quantile-quantile plot to assess the normality assumption.
 
 ```{r}
-#| label: "fig-qq233"
+#| label: fig-qq233
 #| warning: false
 #| echo: false
 #| fig-cap: "Quantile-quantile plot for two-sample test of means." 
@@ -204,7 +204,7 @@ pf(1.994, 3, 323, lower.tail = FALSE)
 @fig-dens234 is a plot of the $F$ distribution with the observed $F$ test statistic shown as a red line.
 
 ```{r}
-#| label: "fig-dens234"
+#| label: fig-dens234
 #| warning: false
 #| echo: false
 #| fig-cap: "The F distribution." 
@@ -278,7 +278,7 @@ The above code is slow in executing because the **tidyverse** functions inside o
 @fig-hist235 is a plot of the sampling distribution from the randomization test. The $F$ distribution is overlaid as a dark blue curve.
 
 ```{r}
-#| label: "fig-hist235"
+#| label: fig-hist235
 #| warning: false
 #| echo: false
 #| fig-cap: "The sampling distribution of the ratio of variances randomization test statistic." 
@@ -320,7 +320,7 @@ results <- do(1000)*(f_stat2(mlb_obp))
 @fig-hist236 is the plot of the sampling distribution of the difference in variances.
 
 ```{r}
-#| label: "fig-hist236"
+#| label: fig-hist236
 #| warning: false
 #| echo: false
 #| fig-cap: "The sampling distribution of the difference in variances randomization test statistic." 

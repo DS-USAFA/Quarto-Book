@@ -38,11 +38,11 @@ The topics scientists investigate are as diverse as the questions they ask. Howe
 
 ## Case study
 
-In this chapter, we will consider an experiment that studies effectiveness of stents in treating patients at risk of stroke. [^01-data-case-study-1] [^01-data-case-study-2] Stents are small mesh tubes that are placed inside narrow or weak arteries to assist in patient recovery after cardiac events and reduce the risk of an additional heart attack or death. Many doctors have hoped that there would be similar benefits for patients at risk of stroke. We start by writing the principal question the researchers hope to answer:
+In this chapter, we will consider an experiment that studies effectiveness of stents in treating patients at risk of stroke. [^data-case-study-1] [^data-case-study-2] Stents are small mesh tubes that are placed inside narrow or weak arteries to assist in patient recovery after cardiac events and reduce the risk of an additional heart attack or death. Many doctors have hoped that there would be similar benefits for patients at risk of stroke. We start by writing the principal question the researchers hope to answer:
 
-[^01-data-case-study-1]: Chimowitz MI, Lynn MJ, Derdeyn CP, et al. 2011. Stenting versus Aggressive Medical Therapy for Intracranial Arterial Stenosis. New England Journal of Medicine 365:993-1003.
+[^data-case-study-1]: Chimowitz MI, Lynn MJ, Derdeyn CP, et al. 2011. Stenting versus Aggressive Medical Therapy for Intracranial Arterial Stenosis. New England Journal of Medicine 365:993-1003.
 
-[^01-data-case-study-2]: NY Times article reporting on the study: http://www.nytimes.com/2011/09/08/health/research/08stent.html
+[^data-case-study-2]: NY Times article reporting on the study: http://www.nytimes.com/2011/09/08/health/research/08stent.html
 
 ### Research question
 
@@ -200,9 +200,9 @@ Let's have `R` calculate proportions for us. Use `?` or `help()` to look at the 
 tally(outcome30 ~ group, data = stent_study, format = 'proportion', margins = TRUE)
 ```
 
-We can compute summary statistics from the table. A **summary statistic** is a single number summarizing a large amount of data.[^01-data-case-study-3] For instance, the primary results of the study after 1 month could be described by two summary statistics: the proportion of people who had a stroke in the treatment group and the proportion of people who had a stroke in the control group.
+We can compute summary statistics from the table. A **summary statistic** is a single number summarizing a large amount of data.[^data-case-study-3] For instance, the primary results of the study after 1 month could be described by two summary statistics: the proportion of people who had a stroke in the treatment group and the proportion of people who had a stroke in the control group.
 
-[^01-data-case-study-3]: Formally, a summary statistic is a value computed from the data. Some summary statistics are more useful than others.
+[^data-case-study-3]: Formally, a summary statistic is a value computed from the data. Some summary statistics are more useful than others.
 
 -   Proportion who had a stroke in the treatment (stent) group: $33/224 = 0.15 = 15\%$
 
@@ -212,9 +212,9 @@ We can compute summary statistics from the table. A **summary statistic** is a s
 
 It is often important to visualize the data. The table is a type of visualization, but in this section we will introduce a graphical method called bar charts.
 
-We will use the [**ggformula**](https://cran.r-project.org/web/packages/ggformula/vignettes/ggformula.html) package to visualize the data. It is a wrapper to the **ggplot2** package which is becoming the industry standard for generating professional graphics. However, the interface for **ggplot2** can be difficult to learn and we will ease into it by using `ggformula`, which makes use of the formula notation introduced above. The **ggformula** package was loaded when we loaded `mosaic`.[^01-data-case-study-4]
+We will use the [**ggformula**](https://cran.r-project.org/web/packages/ggformula/vignettes/ggformula.html) package to visualize the data. It is a wrapper to the **ggplot2** package which is becoming the industry standard for generating professional graphics. However, the interface for **ggplot2** can be difficult to learn and we will ease into it by using `ggformula`, which makes use of the formula notation introduced above. The **ggformula** package was loaded when we loaded `mosaic`.[^data-case-study-4]
 
-[^01-data-case-study-4]: https://cran.r-project.org/web/packages/ggformula/vignettes/ggformula-blog.html
+[^data-case-study-4]: https://cran.r-project.org/web/packages/ggformula/vignettes/ggformula-blog.html
 
 To generate a basic graphic, we need to ask ourselves what information we are trying to see, what particular type of graph is best, what corresponding `R` function to use, and what information that `R` function needs in order to build a plot. For categorical data, we want a bar chart and the `R` function `gf_bar()` needs the data object and the variable(s) of interest.
 
@@ -222,7 +222,8 @@ Here is our first attempt. In @fig-first, we leave the `y` portion of our formul
 
 (ref:ggfbold) Using **ggformula** to create a bar chart.
 
-```{r label="fig-first"}
+```{r}
+#| label: fig-first
 #| fig-cap: "Using **ggformula** to create a bar chart."
 gf_bar(~outcome30, data = stent_study)
 ```
@@ -240,7 +241,7 @@ We read `y ~ x|z` as "y tilde x by z" and interpret it in the equivalent forms: 
 
 ```{r}
 #| fig-cap: "Bar charts conditioned on the `group` variable."
-#| label: "fig-split"
+#| label: fig-split
 gf_bar(~outcome30|group, data = stent_study) 
 ```
 
@@ -250,7 +251,7 @@ As a prelude for things to come, the above graphic needs work. The labels don't 
 
 ```{r}
 #| fig-cap: "Better graph."
-#| label: "fig-cs1"
+#| label: fig-cs1
 # This code creates a graph showing the impact of stents on stroke.
 # The `gf_props()` function creates a bar graph showing the number of events
 # for each experimental group. The `fill` argument specifies the fill color

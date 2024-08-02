@@ -30,9 +30,9 @@ In this chapter we introduce **logistic regression** as a tool for building mode
 
 GLMs can be thought of as a two-stage modeling approach. We first model the response variable using a probability distribution, such as the binomial or Poisson distribution. Second, we model the parameter of the distribution using a collection of predictors and a special form of multiple regression.
 
-To explore and explain these ideas, we will again use the Ebay auctions of a video game called **Mario Kart** for the Nintendo Wii. Remember, the data set is in the file `mariokart.csv` and includes results from 141 auctions.[^32-logistic-regression-1]
+To explore and explain these ideas, we will again use the Ebay auctions of a video game called **Mario Kart** for the Nintendo Wii. Remember, the data set is in the file `mariokart.csv` and includes results from 141 auctions.[^logistic-regression-1]
 
-[^32-logistic-regression-1]: Diez DM, Barr CD, and \c{C}etinkaya-Rundel M. 2012. `openintro`: OpenIntro data sets and supplemental functions. http://cran.r-project.org/web/packages/openintro
+[^logistic-regression-1]: Diez DM, Barr CD, and \c{C}etinkaya-Rundel M. 2012. `openintro`: OpenIntro data sets and supplemental functions. http://cran.r-project.org/web/packages/openintro
 
 In this chapter, we want the outcome variable of interest to be game condition, `cond`. In @sec-LRMULTI we used the total price of an auction as the response. We are moving from a quantitative response to a binary qualitative variable. If we were only interested in determining if an association exists between the variables `cond` and `total_pr`, we could use linear regression with `total_pr` as the response. However, in this problem we want to predict game condition. We will start by reviewing some of the previous models and then introduce logistic regression. We will finish with a multiple logistic regression model, more than one predictor.
 
@@ -133,7 +133,7 @@ The logistic function is shown in @fig-logit.
 ```{r}
 #| echo: false
 #| fig-cap: "Logistic function with some example points plotted."
-#| label: "fig-logit"
+#| label: fig-logit
 
 library(openintro)
 data(COL)

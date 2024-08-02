@@ -39,9 +39,9 @@ For this block we will focus just on probability models. To apply a probability 
 There is a famous example of a probability question that we will attack in this case study. The question we want to answer is "In a room of $n$ people what is the chance that at least two people have the same birthday?"
 
 > **Exercise**:\
-> The typical classroom at USAFA has 18 students in it. What do you think the chance that at least two students have the same birthday?[^07-probability-case-study-1]
+> The typical classroom at USAFA has 18 students in it. What do you think the chance that at least two students have the same birthday?[^probability-case-study-1]
 
-[^07-probability-case-study-1]: The answer is around 34.7%, how close were you?
+[^probability-case-study-1]: The answer is around 34.7%, how close were you?
 
 ### Break down the question
 
@@ -53,9 +53,9 @@ The first action we should take is to understand what is being asked.
 4.  What about the frequency of births? Are some days less likely than others?
 
 > **Exercise**:\
-> Discuss these questions and others that you think are relevant.[^07-probability-case-study-2]
+> Discuss these questions and others that you think are relevant.[^probability-case-study-2]
 
-[^07-probability-case-study-2]: Another question may be What does it mean at least two people have matching birthdays?
+[^probability-case-study-2]: Another question may be What does it mean at least two people have matching birthdays?
 
 The best first step is to make a simple model, often these are the only ones that will have a mathematical solution. For our problem this means we answer the above questions.
 
@@ -170,7 +170,7 @@ By the way, the method we have used to create the data allows us to summarize th
 @fig-bar71 is a plot of the number of unique birthdays in our sample.
 
 ```{r}
-#| label: "fig-bar71"
+#| label: fig-bar71
 #| fig-cap: "Bar chart of the number of unique birthdays in the sample."
 (do(1000)*length(unique(sample(days,size=18,replace = TRUE)))) %>%
   gf_bar(~length) %>%
@@ -179,9 +179,9 @@ By the way, the method we have used to create the data allows us to summarize th
 ```
 
 > **Exercise**:\
-> What does it mean if the length of unique birthdays is 16, in terms of matches?[^07-probability-case-study-3]
+> What does it mean if the length of unique birthdays is 16, in terms of matches?[^probability-case-study-3]
 
-[^07-probability-case-study-3]: It is possible that 3 people all have the same birthday or two sets of 2 people have the same birthday but different from the other pair.
+[^probability-case-study-3]: It is possible that 3 people all have the same birthday or two sets of 2 people have the same birthday but different from the other pair.
 
 ### Mathematical solution
 
@@ -285,7 +285,7 @@ birthday_prob(1:20)
 We are good to go. Let's create our line plot, @fig-line71.
 
 ```{r}
-#| label: "fig-line71"
+#| label: fig-line71
 #| fig-cap: "The probability of at least 2 people having mathcing birthdays."
 gf_line(birthday_prob(1:100)~ seq(1,100),
         xlab="Number of People",
@@ -307,7 +307,7 @@ inspect(Births)
 It could be argued that we could randomly pick one year and use it. Let's see what happens if we just used 1969. @fig-scat71 is a scatter plot of the number of births in 1969 for each day of the year.
 
 ```{r}
-#| label: "fig-scat71"
+#| label: fig-scat71
 #| fig-cap: "The number of births for each day of the year in 1969."
 Births %>%
   filter(year == 1969) %>%
@@ -324,7 +324,7 @@ There are definitely bands appearing in the data which could be the day of the w
 Quickly, let's look at the impact of day of the week by using color for day of the week. @fig-scat72 makes it clear that the weekends have less number of births as compared to the work week.
 
 ```{r}
-#| label: "fig-scat72"
+#| label: fig-scat72
 #| fig-cap: "The number of births for each day of the year in 1969 broken down by day of the week."
 Births %>%
   filter(year == 1969) %>%
@@ -368,7 +368,7 @@ head(birth_data)
 Let's look at a plot of the number of births versus day of the year. We combined years in @fig-scat73.
 
 ```{r}
-#| label: "fig-scat73"
+#| label: fig-scat73
 #| fig-cap: "Number of births by day of the year for all years."
 birth_data %>%
   gf_point(n~day_of_year,

@@ -65,7 +65,7 @@ This lemma can be used to draw inferences about $\sigma^2$. For a particular val
 The chi-squared distribution takes on positive values and is right skewed. The degrees of freedom influence the shape and location of the distribution. As the degrees of freedom increase, it becomes more similar to a normal distribution. That is, the distribution becomes more symmetric with larger variability, and the center of the distribution moves to the right. @fig-chisq221 demonstrates these trends.
 
 ```{r}
-#| label: "fig-chisq221"
+#| label: fig-chisq221
 #| warning: false
 #| echo: false
 #| fig-cap: "Chi-square distribution for different degrees of freedom."
@@ -119,7 +119,7 @@ tally(substance ~ sex, data = HELPrct, format = "prop", margins = TRUE)
 ```
 
 ```{r}
-#| label: "fig-props222"
+#| label: fig-props222
 #| warning: false
 #| echo: false
 #| fig-cap: "Proportions for primary substance of abuse in the HELP study, faceted by sex."
@@ -130,7 +130,7 @@ HELP_sub %>%
 ```
 
 ```{r}
-#| label: "fig-props223"
+#| label: fig-props223
 #| warning: false
 #| echo: false
 #| fig-cap: "The distribution of primary substance of abuse in the HELP study by sex."
@@ -329,7 +329,7 @@ results <- do(1000)*chisq(substance ~ shuffle(sex), data = HELPrct)
 @fig-hist224 is a visual summary of the results, which helps us to gain some intuition about the $p$-value. We also plot the theoretical chi-squared distribution as a dark blue overlay. The observed test statistic value is shown as a red line.
 
 ```{r}
-#| label: "fig-hist224"
+#| label: fig-hist224
 #| warning: false
 #| echo: false
 #| fig-cap: "Sampling distribution of chi-squared test statistic from randomization test."
@@ -435,13 +435,13 @@ favstats(obp ~ position, data = mlb_obp_subset)
 
 The means for both groups are pretty similar to each other.
 
-> **Exercise**: The null hypothesis under consideration is the following: $\mu_{OF} = \mu_{IF}$ or $\mu_{OF} - \mu_{IF} = 0$. Write the null and corresponding alternative hypotheses in plain language.[^22-additional-hypothesis-tests-1]
+> **Exercise**: The null hypothesis under consideration is the following: $\mu_{OF} = \mu_{IF}$ or $\mu_{OF} - \mu_{IF} = 0$. Write the null and corresponding alternative hypotheses in plain language.[^additional-hypothesis-tests-1]
 
-[^22-additional-hypothesis-tests-1]: $H_0$: The average on-base percentage for infielders and outfielders is equal, or the average difference between on-base percentage for infielders and outfielders is zero. $H_A$: The average on-base percentage for infielders and outfielders is different.
+[^additional-hypothesis-tests-1]: $H_0$: The average on-base percentage for infielders and outfielders is equal, or the average difference between on-base percentage for infielders and outfielders is zero. $H_A$: The average on-base percentage for infielders and outfielders is different.
 
-> **Exercise**: If we have all the data for the 2010 season, why do we need a hypothesis test? What is the population of interest?[^22-additional-hypothesis-tests-2]
+> **Exercise**: If we have all the data for the 2010 season, why do we need a hypothesis test? What is the population of interest?[^additional-hypothesis-tests-2]
 
-[^22-additional-hypothesis-tests-2]: If we are only making decisions or claims about the 2010 season, we do not need hypothesis testing. We can simply use summary statistics. However, if we want to generalize to other years or other leagues, then we need to conduct a hypothesis test.
+[^additional-hypothesis-tests-2]: If we are only making decisions or claims about the 2010 season, we do not need hypothesis testing. We can simply use summary statistics. However, if we want to generalize to other years or other leagues, then we need to conduct a hypothesis test.
 
 > **Exercise**:\
 > Construct side-by-side boxplots.
@@ -449,7 +449,7 @@ The means for both groups are pretty similar to each other.
 @fig-box225 shows the side-by-side boxplots for infielders and outfielders.
 
 ```{r}
-#| label: "fig-box225"
+#| label: fig-box225
 #| warning: false
 #| echo: false
 #| fig-cap: "Boxplots of on-base percentage by position played."
@@ -463,7 +463,7 @@ mlb_obp_subset %>%
 We must verify the assumptions before proceeding with a two-sample $t$-test. We can assume that MLB players in 2010 are a representative sample of MLB players from other years. Also, the sample size for both groups is over 100, so we feel good about independence of observations within groups. There is no reason to believe that the data across groups, infielders versus outfielders, are not independent of each other. @fig-dens226 and @fig-qq227 show density curves and quantile-quantile plots for the on-base percentage by position played. There are no major outliers or other causes for concern. The data within each group appears nearly normal.
 
 ```{r}
-#| label: "fig-dens226"
+#| label: fig-dens226
 #| warning: false
 #| echo: false
 #| fig-cap: "Density curves of on-base percentage by position played."
@@ -473,7 +473,7 @@ mlb_obp_subset %>%
 ```
 
 ```{r}
-#| label: "fig-qq227"
+#| label: fig-qq227
 #| warning: false
 #| echo: false
 #| fig-cap: "Quantile-quantile plots of on-base percentage by position played."
@@ -558,7 +558,7 @@ results <- do(1000)*diffmean(obp ~ shuffle(position), data = mlb_obp_subset)
 @fig-hist228 is a plot of the sampling distribution of the difference of means from the randomization test. The observed test statistic is shown as a red line.
 
 ```{r}
-#| label: "fig-hist228"
+#| label: fig-hist228
 #| warning: false
 #| echo: false
 #| fig-cap: "The sampling distribution of the randomization test using the difference of means."
@@ -601,7 +601,7 @@ results <- do(1000)*t_test(obp ~ shuffle(position), data = mlb_obp_subset)$stati
 @fig-hist229 is a plot of the sampling distribution of the $t$ statistic from the randomization test. The observed test statistic is shown as a red line. A $t$ distribution is overlaid as a dark blue line.
 
 ```{r}
-#| label: "fig-hist229"
+#| label: fig-hist229
 #| warning: false
 #| echo: false
 #| fig-cap: "The sampling distribution of the randomization test using the t-statistic."

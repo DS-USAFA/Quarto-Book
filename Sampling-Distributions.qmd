@@ -27,7 +27,7 @@ Now we are moving more in depth into statistical models. This is going to tie al
 
 ```{r}
 #| echo: false
-#| label: "fig-prob_stats2"
+#| label: fig-prob_stats2
 #| fig-align: "center"
 #| fig-height: 2
 #| fig-width: 3
@@ -49,9 +49,9 @@ Suppose a poll suggested the US President's approval rating is 45%. We would con
 
 ## Understanding the variability of a point estimate
 
-Suppose the proportion of American adults who support the expansion of solar energy is $p = 0.88$, which is our parameter of interest. If we were to take a poll of 1000 American adults on this topic, the estimate would not be perfect, but how close might we expect the sample proportion in the poll would be to 88%? We want to understand, *how does the sample proportion* $\hat{p}$ behave when the true population proportion is 0.88.[^18b-sampling-distributions-1] Let's find out! We can simulate responses we would get from a simple random sample of 1000 American adults, which is only possible because we know the actual support for expanding solar energy is 0.88. Here's how we might go about constructing such a simulation:
+Suppose the proportion of American adults who support the expansion of solar energy is $p = 0.88$, which is our parameter of interest. If we were to take a poll of 1000 American adults on this topic, the estimate would not be perfect, but how close might we expect the sample proportion in the poll would be to 88%? We want to understand, *how does the sample proportion* $\hat{p}$ behave when the true population proportion is 0.88.[^sampling-distributions-1] Let's find out! We can simulate responses we would get from a simple random sample of 1000 American adults, which is only possible because we know the actual support for expanding solar energy is 0.88. Here's how we might go about constructing such a simulation:
 
-[^18b-sampling-distributions-1]: We haven't actually conducted a census to measure this value perfectly. However, a very large sample has suggested the actual level of support is about 88%.
+[^sampling-distributions-1]: We haven't actually conducted a census to measure this value perfectly. However, a very large sample has suggested the actual level of support is about 88%.
 
 1.  There were about 250 million American adults in 2018. On 250 million pieces of paper, write "support" on 88% of them and "not" on the other 12%.
 
@@ -92,7 +92,7 @@ solar_results <- do(10000)*sum(sample(possible_entries,
 ```
 
 ```{r}
-#| label: "fig-hist-support"
+#| label: fig-hist-support
 solar_results %>% 
   gf_histogram(~sum, color = "black", fill = "cadetblue1") %>% 
   gf_vline(xintercept = mean(solar_results$sum)) %>% 
@@ -125,9 +125,9 @@ The above exercise highlights an important property we will see again and again:
 
 ## Sampling distributions case study: rolling the dice
 
-Let's consider a standard six-sided die and define a random variable $X$ as the result of a single die roll. The sample space is $S = \{1, 2, 3, 4, 5, 6\}$ and each outcome has an equal probability of $1/6$. The expected value of $X$ is easily found to be $E(X) = 3.5$.[^18b-sampling-distributions-2]
+Let's consider a standard six-sided die and define a random variable $X$ as the result of a single die roll. The sample space is $S = \{1, 2, 3, 4, 5, 6\}$ and each outcome has an equal probability of $1/6$. The expected value of $X$ is easily found to be $E(X) = 3.5$.[^sampling-distributions-2]
 
-[^18b-sampling-distributions-2]: $E(X) = 1*{1\over 6} + 2*{1\over 6} + 3*{1\over 6} + 4*{1\over 6} + 5*{1\over 6} + 6*{1\over 6} = 3.5$
+[^sampling-distributions-2]: $E(X) = 1*{1\over 6} + 2*{1\over 6} + 3*{1\over 6} + 4*{1\over 6} + 5*{1\over 6} + 6*{1\over 6} = 3.5$
 
 We will take a sample by rolling the die $n = 5$ times. We will then compute the mean of each sample. We can easily set up this process in `R`. Our first sample is $\{2, 5, 5, 4, 1\}$ with a mean value of $\bar{x}_1 = 3.4$.
 
@@ -160,7 +160,7 @@ dice_results <- do(10000)*mean(sample(possible_values,
 ```
 
 ```{r}
-#| label: "fig-hist-die"
+#| label: fig-hist-die
 dice_results %>% 
   gf_histogram(~mean, color = "black", fill = "cadetblue1", binwidth = 0.2) %>% 
   gf_vline(xintercept = mean(dice_results$mean)) %>% 
@@ -212,9 +212,9 @@ Between balancing the need for party representation (proportionality) and the ne
 
 By having a computer (with no internal party preference and with rules for shapes) draw random maps, we balance the needs for both proportionality and geography!
 
-Skew the Script [@SkewTheScript2024] developed a simulation [applet](skew-the-script.github.io/Gerrymandering) to help determine if a state gerrymandered its Congressional districts, through the power of simulation. Powered by the ALARM **redist** package[^18b-sampling-distributions-3], the simulation divides states into randomly drawn districts of equal population size. The simulations also follow some rules about "no weird shapes" and the details for that requirements are available through the ALARM Redistricting project [@AlarmRedistricting]. Then, it uses prior election data to find the political lean of the simulated districts. For the state of Idaho, the analysis is based on data from the 2016 and 2020 Presidential elections, 2016 and 2020 US Senate elections, and the 2018 Governor, Attorney General, and Secretary of State elections.
+Skew the Script [@SkewTheScript2024] developed a simulation [applet](skew-the-script.github.io/Gerrymandering) to help determine if a state gerrymandered its Congressional districts, through the power of simulation. Powered by the ALARM **redist** package[^sampling-distributions-3], the simulation divides states into randomly drawn districts of equal population size. The simulations also follow some rules about "no weird shapes" and the details for that requirements are available through the ALARM Redistricting project [@AlarmRedistricting]. Then, it uses prior election data to find the political lean of the simulated districts. For the state of Idaho, the analysis is based on data from the 2016 and 2020 Presidential elections, 2016 and 2020 US Senate elections, and the 2018 Governor, Attorney General, and Secretary of State elections.
 
-[^18b-sampling-distributions-3]: The ALARM **redist** package in R enables researchers to sample redistricting plans from a pre-specified target distribution. Essentially, the authors of the package simulated a large number of possible redistricting maps. The package supports various constraints in the redistricting process, such as geographic compactness and population parity requirements, just like those requirements for any redistricting done in the state of Idaho.
+[^sampling-distributions-3]: The ALARM **redist** package in R enables researchers to sample redistricting plans from a pre-specified target distribution. Essentially, the authors of the package simulated a large number of possible redistricting maps. The package supports various constraints in the redistricting process, such as geographic compactness and population parity requirements, just like those requirements for any redistricting done in the state of Idaho.
 
 Let's perform an analysis for Virginia. During redistricting, Virginia's state legislature was controlled by Republicans. Did the legislature draw an unfair map?
 
@@ -226,12 +226,12 @@ We get started by selecting the state of Virginia in the applet. The actual Virg
 
 The applet also plots the number of Democrat-leaning districts, in this case seven, for us on a bar chart. We can continue to add one, three, ten, 30, or 100 sample redistricting maps to these results by clicking the appropriate button in the applet. When generating three or more samples at a time, the applet displays the last three simulated redistricting maps for comparison.
 
-After adding 1,000 samples (for a total of 1,001 samples), we have results that look similar to those shown in @fig-virginia-res1000. What we've done here is create a sampling distribution for the number of Democrat-leaning districts in the state of Virginia by sampling 1,001 redistricting maps.[^18b-sampling-distributions-4] In the applet, we're able to compare the actual number of Democrat-leaning districts to our sampling distribution. Virginia appears to have a fair map. The legislature's map projects seven Democrat-leaning districts, and the vast majority of simulations (\$664/1001 = 66.3%) also had seven Democrat-leaning districts or fewer. So, the actual Virginia map is not unusual. There is little evidence that Republicans gerrymandered the state.
+After adding 1,000 samples (for a total of 1,001 samples), we have results that look similar to those shown in @fig-virginia-res1000. What we've done here is create a sampling distribution for the number of Democrat-leaning districts in the state of Virginia by sampling 1,001 redistricting maps.[^sampling-distributions-4] In the applet, we're able to compare the actual number of Democrat-leaning districts to our sampling distribution. Virginia appears to have a fair map. The legislature's map projects seven Democrat-leaning districts, and the vast majority of simulations (\$664/1001 = 66.3%) also had seven Democrat-leaning districts or fewer. So, the actual Virginia map is not unusual. There is little evidence that Republicans gerrymandered the state.
 
-[^18b-sampling-distributions-4]: In fact, we've actually created a **null distribution** by sampling 1,001 possible fair redistricting maps. This null distribution is developed by sampling under the assumption of fairness, the null hypothesis in this scenario.
+[^sampling-distributions-4]: In fact, we've actually created a **null distribution** by sampling 1,001 possible fair redistricting maps. This null distribution is developed by sampling under the assumption of fairness, the null hypothesis in this scenario.
 
 ```{r}
-#| label: "fig-virginia-res1000"
+#| label: fig-virginia-res1000
 #| fig-cap: ""
 #| echo: false 
 
@@ -248,15 +248,15 @@ virginia_res %>%
   gf_theme(theme_classic())
 ```
 
-> **Exercise:** Using the applet, perform an analysis and comment on the fairness of Illinois (Democrat-controlled legislature) and Texas (Republican-controlled legislature). Then, try your own state or another state of interest (note: states with one house member don't go through redistricting).[^18b-sampling-distributions-5]
+> **Exercise:** Using the applet, perform an analysis and comment on the fairness of Illinois (Democrat-controlled legislature) and Texas (Republican-controlled legislature). Then, try your own state or another state of interest (note: states with one house member don't go through redistricting).[^sampling-distributions-5]
 
-[^18b-sampling-distributions-5]: Illinois is heavily gerrymandered: zero of the simulations have as many Democrat-leaning districts as the actual map. In Illinois' enacted map, there are weirdly shaped districts that "carve out" Democrat-leaning areas. Texas is gerrymandered the opposite way: zero of the simulations have as few Democrat-leaning districts as the actual map. One district connects the east side of San Antonio with the east side of Austin, condensing Democrats in a long, skinny district across two metropolitan areas.
+[^sampling-distributions-5]: Illinois is heavily gerrymandered: zero of the simulations have as many Democrat-leaning districts as the actual map. In Illinois' enacted map, there are weirdly shaped districts that "carve out" Democrat-leaning areas. Texas is gerrymandered the opposite way: zero of the simulations have as few Democrat-leaning districts as the actual map. One district connects the east side of San Antonio with the east side of Austin, condensing Democrats in a long, skinny district across two metropolitan areas.
 
 In its most recent landmark decision on gerrymandering (Rucho v. Common Cause), the Supreme Court abdicated to the legislature, saying that the courts could not make decisions on "political questions outside the remit of these courts." In other words, if change is to happen, state legislatures or Congress have to pass laws to limit gerrymandering.
 
-> **Exercise:** Write such a law, using the simulation method described in this lesson. Specifically, fill in the blank: “If your map has more Democrat/Republican leaning districts than \_\_% of simulations, it is unfair and should be rejected.” What number would you choose? Why?[^18b-sampling-distributions-6]
+> **Exercise:** Write such a law, using the simulation method described in this lesson. Specifically, fill in the blank: “If your map has more Democrat/Republican leaning districts than \_\_% of simulations, it is unfair and should be rejected.” What number would you choose? Why?[^sampling-distributions-6]
 
-[^18b-sampling-distributions-6]: This question is building towards a hypothesis test. If the proportion of districts more extreme than the drawn map (the “p-value”) is lower than 5% (the “alpha level”), we reject the map (reject the null hypothesis that the map was fair). Of course, the analogy to hypothesis tests isn’t perfect, but it’s all about building intuition.
+[^sampling-distributions-6]: This question is building towards a hypothesis test. If the proportion of districts more extreme than the drawn map (the “p-value”) is lower than 5% (the “alpha level”), we reject the map (reject the null hypothesis that the map was fair). Of course, the analogy to hypothesis tests isn’t perfect, but it’s all about building intuition.
 
     We typically use 5% as the alpha level in hypothesis tests, but it’s okay for your answer to vary a little - as long as you have a relatively low number and use the logic of finding a percent that would be “surprising” or “unusual".
 

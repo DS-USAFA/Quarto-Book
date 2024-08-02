@@ -41,7 +41,7 @@ The mean of $X$ is $\mbox{E}(X)=\frac{a+b}{2}$ and the variance is $\mbox{Var}(X
 The most common uniform distribution is $U(0,1)$ which we have already used several times in this book. Again, notice in @fig-uni that the plot of the **pdf** is a constant or uniform value.
 
 ```{r}
-#| label: "fig-uni"
+#| label: fig-uni
 #| echo: false
 #| fig-cap: "The pdf of Uniform random variable."
 gf_dist("unif",title="Pdf of Uniform random variable",ylab="f(x)") %>%
@@ -128,7 +128,7 @@ qexp(0.95,1/3)
 ```
 
 ```{r}
-#| label: "fig-exp"
+#| label: fig-exp
 #| fig-align: "center"
 #| fig-cap: "The pdf of exponential random variable $Y$"
 #| echo: false
@@ -155,7 +155,7 @@ $$
 Let's simulate values for a Poisson. The Poisson is often used in modeling customer service situations such as service at Chipotle. However, some people have the mistaken idea that arrivals will be equally spaced. In fact, arrivals will come in clusters and bunches. Maybe this is the root of the common expression, "Bad news comes in threes"?
 
 ```{r}
-#| label: "fig-sim"
+#| label: fig-sim
 #| echo: false
 #| fig-cap: "Simulations of Poisson random variable."
 set.seed(9)
@@ -189,7 +189,7 @@ $$
 Some plots of normal distributions for different parameters are plotted in @fig-norm.
 
 ```{r}
-#| label: "fig-norm"
+#| label: fig-norm
 #| echo: false
 #| fig-align: "center"
 #| fig-cap: "The pdf of Normal for various values of mu and sigma"

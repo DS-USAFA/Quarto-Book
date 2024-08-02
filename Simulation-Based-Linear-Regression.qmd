@@ -105,7 +105,7 @@ If we plot all the slopes, the red lines in @fig-slope291, we get a sense of the
 #| warning: false 
 #| message: false 
 #| fig-cap: "Plot of slopes from resampled regression."
-#| label: "fig-slope291"
+#| label: fig-slope291
 ggplot(starbucks, aes(x=carb, y=calories)) +
   geom_abline(data = results,
               aes(slope =  carb, intercept = Intercept), 
@@ -121,7 +121,7 @@ With all this data in `results`, we can generate confidence intervals for the sl
 ```{r}
 #| warning: false 
 #| message: false 
-#| label: "fig-hist291"
+#| label: fig-hist291
 #| fig-cap: "Histogram of slopes from resampled regression."
 results %>%
   gf_histogram(~carb,fill="cyan",color = "black") %>%
@@ -153,7 +153,7 @@ And the bootstrap sampling distribution of $R^2$ is displayed in @fig-hist292.
 ```{r hist292-fig}
 #| warning: false 
 #| message: false 
-#| label: "fig-hist292"
+#| label: fig-hist292
 #| fig-cap: "A histogram of the $R^2$ values from resampled regression."
 results %>%
   gf_histogram(~r.squared,fill="cyan",color="black") %>%
@@ -209,7 +209,7 @@ This matches the work we have already done. Finally, let's visualize the results
 ```{r}
 #| fig-cap: "Sampling distribution of the slope using resampling. (Black line is estimate slope from original data and blue lines are the confidence bounds.)"
 #| warning: false
-#| label: "fig-infer291"
+#| label: fig-infer291
 results2 %>%
   visualize() +
   shade_confidence_interval(slope_ci,color="blue",fill="lightblue") +
@@ -235,7 +235,7 @@ Next a plot of the bootstrap sampling distribution, @fig-hist293.
 ```{r}
 #| message: false 
 #| warning: false 
-#| label: "fig-hist293"
+#| label: fig-hist293
 #| fig-cap: "Histogram of estimated regression slope using resampling from residuals."
 results_resid %>%
   gf_histogram(~carb,fill="cyan",color="black") %>%
@@ -370,7 +370,7 @@ Let's look at the data with a boxplot, @fig-box291.
 ```{r}
 #| fig-cap: "Boxplot of loan interest rates from the Lending Club based on homeownership status."
 #| warning: false 
-#| label: "fig-box291"
+#| label: fig-box291
 loans100 %>%
   gf_boxplot(interest_rate~homeownership) %>%
   gf_theme(theme_classic()) %>%
@@ -448,7 +448,7 @@ obs
 ```{r}
 #| fig-cap: "Distribution of estimated regression coefficent for homeownership."
 #| warning: false
-#| label: "fig-hist297"
+#| label: fig-hist297
 results %>%
   gf_histogram(~homeownershipOWN,fill="cyan",color="black") %>%
   gf_vline(xintercept = obs$homeownershipOWN,color="red") %>%
@@ -504,7 +504,7 @@ Keep in mind that ANOVA is a special case of a simple linear model. Therefore, a
 
 ```{r}
 #| fig-cap: "Q-Q normality plot."
-#| label: "fig-diag291"
+#| label: fig-diag291
 plot(loan_mod,2)
 ```
 
@@ -512,7 +512,7 @@ plot(loan_mod,2)
 
 ```{r diag292-fig}
 #| fig-cap: "Scale-location residual diagnostic plot."
-#| label: "fig-diag292"
+#| label: fig-diag292
 plot(loan_mod,3)
 ```
 
@@ -520,7 +520,7 @@ The assumption of equal variance is also suspect, @fig-diag292. The variance for
 
 ```{r}
 #| fig-cap: "Residual plot for outliers and leverage points."
-#| label: "fig-diag293"
+#| label: fig-diag293
 plot(loan_mod,5)
 ```
 

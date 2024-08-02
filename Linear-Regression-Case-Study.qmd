@@ -74,7 +74,7 @@ inspect(hfi[,1:10])
 > Create a scatter plot to display the relationship between the personal freedom score, `pf_score`, as the response and `pf_expression_control` as the predictor. Does the relationship look linear?
 
 ```{r}
-#| label: "fig-scat251"
+#| label: fig-scat251
 #| warning: false
 #| echo: false
 #| fig-cap: "A scatterplot of personal freedom versus expression control using the ggformula package." 
@@ -87,7 +87,7 @@ gf_lm(pf_score~pf_expression_control,data=hfi,color="black") %>%
 ```
 
 ```{r}
-#| label: "fig-scat252"
+#| label: fig-scat252
 #| warning: false
 #| echo: false
 #| fig-cap: "A scatterplot of personal freedom versus expression control using the ggplot2 package." 
@@ -194,7 +194,7 @@ plot_ss <- function (x, y, data, showSquares = FALSE, leastSquares = FALSE)
 Next run the next code chunk that for us resulted in @fig-plotss-expression-score. You will have to pick to points on the plot that you think gives the best line.
 
 ```{r}
-#| label: "fig-plotss-expression-score"
+#| label: fig-plotss-expression-score
 #| warning: false
 #| echo: false
 #| fig-cap: "Plot of selected line and the associated residuals." 
@@ -208,7 +208,7 @@ $$ e_i = y_i - \hat{y}_i $$
 The most common way to do linear regression is to select the line that minimizes the sum of squared residuals. To visualize the squared residuals, you can rerun the plot command and add the argument `showSquares = TRUE`.
 
 ```{r}
-#| label: "fig-plotss-expression-score-squares"
+#| label: fig-plotss-expression-score-squares
 #| warning: false
 #| eval: false
 #| fig-cap: "Plot of selected line and the associated residuals." 
@@ -262,7 +262,7 @@ $$ As the political pressure increases by one unit, the **average** human freedo
 Let's create a scatterplot with the least squares line for `m1`, our first model, laid on top, @fig-reg-with-line.
 
 ```{r}
-#| label: "fig-reg-with-line"
+#| label: fig-reg-with-line
 #| warning: false
 #| echo: false
 #| fig-cap: "Scatterplot of personal expression control and personal freedom score." 
@@ -329,7 +329,7 @@ To assess whether the linear model is reliable, we need to check for
 **Linearity**: You already checked if the relationship between `pf_score` and `pf_expression_control` is linear using a scatterplot. We should also verify this condition with a plot of the residuals vs. fitted (predicted) values, @fig-residuals.
 
 ```{r}
-#| label: "fig-residuals"
+#| label: fig-residuals
 #| warning: false
 #| echo: false
 #| fig-cap: "Scatterplot of residuals and fitted values used to assess the assumptions of linearity and constant variance." 
@@ -352,7 +352,7 @@ The width is constant and there is no trend in the data. The linearity assumptio
 **Nearly normal residuals**: To check this condition, we can look at a histogram, @fig-hist-res.
 
 ```{r}
-#| label: "fig-hist-res"
+#| label: fig-hist-res
 #| warning: false
 #| echo: false
 #| fig-cap: "Histogram of residuals from linear regression model." 
@@ -365,7 +365,7 @@ ggplot(data = m1, aes(x = .resid)) +
 or a normal probability plot of the residuals, @fig-qq-res.
 
 ```{r}
-#| label: "fig-qq-res"
+#| label: fig-qq-res
 #| warning: false
 #| echo: false
 #| fig-cap: "The quantile-quantile residual plot used to assess the normality assumption." 

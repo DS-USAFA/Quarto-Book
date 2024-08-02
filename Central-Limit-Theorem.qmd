@@ -35,7 +35,7 @@ results <- do(10000)*mean(sample(c(0, 1), size = 120, replace = TRUE))
 ```
 
 ```{r}
-#| label: "fig-dens211"
+#| label: fig-dens211
 #| warning: false
 #| echo: false
 #| fig-cap: "Sampling distribution of the proportion."
@@ -47,14 +47,14 @@ results %>%
 ```
 
 > **Exercise**:\
-> Describe the shape of the distribution and note anything that you find interesting.[^21-central-limit-theorem-1]
+> Describe the shape of the distribution and note anything that you find interesting.[^central-limit-theorem-1]
 
-[^21-central-limit-theorem-1]: In general, the distribution is reasonably symmetric. It is unimodal and looks like a normal distribution.
+[^central-limit-theorem-1]: In general, the distribution is reasonably symmetric. It is unimodal and looks like a normal distribution.
 
 In @fig-dens212, we have overlayed a normal distribution on the histogram of the estimated sampling distribution. This allows us to visually compare a normal probability density curve with the empirical (based on data, or simulation in this case) sampling distribution.
 
 ```{r}
-#| label: "fig-dens212"
+#| label: fig-dens212
 #| warning: false
 #| echo: false
 #| fig-cap: "Sampling distribution of the sample proportion."
@@ -94,7 +94,7 @@ For this section, we are going to use an artificial example where we know the po
 Suppose there is an upcoming election in Colorado and Proposition A is on the ballot. Now suppose that 65% of Colorado voters support Proposition A. We poll a random sample of $n$ Colorado voters. Prior to conducting the sample, we can think about the sample as a sequence of i.i.d. random variables (voters) from the binomial distribution with one trial (vote) in each run and a probability of success (support for the measure) of 0.65. In other words, each random variable will take a value of 1 (support) or 0 (oppose). @fig-dens213 is a plot of the pmf of the parent distribution ($\textsf{Binom}(1,\, 0.65)$):
 
 ```{r}
-#| label: "fig-dens213"
+#| label: fig-dens213
 #| warning: false
 #| echo: false
 #| fig-cap: "Binomial pmf with one trial and probability of success of 0.65."
@@ -122,7 +122,7 @@ favstats(~mean, data = results)
 Remember from our chapters on probability, these results for the mean and standard deviation do not depend on the CLT. They are results from the properties of expectation on independent samples. The distribution of the sample mean (i.e., the shape of the sampling distribution) is approximately normal as a result of the CLT, @fig-dens214.
 
 ```{r}
-#| label: "fig-dens214"
+#| label: fig-dens214
 #| warning: false
 #| echo: false
 #| fig-cap: "Sampling distribution of the sample proportion with sample size of 10."
@@ -153,7 +153,7 @@ results <- do(10000)*mean(rbinom(25, 1, 0.65))
 ```
 
 ```{r}
-#| label: "fig-dens215"
+#| label: fig-dens215
 #| warning: false
 #| echo: false
 #| fig-cap: "Sampling distribution of the sample proportion with sample size of 25."
@@ -180,7 +180,7 @@ clt <- cbind(rbind(do(1000)*mean(rbinom(10, 1, 0.65)),
 ```
 
 ```{r}
-#| label: "fig-dens216"
+#| label: fig-dens216
 #| warning: false
 #| echo: false
 #| fig-cap: "Sampling distribution of the sample proportion for different sample sizes."
@@ -227,7 +227,7 @@ The $t$ distribution is very similar to the standard normal distribution, but ha
 @fig-t211 is a plot of the $t$ distribution, shown as a blue line, and has a bell shape that looks very similar to a normal distribution, show as a red line. However, the tails of the $t$ distribution are thicker, which means observations are more likely to fall beyond two standard deviations from the mean than under the normal distribution. When our sample is small, the value $s$ used to compute the standard error $(s/\sqrt{n})$ isn't very reliable. The extra thick tails of the $t$ distribution are exactly the correction we need to resolve this problem. When the degrees of freedom is about 30 or more, the $t$ distribution is nearly indistinguishable from the normal distribution.
 
 ```{r}
-#| label: "fig-t211"
+#| label: fig-t211
 #| warning: false
 #| fig-cap: "The t distribution."
 gf_dist("norm", color = "red") %>%
@@ -247,9 +247,9 @@ We are now ready to reexamine some of our previous examples using the mathematic
 
 ### Body temperature
 
-We will repeat the body temperature analysis from @sec-HYPTESTDIST homework, now using the CLT. We will use $\alpha = 0.05$. Recall that a paper from the American Medical Association[^21-central-limit-theorem-2] questioned the long-held belief that the average body temperature of a human is 98.6 degrees Fahrenheit. The authors of the paper believe that the average human body temperature is less than 98.6.
+We will repeat the body temperature analysis from @sec-HYPTESTDIST homework, now using the CLT. We will use $\alpha = 0.05$. Recall that a paper from the American Medical Association[^central-limit-theorem-2] questioned the long-held belief that the average body temperature of a human is 98.6 degrees Fahrenheit. The authors of the paper believe that the average human body temperature is less than 98.6.
 
-[^21-central-limit-theorem-2]: Mackowiak, P. A., Wasserman, S. S., and Levine, M. M. (1992), "A Critical Appraisal of 98.6 Degrees F, the Upper Limit of the Normal Body Temperature, and Other Legacies of Carl Reinhold August Wunderlich," Journal of the American Medical Association, 268, 1578-1580.
+[^central-limit-theorem-2]: Mackowiak, P. A., Wasserman, S. S., and Levine, M. M. (1992), "A Critical Appraisal of 98.6 Degrees F, the Upper Limit of the Normal Body Temperature, and Other Legacies of Carl Reinhold August Wunderlich," Journal of the American Medical Association, 268, 1578-1580.
 
 #### Step 1- State the null and alternative hypotheses
 
@@ -333,7 +333,7 @@ A typical plot used to evaluate the normality assumption is called the quantile-
 @fig-qq211 is our quantile-quantile plot for the body temperature data. The largest value may be an outlier. We may want to verify the data point was entered correctly. The fact that the points are above the line for the larger values and below the line for the smaller values indicates that our data may have longer tails than the normal distribution. There are really only 3 values in the larger quantiles, so in fact, the data may be slightly skewed to the left. This was also indicated by a comparison of the mean and median. However, since we have 130 data points these results do not overly concern us, and should not impact our findings.
 
 ```{r}
-#| label: "fig-qq211"
+#| label: fig-qq211
 #| warning: false
 #| fig-cap: "Q-Q plot for body temperature data."
 gf_qq(~temperature, data = temperature) %>%
@@ -399,9 +399,9 @@ prop.test(x = 42, n = 120, p = 0.5)
 The $p$-value is small, reported as $0.0014$. We will study the confidence interval soon, so don't worry about that part of the output yet. The alternative hypothesis is also listed, and has options for one-sided and two-sided tests.
 
 > **Exercise**:\
-> How do you conduct a one-sided test? What if the null value were 0.45?[^21-central-limit-theorem-3]
+> How do you conduct a one-sided test? What if the null value were 0.45?[^central-limit-theorem-3]
 
-[^21-central-limit-theorem-3]: We will only extract the $p$-value in this exercise.
+[^central-limit-theorem-3]: We will only extract the $p$-value in this exercise.
 
 ```{r}
 pval(prop.test(42, 120, alternative = "less", p = 0.45))

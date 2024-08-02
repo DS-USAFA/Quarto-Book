@@ -78,7 +78,7 @@ Fx(1)-Fx(0)
 Graphically, the pdf is displayed in @fig-plot111:
 
 ```{r}
-#| label: "fig-plot111"
+#| label: fig-plot111
 #| echo: false
 #| fig-align: "center"
 #| fig-cap: "pdf of $X$"
@@ -98,7 +98,7 @@ $$
 The plot of the cdf of $X$ is shown in @fig-plot112.
 
 ```{r}
-#| label: "fig-plot112"
+#| label: fig-plot112
 #| echo: false
 #| fig-cap: "CDF of $X$"
 #| fig-align: "center"
@@ -113,7 +113,7 @@ $\mbox{P}(X < 0.5)=\mbox{P}(X\leq 0.5)=F_X(0.5)=0.5^2=0.25$.\
 See @fig-plot113.
 
 ```{r}
-#| label: "fig-plot113"
+#| label: fig-plot113
 #| fig-align: "center"
 #| echo: false
 #| fig-cap: "Probability represented by shaded area"
@@ -127,7 +127,7 @@ $\mbox{P}(X > 0.5) = 1-\mbox{P}(X\leq 0.5)=1-0.25 = 0.75$.\
 See @fig-plot114.
 
 ```{r}
-#| label: "fig-plot114"
+#| label: fig-plot114
 #| echo: false
 #| fig-align: "center"
 #| fig-cap: "Probability represented by shaded area"
@@ -155,7 +155,7 @@ Fx(0.75)-Fx(0.1)
 Notice for a continuous random variable, we are loose with the use of the `=` sign. This is because for a continuous random variable $\mbox{P}(X=x)=0$. Do not get sloppy when working with discrete random variables.
 
 ```{r}
-#| label: "fig-plot115"
+#| label: fig-plot115
 #| echo: false
 #| fig-align: "center"
 #| fig-cap: "Probability represented by shaded area"
@@ -203,7 +203,7 @@ inspect(results)
 @fig-plot116 is a density plot of the simulated density function.
 
 ```{r}
-#| label: "fig-plot116"
+#| label: fig-plot116
 #| fig-cap: "Density plot of the simulated random variable."
 results %>%
   gf_density(~sqrt,xlab="X") %>%

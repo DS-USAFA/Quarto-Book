@@ -238,7 +238,7 @@ makeTubeAdv <- function(x, y, Z=2, R=1, col='#00000022', border='#00000000', typ
 #| echo: false 
 #| message: false 
 #| fig-cap: "Plots of linear regression and residual to illustrate the assumptions of the model."
-#| label: "fig-assump271"
+#| label: fig-assump271
 
 data(COL)
 
@@ -425,7 +425,7 @@ Let's predict calories from the carbohydrate content.
 
 ```{r scat271-fig}
 #| fig-cap: "Scatterplot of calories and carbohydrate content in Starbucks' products."
-#| label: "fig-scat271"
+#| label: fig-scat271
 #| warning: false
 starbucks %>%
   gf_point(calories~carb) %>%
@@ -547,7 +547,7 @@ Continuing with the `Starbucks` example. In plotting the data, we can have `R` p
 ```{r}
 #| fig-cap: "Confidence and predictions bands for linear regression model of calories and carbs in Starbucks' products."
 #| warning: false
-#| label: "fig-ci271"
+#| label: fig-ci271
 starbucks %>%
   gf_point(calories~carb) %>%
   gf_labs(x="Carbohydrates",y="Calories") %>%

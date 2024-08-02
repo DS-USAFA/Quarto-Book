@@ -90,7 +90,7 @@ Let's use an example to dig into where this comes from.
 See @fig-sens for a visual representation of these terms and others related to what is termed a **confusion matrix**.
 
 ```{r out.width="100%"}
-#| label: "fig-sens"
+#| label: fig-sens
 #| echo: false
 #| fig-align: "center"
 #| fig-cap: "A table of true results and test results for a hypothetical disease. The terminology is included in the table. These ideas are important when evaluating machine learning classification models."

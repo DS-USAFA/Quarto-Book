@@ -121,7 +121,7 @@ Notice that since the domain of the original random variable was non-negative, t
 The pdf of the random variable $Y$ is plotted in @fig-pdf161.
 
 ```{r}
-#| label: "fig-pdf161"
+#| label: fig-pdf161
 #| fig-cap: "he pdf of the transformed random variable $Y$"
 gf_line(y_pdf(seq(0.01,1,.01))~seq(0.01,1,.01),xlab="Y",ylab=expression(f(y))) %>%
   gf_theme(theme_bw())
@@ -184,7 +184,7 @@ inspect(results)
 @fig-dens161 is a density plot of the simulated original random variable.
 
 ```{r}
-#| label: "fig-dens161"
+#| label: fig-dens161
 #| fig-cap: "The density plot of the original using simulation."
 results %>%
   gf_density(~sqrt,xlab="X") %>%
@@ -202,7 +202,7 @@ y_results <- results %>%
 @fig-dens162 is the density plot of the transformed random variable from the simulation. We can see that the support for $Y$ is $-\infty < y \leq 0$ and the density is tight near zero but skewed to the left.
 
 ```{r}
-#| label: "fig-dens162"
+#| label: fig-dens162
 #| fig-cap: "The density plot of the transformed random variable from the simulation."
 y_results %>%
   gf_density(~y,xlab="X")  %>%
@@ -246,7 +246,7 @@ head(results)
 @fig-dens163 is a plot of the estimated density of the transformation.
 
 ```{r}
-#| label: "fig-dens163"
+#| label: fig-dens163
 #| fig-cap: "The density of the absolute value of the difference in uniform random variables."
 results %>%
   gf_density(~abs) %>%
@@ -257,7 +257,7 @@ results %>%
 Or as a histogram in @fig-hist163 .
 
 ```{r}
-#| label: "fig-hist163"
+#| label: fig-hist163
 #| fig-cap: "Histogram of the absolute value of the difference in random variables."
 results %>%
   gf_histogram(~abs)%>%

@@ -160,9 +160,9 @@ The multiplication rule is at the center of each of the three methods. In this f
 > *Example*:\
 > A license plate consists of three numeric digits (0-9) followed by three single letters (A-Z). How many possible license plates exist?
 
-We can divide this problem into two sections. In the numeric section, we are selecting 3 objects from 10, with replacement. This means that a number can be used more than once. Order clearly matters because a license plate starting with "432" is distinct from a license plate starting with "234". There are $10^3 = 1000$ ways to select the first three digits; 10 for the first, 10 for the second, and 10 for the third. Why do you multiply and not add?[^08-probability-rules-1]
+We can divide this problem into two sections. In the numeric section, we are selecting 3 objects from 10, with replacement. This means that a number can be used more than once. Order clearly matters because a license plate starting with "432" is distinct from a license plate starting with "234". There are $10^3 = 1000$ ways to select the first three digits; 10 for the first, 10 for the second, and 10 for the third. Why do you multiply and not add?[^probability-rules-1]
 
-[^08-probability-rules-1]: Multiplication is repeated adding so in a sense we are adding. However in a more serious tone, for this problem for every first number there are 10 possibilities for the second number and for every second number there are 10 possibilities for the third numbers. This is multiplication.
+[^probability-rules-1]: Multiplication is repeated adding so in a sense we are adding. However in a more serious tone, for this problem for every first number there are 10 possibilities for the second number and for every second number there are 10 possibilities for the third numbers. This is multiplication.
 
 In the alphabet section, we are selecting 3 objects from 26, where order matters. Thus, there are $26^3=17576$ ways to select the last three letters of the plate. Combined, there are $10^3 \times 26^3 = 17576000$ ways to select license plates. Visually, $$
 \underbrace{\underline{\quad 10 \quad }}_\text{number} \times \underbrace{\underline{\quad 10 \quad }}_\text{number} \times \underbrace{\underline{\quad 10 \quad }}_\text{number} \times \underbrace{\underline{\quad 26 \quad }}_\text{letter} \times \underbrace{\underline{\quad 26 \quad }}_\text{letter} \times \underbrace{\underline{\quad 26 \quad }}_\text{letter} = 17,576,000
@@ -273,8 +273,8 @@ denom<-choose(52,5)
 num/denom
 ```
 
-Why not use $\binom{13}{2}$ instead of $\binom{13}{1}\binom{12}{1}$?[^08-probability-rules-2]
+Why not use $\binom{13}{2}$ instead of $\binom{13}{1}\binom{12}{1}$?[^probability-rules-2]
 
-[^08-probability-rules-2]: Because this implies the order selection of the ranks does not matter. In other words, this assumes that for example 3 Kings and 2 fours is the same full house as 3 fours and 2 Kings. This is not true so we break the rank selection about essentially making it a permutation.
+[^probability-rules-2]: Because this implies the order selection of the ranks does not matter. In other words, this assumes that for example 3 Kings and 2 fours is the same full house as 3 fours and 2 Kings. This is not true so we break the rank selection about essentially making it a permutation.
 
 We have just determined that a full house has a lower probability of occurring than a flush. This is why in gambling, a flush is valued less than a full house.

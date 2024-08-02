@@ -95,7 +95,7 @@ Note that this function specifies the probability that $X$ takes any of the four
 Graphically, the pmf is not terribly interesting. The pmf is 0 at all values of $X$ except for 0, 1, 2 and 3, @fig-pmf101 .
 
 ```{r}
-#| label: "fig-pmf101"
+#| label: fig-pmf101
 #| echo: false
 #| fig-cap: "Probability Mass Function of $X$ from Coin Flip Example"
 plot(c(0,1,2,3),c(1/8,3/8,3/8,1/8),type="h",ylim=c(0,1),
@@ -136,7 +136,7 @@ Like the pmf, the cdf must be between 0 and 1. Also, since the pmf is always non
 Visually, the cdf of a discrete random variable has a stairstep appearance. In this example, the cdf takes a value 0 up until $X=0$, at which point the cdf increases to 1/8. It stays at this value until $X=1$, and so on. At and beyond $X=3$, the cdf is equal to 1, @fig-cdf101 .
 
 ```{r}
-#| label: "fig-cdf101"
+#| label: fig-cdf101
 #| echo: false
 #| fig-cap: "Cumulative Distribution Function of $X$ from Coin Flip Example"
 x<-c(0,1,2,3)

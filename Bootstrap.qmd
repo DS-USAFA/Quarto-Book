@@ -31,9 +31,9 @@ The engines that drive the numeric results of a decision making model are either
 
 ## Bootstrapping
 
-*Bootstrapping*[^25-bootstrap-1] is a powerful statistical method that allows us to estimate the sampling distribution of a statistic by resampling with replacement from the original data. This technique is particularly useful when the theoretical distribution of a statistic is complex or unknown.
+*Bootstrapping*[^bootstrap-1] is a powerful statistical method that allows us to estimate the sampling distribution of a statistic by resampling with replacement from the original data. This technique is particularly useful when the theoretical distribution of a statistic is complex or unknown.
 
-[^25-bootstrap-1]: The term *bootstrapping* comes from the phrase "pulling oneself up by one's bootstraps," which is credited to the 18th century story of Baron Munchausen who supposedly pulled himself out of a swamp by tugging on his own bootstraps. It implies performing an apparently impossible task. The bootstrap method was created by Bradley Efron in 1979 and was named in this way because it relies on the data itself to generate estimates of sampling distributions.
+[^bootstrap-1]: The term *bootstrapping* comes from the phrase "pulling oneself up by one's bootstraps," which is credited to the 18th century story of Baron Munchausen who supposedly pulled himself out of a swamp by tugging on his own bootstraps. It implies performing an apparently impossible task. The bootstrap method was created by Bradley Efron in 1979 and was named in this way because it relies on the data itself to generate estimates of sampling distributions.
 
 The theory required to quantify the uncertainty of a statistic such as the sample median is complex. In an ideal world, we would sample data from the population and compute the median with this sample. Then we could sample again from the population and recompute the media with this new sample. Then we could do it again. And again. And so on until we get enough median estimates that we have a good sense of the precision of our original estimate. This is an ideal world where sampling data is free or extremely inexpensive. That is rarely the case, which poses a challenge to this "resample from the population" approach.
 
@@ -62,7 +62,7 @@ heights <- c(62.0, 73.8, 59.8, 66.9, 75.6, 63.3, 64.0, 63.1, 65.0, 67.2,
 Let's look at the data. @fig-box231 and @fig-dens231 show a boxplot and density plot of the heights, respectively.
 
 ```{r}
-#| label: "fig-box231"
+#| label: fig-box231
 #| warning: false
 #| echo: false
 #| fig-cap: "Boxplot of heights of local college students." 
@@ -72,7 +72,7 @@ gf_boxplot(~heights) %>%
 ```
 
 ```{r}
-#| label: "fig-dens231"
+#| label: fig-dens231
 #| warning: false
 #| echo: false
 #| fig-cap: "Density plot of heights of local college students." 
@@ -135,7 +135,7 @@ The `do()` function, by default, gives the column name of the last function used
 @fig-boot-mean is a plot of the bootstrap distribution. The observed mean from our original sample is shown as a black line.
 
 ```{r}
-#| label: "fig-boot-mean"
+#| label: fig-boot-mean
 #| warning: false
 #| echo: false
 #| fig-cap: "The sampling distribution of the mean approximated using a bootstrap distribution." 
@@ -170,9 +170,9 @@ A plausible range of values for the population parameter is called a **confidenc
 
 If we report a point estimate, we probably will not hit the exact population parameter. On the other hand, if we report a range of plausible values -- a confidence interval -- we have a good shot at capturing the parameter.
 
-> **Exercise**: If we want to be very certain we capture the population parameter, should we use a wider interval or a smaller interval?[^25-bootstrap-2]
+> **Exercise**: If we want to be very certain we capture the population parameter, should we use a wider interval or a smaller interval?[^bootstrap-2]
 
-[^25-bootstrap-2]: If we want to be more certain we will capture the fish, we should use a wider net. Likewise, we use a wider confidence interval if we want to be more certain that we capture the parameter. A higher level of confidence implies a wider interval.
+[^bootstrap-2]: If we want to be more certain we will capture the fish, we should use a wider net. Likewise, we use a wider confidence interval if we want to be more certain that we capture the parameter. A higher level of confidence implies a wider interval.
 
 ### Constructing a confidence interval
 
@@ -188,9 +188,9 @@ Generally, what you should know about building confidence intervals is laid out 
 
 #### Bootstrap percentile method
 
-We can now calculate a confidence interval using the bootstrap percentile method, where we examine the bootstrap distribution and find the values corresponding to percentiles of interest[^25-bootstrap-3] to construct a confidence interval.
+We can now calculate a confidence interval using the bootstrap percentile method, where we examine the bootstrap distribution and find the values corresponding to percentiles of interest[^bootstrap-3] to construct a confidence interval.
 
-[^25-bootstrap-3]: The values corresponding to the percentiles of interest are also known as *quantiles*.
+[^bootstrap-3]: The values corresponding to the percentiles of interest are also known as *quantiles*.
 
 For a 95% confidence interval, we simply want the middle 95% of the bootstrap distribution. That is, we want the 2.5 and 97.5 percentiles of the bootstrap distribution. The function `cdata()` makes this easy for us by specifying the probability for the confidence interval desired.
 
@@ -224,7 +224,7 @@ boot_results <- do(10000)*median(~height, data = resample(heights))
 ```
 
 ```{r}
-#| label: "fig-boot-median"
+#| label: fig-boot-median
 #| warning: false
 #| echo: false
 #| fig-cap: "The sampling distribution of the median approximated using a bootstrap distribution." 
@@ -264,7 +264,7 @@ boot_results <- do(10000)*iqr(~height, data = resample(heights))
 ```
 
 ```{r}
-#| label: "fig-boot-iqr"
+#| label: fig-boot-iqr
 #| warning: false
 #| echo: false
 #| fig-cap: "The sampling distribution of the IQR approximated using a bootstrap distribution." 
