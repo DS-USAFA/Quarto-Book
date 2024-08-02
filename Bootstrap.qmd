@@ -206,6 +206,37 @@ qdata(~mean, data = boot_results, p = c(0.025, 0.975))
 
 Both functions result in the same 95% confidence interval.
 
+#### Using the bootstrap standard error 
+
+Since the bootstrap distribution is roughly symmetric and bell-shaped, we can use an approximation similar to the empirical rule (68-95-99.7 rule) which states that approximately 95% of data falls within two standard deviations of the mean. In this situation, the standard deviation of the bootstrap distribution is the bootstrap standard error of the sample mean.
+
+For an approximate 95% confidence interval, we use
+
+$$
+\text{bootstrap mean} \pm 2 \times \text{standard error}
+$$
+
+```{r}
+xbar <- mean(boot_results$mean)
+SE <- sd(boot_results$mean)
+xbar + c(-2, 2)*SE
+```
+
+We could of course use **tidyverse** as well, but we must change the column name so that the `mean` column and the `mean()` function don't conflict with each other.
+
+```{r}
+#| message: false 
+#| warning: false 
+boot_results %>% 
+  mutate(stat = mean) %>%      # rename the mean column as stat
+  summarize(mean = mean(stat), stderr = sd(stat), 
+            lower = mean + -2*stderr, upper = mean + 2*stderr)
+```
+
+This interval is very similar to the one found with the percentile method, but the standard error method can only be used when the bootstrap distribution is approximately symmetric and bell-shaped. You can learn more about bootstrap confidence intervals online.[^bootstrap-4]
+
+[^bootstrap-4]: Also, see resources like *Statistical Inference via Data Science* by Chester Ismay and Albert Kim.
+
 ## Non-standard sample statistics
 
 One of the huge advantages of simulation-based methods is the ability to build confidence intervals for parameters whose estimates don't have known sampling distributions, or when the distributions are difficult to derive. In essence, the bootstrap method allows us estimate the sampling distribution and standard error of any statistic of interest.
