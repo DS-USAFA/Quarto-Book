@@ -459,6 +459,15 @@ window.Quarto = {
   <li><a href="#mlb-batting-performance" id="toc-mlb-batting-performance" class="nav-link" data-scroll-target="#mlb-batting-performance"><span class="header-section-number">26.3.1</span> MLB batting performance</a></li>
   <li><a href="#analysis-of-variance-anova-and-the-f-test" id="toc-analysis-of-variance-anova-and-the-f-test" class="nav-link" data-scroll-target="#analysis-of-variance-anova-and-the-f-test"><span class="header-section-number">26.3.2</span> Analysis of variance (ANOVA) and the F test</a></li>
   </ul></li>
+  <li><a href="#culminating-example" id="toc-culminating-example" class="nav-link" data-scroll-target="#culminating-example"><span class="header-section-number">26.4</span> Culminating example</a>
+  <ul class="collapse">
+  <li><a href="#help-example" id="toc-help-example" class="nav-link" data-scroll-target="#help-example"><span class="header-section-number">26.4.1</span> HELP example</a></li>
+  <li><a href="#randomization-test" id="toc-randomization-test" class="nav-link" data-scroll-target="#randomization-test"><span class="header-section-number">26.4.2</span> Randomization test</a></li>
+  <li><a href="#traditional-mathematical-methods" id="toc-traditional-mathematical-methods" class="nav-link" data-scroll-target="#traditional-mathematical-methods"><span class="header-section-number">26.4.3</span> Traditional mathematical methods</a></li>
+  <li><a href="#hypothesis-tests" id="toc-hypothesis-tests" class="nav-link" data-scroll-target="#hypothesis-tests"><span class="header-section-number">26.4.4</span> Hypothesis tests</a></li>
+  <li><a href="#confidence-intervals" id="toc-confidence-intervals" class="nav-link" data-scroll-target="#confidence-intervals"><span class="header-section-number">26.4.5</span> Confidence intervals</a></li>
+  <li><a href="#bootstrap" id="toc-bootstrap" class="nav-link" data-scroll-target="#bootstrap"><span class="header-section-number">26.4.6</span> Bootstrap</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/DS-USAFA/Quarto-Book/edit/main/Analysis-of-Variance.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -827,9 +836,312 @@ Figure&nbsp;26.6: The sampling distribution of the difference in variances rando
 <blockquote class="blockquote">
 <p><strong>Exercise</strong>: If we reject the null hypothesis in the ANOVA test, we know that at least one mean is different but we don’t know which one(s). How would you approach answering the question of which means are different?</p>
 </blockquote>
-
-
 </section>
+</section>
+</section>
+<section id="culminating-example" class="level2" data-number="26.4">
+<h2 data-number="26.4" class="anchored" data-anchor-id="culminating-example"><span class="header-section-number">26.4</span> Culminating example</h2>
+<p>To bring together all the ideas we have learned so far in this block, we will work an example of testing for a difference of two means. In our opinion, the easiest method to understand is the permutation test and the most difficult is the one based on the mathematical derivation, because of the assumptions necessary to get a mathematical solution for the sampling distribution. We will also introduce how to use the bootstrap to get a confidence interval.</p>
+<section id="help-example" class="level3" data-number="26.4.1">
+<h3 data-number="26.4.1" class="anchored" data-anchor-id="help-example"><span class="header-section-number">26.4.1</span> HELP example</h3>
+<p>Let’s return to the Health Evaluation and Linkage to Primary Care data set, <code>HELPrct</code> in the <strong>mosaicData</strong> package. Previously, we looked at whether there was a difference in <code>substance</code> of abuse between males and females.</p>
+<p>We are now interested in whether there is a difference between male and female ages. Let’s first take a look at the data to refresh our memory.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"HELPrct"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>HELP_sub <span class="ot">&lt;-</span> HELPrct <span class="sc">%&gt;%</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(age, sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(age <span class="sc">~</span> sex, <span class="at">data =</span> HELP_sub)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     sex min Q1 median   Q3 max     mean       sd   n missing
+1 female  21 31     35 40.5  58 36.25234 7.584858 107       0
+2   male  19 30     35 40.0  60 35.46821 7.750110 346       0</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>HELP_sub <span class="sc">%&gt;%</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_boxplot</span>(age <span class="sc">~</span> sex) <span class="sc">%&gt;%</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_classic</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">x =</span> <span class="st">"Gender"</span>, <span class="at">y =</span> <span class="st">"Age (years)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Analysis-of-Variance_files/figure-html/box253-fig-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>The distribution of age in the HELP study by gender.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>HELP_sub <span class="sc">%&gt;%</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_dhistogram</span>(<span class="sc">~</span>age<span class="sc">|</span>sex, <span class="at">fill =</span> <span class="st">"cyan"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_classic</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">x =</span> <span class="st">"Age"</span>, <span class="at">y =</span> <span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Analysis-of-Variance_files/figure-html/hist254-fig-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>The distribution of age in the HELP study by gender.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Figures @ref(fig:box253-fig) and @ref(fig:hist254-fig) indicate there might be a slight difference in the means, but is it statistically significant?</p>
+</section>
+<section id="randomization-test" class="level3" data-number="26.4.2">
+<h3 data-number="26.4.2" class="anchored" data-anchor-id="randomization-test"><span class="header-section-number">26.4.2</span> Randomization test</h3>
+<p>The randomization test (approximation of a permutation test) is ideally suited for a hypothesis test. So, we will conduct this first and then see if we can generate a confidence interval.</p>
+<p>The hypotheses are:</p>
+<p><span class="math inline">\(H_0\)</span>: There is no difference in average age for men and women in the detoxification unit. In statistical notation: <span class="math inline">\(\mu_{male} - \mu_{female} = 0\)</span>, where <span class="math inline">\(\mu_{female}\)</span> represents the mean age for female inpatients and <span class="math inline">\(\mu_{male}\)</span> represents the mean age for male inpatients.</p>
+<p><span class="math inline">\(H_A\)</span>: There is some difference in average age for men and women in the detoxification unit (<span class="math inline">\(\mu_{male} - \mu_{female} \neq 0\)</span>).</p>
+<p>Let’s perform a randomization test. The mean age by sex is again shown below.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(age <span class="sc">~</span> sex, <span class="at">data =</span> HELP_sub)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     sex min Q1 median   Q3 max     mean       sd   n missing
+1 female  21 31     35 40.5  58 36.25234 7.584858 107       0
+2   male  19 30     35 40.0  60 35.46821 7.750110 346       0</code></pre>
+</div>
+</div>
+<p>We calculate the observed difference in the mean ages. Notice we are subtracting the mean female age from the mean male age.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>obs_stat <span class="ot">&lt;-</span> <span class="fu">diffmean</span>(age <span class="sc">~</span> sex, <span class="at">data =</span> HELP_sub)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>obs_stat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  diffmean 
+-0.7841284 </code></pre>
+</div>
+</div>
+<p>Under the null hypothesis, there is no difference in the average age for men and women. So, we shuffle the <code>sex</code> labels around to generate a sampling distribution under the null.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">345</span>)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">do</span>(<span class="dv">10000</span>)<span class="sc">*</span><span class="fu">diffmean</span>(age <span class="sc">~</span> <span class="fu">shuffle</span>(sex), <span class="at">data =</span> HELP_sub)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(<span class="sc">~</span>diffmean, <span class="at">data =</span> results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       min         Q1     median     Q3      max        mean        sd     n
+ -3.378154 -0.5638809 0.01120955 0.5863 3.486224 0.009350908 0.8492454 10000
+ missing
+       0</code></pre>
+</div>
+</div>
+<p>The sampling distribution is centered on the null hypothesized value of 0, more or less, and the standard deviation is 0.849. This is an estimate of the variability of the difference in mean ages. The observed difference in means is shown as a red line on the sampling distribution in Figure @ref(fig:hist255-fig).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>results <span class="sc">%&gt;%</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_histogram</span>(<span class="sc">~</span>diffmean, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"cyan"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_vline</span>(<span class="at">xintercept =</span> obs_stat, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_classic</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">x =</span> <span class="st">"Difference of means"</span>, </span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">title =</span> <span class="st">"Sampling distribution of difference of two means"</span>, </span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">subtitle =</span> <span class="st">"Null assumes equal means"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Analysis-of-Variance_files/figure-html/hist255-fig-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>The approximate sampling distribution of the difference of means from a bootstrap process.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Our test statistic does not appear to be too extreme. Now, we calculate a two-sided <span class="math inline">\(p\)</span>-value.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span><span class="fu">prop1</span>(<span class="sc">~</span>(diffmean <span class="sc">&lt;=</span> obs_stat), <span class="at">data =</span> results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>prop_TRUE 
+0.3523648 </code></pre>
+</div>
+</div>
+<p>Based on this <span class="math inline">\(p\)</span>-value, we fail to reject the null hypothesis. There is not enough evidence to say that the mean age for men and women is different.</p>
+<p>Now, to construct a confidence interval based on the randomization, we have to be careful and think about this. The object <code>results</code> has the distribution of the difference in means, assuming there is no difference. To get a confidence interval, we want to center this distribution on the observed difference in means and not on zero. We will do this by adding the observed difference in means to the randomization results, and then find the percentile confidence interval.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cdata</span>(<span class="sc">~</span>(diffmean <span class="sc">+</span> obs_stat), <span class="at">data =</span> results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         lower     upper central.p
+2.5% -2.449246 0.8789368      0.95</code></pre>
+</div>
+</div>
+<p>We are 95% confident that the true difference in mean ages between male and female participants in the study is between -2.45 and 0.88. Because 0 is contained in the confidence interval, we fail to reject the null hypothesis. There is not enough evidence to say that the mean age for men and women is different.</p>
+<p>Note that we are assuming the test statistic can be transformed. It turns out that the percentile method for a confidence interval is transformation invariant, so we can perform the transformation of shifting the null sampling distribution by the observed value.</p>
+</section>
+<section id="traditional-mathematical-methods" class="level3" data-number="26.4.3">
+<h3 data-number="26.4.3" class="anchored" data-anchor-id="traditional-mathematical-methods"><span class="header-section-number">26.4.3</span> Traditional mathematical methods</h3>
+<p>Using the CLT or the <span class="math inline">\(t\)</span> distribution becomes difficult, because we have to find a way to calculate the standard error. There have been many proposed methods, and you are welcome to research them, but we will only present a couple of ideas in this section. Let’s summarize the process for both hypothesis testing and confidence intervals in the case of the difference of two means using the <span class="math inline">\(t\)</span> distribution. You may recall some of the ideas for a two-sample <span class="math inline">\(t\)</span> test (hypothesis test) from Chapter @ref(ADDTESTS).</p>
+</section>
+<section id="hypothesis-tests" class="level3" data-number="26.4.4">
+<h3 data-number="26.4.4" class="anchored" data-anchor-id="hypothesis-tests"><span class="header-section-number">26.4.4</span> Hypothesis tests</h3>
+<p>When applying the <span class="math inline">\(t\)</span> distribution for a hypothesis test, we proceed as follows:</p>
+<ol type="1">
+<li><p>State the appropriate hypotheses.</p></li>
+<li><p>Verify the conditions for using the <span class="math inline">\(t\)</span> distribution.</p>
+<p>For a difference of means, when the data are not paired: each sample mean must separately satisfy the one-sample conditions for the <span class="math inline">\(t\)</span> distribution, and the data in each group must also be independent. Just like in the one-sample case, slight skewness will not be a problem for larger sample sizes. We can have moderate skewness and be fine if our sample is 30 or more. We can have extreme skewness if our sample is 60 or more.</p></li>
+<li><p>Compute the point estimate of interest, the standard error, and the degrees of freedom.</p></li>
+<li><p>Compute the <span class="math inline">\(T\)</span> test statistic and <span class="math inline">\(p\)</span>-value.</p></li>
+<li><p>Make a conclusion based on the <span class="math inline">\(p\)</span>-value, and write a conclusion in context of the problem and in plain language so that anyone can understand the results.</p></li>
+</ol>
+<p>We’ve added the extra step of checking the assumptions here.</p>
+</section>
+<section id="confidence-intervals" class="level3" data-number="26.4.5">
+<h3 data-number="26.4.5" class="anchored" data-anchor-id="confidence-intervals"><span class="header-section-number">26.4.5</span> Confidence intervals</h3>
+<p>Similarly, the following is how we generally compute a confidence interval using the <span class="math inline">\(t\)</span> distribution:</p>
+<ol type="1">
+<li><p>Verify conditions for using the <span class="math inline">\(t\)</span> distribution. (See above.)</p></li>
+<li><p>Compute the point estimate of interest, the standard error, the degrees of freedom, and <span class="math inline">\(t^{\star}_{df}\)</span> (the critical value or number of standard deviations needed for the confidence interval).</p></li>
+<li><p>Calculate the confidence interval using the general formula, <span class="math inline">\(\text{point estimate} \pm\ t_{df}^{\star} SE\)</span>.</p></li>
+<li><p>Put the conclusions in context of the problem and in plain language, so even non-statisticians can understand the results.</p></li>
+</ol>
+<p>If the assumptions above are met, each sample mean can itself be modeled using a <span class="math inline">\(t\)</span> distribution. If the samples are independent, then the sample difference of two means, <span class="math inline">\(\bar{x}_1 - \bar{x}_2\)</span>, can be modeled using the <span class="math inline">\(t\)</span> distribution and the standard error is</p>
+<p><span class="math display">\[SE_{\bar{x}_{1} - \bar{x}_{2}} = \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}\]</span></p>
+<p>To calculate the degrees of freedom, we can use statistical software or, conservatively, use the smaller of <span class="math inline">\(n_1 - 1\)</span> and <span class="math inline">\(n_2 - 1\)</span>.</p>
+<section id="results" class="level4" data-number="26.4.5.1">
+<h4 data-number="26.4.5.1" class="anchored" data-anchor-id="results"><span class="header-section-number">26.4.5.1</span> Results</h4>
+<p>Back to the HELP data, the men and women were independent of each other. Additionally, the distributions in each population don’t show any clear deviations from normality. There is some slight skewness but the sample size reduces this concern, see Figure @ref(fig:qq256-fig). Finally, within each group we also need independence. If each group represents less than 10% of the population, we are good to go on this. This condition might be difficult to verify.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>HELP_sub <span class="sc">%&gt;%</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_qq</span>(<span class="sc">~</span>age<span class="sc">|</span>sex) <span class="sc">%&gt;%</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_qqline</span>(<span class="sc">~</span>age<span class="sc">|</span>sex) <span class="sc">%&gt;%</span></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_bw</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Analysis-of-Variance_files/figure-html/qq256-fig-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>The quantile-quantile plots to check the normality assumption.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The distribution of males tends to have longer tails than a normal distribution, and the female distribution is skewed to the right. The sample sizes are large enough that this does not worry us. Below are the summary statistics by <code>sex</code> once more.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(age <span class="sc">~</span> sex, <span class="at">data =</span> HELP_sub)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     sex min Q1 median   Q3 max     mean       sd   n missing
+1 female  21 31     35 40.5  58 36.25234 7.584858 107       0
+2   male  19 30     35 40.0  60 35.46821 7.750110 346       0</code></pre>
+</div>
+</div>
+<p>Let’s find the confidence interval first. We use the smaller of <span class="math inline">\(n_1 - 1\)</span> and <span class="math inline">\(n_2 - 1\)</span> as the degrees of freedom: <span class="math inline">\(df = 106\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>(<span class="fl">35.47</span> <span class="sc">-</span> <span class="fl">36.25</span>) <span class="sc">+</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>)<span class="sc">*</span><span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="dv">106</span>)<span class="sc">*</span><span class="fu">sqrt</span>(<span class="fl">7.58</span><span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> <span class="dv">107</span> <span class="sc">+</span> <span class="fl">7.75</span><span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> <span class="dv">346</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -2.4512328  0.8912328</code></pre>
+</div>
+</div>
+<p>This result is very close to the interval we got with the permutation test.</p>
+<p>Now, let’s find the <span class="math inline">\(p\)</span>-value for the hypothesis test.</p>
+<p>The test statistic is:</p>
+<p><span class="math display">\[T \ =\ \frac{\text{point estimate} - \text{null value}}{SE}\]</span></p>
+<p><span class="math display">\[ = \frac{(35.47 - 36.25) - 0}{\sqrt{\left( \frac{7.58^2}{107}+ \frac{7.75^2}{346}\right)}}\ =\ - 0.92976 \]</span> We again use <span class="math inline">\(df = 106\)</span>. The <span class="math inline">\(p\)</span>-value is:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span><span class="fu">pt</span>(<span class="sc">-</span><span class="fl">0.92976</span>, <span class="dv">106</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3546079</code></pre>
+</div>
+</div>
+<p>The results in <code>R</code> are slightly different due to the calculation of the degrees of freedom.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t_test</span>(age <span class="sc">~</span> sex, <span class="at">data =</span> HELP_sub)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  age by sex
+t = 0.92976, df = 179.74, p-value = 0.3537
+alternative hypothesis: true difference in means between group female and group male is not equal to 0
+95 percent confidence interval:
+ -0.8800365  2.4482932
+sample estimates:
+mean in group female   mean in group male 
+            36.25234             35.46821 </code></pre>
+</div>
+</div>
+<p>Notice that the degrees of freedom is not an integer. This is because it is a weighted average of the two different samples sizes and standard deviations. This method is called the Satterthwaite approximation. Additionally, the confidence interval is slightly different because <code>t_test()</code> subtracted the mean age for men from the mean age for women. Still, the confidence interval and <span class="math inline">\(p\)</span>-value lead us to the same results as before – we fail to reject the null hypothesis.</p>
+</section>
+<section id="pooled-standard-deviation" class="level4" data-number="26.4.5.2">
+<h4 data-number="26.4.5.2" class="anchored" data-anchor-id="pooled-standard-deviation"><span class="header-section-number">26.4.5.2</span> Pooled standard deviation</h4>
+<p>Occasionally, two populations will have standard deviations that are so similar they can be treated as identical. This is an assumption of equal variance in each group. For example, historical data or a well-understood biological mechanism may justify this strong assumption. In such cases, we can make the <span class="math inline">\(t\)</span> distribution approach slightly more precise by using a pooled standard deviation.</p>
+<p>The <strong>pooled standard deviation</strong> of two groups is a way to use data from both samples to better estimate the standard deviation and standard error. If <span class="math inline">\(s_1\)</span> and <span class="math inline">\(s_2\)</span> are the standard deviations of groups 1 and 2, respectively, and there are good reasons to believe that the population standard deviations are equal, then we can obtain an improved estimate of the group variances by pooling their data:</p>
+<p><span class="math display">\[ s_{pooled}^2 = \frac{s_1^2\times (n_1 - 1) + s_2^2\times (n_2 - 1)}{n_1 + n_2 - 2}\]</span></p>
+<p>where <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span> are the sample sizes of groups 1 and 2, as before. To use this new estimate, we substitute <span class="math inline">\(s_{pooled}^2\)</span> in place of <span class="math inline">\(s_1^2\)</span> and <span class="math inline">\(s_2^2\)</span> in the standard error formula, and we use an updated formula for the degrees of freedom: <span class="math display">\[df = n_1 + n_2 - 2\]</span></p>
+<p>The benefits of pooling the standard deviation are realized through obtaining a better estimate of the standard deviation for each group and using a larger degrees of freedom parameter for the <span class="math inline">\(t\)</span> distribution. Both of these changes may permit a more accurate model of the sampling distribution of <span class="math inline">\(\bar{x}_1 - \bar{x}_2\)</span>.</p>
+<blockquote class="blockquote">
+<p><strong>Caution</strong><br>
+Pooling standard deviations should be done only after careful research.</p>
+</blockquote>
+<p>A pooled standard deviation is only appropriate when background research indicates the population standard deviations are nearly equal. When the sample size is large and the condition may be adequately checked with data, the benefits of pooling the standard deviations greatly diminishes.</p>
+<p>In <code>R</code> we can test the difference of two means with equal variance using the <code>var.equal</code> argument.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t_test</span>(age <span class="sc">~</span> sex, <span class="at">data =</span> HELP_sub, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Two Sample t-test
+
+data:  age by sex
+t = 0.91923, df = 451, p-value = 0.3585
+alternative hypothesis: true difference in means between group female and group male is not equal to 0
+95 percent confidence interval:
+ -0.8922735  2.4605303
+sample estimates:
+mean in group female   mean in group male 
+            36.25234             35.46821 </code></pre>
+</div>
+</div>
+<p>Since our sample sizes are so large, this did not have a big impact on the results.</p>
+</section>
+</section>
+<section id="bootstrap" class="level3" data-number="26.4.6">
+<h3 data-number="26.4.6" class="anchored" data-anchor-id="bootstrap"><span class="header-section-number">26.4.6</span> Bootstrap</h3>
+<p>Finally, we will construct a confidence interval through the use of the bootstrap. In this problem, we have to be careful and sample within each group. Compare the following two bootstrap samples.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(age <span class="sc">~</span> sex, <span class="at">data =</span> <span class="fu">resample</span>(HELP_sub))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     sex min Q1 median    Q3 max     mean       sd   n missing
+1 female  21 30     33 38.75  50 34.64706 6.267387 102       0
+2   male  19 29     33 39.00  59 34.74359 7.833066 351       0</code></pre>
+</div>
+</div>
+<p>and</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(age <span class="sc">~</span> sex, <span class="at">data =</span> <span class="fu">resample</span>(HELP_sub, <span class="at">groups =</span> sex))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     sex min Q1 median   Q3 max     mean       sd   n missing
+1 female  22 31     34 39.5  57 35.60748 6.901951 107       0
+2   male  20 31     35 41.0  60 35.94798 8.039227 346       0</code></pre>
+</div>
+</div>
+<p>Notice in the second line of code, we are keeping the groups the same size by sampling within the <code>sex</code> variable.</p>
+<p>Now, let’s get our bootstrap distribution.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2527</span>)</span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">do</span>(<span class="dv">1000</span>)<span class="sc">*</span><span class="fu">diffmean</span>(age <span class="sc">~</span> sex, <span class="at">data =</span> <span class="fu">resample</span>(HELP_sub, <span class="at">groups =</span> sex))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Figure @ref(fig:boot257-fig) is our sampling distribution from the bootstrap.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>results <span class="sc">%&gt;%</span></span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_histogram</span>(<span class="sc">~</span>diffmean, <span class="at">fill =</span> <span class="st">"cyan"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(theme_classic) <span class="sc">%&gt;%</span></span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">x =</span> <span class="st">"Difference in means"</span>, <span class="at">y =</span> <span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Analysis-of-Variance_files/figure-html/boot257-fig-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Bootstrap distribution of the difference in means.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cdata</span>(<span class="sc">~</span>diffmean, <span class="at">p =</span> <span class="fl">0.95</span>, <span class="at">data =</span> results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         lower     upper central.p
+2.5% -2.394406 0.8563786      0.95</code></pre>
+</div>
+</div>
+<p>Again, we find similar results with the percentile confidence interval.</p>
+
+
 </section>
 </section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">

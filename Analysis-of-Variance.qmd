@@ -352,3 +352,270 @@ prop1(~(result >= obs), results)
 Again, we find a similar $p$-value.
 
 > **Exercise**: If we reject the null hypothesis in the ANOVA test, we know that at least one mean is different but we don't know which one(s). How would you approach answering the question of which means are different?
+
+
+
+## Culminating example  
+
+To bring together all the ideas we have learned so far in this block, we will work an example of testing for a difference of two means. In our opinion, the easiest method to understand is the permutation test and the most difficult is the one based on the mathematical derivation, because of the assumptions necessary to get a mathematical solution for the sampling distribution. We will also introduce how to use the bootstrap to get a confidence interval.  
+
+### HELP example
+
+Let’s return to the Health Evaluation and Linkage to Primary Care data set, `HELPrct` in the **mosaicData** package. Previously, we looked at whether there was a difference in `substance` of abuse between males and females.  
+
+We are now interested in whether there is a difference between male and female ages. Let's first take a look at the data to refresh our memory.  
+
+```{r}
+data("HELPrct")
+```
+
+```{r}
+HELP_sub <- HELPrct %>%
+  select(age, sex)
+```
+
+```{r}
+favstats(age ~ sex, data = HELP_sub)
+```
+
+```{r box253-fig,fig.cap="The distribution of age in the HELP study by gender."}
+HELP_sub %>%
+  gf_boxplot(age ~ sex) %>%
+  gf_theme(theme_classic()) %>%
+  gf_labs(x = "Gender", y = "Age (years)")
+```
+
+
+```{r hist254-fig,fig.cap="The distribution of age in the HELP study by gender."}
+HELP_sub %>%
+  gf_dhistogram(~age|sex, fill = "cyan", color = "black") %>%
+  gf_theme(theme_classic()) %>%
+  gf_labs(x = "Age", y = "")
+```  
+
+
+Figures \@ref(fig:box253-fig) and \@ref(fig:hist254-fig) indicate there might be a slight difference in the means, but is it statistically significant?  
+
+
+### Randomization test
+
+The randomization test (approximation of a permutation test) is ideally suited for a hypothesis test. So, we will conduct this first and then see if we can generate a confidence interval.  
+
+The hypotheses are: 
+
+$H_0$: There is no difference in average age for men and women in the detoxification unit. In statistical notation: $\mu_{male} - \mu_{female} = 0$, where $\mu_{female}$ represents the mean age for female inpatients and $\mu_{male}$ represents the mean age for male inpatients.  
+
+$H_A$: There is some difference in average age for men and women in the detoxification unit ($\mu_{male} - \mu_{female} \neq 0$).
+
+Let's perform a randomization test. The mean age by sex is again shown below.  
+
+```{r}
+favstats(age ~ sex, data = HELP_sub)
+```
+
+We calculate the observed difference in the mean ages. Notice we are subtracting the mean female age from the mean male age. 
+
+```{r}
+obs_stat <- diffmean(age ~ sex, data = HELP_sub)
+obs_stat
+```
+
+Under the null hypothesis, there is no difference in the average age for men and women. So, we shuffle the `sex` labels around to generate a sampling distribution under the null.  
+
+```{r cache=TRUE}
+set.seed(345)
+results <- do(10000)*diffmean(age ~ shuffle(sex), data = HELP_sub)
+```
+
+```{r}
+favstats(~diffmean, data = results)
+```  
+
+The sampling distribution is centered on the null hypothesized value of 0, more or less, and the standard deviation is 0.849. This is an estimate of the variability of the difference in mean ages. The observed difference in means is shown as a red line on the sampling distribution in Figure \@ref(fig:hist255-fig). 
+
+```{r hist255-fig,fig.cap="The approximate sampling distribution of the difference of means from a bootstrap process.",warning=FALSE}
+results %>%
+  gf_histogram(~diffmean, color = "black", fill = "cyan") %>%
+  gf_vline(xintercept = obs_stat, color = "red") %>%
+  gf_theme(theme_classic()) %>%
+  gf_labs(x = "Difference of means", 
+          title = "Sampling distribution of difference of two means", 
+          subtitle = "Null assumes equal means")
+```
+
+Our test statistic does not appear to be too extreme. Now, we calculate a two-sided $p$-value. 
+
+```{r}
+2*prop1(~(diffmean <= obs_stat), data = results)
+```
+
+Based on this $p$-value, we fail to reject the null hypothesis. There is not enough evidence to say that the mean age for men and women is different.  
+
+Now, to construct a confidence interval based on the randomization, we have to be careful and think about this. The object `results` has the distribution of the difference in means, assuming there is no difference. To get a confidence interval, we want to center this distribution on the observed difference in means and not on zero. We will do this by adding the observed difference in means to the randomization results, and then find the percentile confidence interval.   
+
+```{r}
+cdata(~(diffmean + obs_stat), data = results)
+```
+
+We are 95% confident that the true difference in mean ages between male and female participants in the study is between -2.45 and 0.88. Because 0 is contained in the confidence interval, we fail to reject the null hypothesis. There is not enough evidence to say that the mean age for men and women is different. 
+
+Note that we are assuming the test statistic can be transformed. It turns out that the percentile method for a confidence interval is transformation invariant, so we can perform the transformation of shifting the null sampling distribution by the observed value.  
+
+
+### Traditional mathematical methods  
+
+Using the CLT or the $t$ distribution becomes difficult, because we have to find a way to calculate the standard error. There have been many proposed methods, and you are welcome to research them, but we will only present a couple of ideas in this section. Let's summarize the process for both hypothesis testing and confidence intervals in the case of the difference of two means using the $t$ distribution. You may recall some of the ideas for a two-sample $t$ test (hypothesis test) from Chapter \@ref(ADDTESTS).  
+
+
+### Hypothesis tests 
+
+When applying the $t$ distribution for a hypothesis test, we proceed as follows:  
+
+1. State the appropriate hypotheses.  
+
+2. Verify the conditions for using the $t$ distribution.   
+    
+    For a difference of means, when the data are not paired: each sample mean must separately satisfy the one-sample conditions for the $t$ distribution, and the data in each group must also be independent. Just like in the one-sample case, slight skewness will not be a problem for larger sample sizes. We can have moderate skewness and be fine if our sample is 30 or more. We can have extreme skewness if our sample is 60 or more.  
+    
+3. Compute the point estimate of interest, the standard error, and the degrees of freedom.  
+
+4. Compute the $T$ test statistic and $p$-value.   
+
+5. Make a conclusion based on the $p$-value, and write a conclusion in context of the problem and in plain language so that anyone can understand the results.  
+
+We've added the extra step of checking the assumptions here.  
+
+
+### Confidence intervals  
+
+Similarly, the following is how we generally compute a confidence interval using the $t$ distribution:  
+
+1. Verify conditions for using the $t$ distribution. (See above.)   
+
+2. Compute the point estimate of interest, the standard error, the degrees of freedom, and $t^{\star}_{df}$ (the critical value or number of standard deviations needed for the confidence interval).  
+
+3. Calculate the confidence interval using the general formula, $\text{point estimate} \pm\ t_{df}^{\star} SE$.   
+
+4. Put the conclusions in context of the problem and in plain language, so even non-statisticians can understand the results.  
+
+
+If the assumptions above are met, each sample mean can itself be modeled using a $t$ distribution. If the samples are independent, then the sample difference of two means, $\bar{x}_1 - \bar{x}_2$, can be modeled using the $t$ distribution and the standard error is  
+
+$$SE_{\bar{x}_{1} - \bar{x}_{2}} = \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}$$
+
+To calculate the degrees of freedom, we can use statistical software or, conservatively, use the smaller of $n_1 - 1$ and $n_2 - 1$. 
+
+
+#### Results  
+
+Back to the HELP data, the men and women were independent of each other. Additionally, the distributions in each population don't show any clear deviations from normality. There is some slight skewness but the sample size reduces this concern, see Figure \@ref(fig:qq256-fig). Finally, within each group we also need independence. If each group represents less than 10\% of the population, we are good to go on this. This condition might be difficult to verify.  
+
+```{r qq256-fig,fig.cap="The quantile-quantile plots to check the normality assumption."}
+HELP_sub %>%
+  gf_qq(~age|sex) %>%
+  gf_qqline(~age|sex) %>%
+  gf_theme(theme_bw())
+``` 
+
+The distribution of males tends to have longer tails than a normal distribution, and the female distribution is skewed to the right. The sample sizes are large enough that this does not worry us. Below are the summary statistics by `sex` once more. 
+
+```{r}
+favstats(age ~ sex, data = HELP_sub)
+```
+
+Let's find the confidence interval first. We use the smaller of $n_1 - 1$ and $n_2 - 1$ as the degrees of freedom: $df = 106$. 
+
+```{r}
+(35.47 - 36.25) + c(-1,1)*qt(0.975, 106)*sqrt(7.58^2 / 107 + 7.75^2 / 346)
+```
+
+This result is very close to the interval we got with the permutation test.
+
+Now, let's find the $p$-value for the hypothesis test.  
+
+The test statistic is: 
+
+$$T \ =\ \frac{\text{point estimate} - \text{null value}}{SE}$$ 
+
+$$ = \frac{(35.47 - 36.25) - 0}{\sqrt{\left( \frac{7.58^2}{107}+ \frac{7.75^2}{346}\right)}}\ =\ - 0.92976 $$
+We again use $df = 106$. The $p$-value is:
+
+```{r}
+2*pt(-0.92976, 106)
+```
+
+The results in `R` are slightly different due to the calculation of the degrees of freedom.  
+
+```{r}
+t_test(age ~ sex, data = HELP_sub)
+```
+
+Notice that the degrees of freedom is not an integer. This is because it is a weighted average of the two different samples sizes and standard deviations. This method is called the Satterthwaite approximation. Additionally, the confidence interval is slightly different because `t_test()` subtracted the mean age for men from the mean age for women. Still, the confidence interval and $p$-value lead us to the same results as before -- we fail to reject the null hypothesis. 
+
+
+#### Pooled standard deviation
+
+Occasionally, two populations will have standard deviations that are so similar they can be treated as identical. This is an assumption of equal variance in each group. For example, historical data or a well-understood biological mechanism may justify this strong assumption. In such cases, we can make the $t$ distribution approach slightly more precise by using a pooled standard deviation.
+
+The **pooled standard deviation** of two groups is a way to use data from both samples to better estimate the standard deviation and standard error. If $s_1$ and $s_2$ are the standard deviations of groups 1 and 2, respectively, and there are good reasons to believe that the population standard deviations are equal, then we can obtain an improved estimate of the group variances by pooling their data:  
+
+$$ s_{pooled}^2 = \frac{s_1^2\times (n_1 - 1) + s_2^2\times (n_2 - 1)}{n_1 + n_2 - 2}$$
+
+where $n_1$ and $n_2$ are the sample sizes of groups 1 and 2, as before. To use this new estimate, we substitute $s_{pooled}^2$ in place of $s_1^2$ and $s_2^2$ in the standard error formula, and we use an updated formula for the degrees of freedom:
+$$df = n_1 + n_2 - 2$$
+
+The benefits of pooling the standard deviation are realized through obtaining a better estimate of the standard deviation for each group and using a larger degrees of freedom parameter for the $t$ distribution. Both of these changes may permit a more accurate model of the sampling distribution of $\bar{x}_1 - \bar{x}_2$.
+
+> **Caution**  
+Pooling standard deviations should be done only after careful research.  
+
+A pooled standard deviation is only appropriate when background research indicates the population standard deviations are nearly equal. When the sample size is large and the condition may be adequately checked with data, the benefits of pooling the standard deviations greatly diminishes.  
+
+In `R` we can test the difference of two means with equal variance using the `var.equal` argument.
+
+```{r}
+t_test(age ~ sex, data = HELP_sub, var.equal = TRUE)
+```
+
+Since our sample sizes are so large, this did not have a big impact on the results. 
+
+
+### Bootstrap  
+
+Finally, we will construct a confidence interval through the use of the bootstrap. In this problem, we have to be careful and sample within each group. Compare the following two bootstrap samples. 
+
+```{r}
+favstats(age ~ sex, data = resample(HELP_sub))
+```
+ 
+and
+ 
+```{r}
+favstats(age ~ sex, data = resample(HELP_sub, groups = sex))
+```
+ 
+Notice in the second line of code, we are keeping the groups the same size by sampling within the `sex` variable.
+
+Now, let's get our bootstrap distribution.
+
+```{r cache=TRUE}
+set.seed(2527)
+results <- do(1000)*diffmean(age ~ sex, data = resample(HELP_sub, groups = sex))
+```
+
+Figure \@ref(fig:boot257-fig) is our sampling distribution from the bootstrap.
+
+```{r boot257-fig,fig.cap="Bootstrap distribution of the difference in means."}
+results %>%
+  gf_histogram(~diffmean, fill = "cyan", color = "black") %>%
+  gf_theme(theme_classic) %>%
+  gf_labs(x = "Difference in means", y = "")
+```
+
+```{r}
+cdata(~diffmean, p = 0.95, data = results)
+```
+
+Again, we find similar results with the percentile confidence interval.
+
+

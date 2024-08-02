@@ -551,7 +551,7 @@ x^2 + C</code></pre>
 <pre><code>[1] 1</code></pre>
 </div>
 </div>
-<p>Graphically, the pdf is displayed in <a href="#fig-plot111" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-plot111</span></a>:</p>
+<p>Graphically, the pdf is displayed in <a href="#fig-plot111" class="quarto-xref">Figure&nbsp;<span>11.1</span></a>:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-plot111" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -573,7 +573,7 @@ Figure&nbsp;11.1: pdf of <span class="math inline">\(X\)</span>
 <p>So, <span class="math display">\[
 F_X(x)=\left\{ \begin{array}{ll} 0, &amp; x&lt;0 \\ x^2, &amp; 0\leq x \leq 1 \\ 1, &amp; x&gt;1 \end{array}\right.
 \]</span></p>
-<p>The plot of the cdf of <span class="math inline">\(X\)</span> is shown in <a href="#fig-plot112" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-plot112</span></a>.</p>
+<p>The plot of the cdf of <span class="math inline">\(X\)</span> is shown in <a href="#fig-plot112" class="quarto-xref">Figure&nbsp;<span>11.2</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-plot112" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -590,7 +590,7 @@ Figure&nbsp;11.2: CDF of <span class="math inline">\(X\)</span>
 </div>
 <p>Probabilities are found either by integrating the pdf or using the cdf:</p>
 <p><span class="math inline">\(\mbox{P}(X &lt; 0.5)=\mbox{P}(X\leq 0.5)=F_X(0.5)=0.5^2=0.25\)</span>.<br>
-See <a href="#fig-plot113" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-plot113</span></a>.</p>
+See <a href="#fig-plot113" class="quarto-xref">Figure&nbsp;<span>11.3</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-plot113" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -606,7 +606,7 @@ Figure&nbsp;11.3: Probability represented by shaded area
 </div>
 </div>
 <p><span class="math inline">\(\mbox{P}(X &gt; 0.5) = 1-\mbox{P}(X\leq 0.5)=1-0.25 = 0.75\)</span>.<br>
-See <a href="#fig-plot114" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-plot114</span></a>.</p>
+See <a href="#fig-plot114" class="quarto-xref">Figure&nbsp;<span>11.4</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-plot114" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -622,7 +622,7 @@ Figure&nbsp;11.4: Probability represented by shaded area
 </div>
 </div>
 <p><span class="math inline">\(\mbox{P}(0.1\leq X &lt; 0.75) = \int_{0.1}^{0.75}2x\mbox{d}x = 0.75^2 - 0.1^2 = 0.5525\)</span>.<br>
-See <a href="#fig-plot115" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-plot115</span></a>.</p>
+See <a href="#fig-plot115" class="quarto-xref">Figure&nbsp;<span>11.5</span></a>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="cf">function</span>(x)<span class="dv">2</span><span class="sc">*</span>x,.<span class="dv">1</span>,.<span class="dv">75</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -689,7 +689,7 @@ quantitative variables:
 </div>
 </div>
 <div style="page-break-after: always;"></div>
-<p><a href="#fig-plot116" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-plot116</span></a> is a density plot of the simulated density function.</p>
+<p><a href="#fig-plot116" class="quarto-xref">Figure&nbsp;<span>11.6</span></a> is a density plot of the simulated density function.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>results <span class="sc">%&gt;%</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_density</span>(<span class="sc">~</span>sqrt,<span class="at">xlab=</span><span class="st">"X"</span>) <span class="sc">%&gt;%</span></span>

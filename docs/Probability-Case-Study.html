@@ -648,7 +648,7 @@ What idea(s) can we use to determine if a match exists?</p>
   1   7  52 253 687 </code></pre>
 </div>
 </div>
-<p><a href="#fig-bar71" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-bar71</span></a> is a plot of the number of unique birthdays in our sample.</p>
+<p><a href="#fig-bar71" class="quarto-xref">Figure&nbsp;<span>7.1</span></a> is a plot of the number of unique birthdays in our sample.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">do</span>(<span class="dv">1000</span>)<span class="sc">*</span><span class="fu">length</span>(<span class="fu">unique</span>(<span class="fu">sample</span>(days,<span class="at">size=</span><span class="dv">18</span>,<span class="at">replace =</span> <span class="cn">TRUE</span>)))) <span class="sc">%&gt;%</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_bar</span>(<span class="sc">~</span>length) <span class="sc">%&gt;%</span></span>
@@ -780,7 +780,7 @@ first used</code></pre>
 [19] 0.379118526 0.411438384</code></pre>
 </div>
 </div>
-<p>We are good to go. Let’s create our line plot, <a href="#fig-line71" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-line71</span></a>.</p>
+<p>We are good to go. Let’s create our line plot, <a href="#fig-line71" class="quarto-xref">Figure&nbsp;<span>7.2</span></a>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_line</span>(<span class="fu">birthday_prob</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>)<span class="sc">~</span> <span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">100</span>),</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab=</span><span class="st">"Number of People"</span>,</span>
@@ -836,7 +836,7 @@ quantitative variables:
 6 7305       0</code></pre>
 </div>
 </div>
-<p>It could be argued that we could randomly pick one year and use it. Let’s see what happens if we just used 1969. <a href="#fig-scat71" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-scat71</span></a> is a scatter plot of the number of births in 1969 for each day of the year.</p>
+<p>It could be argued that we could randomly pick one year and use it. Let’s see what happens if we just used 1969. <a href="#fig-scat71" class="quarto-xref">Figure&nbsp;<span>7.3</span></a> is a scatter plot of the number of births in 1969 for each day of the year.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>Births <span class="sc">%&gt;%</span></span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">1969</span>) <span class="sc">%&gt;%</span></span>
@@ -858,10 +858,10 @@ Figure&nbsp;7.3: The number of births for each day of the year in 1969.
 </div>
 <blockquote class="blockquote">
 <p><strong>Exercise</strong>:<br>
-What patterns do you see in <a href="#fig-scat71" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-scat71</span></a>? What might explain them?</p>
+What patterns do you see in <a href="#fig-scat71" class="quarto-xref">Figure&nbsp;<span>7.3</span></a>? What might explain them?</p>
 </blockquote>
 <p>There are definitely bands appearing in the data which could be the day of the week; there are less birthdays on the weekend. There is also seasonality with more birthdays in the summer and fall. There is also probably an impact from holidays.</p>
-<p>Quickly, let’s look at the impact of day of the week by using color for day of the week. <a href="#fig-scat72" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-scat72</span></a> makes it clear that the weekends have less number of births as compared to the work week.</p>
+<p>Quickly, let’s look at the impact of day of the week by using color for day of the week. <a href="#fig-scat72" class="quarto-xref">Figure&nbsp;<span>7.4</span></a> makes it clear that the weekends have less number of births as compared to the work week.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>Births <span class="sc">%&gt;%</span></span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">1969</span>) <span class="sc">%&gt;%</span></span>
@@ -961,7 +961,7 @@ Figure&nbsp;7.4: The number of births for each day of the year in 1969 broken do
 6           6 140044</code></pre>
 </div>
 </div>
-<p>Let’s look at a plot of the number of births versus day of the year. We combined years in <a href="#fig-scat73" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-scat73</span></a>.</p>
+<p>Let’s look at a plot of the number of births versus day of the year. We combined years in <a href="#fig-scat73" class="quarto-xref">Figure&nbsp;<span>7.5</span></a>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>birth_data <span class="sc">%&gt;%</span></span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_point</span>(n<span class="sc">~</span>day_of_year,</span>
