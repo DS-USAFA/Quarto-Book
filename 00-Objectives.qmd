@@ -116,9 +116,11 @@
 
 2)  Apply `R` to calculate probabilities and quantiles, and simulate random variables for common continuous distributions.
 
-3)  Explain the relationship between the Poisson process and the Poisson and Exponential distributions, and describe how these distributions model different aspects of the same process.
+3)  State and apply the empirical rule (68-95-99.7 rule).
 
-4)  Apply the memory-less property in context of the Exponential distribution and use it to simplify probability calculations.
+4)  Explain the relationship between the Poisson process and the Poisson and Exponential distributions, and describe how these distributions model different aspects of the same process.
+
+5)  Apply the memory-less property in context of the Exponential distribution and use it to simplify probability calculations.
 
 ### 14 - Multivariate Distributions {.unnumbered}
 

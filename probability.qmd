@@ -1,5 +1,3 @@
 # Probability Models {#PROB .unnumbered}
 
-
 We discuss the foundational ideas of probability, counting methods, and common distributions. We use both calculus and simulation to find moments and probabilities. We introduce basic ideas of multivariate probability. We include method of moments and maximum likelihood estimators.
-
