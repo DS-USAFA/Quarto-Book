@@ -18,7 +18,7 @@ library(mosaic)
 
 ## Introduction to probability models
 
-In this second block of material we will focus on probability models. We will take two approaches, one is mathematical and the other is computational. In some cases we can use both methods on a problem and in others only the computational approach is feasible. The mathematical approach to probability modeling allows us insight into the problem and the ability to understand the process. Simulation has a much greater ability to generalize but can be time intensive to run and often requires the writing of custom functions.
+In this second block of material, we will focus on probability models. We will provide both a mathematical approach and a computational approach. We will focus on the latter and leave much of the mathematical details to the interested learner. In some cases we can use both methods on a problem and in others only the computational approach is feasible. The mathematical approach to probability modeling allows us insight into the problem and the ability to understand the process. The computational approach has a much greater ability to generalize but can be time intensive to run and often requires the writing of custom functions.
 
 This case study is extensive and may seem overwhelming, but do not worry. We will discuss these ideas again in the many chapters we have coming up this block.
 
@@ -30,18 +30,18 @@ Often probability models are used to answer a question of the form "What is the 
 
 For this block we will focus just on probability models. To apply a probability model we will need to
 
-1.  Select the experiment and its possible outcomes.
-2.  Have probability values for the outcomes which may include **parameters** that determine the probabilities.
+1.  Describe the experiment and its possible outcomes.
+2.  Determine probability values for the outcomes, which may include **parameters** that determine the probabilities.
 3.  Understand the assumptions behind the model.
 
 ## Case study
 
-There is a famous example of a probability question that we will attack in this case study. The question we want to answer is "In a room of $n$ people what is the chance that at least two people have the same birthday?"
+There is a famous example of a probability question that we will examine in this case study. The question we want to answer is "In a room of $n$ people, what is the chance at least two people have the same birthday?"
 
 > **Exercise**:\
-> The typical classroom at USAFA has 18 students in it. What do you think the chance that at least two students have the same birthday?[^probability-case-study-1]
+> The typical classroom at USAFA has 18 students in it. What do you think is the chance that at least two students have the same birthday?[^probability-case-study-1]
 
-[^probability-case-study-1]: The answer is around 34.7%, how close were you?
+[^probability-case-study-1]: The answer is around 34.7%. How close were you? Did you think it was lower or higher?
 
 ### Break down the question
 
@@ -49,23 +49,23 @@ The first action we should take is to understand what is being asked.
 
 1.  What is the experiment or trial?
 2.  What does it mean to have the same birthday?
-3.  What about leap years?
-4.  What about the frequency of births? Are some days less likely than others?
+3.  How should we handle leap years?
+4.  Should we consider the frequency of births? Are some days less likely than others?
 
 > **Exercise**:\
 > Discuss these questions and others that you think are relevant.[^probability-case-study-2]
 
-[^probability-case-study-2]: Another question may be What does it mean at least two people have matching birthdays?
+[^probability-case-study-2]: Another question may be "What does it mean at least two people have matching birthdays?"
 
-The best first step is to make a simple model, often these are the only ones that will have a mathematical solution. For our problem this means we answer the above questions.
+The best first step is to develop a simple model. Often these are the only ones that will have a mathematical solution. For our problem this means we answer the above questions.
 
 1.  We have a room of 18 people and we look at their birthdays. We either have two or more birthdays matching or not; thus there are two outcomes.
-2.  We don't care about the year, only the day and month. Thus two people born on May 16th are a match.
-3.  We will ignore leap years.
-4.  We will assume that a person has equal probability of being born on any of the 365 days of the year.
-5.  At least two means we could have multiple matches on the same day or several different days where multiple people have matching birthdays.
+2.  At least two people having the same birthday means we could have multiple matches on the same day or we could have several different days where multiple people have matching birthdays.
+3.  We don't care about the year, only the day and month. Thus, two people born on May 16th are a match.
+4.  We will ignore leap years, for now.
+5.  We will assume that a person has equal probability of being born on any of the 365 days of the year.
 
-### Simulate (computational)
+### The computational approach (simulation)
 
 Now that we have an idea about the structure of the problem, we next need to think about how we would simulate a single classroom. We have 18 students in the classroom and they all could have any of the 365 days of the year as a birthday. What we need to do is sample birthdays for each of the 18 students. But how do we code the days of the year?
 
@@ -75,23 +75,32 @@ An easy solution is to just label the days from 1 to 365. The function `seq()` d
 days <- seq(1,365)
 ```
 
-Next we need to pick one of the days using the sample function. Note that we set the seed to get repeatable results, this is not required.
+Next we need to pick one of the days using the `sample()` function. Note that we set a seed to make our results reproducible. This is not required, but is strongly encouraged.
 
 ```{r}
 set.seed(2022)
 sample(days,1)
 ```
 
-The first person was born on the 228th day of the year.
+The first student in the classroom was born on the 228th day of the year, which corresponds to the 16th of August.
 
-Since `R` works on vectors, we don't have to write a loop to select 18 days, we just have `sample()` do it for us.
+Since `R` works on vectors of information, we don't have to write a loop to select 18 days. We have the `sample()` function do it for us.
+
+Remember to ask yourself:
+
+-   *What do we want `R` to do?*
+
+We want `R` to sample 18 birthdays from the numbers 1 to 365. We want to sample *with replacement* because we're allowing students to have the same birthday.
+
+-   *What does `R` need to do that?*
+
+A quick look at the documentation for the `sample()` function (using `?sample` or `help(sample)`) tells us we need a vector of data, `size` specifying the number of items to choose from the vector, and a logical value for `replace`, specifying whether to sample with replacement or not.
 
 ```{r}
-class <- sample(days,size=18,replace = TRUE)
+set.seed(2022)
+class <- sample(days, size = 18, replace = TRUE)
 class
 ```
-
-What do we want `R` to do? Sample from the numbers 1 to 365 with replacement, which means a number can be picked more than once.
 
 Notice in our sample we have at least one match, although it is difficult to look at this list and see the match. Let's sort them to make it easier for us to see.
 
@@ -99,10 +108,12 @@ Notice in our sample we have at least one match, although it is difficult to loo
 sort(class)
 ```
 
+There are two birthdays on day 206, corresponding to the 25th of July.
+
 The next step is to find a way in `R` for the code to detect that there is a match.
 
 > **Exercise**:\
-> What idea(s) can we use to determine if a match exists?
+> What idea(s) do you have to determine if a match exists?
 
 We could sort the data and look at differences in sequential values and then check if the set of differences contains a zero. This seems to be computationally expensive. Instead we will use the function `unique()` which gives a vector of unique values in an object. The function `length()` gives the number of elements in the vector.
 
@@ -113,12 +124,12 @@ length(unique(class))
 Since we only have 17 unique values in a vector of size 18, we have a match. Now let's put this all together to generate another classroom of size 18.
 
 ```{r}
-length(unique(sample(days,size=18,replace = TRUE)))
+length(unique(sample(days, size = 18, replace = TRUE)))
 ```
 
-The next problem that needs to be solved is how to repeat the classrooms and keep track of those that have a match. There are several functions we could use to include `replicate()` but we will use `do()` from the **mosaic** package because it returns a data frame so we can use `tidyverse` verbs to wrangle the data.
+The next problem that needs to be solved is how to repeat the classrooms and keep track of those that have a match. There are several functions we could use to include `replicate()`, but we will use `do()` from the **mosaic** package because it returns a data frame so we can use `tidyverse` verbs to wrangle the data.
 
-The `do()` function allows us to repeat an operation many times. The following template
+The `do()` function allows us to repeat an operation many times. The following template can be used,
 
 ```         
 do(n) * {stuff to do}              # pseudo-code
@@ -126,7 +137,7 @@ do(n) * {stuff to do}              # pseudo-code
 
 where {stuff to do} is typically a single `R` command, but may be something more complicated.
 
-Load the libraries.
+Let's try it out. First, we'll load the libraries.
 
 ```{r message=FALSE, eval=FALSE}
 library(mosaic)
@@ -137,45 +148,46 @@ library(tidyverse)
 do(5)*length(unique(sample(days,size=18,replace = TRUE)))
 ```
 
-Let's repeat for a larger number of simulated classroom, remember you should be asking yourself:
+Let's repeat this process for a larger number of simulated classrooms. Remember, you should be asking yourself two questions:
 
-*What do I want `R` to do?*\
-*What does `R` need to do this?*
+-   *What do I want `R` to do?*
+
+-   *What does `R` need to do this?*
 
 ```{r}
-(do(1000)*length(unique(sample(days,size=18,replace = TRUE)))) %>%
-  mutate(match=if_else(length==18,0,1)) %>%
-  summarise(prob=mean(match))
+(do(1000)*length(unique(sample(days, size = 18, replace = TRUE)))) %>%  # simulate 1000 classrooms
+  mutate(match = if_else(length == 18, 0, 1)) %>%                       # check for matches, 1 if length < 18
+  summarise(prob = mean(match))                                         # probability is the mean of 0/1s
 ```
 
-This is within 2 decimal places of the mathematical solution we develop shortly.
+This is within two decimal places of the mathematical solution we will develop shortly.
 
-How many classrooms do we need to simulate to get an accurate estimate of the probability of a match? That is a statistical modeling question and it depends on how much variability we can accept. We will discuss these ideas later in the book. For now, you can run the code multiple times and see how the estimate varies. If computational power is cheap, you can increase the number of simulations.
+How many classrooms do we need to simulate to get an accurate estimate of the probability of a match? That is a statistical modeling question and it depends on how much variability we can accept. We will discuss these ideas later in the book. For now, we can run the code multiple times and see how the estimate varies. When computational power is cheap, we can increase the number of simulations.
 
 ```{r}
-(do(10000)*length(unique(sample(days,size=18,replace = TRUE)))) %>%
-  mutate(match=if_else(length==18,0,1)) %>%
-  summarise(prob=mean(match))
+(do(10000)*length(unique(sample(days, size = 18, replace = TRUE)))) %>% 
+  mutate(match = if_else(length == 18, 0, 1)) %>%                        
+  summarise(prob = mean(match))                                        
 ```
 
 ### Plotting
 
-By the way, the method we have used to create the data allows us to summarize the number of unique birthdays using a table or bar chart. Let's do that now. Note that since the first argument in `tally()` is not data then the **pipe** operator will not work without some extra effort. We must tell `R` that the data is the previous argument in the pipeline and thus use the symbol **.** to denote this.
+The method we have used to create the data allows us to summarize the number of unique birthdays using a table or bar chart. Let's do that now. Note that since the first argument in `tally()` is not data, the **pipe** operator will not work without some extra effort. We must tell `R` that the data is the previous argument in the pipeline and thus use the symbol **`.`** to denote this.
 
 ```{r}
-(do(1000)*length(unique(sample(days,size=18,replace = TRUE)))) %>%
-  tally(~length,data=.)
+(do(1000)*length(unique(sample(days, size = 18, replace = TRUE)))) %>%
+  tally(~length, data = .)
 ```
 
-@fig-bar71 is a plot of the number of unique birthdays in our sample.
+@fig-bar71 is a plot of the number of unique birthdays (out of 18) in our sample.
 
 ```{r}
 #| label: fig-bar71
 #| fig-cap: "Bar chart of the number of unique birthdays in the sample."
-(do(1000)*length(unique(sample(days,size=18,replace = TRUE)))) %>%
+(do(1000)*length(unique(sample(days, size = 18, replace = TRUE)))) %>%
   gf_bar(~length) %>%
   gf_theme(theme_bw()) %>%
-  gf_labs(x="Number of unique birthdays",y="Count")
+  gf_labs(x = "Number of unique birthdays", y = "Count")
 ```
 
 > **Exercise**:\
@@ -183,34 +195,40 @@ By the way, the method we have used to create the data allows us to summarize th
 
 [^probability-case-study-3]: It is possible that 3 people all have the same birthday or two sets of 2 people have the same birthday but different from the other pair.
 
-### Mathematical solution
+### The mathematical approach
 
-To solve this problem mathematically, we will step through the logic one step at a time. One of the key ideas that we will see many times is the idea of the **multiplication** rule. This idea is the foundation for **permutation** and **combinations** which are counting methods frequently used in probability calculations.
+To solve this problem mathematically, we will work through the logic one step at a time. One of the key ideas that we will see many times is the idea of the **multiplication** rule. This idea is the foundation for **permutations** and **combinations**, which are counting methods frequently used in probability calculations.
 
-The first step that we take is to understand the idea of 2 or more people with the same birthday. With 18 people, there are a great deal of possibilities for 2 or more birthdays. We could have exactly 2 people with the same birthday. We could have 18 people with the same birthday, We could have 3 people with the same birthday and another 2 people with the same birthday but different from the other 3. Accounting for all these possibilities is too large a counting process. Instead, we will take the approach of finding the probability of no one having a matching birthday. Then the probability of at least 2 people having a matching birthday is 1 minus the probability that no one has a matching birthday. This is known as a **complementary** probability. A simpler example is to think about rolling a single die. The probability of rolling a 6 is equivalent to 1 minus the probability of not rolling a 6.
+The first step that we take is to understand the idea of two or more people having the same birthday. With 18 people, there are a great deal of possibilities for two or more people to have the same birthday. We could have exactly two people with the same birthday. We could have 18 people with the same birthday. We could have three people with the same birthday and another two people with the same birthday but different from the other three. Accounting for all these possibilities is too large a counting process. Instead, we will take the approach of finding the probability of no one having a matching birthday. Then the probability of at least two people having a matching birthday is one minus the probability that no one has a matching birthday. This is known as a **complementary** probability. A simpler example is to think about rolling a single die. The probability of rolling a six is equivalent to one minus the probability of not rolling a six (rolling any number other than six).
 
-We first need to think about all the different ways we could get 18 birthdays. This is going to be our denominator in the probability calculation. First let's just look at 2 people. The first person could have 365 different days for their birthday. The second person could also have 365 different birthdays. So for each birthday of the first person there could be 365 birthdays for the second. Thus for 2 people there are $365^2$ possible sets of birthdays. This is an example of the *multiplication rule*. For 18 people there are $365^{18}$ sets of birthdays. That is a large number. Again, this will be our denominator in calculating the probability.
+We first need to think about all the different ways we could get 18 birthdays. This is going to be our denominator in the probability calculation. The first person could have 365 different days for their birthday. The second person could also have 365 different birthdays. The same is true for all 18 people. This is an example of the *multiplication rule*. For 18 people, there are $365^{18}$ possible sets of birthdays.[^probability-case-study-4] Again, this will be our denominator in calculating the probability.
 
-The numerator is the number of sets of birthdays with no matches. Again, let's consider 2 people. The first person can have a birthday on any day of the year, so 365 possibilities. Since we don't want a match, the second person can only have 364 possibilities for a birthday. Thus we have $365 \times 364$ possibilities for two people to have different birthdays.
+[^probability-case-study-4]: $365^{18} = 1.322\times 10^{46}$
+
+Because we're using the complement, the numerator is the number of ways that 18 people can have birthdays with no matches.
 
 > Exercise:\
-> What is the number of possibilities for 18 people so that no one has the same birthday.
+> What is the number of ways for 18 people to have no birthday matches?
 
-The answer for 18 people is $365 \times 364 \times 363 ... \times 349 \times 348$. This looks like a truncated factorial. Remember a factorial, written as $n!$ with an explanation point, is the product of successive positive integers. As an example $3!$ is $3 \times 2 \times 1$ or 6. We could write the multiplication for the numerator as $$\frac{365!}{(365-n)!}$$ As we will learn, the multiplication rule for the numerator is known as a **permutation**.
+The first person can have a birthday on any day of the year, so there are 365 possibilities. Because we don't want a match, the second person only has 364 possibilities for a birthday. The third person can't match either of the first two, so there are only 363 possibilities for that birthday. Thus, there are $365 \times 364 \times 363 ... \times 349 \times 348$ ways for 18 people to have no birthday matches.
 
-We are ready to put it all together. For 18 people, the probability of 2 or more people with the same birthday is 1 minus the probability that no one has the same birthday, which is
+This looks like a truncated factorial. Remember a factorial, written as $n!$ with an explanation point, is the product of successive positive integers. For example, $3!$ is $3 \times 2 \times 1$ or 6. In our birthday example, we could write the multiplication for the numerator as $$365\times 364\times ...\times 348 = \frac{365!}{(365-18)!}$$ As we will learn, the multiplication rule for the numerator is known as a **permutation**.[^probability-case-study-5]
+
+[^probability-case-study-5]: This could be more generally written as $\frac{365!}{(365 - n)!}$ for a group of $n$ people.
+
+We are ready to put it all together. For 18 people, the probability of two or more people with the same birthday is one minus the probability that no one has the same birthday, which is
 
 $$1 - \frac{\frac{365!}{(365-18)!}}{365^{18}}$$ or
 
 $$1 - \frac{\frac{365!}{347!}}{365^{18}}$$
 
-In `R` there is a function called `factorial()` but factorials get large fast and we will **overflow** the memory. Try `factorial(365)` in `R` to see what happens.
+In `R`, there is a `factorial()` function but factorials get large fast and will **overflow** the memory. Try `factorial(365)` in `R` to see what happens.
 
 ```{r}
 factorial(365)
 ```
 
-It is returning *infinity* because the number is too large for the buffer. As is often the case we will have when using a computational method, we must be clever about our approach. Instead of using factorials we can make use of `R`s ability to work on vectors. If we provide `R` with a vector of values, the `prod()` will perform a product of all the elements.
+It is returning *infinity* because the number is too large for the buffer. As is often the case when using a computational method, we must be clever about our approach. Instead of using factorials, we can make use of `R` and its ability to work on vectors. If we provide `R` with a vector of values, the `prod()` function will calculate the product of all the elements.
 
 ```{r}
 365*364
@@ -220,9 +238,13 @@ It is returning *infinity* because the number is too large for the buffer. As is
 prod(365:364)
 ```
 
+Now, we calculate the probability of at least two people in a room of 18 having the same birthday.
+
 ```{r}
-1- prod(365:348)/(365^18)
+1- prod(365:348) / (365^18)
 ```
+
+This is close to the probability we found with simulation.
 
 ### General solution
 
@@ -238,25 +260,25 @@ For this problem we will call the function `birthday_prob()`. The only parameter
 
 ```{r}
 birthday_prob <- function(n=20){
-  1- prod(365:(365-(n-1)))/(365^n)
+  1 - prod(365:(365 - (n - 1))) / (365^n)
 }
 ```
 
 Notice we assigned the function to the name `birthday_prob`, we told `R` to expect one argument to the function, which we are calling `n`, and then we provide `R` with the code to find the probability. We set a default value for `n` in case one is not provided to prevent an error when the function is run. We will learn more about writing functions throughout this book and in the follow-on USAFA course, Math 378: Applied Statistical Modeling.
 
-Test the code with a know answer.
+Let's test the code with a known answer.
 
 ```{r}
 birthday_prob(18)
 ```
 
-Now we can determine the probability for any size room. You may have heard that it only takes about 23 people in a room to have a 50% probability of at least 2 people matching birthdays.
+Now we can determine the probability for any size room. You may have heard that it only takes about 23 people in a room to have a 50% probability of at least two people matching birthdays.
 
 ```{r}
 birthday_prob(23)
 ```
 
-Let's create a plot of the probability versus number of people in the room. To do this, we need to apply the function to a vector of values. The function `sapply()` will work or we can also use `Vectorize()` to alter our existing function. We choose the latter option.
+Let's create a plot of the probability versus the number of people in the room. To do this, we need to apply the function to a vector of values. The function `sapply()` will work or we can also use `Vectorize()` to alter our existing function. We choose the latter option.
 
 First notice what happens if we input a vector into our function.
 
@@ -264,10 +286,10 @@ First notice what happens if we input a vector into our function.
 birthday_prob(1:20)
 ```
 
-It only uses the first value. There are several ways to solve this problem. We can use the `map()` function in the **purrr** package. This idea of mapping a function to a vector is important in data science. It is used in scenarios where there is a lot of data. In this case the idea of map-reduce is used to make the analysis amenable to parallel computing.
+It only uses the first value. There are several ways to solve this problem. We can use the `map()` function in the **purrr** package. This idea of mapping a function to a vector is important in data science. It is used in scenarios where there is a lot of data. In this case, the idea of map-reduce is used to make the analysis amenable to parallel computing.
 
 ```{r}
-map_dbl(1:20,birthday_prob)
+map_dbl(1:20, birthday_prob)
 ```
 
 We could also just vectorize the function.
@@ -282,98 +304,100 @@ Now notice what happens.
 birthday_prob(1:20)
 ```
 
-We are good to go. Let's create our line plot, @fig-line71.
+We now have what we want, so let's create our line plot, @fig-line71.
 
 ```{r}
 #| label: fig-line71
-#| fig-cap: "The probability of at least 2 people having mathcing birthdays."
-gf_line(birthday_prob(1:100)~ seq(1,100),
-        xlab="Number of People",
-        ylab="Probability of Match",
-        title="Probability of at least 2 people with matching birthdays") %>%
+#| fig-cap: "The probability of at least 2 people having matching birthdays."
+gf_line(birthday_prob(1:100) ~ seq(1, 100),
+        xlab = "Number of People",
+        ylab = "Probability of Match",
+        title = "Probability of at least two people with matching birthdays by room size") %>%
   gf_theme(theme_bw())
 ```
 
-Is this what you expected the curve to look like? We, the authors, did not expect this. It has a sigmodial shape with a large increase in the middle range and flatten in the tails.
+Is this what you expected the curve to look like? We, the authors, did not expect this. It has a sigmoidal shape with a large increase in the middle range and flattening in the tails.
 
 ### Data science approach
 
-The final approach we will take is one based on data, a data science approach. In the **mosaicData** package is a data set called `Births` that contains the number of births in the US from 1969 to 1988. This data will allow us to estimate the number of births on any day of the year. This allows us to eliminate the reliance on the assumption that each day is equally likely. Let's first `inspect()` the data object.
+The final approach we will take is one based on data, a data science approach. The **mosaicData** package includes a data set called `Births` that contains the number of births in the US from 1969 to 1988. This data will allow us to estimate the number of births on any day of the year. This allows us to eliminate the reliance on the assumption that each day is equally likely. Let's first `inspect()` the data object.
 
 ```{r}
 inspect(Births)
 ```
 
-It could be argued that we could randomly pick one year and use it. Let's see what happens if we just used 1969. @fig-scat71 is a scatter plot of the number of births in 1969 for each day of the year.
+Notice there are leap years present in this data. It could be argued that we could randomly pick one year and use it. Let's see what happens if we just used 1969, a non-leap year. @fig-scat71 is a scatter plot of the number of births in 1969 for each day of the year.
 
 ```{r}
 #| label: fig-scat71
 #| fig-cap: "The number of births for each day of the year in 1969."
 Births %>%
   filter(year == 1969) %>%
-  gf_point(births~day_of_year) %>%
+  gf_point(births ~ day_of_year) %>%
   gf_theme(theme_bw()) %>%
-  gf_labs(x="Day of the Year",y="Number of Births")
+  gf_labs(x = "Day of the Year", y = "Number of Births")
 ```
 
 > **Exercise**:\
-> What patterns do you see in @fig-scat71? What might explain them?
+> What patterns do you see in @fig-scat71? What might explain them?[^probability-case-study-6]
 
-There are definitely bands appearing in the data which could be the day of the week; there are less birthdays on the weekend. There is also seasonality with more birthdays in the summer and fall. There is also probably an impact from holidays.
+[^probability-case-study-6]: This could be due to doctors tending not to schedule inductions or C-sections on weekends. Fun fact: while more than 30% of all births were C-sections in 2023, only around 5% of births were C-sections in 1969.
 
-Quickly, let's look at the impact of day of the week by using color for day of the week. @fig-scat72 makes it clear that the weekends have less number of births as compared to the work week.
+There are definitely bands appearing in the data which could be the day of the week; there are fewer birthdays on the weekend. There is also seasonality with more birthdays in the summer and fall. There is also probably an impact from holidays.
+
+Quickly, let's look at the impact of day of the week by using color for day of the week. @fig-scat72 makes it clear that the weekends have fewer births as compared to the work week.
 
 ```{r}
 #| label: fig-scat72
 #| fig-cap: "The number of births for each day of the year in 1969 broken down by day of the week."
 Births %>%
   filter(year == 1969) %>%
-  gf_point(births~day_of_year,color=~factor(day_of_week)) %>%
-  gf_labs(x="Day of the Year",col="Day of Week") %>%
+  gf_point(births ~ day_of_year, color = ~factor(day_of_week)) %>%
+  gf_labs(x = "Day of the Year", col = "Day of Week") %>%
   gf_theme(theme_bw())
 ```
 
-By only using one year, this data might give poor results since holidays will fall on certain days of the week and the weekends will also be impacted. Note that we also still have the problem of leap years.
+By only using one year, this data might give poor results because holidays will fall on certain days of the week and the weekends will also be impacted. Note that we also still have the problem of leap years.
 
 ```{r}
 Births %>%
   group_by(year) %>%
-  summarise(n=n())
+  summarise(n = n())
 ```
 
 The years 1972, 1976, 1980, 1984, and 1988 are all leap years. At this point, to make the analysis easier, we will drop those years.
 
 ```{r}
 Births %>%
-  filter(!(year %in% c(1972,1976,1980,1984,1988))) %>%
+  filter(!(year %in% c(1972, 1976, 1980, 1984, 1988))) %>%
   group_by(year) %>%
-  summarise(n=n())
+  summarise(n = n())
 ```
 
-Notice in `filter()` we used the `%in%` argument. This is a **logical** argument checking if `year` is one of the values. The `!` at the front negates this in a sense requiring `year` not to be one of those values.\`
+Notice that we used the `%in%` operator inside the `filter()` function. This is a **logical** argument checking whether `year` is one of the specified values. The `!` at the front negates this, in a sense requiring `year` to not be one of those values.
 
 We are almost ready to simulate. We need to get the count of `births` on each day of the year for the non-leap years.
 
 ```{r warning=FALSE,message=FALSE}
 birth_data <- Births %>%
-  filter(!(year %in% c(1972,1976,1980,1984,1988))) %>%
+  filter(!(year %in% c(1972, 1976, 1980, 1984, 1988))) %>%
   group_by(day_of_year) %>%
-  summarise(n=sum(births)) 
+  summarise(n = sum(births)) 
 ```
 
 ```{r}
 head(birth_data)
 ```
 
-Let's look at a plot of the number of births versus day of the year. We combined years in @fig-scat73.
+Let's look at a plot of the number of births versus day of the year for all the non-leap years in @fig-scat73.
 
 ```{r}
 #| label: fig-scat73
 #| fig-cap: "Number of births by day of the year for all years."
 birth_data %>%
-  gf_point(n~day_of_year,
-          xlab="Day of the year",
-          ylab="Number of births") %>%
+  gf_point(n ~ day_of_year,
+          xlab = "Day of the year",
+          ylab = "Number of births") %>%
   gf_theme(theme_bw())
 ```
 
@@ -387,17 +411,17 @@ birth_data_weights <- birth_data %>%
   pull()
 ```
 
-The `pull()` function pulls the vectors of values out of the data frame format into a vector format which the `sample()` needs.
+The `pull()` function pulls the vectors of values out of the data frame format into a vector format which the `sample()` function needs.
 
-Now let's simulate the problem. The probability of a match should change slightly, maybe go down slightly?, but not much since most of the days have about the same probability or number of occurrences.
+Now let's simulate the problem. We will use our code from before, but add probability weights in the `prob` argument. The probability of a match should change slightly, but not much because most of the days have about the same probability or number of occurrences.
 
 ```{r}
 set.seed(20)
-(do(1000)*length(unique(sample(days,size=18,replace = TRUE,prob=birth_data_weights)))) %>%
-  mutate(match=if_else(length==18,0,1)) %>%
-  summarise(prob=mean(match))
+(do(1000)*length(unique(sample(days, size = 18, replace = TRUE, prob = birth_data_weights)))) %>%
+  mutate(match = if_else(length == 18, 0, 1)) %>%
+  summarise(prob = mean(match))
 ```
 
-We could not solve this problem of varying frequency of birth days using mathematics, at least as far as we know.
+It would not be possible to solve this problem of varying frequency of birthdays using mathematics, at least as far as we know.
 
-Cool stuff, let's get to learning more about probability models in the next chapters.
+This is fascinating stuff! Let's get to learning more about probability models in the following chapters.
