@@ -6,9 +6,11 @@
 
 2)  Apply `R` to calculate probabilities and quantiles, and simulate random variables for common continuous distributions.
 
-3)  Explain the relationship between the Poisson process and the Poisson and Exponential distributions, and describe how these distributions model different aspects of the same process.
+3)  State and apply the empirical rule (68-95-99.7 rule).
 
-4)  Apply the memory-less property in context of the Exponential distribution and use it to simplify probability calculations.
+4)  Explain the relationship between the Poisson process and the Poisson and Exponential distributions, and describe how these distributions model different aspects of the same process.
+
+5)  Apply the memory-less property in context of the Exponential distribution and use it to simplify probability calculations.
 
 ```{r}
 #| echo: false
@@ -18,6 +20,7 @@
 library(kableExtra)
 library(tidyverse)
 library(mosaic)
+library(ggpubr)
 ```
 
 ## Continuous distributions
@@ -139,7 +142,7 @@ gf_dist("exp") %>%
 
 Both from @fig-exp and the mean and median, we know that the exponential distribution is skewed to the right.
 
-### Memory-less property
+#### Memory-less property
 
 The Poisson process is known for its *memory-less* property. Essentially, this means that the time until the next arrival is independent of the time since last arrival. Thus, the probability of an arrival within the next 5 minutes is the same regardless of whether an arrival just occurred or an arrival has not occurred for a long time.
 
@@ -220,7 +223,7 @@ Note that this does not prove that $Z$ follows the standard normal distribution;
 > *Example*:\
 > Let $X \sim \textsf{Norm}(\mu=200,\sigma=15)$. Compute $\mbox{P}(X\leq 160)$, $\mbox{P}(180\leq X < 230)$, and $\mbox{P}(X>\mu+\sigma)$. Find the median and 95th percentile of $X$.
 
-As with the gamma distribution, to find probabilities and quantiles, integration will be difficult, so it's best to use the built-in `R` functions:
+To find probabilities and quantiles, integration will be difficult, so it's best to use the built-in `R` functions:
 
 ```{r lesson11h}
 ## Prob(X<=160)
@@ -238,3 +241,201 @@ qnorm(0.5,200,15)
 ## 95th percentile
 qnorm(0.95,200,15)
 ```
+
+#### The Empirical Rule (68-95-99.7 Rule)
+
+The normal distribution is bell-shaped and symmetrical around the mean, meaning that the left and right sides of the distribution are mirror images. The **empirical rule**, also known as the 68-95-99.7 rule, describes in a little more detail how data is distributed in a normal distribution.
+
+```{r}
+#| label: fig-empirical-rule
+#| fig-cap: "An illustration of the empirical rule (68-95-99.7 rule)."
+#| fig-align: "center"
+#| echo: false 
+#| message: false 
+#| warning: false 
+
+mean <- 0 
+sd <- 1 
+  
+x <- seq(-4, 4, by = 0.01) 
+y <- dnorm(x, mean = mean, sd = sd) 
+  
+df <- data.frame(x = x, y = y) 
+  
+ggplot(df, aes(x = x, y = y)) + 
+  geom_segment(x = -4, xend = 4, y = 0, yend = 0, color = "grey") +
+  geom_segment(x = -3, xend = -3, y = 0, yend = 0.47, color = "lightgrey") + 
+  geom_segment(x = 3, xend = 3, y = 0, yend = 0.47, color = "lightgrey") + 
+  geom_segment(x = -2, xend = -2, y = 0, yend = 0.43, color = "lightgrey") + 
+  geom_segment(x = 2, xend = 2, y = 0, yend = 0.43, color = "lightgrey") + 
+  geom_segment(x = -1, xend = -1, y = 0, yend = 0.39, color = "lightgrey") + 
+  geom_segment(x = 1, xend = 1, y = 0, yend = 0.39, color = "lightgrey") + 
+  geom_segment(x = 0, xend = 0, y = 0.005, yend = 0.39, color = "black") + 
+  geom_area(data = df, 
+            aes(x = x, 
+                y = ifelse(x < mean + 1 * sd & x > mean - 1 * sd, y, 0)), 
+            fill = "blue", alpha = 0.5) + 
+  geom_area(data = df, 
+            aes(x = x, 
+                y = ifelse(x < mean + 2 * sd & x > mean - 2 * sd, y, 0)), 
+            fill = "skyblue3", alpha = 0.5) + 
+  geom_area(data = df, 
+            aes(x = x, 
+                y = ifelse(x < mean + 3 * sd & x > mean - 3 * sd, y, 0)), 
+            fill = "cyan", alpha = 0.5) + 
+  geom_line(aes(x = x, y = y), linewidth = 1) + 
+  geom_bracket(xmin = c(-3, -2, -1), xmax = c(3, 2, 1), 
+               y.position = c(0.49, 0.45, 0.41),
+               label = c("99.7%", "95%", "68%")) + 
+  annotate(geom = "text", x = -3, y = -0.03, 
+           label = expression(paste("-3", sigma))) + 
+  annotate(geom = "text", x = -2, y = -0.03, 
+           label = expression(paste("-2", sigma))) + 
+  annotate(geom = "text", x = -1, y = -0.03, 
+           label = expression(paste("-1", sigma))) + 
+  annotate(geom = "text", x = 0, y = -0.03, 
+           label = expression(mu)) + 
+  annotate(geom = "text", x = 1, y = -0.03, 
+           label = expression(paste("+1", sigma))) + 
+  annotate(geom = "text", x = 2, y = -0.03, 
+           label = expression(paste("+2", sigma))) + 
+  annotate(geom = "text", x = 3, y = -0.03, 
+           label = expression(paste("+3", sigma))) + 
+  theme_classic() +
+  theme(axis.text = element_blank(), axis.ticks = element_blank(), 
+        axis.title = element_blank(), axis.line = element_blank()) 
+  # ggtitle("Normal Distribution") 
+```
+
+The 68-95-99.7 rule states the following about the normal distribution:
+
+-   Approximately 68% of the data falls within one standard deviation of the mean.
+
+-   Approximately 95% of the data falls within two standard deviations of the mean.
+
+-   Approximately 99.7% of the data falls within three standard deviations of the mean.
+
+> **Example:** Suppose the heights of female cadets are normally distributed with a mean $\mu$ of 65 inches and a standard deviation $\sigma$ of 3 inches.
+>
+> 1.  What percent of female cadet heights fall between 62 and 68 inches?
+>
+> 2.  Between what heights do 95% of female cadets fall?
+>
+> 3.  What percent of female cadet heights fall between 62 and 74 inches?
+>
+> 4.  What percent of female cadets are taller than 71 inches?
+
+The 68-95-99.7 rule tells us that approximately 68% of female cadet heights will fall between 62 and 68 inches (within one standard deviation of the mean), 95% will fall between 59 and 71 inches (within two standard deviations of the mean), and 99.7% will fall between 56 and 74 inches (within three standard deviations of the mean).
+
+This information gives us the answers to our first two questions. But how do we figure out what percent of female cadets fall between 62 and 74 inches? It's always a good idea to draw a picture.
+
+```{r}
+#| label: fig-cadetheight-within
+#| fig-align: "center"
+#| echo: false 
+#| message: false 
+#| warning: false 
+
+mean <- 0 
+sd <- 1 
+  
+x <- seq(-4, 4, by = 0.01) 
+y <- dnorm(x, mean = mean, sd = sd) 
+  
+df <- data.frame(x = x, y = y) 
+  
+ggplot(df, aes(x = x, y = y)) + 
+  geom_segment(x = -4, xend = 4, y = 0, yend = 0, color = "grey") +
+  geom_segment(x = -3, xend = -3, y = 0, yend = 0.39, color = "lightgrey") + 
+  geom_segment(x = 3, xend = 3, y = 0, yend = 0.39, color = "lightgrey") + 
+  geom_segment(x = -2, xend = -2, y = 0, yend = 0.39, color = "lightgrey") + 
+  geom_segment(x = 2, xend = 2, y = 0, yend = 0.39, color = "lightgrey") + 
+  geom_segment(x = -1, xend = -1, y = 0, yend = 0.39, color = "lightgrey") + 
+  geom_segment(x = 1, xend = 1, y = 0, yend = 0.39, color = "lightgrey") + 
+  geom_segment(x = 0, xend = 0, y = 0.005, yend = 0.39, color = "black") + 
+  geom_area(data = df, 
+            aes(x = x, 
+                y = ifelse(x < mean + 1 * sd & x > mean - 1 * sd, y, 0)), 
+            fill = "blue", alpha = 0.5) + 
+  geom_area(data = df, 
+            aes(x = x, 
+                y = ifelse(x < mean + 2 * sd & x > mean - 2 * sd, y, 0)), 
+            fill = "skyblue3", alpha = 0.5) + 
+  geom_area(data = df, 
+            aes(x = x, 
+                y = ifelse(x < mean + 3 * sd & x > mean - 3 * sd, y, 0)), 
+            fill = "cyan", alpha = 0.5) + 
+  geom_line(aes(x = x, y = y), linewidth = 1) + 
+  geom_bracket(xmin = c(-1, 0.05), xmax = c(-0.05, 3), 
+               y.position = c(0.43, 0.43), label = c("34%", "49.85%")) + 
+  annotate(geom = "text", x = -3, y = -0.03, label = 56) + 
+  annotate(geom = "text", x = -2, y = -0.03, label = 59) + 
+  annotate(geom = "text", x = -1, y = -0.03, label = 62) + 
+  annotate(geom = "text", x = 0, y = -0.03, label = 65) + 
+  annotate(geom = "text", x = 1, y = -0.03, label = 68) + 
+  annotate(geom = "text", x = 2, y = -0.03, label = 71) + 
+  annotate(geom = "text", x = 3, y = -0.03, label = 74) + 
+  theme_classic() +
+  theme(axis.text = element_blank(), axis.ticks = element_blank(), 
+        axis.title = element_blank(), axis.line = element_blank()) 
+  # ggtitle("Normal Distribution") 
+```
+
+Remember that the normal distribution is symmetric, meaning the left and right sides (with zero at the middle) are mirror images. So, approximately 50% of the female cadet heights will be greater than the mean of 65 inches. @fig-cadetheight-within shows the area of interest in our example. Approximately half of 99.7%, 49.85%, of female cadet heights are between 65 and 74 inches. Because 68% of female cadet heights fall between 62 and 68 inches, 34% fall between 62 and 65 inches. Thus, a total of 83.85% of female cadet heights fall between 62 and 74 inches.
+
+```{r}
+#| label: fig-cadetheight-outside
+#| fig-align: "center"
+#| echo: false 
+#| message: false 
+#| warning: false 
+
+mean <- 0 
+sd <- 1 
+  
+x <- seq(-4, 4, by = 0.01) 
+y <- dnorm(x, mean = mean, sd = sd) 
+  
+df <- data.frame(x = x, y = y) 
+  
+ggplot(df, aes(x = x, y = y)) + 
+  geom_segment(x = -4, xend = 4, y = 0, yend = 0, color = "grey") +
+  geom_segment(x = -3, xend = -3, y = 0, yend = 0.39, color = "lightgrey") + 
+  geom_segment(x = 3, xend = 3, y = 0, yend = 0.39, color = "lightgrey") + 
+  geom_segment(x = -2, xend = -2, y = 0, yend = 0.39, color = "lightgrey") + 
+  geom_segment(x = 2, xend = 2, y = 0, yend = 0.39, color = "lightgrey") + 
+  geom_segment(x = -1, xend = -1, y = 0, yend = 0.39, color = "lightgrey") + 
+  geom_segment(x = 1, xend = 1, y = 0, yend = 0.39, color = "lightgrey") + 
+  geom_segment(x = 0, xend = 0, y = 0.005, yend = 0.39, color = "black") + 
+  geom_area(data = df, 
+            aes(x = x, 
+                y = ifelse(x < mean + 1 * sd & x > mean - 1 * sd, y, 0)), 
+            fill = "blue", alpha = 0.5) + 
+  geom_area(data = df, 
+            aes(x = x, 
+                y = ifelse(x < mean + 2 * sd & x > mean - 2 * sd, y, 0)), 
+            fill = "skyblue3", alpha = 0.5) + 
+  geom_area(data = df, 
+            aes(x = x, 
+                y = ifelse(x < mean + 3 * sd & x > mean - 3 * sd, y, 0)), 
+            fill = "cyan", alpha = 0.5) + 
+  geom_line(aes(x = x, y = y), linewidth = 1) + 
+  geom_bracket(xmin = c(-4, -2.95, 3.05), xmax = c(-3.05, 2.95, 4), 
+               y.position = c(0.41, 0.41, 0.41), 
+               label = c("2.5%", "95%", "2.5%")) + 
+  annotate(geom = "text", x = -3, y = -0.03, label = 56) + 
+  annotate(geom = "text", x = -2, y = -0.03, label = 59) + 
+  annotate(geom = "text", x = -1, y = -0.03, label = 62) + 
+  annotate(geom = "text", x = 0, y = -0.03, label = 65) + 
+  annotate(geom = "text", x = 1, y = -0.03, label = 68) + 
+  annotate(geom = "text", x = 2, y = -0.03, label = 71) + 
+  annotate(geom = "text", x = 3, y = -0.03, label = 74) + 
+  theme_classic() +
+  theme(axis.text = element_blank(), axis.ticks = element_blank(), 
+        axis.title = element_blank(), axis.line = element_blank()) 
+  # ggtitle("Normal Distribution") 
+```
+
+For our last question, @fig-cadetheight-outside shows the area of interest. We know from the empirical rule that 95% of female cadet heights fall between 59 and 71 inches. This means that 5% of cadet heights fall outside that range. Because the normal distribution is symmetric, 2.5% falls between 59 inches and 2.5% falls above 71 inches.
+
+While the 68-95-99.7 rule is a powerful tool for normal distributions, its applicability is limited to such distributions. Understanding the shape and properties of the data distribution is crucial before applying this rule or making inferences based on it.
