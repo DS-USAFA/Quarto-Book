@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>9&nbsp; Conditional Probability – Computational Probability and Statistics</title>
+<title>3&nbsp; Overview of Data Collection Principles – Computational Probability and Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -64,8 +30,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Discrete-Random-Variables.html" rel="next">
-<link href="./Probability-Rules.html" rel="prev">
+<link href="./Studies.html" rel="next">
+<link href="./Data-Basics.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -144,7 +110,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Probability-Case-Study.html">Probability Modeling</a></li><li class="breadcrumb-item"><a href="./Conditional-Probability.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Conditional Probability</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Data-Case-Study.html">Descriptive Statistical Modeling</a></li><li class="breadcrumb-item"><a href="./Overview-of-Data-Collection-Principles.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Overview of Data Collection Principles</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -212,7 +178,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Overview-of-Data-Collection-Principles.html" class="sidebar-item-text sidebar-link">
+  <a href="./Overview-of-Data-Collection-Principles.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Overview of Data Collection Principles</span></span></a>
   </div>
 </li>
@@ -259,7 +225,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Conditional-Probability.html" class="sidebar-item-text sidebar-link active">
+  <a href="./Conditional-Probability.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Conditional Probability</span></span></a>
   </div>
 </li>
@@ -452,24 +418,24 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives"><span class="header-section-number">9.1</span> Objectives</a></li>
-  <li><a href="#conditional-probability" id="toc-conditional-probability" class="nav-link" data-scroll-target="#conditional-probability"><span class="header-section-number">9.2</span> Conditional Probability</a></li>
-  <li><a href="#independence" id="toc-independence" class="nav-link" data-scroll-target="#independence"><span class="header-section-number">9.3</span> Independence</a></li>
-  <li><a href="#bayes-rule" id="toc-bayes-rule" class="nav-link" data-scroll-target="#bayes-rule"><span class="header-section-number">9.4</span> Bayes’ Rule</a>
+  <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives"><span class="header-section-number">3.1</span> Objectives</a></li>
+  <li><a href="#overview-of-data-collection-principles" id="toc-overview-of-data-collection-principles" class="nav-link" data-scroll-target="#overview-of-data-collection-principles"><span class="header-section-number">3.2</span> Overview of data collection principles</a>
   <ul class="collapse">
-  <li><a href="#approach-using-whole-numbers" id="toc-approach-using-whole-numbers" class="nav-link" data-scroll-target="#approach-using-whole-numbers"><span class="header-section-number">9.4.1</span> Approach using whole numbers</a></li>
-  <li><a href="#mathematical-approach" id="toc-mathematical-approach" class="nav-link" data-scroll-target="#mathematical-approach"><span class="header-section-number">9.4.2</span> Mathematical approach</a></li>
-  <li><a href="#simulation" id="toc-simulation" class="nav-link" data-scroll-target="#simulation"><span class="header-section-number">9.4.3</span> Simulation</a></li>
+  <li><a href="#populations-and-samples" id="toc-populations-and-samples" class="nav-link" data-scroll-target="#populations-and-samples"><span class="header-section-number">3.2.1</span> Populations and samples</a></li>
+  <li><a href="#anecdotal-evidence" id="toc-anecdotal-evidence" class="nav-link" data-scroll-target="#anecdotal-evidence"><span class="header-section-number">3.2.2</span> Anecdotal evidence</a></li>
+  <li><a href="#sampling-from-a-population" id="toc-sampling-from-a-population" class="nav-link" data-scroll-target="#sampling-from-a-population"><span class="header-section-number">3.2.3</span> Sampling from a population</a></li>
+  <li><a href="#explanatory-and-response-variables" id="toc-explanatory-and-response-variables" class="nav-link" data-scroll-target="#explanatory-and-response-variables"><span class="header-section-number">3.2.4</span> Explanatory and response variables</a></li>
+  <li><a href="#introducing-observational-studies-and-experiments" id="toc-introducing-observational-studies-and-experiments" class="nav-link" data-scroll-target="#introducing-observational-studies-and-experiments"><span class="header-section-number">3.2.5</span> Introducing observational studies and experiments</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/DS-USAFA/Quarto-Book/edit/main/Conditional-Probability.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/DS-USAFA/Quarto-Book/edit/main/Overview-of-Data-Collection-Principles.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Probability-Case-Study.html">Probability Modeling</a></li><li class="breadcrumb-item"><a href="./Conditional-Probability.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Conditional Probability</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Data-Case-Study.html">Descriptive Statistical Modeling</a></li><li class="breadcrumb-item"><a href="./Overview-of-Data-Collection-Principles.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Overview of Data Collection Principles</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-CONDPROB" class="quarto-section-identifier"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Conditional Probability</span></span></h1>
+<h1 class="title"><span id="sec-ODCP" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Overview of Data Collection Principles</span></span></h1>
 </div>
 
 
@@ -486,143 +452,156 @@ window.Quarto = {
 </header>
 
 
-<section id="objectives" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="objectives"><span class="header-section-number">9.1</span> Objectives</h2>
+<section id="objectives" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="objectives"><span class="header-section-number">3.1</span> Objectives</h2>
 <ol type="1">
-<li><p>Define and differentiate between conditional probability and joint probability, and provide real-world examples to illustrate these concepts and their differences.</p></li>
-<li><p>Calculate conditional probabilities from given data or scenarios using their formal definition, and interpret these probabilities in the context of practical examples.</p></li>
-<li><p>Using conditional probability, determine whether two events are independent and justify your conclusion with appropriate calculations and reasoning.</p></li>
-<li><p>Apply Bayes’ Rule to solve problems both mathematically and through simulation usinng <code>R</code>.</p></li>
+<li><p>Differentiate between various statistical terminologies such as <em>population, sample, anecdotal evidence, bias, simple random sample, systematic sample, representative sample, non-response bias, convenience sample, explanatory variable,</em> <em>response variable, observational study, cohort, experiment, randomized experiment,</em> and <em>placebo</em>, and construct examples to demonstrate their proper use in context.</p></li>
+<li><p>Evaluate descriptions of research project to identify the population of interest, assess the generalizability of the study, determine the explanatory and response variables, classify the study as observational or experimental, and determine the type of sample used.</p></li>
+<li><p>Design and justify sampling procedures for various research contexts, comparing the strengths and weaknesses of different sampling methods (simple random, systematic, convenience, etc.) and proposing improvements to minimize bias and enhance representativeness.</p></li>
 </ol>
 </section>
-<section id="conditional-probability" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="conditional-probability"><span class="header-section-number">9.2</span> Conditional Probability</h2>
-<p>So far, we’ve covered the basic axioms of probability, the properties of events (set theory) and counting rules. Another important concept, perhaps one of the most important, is conditional probability. Often, we know a certain event or sequence of events has occurred and we are interested in the probability of another event.</p>
+<section id="overview-of-data-collection-principles" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="overview-of-data-collection-principles"><span class="header-section-number">3.2</span> Overview of data collection principles</h2>
+<p>The first step in conducting research is to identify topics or questions that are to be investigated. A clearly laid out research question is helpful in identifying what subjects or cases should be studied and what variables are important. It is also important to consider <em>how</em> data are collected so that they are reliable and help achieve the research goals.</p>
+<section id="populations-and-samples" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="populations-and-samples"><span class="header-section-number">3.2.1</span> Populations and samples</h3>
+<p>Consider the following three research questions:</p>
+<ol type="1">
+<li>What is the average mercury content in swordfish in the Atlantic Ocean?<br>
+</li>
+<li>Over the last 5 years, what is the average time to complete a degree for Duke undergraduate students?<br>
+</li>
+<li>Does a new drug reduce the number of deaths in patients with severe heart disease?</li>
+</ol>
+<p>Each research question refers to a target <strong>population</strong>, the entire collection of individuals about which we want information. In the first question, the target population is all swordfish in the Atlantic Ocean, and each fish represents a case. It is usually too expensive to collect data for every case in a population. Instead, a sample is taken. A <strong>sample</strong> represents a subset of the cases and is often a small fraction of the population. For instance, 60 swordfish (or some other number) in the population might be selected, and this sample data may be used to provide an estimate of the population average and answer the research question.</p>
 <blockquote class="blockquote">
-<p><em>Example</em>:<br>
-Suppose you arrive at a rental car counter and they show you a list of available vehicles, and one is picked for you at random. The sample space in this experiment is <span class="math display">\[
-S=\{\mbox{red sedan}, \mbox{blue sedan}, \mbox{red truck}, \mbox{grey truck}, \mbox{grey SUV}, \mbox{black SUV}, \mbox{blue SUV}\}.
-\]</span></p>
+<p><strong>Exercise</strong>:<br>
+For the second and third questions above, identify the target population and what represents an individual case.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 </blockquote>
-<blockquote class="blockquote">
-<p>What is the probability that a blue vehicle is selected, given a sedan was selected?</p>
-</blockquote>
-<p>Since we know that a sedan was selected, our sample space has been reduced to just “red sedan” and “blue sedan”. The probability of selecting a blue vehicle out of this sample space is simply 1/2.</p>
-<p>In set notation, let <span class="math inline">\(A\)</span> be the event that a blue vehicle is selected. Let <span class="math inline">\(B\)</span> be the event that a sedan is selected. We are looking for <span class="math inline">\(\mbox{P}(A \mbox{ given } B)\)</span>, which is also written as <span class="math inline">\(\mbox{P}(A|B)\)</span>. By definition, <span class="math display">\[
-\mbox{P}(A|B)=\frac{\mbox{P}(A \cap B)}{\mbox{P}(B)}
-\]</span></p>
-<p>It is important to distinguish between the event <span class="math inline">\(A|B\)</span> and <span class="math inline">\(A \cap B\)</span>. This is a common misunderstanding about probability. <span class="math inline">\(A \cap B\)</span> is the event that an outcome was selected at random from the total sample space, and that outcome was contained in both <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>. On the other hand, <span class="math inline">\(A|B\)</span> assumes the <span class="math inline">\(B\)</span> has occurred, and an outcome was drawn from the remaining sample space, and that outcome was contained in <span class="math inline">\(A\)</span>.</p>
-<p>Another common misunderstanding involves the direction of conditional probability. Specifically, <span class="math inline">\(A|B\)</span> is NOT the same event as <span class="math inline">\(B|A\)</span>. For example, consider a medical test for a disease. The probability that someone tests positive given they had the disease is different than the probability that someone has the disease given they tested positive. We will explore this example further in our Bayes’ Rule section.</p>
 </section>
-<section id="independence" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="independence"><span class="header-section-number">9.3</span> Independence</h2>
-<p>Two events, <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, are said to be independent if the probability of one occurring does not change whether or not the other has occurred. We looked at this last chapter but now we have another way of looking at it using conditional probabilities. For example, let’s say the probability that a randomly selected student has seen the latest superhero movie is 0.55. What if we randomly select a student and we see that he/she is wearing a black backpack? Does that probability change? Likely not, since movie attendance is probably not related to choice of backpack color. These two events are independent.</p>
-<p>Mathematically, <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are considered independent if and only if <span class="math display">\[
-\mbox{P}(A|B)=\mbox{P}(A)
-\]</span></p>
-<p><em>Result</em>: <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent if and only if <span class="math display">\[
-\mbox{P}(A\cap B)=\mbox{P}(A)\mbox{P}(B)
-\]</span></p>
-<p>This follows from the definition of conditional probability and from above: <span class="math display">\[
-\mbox{P}(A|B)=\frac{\mbox{P}(A\cap B)}{\mbox{P}(B)}=\mbox{P}(A)
-\]</span></p>
-<p>Thus, <span class="math inline">\(\mbox{P}(A\cap B)=\mbox{P}(A)\mbox{P}(B)\)</span>.</p>
-<blockquote class="blockquote">
-<p><em>Example</em>: Consider the example above. Recall events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>. Let <span class="math inline">\(A\)</span> be the event that a blue vehicle is selected. Let <span class="math inline">\(B\)</span> be the event that a sedan is selected. Are <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> independent?</p>
-</blockquote>
-<p>No.&nbsp;First, recall that <span class="math inline">\(\mbox{P}(A|B)=0.5\)</span>. The probability of selecting a blue vehicle (<span class="math inline">\(\mbox{P}(A)\)</span>) is <span class="math inline">\(2/7\)</span> (the number of blue vehicles in our sample space divided by 7, the total number vehicles in <span class="math inline">\(S\)</span>). This value is different from 0.5; thus, <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are not independent.</p>
-<p>We could also use the result above to determine whether <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent. Note that <span class="math inline">\(\mbox{P}(A)= 2/7\)</span>. Also, we know that <span class="math inline">\(\mbox{P}(B)=2/7\)</span>. So, <span class="math inline">\(\mbox{P}(A)\mbox{P}(B)=4/49\)</span>. But, <span class="math inline">\(\mbox{P}(A\cap B) = 1/7\)</span>, since there is just one blue sedan in the sample space. <span class="math inline">\(4/49\)</span> is not equal to <span class="math inline">\(1/7\)</span>; thus, <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are not independent.</p>
-</section>
-<section id="bayes-rule" class="level2" data-number="9.4">
-<h2 data-number="9.4" class="anchored" data-anchor-id="bayes-rule"><span class="header-section-number">9.4</span> Bayes’ Rule</h2>
-<p>As mentioned in the introduction to this section, <span class="math inline">\(\mbox{P}(A|B)\)</span> is not the same quantity as <span class="math inline">\(\mbox{P}(B|A)\)</span>. However, if we are given information about <span class="math inline">\(A|B\)</span> and <span class="math inline">\(B\)</span>, we can use Bayes’ Rule to find <span class="math inline">\(\mbox{P}(B|A)\)</span>. Let <span class="math inline">\(B_1, B_2, ..., B_n\)</span> be mutually exclusive and exhaustive events and let <span class="math inline">\(\mbox{P}(A)&gt;0\)</span>. Then, <span class="math display">\[
-\mbox{P}(B_k|A)=\frac{\mbox{P}(A|B_k)\mbox{P}(B_k)}{\sum_{i=1}^n \mbox{P}(A|B_i)\mbox{P}(B_i)}
-\]</span></p>
-<p>Let’s use an example to dig into where this comes from.</p>
-<blockquote class="blockquote">
-<p><em>Example</em>:<br>
-Suppose a doctor has developed a blood test for a certain rare disease (only one out of every 10,000 people have this disease). After careful and extensive evaluation of this blood test, the doctor determined the test’s sensitivity and specificity.</p>
-</blockquote>
-<p><strong>Sensitivity</strong> is the probability of detecting the disease for those who actually have it. Note that this is a conditional probability.</p>
-<p><strong>Specificity</strong> is the probability of correctly identifying “no disease” for those who do not have it. Again, another conditional probability.</p>
-<p>See <a href="#fig-sens" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-sens</span></a> for a visual representation of these terms and others related to what is termed a <strong>confusion matrix</strong>.</p>
+<section id="anecdotal-evidence" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="anecdotal-evidence"><span class="header-section-number">3.2.2</span> Anecdotal evidence</h3>
+<p>Consider the following possible responses to the three research questions:</p>
+<ol type="1">
+<li>A man on the news got mercury poisoning from eating swordfish, so the average mercury concentration in swordfish must be dangerously high.</li>
+<li>I met two students who took more than 7 years to graduate from Duke, so it must take longer to graduate at Duke than at many other colleges.</li>
+<li>My friend’s dad had a heart attack and died after they gave him a new heart disease drug, so the drug must not work.</li>
+</ol>
+<p>Each conclusion is based on data. However, there are two problems. First, the data only represent one or two cases. Second, and more importantly, it is unclear whether these cases are actually representative of the population. Data collected in this haphazard fashion are called <strong>anecdotal evidence</strong>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-sens" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-sens-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="./figures/sensitivity-specificity_corrected.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./figures/mnWinter.JPG" class="img-fluid figure-img"></p>
+<figcaption>In February 2010, some media pundits cited one large snow storm as evidence against global warming. As comedian Jon Stewart pointed out, <em>It’s one storm, in one region, of one country.</em></figcaption>
+</figure>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sens-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.1: A table of true results and test results for a hypothetical disease. The terminology is included in the table. These ideas are important when evaluating machine learning classification models.
+</div>
+</div>
+<blockquote class="blockquote">
+<p><strong>Anecdotal evidence</strong>: Be careful of data collected haphazardly. Such evidence may be true and verifiable, but it may only represent extraordinary cases.</p>
+</blockquote>
+<p>Anecdotal evidence typically is composed of unusual cases that we recall based on their striking characteristics. For instance, we are more likely to remember the two people we met who took 7 years to graduate than the six others who graduated in four years. Instead of looking at the most unusual cases, we should examine a sample of many cases that represent the population.</p>
+</section>
+<section id="sampling-from-a-population" class="level3" data-number="3.2.3">
+<h3 data-number="3.2.3" class="anchored" data-anchor-id="sampling-from-a-population"><span class="header-section-number">3.2.3</span> Sampling from a population</h3>
+<p>We might try to estimate the time to graduation for Duke undergraduates in the last 5 years by collecting a sample of students. All graduates in the last 5 years represent the <em>population</em>, and graduates who are selected for review are collectively called the <em>sample</em>. In general, we always seek to <em>randomly</em> select a sample from a population. The most basic type of random selection is equivalent to how raffles are conducted. For example, in selecting graduates, we could write each graduate’s name on a raffle ticket and draw 100 tickets. The selected names would represent a random sample of 100 graduates. This is illustrated in <a href="#fig-randsamp" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-randsamp</span></a> .</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-randsamp" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-randsamp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Overview-of-Data-Collection-Principles_files/figure-html/fig-randsamp-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-randsamp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.1: In this graphic, five graduates are randomly selected from the population to be included in the sample.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>In fact, this test had a sensitivity of 100% and a specificity of 99.9%. Now suppose a patient walks in, the doctor administers the blood test, and it returns positive. What is the probability that that patient actually has the disease?</p>
-<p>This is a classic example of how probability could be misunderstood. Upon reading this question, you might guess that the answer to our question is quite high. After all, this is a nearly perfect test. After exploring the problem more in depth, we find a different result.</p>
-<section id="approach-using-whole-numbers" class="level3" data-number="9.4.1">
-<h3 data-number="9.4.1" class="anchored" data-anchor-id="approach-using-whole-numbers"><span class="header-section-number">9.4.1</span> Approach using whole numbers</h3>
-<p>Without going directly to the formulaic expression above, let’s consider a collection of 100,000 randomly selected people. What do we know?</p>
-<ol type="1">
-<li><p>Based on the prevalence of this disease (one out of every 10,000 people have this disease), we know that 10 of them should have the disease.</p></li>
-<li><p>This test is perfectly sensitive. Thus, of the 10 people that have the disease, all of them test positive.</p></li>
-<li><p>This test has a specificity of 99.9%. Of the 99,990 that don’t have the disease, <span class="math inline">\(0.999*99990\approx 99890\)</span> will test negative. The remaining 100 will test positive.</p></li>
+<p>Why pick a sample randomly? Why not just pick a sample by hand? Consider the following scenario.</p>
+<blockquote class="blockquote">
+<p><strong>Example</strong>:<br>
+Suppose we ask a student who happens to be majoring in nutrition to select several graduates for the study. What kind of students do you think she might collect? Do you think her sample would be representative of all graduates? <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+</blockquote>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-biased" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-biased-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Overview-of-Data-Collection-Principles_files/figure-html/fig-biased-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-biased-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.2: Instead of sampling from all graduates equally, a nutrition major might inadvertently pick graduates with health-related majors disproportionately often.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>If someone was permitted to pick and choose exactly which graduates were included in the sample, it is entirely possible that the sample could be skewed to that person’s interests, which may be entirely unintentional. This introduces <strong>sampling bias</strong> (see <a href="#fig-biased" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-biased</span></a>), where some individuals in the population are more likely to be sampled than others. Sampling randomly helps resolve this problem. The most basic random sample is called a <strong>simple random sample</strong>, which is equivalent to using a raffle to select cases. This means that each case in the population has an equal chance of being included and there is no implied connection between the cases in the sample.</p>
+<p>Sometimes a simple random sample is difficult to implement and an alternative method is helpful. One such substitute is a <strong>systematic sample</strong>, where one case is sampled after letting a fixed number of others, say 10 other cases, pass by. Since this approach uses a mechanism that is not easily subject to personal biases, it often yields a reasonably representative sample. This book will focus on simple random samples since the use of systematic samples is uncommon and requires additional considerations of the context.</p>
+<p>The act of taking a simple random sample helps minimize bias. However, bias can crop up in other ways. Even when people are picked at random, e.g.&nbsp;for surveys, caution must be exercised if the non-response is high. For instance, if only 30% of the people randomly sampled for a survey actually respond, and it is unclear whether the respondents are <strong>representative</strong><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> of the entire population, the survey might suffer from <strong>non-response bias</strong><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-convsamp" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-convsamp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Overview-of-Data-Collection-Principles_files/figure-html/fig-convsamp-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-convsamp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.3: Due to the possibility of non-response, surveys studies may only reach a certain group within the population. It is difficult, and often impossible, to completely fix this problem.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Another common pitfall is a <strong>convenience sample</strong>, where individuals who are easily accessible are more likely to be included in the sample, see <a href="#fig-convsamp" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-convsamp</span></a>. For instance, if a political survey is done by stopping people walking in the Bronx, it will not represent all of New York City. It is often difficult to discern what sub-population a convenience sample represents.</p>
+<blockquote class="blockquote">
+<p><strong>Exercise</strong>:<br>
+We can easily access ratings for products, sellers, and companies through websites. These ratings are based only on those people who go out of their way to provide a rating. If 50% of online reviews for a product are negative, do you think this means that 50% of buyers are dissatisfied with the product?<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+</blockquote>
+</section>
+<section id="explanatory-and-response-variables" class="level3" data-number="3.2.4">
+<h3 data-number="3.2.4" class="anchored" data-anchor-id="explanatory-and-response-variables"><span class="header-section-number">3.2.4</span> Explanatory and response variables</h3>
+<p>Consider the following question for the <code>county</code> data set:</p>
+<p>Is federal spending, on average, higher or lower in counties with high rates of poverty?</p>
+<p>If we suspect poverty might affect spending in a county, then poverty is the <strong>explanatory</strong> variable and federal spending is the <strong>response</strong> variable in the relationship.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> If there are many variables, it may be possible to consider a number of them as explanatory variables.</p>
+<blockquote class="blockquote">
+<p><strong>Explanatory</strong> and <strong>response</strong> variables<br>
+To identify the explanatory variable in a pair of variables, identify which of the two variables is suspected as explaining or causing changes in the other. In data sets with more than two variables, it is possible to have multiple explanatory variables. The response variable is the outcome or result of interest.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Caution</strong>: Association does not imply causation. Labeling variables as <em>explanatory</em> and <em>response</em> does not guarantee the relationship between the two is actually causal, even if there is an association identified between the two variables. We use these labels only to keep track of which variable we suspect affects the other. We also use this language to help in our use of <code>R</code> and the formula notation.</p>
+</blockquote>
+<p>In some cases, there is no explanatory or response variable. Consider the following question:</p>
+<p>If homeownership in a particular county is lower than the national average, will the percent of multi-unit structures in that county likely be above or below the national average?</p>
+<p>It is difficult to decide which of these variables should be considered the explanatory and response variable; i.e.&nbsp;the direction is ambiguous, so no explanatory or response labels are suggested here.</p>
+</section>
+<section id="introducing-observational-studies-and-experiments" class="level3" data-number="3.2.5">
+<h3 data-number="3.2.5" class="anchored" data-anchor-id="introducing-observational-studies-and-experiments"><span class="header-section-number">3.2.5</span> Introducing observational studies and experiments</h3>
+<p>There are two primary types of data collection: observational studies and experiments.</p>
+<p>Researchers perform an <strong>observational study</strong> when they collect data in a way that does not directly interfere with how the data arise. For instance, researchers may collect information via surveys, review medical or company records, or follow a <strong>cohort</strong><a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> of many similar individuals to study why certain diseases might develop. In each of these situations, researchers merely observe what happens. In general, observational studies can provide evidence of a naturally occurring association between variables, but by themselves, they cannot show a causal connection.</p>
+<p>When researchers want to investigate the possibility of a causal connection, they conduct an <strong>experiment</strong>, a study in which the explanatory variables are assigned rather than observed. For instance, we may suspect administering a drug will reduce mortality in heart attack patients over the following year. To check if there really is a causal connection between the explanatory variable and the response, researchers will collect a sample of individuals and split them into groups. The individuals in each group are <em>assigned</em> a treatment. When individuals are <em>randomly</em> assigned to a treatment group, and we are <em>comparing</em> at least two treatments, the experiment is called a <strong>randomized comparative experiment</strong>. For example, each heart attack patient in the drug trial could be randomly assigned, perhaps by flipping a coin, into one of two groups: the first group receives a <strong>placebo</strong> (fake treatment) and the second group receives the drug. The case study at the beginning of the book is another example of an experiment, though that study did not employ a placebo. Math 359 is a course on the design and analysis of experimental data, DOE, at USAFA. In the Air Force, these types of experiments are an important part of test and evaluation. Many Air Force analysts are expert practitioners of DOE. In this book though, we will minimize our discussion of DOE.</p>
+<blockquote class="blockquote">
+<p><strong>Association</strong> <span class="math inline">\(\neq\)</span> <strong>Causation</strong><br>
+Again, association does not imply causation. In a data analysis, association does not imply causation, and causation can only be inferred from a randomized experiment. Although, a hot field is the analysis of causal relationships in observational data. This is important because consider cigarette smoking, how do we know it causes lung cancer? We only have observational data and clearly cannot do an experiment. We think analysts will be charged in the near future with using causal reasoning on observational data.</p>
+</blockquote>
+
+
+</section>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>2) Notice that the second question is only relevant to students who complete their degree; the average cannot be computed using a student who never finished her degree. Thus, only Duke undergraduate students who have graduated in the last five years represent cases in the population under consideration. Each such student would represent an individual case. 3) A person with severe heart disease represents a case. The population includes all people with severe heart disease.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Perhaps she would pick a disproportionate number of graduates from health-related fields. Or perhaps her selection would be well-representative of the population. When selecting samples by hand, we run the risk of picking a <em>biased</em> sample, even if that bias is unintentional or difficult to discern.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>A representative sample accurately reflects the characteristics of the population.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Non-response bias is bias that can be introduced when subjects elect not to participate in a study. Often, the individuals that do participate are systematically different from the individuals who do not.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Answers will vary. From our own anecdotal experiences, we believe people tend to rant more about products that fell below expectations than rave about those that perform as expected. For this reason, we suspect there is a negative bias in product ratings on sites like Amazon. However, since our experiences may not be representative, we also keep an open mind.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Sometimes the explanatory variable is called the <strong>independent</strong> variable and the response variable is called the <strong>dependent</strong> variable. However, this becomes confusing since a <em>pair</em> of variables might be independent or dependent, so be careful and consider the context when using or reading these words.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>A cohort is a group of individuals who are similar in some way.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
-<p>Thus, of our 100,000 randomly selected people, 110 will test positive. Of these 110, only 10 actually have the disease. Thus, the probability that someone has the disease given they’ve tested positive is actually around <span class="math inline">\(10/110 = 0.0909\)</span>.</p>
-</section>
-<section id="mathematical-approach" class="level3" data-number="9.4.2">
-<h3 data-number="9.4.2" class="anchored" data-anchor-id="mathematical-approach"><span class="header-section-number">9.4.2</span> Mathematical approach</h3>
-<p>Now let’s put this in context of Bayes’ Rule as stated above. First, let’s define some events. Let <span class="math inline">\(D\)</span> be the event that someone has the disease. Thus, <span class="math inline">\(D'\)</span> would be the event that someone does not have the disease. Similarly, let <span class="math inline">\(T\)</span> be the event that someone has tested positive. What do we already know? <span class="math display">\[
-\mbox{P}(D) = 0.0001 \hspace{1cm} \mbox{P}(D')=0.9999
-\]</span> <span class="math display">\[
-\mbox{P}(T|D)= 1 \hspace{1cm} \mbox{P}(T'|D)=0
-\]</span> <span class="math display">\[
-\mbox{P}(T'|D')=0.999 \hspace{1cm} \mbox{P}(T|D') = 0.001
-\]</span></p>
-<p>We are looking for <span class="math inline">\(\mbox{P}(D|T)\)</span>, the probability that someone has the disease, given he/she has tested positive. By the definition of conditional probability, <span class="math display">\[
-\mbox{P}(D|T)=\frac{\mbox{P}(D \cap T)}{\mbox{P}(T)}
-\]</span></p>
-<p>The numerator can be rewritten, again utilizing the definition of conditional probability: <span class="math inline">\(\mbox{P}(D\cap T)=\mbox{P}(T|D)\mbox{P}(D)\)</span>.</p>
-<p>The denominator can be rewritten using the Law of Total Probability (discussed [here][Probability properties]) and then the definition of conditional probability: <span class="math inline">\(\mbox{P}(T)=\mbox{P}(T\cap D) + \mbox{P}(T \cap D') = \mbox{P}(T|D)\mbox{P}(D) + \mbox{P}(T|D')\mbox{P}(D')\)</span>. So, putting it all together, <span class="math display">\[
-\mbox{P}(D|T)=\frac{\mbox{P}(T|D)\mbox{P}(D)}{\mbox{P}(T|D)\mbox{P}(D) + \mbox{P}(T|D')\mbox{P}(D')}
-\]</span></p>
-<p>Now we have stated our problem in the context of quantities we know: <span class="math display">\[
-\mbox{P}(D|T)=\frac{1\cdot 0.0001}{1\cdot 0.0001 + 0.001\cdot 0.9999} = 0.0909
-\]</span></p>
-<p>Note that in the original statement of Bayes’ Rule, we considered <span class="math inline">\(n\)</span> partitions, <span class="math inline">\(B_1, B_2,...,B_n\)</span>. In this example, we only have two: <span class="math inline">\(D\)</span> and <span class="math inline">\(D'\)</span>.</p>
-</section>
-<section id="simulation" class="level3" data-number="9.4.3">
-<h3 data-number="9.4.3" class="anchored" data-anchor-id="simulation"><span class="header-section-number">9.4.3</span> Simulation</h3>
-<p>To do the simulation, we can think of it as flipping a coin. First let’s assume we are pulling 1,000,000 people from the population. The probability that any one person has the disease is 0.0001. We will use <code>rflip()</code> to get the 1,000,000 people and designate as no disease or disease.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">43</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">rflip</span>(<span class="dv">1000000</span>,<span class="fl">0.0001</span>,<span class="at">summarize =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>results</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>      n heads  tails  prob
-1 1e+06   100 999900 1e-04</code></pre>
-</div>
-</div>
-<p>In this case 100 people had the disease. Now let’s find the positive test results. Of the 100 with the disease, all will test positive. Of those without disease, there is a 0.001 probability of testing positive.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rflip</span>(<span class="fu">as.numeric</span>(results[<span class="st">'tails'</span>]),<span class="at">prob=</span>.<span class="dv">001</span>,<span class="at">summarize =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>       n heads  tails  prob
-1 999900   959 998941 0.001</code></pre>
-</div>
-</div>
-<p>Now 959 tested positive. Thus the probability of having the disease given a positive test result is approximately:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dv">100</span><span class="sc">/</span>(<span class="dv">100</span><span class="sc">+</span><span class="dv">959</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.09442871</code></pre>
-</div>
-</div>
-
-
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -1048,13 +1027,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./Probability-Rules.html" class="pagination-link" aria-label="Probability Basics">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Probability Basics</span></span>
+      <a href="./Data-Basics.html" class="pagination-link" aria-label="Data Basics">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Basics</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Discrete-Random-Variables.html" class="pagination-link" aria-label="Random Variables">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Random Variables</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./Studies.html" class="pagination-link" aria-label="Studies">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Studies</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1066,7 +1045,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/DS-USAFA/Quarto-Book/edit/main/Conditional-Probability.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/DS-USAFA/Quarto-Book/edit/main/Overview-of-Data-Collection-Principles.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>8&nbsp; Probability Basics – Computational Probability and Statistics</title>
+<title>2&nbsp; Data Basics – Computational Probability and Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Conditional-Probability.html" rel="next">
-<link href="./Probability-Case-Study.html" rel="prev">
+<link href="./Overview-of-Data-Collection-Principles.html" rel="next">
+<link href="./Data-Case-Study.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -144,7 +144,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Probability-Case-Study.html">Probability Modeling</a></li><li class="breadcrumb-item"><a href="./Probability-Rules.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Probability Basics</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Data-Case-Study.html">Descriptive Statistical Modeling</a></li><li class="breadcrumb-item"><a href="./Data-Basics.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Basics</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -206,7 +206,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Data-Basics.html" class="sidebar-item-text sidebar-link">
+  <a href="./Data-Basics.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Basics</span></span></a>
   </div>
 </li>
@@ -253,7 +253,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Probability-Rules.html" class="sidebar-item-text sidebar-link active">
+  <a href="./Probability-Rules.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Probability Basics</span></span></a>
   </div>
 </li>
@@ -452,33 +452,23 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives"><span class="header-section-number">8.1</span> Objectives</a></li>
-  <li><a href="#probability-vs-statistics" id="toc-probability-vs-statistics" class="nav-link" data-scroll-target="#probability-vs-statistics"><span class="header-section-number">8.2</span> Probability vs Statistics</a></li>
-  <li><a href="#basic-probability-terms" id="toc-basic-probability-terms" class="nav-link" data-scroll-target="#basic-probability-terms"><span class="header-section-number">8.3</span> Basic probability terms</a>
+  <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives"><span class="header-section-number">2.1</span> Objectives</a></li>
+  <li><a href="#data-basics" id="toc-data-basics" class="nav-link" data-scroll-target="#data-basics"><span class="header-section-number">2.2</span> Data basics</a>
   <ul class="collapse">
-  <li><a href="#sample-space" id="toc-sample-space" class="nav-link" data-scroll-target="#sample-space"><span class="header-section-number">8.3.1</span> Sample space</a></li>
-  <li><a href="#union-and-intersection" id="toc-union-and-intersection" class="nav-link" data-scroll-target="#union-and-intersection"><span class="header-section-number">8.3.2</span> Union and intersection</a></li>
-  </ul></li>
-  <li><a href="#probability" id="toc-probability" class="nav-link" data-scroll-target="#probability"><span class="header-section-number">8.4</span> Probability</a>
-  <ul class="collapse">
-  <li><a href="#probability-properties" id="toc-probability-properties" class="nav-link" data-scroll-target="#probability-properties"><span class="header-section-number">8.4.1</span> Probability properties</a></li>
-  <li><a href="#equally-likely-scenarios" id="toc-equally-likely-scenarios" class="nav-link" data-scroll-target="#equally-likely-scenarios"><span class="header-section-number">8.4.2</span> Equally likely scenarios</a></li>
-  </ul></li>
-  <li><a href="#counting-rules" id="toc-counting-rules" class="nav-link" data-scroll-target="#counting-rules"><span class="header-section-number">8.5</span> Counting rules</a>
-  <ul class="collapse">
-  <li><a href="#multiplication-rule-1-order-matters-sample-with-replacement" id="toc-multiplication-rule-1-order-matters-sample-with-replacement" class="nav-link" data-scroll-target="#multiplication-rule-1-order-matters-sample-with-replacement"><span class="header-section-number">8.5.1</span> Multiplication rule 1: Order matters, sample with replacement</a></li>
-  <li><a href="#multiplication-rule-2-permutation-order-matters-sampling-without-replacement" id="toc-multiplication-rule-2-permutation-order-matters-sampling-without-replacement" class="nav-link" data-scroll-target="#multiplication-rule-2-permutation-order-matters-sampling-without-replacement"><span class="header-section-number">8.5.2</span> Multiplication rule 2 (Permutation): Order Matters, Sampling Without Replacement</a></li>
-  <li><a href="#multiplication-rule-3-combination-order-does-not-matter-sampling-without-replacement" id="toc-multiplication-rule-3-combination-order-does-not-matter-sampling-without-replacement" class="nav-link" data-scroll-target="#multiplication-rule-3-combination-order-does-not-matter-sampling-without-replacement"><span class="header-section-number">8.5.3</span> Multiplication rule 3 (Combination): Order Does Not Matter, Sampling Without Replacement</a></li>
+  <li><a href="#observations-variables-and-data-matrices" id="toc-observations-variables-and-data-matrices" class="nav-link" data-scroll-target="#observations-variables-and-data-matrices"><span class="header-section-number">2.2.1</span> Observations, variables, and data matrices</a></li>
+  <li><a href="#types-of-variables" id="toc-types-of-variables" class="nav-link" data-scroll-target="#types-of-variables"><span class="header-section-number">2.2.2</span> Types of variables</a></li>
+  <li><a href="#relationships-between-variables" id="toc-relationships-between-variables" class="nav-link" data-scroll-target="#relationships-between-variables"><span class="header-section-number">2.2.3</span> Relationships between variables</a></li>
+  <li><a href="#creating-a-scatterplot" id="toc-creating-a-scatterplot" class="nav-link" data-scroll-target="#creating-a-scatterplot"><span class="header-section-number">2.2.4</span> Creating a scatterplot</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/DS-USAFA/Quarto-Book/edit/main/Probability-Rules.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/DS-USAFA/Quarto-Book/edit/main/Data-Basics.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Probability-Case-Study.html">Probability Modeling</a></li><li class="breadcrumb-item"><a href="./Probability-Rules.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Probability Basics</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Data-Case-Study.html">Descriptive Statistical Modeling</a></li><li class="breadcrumb-item"><a href="./Data-Basics.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Basics</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-PROBRULES" class="quarto-section-identifier"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Probability Basics</span></span></h1>
+<h1 class="title"><span id="sec-DB" class="quarto-section-identifier"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Basics</span></span></h1>
 </div>
 
 
@@ -495,257 +485,335 @@ window.Quarto = {
 </header>
 
 
-<section id="objectives" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="objectives"><span class="header-section-number">8.1</span> Objectives</h2>
+<section id="objectives" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="objectives"><span class="header-section-number">2.1</span> Objectives</h2>
 <ol type="1">
-<li><p>Differentiate between various statistical terminologies such as <em>sample space, outcome, event, subset, intersection, union, complement, probability, mutually exclusive, exhaustive, independent, multiplication rule, permutation,</em> and <em>combination</em>, and construct examples to demonstrate their proper use in context.</p></li>
-<li><p>Apply basic probability properties and counting rules to calculate the probabilities of events in different scenarios. Interpret the calculated probabilities in context.</p></li>
-<li><p>Explain and illustrate the basic axioms of probability.</p></li>
-<li><p>Use <code>R</code> to perform calculations and simulations for determining the probabilities of events.</p></li>
+<li><p>Differentiate between various statistical terminologies such as <em>case, observational unit, variables, data frame, tidy data, numerical variable, discrete numeric variable, continuous numeric variable, categorical variable, levels, scatterplot, associated variables</em>, and <em>independent</em>, and construct examples to demonstrate their proper use in context.</p></li>
+<li><p>Within a given dataset, evaluate different types of variables and justify their classifications (e.g.&nbsp;categorical, discrete numerical, continuous numerical).</p></li>
+<li><p>Given a study description, develop an appropriate research question and justify the organization of data as tidy.</p></li>
+<li><p>Create and interpret scatterplots using <code>R</code> to analyze the relationship between two numerical variables by evaluating the strength and direction of the association.</p></li>
 </ol>
 </section>
-<section id="probability-vs-statistics" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="probability-vs-statistics"><span class="header-section-number">8.2</span> Probability vs Statistics</h2>
-<p>As a review, remember this book is divided into four general blocks: data collection/summary, probability models, inference and statistical modeling/prediction. This second block, probability, is the study of stochastic (random) processes and their properties. Specifically, we will explore random experiments. As its name suggests, a random experiment is an experiment whose outcome is not predictable with exact certainty. In the statistical models we develop in the last two blocks of this book, we will use other variables to explain the variance of the outcome of interest. Any remaining variance is modeled with probability models.</p>
-<p>Even though an outcome is determined by chance, this does not mean that we know nothing about the random experiment. Our favorite simple example is that of a coin flip. If we flip a coin, the possible outcomes are heads and tails. We don’t know for sure what outcome will occur, but this doesn’t mean we don’t know anything about the experiment. If we assume the coin is fair, we know that each outcome is equally likely. Also, we know that if we flip the coin 100 times (independently), we are likely, the highest frequency event, to see around 50 heads, and very unlikely to see 10 heads or fewer.</p>
-<p>It is important to distinguish probability from inference and modeling. In probability, we consider a known random experiment, including knowing the parameters, and answer questions about what we expect to see from this random experiment. In statistics (inference and modeling), we consider data (the results of a mysterious random experiment) and infer about the underlying process. For example, suppose we have a coin and we are unsure whether this coin is fair or unfair, the parameter is unknown. We flipped it 20 times and it landed on heads 14 times. Inferential statistics will help us answer questions about the underlying process (could this coin be unfair?).</p>
-<div class="cell" data-layout-align="center">
+<section id="data-basics" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="data-basics"><span class="header-section-number">2.2</span> Data basics</h2>
+<p>Effective presentation and description of data is a first step in most analyses. This chapter introduces one structure for organizing data, as well as some terminology that will be used throughout this book.</p>
+<section id="observations-variables-and-data-matrices" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="observations-variables-and-data-matrices"><span class="header-section-number">2.2.1</span> Observations, variables, and data matrices</h3>
+<p>For reference we will be using a data set concerning 50 emails received in 2012. These observations will be referred to as the <code>email50</code> data set, and they are a random sample from a larger data set. This data is in the <strong>openintro</strong> package so let’s install and then load this package.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"openintro"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(openintro)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><a href="#tbl-db1" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-db1</span></a> shows 4 rows of the <code>email50</code> data set and we have elected to only list 5 variables for ease of observation.</p>
+<p>Each row in the table represents a single email or <strong>case</strong>. A case is also sometimes called a <strong>unit of observation</strong> or an <strong>observational unit</strong>. The columns represent <strong>variables</strong>, which represent characteristics for each of the cases (emails). For example, the first row represents email 1, which is not spam, contains 21,705 characters, 551 line breaks, is written in HTML format, and contains only small numbers.</p>
+<div class="cell">
+<div id="tbl-db1" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-db1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.1: First 5 rows of email data frame
+</figcaption>
+<div aria-describedby="tbl-db1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figures/Prob_Stats.png" class="img-fluid figure-img"></p>
-<figcaption>A graphical representation of probability and statistics. In probability, we describe what we expect to happen if we know that underlying process; in statistics, we don’t know the underlying process, and must infer based on representative samples.</figcaption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">spam</th>
+<th style="text-align: right;">num_char</th>
+<th style="text-align: right;">line_breaks</th>
+<th style="text-align: left;">format</th>
+<th style="text-align: left;">number</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">0</td>
+<td style="text-align: right;">21.705</td>
+<td style="text-align: right;">551</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">small</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0</td>
+<td style="text-align: right;">7.011</td>
+<td style="text-align: right;">183</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">big</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: right;">0.631</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">none</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0</td>
+<td style="text-align: right;">15.829</td>
+<td style="text-align: right;">242</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">small</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>Let’s look at the first 10 rows of data from <code>email50</code> using <code>R</code>. Remember to ask the two questions:</p>
+<p><em>What do we want <code>R</code> to do?</em> and</p>
+<p><em>What must we give <code>R</code> for it to do this?</em></p>
+<p>We want the first 10 rows so we use <code>head()</code> and <code>R</code> needs the data object and the number of rows. The data object is called <code>email50</code> and is accessible once the <strong>openintro</strong> package is loaded.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(email50, <span class="at">n =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 21
+   spam  to_multiple from     cc sent_email time                image attach
+   &lt;fct&gt; &lt;fct&gt;       &lt;fct&gt; &lt;int&gt; &lt;fct&gt;      &lt;dttm&gt;              &lt;dbl&gt;  &lt;dbl&gt;
+ 1 0     0           1         0 1          2012-01-04 13:19:16     0      0
+ 2 0     0           1         0 0          2012-02-16 20:10:06     0      0
+ 3 1     0           1         4 0          2012-01-04 15:36:23     0      2
+ 4 0     0           1         0 0          2012-01-04 17:49:52     0      0
+ 5 0     0           1         0 0          2012-01-27 09:34:45     0      0
+ 6 0     0           1         0 0          2012-01-17 17:31:57     0      0
+ 7 0     0           1         0 0          2012-03-18 04:18:55     0      0
+ 8 0     0           1         0 1          2012-03-31 13:58:56     0      0
+ 9 0     0           1         1 1          2012-01-11 01:57:54     0      0
+10 0     0           1         0 0          2012-01-07 19:29:16     0      0
+# ℹ 13 more variables: dollar &lt;dbl&gt;, winner &lt;fct&gt;, inherit &lt;dbl&gt;, viagra &lt;dbl&gt;,
+#   password &lt;dbl&gt;, num_char &lt;dbl&gt;, line_breaks &lt;int&gt;, format &lt;fct&gt;,
+#   re_subj &lt;fct&gt;, exclaim_subj &lt;dbl&gt;, urgent_subj &lt;fct&gt;, exclaim_mess &lt;dbl&gt;,
+#   number &lt;fct&gt;</code></pre>
+</div>
+</div>
+<p>In practice, it is especially important to ask clarifying questions to ensure important aspects of the data are understood. For instance, it is always important to be sure we know what each variable means and the units of measurement. Descriptions of all variables in the <code>email50</code> data set are given in its documentation which can be accessed in <code>R</code> by using the <code>?</code> command:</p>
+<pre><code>?email50</code></pre>
+<p>(Note that not all data sets will have associated documentation; the authors of <strong>openintro</strong> package included this documentation with the <code>email50</code> data set contained in the package.)</p>
+<p>The data in <code>email50</code> represent a <strong>data matrix</strong>, or in <code>R</code> terminology a <strong>data frame</strong> or <strong>tibble</strong> <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, which is a common way to organize data. Each row of a data matrix corresponds to a unique case, and each column corresponds to a variable. This is called <strong>tidy data</strong>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> The data frame for the stroke study introduced in the previous chapter had patients as the cases and there were three variables recorded for each patient. If we are thinking of patients as the unit of observation, then this data is tidy.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 3
+   group   outcome30 outcome365
+   &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;     
+ 1 control no_event  no_event  
+ 2 trmt    no_event  no_event  
+ 3 control no_event  no_event  
+ 4 trmt    no_event  no_event  
+ 5 trmt    no_event  no_event  
+ 6 control no_event  no_event  
+ 7 trmt    no_event  no_event  
+ 8 control no_event  no_event  
+ 9 control no_event  no_event  
+10 control no_event  no_event  </code></pre>
+</div>
+</div>
+<p>If we think of an outcome as a unit of observation, then it is not tidy since the two outcome columns are variable values (month or year). The tidy data for this case would be:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 4
+   patient_id group   time  result  
+        &lt;int&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   
+ 1          1 control month no_event
+ 2          1 control year  no_event
+ 3          2 trmt    month no_event
+ 4          2 trmt    year  no_event
+ 5          3 control month no_event
+ 6          3 control year  no_event
+ 7          4 trmt    month no_event
+ 8          4 trmt    year  no_event
+ 9          5 trmt    month no_event
+10          5 trmt    year  no_event</code></pre>
+</div>
+</div>
+<p>There are three interrelated rules which make a data set tidy:</p>
+<ol type="1">
+<li>Each variable must have its own column.<br>
+</li>
+<li>Each observation must have its own row.<br>
+</li>
+<li>Each value must have its own cell.</li>
+</ol>
+<p>Why ensure that your data is tidy? There are two main advantages:</p>
+<ol type="1">
+<li><p>There’s a general advantage to picking one consistent way of storing data. If you have a consistent data structure, it’s easier to learn the tools that work with it because they have an underlying uniformity.</p></li>
+<li><p>There’s a specific advantage to placing variables in columns because it allows <code>R</code>’s vectorized nature to shine. This will be more clear as we progress in our studies. Since most built-in <code>R</code> functions work with vectors of values, it makes transforming tidy data feel particularly natural.</p></li>
+</ol>
+<p>Data frames are a convenient way to record and store data. If another individual or case is added to the data set, an additional row can be easily added. Similarly, another column can be added for a new variable.</p>
+<blockquote class="blockquote">
+<p><strong>Exercise</strong>:<br>
+We consider a publicly available data set that summarizes information about the 3,142 counties in the United States, and we create a data set called <code>county_subset</code> data set. This data set will include information about each county: its name, the state where it resides, its population in 2000 and 2010, per capita federal spending, poverty rate, and four additional characteristics. We create this data object in the code following this description. The parent data set is part of the <code>usdata</code> library and is called <code>county_complete</code>. The variables are summarized in the help menu built into the <strong>usdata</strong> package<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. How might these data be organized in a data matrix? <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+</blockquote>
+<p>Using <code>R</code> we will create our data object. First we load the library <code>usdata</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(usdata)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We only want a subset of the columns and we will use the <code>select</code> verb in <code>dplyr</code> to select and rename columns. We also create a new variable which is federal spending per capita using the <code>mutate</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>county_subset <span class="ot">&lt;-</span> county_complete <span class="sc">%&gt;%</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, state, pop2000, pop2010, <span class="at">fed_spend =</span> fed_spending_2009, </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">poverty =</span> poverty_2010, <span class="at">homeownership =</span> homeownership_2010, </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">multi_unit =</span> housing_multi_unit_2010, <span class="at">income =</span> per_capita_income_2010, </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">med_income =</span> median_household_income_2010) <span class="sc">%&gt;%</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">fed_spend =</span> fed_spend <span class="sc">/</span> pop2010)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Using <code>R</code>, we will display seven rows of the <code>county_subset</code> data frame.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(county_subset, <span class="at">n =</span> <span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            name   state pop2000 pop2010 fed_spend poverty homeownership
+1 Autauga County Alabama   43671   54571  6.068095    10.6          77.5
+2 Baldwin County Alabama  140415  182265  6.139862    12.2          76.7
+3 Barbour County Alabama   29038   27457  8.752158    25.0          68.0
+4    Bibb County Alabama   20826   22915  7.122016    12.6          82.9
+5  Blount County Alabama   51024   57322  5.130910    13.4          82.0
+6 Bullock County Alabama   11714   10914  9.973062    25.3          76.9
+7  Butler County Alabama   21399   20947  9.311835    25.0          69.0
+  multi_unit income med_income
+1        7.2  24568      53255
+2       22.6  26469      50147
+3       11.1  15875      33219
+4        6.6  19918      41770
+5        3.7  21070      45549
+6        9.9  20289      31602
+7       13.7  16916      30659</code></pre>
+</div>
+</div>
+</section>
+<section id="types-of-variables" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="types-of-variables"><span class="header-section-number">2.2.2</span> Types of variables</h3>
+<p>Examine the <code>fed_spend</code>, <code>pop2010</code>, and <code>state</code> variables in the <code>county</code> data set. Each of these variables is inherently different from the others, yet many of them share certain characteristics.</p>
+<p>First consider <code>fed_spend</code>. It is said to be a <strong>numerical variable</strong> (sometimes called a quantitative variable) since it can take a wide range of numerical values, and it is sensible to add, subtract, or take averages with those values. On the other hand, we would not classify a variable reporting telephone area codes as numerical; even though area codes are made up of numerical digits, their average, sum, and difference have no clear meaning.</p>
+<p>The <code>pop2010</code> variable is also numerical; it is sensible to add, subtract, or take averages with those values, although it seems to be a little different than <code>fed_spend</code>. This variable of the population count can only be a whole non-negative number (<span class="math inline">\(0\)</span>, <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span>, <span class="math inline">\(...\)</span>). For this reason, the population variable is said to be <strong>discrete</strong> since it can only take specific numerical values. On the other hand, the federal spending variable is said to be <strong>continuous</strong> because it can take on any value in some interval. Now technically, there are no truly continuous numerical variables since all measurements are finite up to some level of accuracy or measurement precision (e.g., we typically measure federal spending in dollars and cents). However, in this book, we will treat both types of numerical variables the same, that is as continuous variables for statistical modeling. The only place this will be different in this book is in probability models, which we will see in the probability modeling block.</p>
+<p>The variable <code>state</code> can take up to 51 values, after accounting for Washington, DC, and are summarized as: <em>Alabama</em>, <em>Alaska</em>, …, and <em>Wyoming</em>. Because the responses themselves are categories, <code>state</code> is a <strong>categorical variable</strong> (sometimes also called a qualitative variable), and the possible values are called the variable’s <strong>levels</strong>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-tax" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-tax-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Data-Basics_files/figure-html/fig-tax-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tax-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.1: Taxonomy of Variables.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>This block (10 chapters or so) is devoted to the study of random experiments. First, we will explore simple experiments, counting rule problems, and conditional probability. Next, we will introduce the concept of a random variable and the properties of random variables. Following this, we will cover common distributions of discrete and continuous random variables. We will end the block on multivariate probability (joint distributions and covariance).</p>
-</section>
-<section id="basic-probability-terms" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="basic-probability-terms"><span class="header-section-number">8.3</span> Basic probability terms</h2>
-<p>We will start our work with some definitions and examples.</p>
-<section id="sample-space" class="level3" data-number="8.3.1">
-<h3 data-number="8.3.1" class="anchored" data-anchor-id="sample-space"><span class="header-section-number">8.3.1</span> Sample space</h3>
-<p>Suppose we have a random experiment. The <em>sample space</em> of this experiment, <span class="math inline">\(S\)</span>, is the set of all possible results of that experiment. For example, in the case of a coin flip, we could write <span class="math inline">\(S=\{H,T\}\)</span>. Each element of the sample space is considered an <em>outcome</em>. An <em>event</em> is a set of outcomes, it is a subset of the sample space.</p>
-<blockquote class="blockquote">
-<p><em>Example</em>:<br>
-Let’s let <code>R</code> flip a coin for us and record the number of heads and tails. We will have <code>R</code> flip the coin twice. What is the sample space, what is an example of an outcome, and what is an example of an event.</p>
-</blockquote>
-<p>We will load the <strong>mosaic</strong> package as it has a function <code>rflip()</code> that will simulate flipping a coin.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">18</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rflip</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Flipping 2 coins [ Prob(Heads) = 0.5 ] ...
-
-H H
-
-Number of Heads: 2 [Proportion Heads: 1]</code></pre>
-</div>
-</div>
-<p>The sample space is <span class="math inline">\(S=\{HH, TH, HT, TT\}\)</span>, an example of an outcome is <span class="math inline">\(HH\)</span> which we see in the output from <code>R</code>, and finally an example of an event is the number of heads, which in this case takes on the values 0, 1, and 2. Another example of an event is “At least one heads”. In this case the event would be <span class="math inline">\(\{HH,TH, HT\}\)</span>. Also notice that <span class="math inline">\(TH\)</span> is different from <span class="math inline">\(HT\)</span> as an outcome; this is because those are different outcomes from flipping a coin twice.</p>
-<blockquote class="blockquote">
-<p><em>Example of Event</em>:<br>
-Suppose you arrive at a rental car counter and they show you a list of available vehicles, and one is picked for you at random. The sample space in this experiment is <span class="math display">\[
-S=\{\mbox{red sedan}, \mbox{blue sedan}, \mbox{red truck}, \mbox{grey truck}, \mbox{grey SUV}, \mbox{black SUV}, \mbox{blue SUV}\}.
-\]</span></p>
-</blockquote>
-<p>Each vehicle represents a possible outcome of the experiment. Let <span class="math inline">\(A\)</span> be the event that a blue vehicle is selected. This event contains the outcomes <code>blue sedan</code> and <code>blue SUV</code>.</p>
-</section>
-<section id="union-and-intersection" class="level3" data-number="8.3.2">
-<h3 data-number="8.3.2" class="anchored" data-anchor-id="union-and-intersection"><span class="header-section-number">8.3.2</span> Union and intersection</h3>
-<p>Suppose we have two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>.</p>
-<ol type="1">
-<li><p><span class="math inline">\(A\)</span> is considered a <em>subset</em> of <span class="math inline">\(B\)</span> if all of the outcomes of <span class="math inline">\(A\)</span> are also contained in <span class="math inline">\(B\)</span>. This is denoted as <span class="math inline">\(A \subset B\)</span>.</p></li>
-<li><p>The <em>intersection</em> of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> is all of the outcomes contained in both <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>. This is denoted as <span class="math inline">\(A \cap B\)</span>.</p></li>
-<li><p>The <em>union</em> of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> is all of the outcomes contained in either <span class="math inline">\(A\)</span> or <span class="math inline">\(B\)</span>, or both. This is denoted as <span class="math inline">\(A \cup B\)</span>.</p></li>
-<li><p>The <em>complement</em> of <span class="math inline">\(A\)</span> is all of the outcomes not contained in <span class="math inline">\(A\)</span>. This is denoted as <span class="math inline">\(A^C\)</span> or <span class="math inline">\(A'\)</span>.</p></li>
-</ol>
-<p>Note: Here we are treating events as sets and the above definitions are basic set operations.</p>
-<p>It is sometimes helpful when reading probability notation to think of Union as an <em>or</em> and Intersection as an <em>and</em>.</p>
-<blockquote class="blockquote">
-<p><em>Example</em>:<br>
-Consider our rental car example above. Let <span class="math inline">\(A\)</span> be the event that a blue vehicle is selected, let <span class="math inline">\(B\)</span> be the event that a black vehicle is selected, and let <span class="math inline">\(C\)</span> be the event that an SUV is selected.</p>
-</blockquote>
-<p>First, let’s list all of the outcomes of each event. <span class="math inline">\(A = \{\mbox{blue sedan},\mbox{blue SUV}\}\)</span>, <span class="math inline">\(B=\{\mbox{black SUV}\}\)</span>, and <span class="math inline">\(C= \{\mbox{grey SUV}, \mbox{black SUV}, \mbox{blue SUV}\}\)</span>.</p>
-<p>Since all outcomes in <span class="math inline">\(B\)</span> are contained in <span class="math inline">\(C\)</span>, we know that <span class="math inline">\(B\)</span> is a subset of <span class="math inline">\(C\)</span>, or <span class="math inline">\(B\subset C\)</span>. Also, since <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> have no outcomes in common, <span class="math inline">\(A \cap B = \emptyset\)</span>. Note that <span class="math inline">\(\emptyset = \{ \}\)</span> is the empty set and contains no elements. Further, <span class="math inline">\(A \cup C = \{\mbox{blue sedan}, \mbox{grey SUV}, \mbox{black SUV}, \mbox{blue SUV}\}\)</span>.</p>
-</section>
-</section>
-<section id="probability" class="level2" data-number="8.4">
-<h2 data-number="8.4" class="anchored" data-anchor-id="probability"><span class="header-section-number">8.4</span> Probability</h2>
-<p><em>Probability</em> is a number assigned to an event or outcome that describes how likely it is to occur. A probability model assigns a probability to each element of the sample space. What makes a probability model is not just the values assigned to each element but the idea this model contains all the information about the outcomes and there are no other explanatory variables involved.</p>
-<p>A probability model can be thought of as a function that maps outcomes, or events, to a real number in the interval <span class="math inline">\([0,1]\)</span>.</p>
-<p>There are some basic axioms of probability you should know, although this list is not complete. Let <span class="math inline">\(S\)</span> be the sample space of a random experiment and let <span class="math inline">\(A\)</span> be an event where <span class="math inline">\(A\subset S\)</span>.</p>
-<ol type="1">
-<li><p><span class="math inline">\(\mbox{P}(A) \geq 0\)</span>.</p></li>
-<li><p><span class="math inline">\(\mbox{P}(S) = 1\)</span>.</p></li>
-</ol>
-<p>These two axioms essentially say that probability must be positive, and the probability of all outcomes must sum to 1.</p>
-<section id="probability-properties" class="level3" data-number="8.4.1">
-<h3 data-number="8.4.1" class="anchored" data-anchor-id="probability-properties"><span class="header-section-number">8.4.1</span> Probability properties</h3>
-<p>Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> be events in a random experiment. Most of these can be proven fairly easily.</p>
-<ol type="1">
-<li><p><span class="math inline">\(\mbox{P}(\emptyset)=0\)</span></p></li>
-<li><p><span class="math inline">\(\mbox{P}(A')=1-\mbox{P}(A)\)</span> We used this in the case study.</p></li>
-<li><p>If <span class="math inline">\(A\subset B\)</span>, then <span class="math inline">\(\mbox{P}(A)\leq \mbox{P}(B)\)</span>.</p></li>
-<li><p><span class="math inline">\(\mbox{P}(A\cup B) = \mbox{P}(A)+\mbox{P}(B)-\mbox{P}(A\cap B)\)</span>. This property can be generalized to more than two events. The intersection is subtracted because outcomes in both events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> get counted twice in the first sum.</p></li>
-<li><p>Law of Total Probability: Let <span class="math inline">\(B_1, B_2,...,B_n\)</span> be <strong>mutually exclusive</strong>, this means disjoint or no outcomes in common, and <strong>exhaustive</strong>, this means the union of all the events labeled with a <span class="math inline">\(B\)</span> is the sample space. Then</p></li>
-</ol>
-<p><span class="math display">\[
-\mbox{P}(A)=\mbox{P}(A\cap B_1)+\mbox{P}(A\cap B_2)+...+\mbox{P}(A\cap B_n)
-\]</span></p>
-<p>A specific application of this law appears in Bayes’ Rule (more to follow). It says that <span class="math inline">\(\mbox{P}(A)=\mbox{P}(A \cap B)+\mbox{P}(A \cap B')\)</span>. Essentially, it points out that <span class="math inline">\(A\)</span> can be partitioned into two parts: 1) everything in <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> and 2) everything in <span class="math inline">\(A\)</span> and not in <span class="math inline">\(B\)</span>.</p>
-<blockquote class="blockquote">
-<p><em>Example</em>:<br>
-Consider rolling a six sided die. Let event <span class="math inline">\(A\)</span> be the number showing is less than 5. Let event <span class="math inline">\(B\)</span> be the number is even. Then</p>
-</blockquote>
-<p><span class="math display">\[\mbox{P}(A)=\mbox{P}(A \cap B) + \mbox{P}(A \cap B')\]</span></p>
-<p><span class="math display">\[
-\mbox{P}(&lt; 5)=\mbox{P}(&lt;5 \cap Even)+\mbox{P}(&lt;5 \cap Odd)
-\]</span></p>
-<ol start="6" type="1">
-<li>DeMorgan’s Laws: <span class="math display">\[
-\mbox{P}((A \cup B)')=\mbox{P}(A' \cap B')
-\]</span> <span class="math display">\[
-\mbox{P}((A \cap B)')=\mbox{P}(A' \cup B')
-\]</span></li>
-</ol>
-</section>
-<section id="equally-likely-scenarios" class="level3" data-number="8.4.2">
-<h3 data-number="8.4.2" class="anchored" data-anchor-id="equally-likely-scenarios"><span class="header-section-number">8.4.2</span> Equally likely scenarios</h3>
-<p>In some random experiments, outcomes can be defined such that each individual outcome is equally likely. In this case, probability becomes a counting problem. Let <span class="math inline">\(A\)</span> be an event in an experiment where each outcome is equally likely. <span class="math display">\[
-\mbox{P}(A)=\frac{\mbox{\# of outcomes in A}}{\mbox{\# of outcomes in S}}
-\]</span></p>
-<blockquote class="blockquote">
-<p><em>Example</em>:<br>
-Suppose a family has three children, with each child being either a boy (B) or girl (G). Assume that the likelihood of boys and girls are equal and <strong>independent</strong>, this is the idea that the probability of the gender of the second child does not change based on the gender of the first child. The sample space can be written as: <span class="math display">\[
-S=\{\mbox{BBB},\mbox{BBG},\mbox{BGB},\mbox{BGG},\mbox{GBB},\mbox{GBG},\mbox{GGB},\mbox{GGG}\}
-\]</span> What is the probability that the family has exactly 2 girls?</p>
-</blockquote>
-<p>This only happens in three ways: BGG, GBG, and GGB. Thus, the probability of exactly 2 girls is 3/8 or 0.375.</p>
-</section>
-</section>
-<section id="counting-rules" class="level2" data-number="8.5">
-<h2 data-number="8.5" class="anchored" data-anchor-id="counting-rules"><span class="header-section-number">8.5</span> Counting rules</h2>
-<p>There are three types of counting problems we will consider. In each case, the multiplication rule is being used and all that changes is whether an element is allowed to be reused, replacement, and whether the order of selection matters. This latter question is difficult. Each case will be demonstrated with an example.</p>
-<section id="multiplication-rule-1-order-matters-sample-with-replacement" class="level3" data-number="8.5.1">
-<h3 data-number="8.5.1" class="anchored" data-anchor-id="multiplication-rule-1-order-matters-sample-with-replacement"><span class="header-section-number">8.5.1</span> Multiplication rule 1: Order matters, sample with replacement</h3>
-<p>The multiplication rule is at the center of each of the three methods. In this first case we are using the idea that order matters and items can be reused. Let’s use an example to help.</p>
-<blockquote class="blockquote">
-<p><em>Example</em>:<br>
-A license plate consists of three numeric digits (0-9) followed by three single letters (A-Z). How many possible license plates exist?</p>
-</blockquote>
-<p>We can divide this problem into two sections. In the numeric section, we are selecting 3 objects from 10, with replacement. This means that a number can be used more than once. Order clearly matters because a license plate starting with “432” is distinct from a license plate starting with “234”. There are <span class="math inline">\(10^3 = 1000\)</span> ways to select the first three digits; 10 for the first, 10 for the second, and 10 for the third. Why do you multiply and not add?<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
-<p>In the alphabet section, we are selecting 3 objects from 26, where order matters. Thus, there are <span class="math inline">\(26^3=17576\)</span> ways to select the last three letters of the plate. Combined, there are <span class="math inline">\(10^3 \times 26^3 = 17576000\)</span> ways to select license plates. Visually, <span class="math display">\[
-\underbrace{\underline{\quad 10 \quad }}_\text{number} \times \underbrace{\underline{\quad 10 \quad }}_\text{number} \times \underbrace{\underline{\quad 10 \quad }}_\text{number} \times \underbrace{\underline{\quad 26 \quad }}_\text{letter} \times \underbrace{\underline{\quad 26 \quad }}_\text{letter} \times \underbrace{\underline{\quad 26 \quad }}_\text{letter} = 17,576,000
-\]</span></p>
-<p>Next we are going to use this new counting method to find a probability.</p>
-<blockquote class="blockquote">
-<p><em>Exercise</em>:<br>
-What is the probability a license plate starts with the number “8” or “0” and ends with the letter “B”?</p>
-</blockquote>
-<p>In order to find this probability, we simply need to determine the number of ways to select a license plate starting with “8” or “0” and ending with the letter “B”. We can visually represent this event: <span class="math display">\[
-\underbrace{\underline{\quad 2 \quad }}_\text{8 or 0} \times \underbrace{\underline{\quad 10 \quad }}_\text{number} \times \underbrace{\underline{\quad 10 \quad }}_\text{number} \times \underbrace{\underline{\quad 26 \quad }}_\text{letter} \times \underbrace{\underline{\quad 26 \quad }}_\text{letter} \times \underbrace{\underline{\quad 1 \quad }}_\text{B} = 135,200
-\]</span></p>
-<p>Dividing this number by the total number of possible license plates yields the probability of this event occurring.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>denom<span class="ot">&lt;-</span><span class="dv">10</span><span class="sc">*</span><span class="dv">10</span><span class="sc">*</span><span class="dv">10</span><span class="sc">*</span><span class="dv">26</span><span class="sc">*</span><span class="dv">26</span><span class="sc">*</span><span class="dv">26</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>num<span class="ot">&lt;-</span><span class="dv">2</span><span class="sc">*</span><span class="dv">10</span><span class="sc">*</span><span class="dv">10</span><span class="sc">*</span><span class="dv">26</span><span class="sc">*</span><span class="dv">26</span><span class="sc">*</span><span class="dv">1</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>num<span class="sc">/</span>denom</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.007692308</code></pre>
-</div>
-</div>
-<p>The probability of obtaining a license plate starting with “8” or “0” and ending with “B” is 0.0077. Simulating this would be difficult because we would need special functions to check the first number and last letter. This gets into <strong>text mining</strong> an important subject in data science but unfortunately we don’t have much time in this book for the topic.</p>
-</section>
-<section id="multiplication-rule-2-permutation-order-matters-sampling-without-replacement" class="level3" data-number="8.5.2">
-<h3 data-number="8.5.2" class="anchored" data-anchor-id="multiplication-rule-2-permutation-order-matters-sampling-without-replacement"><span class="header-section-number">8.5.2</span> Multiplication rule 2 (Permutation): Order Matters, Sampling Without Replacement</h3>
-<p>Consider a random experiment where we sample from a group of size <span class="math inline">\(n\)</span>, <strong>without</strong> replacement, and the outcome of the experiment depends on the order of the outcomes. The number of ways to select <span class="math inline">\(k\)</span> objects is given by <span class="math inline">\(n(n-1)(n-2)...(n-k+1)\)</span>. This is known as a permutation and is sometimes written as <span class="math display">\[
-{}_nP_{k} = \frac{n!}{(n-k)!}
-\]</span></p>
-<p>Recall that <span class="math inline">\(n!\)</span> is read as <span class="math inline">\(n\)</span> factorial and represents the number of ways to arrange <span class="math inline">\(n\)</span> objects.</p>
-<blockquote class="blockquote">
-<p><em>Example</em>:<br>
-Twenty-five friends participate in a Halloween costume party. Three prizes are given during the party: most creative costume, scariest costume, and funniest costume. No one can win more than one prize. How many possible ways can the prizes by distributed?</p>
-</blockquote>
-<p>There are <span class="math inline">\(k=3\)</span> prizes to be assigned to <span class="math inline">\(n=25\)</span> people. Once someone is selected for a prize, they are removed from the pool of eligibles. In other words, we are sampling without replacement. Also, order matters. For example, if Tom, Mike, and Jane, win most creative, scariest and funniest costume, respectively, this is a different outcome than if Mike won creative, Jane won scariest and Tom won funniest. Thus, the number of ways the prizes can be distributed is given by <span class="math inline">\({}_{25}P_3 = \frac{25!}{22!} = 13,800\)</span>. A more visually pleasing way to express this would be: <span class="math display">\[
-\underbrace{\underline{\quad 25 \quad }}_\text{most creative} \times \underbrace{\underline{\quad 24 \quad }}_\text{scariest} \times \underbrace{\underline{\quad 23 \quad }}_\text{funniest} = 13,800
-\]</span></p>
-<p>Notice that it is sometime difficult to determine if order matters or not in a problem, but in this example the name of the prize was a hint that indeed order matters.</p>
-<p>Let’s use the idea of a permutation to calculate a probability.</p>
-<blockquote class="blockquote">
-<p><em>Exercise</em>:<br>
-Assume that all 25 participants are equally likely to win any one of the three prizes. What is the probability that Tom doesn’t win any of them?</p>
-</blockquote>
-<p>Just like in the previous probability calculation, we simply need to count the number of ways Tom doesn’t win any prize. In other words, we need to count the number of ways that prizes are distributed without Tom. So, remove Tom from the group of 25 eligible participants. The number of ways Tom doesn’t get a prize is <span class="math inline">\({}_{24}P_3 = \frac{24!}{21!}=12,144\)</span>. Again visually: <span class="math display">\[
-\underbrace{\underline{\quad 24 \quad }}_\text{most creative} \times \underbrace{\underline{\quad 23 \quad }}_\text{scariest} \times \underbrace{\underline{\quad 22 \quad }}_\text{funniest} = 12,144
-\]</span></p>
-<p>The probability Tom doesn’t get a prize is simply the second number divided by the first:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>denom<span class="ot">&lt;-</span><span class="fu">factorial</span>(<span class="dv">25</span>)<span class="sc">/</span><span class="fu">factorial</span>(<span class="dv">25-3</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Or, denom&lt;-25*24*23</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>num<span class="ot">&lt;-</span><span class="dv">24</span><span class="sc">*</span><span class="dv">23</span><span class="sc">*</span><span class="dv">22</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>num<span class="sc">/</span>denom</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.88</code></pre>
-</div>
-</div>
-</section>
-<section id="multiplication-rule-3-combination-order-does-not-matter-sampling-without-replacement" class="level3" data-number="8.5.3">
-<h3 data-number="8.5.3" class="anchored" data-anchor-id="multiplication-rule-3-combination-order-does-not-matter-sampling-without-replacement"><span class="header-section-number">8.5.3</span> Multiplication rule 3 (Combination): Order Does Not Matter, Sampling Without Replacement</h3>
-<p>Consider a random experiment where we sample from a group of size <span class="math inline">\(n\)</span>, without replacement, and the outcome of the experiment does not depend on the order of the outcomes. The number of ways to select <span class="math inline">\(k\)</span> objects is given by <span class="math inline">\(\frac{n!} {(n-k)!k!}\)</span>. This is known as a combination and is written as: <span class="math display">\[
-\binom{n}{k} = \frac{n!}{(n-k)!k!}
-\]</span></p>
-<p>This is read as “<span class="math inline">\(n\)</span> choose <span class="math inline">\(k\)</span>”. Take a moment to compare combinations to permutations, discussed in Rule 2. The difference between these two rules is that in a combination, order no longer matters. A combination is equivalent to a permutation divided by <span class="math inline">\(k!\)</span>, the number of ways to arrange the <span class="math inline">\(k\)</span> objects selected.</p>
-<blockquote class="blockquote">
-<p><em>Example</em>:<br>
-Suppose we draw 5 cards out of a standard deck (52 cards, no jokers). How many possible 5 card hands are there?</p>
-</blockquote>
-<p>In this example, order does not matter. I don’t care if I receive 3 jacks then 2 queens or 2 queens then 3 jacks. Either way, it’s the same collection of 5 cards. Also, we are drawing without replacement. Once a card is selected, it cannot be selected again. Thus, the number of ways to select 5 cards is given by: <span class="math display">\[
-\binom{52}{5} = \frac{52!}{(52-5)!5!} = 2,598,960
-\]</span></p>
-<blockquote class="blockquote">
-<p><em>Example</em>:<br>
-When drawing 5 cards, what is the probability of drawing a “flush” (5 cards of the same suit)?</p>
-</blockquote>
-<p>Let’s determine how many ways to draw a flush. There are four suits (clubs, hearts, diamonds and spades). Each suit has 13 cards. We would like to pick 5 of those 13 cards and 0 of the remaining 39. Let’s consider just one of those suits (clubs): <span class="math display">\[
-\mbox{P}(\mbox{5 clubs})=\frac{\binom{13}{5}\binom{39}{0}}{\binom{52}{5}}
-\]</span></p>
-<p>The second part of the numerator (<span class="math inline">\(\binom{39}{0}\)</span>) isn’t necessary, since it simply represents the number of ways to select 0 objects from a group (1 way), but it helps clearly lay out the events. This brings up the point of what <span class="math inline">\(0!\)</span> equals. By definition it is 1. This allows us to use <span class="math inline">\(0!\)</span> in our work.</p>
-<p>Now, we expand this to all four suits by multiplying by 4, or <span class="math inline">\(\binom{4}{1}\)</span> since we are selecting 1 suit out of the 4: <span class="math display">\[
-\mbox{P}(\mbox{flush})=\frac{\binom{4}{1}\binom{13}{5}\binom{39}{0}}{\binom{52}{5}}
-\]</span></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>num<span class="ot">&lt;-</span><span class="dv">4</span><span class="sc">*</span><span class="fu">choose</span>(<span class="dv">13</span>,<span class="dv">5</span>)<span class="sc">*</span><span class="dv">1</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>denom<span class="ot">&lt;-</span><span class="fu">choose</span>(<span class="dv">52</span>,<span class="dv">5</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>num<span class="sc">/</span>denom</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.001980792</code></pre>
-</div>
-</div>
-<p>There is a probability of 0.0020 of drawing a flush in a draw of 5 cards from a standard deck of cards.</p>
+<p>Finally, consider a hypothetical variable on education, which describes the highest level of education completed and takes on one of the values <em>noHS</em>, <em>HS</em>, <em>College</em> or <em>Graduate_school</em>. This variable seems to be a hybrid: it is a categorical variable but the levels have a natural ordering. A variable with these properties is called an <strong>ordinal</strong> variable. A categorical variable with levels that do not have a natural ordering is called a <strong>nominal</strong> variable. To simplify analyses, any ordinal variables in this book will be treated as nominal categorical variables. In <code>R</code>, categorical variables can be treated in different ways; one of the key differences is that we can leave them as character values (character strings, or text) or as factors. A factor is essentially a categorical variable with defined <em>levels</em>. When <code>R</code> handles factors, it is only concerned about the <em>levels</em> of the factors. We will learn more about this as we progress.</p>
+<p><a href="#fig-tax" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-tax</span></a> captures this classification of variables we have described.</p>
 <blockquote class="blockquote">
 <p><strong>Exercise</strong>:<br>
-When drawing 5 cards, what is the probability of drawing a “full house” (3 cards of the same rank and the other 2 of the same rank)?</p>
+Data were collected about students in a statistics course. Three variables were recorded for each student: number of siblings, student height, and whether the student had previously taken a statistics course. Classify each of the variables as continuous numerical, discrete numerical, or categorical.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
 </blockquote>
-<p>This problem uses several ideas from this chapter. We need to pick the rank of the three of a kind. Then pick 3 cards from the 4 possible. Next we pick the rank of the pair from the remaining 12 ranks. Finally pick 2 cards of that rank from the 4 possible.</p>
-<p><span class="math display">\[
-\mbox{P}(\mbox{full house})=\frac{\binom{13}{1}\binom{4}{3}\binom{12}{1}\binom{4}{2}}{\binom{52}{5}}
-\]</span></p>
+<blockquote class="blockquote">
+<p><strong>Exercise</strong>:<br>
+Consider the variables <code>group</code> and <code>outcome30</code> from the stent study in the case study chapter. Are these numerical or categorical variables? <a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
+</blockquote>
+</section>
+<section id="relationships-between-variables" class="level3" data-number="2.2.3">
+<h3 data-number="2.2.3" class="anchored" data-anchor-id="relationships-between-variables"><span class="header-section-number">2.2.3</span> Relationships between variables</h3>
+<p>Many analyses are motivated by a researcher looking for a relationship between two or more variables. This is the heart of statistical modeling. A social scientist may like to answer some of the following questions:</p>
+<ol type="1">
+<li>Is federal spending, on average, higher or lower in counties with high rates of poverty?<br>
+</li>
+<li>If homeownership is lower than the national average in one county, will the percent of multi-unit structures in that county likely be above or below the national average?</li>
+</ol>
+<p>These are what statisticians refer to as <strong>research questions</strong>, specific and measurable questions that guide the data collection and analysis process. To answer these questions, data must be collected, such as the <code>county_complete</code> data set. Examining summary statistics could provide insights for each of the two questions about counties. Graphs can be used to visually summarize data and are useful for answering such questions as well.</p>
+<p><strong>Scatterplots</strong> are one type of graph used to study the relationship between two numerical variables. <a href="#fig-pov1" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-pov1</span></a> compares the variables <code>fed_spend</code> and <code>poverty</code>. Each point on the plot represents a single county. For instance, the highlighted dot corresponds to County 1088 in the <code>county_subset</code> data set: Owsley County, Kentucky, which had a poverty rate of 41.5% and federal spending of $21.50 per capita. The dense cloud in the scatterplot suggests a relationship between the two variables: counties with a high poverty rate also tend to have slightly more federal spending. We might brainstorm as to why this relationship exists and investigate each idea to determine which is the most reasonable explanation.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>num<span class="ot">&lt;-</span><span class="fu">choose</span>(<span class="dv">13</span>,<span class="dv">1</span>)<span class="sc">*</span><span class="fu">choose</span>(<span class="dv">4</span>,<span class="dv">3</span>)<span class="sc">*</span><span class="fu">choose</span>(<span class="dv">12</span>,<span class="dv">1</span>)<span class="sc">*</span><span class="fu">choose</span>(<span class="dv">4</span>,<span class="dv">2</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>denom<span class="ot">&lt;-</span><span class="fu">choose</span>(<span class="dv">52</span>,<span class="dv">5</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>num<span class="sc">/</span>denom</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.001440576</code></pre>
+<div class="cell-output-display">
+<div id="fig-pov1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pov1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Data-Basics_files/figure-html/fig-pov1-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pov1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.2: A scatterplot showing fed_spend against poverty. Owsley County of Kentucky, with a poverty rate of 41.5% and federal spending of $21.50 per capita, is highlighted.
+</figcaption>
+</figure>
 </div>
 </div>
-<p>Why not use <span class="math inline">\(\binom{13}{2}\)</span> instead of <span class="math inline">\(\binom{13}{1}\binom{12}{1}\)</span>?<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
-<p>We have just determined that a full house has a lower probability of occurring than a flush. This is why in gambling, a flush is valued less than a full house.</p>
+</div>
+<blockquote class="blockquote">
+<p><strong>Exercise</strong>:<br>
+Examine the variables in the <code>email50</code> data set. Create two research questions about the relationships between these variables that are of interest to you.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
+</blockquote>
+<p>The <code>fed_spend</code> and <code>poverty</code> variables are said to be associated because the plot shows a discernible pattern. When two variables show some connection with one another, they are called <strong>associated variables</strong>. Associated variables can also be called <strong>dependent</strong> variables and vice-versa.</p>
+<blockquote class="blockquote">
+<p><em>Example</em>:<br>
+The relationship between the homeownership rate and the percent of units in multi-unit structures (e.g.&nbsp;apartments, condos) is visualized using a scatterplot in <a href="#fig-homeown" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-homeown</span></a>. Are these variables associated?</p>
+</blockquote>
+<p>It appears that the larger the fraction of units in multi-unit structures, the lower the homeownership rate. Since there is some relationship between the variables, they are associated.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-homeown" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-homeown-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Data-Basics_files/figure-html/fig-homeown-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-homeown-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.3: A scatterplot of the homeownership rate versus the percent of units that are in multi-unit structures for all 3,143 counties.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Because there is a downward trend in <a href="#fig-homeown" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-homeown</span></a> – counties with more units in multi-unit structures are associated with lower homeownership – these variables are said to be <strong>negatively associated</strong>. A <strong>positive association</strong> (upward trend) is shown in the relationship between the <code>poverty</code> and <code>fed_spend</code> variables represented in <a href="#fig-pov1" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-pov1</span></a>, where counties with higher poverty rates tend to receive more federal spending per capita.</p>
+<p>If two variables are not associated, then they are said to be <strong>independent</strong>. That is, two variables are independent if there is no evident relationship between the two.</p>
+<blockquote class="blockquote">
+<p>A pair of variables are either related in some way (associated) or not (independent). No pair of variables is both associated and independent.</p>
+</blockquote>
+</section>
+<section id="creating-a-scatterplot" class="level3" data-number="2.2.4">
+<h3 data-number="2.2.4" class="anchored" data-anchor-id="creating-a-scatterplot"><span class="header-section-number">2.2.4</span> Creating a scatterplot</h3>
+<p>In this section, we will create a simple scatterplot and then ask you to create one on your own. First, we will recreate the scatterplot seen in <a href="#fig-pov1" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-pov1</span></a>. This figure uses the <code>county_subset</code> data set.</p>
+<p>Here are two questions:</p>
+<p><em>What do we want <code>R</code> to do?</em> and</p>
+<p><em>What must we give <code>R</code> for it to do this?</em></p>
+<p>We want <code>R</code> to create a scatterplot and to do this it needs, at a minimum, the data object, what we want on the <span class="math inline">\(x\)</span>-axis, and what we want on the <span class="math inline">\(y\)</span>-axis. More information on <a href="https://cran.r-project.org/web/packages/ggformula/vignettes/ggformula.html"><strong>ggformula</strong></a> can be found <a href="https://cran.r-project.org/web/packages/ggformula/vignettes/ggformula-blog.html">here</a>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>county_subset <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_point</span>(fed_spend <span class="sc">~</span> poverty)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-pov2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pov2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Data-Basics_files/figure-html/fig-pov2-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pov2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.4: Scatterplot with <strong>ggformula</strong>.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-pov2" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-pov2</span></a> is bad. There are poor axis labels, no title, dense clustering of points, and the <span class="math inline">\(y\)</span>-axis is being driven by a couple of extreme points. We will need to clear this up. Again, try to read the code and use <code>help()</code> or <code>?</code> to determine the purpose of each command in <a href="#fig-pov3" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-pov3</span></a>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>county_subset <span class="sc">%&gt;%</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(fed_spend <span class="sc">&lt;</span> <span class="dv">32</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_point</span>(fed_spend <span class="sc">~</span> poverty,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">xlab =</span> <span class="st">"Poverty Rate (Percent)"</span>, </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">ylab =</span> <span class="st">"Federal Spending Per Capita"</span>,</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">title =</span> <span class="st">"A scatterplot showing fed_spend against poverty"</span>, </span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_classic</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-pov3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pov3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Data-Basics_files/figure-html/fig-pov3-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pov3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.5: Better example of a scatterplot.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<blockquote class="blockquote">
+<p><strong>Exercise</strong>:<br>
+Create the scatterplot in <a href="#fig-homeown" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-homeown</span></a>.</p>
+</blockquote>
 
 
 </section>
@@ -753,8 +821,13 @@ When drawing 5 cards, what is the probability of drawing a “full house” (3 c
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn1"><p>Multiplication is repeated adding so in a sense we are adding. However in a more serious tone, for this problem for every first number there are 10 possibilities for the second number and for every second number there are 10 possibilities for the third numbers. This is multiplication.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>Because this implies the order selection of the ranks does not matter. In other words, this assumes that for example 3 Kings and 2 fours is the same full house as 3 fours and 2 Kings. This is not true so we break the rank selection about essentially making it a permutation.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>A tibble is a data frame with attributes for such things as better display and printing.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Tidy data is data in which each row corresponds to a unique case and each column represents a single variable. For more information on tidy data, see the <em>Simply Statistics</em> blog and the <em>R for Data Science</em> book by Hadley Wickham and Garrett Grolemund.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p><a href="http://quickfacts.census.gov/qfd/index.html">These data were collected from the US Census website.</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Each county may be viewed as a case, and there are ten pieces of information recorded for each case. A table with 3,142 rows and 10 columns could hold these data, where each row represents a county and each column represents a particular piece of information.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>The number of siblings and student height represent numerical variables. Because the number of siblings is a count, it is discrete. Height varies continuously, so it is a continuous numerical variable. The last variable classifies students into two categories – those who have and those who have not taken a statistics course – which makes this variable categorical.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>There are only two possible values for each variable, and in both cases they describe categories. Thus, each is a categorical variable.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Two sample questions: (1) Intuition suggests that if there are many line breaks in an email then there would also tend to be many characters: does this hold true? (2) Is there a connection between whether an email format is plain text (versus HTML) and whether it is a spam message?<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
@@ -1181,13 +1254,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./Probability-Case-Study.html" class="pagination-link" aria-label="Probability Case Study">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Probability Case Study</span></span>
+      <a href="./Data-Case-Study.html" class="pagination-link" aria-label="Data Case Study">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data Case Study</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Conditional-Probability.html" class="pagination-link" aria-label="Conditional Probability">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Conditional Probability</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./Overview-of-Data-Collection-Principles.html" class="pagination-link" aria-label="Overview of Data Collection Principles">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Overview of Data Collection Principles</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1199,7 +1272,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/DS-USAFA/Quarto-Book/edit/main/Probability-Rules.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/DS-USAFA/Quarto-Book/edit/main/Data-Basics.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
