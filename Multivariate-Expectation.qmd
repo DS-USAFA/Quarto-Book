@@ -304,28 +304,48 @@ $$
 
 While covariance could take on any real number, correlation is bounded by -1 and 1. Two random variables with a correlation of 1 are said to be perfectly positively correlated, while a correlation of -1 implies perfect negative correlation. Two random variables with a correlation (and thus covariance) of 0 are said to be uncorrelated, that is they do not have a linear relationship but could have a non-linear relationship. This last point is important; random variables with no relationship will have a 0 covariance. However, a 0 covariance only implies that the random variables do not have a linear relationship.
 
-Let's look at some plots, Figures \@ref(fig:cor1-fig), \@ref(fig:cor2-fig), \@ref(fig:cor3-fig), and \@ref(fig:cor4-fig) of different correlations. Remember that the correlation we are calculating in this section is for the population, while the plots are showing sample points from a population.
+Let's look at some plots, Figures @fig-corr1, @fig-corr2, @fig-corr3, and @fig-corr4 of different correlations. Remember that the correlation we are calculating in this section is for the population, while the plots are showing sample points from a population.
 
-```{r cor1-fig,echo=FALSE,fig.align='center',fig.cap="Correlation of 1",message=FALSE}
+```{r}
+#| label: fig-corr1
+#| fig-align: "center"
+#| fig-cap: "Correlation of 1"
+#| echo: false 
+#| message: false 
 library(MASS)
 gf_point(X1~X2,data=data.frame(mvrnorm(40,mu=c(3,10),Sigma=matrix(c(1,1,1,1),2,2)))) %>%
   gf_theme(theme_bw()) %>%
   gf_labs(x="X",y="Y")
 ```
 
-```{r cor2-fig,echo=FALSE,fig.align='center',fig.cap="Correlation of .8"}
+```{r}
+#| label: fig-corr2
+#| fig-align: "center"
+#| fig-cap: "Correlation of 0.8"
+#| echo: false 
+#| message: false 
 gf_point(X1~X2,data=data.frame(mvrnorm(40,mu=c(3,10),Sigma=matrix(c(1,.8,.8,1),2,2)))) %>%
   gf_theme(theme_bw()) %>%
   gf_labs(x="X",y="Y")
 ```
 
-```{r cor3-fig,echo=FALSE,fig.align='center',fig.cap="Correlation of .5"}
+```{r}
+#| label: fig-corr3
+#| fig-align: "center"
+#| fig-cap: "Correlation of 0.5"
+#| echo: false 
+#| message: false 
 gf_point(X1~X2,data=data.frame(mvrnorm(40,mu=c(3,10),Sigma=matrix(c(1,.5,.5,1),2,2)))) %>%
   gf_theme(theme_bw()) %>%
   gf_labs(x="X",y="Y")
 ```
 
-```{r cor4-fig,echo=FALSE,fig.align='center',fig.cap="Correlation of 0"}
+```{r}
+#| label: fig-corr4
+#| fig-align: "center"
+#| fig-cap: "Correlation of 0"
+#| echo: false 
+#| message: false 
 gf_point(X1~X2,data=data.frame(mvrnorm(40,mu=c(3,10),Sigma=matrix(c(1,0,0,1),2,2)))) %>%
   gf_theme(theme_bw()) %>%
   gf_labs(x="X",y="Y")

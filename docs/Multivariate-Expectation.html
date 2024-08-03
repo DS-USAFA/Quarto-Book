@@ -253,7 +253,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Probability-Rules.html" class="sidebar-item-text sidebar-link">
+  <a href="./Probability-Basics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Probability Basics</span></span></a>
   </div>
 </li>
@@ -778,43 +778,59 @@ An example of positive covariance is human height and weight. As height increase
 \rho = \frac{\mbox{Cov}(X,Y)}{\sqrt{\mbox{Var}(X)\mbox{Var}(Y)}}
 \]</span></p>
 <p>While covariance could take on any real number, correlation is bounded by -1 and 1. Two random variables with a correlation of 1 are said to be perfectly positively correlated, while a correlation of -1 implies perfect negative correlation. Two random variables with a correlation (and thus covariance) of 0 are said to be uncorrelated, that is they do not have a linear relationship but could have a non-linear relationship. This last point is important; random variables with no relationship will have a 0 covariance. However, a 0 covariance only implies that the random variables do not have a linear relationship.</p>
-<p>Let’s look at some plots, Figures @ref(fig:cor1-fig), @ref(fig:cor2-fig), @ref(fig:cor3-fig), and @ref(fig:cor4-fig) of different correlations. Remember that the correlation we are calculating in this section is for the population, while the plots are showing sample points from a population.</p>
+<p>Let’s look at some plots, Figures <a href="#fig-corr1" class="quarto-xref">Figure&nbsp;<span>15.1</span></a>, <a href="#fig-corr2" class="quarto-xref">Figure&nbsp;<span>15.2</span></a>, <a href="#fig-corr3" class="quarto-xref">Figure&nbsp;<span>15.3</span></a>, and <a href="#fig-corr4" class="quarto-xref">Figure&nbsp;<span>15.4</span></a> of different correlations. Remember that the correlation we are calculating in this section is for the population, while the plots are showing sample points from a population.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="Multivariate-Expectation_files/figure-html/cor1-fig-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Correlation of 1</figcaption>
+<div id="fig-corr1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-corr1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Multivariate-Expectation_files/figure-html/fig-corr1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-corr1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15.1: Correlation of 1
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="Multivariate-Expectation_files/figure-html/cor2-fig-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Correlation of .8</figcaption>
+<div id="fig-corr2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-corr2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Multivariate-Expectation_files/figure-html/fig-corr2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-corr2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15.2: Correlation of 0.8
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="Multivariate-Expectation_files/figure-html/cor3-fig-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Correlation of .5</figcaption>
+<div id="fig-corr3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-corr3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Multivariate-Expectation_files/figure-html/fig-corr3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-corr3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15.3: Correlation of 0.5
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="Multivariate-Expectation_files/figure-html/cor4-fig-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Correlation of 0</figcaption>
+<div id="fig-corr4" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-corr4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Multivariate-Expectation_files/figure-html/fig-corr4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-corr4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15.4: Correlation of 0
+</figcaption>
 </figure>
 </div>
 </div>

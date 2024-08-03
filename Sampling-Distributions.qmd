@@ -1,10 +1,9 @@
 # Sampling Distributions {#sec-SAMPVAR}
 
 ```{r}
-#| echo: false
 #| messages: false 
 #| warnings: false 
-#| results: hide
+#| include: false 
 
 library(mosaic)
 library(tidyverse)

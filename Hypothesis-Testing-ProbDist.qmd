@@ -19,7 +19,7 @@ library(knitr)
 
 ## Hypothesis testing using probability models
 
-As a lead into the Central Limit Theorem in \@ref(HYPTESTCLT) and mathematical sampling distributions, we will look at a class of hypothesis testing where the null hypothesis specifies a probability model. In some cases, we can get an exact answer, and in others, we will use simulation to get an empirical $p$-value. By the way, a **permutation test** is an **exact test**; by this we mean we are finding all possible permutations in the calculation of the $p$-value. However, since the complete enumeration of all permutations is often difficult, we approximate it with randomization, simulation. Thus, the $p$-value from a randomization test is an approximation of the exact (permutation) test.
+As a lead into the Central Limit Theorem in @sec-HYPTESTCLT and mathematical sampling distributions, we will look at a class of hypothesis testing where the null hypothesis specifies a probability model. In some cases, we can get an exact answer, and in others, we will use simulation to get an empirical $p$-value. By the way, a **permutation test** is an **exact test**; by this we mean we are finding all possible permutations in the calculation of the $p$-value. However, since the complete enumeration of all permutations is often difficult, we approximate it with randomization, simulation. Thus, the $p$-value from a randomization test is an approximation of the exact (permutation) test.
 
 Let's use three examples to illustrate the ideas of this chapter.
 
