@@ -31,7 +31,7 @@ book:
     - part: "Probability Modeling"
       chapters:
         - Probability-Case-Study.qmd
-        - Probability-Rules.qmd
+        - Probability-Basics.qmd
         - Conditional-Probability.qmd
         - Discrete-Random-Variables.qmd
         - Continuous-Random-Variables.qmd

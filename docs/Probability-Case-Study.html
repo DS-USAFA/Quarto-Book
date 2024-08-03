@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Probability-Rules.html" rel="next">
+<link href="./Probability-Basics.html" rel="next">
 <link href="./Categorical-Data.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -253,7 +253,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Probability-Rules.html" class="sidebar-item-text sidebar-link">
+  <a href="./Probability-Basics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Probability Basics</span></span></a>
   </div>
 </li>
@@ -458,9 +458,9 @@ window.Quarto = {
   <li><a href="#case-study" id="toc-case-study" class="nav-link" data-scroll-target="#case-study"><span class="header-section-number">7.4</span> Case study</a>
   <ul class="collapse">
   <li><a href="#break-down-the-question" id="toc-break-down-the-question" class="nav-link" data-scroll-target="#break-down-the-question"><span class="header-section-number">7.4.1</span> Break down the question</a></li>
-  <li><a href="#simulate-computational" id="toc-simulate-computational" class="nav-link" data-scroll-target="#simulate-computational"><span class="header-section-number">7.4.2</span> Simulate (computational)</a></li>
+  <li><a href="#the-computational-approach-simulation" id="toc-the-computational-approach-simulation" class="nav-link" data-scroll-target="#the-computational-approach-simulation"><span class="header-section-number">7.4.2</span> The computational approach (simulation)</a></li>
   <li><a href="#plotting" id="toc-plotting" class="nav-link" data-scroll-target="#plotting"><span class="header-section-number">7.4.3</span> Plotting</a></li>
-  <li><a href="#mathematical-solution" id="toc-mathematical-solution" class="nav-link" data-scroll-target="#mathematical-solution"><span class="header-section-number">7.4.4</span> Mathematical solution</a></li>
+  <li><a href="#the-mathematical-approach" id="toc-the-mathematical-approach" class="nav-link" data-scroll-target="#the-mathematical-approach"><span class="header-section-number">7.4.4</span> The mathematical approach</a></li>
   <li><a href="#general-solution" id="toc-general-solution" class="nav-link" data-scroll-target="#general-solution"><span class="header-section-number">7.4.5</span> General solution</a></li>
   <li><a href="#data-science-approach" id="toc-data-science-approach" class="nav-link" data-scroll-target="#data-science-approach"><span class="header-section-number">7.4.6</span> Data science approach</a></li>
   </ul></li>
@@ -498,7 +498,7 @@ window.Quarto = {
 </section>
 <section id="introduction-to-probability-models" class="level2" data-number="7.2">
 <h2 data-number="7.2" class="anchored" data-anchor-id="introduction-to-probability-models"><span class="header-section-number">7.2</span> Introduction to probability models</h2>
-<p>In this second block of material we will focus on probability models. We will take two approaches, one is mathematical and the other is computational. In some cases we can use both methods on a problem and in others only the computational approach is feasible. The mathematical approach to probability modeling allows us insight into the problem and the ability to understand the process. Simulation has a much greater ability to generalize but can be time intensive to run and often requires the writing of custom functions.</p>
+<p>In this second block of material, we will focus on probability models. We will provide both a mathematical approach and a computational approach. We will focus on the latter and leave much of the mathematical details to the interested learner. In some cases we can use both methods on a problem and in others only the computational approach is feasible. The mathematical approach to probability modeling allows us insight into the problem and the ability to understand the process. The computational approach has a much greater ability to generalize but can be time intensive to run and often requires the writing of custom functions.</p>
 <p>This case study is extensive and may seem overwhelming, but do not worry. We will discuss these ideas again in the many chapters we have coming up this block.</p>
 </section>
 <section id="probability-models" class="level2" data-number="7.3">
@@ -507,17 +507,17 @@ window.Quarto = {
 <p>Often probability models are used to answer a question of the form “What is the chance that …..?” This means that we typically have an experiment or trial where multiple outcomes are possible and we only have an idea of the frequency of those outcomes. We use this frequency as a measure of the probability of a particular outcome.</p>
 <p>For this block we will focus just on probability models. To apply a probability model we will need to</p>
 <ol type="1">
-<li>Select the experiment and its possible outcomes.</li>
-<li>Have probability values for the outcomes which may include <strong>parameters</strong> that determine the probabilities.</li>
+<li>Describe the experiment and its possible outcomes.</li>
+<li>Determine probability values for the outcomes, which may include <strong>parameters</strong> that determine the probabilities.</li>
 <li>Understand the assumptions behind the model.</li>
 </ol>
 </section>
 <section id="case-study" class="level2" data-number="7.4">
 <h2 data-number="7.4" class="anchored" data-anchor-id="case-study"><span class="header-section-number">7.4</span> Case study</h2>
-<p>There is a famous example of a probability question that we will attack in this case study. The question we want to answer is “In a room of <span class="math inline">\(n\)</span> people what is the chance that at least two people have the same birthday?”</p>
+<p>There is a famous example of a probability question that we will examine in this case study. The question we want to answer is “In a room of <span class="math inline">\(n\)</span> people, what is the chance at least two people have the same birthday?”</p>
 <blockquote class="blockquote">
 <p><strong>Exercise</strong>:<br>
-The typical classroom at USAFA has 18 students in it. What do you think the chance that at least two students have the same birthday?<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+The typical classroom at USAFA has 18 students in it. What do you think is the chance that at least two students have the same birthday?<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 </blockquote>
 <section id="break-down-the-question" class="level3" data-number="7.4.1">
 <h3 data-number="7.4.1" class="anchored" data-anchor-id="break-down-the-question"><span class="header-section-number">7.4.1</span> Break down the question</h3>
@@ -525,30 +525,30 @@ The typical classroom at USAFA has 18 students in it. What do you think the chan
 <ol type="1">
 <li>What is the experiment or trial?</li>
 <li>What does it mean to have the same birthday?</li>
-<li>What about leap years?</li>
-<li>What about the frequency of births? Are some days less likely than others?</li>
+<li>How should we handle leap years?</li>
+<li>Should we consider the frequency of births? Are some days less likely than others?</li>
 </ol>
 <blockquote class="blockquote">
 <p><strong>Exercise</strong>:<br>
 Discuss these questions and others that you think are relevant.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
 </blockquote>
-<p>The best first step is to make a simple model, often these are the only ones that will have a mathematical solution. For our problem this means we answer the above questions.</p>
+<p>The best first step is to develop a simple model. Often these are the only ones that will have a mathematical solution. For our problem this means we answer the above questions.</p>
 <ol type="1">
 <li>We have a room of 18 people and we look at their birthdays. We either have two or more birthdays matching or not; thus there are two outcomes.</li>
-<li>We don’t care about the year, only the day and month. Thus two people born on May 16th are a match.</li>
-<li>We will ignore leap years.</li>
+<li>At least two people having the same birthday means we could have multiple matches on the same day or we could have several different days where multiple people have matching birthdays.</li>
+<li>We don’t care about the year, only the day and month. Thus, two people born on May 16th are a match.</li>
+<li>We will ignore leap years, for now.</li>
 <li>We will assume that a person has equal probability of being born on any of the 365 days of the year.</li>
-<li>At least two means we could have multiple matches on the same day or several different days where multiple people have matching birthdays.</li>
 </ol>
 </section>
-<section id="simulate-computational" class="level3" data-number="7.4.2">
-<h3 data-number="7.4.2" class="anchored" data-anchor-id="simulate-computational"><span class="header-section-number">7.4.2</span> Simulate (computational)</h3>
+<section id="the-computational-approach-simulation" class="level3" data-number="7.4.2">
+<h3 data-number="7.4.2" class="anchored" data-anchor-id="the-computational-approach-simulation"><span class="header-section-number">7.4.2</span> The computational approach (simulation)</h3>
 <p>Now that we have an idea about the structure of the problem, we next need to think about how we would simulate a single classroom. We have 18 students in the classroom and they all could have any of the 365 days of the year as a birthday. What we need to do is sample birthdays for each of the 18 students. But how do we code the days of the year?</p>
 <p>An easy solution is to just label the days from 1 to 365. The function <code>seq()</code> does this for us.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>days <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">365</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Next we need to pick one of the days using the sample function. Note that we set the seed to get repeatable results, this is not required.</p>
+<p>Next we need to pick one of the days using the <code>sample()</code> function. Note that we set a seed to make our results reproducible. This is not required, but is strongly encouraged.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2022</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(days,<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -556,27 +556,37 @@ Discuss these questions and others that you think are relevant.<a href="#fn2" cl
 <pre><code>[1] 228</code></pre>
 </div>
 </div>
-<p>The first person was born on the 228th day of the year.</p>
-<p>Since <code>R</code> works on vectors, we don’t have to write a loop to select 18 days, we just have <code>sample()</code> do it for us.</p>
+<p>The first student in the classroom was born on the 228th day of the year, which corresponds to the 16th of August.</p>
+<p>Since <code>R</code> works on vectors of information, we don’t have to write a loop to select 18 days. We have the <code>sample()</code> function do it for us.</p>
+<p>Remember to ask yourself:</p>
+<ul>
+<li><em>What do we want <code>R</code> to do?</em></li>
+</ul>
+<p>We want <code>R</code> to sample 18 birthdays from the numbers 1 to 365. We want to sample <em>with replacement</em>&nbsp;because we’re allowing students to have the same birthday.</p>
+<ul>
+<li><em>What does <code>R</code> need to do that?</em></li>
+</ul>
+<p>A quick look at the documentation for the <code>sample()</code> function (using <code>?sample</code> or <code>help(sample)</code>) tells us we need a vector of data, <code>size</code> specifying the number of items to choose from the vector, and a logical value for <code>replace</code>, specifying whether to sample with replacement or not.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>class <span class="ot">&lt;-</span> <span class="fu">sample</span>(days,<span class="at">size=</span><span class="dv">18</span>,<span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>class</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2022</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>class <span class="ot">&lt;-</span> <span class="fu">sample</span>(days, <span class="at">size =</span> <span class="dv">18</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>class</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 206 311 331 196 262 191 206 123 233 270 248   7 349 112   1 307 288 354</code></pre>
+<pre><code> [1] 228 206 311 331 196 262 191 206 123 233 270 248   7 349 112   1 307 288</code></pre>
 </div>
 </div>
-<p>What do we want <code>R</code> to do? Sample from the numbers 1 to 365 with replacement, which means a number can be picked more than once.</p>
 <p>Notice in our sample we have at least one match, although it is difficult to look at this list and see the match. Let’s sort them to make it easier for us to see.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(class)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1]   1   7 112 123 191 196 206 206 233 248 262 270 288 307 311 331 349 354</code></pre>
+<pre><code> [1]   1   7 112 123 191 196 206 206 228 233 248 262 270 288 307 311 331 349</code></pre>
 </div>
 </div>
+<p>There are two birthdays on day 206, corresponding to the 25th of July.</p>
 <p>The next step is to find a way in <code>R</code> for the code to detect that there is a match.</p>
 <blockquote class="blockquote">
 <p><strong>Exercise</strong>:<br>
-What idea(s) can we use to determine if a match exists?</p>
+What idea(s) do you have to determine if a match exists?</p>
 </blockquote>
 <p>We could sort the data and look at differences in sequential values and then check if the set of differences contains a zero. This seems to be computationally expensive. Instead we will use the function <code>unique()</code> which gives a vector of unique values in an object. The function <code>length()</code> gives the number of elements in the vector.</p>
 <div class="cell">
@@ -587,16 +597,16 @@ What idea(s) can we use to determine if a match exists?</p>
 </div>
 <p>Since we only have 17 unique values in a vector of size 18, we have a match. Now let’s put this all together to generate another classroom of size 18.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(<span class="fu">sample</span>(days,<span class="at">size=</span><span class="dv">18</span>,<span class="at">replace =</span> <span class="cn">TRUE</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(<span class="fu">sample</span>(days, <span class="at">size =</span> <span class="dv">18</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 16</code></pre>
 </div>
 </div>
-<p>The next problem that needs to be solved is how to repeat the classrooms and keep track of those that have a match. There are several functions we could use to include <code>replicate()</code> but we will use <code>do()</code> from the <strong>mosaic</strong> package because it returns a data frame so we can use <code>tidyverse</code> verbs to wrangle the data.</p>
-<p>The <code>do()</code> function allows us to repeat an operation many times. The following template</p>
+<p>The next problem that needs to be solved is how to repeat the classrooms and keep track of those that have a match. There are several functions we could use to include <code>replicate()</code>, but we will use <code>do()</code> from the <strong>mosaic</strong> package because it returns a data frame so we can use <code>tidyverse</code> verbs to wrangle the data.</p>
+<p>The <code>do()</code> function allows us to repeat an operation many times. The following template can be used,</p>
 <pre><code>do(n) * {stuff to do}              # pseudo-code</code></pre>
 <p>where {stuff to do} is typically a single <code>R</code> command, but may be something more complicated.</p>
-<p>Load the libraries.</p>
+<p>Let’s try it out. First, we’ll load the libraries.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -612,48 +622,50 @@ What idea(s) can we use to determine if a match exists?</p>
 5     18</code></pre>
 </div>
 </div>
-<p>Let’s repeat for a larger number of simulated classroom, remember you should be asking yourself:</p>
-<p><em>What do I want <code>R</code> to do?</em><br>
-<em>What does <code>R</code> need to do this?</em></p>
+<p>Let’s repeat this process for a larger number of simulated classrooms. Remember, you should be asking yourself two questions:</p>
+<ul>
+<li><p><em>What do I want <code>R</code> to do?</em></p></li>
+<li><p><em>What does <code>R</code> need to do this?</em></p></li>
+</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">do</span>(<span class="dv">1000</span>)<span class="sc">*</span><span class="fu">length</span>(<span class="fu">unique</span>(<span class="fu">sample</span>(days,<span class="at">size=</span><span class="dv">18</span>,<span class="at">replace =</span> <span class="cn">TRUE</span>)))) <span class="sc">%&gt;%</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">match=</span><span class="fu">if_else</span>(length<span class="sc">==</span><span class="dv">18</span>,<span class="dv">0</span>,<span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">prob=</span><span class="fu">mean</span>(match))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">do</span>(<span class="dv">1000</span>)<span class="sc">*</span><span class="fu">length</span>(<span class="fu">unique</span>(<span class="fu">sample</span>(days, <span class="at">size =</span> <span class="dv">18</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)))) <span class="sc">%&gt;%</span>  <span class="co"># simulate 1000 classrooms</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">match =</span> <span class="fu">if_else</span>(length <span class="sc">==</span> <span class="dv">18</span>, <span class="dv">0</span>, <span class="dv">1</span>)) <span class="sc">%&gt;%</span>                       <span class="co"># check for matches, 1 if length &lt; 18</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">prob =</span> <span class="fu">mean</span>(match))                                         <span class="co"># probability is the mean of 0/1s</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  prob
-1 0.36</code></pre>
+<pre><code>   prob
+1 0.365</code></pre>
 </div>
 </div>
-<p>This is within 2 decimal places of the mathematical solution we develop shortly.</p>
-<p>How many classrooms do we need to simulate to get an accurate estimate of the probability of a match? That is a statistical modeling question and it depends on how much variability we can accept. We will discuss these ideas later in the book. For now, you can run the code multiple times and see how the estimate varies. If computational power is cheap, you can increase the number of simulations.</p>
+<p>This is within two decimal places of the mathematical solution we will develop shortly.</p>
+<p>How many classrooms do we need to simulate to get an accurate estimate of the probability of a match? That is a statistical modeling question and it depends on how much variability we can accept. We will discuss these ideas later in the book. For now, we can run the code multiple times and see how the estimate varies. When computational power is cheap, we can increase the number of simulations.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">do</span>(<span class="dv">10000</span>)<span class="sc">*</span><span class="fu">length</span>(<span class="fu">unique</span>(<span class="fu">sample</span>(days,<span class="at">size=</span><span class="dv">18</span>,<span class="at">replace =</span> <span class="cn">TRUE</span>)))) <span class="sc">%&gt;%</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">match=</span><span class="fu">if_else</span>(length<span class="sc">==</span><span class="dv">18</span>,<span class="dv">0</span>,<span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">prob=</span><span class="fu">mean</span>(match))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">do</span>(<span class="dv">10000</span>)<span class="sc">*</span><span class="fu">length</span>(<span class="fu">unique</span>(<span class="fu">sample</span>(days, <span class="at">size =</span> <span class="dv">18</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)))) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">match =</span> <span class="fu">if_else</span>(length <span class="sc">==</span> <span class="dv">18</span>, <span class="dv">0</span>, <span class="dv">1</span>)) <span class="sc">%&gt;%</span>                        </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">prob =</span> <span class="fu">mean</span>(match))                                        </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    prob
-1 0.3442</code></pre>
+1 0.3402</code></pre>
 </div>
 </div>
 </section>
 <section id="plotting" class="level3" data-number="7.4.3">
 <h3 data-number="7.4.3" class="anchored" data-anchor-id="plotting"><span class="header-section-number">7.4.3</span> Plotting</h3>
-<p>By the way, the method we have used to create the data allows us to summarize the number of unique birthdays using a table or bar chart. Let’s do that now. Note that since the first argument in <code>tally()</code> is not data then the <strong>pipe</strong> operator will not work without some extra effort. We must tell <code>R</code> that the data is the previous argument in the pipeline and thus use the symbol <strong>.</strong> to denote this.</p>
+<p>The method we have used to create the data allows us to summarize the number of unique birthdays using a table or bar chart. Let’s do that now. Note that since the first argument in <code>tally()</code> is not data, the <strong>pipe</strong> operator will not work without some extra effort. We must tell <code>R</code> that the data is the previous argument in the pipeline and thus use the symbol <strong><code>.</code></strong> to denote this.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">do</span>(<span class="dv">1000</span>)<span class="sc">*</span><span class="fu">length</span>(<span class="fu">unique</span>(<span class="fu">sample</span>(days,<span class="at">size=</span><span class="dv">18</span>,<span class="at">replace =</span> <span class="cn">TRUE</span>)))) <span class="sc">%&gt;%</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tally</span>(<span class="sc">~</span>length,<span class="at">data=</span>.)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">do</span>(<span class="dv">1000</span>)<span class="sc">*</span><span class="fu">length</span>(<span class="fu">unique</span>(<span class="fu">sample</span>(days, <span class="at">size =</span> <span class="dv">18</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)))) <span class="sc">%&gt;%</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tally</span>(<span class="sc">~</span>length, <span class="at">data =</span> .)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>length
- 14  15  16  17  18 
-  1   7  52 253 687 </code></pre>
+ 15  16  17  18 
+  5  46 269 680 </code></pre>
 </div>
 </div>
-<p><a href="#fig-bar71" class="quarto-xref">Figure&nbsp;<span>7.1</span></a> is a plot of the number of unique birthdays in our sample.</p>
+<p><a href="#fig-bar71" class="quarto-xref">Figure&nbsp;<span>7.1</span></a> is a plot of the number of unique birthdays (out of 18) in our sample.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">do</span>(<span class="dv">1000</span>)<span class="sc">*</span><span class="fu">length</span>(<span class="fu">unique</span>(<span class="fu">sample</span>(days,<span class="at">size=</span><span class="dv">18</span>,<span class="at">replace =</span> <span class="cn">TRUE</span>)))) <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">do</span>(<span class="dv">1000</span>)<span class="sc">*</span><span class="fu">length</span>(<span class="fu">unique</span>(<span class="fu">sample</span>(days, <span class="at">size =</span> <span class="dv">18</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)))) <span class="sc">%&gt;%</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_bar</span>(<span class="sc">~</span>length) <span class="sc">%&gt;%</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_bw</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">x=</span><span class="st">"Number of unique birthdays"</span>,<span class="at">y=</span><span class="st">"Count"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">x =</span> <span class="st">"Number of unique birthdays"</span>, <span class="at">y =</span> <span class="st">"Count"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-bar71" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -672,28 +684,29 @@ Figure&nbsp;7.1: Bar chart of the number of unique birthdays in the sample.
 What does it mean if the length of unique birthdays is 16, in terms of matches?<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
 </blockquote>
 </section>
-<section id="mathematical-solution" class="level3" data-number="7.4.4">
-<h3 data-number="7.4.4" class="anchored" data-anchor-id="mathematical-solution"><span class="header-section-number">7.4.4</span> Mathematical solution</h3>
-<p>To solve this problem mathematically, we will step through the logic one step at a time. One of the key ideas that we will see many times is the idea of the <strong>multiplication</strong> rule. This idea is the foundation for <strong>permutation</strong> and <strong>combinations</strong> which are counting methods frequently used in probability calculations.</p>
-<p>The first step that we take is to understand the idea of 2 or more people with the same birthday. With 18 people, there are a great deal of possibilities for 2 or more birthdays. We could have exactly 2 people with the same birthday. We could have 18 people with the same birthday, We could have 3 people with the same birthday and another 2 people with the same birthday but different from the other 3. Accounting for all these possibilities is too large a counting process. Instead, we will take the approach of finding the probability of no one having a matching birthday. Then the probability of at least 2 people having a matching birthday is 1 minus the probability that no one has a matching birthday. This is known as a <strong>complementary</strong> probability. A simpler example is to think about rolling a single die. The probability of rolling a 6 is equivalent to 1 minus the probability of not rolling a 6.</p>
-<p>We first need to think about all the different ways we could get 18 birthdays. This is going to be our denominator in the probability calculation. First let’s just look at 2 people. The first person could have 365 different days for their birthday. The second person could also have 365 different birthdays. So for each birthday of the first person there could be 365 birthdays for the second. Thus for 2 people there are <span class="math inline">\(365^2\)</span> possible sets of birthdays. This is an example of the <em>multiplication rule</em>. For 18 people there are <span class="math inline">\(365^{18}\)</span> sets of birthdays. That is a large number. Again, this will be our denominator in calculating the probability.</p>
-<p>The numerator is the number of sets of birthdays with no matches. Again, let’s consider 2 people. The first person can have a birthday on any day of the year, so 365 possibilities. Since we don’t want a match, the second person can only have 364 possibilities for a birthday. Thus we have <span class="math inline">\(365 \times 364\)</span> possibilities for two people to have different birthdays.</p>
+<section id="the-mathematical-approach" class="level3" data-number="7.4.4">
+<h3 data-number="7.4.4" class="anchored" data-anchor-id="the-mathematical-approach"><span class="header-section-number">7.4.4</span> The mathematical approach</h3>
+<p>To solve this problem mathematically, we will work through the logic one step at a time. One of the key ideas that we will see many times is the idea of the <strong>multiplication</strong> rule. This idea is the foundation for <strong>permutations</strong> and <strong>combinations</strong>, which are counting methods frequently used in probability calculations.</p>
+<p>The first step that we take is to understand the idea of two or more people having the same birthday. With 18 people, there are a great deal of possibilities for two or more people to have the same birthday. We could have exactly two people with the same birthday. We could have 18 people with the same birthday. We could have three people with the same birthday and another two people with the same birthday but different from the other three. Accounting for all these possibilities is too large a counting process. Instead, we will take the approach of finding the probability of no one having a matching birthday. Then the probability of at least two people having a matching birthday is one minus the probability that no one has a matching birthday. This is known as a <strong>complementary</strong> probability. A simpler example is to think about rolling a single die. The probability of rolling a six is equivalent to one minus the probability of not rolling a six (rolling any number other than six).</p>
+<p>We first need to think about all the different ways we could get 18 birthdays. This is going to be our denominator in the probability calculation. The first person could have 365 different days for their birthday. The second person could also have 365 different birthdays. The same is true for all 18 people. This is an example of the <em>multiplication rule</em>. For 18 people, there are <span class="math inline">\(365^{18}\)</span> possible sets of birthdays.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> Again, this will be our denominator in calculating the probability.</p>
+<p>Because we’re using the complement, the numerator is the number of ways that 18 people can have birthdays with no matches.</p>
 <blockquote class="blockquote">
 <p>Exercise:<br>
-What is the number of possibilities for 18 people so that no one has the same birthday.</p>
+What is the number of ways for 18 people to have no birthday matches?</p>
 </blockquote>
-<p>The answer for 18 people is <span class="math inline">\(365 \times 364 \times 363 ... \times 349 \times 348\)</span>. This looks like a truncated factorial. Remember a factorial, written as <span class="math inline">\(n!\)</span> with an explanation point, is the product of successive positive integers. As an example <span class="math inline">\(3!\)</span> is <span class="math inline">\(3 \times 2 \times 1\)</span> or 6. We could write the multiplication for the numerator as <span class="math display">\[\frac{365!}{(365-n)!}\]</span> As we will learn, the multiplication rule for the numerator is known as a <strong>permutation</strong>.</p>
-<p>We are ready to put it all together. For 18 people, the probability of 2 or more people with the same birthday is 1 minus the probability that no one has the same birthday, which is</p>
+<p>The first person can have a birthday on any day of the year, so there are 365 possibilities. Because we don’t want a match, the second person only has 364 possibilities for a birthday. The third person can’t match either of the first two, so there are only 363 possibilities for that birthday. Thus, there are <span class="math inline">\(365 \times 364 \times 363 ... \times 349 \times 348\)</span> ways for 18 people to have no birthday matches.</p>
+<p>This looks like a truncated factorial. Remember a factorial, written as <span class="math inline">\(n!\)</span> with an explanation point, is the product of successive positive integers. For example, <span class="math inline">\(3!\)</span> is <span class="math inline">\(3 \times 2 \times 1\)</span> or 6. In our birthday example, we could write the multiplication for the numerator as <span class="math display">\[365\times 364\times ...\times 348 = \frac{365!}{(365-18)!}\]</span> As we will learn, the multiplication rule for the numerator is known as a <strong>permutation</strong>.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+<p>We are ready to put it all together. For 18 people, the probability of two or more people with the same birthday is one minus the probability that no one has the same birthday, which is</p>
 <p><span class="math display">\[1 - \frac{\frac{365!}{(365-18)!}}{365^{18}}\]</span> or</p>
 <p><span class="math display">\[1 - \frac{\frac{365!}{347!}}{365^{18}}\]</span></p>
-<p>In <code>R</code> there is a function called <code>factorial()</code> but factorials get large fast and we will <strong>overflow</strong> the memory. Try <code>factorial(365)</code> in <code>R</code> to see what happens.</p>
+<p>In <code>R</code>, there is a <code>factorial()</code> function but factorials get large fast and will <strong>overflow</strong> the memory. Try <code>factorial(365)</code> in <code>R</code> to see what happens.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">factorial</span>(<span class="dv">365</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] Inf</code></pre>
 </div>
 </div>
-<p>It is returning <em>infinity</em> because the number is too large for the buffer. As is often the case we will have when using a computational method, we must be clever about our approach. Instead of using factorials we can make use of <code>R</code>s ability to work on vectors. If we provide <code>R</code> with a vector of values, the <code>prod()</code> will perform a product of all the elements.</p>
+<p>It is returning <em>infinity</em> because the number is too large for the buffer. As is often the case when using a computational method, we must be clever about our approach. Instead of using factorials, we can make use of <code>R</code> and its ability to work on vectors. If we provide <code>R</code> with a vector of values, the <code>prod()</code> function will calculate the product of all the elements.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="dv">365</span><span class="sc">*</span><span class="dv">364</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -706,12 +719,14 @@ What is the number of possibilities for 18 people so that no one has the same bi
 <pre><code>[1] 132860</code></pre>
 </div>
 </div>
+<p>Now, we calculate the probability of at least two people in a room of 18 having the same birthday.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span> <span class="fu">prod</span>(<span class="dv">365</span><span class="sc">:</span><span class="dv">348</span>)<span class="sc">/</span>(<span class="dv">365</span><span class="sc">^</span><span class="dv">18</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span> <span class="fu">prod</span>(<span class="dv">365</span><span class="sc">:</span><span class="dv">348</span>) <span class="sc">/</span> (<span class="dv">365</span><span class="sc">^</span><span class="dv">18</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.3469114</code></pre>
 </div>
 </div>
+<p>This is close to the probability we found with simulation.</p>
 </section>
 <section id="general-solution" class="level3" data-number="7.4.5">
 <h3 data-number="7.4.5" class="anchored" data-anchor-id="general-solution"><span class="header-section-number">7.4.5</span> General solution</h3>
@@ -724,25 +739,25 @@ What is the number of possibilities for 18 people so that no one has the same bi
 <p>For this problem we will call the function <code>birthday_prob()</code>. The only parameter we need is the number of people in the room, <code>n</code>. Let’s write this function.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>birthday_prob <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n=</span><span class="dv">20</span>){</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span><span class="sc">-</span> <span class="fu">prod</span>(<span class="dv">365</span><span class="sc">:</span>(<span class="dv">365</span><span class="sc">-</span>(n<span class="dv">-1</span>)))<span class="sc">/</span>(<span class="dv">365</span><span class="sc">^</span>n)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span> <span class="sc">-</span> <span class="fu">prod</span>(<span class="dv">365</span><span class="sc">:</span>(<span class="dv">365</span> <span class="sc">-</span> (n <span class="sc">-</span> <span class="dv">1</span>))) <span class="sc">/</span> (<span class="dv">365</span><span class="sc">^</span>n)</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Notice we assigned the function to the name <code>birthday_prob</code>, we told <code>R</code> to expect one argument to the function, which we are calling <code>n</code>, and then we provide <code>R</code> with the code to find the probability. We set a default value for <code>n</code> in case one is not provided to prevent an error when the function is run. We will learn more about writing functions throughout this book and in the follow-on USAFA course, Math 378: Applied Statistical Modeling.</p>
-<p>Test the code with a know answer.</p>
+<p>Let’s test the code with a known answer.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">birthday_prob</span>(<span class="dv">18</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.3469114</code></pre>
 </div>
 </div>
-<p>Now we can determine the probability for any size room. You may have heard that it only takes about 23 people in a room to have a 50% probability of at least 2 people matching birthdays.</p>
+<p>Now we can determine the probability for any size room. You may have heard that it only takes about 23 people in a room to have a 50% probability of at least two people matching birthdays.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">birthday_prob</span>(<span class="dv">23</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.5072972</code></pre>
 </div>
 </div>
-<p>Let’s create a plot of the probability versus number of people in the room. To do this, we need to apply the function to a vector of values. The function <code>sapply()</code> will work or we can also use <code>Vectorize()</code> to alter our existing function. We choose the latter option.</p>
+<p>Let’s create a plot of the probability versus the number of people in the room. To do this, we need to apply the function to a vector of values. The function <code>sapply()</code> will work or we can also use <code>Vectorize()</code> to alter our existing function. We choose the latter option.</p>
 <p>First notice what happens if we input a vector into our function.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">birthday_prob</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -756,9 +771,9 @@ first used</code></pre>
 [15] 1.0000000 1.0000000 1.0000000 1.0000000 1.0000000 1.0000000</code></pre>
 </div>
 </div>
-<p>It only uses the first value. There are several ways to solve this problem. We can use the <code>map()</code> function in the <strong>purrr</strong> package. This idea of mapping a function to a vector is important in data science. It is used in scenarios where there is a lot of data. In this case the idea of map-reduce is used to make the analysis amenable to parallel computing.</p>
+<p>It only uses the first value. There are several ways to solve this problem. We can use the <code>map()</code> function in the <strong>purrr</strong> package. This idea of mapping a function to a vector is important in data science. It is used in scenarios where there is a lot of data. In this case, the idea of map-reduce is used to make the analysis amenable to parallel computing.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map_dbl</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>,birthday_prob)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map_dbl</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, birthday_prob)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 0.000000000 0.002739726 0.008204166 0.016355912 0.027135574 0.040462484
  [7] 0.056235703 0.074335292 0.094623834 0.116948178 0.141141378 0.167024789
@@ -780,12 +795,12 @@ first used</code></pre>
 [19] 0.379118526 0.411438384</code></pre>
 </div>
 </div>
-<p>We are good to go. Let’s create our line plot, <a href="#fig-line71" class="quarto-xref">Figure&nbsp;<span>7.2</span></a>.</p>
+<p>We now have what we want, so let’s create our line plot, <a href="#fig-line71" class="quarto-xref">Figure&nbsp;<span>7.2</span></a>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_line</span>(<span class="fu">birthday_prob</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>)<span class="sc">~</span> <span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">100</span>),</span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab=</span><span class="st">"Number of People"</span>,</span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab=</span><span class="st">"Probability of Match"</span>,</span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">title=</span><span class="st">"Probability of at least 2 people with matching birthdays"</span>) <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_line</span>(<span class="fu">birthday_prob</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>) <span class="sc">~</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">100</span>),</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Number of People"</span>,</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Probability of Match"</span>,</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">title =</span> <span class="st">"Probability of at least two people with matching birthdays by room size"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_bw</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-line71" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -794,17 +809,17 @@ first used</code></pre>
 <img src="Probability-Case-Study_files/figure-html/fig-line71-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-line71-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.2: The probability of at least 2 people having mathcing birthdays.
+Figure&nbsp;7.2: The probability of at least 2 people having matching birthdays.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Is this what you expected the curve to look like? We, the authors, did not expect this. It has a sigmodial shape with a large increase in the middle range and flatten in the tails.</p>
+<p>Is this what you expected the curve to look like? We, the authors, did not expect this. It has a sigmoidal shape with a large increase in the middle range and flattening in the tails.</p>
 </section>
 <section id="data-science-approach" class="level3" data-number="7.4.6">
 <h3 data-number="7.4.6" class="anchored" data-anchor-id="data-science-approach"><span class="header-section-number">7.4.6</span> Data science approach</h3>
-<p>The final approach we will take is one based on data, a data science approach. In the <strong>mosaicData</strong> package is a data set called <code>Births</code> that contains the number of births in the US from 1969 to 1988. This data will allow us to estimate the number of births on any day of the year. This allows us to eliminate the reliance on the assumption that each day is equally likely. Let’s first <code>inspect()</code> the data object.</p>
+<p>The final approach we will take is one based on data, a data science approach. The <strong>mosaicData</strong> package includes a data set called <code>Births</code> that contains the number of births in the US from 1969 to 1988. This data will allow us to estimate the number of births on any day of the year. This allows us to eliminate the reliance on the assumption that each day is equally likely. Let’s first <code>inspect()</code> the data object.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">inspect</span>(Births)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -836,13 +851,13 @@ quantitative variables:
 6 7305       0</code></pre>
 </div>
 </div>
-<p>It could be argued that we could randomly pick one year and use it. Let’s see what happens if we just used 1969. <a href="#fig-scat71" class="quarto-xref">Figure&nbsp;<span>7.3</span></a> is a scatter plot of the number of births in 1969 for each day of the year.</p>
+<p>Notice there are leap years present in this data. It could be argued that we could randomly pick one year and use it. Let’s see what happens if we just used 1969, a non-leap year. <a href="#fig-scat71" class="quarto-xref">Figure&nbsp;<span>7.3</span></a> is a scatter plot of the number of births in 1969 for each day of the year.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>Births <span class="sc">%&gt;%</span></span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">1969</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_point</span>(births<span class="sc">~</span>day_of_year) <span class="sc">%&gt;%</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_point</span>(births <span class="sc">~</span> day_of_year) <span class="sc">%&gt;%</span></span>
 <span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_bw</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">x=</span><span class="st">"Day of the Year"</span>,<span class="at">y=</span><span class="st">"Number of Births"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">x =</span> <span class="st">"Day of the Year"</span>, <span class="at">y =</span> <span class="st">"Number of Births"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-scat71" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -858,15 +873,15 @@ Figure&nbsp;7.3: The number of births for each day of the year in 1969.
 </div>
 <blockquote class="blockquote">
 <p><strong>Exercise</strong>:<br>
-What patterns do you see in <a href="#fig-scat71" class="quarto-xref">Figure&nbsp;<span>7.3</span></a>? What might explain them?</p>
+What patterns do you see in <a href="#fig-scat71" class="quarto-xref">Figure&nbsp;<span>7.3</span></a>? What might explain them?<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
 </blockquote>
-<p>There are definitely bands appearing in the data which could be the day of the week; there are less birthdays on the weekend. There is also seasonality with more birthdays in the summer and fall. There is also probably an impact from holidays.</p>
-<p>Quickly, let’s look at the impact of day of the week by using color for day of the week. <a href="#fig-scat72" class="quarto-xref">Figure&nbsp;<span>7.4</span></a> makes it clear that the weekends have less number of births as compared to the work week.</p>
+<p>There are definitely bands appearing in the data which could be the day of the week; there are fewer birthdays on the weekend. There is also seasonality with more birthdays in the summer and fall. There is also probably an impact from holidays.</p>
+<p>Quickly, let’s look at the impact of day of the week by using color for day of the week. <a href="#fig-scat72" class="quarto-xref">Figure&nbsp;<span>7.4</span></a> makes it clear that the weekends have fewer births as compared to the work week.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>Births <span class="sc">%&gt;%</span></span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">1969</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_point</span>(births<span class="sc">~</span>day_of_year,<span class="at">color=</span><span class="sc">~</span><span class="fu">factor</span>(day_of_week)) <span class="sc">%&gt;%</span></span>
-<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">x=</span><span class="st">"Day of the Year"</span>,<span class="at">col=</span><span class="st">"Day of Week"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_point</span>(births <span class="sc">~</span> day_of_year, <span class="at">color =</span> <span class="sc">~</span><span class="fu">factor</span>(day_of_week)) <span class="sc">%&gt;%</span></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">x =</span> <span class="st">"Day of the Year"</span>, <span class="at">col =</span> <span class="st">"Day of Week"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_bw</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-scat72" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -881,11 +896,11 @@ Figure&nbsp;7.4: The number of births for each day of the year in 1969 broken do
 </div>
 </div>
 </div>
-<p>By only using one year, this data might give poor results since holidays will fall on certain days of the week and the weekends will also be impacted. Note that we also still have the problem of leap years.</p>
+<p>By only using one year, this data might give poor results because holidays will fall on certain days of the week and the weekends will also be impacted. Note that we also still have the problem of leap years.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>Births <span class="sc">%&gt;%</span></span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span></span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n=</span><span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 20 × 2
     year     n
@@ -915,9 +930,9 @@ Figure&nbsp;7.4: The number of births for each day of the year in 1969 broken do
 <p>The years 1972, 1976, 1980, 1984, and 1988 are all leap years. At this point, to make the analysis easier, we will drop those years.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>Births <span class="sc">%&gt;%</span></span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>(year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1972</span>,<span class="dv">1976</span>,<span class="dv">1980</span>,<span class="dv">1984</span>,<span class="dv">1988</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>(year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1972</span>, <span class="dv">1976</span>, <span class="dv">1980</span>, <span class="dv">1984</span>, <span class="dv">1988</span>))) <span class="sc">%&gt;%</span></span>
 <span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span></span>
-<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n=</span><span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 15 × 2
     year     n
@@ -939,13 +954,13 @@ Figure&nbsp;7.4: The number of births for each day of the year in 1969 broken do
 15  1987   365</code></pre>
 </div>
 </div>
-<p>Notice in <code>filter()</code> we used the <code>%in%</code> argument. This is a <strong>logical</strong> argument checking if <code>year</code> is one of the values. The <code>!</code> at the front negates this in a sense requiring <code>year</code> not to be one of those values.`</p>
+<p>Notice that we used the <code>%in%</code> operator inside the <code>filter()</code> function. This is a <strong>logical</strong> argument checking whether <code>year</code> is one of the specified values. The <code>!</code> at the front negates this, in a sense requiring <code>year</code> to not be one of those values.</p>
 <p>We are almost ready to simulate. We need to get the count of <code>births</code> on each day of the year for the non-leap years.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>birth_data <span class="ot">&lt;-</span> Births <span class="sc">%&gt;%</span></span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>(year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1972</span>,<span class="dv">1976</span>,<span class="dv">1980</span>,<span class="dv">1984</span>,<span class="dv">1988</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>(year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1972</span>, <span class="dv">1976</span>, <span class="dv">1980</span>, <span class="dv">1984</span>, <span class="dv">1988</span>))) <span class="sc">%&gt;%</span></span>
 <span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(day_of_year) <span class="sc">%&gt;%</span></span>
-<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n=</span><span class="fu">sum</span>(births)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">sum</span>(births)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(birth_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -961,12 +976,12 @@ Figure&nbsp;7.4: The number of births for each day of the year in 1969 broken do
 6           6 140044</code></pre>
 </div>
 </div>
-<p>Let’s look at a plot of the number of births versus day of the year. We combined years in <a href="#fig-scat73" class="quarto-xref">Figure&nbsp;<span>7.5</span></a>.</p>
+<p>Let’s look at a plot of the number of births versus day of the year for all the non-leap years in <a href="#fig-scat73" class="quarto-xref">Figure&nbsp;<span>7.5</span></a>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>birth_data <span class="sc">%&gt;%</span></span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_point</span>(n<span class="sc">~</span>day_of_year,</span>
-<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">xlab=</span><span class="st">"Day of the year"</span>,</span>
-<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">ylab=</span><span class="st">"Number of births"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_point</span>(n <span class="sc">~</span> day_of_year,</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">xlab =</span> <span class="st">"Day of the year"</span>,</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">ylab =</span> <span class="st">"Number of births"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_bw</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-scat73" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -988,20 +1003,20 @@ Figure&nbsp;7.5: Number of births by day of the year for all years.
 <span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(n) <span class="sc">%&gt;%</span></span>
 <span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The <code>pull()</code> function pulls the vectors of values out of the data frame format into a vector format which the <code>sample()</code> needs.</p>
-<p>Now let’s simulate the problem. The probability of a match should change slightly, maybe go down slightly?, but not much since most of the days have about the same probability or number of occurrences.</p>
+<p>The <code>pull()</code> function pulls the vectors of values out of the data frame format into a vector format which the <code>sample()</code> function needs.</p>
+<p>Now let’s simulate the problem. We will use our code from before, but add probability weights in the <code>prob</code> argument. The probability of a match should change slightly, but not much because most of the days have about the same probability or number of occurrences.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">20</span>)</span>
-<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>(<span class="fu">do</span>(<span class="dv">1000</span>)<span class="sc">*</span><span class="fu">length</span>(<span class="fu">unique</span>(<span class="fu">sample</span>(days,<span class="at">size=</span><span class="dv">18</span>,<span class="at">replace =</span> <span class="cn">TRUE</span>,<span class="at">prob=</span>birth_data_weights)))) <span class="sc">%&gt;%</span></span>
-<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">match=</span><span class="fu">if_else</span>(length<span class="sc">==</span><span class="dv">18</span>,<span class="dv">0</span>,<span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">prob=</span><span class="fu">mean</span>(match))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>(<span class="fu">do</span>(<span class="dv">1000</span>)<span class="sc">*</span><span class="fu">length</span>(<span class="fu">unique</span>(<span class="fu">sample</span>(days, <span class="at">size =</span> <span class="dv">18</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> birth_data_weights)))) <span class="sc">%&gt;%</span></span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">match =</span> <span class="fu">if_else</span>(length <span class="sc">==</span> <span class="dv">18</span>, <span class="dv">0</span>, <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">prob =</span> <span class="fu">mean</span>(match))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   prob
 1 0.352</code></pre>
 </div>
 </div>
-<p>We could not solve this problem of varying frequency of birth days using mathematics, at least as far as we know.</p>
-<p>Cool stuff, let’s get to learning more about probability models in the next chapters.</p>
+<p>It would not be possible to solve this problem of varying frequency of birthdays using mathematics, at least as far as we know.</p>
+<p>This is fascinating stuff! Let’s get to learning more about probability models in the following chapters.</p>
 
 
 </section>
@@ -1009,9 +1024,12 @@ Figure&nbsp;7.5: Number of births by day of the year for all years.
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn1"><p>The answer is around 34.7%, how close were you?<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>Another question may be What does it mean at least two people have matching birthdays?<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>The answer is around 34.7%. How close were you? Did you think it was lower or higher?<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Another question may be “What does it mean at least two people have matching birthdays?”<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p>It is possible that 3 people all have the same birthday or two sets of 2 people have the same birthday but different from the other pair.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p><span class="math inline">\(365^{18} = 1.322\times 10^{46}\)</span><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>This could be more generally written as <span class="math inline">\(\frac{365!}{(365 - n)!}\)</span> for a group of <span class="math inline">\(n\)</span> people.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>This could be due to doctors tending not to schedule inductions or C-sections on weekends. Fun fact: while more than 30% of all births were C-sections in 2023, only around 5% of births were C-sections in 1969.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
@@ -1443,7 +1461,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Probability-Rules.html" class="pagination-link" aria-label="Probability Basics">
+      <a href="./Probability-Basics.html" class="pagination-link" aria-label="Probability Basics">
         <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Probability Basics</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
