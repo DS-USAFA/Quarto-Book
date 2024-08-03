@@ -253,7 +253,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Probability-Rules.html" class="sidebar-item-text sidebar-link">
+  <a href="./Probability-Basics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Probability Basics</span></span></a>
   </div>
 </li>
@@ -460,7 +460,6 @@ window.Quarto = {
   <li><a href="#binomial-distribution" id="toc-binomial-distribution" class="nav-link" data-scroll-target="#binomial-distribution"><span class="header-section-number">12.2.3</span> Binomial distribution</a></li>
   <li><a href="#software-functions" id="toc-software-functions" class="nav-link" data-scroll-target="#software-functions"><span class="header-section-number">12.2.4</span> Software Functions</a></li>
   <li><a href="#poisson-distribution" id="toc-poisson-distribution" class="nav-link" data-scroll-target="#poisson-distribution"><span class="header-section-number">12.2.5</span> Poisson distribution</a></li>
-  <li><a href="#hypergeometric" id="toc-hypergeometric" class="nav-link" data-scroll-target="#hypergeometric"><span class="header-section-number">12.2.6</span> Hypergeometric</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/DS-USAFA/Quarto-Book/edit/main/Named-Discrete-Distributions.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
@@ -490,7 +489,7 @@ window.Quarto = {
 <section id="objectives" class="level2" data-number="12.1">
 <h2 data-number="12.1" class="anchored" data-anchor-id="objectives"><span class="header-section-number">12.1</span> Objectives</h2>
 <ol type="1">
-<li><p>Differentiate between common discrete distributions (Uniform, Binomial, Poisson) by identifying their parameters, assumptions, and moments. Evaluate scenarios to determine the most appropriate distribution to model various types of data.</p></li>
+<li><p>Differentiate between common discrete distributions (Uniform, Binomial, and Poisson) by identifying their parameters, assumptions, and moments. Evaluate scenarios to determine the most appropriate distribution to model various types of data.</p></li>
 <li><p>Apply <code>R</code> to calculate probabilities and quantiles, and simulate random variables for common discrete distributions.</p></li>
 </ol>
 </section>
@@ -502,26 +501,21 @@ window.Quarto = {
 <p>The first distribution we will discuss is the discrete uniform distribution. It is not a very commonly used distribution, especially compared to its continuous counterpart. A discrete random variable has the discrete uniform distribution if probability is evenly allocated to each value in the sample space. A variable with this distribution has parameters <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> representing the minimum and maximum of the sample space, respectively. (By default, that sample space is assumed to consist of integers only, but that is by no means always the case.)</p>
 <blockquote class="blockquote">
 <p><em>Example</em>:<br>
-Rolling a fair die is an example of the discrete uniform. Each side of the die has an equal probability.</p>
+Rolling a fair six-sided die is an example of the discrete uniform. Each side of the die has an equal probability.</p>
 </blockquote>
 <p>Let <span class="math inline">\(X\)</span> be a discrete random variable with the uniform distribution. If the sample space is consecutive integers, this distribution is denoted as <span class="math inline">\(X\sim\textsf{DUnif}(a,b)\)</span>. The pmf of <span class="math inline">\(X\)</span> is given by: <span class="math display">\[
 f_X(x)=\left\{\begin{array}{ll}\frac{1}{b-a+1}, &amp; x \in \{a, a+1,...,b\} \\
 0, &amp; \mbox{otherwise} \end{array}\right.
 \]</span></p>
-<p>For the die:<br>
-<span class="math display">\[
-f_X(x)=\left\{\begin{array}{ll}\frac{1}{6-1+1} = \frac{1}{6}, &amp; x \in \{1, 2,...,6\} \\
-0, &amp; \mbox{otherwise} \end{array}\right.
-\]</span></p>
 <p>The expected value of <span class="math inline">\(X\)</span> is found by: <span class="math display">\[
-\mbox{E}(X)=\sum_{x=a}^b x\cdot\frac{1}{b-a+1}= \frac{1}{b-a+1} \cdot \sum_{x=a}^b x=\frac{1}{b-a+1}\cdot\frac{b-a+1}{2}\cdot (a+b) = \frac{a+b}{2}
+\mbox{E}(X)=\sum_{x=a}^b x\cdot\frac{1}{b-a+1}= \frac{1}{b-a+1} \cdot \sum_{x=a}^b x=\frac{1}{b-a+1}\cdot\frac{b-a+1}{2}\cdot (a+b) = \frac{a+b}{2},
 \]</span></p>
-<p>Where the sum of consecutive integers is a common result from discrete math, research it for more information.</p>
+<p>where the sum of consecutive integers is a common result from discrete math. Research on your own for more information.</p>
 <p>The variance of <span class="math inline">\(X\)</span> is found by: (derivation not included) <span class="math display">\[
 \mbox{Var}(X)=\mbox{E}[(X-\mbox{E}(X))^2]=\frac{(b-a+1)^2-1}{12}
 \]</span></p>
-<p>Summarizing for the die:</p>
-<p>Let <span class="math inline">\(X\)</span> be the result of a single roll of a fair die. We will report the distribution of <span class="math inline">\(X\)</span>, the pmf, <span class="math inline">\(\mbox{E}(X)\)</span> and <span class="math inline">\(\mbox{Var}(X)\)</span>.</p>
+<p>Let’s summarize the discrete uniform distribution for the die:</p>
+<p>Let <span class="math inline">\(X\)</span> be the result of a single roll of a fair six-sided die. We will report the distribution of <span class="math inline">\(X\)</span>, the pmf, <span class="math inline">\(\mbox{E}(X)\)</span> and <span class="math inline">\(\mbox{Var}(X)\)</span>.</p>
 <p>The sample space of <span class="math inline">\(X\)</span> is <span class="math inline">\(S_X=\{1,2,3,4,5,6\}\)</span>. Since each of those outcomes is equally likely, <span class="math inline">\(X\)</span> follows the discrete uniform distribution with <span class="math inline">\(a=1\)</span> and <span class="math inline">\(b=6\)</span>. Thus, <span class="math display">\[
 f_X(x)=\left\{\begin{array}{ll}\frac{1}{6}, &amp; x \in \{1,2,3,4,5,6\} \\
 0, &amp; \mbox{otherwise} \end{array}\right.
@@ -537,41 +531,43 @@ To simulate rolling a die 4 times, we use <code>sample()</code>.</p>
 </blockquote>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">61</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,<span class="dv">4</span>,<span class="at">replace=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4 2 2 1</code></pre>
 </div>
 </div>
-<p>Let’s roll it 10,000 times and find</p>
+<p>Let’s roll it 10,000 times and find the distribution and its moments.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>results<span class="ot">&lt;-</span><span class="fu">do</span>(<span class="dv">10000</span>)<span class="sc">*</span><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,<span class="dv">1</span>,<span class="at">replace=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">do</span>(<span class="dv">10000</span>)<span class="sc">*</span><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>The pmf can be found using <code>tally()</code>. We see that each outcome has approximately the same probability, near the true value of <span class="math inline">\(1/6\)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tally</span>(<span class="sc">~</span>sample,<span class="at">data=</span>results,<span class="at">format=</span><span class="st">"percent"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tally</span>(<span class="sc">~</span>sample, <span class="at">data =</span> results, <span class="at">format =</span> <span class="st">"percent"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>sample
     1     2     3     4     5     6 
 16.40 16.46 16.83 17.15 16.92 16.24 </code></pre>
 </div>
 </div>
+<p>We can find the moments by taking the mean and variance of the 10,000 simulations.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="sc">~</span>sample,<span class="at">data=</span>results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="sc">~</span>sample, <span class="at">data =</span> results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3.5045</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(<span class="sc">~</span>sample,<span class="at">data=</span>results)<span class="sc">*</span>(<span class="dv">10000-1</span>)<span class="sc">/</span><span class="dv">10000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(<span class="sc">~</span>sample, <span class="at">data =</span> results)<span class="sc">*</span>(<span class="dv">10000</span> <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">10000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.87598</code></pre>
 </div>
 </div>
-<p>Again as a reminder, we multiply by <span class="math inline">\(\frac{(10000-1)}{10000}\)</span> because the function <code>var()</code> is calculating a sample variance using <span class="math inline">\(n-1\)</span> in the denominator but we need the population variance.</p>
+<p>Notice we multiply by <span class="math inline">\(\frac{(10000-1)}{10000}\)</span> when finding the variance. This is because the function <code>var()</code> is calculating a sample variance using <span class="math inline">\(n-1\)</span> in the denominator but we need the population variance.</p>
 </section>
 <section id="binomial-distribution" class="level3" data-number="12.2.3">
 <h3 data-number="12.2.3" class="anchored" data-anchor-id="binomial-distribution"><span class="header-section-number">12.2.3</span> Binomial distribution</h3>
 <p>The binomial distribution is extremely common, and appears in many situations. In fact, we have already discussed several examples where the binomial distribution is heavily involved.</p>
-<p>Consider an experiment involving repeated <em>independent trials</em> of a binary process (two outcomes), where in each trial, there is a <em>constant probability</em> of “success” (one of the outcomes which is arbitrary). If the random variable <span class="math inline">\(X\)</span> represents the number of successes out of <span class="math inline">\(n\)</span> independent trials, then <span class="math inline">\(X\)</span> is said to follow the binomial distribution with parameters <span class="math inline">\(n\)</span> and <span class="math inline">\(p\)</span> (the probability of a success in each trial).</p>
+<p>Consider an experiment involving repeated <em>independent trials</em> of a binary process (two outcomes), where in each trial, there is a <em>constant probability</em> of “success” (one of the outcomes, which is arbitrary). If the random variable <span class="math inline">\(X\)</span> represents the number of successes out of <span class="math inline">\(n\)</span> independent trials, then <span class="math inline">\(X\)</span> is said to follow the binomial distribution with parameters <span class="math inline">\(n\)</span> (the number of trials) and <span class="math inline">\(p\)</span> (the probability of a success in each trial).</p>
 <p>The pmf of <span class="math inline">\(X\)</span> is given by: <span class="math display">\[
 f_X(x)=\mbox{P}(X=x)={n\choose{x}}p^x(1-p)^{n-x}
 \]</span></p>
@@ -590,7 +586,7 @@ f_X(x)=\mbox{P}(X=x)={20 \choose x}0.5^x (1-0.5)^{20-x}
 \mbox{P}(X=8)=f_X(8)={20\choose 8}0.5^8 (1-0.5)^{12}
 \]</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">choose</span>(<span class="dv">20</span>,<span class="dv">8</span>)<span class="sc">*</span><span class="fl">0.5</span><span class="sc">^</span><span class="dv">8</span><span class="sc">*</span>(<span class="dv">1</span><span class="fl">-0.5</span>)<span class="sc">^</span><span class="dv">12</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">choose</span>(<span class="dv">20</span>, <span class="dv">8</span>)<span class="sc">*</span><span class="fl">0.5</span><span class="sc">^</span><span class="dv">8</span><span class="sc">*</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.5</span>)<span class="sc">^</span><span class="dv">12</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1201344</code></pre>
 </div>
@@ -599,8 +595,8 @@ f_X(x)=\mbox{P}(X=x)={20 \choose x}0.5^x (1-0.5)^{20-x}
 \mbox{P}(X\leq 8)=\sum_{x=0}^8 {20\choose 8}0.5^x (1-0.5)^{20-x}
 \]</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="dv">0</span><span class="sc">:</span><span class="dv">8</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">choose</span>(<span class="dv">20</span>,x)<span class="sc">*</span><span class="fl">0.5</span><span class="sc">^</span>x<span class="sc">*</span>(<span class="dv">1</span><span class="fl">-.5</span>)<span class="sc">^</span>(<span class="dv">20</span><span class="sc">-</span>x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">8</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">choose</span>(<span class="dv">20</span>, x)<span class="sc">*</span><span class="fl">0.5</span><span class="sc">^</span>x<span class="sc">*</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.5</span>)<span class="sc">^</span>(<span class="dv">20</span> <span class="sc">-</span> x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2517223</code></pre>
 </div>
@@ -609,7 +605,7 @@ f_X(x)=\mbox{P}(X=x)={20 \choose x}0.5^x (1-0.5)^{20-x}
 <section id="software-functions" class="level3" data-number="12.2.4">
 <h3 data-number="12.2.4" class="anchored" data-anchor-id="software-functions"><span class="header-section-number">12.2.4</span> Software Functions</h3>
 <p>One of the advantages of using named distributions is that most software packages have built-in functions that compute probabilities and quantiles for common named distributions. Over the course of this chapter, you will notice that each named distribution is treated similarly in <code>R</code>. There are four main functions tied to each distribution. For the binomial distribution, these are <code>dbinom()</code>, <code>pbinom()</code>, <code>qbinom()</code>, and <code>rbinom()</code>.</p>
-<p><code>dbinom()</code>: This function is equivalent to the probability mass function. We use this to find <span class="math inline">\(\mbox{P}(X=x)\)</span> when <span class="math inline">\(X\sim \textsf{Binom}(n,p)\)</span>. This function takes three inputs: <code>x</code> (the value of the random variable), <code>size</code> (the number of trials, <span class="math inline">\(n\)</span>), and <code>prob</code> (the probability of success, <span class="math inline">\(p\)</span>). So, <span class="math display">\[
+<p><code>dbinom()</code>: This function is equivalent to the probability mass function for discrete random variables. We use this to find <span class="math inline">\(\mbox{P}(X=x)\)</span> when <span class="math inline">\(X\sim \textsf{Binom}(n,p)\)</span>. This function takes three inputs: <code>x</code> (the value of the random variable), <code>size</code> (the number of trials, <span class="math inline">\(n\)</span>), and <code>prob</code> (the probability of success, <span class="math inline">\(p\)</span>). So, <span class="math display">\[
 \mbox{P}(X=x)={n\choose{x}}p^x(1-p)^{n-x}=\textsf{dbinom(x,n,p)}
 \]</span></p>
 <p><code>pbinom()</code>: This function is equivalent to the cumulative distribution function. We use this to find <span class="math inline">\(\mbox{P}(X\leq x)\)</span> when <span class="math inline">\(X\sim \textsf{Binom}(n,p)\)</span>. This function takes the same inputs as <code>dbinom()</code> but returns the cumulative probability: <span class="math display">\[
@@ -617,16 +613,16 @@ f_X(x)=\mbox{P}(X=x)={20 \choose x}0.5^x (1-0.5)^{20-x}
 \]</span></p>
 <p><code>qbinom()</code>: This is the inverse of the cumulative distribution function and will return a percentile. This function has three inputs: <code>p</code> (a probability), <code>size</code> and <code>prob</code>. It returns the smallest value <span class="math inline">\(x\)</span> such that <span class="math inline">\(\mbox{P}(X\leq x) \geq p\)</span>.</p>
 <p><code>rbinom()</code>: This function is used to randomly generate values from the binomial distribution. It takes three inputs: <code>n</code> (the number of values to generate), <code>size</code> and <code>prob</code>. It returns a vector containing the randomly generated values.</p>
-<p>To learn more about these functions, type <code>?</code> followed the function in the console.</p>
+<p>To learn more about these functions, type <code>?</code> followed by the function name in the console or use the <code>help()</code> function.</p>
 <blockquote class="blockquote">
 <p><strong>Exercise</strong>:<br>
-Use the built-in functions for the binomial distribution to plot the pmf of <span class="math inline">\(X\)</span> from the previous example. Also, use the built-in functions to compute the probabilities from the example.</p>
+Use the built-in functions for the binomial distribution to plot the pmf of <span class="math inline">\(X\)</span> from the previous coin flip example. Also, use the built-in functions to compute the probabilities from the example.</p>
 </blockquote>
-<p><a href="#fig-binom" class="quarto-xref">Figure&nbsp;<span>12.1</span></a></p>
+<p><a href="#fig-binom" class="quarto-xref">Figure&nbsp;<span>12.1</span></a> displays the pmf of a binomial distribution, where <span class="math inline">\(X\)</span> is the number of heads out of 20 independent flips of a fair coin <span class="math inline">\((p=0.5)\)</span>. The <code>gf_dist()</code> function helps us plot distributions by specifying the distribution name (or an abbreviation of it) and its parameters.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_dist</span>(<span class="st">"binom"</span>,<span class="at">size=</span><span class="dv">20</span>,<span class="at">prob=</span>.<span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_dist</span>(<span class="st">"binom"</span>, <span class="at">size =</span> <span class="dv">20</span>, <span class="at">prob =</span> <span class="fl">0.5</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_bw</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">x=</span><span class="st">"X"</span>,<span class="at">y=</span><span class="st">"P(X=x)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">x =</span> <span class="st">"X"</span>, <span class="at">y =</span> <span class="st">"P(X = x)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-binom" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -640,19 +636,20 @@ Figure&nbsp;12.1: The pmf of a binomial random variable
 </div>
 </div>
 </div>
+<p>We use <code>dbinom()</code> to calculate probabilities of exact values such as <span class="math inline">\(P(X = 8)\)</span>. We use <code>pbinom()</code> to calculate cumulative probabilities such as <span class="math inline">\(P(X\leq 8)\)</span>. We can also find <span class="math inline">\(P(X\leq 8)\)</span> by using <code>dbinom()</code> to calculate <span class="math inline">\(P(X=0), P(X=1), ..., P(X=8)\)</span> and then sum them up.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="do">###P(X=8)</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">8</span>,<span class="dv">20</span>,<span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="do">###P(X = 8)</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">8</span>, <span class="dv">20</span>, <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1201344</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="do">###P(X&lt;=8)</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pbinom</span>(<span class="dv">8</span>,<span class="dv">20</span>,<span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="do">###P(X &lt;= 8)</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pbinom</span>(<span class="dv">8</span>, <span class="dv">20</span>, <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2517223</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="do">## or </span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">dbinom</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">8</span>,<span class="dv">20</span>,<span class="fl">0.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">dbinom</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">8</span>, <span class="dv">20</span>, <span class="fl">0.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2517223</code></pre>
 </div>
@@ -660,7 +657,7 @@ Figure&nbsp;12.1: The pmf of a binomial random variable
 </section>
 <section id="poisson-distribution" class="level3" data-number="12.2.5">
 <h3 data-number="12.2.5" class="anchored" data-anchor-id="poisson-distribution"><span class="header-section-number">12.2.5</span> Poisson distribution</h3>
-<p>The Poisson distribution is very common when considering count or arrival data. Consider a random process where events occur according to some rate over time (think arrivals to a retail register). Often, these events are modeled with the <em>Poisson process</em>. The Poisson process assumes a consistent rate of arrival and a memoryless arrival process (the time until the next arrival is independent of time since the last arrival). If we assume a particular process is a Poisson process, then there are two random variables that take common named distributions. The number of arrivals in a specified amount of time follows the <em>Poisson</em> distribution. Also, the amount of time until the next arrival follows the <em>exponential</em> distribution. We will defer discussion of the exponential distribution until the next chapter. What is random in the <em>Poisson</em> is the number of occurrences while the interval is fixed. That is why it is a discrete distribution. The parameter <span class="math inline">\(\lambda\)</span> is the average number of occurrences in the specific interval, note that the interval must be the same as is specified in the random variable.</p>
+<p>The Poisson distribution is very common when considering count or arrival data. Consider a random process where events occur according to some rate over time (think arrivals to a retail register). Often, these events are modeled with the <em>Poisson process</em>. The Poisson process assumes a consistent rate of arrival and a memoryless arrival process (the time until the next arrival is independent of time since the last arrival). If we assume a particular process is a Poisson process, then there are two random variables that take common named distributions. The number of arrivals in a specified amount of time follows the <em>Poisson</em> distribution. Also, the amount of time until the next arrival follows the <em>exponential</em> distribution. We will defer discussion of the exponential distribution until the next chapter. What is random in the <em>Poisson</em> is the number of occurrences while the interval is fixed. That is why it is a discrete distribution. The parameter <span class="math inline">\(\lambda\)</span> is the average number of occurrences in the specific interval. Note that the interval must be the same as is specified in the random variable.</p>
 <p>Let <span class="math inline">\(X\)</span> be the number of arrivals in a length of time, <span class="math inline">\(T\)</span>, where arrivals occur according to a Poisson process with an average of <span class="math inline">\(\lambda\)</span> arrivals in length of time <span class="math inline">\(T\)</span>. Then <span class="math inline">\(X\)</span> follows a Poisson distribution with parameter <span class="math inline">\(\lambda\)</span>: <span class="math display">\[
 X\sim \textsf{Poisson}(\lambda)
 \]</span></p>
@@ -672,70 +669,71 @@ f_X(x)=\mbox{P}(X=x)=\frac{\lambda^xe^{-\lambda}}{x!}, \hspace{0.5cm} x=0,1,2,..
 <p><em>Example</em>:<br>
 Suppose fleet vehicles arrive to a maintenance garage at an average rate of 0.4 per day. Let’s assume that these vehicles arrive according to a Poisson process. Let <span class="math inline">\(X\)</span> be the number of vehicles that arrive to the garage in a week (7 days). Notice that the time interval has changed! What is the random variable <span class="math inline">\(X\)</span>? What is the distribution (with parameter) of <span class="math inline">\(X\)</span>. What are <span class="math inline">\(\mbox{E}(X)\)</span> and <span class="math inline">\(\mbox{Var}(X)\)</span>? Find <span class="math inline">\(\mbox{P}(X=0)\)</span>, <span class="math inline">\(\mbox{P}(X\leq 6)\)</span>, <span class="math inline">\(\mbox{P}(X \geq 2)\)</span>, and <span class="math inline">\(\mbox{P}(2 \leq X \leq 8)\)</span>. Also, find the median of <span class="math inline">\(X\)</span>, and the 95th percentile of <span class="math inline">\(X\)</span> (the value of <span class="math inline">\(x\)</span> such that <span class="math inline">\(\mbox{P}(X\leq x)\geq 0.95\)</span>). Further, plot the pmf of <span class="math inline">\(X\)</span>.</p>
 </blockquote>
-<p>Since vehicles arrive according to a Poisson process, the probability question leads us to define the random variable <span class="math inline">\(X\)</span> as <em>The number of vehicles that arrive in a week</em>.</p>
+<p>Since vehicles arrive according to a Poisson process, the probability question leads us to define the random variable <span class="math inline">\(X\)</span> as <em>the number of vehicles that arrive in a week</em>.</p>
 <p>We know that <span class="math inline">\(X\sim \textsf{Poisson}(\lambda=0.4*7=2.8)\)</span>. Thus, <span class="math inline">\(\mbox{E}(X)=\mbox{Var}(X)=2.8\)</span>.</p>
-<p>The parameter is the average number of vehicles that arrive in a <strong>week</strong>.</p>
+<p>The parameter is the average number of vehicles that arrive in a <strong>week</strong>. Now, we can write the pmf of <span class="math inline">\(X\)</span> and calculate probabilities of interest:</p>
 <p><span class="math display">\[
 \mbox{P}(X=0)=\frac{2.8^0 e^{-2.8}}{0!}=e^{-2.8}=0.061
 \]</span></p>
-<p>Alternatively, we can use the built-in <code>R</code> functions for the Poisson distribution:</p>
+<p>Alternatively, we can use the built-in <code>R</code> functions for the Poisson distribution.</p>
+<p>Now, let’s calculate <span class="math inline">\(\mbox{P}(X=0)\)</span>, <span class="math inline">\(\mbox{P}(X\leq 6)\)</span>, <span class="math inline">\(\mbox{P}(X \geq 2)\)</span>, and <span class="math inline">\(\mbox{P}(2 \leq X \leq 8)\)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="do">##P(X=0)</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dpois</span>(<span class="dv">0</span>,<span class="fl">2.8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="do">##P(X = 0)</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dpois</span>(<span class="dv">0</span>, <span class="at">lambda =</span> <span class="fl">2.8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.06081006</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="do">##P(X&lt;=6)</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ppois</span>(<span class="dv">6</span>,<span class="fl">2.8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="do">##P(X &lt;= 6)</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ppois</span>(<span class="dv">6</span>, <span class="at">lambda =</span> <span class="fl">2.8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.9755894</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="do">## or</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">dpois</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">6</span>,<span class="fl">2.8</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">dpois</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">6</span>, <span class="fl">2.8</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.9755894</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="do">##P(X&gt;=2)=1-P(X&lt;2)=1-P(X&lt;=1)</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">ppois</span>(<span class="dv">1</span>,<span class="fl">2.8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="do">##P(X &gt;= 2) = 1 - P(X &lt; 2) = 1 - P(X &lt;= 1)</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">ppois</span>(<span class="dv">1</span>, <span class="fl">2.8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.7689218</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="do">## or</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">dpois</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">1000</span>,<span class="fl">2.8</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">dpois</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">1000</span>, <span class="fl">2.8</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.7689218</code></pre>
 </div>
 </div>
-<p>Note that when considering <span class="math inline">\(\mbox{P}(X\geq 2)\)</span>, we recognize that this is equivalent to <span class="math inline">\(1-\mbox{P}(X\leq 1)\)</span>. We can use <code>ppois()</code> to find this probability.</p>
+<p>Note that when considering <span class="math inline">\(\mbox{P}(X\geq 2)\)</span>, we recognize that this is equivalent to <span class="math inline">\(1-\mbox{P}(X\leq 1)\)</span>. We can use <code>ppois()</code> to find this probability or sum the probabilities for <span class="math inline">\(X\geq 2\)</span>.</p>
 <p>When considering <span class="math inline">\(\mbox{P}(2\leq X \leq 8)\)</span>, we need to make sure we formulate this correctly. Below are two possible methods:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="do">##P(2 &lt;= X &lt;= 8) = P(X &lt;= 8)-P(X &lt;= 1)</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ppois</span>(<span class="dv">8</span>,<span class="fl">2.8</span>)<span class="sc">-</span><span class="fu">ppois</span>(<span class="dv">1</span>,<span class="fl">2.8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="do">##P(2 &lt;= X &lt;= 8) = P(X &lt;= 8) - P(X &lt;= 1)</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ppois</span>(<span class="dv">8</span>, <span class="at">lambda =</span> <span class="fl">2.8</span>) <span class="sc">-</span> <span class="fu">ppois</span>(<span class="dv">1</span>, <span class="at">lambda =</span> <span class="fl">2.8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.766489</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="do">## or</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">dpois</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">8</span>,<span class="fl">2.8</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">dpois</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">8</span>, <span class="at">lambda =</span> <span class="fl">2.8</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.766489</code></pre>
 </div>
 </div>
-<p>To find the median and the 95th percentiles, we use <code>qpois</code>:</p>
+<p>The median is <span class="math inline">\(x\)</span> such that <span class="math inline">\(P(X\leq x)=0.5\)</span>. To find the median and the 95th percentiles, we use <code>qpois</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qpois</span>(<span class="fl">0.5</span>,<span class="fl">2.8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qpois</span>(<span class="fl">0.5</span>, <span class="at">lambda =</span> <span class="fl">2.8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qpois</span>(<span class="fl">0.95</span>,<span class="fl">2.8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qpois</span>(<span class="fl">0.95</span>, <span class="at">lambda =</span> <span class="fl">2.8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6</code></pre>
 </div>
 </div>
 <p><a href="#fig-pois" class="quarto-xref">Figure&nbsp;<span>12.2</span></a> is a plot of the pmf of a Poisson random variable.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_dist</span>(<span class="st">"pois"</span>,<span class="at">lambda=</span><span class="fl">2.8</span>) <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_dist</span>(<span class="st">"pois"</span>, <span class="at">lambda =</span> <span class="fl">2.8</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_bw</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">x=</span><span class="st">"X"</span>,<span class="at">y=</span><span class="st">"P(X=x)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">x =</span> <span class="st">"X"</span>, <span class="at">y =</span> <span class="st">"P(X = x)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-pois" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -749,73 +747,16 @@ Figure&nbsp;12.2: The pmf of a Poisson random variable.
 </div>
 </div>
 </div>
-<p><a href="#fig-pois2" class="quarto-xref">Figure&nbsp;<span>12.3</span></a> is the cdf of the same Poisson random variable in <a href="#fig-pois" class="quarto-xref">Figure&nbsp;<span>12.2</span></a>.</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_dist</span>(<span class="st">"pois"</span>,<span class="at">lambda=</span><span class="fl">2.8</span>,<span class="at">kind=</span><span class="st">"cdf"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_bw</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">x=</span><span class="st">"X"</span>,<span class="at">y=</span><span class="st">"P(X&lt;=x)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div id="fig-pois2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-pois2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Named-Discrete-Distributions_files/figure-html/fig-pois2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pois2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;12.3: The cdf of the Poisson random variable in <a href="#fig-pois" class="quarto-xref">Figure&nbsp;<span>12.2</span></a>
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="hypergeometric" class="level3" data-number="12.2.6">
-<h3 data-number="12.2.6" class="anchored" data-anchor-id="hypergeometric"><span class="header-section-number">12.2.6</span> Hypergeometric</h3>
-<p>Consider an experiment where <span class="math inline">\(k\)</span> objects are to be selected from a larger, but finite, group consisting of <span class="math inline">\(m\)</span> “successes” and <span class="math inline">\(n\)</span> “failures”. This is similar to the binomial process; after all, we are selecting successes and failures. However, in this case, the results are effectively selected <em>without replacement</em>. If the random variable <span class="math inline">\(X\)</span> represents the number of successes selected in our sample of size <span class="math inline">\(k\)</span>, then <span class="math inline">\(X\)</span> follows a hypergeometric distribution with parameters <span class="math inline">\(m\)</span>, <span class="math inline">\(n\)</span>, and <span class="math inline">\(k\)</span>. The pmf of <span class="math inline">\(X\)</span> is given by:</p>
-<p><span class="math display">\[
-f_X(x) = \frac{{m \choose{x}}{n \choose{k-x}}}{{m+n \choose{k}}}, \qquad x = 0,1,...,m
-\]</span></p>
-<p>Also, <span class="math inline">\(\mbox{E}(X)=\frac{km}{m+n}\)</span> and <span class="math inline">\(\mbox{Var}(X)=k\frac{m}{m+n}\frac{n}{m+n}\frac{m+n-k}{m+n-1}\)</span></p>
-<p>If you draw on your knowledge of combinations, you can see why this pmf makes sense.</p>
-<blockquote class="blockquote">
-<p><em>Example</em>:<br>
-Suppose a bag contains 12 red chips and 8 black chips. I reach in blindly and randomly select 6 chips. What is the probability I select no black chips? All black chips? Between 2 and 5 black chips?</p>
-</blockquote>
-<p>First we should identify a random variable that will help us with this problem. Let <span class="math inline">\(X\)</span> be the number of black chips selected when randomly selecting 6 from the bag. Then <span class="math inline">\(X\sim \textsf{HyperGeom}(8,12,6)\)</span>. We can use <code>R</code> to find these probabilities.</p>
-<p>First, the plot of the pmf of the hypergeometric is in #fig-hyper.</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_dist</span>(<span class="st">"hyper"</span>,<span class="at">m=</span><span class="dv">8</span>,<span class="at">n=</span><span class="dv">12</span>,<span class="at">k=</span><span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_bw</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">x=</span><span class="st">"X"</span>,<span class="at">y=</span><span class="st">"P(X=x)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div id="fig-hyper" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-hyper-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Named-Discrete-Distributions_files/figure-html/fig-hyper-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hyper-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;12.4: The pmf of a hypergeometric random variable.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
+<p>We can also simulated Poisson random variables from this distribution using the <code>rpois()</code> function. Suppose we want to simulate 5 random values from this Poisson distribution with a rate of <span class="math inline">\(\lambda = 2.8\)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="do">##P(X=0)</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dhyper</span>(<span class="dv">0</span>,<span class="dv">8</span>,<span class="dv">12</span>,<span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rpois</span>(<span class="dv">5</span>, <span class="at">lambda =</span> <span class="fl">2.8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.02383901</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="do">##P(X=6)</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dhyper</span>(<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">12</span>,<span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.0007223942</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="do">##P(2 &lt;= X &lt;=5)</span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">dhyper</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>,<span class="dv">8</span>,<span class="dv">12</span>,<span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.8119711</code></pre>
+<pre><code>[1] 2 2 3 5 1</code></pre>
 </div>
 </div>
+<p>Remember, <span class="math inline">\(X\)</span> is the number of vehicles that arrive to the maintenance garage in a week. These simulated values represent a week where two vehicles arrived, then another week where two vehicles arrived, followed by a week with three vehicles, then five, and then one vehicle.</p>
+<p>There are several other named discrete distributions such as the Bernoulli, geometric, hypergeometric and negative binomial distributions, but we leave those to interested learners.</p>
 
 
 </section>

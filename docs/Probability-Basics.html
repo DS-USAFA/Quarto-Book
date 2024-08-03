@@ -621,28 +621,50 @@ Consider rolling a six sided die. Let event <span class="math inline">\(A\)</spa
 \mbox{P}((A \cap B)')=\mbox{P}(A' \cup B')
 \]</span></li>
 </ol>
+<blockquote class="blockquote">
+<p><strong>Exercise:</strong> <em><br>
+</em>Let <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, and <span class="math inline">\(C\)</span> be events such that <span class="math inline">\(P(A)=0.5\)</span>, <span class="math inline">\(P(B)=0.3\)</span>, and <span class="math inline">\(P(C)=0.4\)</span>. Also, we know that <span class="math inline">\(P(A\cap B)=0.2\)</span>, <span class="math inline">\(P(B\cap C)=0.12\)</span>, <span class="math inline">\(P(A\cap C)=0.1\)</span>, and <span class="math inline">\(P(A\cap B\cap C)=0.05\)</span>. Find the following:</p>
+<ul>
+<li><p><span class="math inline">\(P(A\cup B)\)</span></p></li>
+<li><p><span class="math inline">\(P(A\cup B\cup C)\)</span></p></li>
+<li><p><span class="math inline">\(P(B'\cap C')\)</span></p></li>
+<li><p><span class="math inline">\(P(A\cup (B\cap C))\)</span></p></li>
+<li><p><span class="math inline">\(P((A\cup B\cup C)\cap (A\cap B\cap C)')\)</span></p></li>
+</ul>
+</blockquote>
+<p>It can be a good idea to draw a picture to work through exercises like these. <a href="#fig-prob-venn" class="quarto-xref">Figure&nbsp;<span>8.1</span></a> is an illustration of the above probability problem. Letters A, B, and C denote the corresponding events, represented by the entire circle in which they reside. The letter S represents the entire sample space. The numbers in the diagram represent the probability of each exclusive event. For example, the value 0.25 represents the probability of only event A (and no other events). Can you figure out where the other probability values come from?<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<div id="fig-prob-venn" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-prob-venn-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/prob_venn_diag.PNG" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-prob-venn-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8.1: Probability illustration.
+</figcaption>
+</figure>
+</div>
 </section>
 <section id="equally-likely-scenarios" class="level3" data-number="8.4.3">
 <h3 data-number="8.4.3" class="anchored" data-anchor-id="equally-likely-scenarios"><span class="header-section-number">8.4.3</span> Equally likely scenarios</h3>
 <p>In some random experiments, outcomes can be defined such that each individual outcome is equally likely. In this case, probability becomes a counting problem. Let <span class="math inline">\(A\)</span> be an event in an experiment where each outcome is equally likely. <span class="math display">\[
-\mbox{P}(A)=\frac{\mbox{\# of outcomes in A}}{\mbox{\# of outcomes in S}}
+\mbox{P}(A)=\frac{\mbox{# of outcomes in A}}{\mbox{# of outcomes in S}}
 \]</span></p>
 <blockquote class="blockquote">
 <p><em>Example</em>:<br>
-Suppose a family has three children, with each child being either a boy (B) or girl (G). Assume that the likelihood of boys and girls are equal and <strong>independent</strong>. This is the idea that the probability of the gender of the second child does not change based on the gender of the first child. The sample space can be written as: <span class="math display">\[
-S=\{\mbox{BBB},\mbox{BBG},\mbox{BGB},\mbox{BGG},\mbox{GBB},\mbox{GBG},\mbox{GGB},\mbox{GGG}\}
-\]</span> What is the probability that the family has exactly 2 girls?</p>
+Suppose a family has three children, with each child being either male (M) or female (F). Assume that the likelihood of males and females are equal and <strong>independent</strong>. This is the idea that the probability of the sex of the second child does not change based on the sex of the first child. The sample space can be written as: <span class="math display">\[
+S=\{\mbox{MMM},\mbox{MMF},\mbox{MFM},\mbox{FMM},\mbox{MFF},\mbox{FMF},\mbox{FFM},\mbox{FFF}\}
+\]</span> What is the probability that the family has exactly 2 female children?</p>
 </blockquote>
-<p>This only happens in three ways: BGG, GBG, and GGB. Thus, the probability of exactly 2 girls is 3/8 or 0.375.</p>
+<p>This only happens in three ways: MFF, FMF, and FFM. Thus, the probability of exactly 2 females is 3/8 or 0.375.</p>
 </section>
 <section id="simulation-with-r-equally-likely-scenarios" class="level3" data-number="8.4.4">
 <h3 data-number="8.4.4" class="anchored" data-anchor-id="simulation-with-r-equally-likely-scenarios"><span class="header-section-number">8.4.4</span> Simulation with <code>R</code> (Equally likely scenarios)</h3>
 <p>The previous example above is an example of an “Equally Likely” scenario, where the sample space of a random experiment contains a list of outcomes that are equally likely. In these cases, we can sometimes use <code>R</code> to list out the possible outcomes and count them to determine probability. We can also use <code>R</code> to simulate the scenario.</p>
 <blockquote class="blockquote">
 <p><em>Example</em>:<br>
-Use <code>R</code> to simulate the family of three children where each child has the same probability of being a boy or a girl.</p>
+Use <code>R</code> to simulate the family of three children where each child has the same probability of being male or female.</p>
 </blockquote>
-<p>Instead of writing our own function, we can use <code>rflip()</code> in the <strong>mosaic</strong> package. We will let <span class="math inline">\(H\)</span> stand for girl.</p>
+<p>Instead of writing our own function, we can use <code>rflip()</code> in the <strong>mosaic</strong> package. We will let <span class="math inline">\(H\)</span> stand for female.</p>
 <p>First simulate one family.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">73</span>)</span>
@@ -656,7 +678,7 @@ T T H
 Number of Heads: 1 [Proportion Heads: 0.333333333333333]</code></pre>
 </div>
 </div>
-<p>In this case we got 1 girl. Next we will use the <code>do()</code> function to repeat this simulation.</p>
+<p>In this case, we got 1 female. Next, we will use the <code>do()</code> function to repeat this simulation.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">do</span>(<span class="dv">10000</span>)<span class="sc">*</span><span class="fu">rflip</span>(<span class="dv">3</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -670,22 +692,22 @@ Number of Heads: 1 [Proportion Heads: 0.333333333333333]</code></pre>
 6 3     1     2 0.3333333</code></pre>
 </div>
 </div>
-<p>Next we can visualize the distribution of the number of girls, heads, in Figure @ref(fig:bar81-fig).</p>
+<p>Next, we can visualize the distribution of the number of females, heads, in Figure @ref(fig:bar81-fig).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>results <span class="sc">%&gt;%</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_bar</span>(<span class="sc">~</span>heads) <span class="sc">%&gt;%</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_bw</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">x =</span> <span class="st">"Number of girls"</span>, <span class="at">y =</span> <span class="st">"Count"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">x =</span> <span class="st">"Number of females"</span>, <span class="at">y =</span> <span class="st">"Count"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Probability-Basics_files/figure-html/bar81-fig-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Number of girls in a family of size 3.</figcaption>
+<figcaption>Number of females in a family of size 3.</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Finally we can estimate the probability of exactly 2 girls. We need the <strong>tidyverse</strong> library.</p>
+<p>Finally, we can estimate the probability of exactly 2 females. We need the <strong>tidyverse</strong> library.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -881,7 +903,7 @@ Use simulation to estimate the probability of a 10 or higher (10, jack, queen, k
 1 0.382</code></pre>
 </div>
 </div>
-<p>Notice that in the <code>mutate()</code> function, we are creating a new logical variable called <code>face</code>. This variable takes on the values of TRUE and FALSE. In the next line, we use a <code>summarize()</code> command with the function <code>mean()</code>. In <code>R</code>, a function that requires numeric input takes a logical variable and converts TRUE into 1 and FALSE into 0. Thus, the <code>mean()</code> will find the proportion of TRUE values and that is why we report it as a probability.</p>
+<p>Notice in the <code>mutate()</code> function we are creating a new logical variable called <code>face</code>. This variable takes on the values of TRUE and FALSE. In the next line, we use a <code>summarize()</code> command with the function <code>mean()</code>. In <code>R</code>, a function that requires numeric input takes a logical variable and converts TRUE into 1 and FALSE into 0. Thus, the <code>mean()</code> will find the proportion of TRUE values and that is why we report it as a probability.</p>
 <p>Next, let’s find a card that is 10 or greater <strong>and</strong> a club.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>Cards <span class="sc">%&gt;%</span></span>
@@ -903,6 +925,7 @@ Use simulation to estimate the probability of a 10 or higher (10, jack, queen, k
 <p><strong>Exercise</strong>:<br>
 Simulate drawing one card and estimate the probability of a club that is 10 or greater.</p>
 </blockquote>
+<p>We can again utilize the previously generated 10,000 samples.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>results <span class="sc">%&gt;%</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">face =</span> (rank <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="st">"J"</span>, <span class="st">"Q"</span>, <span class="st">"K"</span>, <span class="st">"A"</span>)) <span class="sc">&amp;</span> (suit <span class="sc">==</span> <span class="st">"Club"</span>))<span class="sc">%&gt;%</span></span>
@@ -926,14 +949,14 @@ Simulate drawing one card and estimate the probability of a club that is 10 or g
 <p>There are three types of counting problems we will consider. In each case, we are utilizing (and possibly augmenting) the multiplication rule. All that changes is whether an element is allowed to be reused (replacement), and whether the order of selection matters. This latter question is difficult. Each case will be demonstrated with an example.</p>
 <section id="rule-1-order-matters-sample-with-replacement" class="level3" data-number="8.5.1">
 <h3 data-number="8.5.1" class="anchored" data-anchor-id="rule-1-order-matters-sample-with-replacement"><span class="header-section-number">8.5.1</span> Rule 1: Order matters, sample with replacement</h3>
-<p>The <em>multiplication rule</em> is at the center of each of the three methods. In this first case, we are using the idea that order matters and items can be reused. Let’s use an example to help our understanding.</p>
+<p>The <em>multiplication rule</em> is at the center of each of the three methods In this first case, we are using the idea that order matters and items can be reused. This is the multiplication rule without any modifications. Let’s use an example to help our understanding.</p>
 <blockquote class="blockquote">
 <p><em>Example</em>:<br>
 A license plate consists of three numeric digits (0-9) followed by three single letters (A-Z). How many possible license plates exist?</p>
 </blockquote>
 <p>We can divide this problem into two sections. In the numeric section, we are selecting 3 objects from 10, <em>with replacement</em>. This means that a value can be used more than once. Clearly, <em>order matters</em> because a license plate starting with “432” is distinct from a license plate starting with “234”. There are <span class="math inline">\(10^3 = 1000\)</span> ways to select the first three digits; 10 for the first, 10 for the second, and 10 for the third.</p>
 <blockquote class="blockquote">
-<p><em>Question:</em> Why do we multiply and not add these probabilities?<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p><em>Question:</em> Why do we multiply and not add these probabilities?<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
 </blockquote>
 <p>In the alphabet section, we are selecting 3 objects from 26, where again order matters. Thus, there are <span class="math inline">\(26^3=17576\)</span> ways to select the last three letters of the plate. Combined, there are <span class="math inline">\(10^3 \times 26^3 = 17576000\)</span> ways to select license plates. Visually, <span class="math display">\[
 \underbrace{\underline{\quad 10 \quad }}_\text{number} \times \underbrace{\underline{\quad 10 \quad }}_\text{number} \times \underbrace{\underline{\quad 10 \quad }}_\text{number} \times \underbrace{\underline{\quad 26 \quad }}_\text{letter} \times \underbrace{\underline{\quad 26 \quad }}_\text{letter} \times \underbrace{\underline{\quad 26 \quad }}_\text{letter} = 17,576,000
@@ -959,7 +982,7 @@ What is the probability a license plate starts with the number “8” or “0�
 </section>
 <section id="rule-2-permutation-order-matters-sampling-without-replacement" class="level3" data-number="8.5.2">
 <h3 data-number="8.5.2" class="anchored" data-anchor-id="rule-2-permutation-order-matters-sampling-without-replacement"><span class="header-section-number">8.5.2</span> Rule 2 (Permutation): Order Matters, Sampling Without Replacement</h3>
-<p>Consider a random experiment where we sample from a group of size <span class="math inline">\(n\)</span>, <em>without replacement</em>, and the outcome of the experiment depends on the order of the outcomes so <em>order matters</em>. The number of ways to select <span class="math inline">\(k\)</span> objects is given by <span class="math inline">\(n(n-1)(n-2)...(n-k+1)\)</span>. This is known as a <strong>permutation</strong> and is sometimes written as <span class="math display">\[
+<p>Consider a random experiment where we sample from a group of size <span class="math inline">\(n\)</span>, without replacement, and the outcome of the experiment depends on the order of the outcomes so order matters. The number of ways to select <span class="math inline">\(k\)</span> objects is given by <span class="math inline">\(n(n-1)(n-2)...(n-k+1)\)</span>. This is known as a <strong>permutation</strong> and is sometimes written as <span class="math display">\[
 {}_nP_{k} = \frac{n!}{(n-k)!}
 \]</span></p>
 <p>Recall that <span class="math inline">\(n!\)</span> is read as “<span class="math inline">\(n\)</span> factorial” and represents the number of ways to arrange <span class="math inline">\(n\)</span> objects.</p>
@@ -967,10 +990,10 @@ What is the probability a license plate starts with the number “8” or “0�
 <p><em>Example</em>:<br>
 Twenty-five friends participate in a Halloween costume party. Three prizes are given during the party: most creative costume, scariest costume, and funniest costume. No one can win more than one prize. How many possible ways can the prizes by distributed?</p>
 </blockquote>
-<p>There are <span class="math inline">\(k=3\)</span> prizes to be assigned to <span class="math inline">\(n=25\)</span> people. Once someone is selected for a prize, they are removed from the pool of eligible prize winners. In other words, we are sampling without replacement. Also, order matters. For example, if Tom, Mike, and Jane win most creative, scariest and funniest costume, respectively, we have a different outcome than if Mike won creative, Jane won scariest and Tom won funniest. Thus, the number of ways the prizes can be distributed is given by <span class="math inline">\({}_{25}P_3 = \frac{25!}{22!} = 13,800\)</span>. A way to visualize this expression is shown as: <span class="math display">\[
+<p>There are <span class="math inline">\(k=3\)</span> prizes to be assigned to <span class="math inline">\(n=25\)</span> people. Once someone is selected for a prize, they are removed from the pool of eligible prize winners. In other words, we are sampling <em>without replacement</em>. Also, <em>order matters</em> because there are specific labels on the awards. For example, if Tom, Mike, and Jane win most creative, scariest and funniest costume, respectively, we have a different outcome than if Mike won creative, Jane won scariest and Tom won funniest costume. Thus, the number of ways the prizes can be distributed is given by <span class="math inline">\({}_{25}P_3 = \frac{25!}{22!} = 13,800\)</span>. A way to visualize this expression is shown as: <span class="math display">\[
 \underbrace{\underline{\quad 25 \quad }}_\text{most creative} \times \underbrace{\underline{\quad 24 \quad }}_\text{scariest} \times \underbrace{\underline{\quad 23 \quad }}_\text{funniest} = 13,800
 \]</span></p>
-<p>Notice that it is sometimes difficult to determine whether order matters in a problem, but in this example the name of the prize was a hint that order matters. This is usually the case when there is some type of label to be attributed to individuals.</p>
+<p>It is sometimes difficult to determine whether order matters in a problem, but in this example the named prizes were a hint that order matters. This is usually the case when there is some type of label to be attributed to individuals.</p>
 <p>Let’s use the idea of a permutation to calculate a probability.</p>
 <blockquote class="blockquote">
 <p><em>Exercise</em>:<br>
@@ -992,7 +1015,7 @@ Assume that all 25 participants are equally likely to win any one of the three p
 </section>
 <section id="rule-3-combination-order-does-not-matter-sampling-without-replacement" class="level3" data-number="8.5.3">
 <h3 data-number="8.5.3" class="anchored" data-anchor-id="rule-3-combination-order-does-not-matter-sampling-without-replacement"><span class="header-section-number">8.5.3</span> Rule 3 (Combination): Order Does Not Matter, Sampling Without Replacement</h3>
-<p>Consider a random experiment where we sample from a group of size <span class="math inline">\(n\)</span>, <em>without replacement</em>, and the outcome of the experiment does not depend on the order of the outcomes (i.e., <em>order does not matter</em>). The number of ways to select <span class="math inline">\(k\)</span> objects is given by <span class="math inline">\(\frac{n!} {(n-k)!k!}\)</span>. This is known as a combination and is written as: <span class="math display">\[
+<p>Consider a random experiment where we sample from a group of size <span class="math inline">\(n\)</span>, without replacement, and the outcome of the experiment does not depend on the order of the outcomes (i.e., order does not matter). The number of ways to select <span class="math inline">\(k\)</span> objects is given by <span class="math inline">\(\frac{n!} {(n-k)!k!}\)</span>. This is known as a combination and is written as: <span class="math display">\[
 \binom{n}{k} = \frac{n!}{(n-k)!k!}
 \]</span></p>
 <p>This is read as “<span class="math inline">\(n\)</span> choose <span class="math inline">\(k\)</span>”. Take a moment to compare combinations to permutations, discussed in Rule 2. The difference between these two rules is that in a combination, order no longer matters. A combination is equivalent to a permutation divided by <span class="math inline">\(k!\)</span>, the number of ways to arrange the <span class="math inline">\(k\)</span> objects selected.</p>
@@ -1000,7 +1023,7 @@ Assume that all 25 participants are equally likely to win any one of the three p
 <p><em>Example</em>:<br>
 Suppose we draw five cards out of a standard 52-card deck (no jokers). How many possible five card hands are there?</p>
 </blockquote>
-<p>In this example, order does not matter. I don’t care if I receive 3 jacks then 2 queens or 2 queens then 3 jacks. Either way, it’s the same collection of five cards in . Also, we are drawing without replacement. Once a card is selected, it cannot be selected again. Thus, the number of ways to select five cards is given by: <span class="math display">\[
+<p>In this example, <em>order does not matter</em>. I don’t care if I receive 3 jacks then 2 queens or 2 queens then 3 jacks. Either way, it’s the same collection of five cards in my hand. Also, we are drawing <em>without replacement</em>. Once a card is selected, it cannot be selected again. Thus, the number of ways to select five cards is given by: <span class="math display">\[
 \binom{52}{5} = \frac{52!}{(52-5)!5!} = 2,598,960
 \]</span></p>
 <blockquote class="blockquote">
@@ -1039,41 +1062,25 @@ When drawing five cards, what is the probability of drawing a “full house” (
 <pre><code>[1] 0.001440576</code></pre>
 </div>
 </div>
-<p>Why not use <span class="math inline">\(\binom{13}{2}\)</span> instead of <span class="math inline">\(\binom{13}{1}\binom{12}{1}\)</span>?<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<blockquote class="blockquote">
+<p><em>Question:<br>
+</em>Why can’t we use <span class="math inline">\(\binom{13}{2}\)</span> instead of <span class="math inline">\(\binom{13}{1}\binom{12}{1}\)</span>?<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+</blockquote>
 <p>We have just determined that a full house has a lower probability of occurring than a flush. This is why in gambling, a flush is valued less than a full house.</p>
 </section>
 <section id="summary-of-counting-rules" class="level3" data-number="8.5.4">
 <h3 data-number="8.5.4" class="anchored" data-anchor-id="summary-of-counting-rules"><span class="header-section-number">8.5.4</span> Summary of counting rules</h3>
-<p>It can be difficult to remember which counting rule to use in each situation. Remember to consider whether we are sampling with or without replacement, and whether order matters. The table below summarizes the three counting rules we discussed in this chapter.</p>
-<table class="caption-top table">
-<caption>Summary of the three counting rules covered in this course.</caption>
-<tbody>
-<tr class="odd">
-<td></td>
-<td></td>
-<td>Sampling with replacement</td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr class="odd">
-<td>Order Matters</td>
-<td>Yes</td>
-<td>Multiplication rule</td>
-<td>Permutation</td>
-</tr>
-<tr class="even">
-<td></td>
-<td>No</td>
-<td></td>
-<td>Combination</td>
-</tr>
-</tbody>
-</table>
+<p>It can be difficult to remember which counting rule to use in each situation. Remember to consider whether we are sampling with or without replacement, and whether order matters. <a href="#fig-count-table" class="quarto-xref">Figure&nbsp;<span>8.2</span></a> summarizes the three counting rules we discussed in this chapter.</p>
+<div id="fig-count-table" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-count-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/counting_rules_table.PNG" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-count-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8.2: Summary of three counting rules
+</figcaption>
+</figure>
+</div>
 
 
 </section>
@@ -1082,8 +1089,9 @@ When drawing five cards, what is the probability of drawing a “full house” (
 <hr>
 <ol>
 <li id="fn1"><p>We call events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> <em>mutually exclusive</em>. We’ll define this term a little later in the chapter.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>Multiplication is repeated addition, so in a sense we are adding. For this problem, every value for the first number has 10 possibilities for the second number, and for every value of the second number there are 10 possibilities for the third number. This is an “and” problem and requires multiplication.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>Because this implies the order selection of the ranks does not matter. In other words, this assumes that, for example, three Kings and two fours is the same full house as 3 fours and 2 Kings. This is not true so we break the rank selection about essentially making it a permutation.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>The easiest way to create this illustration is to start from the middle intersection piece. <span class="math inline">\(P(A\cap B\cap C)=0.05\)</span>, represented by the 0.05 at the center of the diagram. <span class="math inline">\(P(A\cap B)=0.2\)</span>, which leaves 0.15 for the rest of the <span class="math inline">\(A\cap B\)</span> piece of the diagram. Because <span class="math inline">\(P(A\cap C)=0.1\)</span>, the remaining piece of <span class="math inline">\(A\cap C\)</span> not yet accounted for is 0.05. Then the remaining piece of <span class="math inline">\(A\)</span> is 0.25. Thus, <span class="math inline">\(P(A)\)</span> can be found by summing all the pieces in the <span class="math inline">\(A\)</span> circle, which adds up to 0.5. Make sure you can track how the rest of the diagram is appropriately labeled.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Multiplication is repeated addition, so in a sense we are adding. For this problem, every value for the first number has 10 possibilities for the second number, and for every value of the second number there are 10 possibilities for the third number. This is an “and” problem and requires multiplication.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Because this implies the order selection of the ranks does not matter. In other words, this assumes that, for example, three Kings and two fours is the same full house as 3 fours and 2 Kings. This is not true so we break the rank selection about essentially making it a permutation.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
