@@ -217,3 +217,8 @@ Similarly, $$
 f_{Y|X=x}(y)=\frac{f_{X,Y}(x,y)}{f_X(x)}=\frac{xy}{\frac{x}{2}}=2y$$
 
 where $0 \leq y \leq 1$.
+
+> *Question: \
+> *Notice that $f_X(x) = f_{X|Y=y}(x)$ and $f_Y(y) = f_{Y|X=x}(y)$ in this example. This is not common and is important. What does this imply about $X$ and $Y$?[^multivariate-distributions-1]
+
+[^multivariate-distributions-1]: Since the conditional density function is always equal to the marginal, it means that $X$ and $Y$ are independent of one another. Also, if the conditioning variable does not appear in the conditional density function and the domain of the joint density is rectangular (i.e., the bounds of the two variables are constants), the random variables are independent.
