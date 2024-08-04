@@ -47,14 +47,14 @@ The most common uniform distribution is $U(0,1)$ which we have already used seve
 #| label: fig-uni
 #| echo: false
 #| fig-cap: "The pdf of Uniform random variable."
-gf_dist("unif",title="Pdf of Uniform random variable",ylab="f(x)") %>%
+gf_dist("unif", title = "Pdf of Uniform random variable", ylab = "f(x)") %>%
   gf_theme(theme_bw())
 ```
 
-To check that it is a proper pdf, all values must be non-negative and the total probability must be 1. In `R` the function for probability density will start with the letter **d** and have some short descriptor for the distribution. For the uniform we use `dunif()`.
+To check that it is a proper pdf, all values must be non-negative and the total probability must be 1. In `R` the function for probability density will start with the letter **d**, followed by some short descriptor for the distribution (e.g., "unif" or "norm"). For the uniform distribution, we use `dunif()`. We integrate the pdf from 0 to 1 and find that the area under the curve, the total probability, is one.
 
 ```{r}
-integrate(function(x)dunif(x),0,1)
+integrate(function(x) dunif(x), lower = 0, upper = 1)
 ```
 
 ### Exponential distribution
@@ -92,27 +92,27 @@ $$
 \lim_{a \to +\infty} -e^{-\frac{1}{3}y}\bigg|_5^a=\lim_{a \to +\infty} -e^{-\frac{a}{3}}-(-e^{-\frac{5}{3}})= 0 + 0.189 = 0.189
 $$
 
-Alternatively, we could use `R`:
+Alternatively, we could use `R`. We first use the `pexp()` function, which finds $P(Y\leq y)$. Since we want $P(Y > 5)$, we take the complement by subtracting from one.
 
 ```{r lesson11a}
-##Prob(Y>5)=1-Prob(Y<=5)
-1-pexp(5,1/3)
+##Prob(Y > 5) = 1 - Prob(Y <= 5)
+1 - pexp(5, rate = 1/3)
 ```
 
-Or using `integrate()`
+Or using `integrate()`, we integrate the pdf from 5 to infinity because, for the exponential distribution, $y > 0$.
 
 ```{r}
-integrate(function(x)1/3*exp(-1/3*x),5,Inf)
+integrate(function(x) 1/3*exp(-1/3*x), 5, Inf)
 ```
 
-For the remaining probabilities, we will use `R`:
+For the remaining probabilities, we will use the functions in `R`:
 
 ```{r}
-##Prob(Y<=3)
-pexp(3,1/3)
+##Prob(Y <= 3)
+pexp(3, rate = 1/3)
 
-##Prob(1<=Y<5)
-pexp(5,1/3)-pexp(1,1/3)
+##Prob(1 <= Y < 5)
+pexp(5, rate = 1/3)-pexp(1, rate = 1/3)
 
 ```
 
@@ -123,11 +123,11 @@ $$
 Alternatively, we can use `qexp` in `R`:
 
 ```{r lesson11c}
-##median
-qexp(0.5,1/3)
+## median
+qexp(0.5, rate = 1/3)
 
-##95th percentile
-qexp(0.95,1/3)
+## 95th percentile
+qexp(0.95, rate = 1/3)
 ```
 
 ```{r}
@@ -135,7 +135,7 @@ qexp(0.95,1/3)
 #| fig-align: "center"
 #| fig-cap: "The pdf of exponential random variable $Y$"
 #| echo: false
-gf_dist("exp") %>%
+gf_dist("exp", rate = 1/3) %>%
   gf_theme(theme_classic()) %>%
   gf_theme(theme_bw())
 ```
@@ -226,20 +226,28 @@ Note that this does not prove that $Z$ follows the standard normal distribution;
 To find probabilities and quantiles, integration will be difficult, so it's best to use the built-in `R` functions:
 
 ```{r lesson11h}
-## Prob(X<=160)
-pnorm(160,200,15)
+## Prob(X <= 160)
+pnorm(160, mean = 200, sd = 15)
 
 ##Prob(180 <= X < 230)
-pnorm(230,200,15)-pnorm(180,200,15)
+pnorm(230, mean = 200, sd = 15) - pnorm(180, mean = 200, sd = 15)
 
-##Prob(X>mu+sig)
-1-pnorm(215,200,15)
+##Prob(X > mu + sig)
+1 - pnorm(215, mean = 200, sd = 15)
 
 ## median
-qnorm(0.5,200,15)
+qnorm(0.5, mean = 200, sd = 15)
 
 ## 95th percentile
-qnorm(0.95,200,15)
+qnorm(0.95, mean = 200, sd = 15)
+```
+
+We can also use `rnorm()` to simulate observations from the normal distribution. Let's simulate 100 values from the normal distribution above. We'll view only the first few simulated values.
+
+```{r}
+set.seed(1)
+norm_vals <- rnorm(100, mean = 200, sd = 15)
+head(norm_vals)
 ```
 
 #### The Empirical Rule (68-95-99.7 Rule)
@@ -439,3 +447,17 @@ ggplot(df, aes(x = x, y = y)) +
 For our last question, @fig-cadetheight-outside shows the area of interest. We know from the empirical rule that 95% of female cadet heights fall between 59 and 71 inches. This means that 5% of cadet heights fall outside that range. Because the normal distribution is symmetric, 2.5% falls between 59 inches and 2.5% falls above 71 inches.
 
 While the 68-95-99.7 rule is a powerful tool for normal distributions, its applicability is limited to such distributions. Understanding the shape and properties of the data distribution is crucial before applying this rule or making inferences based on it.
+
+### Other named continuous distributions
+
+There are several other named continuous distributions such as:
+
+-   Gamma - models waiting times for multiple events
+
+-   Weibull - utilized for failure analysis in fields like reliability engineering
+
+-   Beta - used for modeling proportions and probabilities
+
+-   Log-normal - logarithm normally distributed; models quantities like biological measurements, income, and stock prices
+
+We will learn about some other named continuous distributions with specific types of hypothesis tests, but in general, we leave the details of additional continuous distributions to interested learners.
