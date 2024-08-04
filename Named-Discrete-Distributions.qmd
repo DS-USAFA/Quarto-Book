@@ -263,4 +263,18 @@ rpois(5, lambda = 2.8)
 
 Remember, $X$ is the number of vehicles that arrive to the maintenance garage in a week. These simulated values represent a week where two vehicles arrived, then another week where two vehicles arrived, followed by a week with three vehicles, then five, and then one vehicle.
 
-There are several other named discrete distributions such as the Bernoulli, geometric, hypergeometric and negative binomial distributions, but we leave those to interested learners.
+### Other named discrete distributions
+
+There are several other named discrete distributions such as:
+
+-   Bernoulli - utilized for single trial experiments with binary outcomes
+
+-   Geometric - models the number of trials until the first success (often used with reliability testing)
+
+-   Negative binomial - number of trials until a specified number of successes (models counts that occur in nature; used in epidemiology)
+
+-   Hypergeometric - used for finding the number of successes in draws without replacement (e.g., number of red chips from a bag of red and blue chips)
+
+-   Multinomial - similar to the binomial distribution, but allows for more than two outcomes (often used with Likert scale data or in polling)
+
+We leave the details of additional discrete distributions to interested learners.
