@@ -253,7 +253,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Probability-Rules.html" class="sidebar-item-text sidebar-link">
+  <a href="./Probability-Basics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Probability Basics</span></span></a>
   </div>
 </li>
@@ -690,9 +690,19 @@ f_{X|Y=y}(x)=\frac{f_{X,Y}(x,y)}{f_Y(y)}=\frac{xy}{2y}=\frac{x}{2}
 <p>Similarly, <span class="math display">\[
 f_{Y|X=x}(y)=\frac{f_{X,Y}(x,y)}{f_X(x)}=\frac{xy}{\frac{x}{2}}=2y\]</span></p>
 <p>where <span class="math inline">\(0 \leq y \leq 1\)</span>.</p>
+<blockquote class="blockquote">
+<p><em>Question:<br>
+</em>Notice that <span class="math inline">\(f_X(x) = f_{X|Y=y}(x)\)</span> and <span class="math inline">\(f_Y(y) = f_{Y|X=x}(y)\)</span> in this example. This is not common and is important. What does this imply about <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>?<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+</blockquote>
 
 
 </section>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Since the conditional density function is always equal to the marginal, it means that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent of one another. Also, if the conditioning variable does not appear in the conditional density function and the domain of the joint density is rectangular (i.e., the bounds of the two variables are constants), the random variables are independent.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->

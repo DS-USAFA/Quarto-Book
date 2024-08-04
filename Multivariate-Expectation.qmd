@@ -245,7 +245,7 @@ $$ $$
 =\frac{16}{16}-\frac{128}{81}+\frac{64}{81}=\frac{17}{81}
 $$
 
-Using `R`:
+Here's a better way using `R`:
 
 ```{r}
 fractions(adaptIntegrate(function(x){(x[1]*x[2]-8/9)^2*x[1]*x[2]},

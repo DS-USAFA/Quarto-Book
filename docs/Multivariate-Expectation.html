@@ -723,7 +723,7 @@ f_{X,Y}(x,y)=xy
 \]</span> <span class="math display">\[
 =\frac{16}{16}-\frac{128}{81}+\frac{64}{81}=\frac{17}{81}
 \]</span></p>
-<p>Using <code>R</code>:</p>
+<p>Here’s a better way using <code>R</code>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fractions</span>(<span class="fu">adaptIntegrate</span>(<span class="cf">function</span>(x){(x[<span class="dv">1</span>]<span class="sc">*</span>x[<span class="dv">2</span>]<span class="sc">-</span><span class="dv">8</span><span class="sc">/</span><span class="dv">9</span>)<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>x[<span class="dv">1</span>]<span class="sc">*</span>x[<span class="dv">2</span>]},</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">lowerLimit =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>),</span>
