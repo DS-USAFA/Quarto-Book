@@ -20,7 +20,7 @@ library(mosaic)
 
 ## Continuous random variables
 
-In the last chapter, we introduced random variables, and explored discrete random variables. In this chapter, we will move into continuous random variables, their properties, their distribution functions, and how they differ from discrete random variables.
+In the last chapter, we introduced random variables, and explored examples and behavior of discrete random variables. In this chapter, we will shift our focus to continuous random variables, their properties, their distribution functions, and how they differ from discrete random variables.
 
 Recall that a continuous random variable has a domain that is a continuous interval (or possibly a group of intervals). For example, let $Y$ be the random variable corresponding to the height of a randomly selected individual. While our measurement will necessitate "discretizing" height to some degree, technically, height is a continuous random variable since a person could measure 67.3 inches or 67.4 inches or anything in between.
 
@@ -32,7 +32,7 @@ Rather, we describe the randomness of continuous random variables with the *prob
 
 ### Probability density function
 
-Let $X$ be a continuous random variable. The probability density function (pdf) of $X$, given by $f_X(x)$ is a function that describes the behavior of $X$. It is important to note that in the continuous case, $f_X(x)\neq \mbox{P}(X=x)$, as the probability of $X$ taking any one individual value is 0.
+Let $X$ be a continuous random variable. The probability density function (pdf) of $X$, given by $f_X(x)$ is a function that describes the behavior of $X$. It is important to note that in the continuous case, $f_X(x)\neq \mbox{P}(X=x)$, because the probability of $X$ taking any one individual value is 0.
 
 The pdf is a *function*. The input of a pdf is any real number. The output is known as the density. The pdf has three main properties:
 
@@ -40,9 +40,9 @@ The pdf is a *function*. The input of a pdf is any real number. The output is kn
 
 2)  $\int_{S_X} f_X(x)\mbox{d}x = 1$
 
-3)  $\mbox{P}(X\in A)=\int_{x\in A} f_X(x)\mbox{d}x$ or another way to write this $\mbox{P}(a \leq X \leq b)=\int_{a}^{b} f_X(x)\mbox{d}x$
+3)  $\mbox{P}(X\in A)=\int_{x\in A} f_X(x)\mbox{d}x$, or another way to write this $\mbox{P}(a \leq X \leq b)=\int_{a}^{b} f_X(x)\mbox{d}x$
 
-Properties 2) and 3) imply that the area underneath a pdf represents probability. The pdf is a non-negative function, it cannot have negative values.
+Properties 2) and 3) imply that the area underneath a pdf represents probability. Property 1) says the pdf is a non-negative function, it cannot have negative values.
 
 ### Cumulative distribution function
 
@@ -53,27 +53,15 @@ $$
 > *Example*:\
 > Let $X$ be a continuous random variable with $f_X(x)=2x$ where $0 \leq x \leq 1$. Verify that $f$ is a valid pdf. Find the cdf of $X$. Also, find the following probabilities: $\mbox{P}(X<0.5)$, $\mbox{P}(X>0.5)$, and $\mbox{P}(0.1\leq X < 0.75)$. Finally, find the median of $X$.
 
-To verify that $f$ is a valid pdf, we simply note that $f_X(x) \geq 0$ on the range $0 \leq x \leq 1$. Also, we note that $\int_0^1 2x \mbox{d}x = x^2\bigg|_0^1 = 1$.
+To verify that $f$ is a valid pdf, we simply note that $f_X(x) \geq 0$ on the range $0 \leq x \leq 1$. Also, we note that $\int_0^1 2x \mbox{d}x = x^2\bigg|_0^1 = 1$. That is, the area under the pdf curve is one. We are essentially taking a sum over the sample space of $X$, but $X$ is a continuous random variable so we must integration to find the area under the curve.
 
 Using `R`, we find
 
 ```{r}
-integrate(function(x)2*x,0,1)
+integrate(function(x)2*x, 0, 1)
 ```
 
-Or we can use the **mosaicCalc** package to find the anti-derivative. If the package is not installed, you can use the `Packages` tab in `RStudio` or type `install.packages("mosaicCalc")` at the command prompt. Load the library.
-
-```{r warning=FALSE,message=FALSE}
-library(mosaicCalc)
-```
-
-```{r}
-(Fx<-antiD(2*x~x))
-```
-
-```{r}
-Fx(1)-Fx(0)
-```
+We can also use the **mosaicCalc** package to find the anti-derivative, but we leave that method to the interested learner. If the package is not installed, you can use the `Packages` tab in `RStudio` or type `install.packages("mosaicCalc")` at the command prompt. Then, load the library.
 
 Graphically, the pdf is displayed in @fig-plot111:
 
@@ -82,35 +70,12 @@ Graphically, the pdf is displayed in @fig-plot111:
 #| echo: false
 #| fig-align: "center"
 #| fig-cap: "pdf of $X$"
-curve(2*x,from=0,to=1,ylab="f(x)",main="pdf of X")
+curve(2*x, from = 0, to = 1, ylab = "f(x)", main = "pdf of X")
 ```
 
-\newpage
+Probabilities are found by integrating the pdf. The interested learner can also derive and use the cdf, but we continue to de-emphasize the cdf in this book.
 
-The cdf of $X$ is found by $$
-\int_0^x 2t \mbox{d}t = t^2\bigg|_0^x = x^2
-$$ This is `antiD` found from the calculations above.
-
-So, $$
-F_X(x)=\left\{ \begin{array}{ll} 0, & x<0 \\ x^2, & 0\leq x \leq 1 \\ 1, & x>1 \end{array}\right.
-$$
-
-The plot of the cdf of $X$ is shown in @fig-plot112.
-
-```{r}
-#| label: fig-plot112
-#| echo: false
-#| fig-cap: "CDF of $X$"
-#| fig-align: "center"
-x<-seq(-0.2,1.2,0.001)
-y<-pmin(x^2*(x>0),1)
-plot(x,y,type="l",ylab="F(x)",main="cdf of X")
-```
-
-Probabilities are found either by integrating the pdf or using the cdf:
-
-$\mbox{P}(X < 0.5)=\mbox{P}(X\leq 0.5)=F_X(0.5)=0.5^2=0.25$.\
-See @fig-plot113.
+We first want to find $P(X < 0.5)$. See @fig-plot113 for an illustration of the area under the curve, the probability of interest.
 
 ```{r}
 #| label: fig-plot113
@@ -123,8 +88,17 @@ plot(x,y,type="l",ylab="f(x)",main="P(X<0.5)")
 polygon(c(0,0.5,0.5),c(0,0,1),density=15,angle=135)
 ```
 
-$\mbox{P}(X > 0.5) = 1-\mbox{P}(X\leq 0.5)=1-0.25 = 0.75$.\
-See @fig-plot114.
+One way to find the probability is to integrate $f_X(x)$ from 0 to 0.5.
+
+$$\mbox{P}(X < 0.5)=\mbox{P}(X\leq 0.5) = \int_{0}^{0.5}2x = x^2\big|_{0}^{0.5} = 0.5^2 = 0.25$$
+
+Rather than performing this integral by hand, we can also use the `integrate()` function in `R`.
+
+```{r}
+integrate(function(x) 2*x, lower = 0, upper = 0.5)
+```
+
+Next, let's find $P(X > 0.5)$. See @fig-plot114 for an illustration of the region of interest. We can find this value using some algebra skills or using `integrate()`.
 
 ```{r}
 #| label: fig-plot114
@@ -137,22 +111,15 @@ plot(x,y,type="l",ylab="f(x)",main="P(X>0.5)")
 polygon(c(0.5,1,1,0.5),c(0,0,2,1),density=15,angle=135)
 ```
 
-$\mbox{P}(0.1\leq X < 0.75) = \int_{0.1}^{0.75}2x\mbox{d}x = 0.75^2 - 0.1^2 = 0.5525$.\
-See @fig-plot115.
+We can find the value mathematically: $\mbox{P}(X > 0.5) = 1-\mbox{P}(X\leq 0.5)=1-0.25 = 0.75$
+
+Or by using `R`:
 
 ```{r}
-integrate(function(x)2*x,.1,.75)
+integrate(function(x) 2*x, lower = 0.5, upper = 1)
 ```
 
-Alternatively, $\mbox{P}(0.1 \leq X < 0.75) = \mbox{P}(X < 0.75) -\mbox{P}(x \leq 0.1)$
-
-$= F(0.75)-F(0.1)=0.75^2-0.1^2 =0.5525$
-
-```{r}
-Fx(0.75)-Fx(0.1)
-```
-
-Notice for a continuous random variable, we are loose with the use of the `=` sign. This is because for a continuous random variable $\mbox{P}(X=x)=0$. Do not get sloppy when working with discrete random variables.
+Finally, let's find $\mbox{P}(0.1\leq X < 0.75)$. See @fig-plot115 for an illustration of this region under the curve.
 
 ```{r}
 #| label: fig-plot115
@@ -165,55 +132,88 @@ plot(x,y,type="l",ylab="f(x)",main="P(0.1 <= X < 0.75)")
 polygon(c(0.1,0.75,0.75,0.1),c(0,0,1.5,0.2),density=15,angle=135)
 ```
 
-The median of $X$ is the value $x$ such that $\mbox{P}(X\leq x)=0.5$, the area under a single point is 0. So we simply solve $x^2=0.5$ for $x$. Thus, the median of $X$ is $\sqrt{0.5}=0.707$.
+Again, we can find the value mathematically: $\mbox{P}(0.1\leq X < 0.75) = \int_{0.1}^{0.75}2x dx = 0.75^2 - 0.1^2 = 0.5525$
 
-Or using `R`
+Or by using `R`:
 
 ```{r}
-uniroot(function(x)(Fx(x)-.5),c(0,1))$root
+integrate(function(x) 2*x, lower = 0.1, upper = 0.75)
 ```
+
+::: callout-important
+### Follow the signs
+
+Notice for a continuous random variable, we are loose with the use of the `=` sign. This is because for a continuous random variable $\mbox{P}(X=x)=0$. Do not get sloppy when working with discrete random variables.
+:::
+
+The median of $X$ is the value $x$ such that $\mbox{P}(X\leq x)=0.5$. One way to find this is to set the cdf equal to the quantile of interest, 0.5.[^continuous-random-variables-1] But we don't need the cdf if we perform a simulation and then calculate the median; we'll do this next.
+
+[^continuous-random-variables-1]: We simply solve $x^2=0.5$ for $x$. Thus, the median of $X$ is $\sqrt{0.5}=0.707$.
+
+    We can also find this in `R` using the `uniroot()` function.
 
 ### Simulation
 
-As in the case of the discrete random variable, we can simulate a continuous random variable if we have an inverse for the cdf. The range of the cdf is $[0,1]$, so we generate a random number in this interval and then apply the inverse cdf to obtain a random variable. In a similar manner, for a continuous random variable, we use the following pseudo code:\
-1. Generate a random number in the interval $[0,1]$, $U$.\
-2. Find the random variable $X$ from $F_{X}^{-1}(U)$.\
-In `R` for our example, this looks like the following.
+Like with discrete random variables, we can get an estimate of the pdf via simulation. However, simulating continuous random variables take a little more work.
 
-```{r, echo=FALSE}
-set.seed(112)
-```
+Let's start by generating random samples from $X$. We can do this using a method called rejection sampling. Rejection sampling involves generating candidate points from a proposal distribution (usually a uniform distribution, with values between 0 and 1) and accepting them with a certain probability that ensures the desired distribution. To determine the probability of rejection, we essentially check whether a second random number $u$ is less than or equal to a specific function value. For example, if we want values where $y = 2x$, we'll check whether $u\leq 2x$. An alternative method for this simulation uses the inverse transform method, which requires deriving the cdf.[^continuous-random-variables-2] Because we have de-emphasized the cdf in this book, we'll focus on the rejection sampling method.
 
-```{r}
-sqrt(runif(1))
-```
+[^continuous-random-variables-2]: As in the case of the discrete random variable, we can simulate a continuous random variable if we have an inverse for the cdf. The range of the cdf is $[0,1]$, so we generate a random number in this interval and then apply the inverse cdf to obtain a random variable. In a similar manner, for a continuous random variable, we use the following pseudo code:
+
+    1.  Generate a random number in the interval $[0,1]$, $U$.
+
+    2.  Find the random variable $X$ from $F_{X}^{-1}(U)$.
 
 ```{r}
-results <- do(10000)*sqrt(runif(1))
+set.seed(1111)
+
+num_sim <- 10000
+
+# generate a large number of candidate points 
+#   and uniform random numbers for acceptance
+# generate more points than needed (10000*2) to ensure 
+#   enough accepted samples
+candidates <- runif(num_sim*5, 0, 1)
+u <- runif(num_sim*5, 0, 1)
+
+# create a tibble for candidates and acceptance probabilities
+df <- tibble(candidate = candidates, u = u)
+
+# filter out accepted samples based on the acceptance criterion
+accepted_samples <- df %>% 
+  filter(u <= 2*candidate) %>% 
+  slice_head(n = num_sim) %>%   # ensure exactly n samples 
+  pull(candidate)         # use only the accepted candidate values
+
+# Create a tibble for the accepted samples
+accepted <- tibble(X = accepted_samples)
 ```
 
-\pagebreak
-
-```{r warning=FALSE,message=FALSE}
-inspect(results)
-```
-
-\pagebreak
-
-@fig-plot116 is a density plot of the simulated density function.
+Now, we can plot the estimated pdf.
 
 ```{r}
-#| label: fig-plot116
-#| fig-cap: "Density plot of the simulated random variable."
-results %>%
-  gf_density(~sqrt,xlab="X") %>%
-  gf_theme(theme_bw()) %>%
-  gf_labs(x="X",y="")
+accepted %>% 
+  gf_density(~X, bins = 30)
+```
+
+Now we can calculate the probabilities of interest.
+
+```{r}
+accepted %>% 
+  summarize(Prob1 = count(X < 0.5) / 10000, 
+            Prob2 = count(X > 0.5) / 10000, 
+            Prob3 = count(X >= 0.1 & X < 0.75) / 10000)
+```
+
+The median of $X$ is easily found by calculating the median of our simulated values.
+
+```{r}
+median(~X, data = accepted)
 ```
 
 ## Moments
 
-As with discrete random variables, moments can be calculated to summarize characteristics such as center and spread. In the discrete case, expectation is found by multiplying each possible value by its associated probability and summing across the domain ($\mbox{E}(X)=\sum_x x\cdot f_X(x)$). In the continuous case, the domain of $X$ consists of an infinite set of values. From your calculus days, recall that the sum across an infinite domain is represented by an integral.
+As with discrete random variables, moments can be calculated to summarize characteristics such as center and spread. In the discrete case, expectation is found by multiplying each possible value by its associated probability and summing across the sample space of $X$ ($\mbox{E}(X)=\sum_x x\cdot f_X(x)$). In the continuous case, the sample space of $X$ consists of an infinite set of values. From your calculus days, recall that the sum across an infinite domain is represented by an integral.
 
 Let $g(X)$ be any function of $X$. The expectation of $g(X)$ is found by: $$
 \mbox{E}(g(X)) = \int_{S_X} g(x)f_X(x)\mbox{d}x
@@ -229,34 +229,29 @@ As in the discrete case, the variance of $X$ is the expected squared difference 
 \sigma^2_X = \mbox{Var}(X)=\mbox{E}[(X-\mu_X)^2]= \int_{S_X} (x-\mu_X)^2\cdot f_X(x) \mbox{d}x
 $$
 
-Recall homework problem 6 from the last chapter. In this problem, you showed that $\mbox{Var}(X)=\mbox{E}(X^2)-\mbox{E}(X)^2$. Thus, $$
+Recall from the last chapter that $\mbox{Var}(X)=\mbox{E}(X^2)-\mbox{E}(X)^2$. Thus, $$
 \mbox{Var}(X)=\mbox{E}(X^2)-\mbox{E}(X)^2 = \int_{S_X} x^2\cdot f_X(x)\mbox{d}x - \mu_X^2 
 $$
 
 > *Example*:\
 > Consider the random variable $X$ from above. Find the mean and variance of $X$. $$
-> \mu_X= \mbox{E}(X)=\int_0^1 x\cdot 2x\mbox{d}x = \frac{2x^3}{3}\bigg|_0^1 = \frac{2}{3}=0.667
+> \mu_X= \mbox{E}(X)=\int_0^1 x\cdot 2x\mbox{d}x = \frac{2x^3}{3}\bigg|_0^1 = \frac{2}{3}- 0 = 0.667
 > $$
 
-Side note: Since the mean of $X$ is smaller than the median of $X$, we say that $X$ is skewed to the left, or negatively skewed.
+Side note: Because the mean of $X$ is smaller than the median of $X$, we say that $X$ is skewed to the left, or negatively skewed.
 
-Using `R`.
-
-```{r}
-integrate(function(x)x*2*x,0,1)
-```
-
-Or using `antiD()`
+Using `R`, we can use `integrate()`:
 
 ```{r}
-Ex<-antiD(2*x^2~x)
-Ex(1)-Ex(0)
+integrate(function(x)x*2*x, 0, 1)
 ```
 
 Using our simulation.
 
 ```{r}
-mean(~sqrt,data=results)
+#| message: false
+#| warning: false 
+mean(~X, data = accepted)
 ```
 
 $$
@@ -269,11 +264,6 @@ integrate(function(x)x^2*2*x,0,1)$value-(2/3)^2
 ```
 
 or
-
-```{r}
-Vx<-antiD(x^2*2*x~x)
-Vx(1)-Vx(0)-(2/3)^2
-```
 
 ```{r}
 var(~sqrt,data=results)*9999/10000
