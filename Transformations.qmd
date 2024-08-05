@@ -98,12 +98,13 @@ set.seed(1107)
 
 num_sim <- 10000
 
-# generate a large number of candidate points 
-#   and uniform random numbers for acceptance
+# select a candidate value between 0 and 1 for x
+# then, select another value from 0 to the max of the pdf
+#   This is our acceptance value
 # generate more points than needed (10000*2) to ensure 
 #   enough accepted samples
 candidates <- runif(num_sim*2, 0, 1)
-u <- runif(num_sim*2, 0, 1)
+u <- runif(num_sim*2, 0, 2)
 
 # create a tibble for candidates and acceptance probabilities
 df <- tibble(candidate = candidates, u = u)

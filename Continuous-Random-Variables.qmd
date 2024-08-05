@@ -165,16 +165,17 @@ Let's start by generating random samples from $X$. We can do this using a method
     2.  Find the random variable $X$ from $F_{X}^{-1}(U)$.
 
 ```{r}
-set.seed(1111)
+set.seed(809)
 
 num_sim <- 10000
 
-# generate a large number of candidate points 
-#   and uniform random numbers for acceptance
+# select a candidate value between 0 and 1 for x
+# then, select another value from 0 to the max of the pdf
+#   This is our acceptance value
 # generate more points than needed (10000*2) to ensure 
 #   enough accepted samples
-candidates <- runif(num_sim*5, 0, 1)
-u <- runif(num_sim*5, 0, 1)
+candidates <- runif(num_sim*2)
+u <- runif(num_sim*2, max = 2)
 
 # create a tibble for candidates and acceptance probabilities
 df <- tibble(candidate = candidates, u = u)
@@ -193,7 +194,8 @@ Now, we can plot the estimated pdf.
 
 ```{r}
 accepted %>% 
-  gf_density(~X, bins = 30)
+  gf_density(~X) %>% 
+  gf_theme(theme_classic())
 ```
 
 Now we can calculate the probabilities of interest.
@@ -205,11 +207,27 @@ accepted %>%
             Prob3 = count(X >= 0.1 & X < 0.75) / 10000)
 ```
 
+The first probability is $P(X < 0.5)$, the second is $P(X > 0.5)$, and the third is $P(0.1\leq X < 0.75)$. All three simulated probabilities are very close to those found mathematically or with integration in `R` previously.
+
 The median of $X$ is easily found by calculating the median of our simulated values.
 
 ```{r}
 median(~X, data = accepted)
 ```
+
+This is also very close to the value of 0.707 that can be found mathematically.[^continuous-random-variables-3]
+
+[^continuous-random-variables-3]: The median of $X$ is the value $x$ such that $P(X\leq x) = 0.5$.
+
+    $$
+    \int_0^t 2xdx = 0.5
+    $$
+
+    $$
+    x^2 \big|_0^t = 0.5
+    $$
+
+    So, we simply solve $t^2 = 0.5$ for $t$ and find the median of is $\sqrt{0.5} = 0.707$.
 
 ## Moments
 
