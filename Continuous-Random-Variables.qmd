@@ -266,7 +266,7 @@ integrate(function(x)x^2*2*x,0,1)$value-(2/3)^2
 or
 
 ```{r}
-var(~sqrt,data=results)*9999/10000
+var(~X, data = accepted)*9999/10000
 ```
 
 And finally, the standard deviation of $X$ is $\sigma_X = \sqrt{\sigma^2_X}=\sqrt{1/18}=0.236$.

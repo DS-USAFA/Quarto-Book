@@ -266,7 +266,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Discrete-Random-Variables.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Random Variables</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Discrete Random Variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -499,7 +499,7 @@ window.Quarto = {
 </section>
 <section id="continuous-random-variables" class="level2" data-number="11.2">
 <h2 data-number="11.2" class="anchored" data-anchor-id="continuous-random-variables"><span class="header-section-number">11.2</span> Continuous random variables</h2>
-<p>In the last chapter, we introduced random variables, and explored discrete random variables. In this chapter, we will move into continuous random variables, their properties, their distribution functions, and how they differ from discrete random variables.</p>
+<p>In the last chapter, we introduced random variables, and explored examples and behavior of discrete random variables. In this chapter, we will shift our focus to continuous random variables, their properties, their distribution functions, and how they differ from discrete random variables.</p>
 <p>Recall that a continuous random variable has a domain that is a continuous interval (or possibly a group of intervals). For example, let <span class="math inline">\(Y\)</span> be the random variable corresponding to the height of a randomly selected individual. While our measurement will necessitate “discretizing” height to some degree, technically, height is a continuous random variable since a person could measure 67.3 inches or 67.4 inches or anything in between.</p>
 <section id="continuous-distribution-functions" class="level3" data-number="11.2.1">
 <h3 data-number="11.2.1" class="anchored" data-anchor-id="continuous-distribution-functions"><span class="header-section-number">11.2.1</span> Continuous distribution functions</h3>
@@ -508,14 +508,14 @@ window.Quarto = {
 </section>
 <section id="probability-density-function" class="level3" data-number="11.2.2">
 <h3 data-number="11.2.2" class="anchored" data-anchor-id="probability-density-function"><span class="header-section-number">11.2.2</span> Probability density function</h3>
-<p>Let <span class="math inline">\(X\)</span> be a continuous random variable. The probability density function (pdf) of <span class="math inline">\(X\)</span>, given by <span class="math inline">\(f_X(x)\)</span> is a function that describes the behavior of <span class="math inline">\(X\)</span>. It is important to note that in the continuous case, <span class="math inline">\(f_X(x)\neq \mbox{P}(X=x)\)</span>, as the probability of <span class="math inline">\(X\)</span> taking any one individual value is 0.</p>
+<p>Let <span class="math inline">\(X\)</span> be a continuous random variable. The probability density function (pdf) of <span class="math inline">\(X\)</span>, given by <span class="math inline">\(f_X(x)\)</span> is a function that describes the behavior of <span class="math inline">\(X\)</span>. It is important to note that in the continuous case, <span class="math inline">\(f_X(x)\neq \mbox{P}(X=x)\)</span>, because the probability of <span class="math inline">\(X\)</span> taking any one individual value is 0.</p>
 <p>The pdf is a <em>function</em>. The input of a pdf is any real number. The output is known as the density. The pdf has three main properties:</p>
 <ol type="1">
 <li><p><span class="math inline">\(f_X(x)\geq 0\)</span></p></li>
 <li><p><span class="math inline">\(\int_{S_X} f_X(x)\mbox{d}x = 1\)</span></p></li>
-<li><p><span class="math inline">\(\mbox{P}(X\in A)=\int_{x\in A} f_X(x)\mbox{d}x\)</span> or another way to write this <span class="math inline">\(\mbox{P}(a \leq X \leq b)=\int_{a}^{b} f_X(x)\mbox{d}x\)</span></p></li>
+<li><p><span class="math inline">\(\mbox{P}(X\in A)=\int_{x\in A} f_X(x)\mbox{d}x\)</span>, or another way to write this <span class="math inline">\(\mbox{P}(a \leq X \leq b)=\int_{a}^{b} f_X(x)\mbox{d}x\)</span></p></li>
 </ol>
-<p>Properties 2) and 3) imply that the area underneath a pdf represents probability. The pdf is a non-negative function, it cannot have negative values.</p>
+<p>Properties 2) and 3) imply that the area underneath a pdf represents probability. Property 1) says the pdf is a non-negative function, it cannot have negative values.</p>
 </section>
 <section id="cumulative-distribution-function" class="level3" data-number="11.2.3">
 <h3 data-number="11.2.3" class="anchored" data-anchor-id="cumulative-distribution-function"><span class="header-section-number">11.2.3</span> Cumulative distribution function</h3>
@@ -526,31 +526,15 @@ F_X(x)=\mbox{P}(X\leq x)=\int_{-\infty}^x f_x(t) \mbox{d}t
 <p><em>Example</em>:<br>
 Let <span class="math inline">\(X\)</span> be a continuous random variable with <span class="math inline">\(f_X(x)=2x\)</span> where <span class="math inline">\(0 \leq x \leq 1\)</span>. Verify that <span class="math inline">\(f\)</span> is a valid pdf. Find the cdf of <span class="math inline">\(X\)</span>. Also, find the following probabilities: <span class="math inline">\(\mbox{P}(X&lt;0.5)\)</span>, <span class="math inline">\(\mbox{P}(X&gt;0.5)\)</span>, and <span class="math inline">\(\mbox{P}(0.1\leq X &lt; 0.75)\)</span>. Finally, find the median of <span class="math inline">\(X\)</span>.</p>
 </blockquote>
-<p>To verify that <span class="math inline">\(f\)</span> is a valid pdf, we simply note that <span class="math inline">\(f_X(x) \geq 0\)</span> on the range <span class="math inline">\(0 \leq x \leq 1\)</span>. Also, we note that <span class="math inline">\(\int_0^1 2x \mbox{d}x = x^2\bigg|_0^1 = 1\)</span>.</p>
+<p>To verify that <span class="math inline">\(f\)</span> is a valid pdf, we simply note that <span class="math inline">\(f_X(x) \geq 0\)</span> on the range <span class="math inline">\(0 \leq x \leq 1\)</span>. Also, we note that <span class="math inline">\(\int_0^1 2x \mbox{d}x = x^2\bigg|_0^1 = 1\)</span>. That is, the area under the pdf curve is one. We are essentially taking a sum over the sample space of <span class="math inline">\(X\)</span>, but <span class="math inline">\(X\)</span> is a continuous random variable so we must integration to find the area under the curve.</p>
 <p>Using <code>R</code>, we find</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="cf">function</span>(x)<span class="dv">2</span><span class="sc">*</span>x,<span class="dv">0</span>,<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="cf">function</span>(x)<span class="dv">2</span><span class="sc">*</span>x, <span class="dv">0</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>1 with absolute error &lt; 1.1e-14</code></pre>
 </div>
 </div>
-<p>Or we can use the <strong>mosaicCalc</strong> package to find the anti-derivative. If the package is not installed, you can use the <code>Packages</code> tab in <code>RStudio</code> or type <code>install.packages("mosaicCalc")</code> at the command prompt. Load the library.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaicCalc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(Fx<span class="ot">&lt;-</span><span class="fu">antiD</span>(<span class="dv">2</span><span class="sc">*</span>x<span class="sc">~</span>x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>function (x, C = 0) 
-x^2 + C</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Fx</span>(<span class="dv">1</span>)<span class="sc">-</span><span class="fu">Fx</span>(<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1</code></pre>
-</div>
-</div>
+<p>We can also use the <strong>mosaicCalc</strong> package to find the anti-derivative, but we leave that method to the interested learner. If the package is not installed, you can use the <code>Packages</code> tab in <code>RStudio</code> or type <code>install.packages("mosaicCalc")</code> at the command prompt. Then, load the library.</p>
 <p>Graphically, the pdf is displayed in <a href="#fig-plot111" class="quarto-xref">Figure&nbsp;<span>11.1</span></a>:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -566,31 +550,8 @@ Figure&nbsp;11.1: pdf of <span class="math inline">\(X\)</span>
 </div>
 </div>
 </div>
-<div style="page-break-after: always;"></div>
-<p>The cdf of <span class="math inline">\(X\)</span> is found by <span class="math display">\[
-\int_0^x 2t \mbox{d}t = t^2\bigg|_0^x = x^2
-\]</span> This is <code>antiD</code> found from the calculations above.</p>
-<p>So, <span class="math display">\[
-F_X(x)=\left\{ \begin{array}{ll} 0, &amp; x&lt;0 \\ x^2, &amp; 0\leq x \leq 1 \\ 1, &amp; x&gt;1 \end{array}\right.
-\]</span></p>
-<p>The plot of the cdf of <span class="math inline">\(X\)</span> is shown in <a href="#fig-plot112" class="quarto-xref">Figure&nbsp;<span>11.2</span></a>.</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div id="fig-plot112" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-plot112-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Continuous-Random-Variables_files/figure-html/fig-plot112-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-plot112-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;11.2: CDF of <span class="math inline">\(X\)</span>
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>Probabilities are found either by integrating the pdf or using the cdf:</p>
-<p><span class="math inline">\(\mbox{P}(X &lt; 0.5)=\mbox{P}(X\leq 0.5)=F_X(0.5)=0.5^2=0.25\)</span>.<br>
-See <a href="#fig-plot113" class="quarto-xref">Figure&nbsp;<span>11.3</span></a>.</p>
+<p>Probabilities are found by integrating the pdf. The interested learner can also derive and use the cdf, but we continue to de-emphasize the cdf in this book.</p>
+<p>We first want to find <span class="math inline">\(P(X &lt; 0.5)\)</span>. See <a href="#fig-plot113" class="quarto-xref">Figure&nbsp;<span>11.2</span></a> for an illustration of the area under the curve, the probability of interest.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-plot113" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -599,14 +560,22 @@ See <a href="#fig-plot113" class="quarto-xref">Figure&nbsp;<span>11.3</span></a>
 <img src="Continuous-Random-Variables_files/figure-html/fig-plot113-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-plot113-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;11.3: Probability represented by shaded area
+Figure&nbsp;11.2: Probability represented by shaded area
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><span class="math inline">\(\mbox{P}(X &gt; 0.5) = 1-\mbox{P}(X\leq 0.5)=1-0.25 = 0.75\)</span>.<br>
-See <a href="#fig-plot114" class="quarto-xref">Figure&nbsp;<span>11.4</span></a>.</p>
+<p>One way to find the probability is to integrate <span class="math inline">\(f_X(x)\)</span> from 0 to 0.5.</p>
+<p><span class="math display">\[\mbox{P}(X &lt; 0.5)=\mbox{P}(X\leq 0.5) = \int_{0}^{0.5}2x = x^2\big|_{0}^{0.5} = 0.5^2 = 0.25\]</span></p>
+<p>Rather than performing this integral by hand, we can also use the <code>integrate()</code> function in <code>R</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="cf">function</span>(x) <span class="dv">2</span><span class="sc">*</span>x, <span class="at">lower =</span> <span class="dv">0</span>, <span class="at">upper =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.25 with absolute error &lt; 2.8e-15</code></pre>
+</div>
+</div>
+<p>Next, let’s find <span class="math inline">\(P(X &gt; 0.5)\)</span>. See <a href="#fig-plot114" class="quarto-xref">Figure&nbsp;<span>11.3</span></a> for an illustration of the region of interest. We can find this value using some algebra skills or using <code>integrate()</code>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-plot114" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -615,29 +584,21 @@ See <a href="#fig-plot114" class="quarto-xref">Figure&nbsp;<span>11.4</span></a>
 <img src="Continuous-Random-Variables_files/figure-html/fig-plot114-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-plot114-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;11.4: Probability represented by shaded area
+Figure&nbsp;11.3: Probability represented by shaded area
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><span class="math inline">\(\mbox{P}(0.1\leq X &lt; 0.75) = \int_{0.1}^{0.75}2x\mbox{d}x = 0.75^2 - 0.1^2 = 0.5525\)</span>.<br>
-See <a href="#fig-plot115" class="quarto-xref">Figure&nbsp;<span>11.5</span></a>.</p>
+<p>We can find the value mathematically: <span class="math inline">\(\mbox{P}(X &gt; 0.5) = 1-\mbox{P}(X\leq 0.5)=1-0.25 = 0.75\)</span></p>
+<p>Or by using <code>R</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="cf">function</span>(x)<span class="dv">2</span><span class="sc">*</span>x,.<span class="dv">1</span>,.<span class="dv">75</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="cf">function</span>(x) <span class="dv">2</span><span class="sc">*</span>x, <span class="at">lower =</span> <span class="fl">0.5</span>, <span class="at">upper =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.5525 with absolute error &lt; 6.1e-15</code></pre>
+<pre><code>0.75 with absolute error &lt; 8.3e-15</code></pre>
 </div>
 </div>
-<p>Alternatively, <span class="math inline">\(\mbox{P}(0.1 \leq X &lt; 0.75) = \mbox{P}(X &lt; 0.75) -\mbox{P}(x \leq 0.1)\)</span></p>
-<p><span class="math inline">\(= F(0.75)-F(0.1)=0.75^2-0.1^2 =0.5525\)</span></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Fx</span>(<span class="fl">0.75</span>)<span class="sc">-</span><span class="fu">Fx</span>(<span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.5525</code></pre>
-</div>
-</div>
-<p>Notice for a continuous random variable, we are loose with the use of the <code>=</code> sign. This is because for a continuous random variable <span class="math inline">\(\mbox{P}(X=x)=0\)</span>. Do not get sloppy when working with discrete random variables.</p>
+<p>Finally, let’s find <span class="math inline">\(\mbox{P}(0.1\leq X &lt; 0.75)\)</span>. See <a href="#fig-plot115" class="quarto-xref">Figure&nbsp;<span>11.4</span></a> for an illustration of this region under the curve.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-plot115" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -646,73 +607,100 @@ See <a href="#fig-plot115" class="quarto-xref">Figure&nbsp;<span>11.5</span></a>
 <img src="Continuous-Random-Variables_files/figure-html/fig-plot115-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-plot115-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;11.5: Probability represented by shaded area
+Figure&nbsp;11.4: Probability represented by shaded area
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>The median of <span class="math inline">\(X\)</span> is the value <span class="math inline">\(x\)</span> such that <span class="math inline">\(\mbox{P}(X\leq x)=0.5\)</span>, the area under a single point is 0. So we simply solve <span class="math inline">\(x^2=0.5\)</span> for <span class="math inline">\(x\)</span>. Thus, the median of <span class="math inline">\(X\)</span> is <span class="math inline">\(\sqrt{0.5}=0.707\)</span>.</p>
-<p>Or using <code>R</code></p>
+<p>Again, we can find the value mathematically: <span class="math inline">\(\mbox{P}(0.1\leq X &lt; 0.75) = \int_{0.1}^{0.75}2x dx = 0.75^2 - 0.1^2 = 0.5525\)</span></p>
+<p>Or by using <code>R</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">uniroot</span>(<span class="cf">function</span>(x)(<span class="fu">Fx</span>(x)<span class="sc">-</span>.<span class="dv">5</span>),<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>))<span class="sc">$</span>root</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="cf">function</span>(x) <span class="dv">2</span><span class="sc">*</span>x, <span class="at">lower =</span> <span class="fl">0.1</span>, <span class="at">upper =</span> <span class="fl">0.75</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.7071067</code></pre>
+<pre><code>0.5525 with absolute error &lt; 6.1e-15</code></pre>
 </div>
 </div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Follow the signs
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Notice for a continuous random variable, we are loose with the use of the <code>=</code> sign. This is because for a continuous random variable <span class="math inline">\(\mbox{P}(X=x)=0\)</span>. Do not get sloppy when working with discrete random variables.</p>
+</div>
+</div>
+<p>The median of <span class="math inline">\(X\)</span> is the value <span class="math inline">\(x\)</span> such that <span class="math inline">\(\mbox{P}(X\leq x)=0.5\)</span>. One way to find this is to set the cdf equal to the quantile of interest, 0.5.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> But we don’t need the cdf if we perform a simulation and then calculate the median; we’ll do this next.</p>
 </section>
 <section id="simulation" class="level3" data-number="11.2.4">
 <h3 data-number="11.2.4" class="anchored" data-anchor-id="simulation"><span class="header-section-number">11.2.4</span> Simulation</h3>
-<p>As in the case of the discrete random variable, we can simulate a continuous random variable if we have an inverse for the cdf. The range of the cdf is <span class="math inline">\([0,1]\)</span>, so we generate a random number in this interval and then apply the inverse cdf to obtain a random variable. In a similar manner, for a continuous random variable, we use the following pseudo code:<br>
-1. Generate a random number in the interval <span class="math inline">\([0,1]\)</span>, <span class="math inline">\(U\)</span>.<br>
-2. Find the random variable <span class="math inline">\(X\)</span> from <span class="math inline">\(F_{X}^{-1}(U)\)</span>.<br>
-In <code>R</code> for our example, this looks like the following.</p>
+<p>Like with discrete random variables, we can get an estimate of the pdf via simulation. However, simulating continuous random variables take a little more work.</p>
+<p>Let’s start by generating random samples from <span class="math inline">\(X\)</span>. We can do this using a method called rejection sampling. Rejection sampling involves generating candidate points from a proposal distribution (usually a uniform distribution, with values between 0 and 1) and accepting them with a certain probability that ensures the desired distribution. To determine the probability of rejection, we essentially check whether a second random number <span class="math inline">\(u\)</span> is less than or equal to a specific function value. For example, if we want values where <span class="math inline">\(y = 2x\)</span>, we’ll check whether <span class="math inline">\(u\leq 2x\)</span>. An alternative method for this simulation uses the inverse transform method, which requires deriving the cdf.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Because we have de-emphasized the cdf in this book, we’ll focus on the rejection sampling method.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">runif</span>(<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.6137365</code></pre>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1111</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>num_sim <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># generate a large number of candidate points </span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   and uniform random numbers for acceptance</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># generate more points than needed (10000*2) to ensure </span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co">#   enough accepted samples</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>candidates <span class="ot">&lt;-</span> <span class="fu">runif</span>(num_sim<span class="sc">*</span><span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>u <span class="ot">&lt;-</span> <span class="fu">runif</span>(num_sim<span class="sc">*</span><span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co"># create a tibble for candidates and acceptance probabilities</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">candidate =</span> candidates, <span class="at">u =</span> u)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="co"># filter out accepted samples based on the acceptance criterion</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>accepted_samples <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(u <span class="sc">&lt;=</span> <span class="dv">2</span><span class="sc">*</span>candidate) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> num_sim) <span class="sc">%&gt;%</span>   <span class="co"># ensure exactly n samples </span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(candidate)         <span class="co"># use only the accepted candidate values</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a tibble for the accepted samples</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>accepted <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">X =</span> accepted_samples)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
+<p>Now, we can plot the estimated pdf.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">do</span>(<span class="dv">10000</span>)<span class="sc">*</span><span class="fu">sqrt</span>(<span class="fu">runif</span>(<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div style="page-break-after: always;"></div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">inspect</span>(results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-quantitative variables:  
-  name   class         min        Q1    median        Q3       max      mean
-1 sqrt numeric 0.005321359 0.4977011 0.7084257 0.8656665 0.9999873 0.6669452
-         sd     n missing
-1 0.2358056 10000       0</code></pre>
-</div>
-</div>
-<div style="page-break-after: always;"></div>
-<p><a href="#fig-plot116" class="quarto-xref">Figure&nbsp;<span>11.6</span></a> is a density plot of the simulated density function.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>results <span class="sc">%&gt;%</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_density</span>(<span class="sc">~</span>sqrt,<span class="at">xlab=</span><span class="st">"X"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_bw</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">x=</span><span class="st">"X"</span>,<span class="at">y=</span><span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>accepted <span class="sc">%&gt;%</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_density</span>(<span class="sc">~</span>X, <span class="at">bins =</span> <span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-plot116" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-plot116-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Continuous-Random-Variables_files/figure-html/fig-plot116-1.png" class="img-fluid figure-img" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-plot116-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;11.6: Density plot of the simulated random variable.
-</figcaption>
+<div>
+<figure class="figure">
+<p><img src="Continuous-Random-Variables_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
+</div>
+</div>
+<p>Now we can calculate the probabilities of interest.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>accepted <span class="sc">%&gt;%</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Prob1 =</span> <span class="fu">count</span>(X <span class="sc">&lt;</span> <span class="fl">0.5</span>) <span class="sc">/</span> <span class="dv">10000</span>, </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">Prob2 =</span> <span class="fu">count</span>(X <span class="sc">&gt;</span> <span class="fl">0.5</span>) <span class="sc">/</span> <span class="dv">10000</span>, </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">Prob3 =</span> <span class="fu">count</span>(X <span class="sc">&gt;=</span> <span class="fl">0.1</span> <span class="sc">&amp;</span> X <span class="sc">&lt;</span> <span class="fl">0.75</span>) <span class="sc">/</span> <span class="dv">10000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  Prob1 Prob2 Prob3
+  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 0.332 0.668 0.647</code></pre>
+</div>
+</div>
+<p>The median of <span class="math inline">\(X\)</span> is easily found by calculating the median of our simulated values.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(<span class="sc">~</span>X, <span class="at">data =</span> accepted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6274425</code></pre>
 </div>
 </div>
 </section>
 </section>
 <section id="moments" class="level2" data-number="11.3">
 <h2 data-number="11.3" class="anchored" data-anchor-id="moments"><span class="header-section-number">11.3</span> Moments</h2>
-<p>As with discrete random variables, moments can be calculated to summarize characteristics such as center and spread. In the discrete case, expectation is found by multiplying each possible value by its associated probability and summing across the domain (<span class="math inline">\(\mbox{E}(X)=\sum_x x\cdot f_X(x)\)</span>). In the continuous case, the domain of <span class="math inline">\(X\)</span> consists of an infinite set of values. From your calculus days, recall that the sum across an infinite domain is represented by an integral.</p>
+<p>As with discrete random variables, moments can be calculated to summarize characteristics such as center and spread. In the discrete case, expectation is found by multiplying each possible value by its associated probability and summing across the sample space of <span class="math inline">\(X\)</span> (<span class="math inline">\(\mbox{E}(X)=\sum_x x\cdot f_X(x)\)</span>). In the continuous case, the sample space of <span class="math inline">\(X\)</span> consists of an infinite set of values. From your calculus days, recall that the sum across an infinite domain is represented by an integral.</p>
 <p>Let <span class="math inline">\(g(X)\)</span> be any function of <span class="math inline">\(X\)</span>. The expectation of <span class="math inline">\(g(X)\)</span> is found by: <span class="math display">\[
 \mbox{E}(g(X)) = \int_{S_X} g(x)f_X(x)\mbox{d}x
 \]</span></p>
@@ -724,36 +712,28 @@ Figure&nbsp;11.6: Density plot of the simulated random variable.
 <p>As in the discrete case, the variance of <span class="math inline">\(X\)</span> is the expected squared difference from the mean, or <span class="math inline">\(\mbox{E}[(X-\mu_X)^2]\)</span>. Thus, <span class="math display">\[
 \sigma^2_X = \mbox{Var}(X)=\mbox{E}[(X-\mu_X)^2]= \int_{S_X} (x-\mu_X)^2\cdot f_X(x) \mbox{d}x
 \]</span></p>
-<p>Recall homework problem 6 from the last chapter. In this problem, you showed that <span class="math inline">\(\mbox{Var}(X)=\mbox{E}(X^2)-\mbox{E}(X)^2\)</span>. Thus, <span class="math display">\[
+<p>Recall from the last chapter that <span class="math inline">\(\mbox{Var}(X)=\mbox{E}(X^2)-\mbox{E}(X)^2\)</span>. Thus, <span class="math display">\[
 \mbox{Var}(X)=\mbox{E}(X^2)-\mbox{E}(X)^2 = \int_{S_X} x^2\cdot f_X(x)\mbox{d}x - \mu_X^2
 \]</span></p>
 <blockquote class="blockquote">
 <p><em>Example</em>:<br>
 Consider the random variable <span class="math inline">\(X\)</span> from above. Find the mean and variance of <span class="math inline">\(X\)</span>. <span class="math display">\[
-\mu_X= \mbox{E}(X)=\int_0^1 x\cdot 2x\mbox{d}x = \frac{2x^3}{3}\bigg|_0^1 = \frac{2}{3}=0.667
+\mu_X= \mbox{E}(X)=\int_0^1 x\cdot 2x\mbox{d}x = \frac{2x^3}{3}\bigg|_0^1 = \frac{2}{3}- 0 = 0.667
 \]</span></p>
 </blockquote>
-<p>Side note: Since the mean of <span class="math inline">\(X\)</span> is smaller than the median of <span class="math inline">\(X\)</span>, we say that <span class="math inline">\(X\)</span> is skewed to the left, or negatively skewed.</p>
-<p>Using <code>R</code>.</p>
+<p>Side note: Because the mean of <span class="math inline">\(X\)</span> is smaller than the median of <span class="math inline">\(X\)</span>, we say that <span class="math inline">\(X\)</span> is skewed to the left, or negatively skewed.</p>
+<p>Using <code>R</code>, we can use <code>integrate()</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="cf">function</span>(x)x<span class="sc">*</span><span class="dv">2</span><span class="sc">*</span>x,<span class="dv">0</span>,<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="cf">function</span>(x)x<span class="sc">*</span><span class="dv">2</span><span class="sc">*</span>x, <span class="dv">0</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>0.6666667 with absolute error &lt; 7.4e-15</code></pre>
 </div>
 </div>
-<p>Or using <code>antiD()</code></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>Ex<span class="ot">&lt;-</span><span class="fu">antiD</span>(<span class="dv">2</span><span class="sc">*</span>x<span class="sc">^</span><span class="dv">2</span><span class="sc">~</span>x)</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Ex</span>(<span class="dv">1</span>)<span class="sc">-</span><span class="fu">Ex</span>(<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.6666667</code></pre>
-</div>
-</div>
 <p>Using our simulation.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="sc">~</span>sqrt,<span class="at">data=</span>results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="sc">~</span>X, <span class="at">data =</span> accepted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.6669452</code></pre>
+<pre><code>[1] 0.6141736</code></pre>
 </div>
 </div>
 <p><span class="math display">\[
@@ -761,29 +741,35 @@ Consider the random variable <span class="math inline">\(X\)</span> from above. 
 \]</span> <span class="math display">\[= \int_0^1 x^2\cdot 2x\mbox{d}x - \left(\frac{2}{3}\right)^2 = \frac{2x^4}{4}\bigg|_0^1-\frac{4}{9}=\frac{1}{2}-\frac{4}{9}=\frac{1}{18}=0.056
 \]</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="cf">function</span>(x)x<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span><span class="dv">2</span><span class="sc">*</span>x,<span class="dv">0</span>,<span class="dv">1</span>)<span class="sc">$</span>value<span class="sc">-</span>(<span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>)<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="cf">function</span>(x)x<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span><span class="dv">2</span><span class="sc">*</span>x,<span class="dv">0</span>,<span class="dv">1</span>)<span class="sc">$</span>value<span class="sc">-</span>(<span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>)<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.05555556</code></pre>
 </div>
 </div>
 <p>or</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>Vx<span class="ot">&lt;-</span><span class="fu">antiD</span>(x<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span><span class="dv">2</span><span class="sc">*</span>x<span class="sc">~</span>x)</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Vx</span>(<span class="dv">1</span>)<span class="sc">-</span><span class="fu">Vx</span>(<span class="dv">0</span>)<span class="sc">-</span>(<span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>)<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(<span class="sc">~</span>X, <span class="at">data =</span> accepted)<span class="sc">*</span><span class="dv">9999</span><span class="sc">/</span><span class="dv">10000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.05555556</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(<span class="sc">~</span>sqrt,<span class="at">data=</span>results)<span class="sc">*</span><span class="dv">9999</span><span class="sc">/</span><span class="dv">10000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.05559873</code></pre>
+<pre><code>[1] 0.05679209</code></pre>
 </div>
 </div>
 <p>And finally, the standard deviation of <span class="math inline">\(X\)</span> is <span class="math inline">\(\sigma_X = \sqrt{\sigma^2_X}=\sqrt{1/18}=0.236\)</span>.</p>
 
 
 </section>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>We simply solve <span class="math inline">\(x^2=0.5\)</span> for <span class="math inline">\(x\)</span>. Thus, the median of <span class="math inline">\(X\)</span> is <span class="math inline">\(\sqrt{0.5}=0.707\)</span>.</p>
+<p>We can also find this in <code>R</code> using the <code>uniroot()</code> function.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>As in the case of the discrete random variable, we can simulate a continuous random variable if we have an inverse for the cdf. The range of the cdf is <span class="math inline">\([0,1]\)</span>, so we generate a random number in this interval and then apply the inverse cdf to obtain a random variable. In a similar manner, for a continuous random variable, we use the following pseudo code:</p>
+<ol type="1">
+<li><p>Generate a random number in the interval <span class="math inline">\([0,1]\)</span>, <span class="math inline">\(U\)</span>.</p></li>
+<li><p>Find the random variable <span class="math inline">\(X\)</span> from <span class="math inline">\(F_{X}^{-1}(U)\)</span>.</p></li>
+</ol>
+<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></li>
+</ol>
 </section>
 
 </main> <!-- /main -->
@@ -1209,8 +1195,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./Discrete-Random-Variables.html" class="pagination-link" aria-label="Random Variables">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Random Variables</span></span>
+      <a href="./Discrete-Random-Variables.html" class="pagination-link" aria-label="Discrete Random Variables">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Discrete Random Variables</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

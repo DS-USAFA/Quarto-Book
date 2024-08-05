@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>10&nbsp; Random Variables – Computational Probability and Statistics</title>
+<title>10&nbsp; Discrete Random Variables – Computational Probability and Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -144,7 +144,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Probability-Case-Study.html">Probability Modeling</a></li><li class="breadcrumb-item"><a href="./Discrete-Random-Variables.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Random Variables</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Probability-Case-Study.html">Probability Modeling</a></li><li class="breadcrumb-item"><a href="./Discrete-Random-Variables.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Discrete Random Variables</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -266,7 +266,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Discrete-Random-Variables.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Random Variables</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Discrete Random Variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -456,7 +456,7 @@ window.Quarto = {
   <li><a href="#random-variables" id="toc-random-variables" class="nav-link" data-scroll-target="#random-variables"><span class="header-section-number">10.2</span> Random variables</a>
   <ul class="collapse">
   <li><a href="#how-does-this-help" id="toc-how-does-this-help" class="nav-link" data-scroll-target="#how-does-this-help"><span class="header-section-number">10.2.1</span> How does this help?</a></li>
-  <li><a href="#discrete-vs-continuous" id="toc-discrete-vs-continuous" class="nav-link" data-scroll-target="#discrete-vs-continuous"><span class="header-section-number">10.2.2</span> Discrete vs Continuous</a></li>
+  <li><a href="#discrete-versus-continuous-random-variables" id="toc-discrete-versus-continuous-random-variables" class="nav-link" data-scroll-target="#discrete-versus-continuous-random-variables"><span class="header-section-number">10.2.2</span> Discrete versus continuous random variables</a></li>
   <li><a href="#discrete-distribution-functions" id="toc-discrete-distribution-functions" class="nav-link" data-scroll-target="#discrete-distribution-functions"><span class="header-section-number">10.2.3</span> Discrete distribution functions</a></li>
   <li><a href="#probability-mass-function" id="toc-probability-mass-function" class="nav-link" data-scroll-target="#probability-mass-function"><span class="header-section-number">10.2.4</span> Probability mass function</a></li>
   <li><a href="#cumulative-distribution-function" id="toc-cumulative-distribution-function" class="nav-link" data-scroll-target="#cumulative-distribution-function"><span class="header-section-number">10.2.5</span> Cumulative distribution function</a></li>
@@ -475,9 +475,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Probability-Case-Study.html">Probability Modeling</a></li><li class="breadcrumb-item"><a href="./Discrete-Random-Variables.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Random Variables</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Probability-Case-Study.html">Probability Modeling</a></li><li class="breadcrumb-item"><a href="./Discrete-Random-Variables.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Discrete Random Variables</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-RANDVAR" class="quarto-section-identifier"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Random Variables</span></span></h1>
+<h1 class="title"><span id="sec-RANDVAR" class="quarto-section-identifier"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Discrete Random Variables</span></span></h1>
 </div>
 
 
@@ -512,46 +512,51 @@ window.Quarto = {
 Suppose you flip a coin three times. The sample space, <span class="math inline">\(S\)</span>, of this experiment is <span class="math display">\[
 S=\{\mbox{HHH}, \mbox{HHT}, \mbox{HTH}, \mbox{HTT}, \mbox{THH}, \mbox{THT}, \mbox{TTH}, \mbox{TTT}\}
 \]</span></p>
+<p>Let the random variable <span class="math inline">\(X\)</span> be the number of heads in three coin flips.</p>
 </blockquote>
-<p>Let the random variable <span class="math inline">\(X\)</span> be the number of heads in three coin flips. Whenever introduced to a new random variable, you should take a moment to think about what possible values can <span class="math inline">\(X\)</span> take? When tossing a coin 3 times, we can get no heads, one head, two heads or three heads. The random variable <span class="math inline">\(X\)</span> assigns each outcome in our experiment to one of these values. Visually: <span class="math display">\[
+<p>Whenever introduced to a new random variable, we should take a moment to think about what possible values <span class="math inline">\(X\)</span> can take. When flipping a coin three times, we can get zero, one, two, or three heads. The random variable <span class="math inline">\(X\)</span> assigns each outcome in our experiment to one of these values. We can visualize the possible outcomes and possible values of <span class="math inline">\(X\)</span>: <span class="math display">\[
 S=\{\underbrace{\mbox{HHH}}_{X=3}, \underbrace{\mbox{HHT}}_{X=2}, \underbrace{\mbox{HTH}}_{X=2}, \underbrace{\mbox{HTT}}_{X=1}, \underbrace{\mbox{THH}}_{X=2}, \underbrace{\mbox{THT}}_{X=1}, \underbrace{\mbox{TTH}}_{X=1}, \underbrace{\mbox{TTT}}_{X=0}\}
 \]</span></p>
-<p>The sample space of <span class="math inline">\(X\)</span>, sometimes referred to as the support, is the list of numerical values that <span class="math inline">\(X\)</span> can take. <span class="math display">\[
+<p>The sample space of <span class="math inline">\(X\)</span> is the list of numerical values that <span class="math inline">\(X\)</span> can take: <span class="math display">\[
 S_X=\{0,1,2,3\}
 \]</span></p>
 <p>Because the sample space of <span class="math inline">\(X\)</span> is a countable list of numbers, we consider <span class="math inline">\(X\)</span> to be a <em>discrete</em> random variable (more on that later).</p>
+<blockquote class="blockquote">
+<p><em>Question:<br>
+</em>What are some other examples of random variables for this coin flip experiment? What are some counterexamples?<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+</blockquote>
 <section id="how-does-this-help" class="level3" data-number="10.2.1">
 <h3 data-number="10.2.1" class="anchored" data-anchor-id="how-does-this-help"><span class="header-section-number">10.2.1</span> How does this help?</h3>
 <p>Sticking with our example, we can now frame a problem of interest in the context of our random variable <span class="math inline">\(X\)</span>. For example, suppose we wanted to know the probability of at least two heads. Without our random variable, we have to write this as: <span class="math display">\[
 \mbox{P}(\mbox{at least two heads})= \mbox{P}(\{\mbox{HHH},\mbox{HHT},\mbox{HTH},\mbox{THH}\})
 \]</span></p>
-<p>In the context of our random variable, this simply becomes <span class="math inline">\(\mbox{P}(X\geq 2)\)</span>. It may not seem important in a case like this, but imagine if we were flipping a coin 50 times and wanted to know the probability of obtaining at least 30 heads. It would be unfeasible to write out all possible ways to obtain at least 30 heads. It is much easier to write <span class="math inline">\(\mbox{P}(X\geq 30)\)</span> and explore the distribution of <span class="math inline">\(X\)</span>.</p>
+<p>In the context of our random variable, this simply becomes <span class="math inline">\(\mbox{P}(X\geq 2)\)</span>. It may not seem important in a case like this, but imagine if we were flipping a coin 50 times and wanted to know the probability of obtaining at least 30 heads. It would not be feasible to write out all possible ways to obtain at least 30 heads. It is much easier to write <span class="math inline">\(\mbox{P}(X\geq 30)\)</span> and then explore the distribution of <span class="math inline">\(X\)</span>.</p>
 <p>Essentially, a random variable often helps us reduce a complex random experiment to a simple variable that is easy to characterize.</p>
 </section>
-<section id="discrete-vs-continuous" class="level3" data-number="10.2.2">
-<h3 data-number="10.2.2" class="anchored" data-anchor-id="discrete-vs-continuous"><span class="header-section-number">10.2.2</span> Discrete vs Continuous</h3>
+<section id="discrete-versus-continuous-random-variables" class="level3" data-number="10.2.2">
+<h3 data-number="10.2.2" class="anchored" data-anchor-id="discrete-versus-continuous-random-variables"><span class="header-section-number">10.2.2</span> Discrete versus continuous random variables</h3>
 <p>A <em>discrete</em> random variable has a sample space that consists of a countable set of values. <span class="math inline">\(X\)</span> in our example above is a discrete random variable. Note that “countable” does not necessarily mean “finite”. For example, a random variable with a Poisson distribution (a topic for a later chapter) has a sample space of <span class="math inline">\(\{0,1,2,...\}\)</span>. This sample space is unbounded, but it is considered <em>countably</em> infinite, and thus the random variable would be considered discrete.</p>
 <p>A <em>continuous</em> random variable has a sample space that is a continuous interval. For example, let <span class="math inline">\(Y\)</span> be the random variable corresponding to the height of a randomly selected individual. <span class="math inline">\(Y\)</span> is a continuous random variable because a person could measure 68.1 inches, 68.2 inches, or perhaps any value in between. Note that when we measure height, our precision is limited by our measuring device, so we are technically “discretizing” height. However, even in these cases, we typically consider height to be a continuous random variable.</p>
-<p>A <em>mixed</em> random variable is exactly what it sounds like. It has a sample space that is both discrete and continuous. How could such a thing occur? Consider an experiment where a person rolls a standard six-sided die. If it lands on anything other than one, the result of the die roll is recorded. If it lands on one, the person spins a wheel, and the angle in degrees of the resulting spin, divided by 360, is recorded. If our random variable <span class="math inline">\(Z\)</span> is the number that is recorded in this experiment, the sample space of <span class="math inline">\(Z\)</span> is <span class="math inline">\([0,1] \cup \{2,3,4,5,6\}\)</span>. We will not be spending much time on mixed random variables. However they do occur in practice, consider the job of analyzing bomb error data. If the bomb hits within a certain radius, the error is 0. Otherwise it is measured in a radial direction. This data is mixed.</p>
+<p>A <em>mixed</em> random variable is exactly what it sounds like. It has a sample space that is both discrete and continuous. How could such a thing occur? Consider an experiment where a person rolls a standard six-sided die. If it lands on anything other than one, the result of the die roll is recorded. If it lands on one, the person spins a wheel, and the angle in degrees of the resulting spin, divided by 360, is recorded. If our random variable <span class="math inline">\(Z\)</span> is the number that is recorded in this experiment, the sample space of <span class="math inline">\(Z\)</span> is <span class="math inline">\([0,1] \cup \{2,3,4,5,6\}\)</span>. We will not be spending much time on mixed random variables in this course. However, they do occur in practice. Consider the job of analyzing bomb error data. If the bomb hits within a certain radius, the error is 0. Otherwise, the error is measured in a radial direction. This is a mixed random variable.</p>
 </section>
 <section id="discrete-distribution-functions" class="level3" data-number="10.2.3">
 <h3 data-number="10.2.3" class="anchored" data-anchor-id="discrete-distribution-functions"><span class="header-section-number">10.2.3</span> Discrete distribution functions</h3>
-<p>Once we have defined a random variable, we need a way to describe its behavior and we will use probabilities for this purpose.</p>
-<p><em>Distribution functions</em> describe the behavior of random variables. We can use these functions to determine the probability that a random variable takes a value or a range of values. For discrete random variables, there are two distribution functions of interest: the <em>probability mass function</em> (pmf) and the <em>cumulative distribution function</em> (cdf).</p>
+<p>Now that we have defined a random variable, we need a way to describe its behavior. We will use probabilities for this purpose.</p>
+<p><em>Distribution functions</em> describe the behavior of random variables. We can use these functions to determine the probability that a random variable takes a value or range of values. For discrete random variables, there are two distribution functions of interest: the <em>probability mass function</em> (pmf) and the <em>cumulative distribution function</em> (cdf).</p>
 </section>
 <section id="probability-mass-function" class="level3" data-number="10.2.4">
 <h3 data-number="10.2.4" class="anchored" data-anchor-id="probability-mass-function"><span class="header-section-number">10.2.4</span> Probability mass function</h3>
 <p>Let <span class="math inline">\(X\)</span> be a discrete random variable. The probability mass function (pmf) of <span class="math inline">\(X\)</span>, given by <span class="math inline">\(f_X(x)\)</span>, is a function that assigns probability to each possible outcome of <span class="math inline">\(X\)</span>. <span class="math display">\[
 f_X(x)=\mbox{P}(X=x)
 \]</span></p>
-<p>Note that the pmf is a <em>function</em>. Functions have input and output. The input of a pmf is any real number. The output of a pmf is the probability that the random variable takes the inputted value. The pmf must follow the axioms of probability described in the Probability Rules chapter. Primarily,</p>
+<p>Note that the pmf is a <em>function</em>. Functions have input and output. The input of a pmf is any real number. The output of a pmf is the probability that the random variable takes the inputted value. The pmf must follow the axioms of probability described in the <a href="#sec-PROBRULES" class="quarto-xref"><span class="quarto-unresolved-ref">sec-PROBRULES</span></a>. Primarily,</p>
 <ol type="1">
-<li><p>For all <span class="math inline">\(x \in \mathbb{R}\)</span>, <span class="math inline">\(0 \leq f_X(x) \leq 1\)</span>.</p></li>
-<li><p><span class="math inline">\(\sum_x f_X(x) = 1\)</span>, where the <span class="math inline">\(x\)</span> in the index of the sum simply denotes that we are summing across the entire domain or support of <span class="math inline">\(X\)</span>.</p></li>
+<li><p>For all <span class="math inline">\(x \in \mathbb{R}\)</span>, <span class="math inline">\(0 \leq f_X(x) \leq 1\)</span>. That is, for all values of <span class="math inline">\(x\)</span>, the outcome of <span class="math inline">\(f_X(x)\)</span> is between 0 and 1.</p></li>
+<li><p><span class="math inline">\(\sum_x f_X(x) = 1\)</span>, where the <span class="math inline">\(x\)</span> in the index of the sum simply denotes that we are summing across the entire sample space of <span class="math inline">\(X\)</span>. In words, all the probabilities must sum to one.</p></li>
 </ol>
 <blockquote class="blockquote">
 <p><em>Example</em>:<br>
-Recall our example again. You flip a coin three times and let <span class="math inline">\(X\)</span> be the number of heads in those three coin flips. We know that <span class="math inline">\(X\)</span> can only take values 0, 1, 2 or 3. But at what probability does it take these three values? In that example, we had listed out the possible outcomes of the experiment and denoted what value of <span class="math inline">\(X\)</span> corresponds to each outcome. <span class="math display">\[
+Recall our coin flip example again. We flip a coin three times. Let <span class="math inline">\(X\)</span> be the number of heads. We know that <span class="math inline">\(X\)</span> can only take values 0, 1, 2 or 3. But at what probability does it take these three values? We previously listed out the possible outcomes of the experiment and denoted the value of <span class="math inline">\(X\)</span> corresponding to each outcome. <span class="math display">\[
 S=\{\underbrace{\mbox{HHH}}_{X=3}, \underbrace{\mbox{HHT}}_{X=2}, \underbrace{\mbox{HTH}}_{X=2}, \underbrace{\mbox{HTT}}_{X=1}, \underbrace{\mbox{THH}}_{X=2}, \underbrace{\mbox{THT}}_{X=1}, \underbrace{\mbox{TTH}}_{X=1}, \underbrace{\mbox{TTT}}_{X=0}\}
 \]</span></p>
 </blockquote>
@@ -562,8 +567,8 @@ f_X(x)=\left\{ \renewcommand{\arraystretch}{1.4} \begin{array}{ll} \frac{1}{8}, 
 \frac{1}{8}, &amp; x=3 \\
 0, &amp; \mbox{otherwise} \end{array} \right .
 \]</span></p>
-<p>Note that this function specifies the probability that <span class="math inline">\(X\)</span> takes any of the four values in the sample space (0, 1, 2, and 3). Also, it specifies that the probability that <span class="math inline">\(X\)</span> takes any other value is 0.</p>
-<p>Graphically, the pmf is not terribly interesting. The pmf is 0 at all values of <span class="math inline">\(X\)</span> except for 0, 1, 2 and 3, <a href="#fig-pmf101" class="quarto-xref">Figure&nbsp;<span>10.1</span></a> .</p>
+<p>Note that this function specifies the probability that <span class="math inline">\(X\)</span> takes any of the four values in the sample space (0, 1, 2, and 3). It also specifies that the probability <span class="math inline">\(X\)</span> takes any other value is 0.</p>
+<p>Graphically, the pmf is not terribly interesting. The pmf is 0 at all values of <span class="math inline">\(X\)</span> except for 0, 1, 2 and 3, <a href="#fig-pmf101" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-pmf101</span></a> .</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-pmf101" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -580,177 +585,143 @@ Figure&nbsp;10.1: Probability Mass Function of <span class="math inline">\(X\)</
 </div>
 <blockquote class="blockquote">
 <p><em>Example</em>:<br>
-We can use a pmf to answer questions about an experiment. For example, consider the same context. What is the probability that we flip at least one heads? We can write this in the context of <span class="math inline">\(X\)</span>: <span class="math display">\[
-\mbox{P}(\mbox{at least one heads})=\mbox{P}(X\geq 1)=\mbox{P}(X=1)+\mbox{P}(X=2)+\mbox{P}(X=3)
+We can use a pmf to answer questions about an experiment. For example, consider the same coin flip context. What is the probability that we flip at least one head? We can write this in the context of <span class="math inline">\(X\)</span>: <span class="math display">\[
+\mbox{P}(\mbox{at least one head})=\mbox{P}(X\geq 1)=\mbox{P}(X=1)+\mbox{P}(X=2)+\mbox{P}(X=3)
 \]</span> <span class="math display">\[=\frac{3}{8} + \frac{3}{8}+\frac{1}{8}=\frac{7}{8}
 \]</span></p>
-</blockquote>
 <p>Alternatively, we can recognize that <span class="math inline">\(\mbox{P}(X\geq 1)=1-\mbox{P}(X=0)=1-\frac{1}{8}=\frac{7}{8}\)</span>.</p>
+</blockquote>
 </section>
 <section id="cumulative-distribution-function" class="level3" data-number="10.2.5">
 <h3 data-number="10.2.5" class="anchored" data-anchor-id="cumulative-distribution-function"><span class="header-section-number">10.2.5</span> Cumulative distribution function</h3>
-<p>Let <span class="math inline">\(X\)</span> be a discrete random variable. The cumulative distribution function (cdf) of <span class="math inline">\(X\)</span>, given by <span class="math inline">\(F_X(x)\)</span>, is a function that assigns to each value of <span class="math inline">\(X\)</span> the probability that <span class="math inline">\(X\)</span> takes that value or lower: <span class="math display">\[
+<p>Let <span class="math inline">\(X\)</span> be a discrete random variable. The cumulative distribution function (cdf) of <span class="math inline">\(X\)</span>, given by <span class="math inline">\(F_X(x)\)</span>, is a function<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> that assigns to each value of <span class="math inline">\(X\)</span> the probability that <span class="math inline">\(X\)</span> takes that value or lower: <span class="math display">\[
 F_X(x)=\mbox{P}(X\leq x)
 \]</span></p>
-<p>Again, note that the cdf is a <em>function</em> with an input and output. The input of a cdf is any real number. The output of a cdf is the probability that the random variable takes the inputted value <em>or less</em>.</p>
-<p>If we know the pmf, we can obtain the cdf: <span class="math display">\[
-F_X(x)=\mbox{P}(X\leq x)=\sum_{y\leq x} f_X(y)
+<p>If we know the pmf, we can obtain the cdf: <span class="math display">\[ F_X(x)=\mbox{P}(X\leq x)=\sum_{y\leq x} f_X(y) \]</span></p>
+<p>The main idea behind the cdf is a summation of probabilities of interest. In this course, we de-emphasize the derivation of and symbolic notation for the cdf. We instead focus on using the idea of a cdf to calculate probabilities.</p>
+<blockquote class="blockquote">
+<p><em>Example:</em><br>
+Find the following probabilities for the coin flip example: <span class="math inline">\(P(X\leq 2)\)</span>, <span class="math inline">\(P(X &lt; 1)\)</span>, and <span class="math inline">\(P(1\leq X &lt; 3)\)</span>.</p>
+<p>The easiest way to find these probabilities is by summing the probabilities of interest.</p>
+<p><span class="math display">\[
+P(X\leq 2) = P(X=0) + P(X=1) + P(X=2) = \frac{1}{8} + \frac{3}{8} + \frac{3}{8} = \frac{7}{8}
 \]</span></p>
-<p>Like the pmf, the cdf must be between 0 and 1. Also, since the pmf is always non-negative, the cdf must be non-decreasing.</p>
+<p><span class="math display">\[
+P(X &lt; 1) = P(X = 0) = \frac{1}{8}
+\]</span></p>
+<p><span class="math display">\[
+P(1\leq X &lt; 3) = P(X=1) + P(X=2) = \frac{3}{8} + \frac{3}{8} = \frac{6}{8}\quad\text{or}\quad \frac{3}{4}
+\]</span></p>
+<p>We could also find these probabilities using the symbolic form of the cdf,<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> but the method shown above is much more intuitive. Instead of worrying about the signs (e.g., <span class="math inline">\(\leq\)</span> versus <span class="math inline">\(&lt;\)</span>) in the probability statements and what that means for utilizing the cdf, we can simply use the pmf and sum the appropriate probabilities.</p>
+</blockquote>
+</section>
+<section id="simulating-random-variables" class="level3" data-number="10.2.6">
+<h3 data-number="10.2.6" class="anchored" data-anchor-id="simulating-random-variables"><span class="header-section-number">10.2.6</span> Simulating random variables</h3>
+<p>We can get an estimate of the distribution of a random variable via simulation.</p>
 <blockquote class="blockquote">
 <p><em>Example</em>:<br>
-Obtain and plot the cdf of <span class="math inline">\(X\)</span> of the previous example. <span class="math display">\[
-F_X(x)=\mbox{P}(X\leq x)=\left\{\renewcommand{\arraystretch}{1.4} \begin{array}{ll} 0, &amp; x &lt;0 \\
-\frac{1}{8}, &amp; 0\leq x &lt; 1 \\
-\frac{4}{8}, &amp; 1\leq x &lt; 2 \\
-\frac{7}{8}, &amp; 2\leq x &lt; 3 \\
-1, &amp; x\geq 3 \end{array}\right .
-\]</span></p>
+Simulate a random variable for the number of heads in flipping a coin three times.</p>
 </blockquote>
-<p>Visually, the cdf of a discrete random variable has a stairstep appearance. In this example, the cdf takes a value 0 up until <span class="math inline">\(X=0\)</span>, at which point the cdf increases to 1/8. It stays at this value until <span class="math inline">\(X=1\)</span>, and so on. At and beyond <span class="math inline">\(X=3\)</span>, the cdf is equal to 1, <a href="#fig-cdf101" class="quarto-xref">Figure&nbsp;<span>10.2</span></a> .</p>
+<p>We can use the <code>rflip()</code> function to simulate coin tosses.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> Remember to ask yourself, what do we want <code>R</code> to do and what does <code>R</code> need to do that? We can use <code>?</code> or <code>help()</code> to access the documentation for the <code>rflip()</code> function. We need to provide <code>n</code>, the number of coins to toss, and <code>prob</code>, the probability of heads on each toss. There are other optional arguments we can provide as well if desired.</p>
+<p>Let’s do one simulation, flipping a coin three times.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rflip</span>(<span class="at">n =</span> <span class="dv">3</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Flipping 3 coins [ Prob(Heads) = 0.5 ] ...
+
+T T H
+
+Number of Heads: 1 [Proportion Heads: 0.333333333333333]</code></pre>
+</div>
+</div>
+<p>Now we need to do this many times. We can use the <code>do()</code> function to help us repeat the process of flipping three coins.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">do</span>(<span class="dv">10000</span>)<span class="sc">*</span><span class="fu">rflip</span>(<span class="at">n =</span> <span class="dv">3</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  n heads tails      prop
+1 3     2     1 0.6666667
+2 3     3     0 1.0000000
+3 3     0     3 0.0000000
+4 3     2     1 0.6666667
+5 3     2     1 0.6666667
+6 3     2     1 0.6666667</code></pre>
+</div>
+</div>
+<p>Each row of our results represents one of the 10,000 simulations, containing the number of flips, the number of heads, the number of tails, and the probability of heads. We can now plot the estimated distribution of <span class="math inline">\(X\)</span>, the number of heads in flipping a coin three times, using the <code>heads</code> column from our results. We use <code>gf_props()</code> to display the proportion (out of 10,000 simulations) of each outcome (0, 1, 2, or 3 heads).</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-cdf101" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-coinpmf" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-cdf101-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Discrete-Random-Variables_files/figure-html/fig-cdf101-1.png" class="img-fluid figure-img" width="672">
+<div aria-describedby="fig-coinpmf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Discrete-Random-Variables_files/figure-html/fig-coinpmf-1.png" class="img-fluid figure-img" width="672">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cdf101-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;10.2: Cumulative Distribution Function of <span class="math inline">\(X\)</span> from Coin Flip Example
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-coinpmf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.2: The estimated probability mass function of X from the coin flip example
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-</section>
-<section id="simulating-random-variables" class="level3" data-number="10.2.6">
-<h3 data-number="10.2.6" class="anchored" data-anchor-id="simulating-random-variables"><span class="header-section-number">10.2.6</span> Simulating random variables</h3>
-<p>We can simulate values from a random variable using the cdf, we will use a similar idea for continuous random variables. Since the range of the cdf is in the interval <span class="math inline">\([0,1]\)</span> we will generate a random number in that same interval and then use the inverse function to find the value of the random variable. The pseudo code is:<br>
-1) Generate a random number, <span class="math inline">\(U\)</span>.<br>
-2) Find the index <span class="math inline">\(k\)</span> such that <span class="math inline">\(\sum_{j=1}^{k-1}f_X(x_{j}) \leq U &lt; \sum_{j=1}^{k}f_X(x_{j})\)</span> or <span class="math inline">\(F_x(k-1) \leq U &lt; F_{x}(k)\)</span>.</p>
-<blockquote class="blockquote">
-<p><em>Example</em>:<br>
-Simulate a random variable for the number of heads in flipping a coin three times.</p>
-</blockquote>
-<p>First we will create the pmf.</p>
+<p>We can also calculate probabilities like <span class="math inline">\(P(\text{at least one head})\)</span> via simulation by simply counting up how many times, out of 10,000 simulations, we flipped at least one head.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pmf <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">8</span>,<span class="dv">3</span><span class="sc">/</span><span class="dv">8</span>,<span class="dv">3</span><span class="sc">/</span><span class="dv">8</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">8</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>values <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>pmf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>results <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Prob =</span> <span class="fu">count</span>(heads <span class="sc">&gt;=</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">10000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.125 0.375 0.375 0.125</code></pre>
+<pre><code>    Prob
+1 0.8716</code></pre>
 </div>
 </div>
-<p>We get the cdf from the cumulative sum.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>cdf <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(pmf)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>cdf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.125 0.500 0.875 1.000</code></pre>
-</div>
-</div>
-<p>Next, we will generate a random number between 0 and 1.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1153</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>ran_num <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>ran_num</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.7381891</code></pre>
-</div>
-</div>
-<p>Finally, we will find the value of the random variable. We will do each step separately first so you can understand the code.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ran_num <span class="sc">&lt;</span> cdf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] FALSE FALSE  TRUE  TRUE</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(ran_num <span class="sc">&lt;</span> cdf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 3 4</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(ran_num <span class="sc">&lt;</span> cdf)[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 3</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>values[<span class="fu">which</span>(ran_num <span class="sc">&lt;</span> cdf)[<span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
-</div>
-</div>
-<p>Let’s make this a function.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>simple_rv <span class="ot">&lt;-</span> <span class="cf">function</span>(values,cdf){</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>ran_num <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>)</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span>(values[<span class="fu">which</span>(ran_num <span class="sc">&lt;</span> cdf)[<span class="dv">1</span>]])</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Now let’s generate 10000 values from this random variable.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">do</span>(<span class="dv">10000</span>)<span class="sc">*</span><span class="fu">simple_rv</span>(values,cdf)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">inspect</span>(results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-quantitative variables:  
-       name   class min Q1 median Q3 max   mean       sd     n missing
-1 simple_rv numeric   0  1      2  2   3 1.5048 0.860727 10000       0</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tally</span>(<span class="sc">~</span>simple_rv,<span class="at">data=</span>results,<span class="at">format=</span><span class="st">"proportion"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>simple_rv
-     0      1      2      3 
-0.1207 0.3785 0.3761 0.1247 </code></pre>
-</div>
-</div>
-<p>Not a bad approximation.</p>
+<p>We see the estimated probability is very close to the exact value of <span class="math inline">\(\frac{7}{8} = 0.875\)</span> found earlier.</p>
+<p>An alternative method for this simulation uses the inverse transform method, which requires deriving the cdf and utilizing the inverse transform method.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> Because we have de-emphasized the cdf in this book, we’ll focus on simulating the pmf directly whenever possible.</p>
 </section>
 </section>
 <section id="moments" class="level2" data-number="10.3">
 <h2 data-number="10.3" class="anchored" data-anchor-id="moments"><span class="header-section-number">10.3</span> Moments</h2>
-<p>Distribution functions are excellent characterizations of random variables. The pmf and cdf will tell you exactly how often the random variables takes particular values. However, distribution functions are often a lot of information. Sometimes, we may want to describe a random variable <span class="math inline">\(X\)</span> with a single value or small set of values. For example, we may want to know the average or some measure of center of <span class="math inline">\(X\)</span>. We also may want to know a measure of spread of <span class="math inline">\(X\)</span>. <em>Moments</em> are values that summarize random variables with single numbers. Since we are dealing with the population, these moments are population values and not summary statistics as we used in the first block of material.</p>
+<p>Distribution functions are excellent characterizations of random variables. The pmf and cdf will tell you exactly how often the random variable takes particular values. However, distribution functions are often a lot of information. Sometimes, we may want to describe a random variable <span class="math inline">\(X\)</span> with a single value or small set of values. For example, we may want to know some measure of center of <span class="math inline">\(X\)</span>. We also may want to know a measure of spread of <span class="math inline">\(X\)</span>. <em>Moments</em> are values that summarize random variables with single numbers. Since we are dealing with the population, these moments are population values and not summary statistics as we used in the first block of material.</p>
 <section id="expectation" class="level3" data-number="10.3.1">
 <h3 data-number="10.3.1" class="anchored" data-anchor-id="expectation"><span class="header-section-number">10.3.1</span> Expectation</h3>
 <p>At this point, we should define the term <em>expectation</em>. Let <span class="math inline">\(g(X)\)</span> be some function of a discrete random variable <span class="math inline">\(X\)</span>. The expected value of <span class="math inline">\(g(X)\)</span> is given by: <span class="math display">\[
 \mbox{E}(g(X))=\sum_x g(x) \cdot f_X(x)
 \]</span></p>
+<p>Note that <span class="math inline">\(g(X)\)</span> can be almost any function of <span class="math inline">\(X\)</span>, such as <span class="math inline">\(X - 3\)</span> or <span class="math inline">\(X^2\)</span>.</p>
 </section>
 <section id="mean" class="level3" data-number="10.3.2">
 <h3 data-number="10.3.2" class="anchored" data-anchor-id="mean"><span class="header-section-number">10.3.2</span> Mean</h3>
 <p>The most common moments used to describe random variables are <em>mean</em> and <em>variance</em>. The mean (often referred to as the expected value of <span class="math inline">\(X\)</span>), is simply the average value of a random variable. It is denoted as <span class="math inline">\(\mu_X\)</span> or <span class="math inline">\(\mbox{E}(X)\)</span>. In the discrete case, the mean is found by: <span class="math display">\[
 \mu_X=\mbox{E}(X)=\sum_x x \cdot f_X(x)
 \]</span></p>
-<p>The mean is also known as the first moment of <span class="math inline">\(X\)</span> around the origin. It is a weighted sum with the weight being the probability. If each outcome were equally likely, the expected value would just be the average of the values of the random variable since each weight is the reciprocal of the number of values.</p>
+<p>We are using <span class="math inline">\(\mu\)</span> because it is a population parameter. The mean is also known as the first moment of <span class="math inline">\(X\)</span> around the origin. It is a weighted sum with the weight being the probability of each outcome.</p>
 <blockquote class="blockquote">
 <p><em>Example</em>:<br>
 Find the expected value (or mean) of <span class="math inline">\(X\)</span>: the number of heads in three flips of a fair coin. <span class="math display">\[
 \mbox{E}(X)=\sum_x x\cdot f_X(x) = 0*\frac{1}{8} + 1*\frac{3}{8} + 2*\frac{3}{8} + 3*\frac{1}{8}=1.5
 \]</span></p>
 </blockquote>
-<p>We are using <span class="math inline">\(\mu\)</span> because it is a population parameter.</p>
-<p>From our simulation above, we can find the mean as an estimate of the expected value. This is really a statistic since our simulation is data from the population and thus will have variance from sample to sample.</p>
+<p>From our simulation before, we can find the mean as an estimate of the expected value. This is really a statistic since we simulated data from the population and thus, will have variance from sample to sample.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="sc">~</span>simple_rv,<span class="at">data=</span>results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="sc">~</span>heads, <span class="at">data =</span> results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.5048</code></pre>
+<pre><code>[1] 1.4878</code></pre>
 </div>
 </div>
+<p>Our estimate is pretty close to the exact value found mathematically.</p>
 </section>
 <section id="variance" class="level3" data-number="10.3.3">
 <h3 data-number="10.3.3" class="anchored" data-anchor-id="variance"><span class="header-section-number">10.3.3</span> Variance</h3>
-<p>Variance is a measure of spread of a random variable. The variance of <span class="math inline">\(X\)</span> is denoted as <span class="math inline">\(\sigma^2_X\)</span> or <span class="math inline">\(\mbox{Var}(X)\)</span>. It is equivalent to the average squared deviation from the mean: <span class="math display">\[
+<p>Variance is a measure of the spread of a random variable. The variance of <span class="math inline">\(X\)</span> is denoted as <span class="math inline">\(\sigma^2_X\)</span> or <span class="math inline">\(\mbox{Var}(X)\)</span>. It is equivalent to the average squared deviation from the mean: <span class="math display">\[
 \sigma^2_X=\mbox{Var}(X)=\mbox{E}[(X-\mu_X)^2]
 \]</span></p>
 <p>In the discrete case, this can be evaluated by: <span class="math display">\[
 \mbox{E}[(X-\mu_X)^2]=\sum_x (x-\mu_X)^2f_X(x)
 \]</span></p>
-<p>Variance is also known as the second moment of <span class="math inline">\(X\)</span> around the mean.</p>
+<p>Variance is known as the second moment of <span class="math inline">\(X\)</span> around the mean. It can also be shown<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> that</p>
+<p><span class="math display">\[
+\mbox{Var}(X) = E(X^2) - \big[E(X)\big]^2
+\]</span></p>
 <p>The square root of <span class="math inline">\(\mbox{Var}(X)\)</span> is denoted as <span class="math inline">\(\sigma_X\)</span>, the standard deviation of <span class="math inline">\(X\)</span>. The standard deviation is often reported because it is measured in the same units as <span class="math inline">\(X\)</span>, while the variance is measured in squared units and is thus harder to interpret.</p>
 <blockquote class="blockquote">
 <p><em>Example</em>:<br>
@@ -763,19 +734,20 @@ Find the variance of <span class="math inline">\(X\)</span>: the number of heads
 = (0-1.5)^2 \times \frac{1}{8} + (1-1.5)^2 \times \frac{3}{8}+(2-1.5)^2 \times \frac{3}{8} + (3-1.5)^2\times \frac{1}{8}
 \]</span> In <code>R</code> this is:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">0</span><span class="fl">-1.5</span>)<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span><span class="dv">1</span><span class="sc">/</span><span class="dv">8</span> <span class="sc">+</span> (<span class="dv">1</span><span class="fl">-1.5</span>)<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span><span class="dv">3</span><span class="sc">/</span><span class="dv">8</span> <span class="sc">+</span> (<span class="dv">2</span><span class="fl">-1.5</span>)<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span><span class="dv">3</span><span class="sc">/</span><span class="dv">8</span> <span class="sc">+</span> (<span class="dv">3</span><span class="fl">-1.5</span>)<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span><span class="dv">1</span><span class="sc">/</span><span class="dv">8</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">0</span><span class="fl">-1.5</span>)<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span><span class="dv">1</span><span class="sc">/</span><span class="dv">8</span> <span class="sc">+</span> (<span class="dv">1</span><span class="fl">-1.5</span>)<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span><span class="dv">3</span><span class="sc">/</span><span class="dv">8</span> <span class="sc">+</span> (<span class="dv">2</span><span class="fl">-1.5</span>)<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span><span class="dv">3</span><span class="sc">/</span><span class="dv">8</span> <span class="sc">+</span> (<span class="dv">3</span><span class="fl">-1.5</span>)<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span><span class="dv">1</span><span class="sc">/</span><span class="dv">8</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.75</code></pre>
 </div>
 </div>
 <p>The variance of <span class="math inline">\(X\)</span> is 0.75.</p>
-<p>We can find the variance of the simulation but <code>R</code> uses the sample variance and this is the population variance. So we need to multiply by <span class="math inline">\(\frac{n-1}{n}\)</span></p>
+<p>We can find the variance of the simulation too, but the <code>var()</code> function in <code>R</code> calculates the sample variance. To find the population variance, we need to multiply by <span class="math inline">\(\frac{n-1}{n}\)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(<span class="sc">~</span>simple_rv,<span class="at">data=</span>results)<span class="sc">*</span>(<span class="dv">10000-1</span>)<span class="sc">/</span><span class="dv">10000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(<span class="sc">~</span>heads, <span class="at">data =</span> results)<span class="sc">*</span>(<span class="dv">10000</span> <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">10000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.740777</code></pre>
+<pre><code>[1] 0.7504512</code></pre>
 </div>
 </div>
+<p>Again, our simulated results are very similar to the exact value found mathematically.</p>
 </section>
 <section id="mean-and-variance-of-linear-transformations" class="level3" data-number="10.3.4">
 <h3 data-number="10.3.4" class="anchored" data-anchor-id="mean-and-variance-of-linear-transformations"><span class="header-section-number">10.3.4</span> Mean and variance of Linear Transformations</h3>
@@ -784,10 +756,69 @@ Find the variance of <span class="math inline">\(X\)</span>: the number of heads
 \]</span> and <span class="math display">\[
 \mbox{Var}(aX+b)=a^2\mbox{Var}(X)
 \]</span></p>
-<p>The proof of this is left to the reader.</p>
+<p>The proof of this lemma is left to the reader.</p>
+<blockquote class="blockquote">
+<p><em>Example:</em><br>
+Consider our coin flip example with <span class="math inline">\(X\)</span> as the number of heads in three coin flips. Find <span class="math inline">\(E(2X + 3)\)</span> and <span class="math inline">\(\mbox{Var}(2X + 3)\)</span>.</p>
+</blockquote>
+<p>Using the lemma above, we find</p>
+<p><span class="math display">\[
+E(2X + 3) = 2E(X) + 3 = 2\times(1.5) + 3 = 6
+\]</span></p>
+<p><span class="math display">\[
+\mbox{Var}(2X + 3) = 2^2\mbox{Var}(X) = 4\times (0.75) = 3
+\]</span></p>
+<p>We can also use our simulation:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>results <span class="sc">%&gt;%</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gx =</span> <span class="dv">2</span><span class="sc">*</span>heads <span class="sc">+</span> <span class="dv">3</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(gx), <span class="at">var =</span> <span class="fu">var</span>(gx)<span class="sc">*</span>(<span class="dv">10000</span> <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">/</span><span class="dv">10000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    mean      var
+1 5.9756 3.001805</code></pre>
+</div>
+</div>
 
 
 </section>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Remember, a random variable must assign each outcome in the experiment to exactly one number. Other examples of random variables when flipping a coin three times are 1) the number of tails in three coin flips, 2) the number of times the result changes (from heads to tails, or from tails to heads), 3) the position of the first head (i.e., does the first head occur on the first, second, or third coin flip?), or 4) the longest run of consecutive heads. Can you think of other examples?</p>
+<p>Some counterexamples (or non-examples) of a random variable for this experiment are 1) whether the coin flip results in heads or tails, and 2) the position of each head in the three flips. Because the first example does not map the possible outcomes to a single number, this is not a random variable. The second is also not a random variable because it maps the possible outcomes to multiple numbers (e.g., if a head occurs on the first and third flip ,the result would be 1 and 3).<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Again, note that the cdf is a <em>function</em> with an input and output. The input of a cdf is any real number. The output of a cdf is the probability that the random variable takes the inputted value <em>or less</em>.</p>
+<p>Like the pmf, the value of the cdf must be between 0 and 1. Also, since the pmf is always non-negative, the cdf must be non-decreasing.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Obtain and plot the cdf of <span class="math inline">\(X\)</span> from the previous example. <span class="math display">\[
+F_X(x)=\mbox{P}(X\leq x)=\left\{\renewcommand{\arraystretch}{1.4} \begin{array}{ll} 0, &amp; x &lt;0 \\
+\frac{1}{8}, &amp; 0\leq x &lt; 1 \\
+\frac{4}{8}, &amp; 1\leq x &lt; 2 \\
+\frac{7}{8}, &amp; 2\leq x &lt; 3 \\
+1, &amp; x\geq 3 \end{array}\right .
+\]</span></p>
+<p>Visually, the cdf of a discrete random variable has a stair-step appearance. In this example, the cdf takes a value 0 up until <span class="math inline">\(X=0\)</span>, at which point the cdf increases to 1/8. It stays at this value until <span class="math inline">\(X=1\)</span>, and so on. At and beyond <span class="math inline">\(X=3\)</span>, the cdf is equal to 1, <a href="#fig-cdf101" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-cdf101</span></a> .</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/drv-cdf101.PNG" class="img-fluid figure-img"></p>
+<figcaption>Cumulative distribution function of X from the coin flip example.</figcaption>
+</figure>
+</div>
+<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn4"><p>We could also simulate flipping a coin three times by sampling from a vector such as <code>c("H", "T")</code>. We would sample with replacement (since we can get heads or tails for each coin flip) three times, and repeat this process many times.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Since the range of the cdf is in the interval <span class="math inline">\([0,1]\)</span> we will generate a random number in that same interval and then use the inverse function to find the value of the random variable. The pseudo code is:</p>
+<ol type="1">
+<li><p>Generate a random number, <span class="math inline">\(U\)</span>.</p></li>
+<li><p>Find the index <span class="math inline">\(k\)</span> such that <span class="math inline">\(\sum_{j=1}^{k-1}f_X(x_{j}) \leq U &lt; \sum_{j=1}^{k}f_X(x_{j})\)</span> or <span class="math inline">\(F_x(k-1) \leq U &lt; F_{x}(k)\)</span>.</p></li>
+</ol>
+<p>In <code>R</code>, we generate the pmf and cdf as vectors. We then generate a random number between 0 and 1. Next, we use the random number to find the value of the random variable as described above. We do this 10,000 (or some other large number) times and plot the estimated pmf.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Show that <span class="math inline">\(\mbox{Var}(X)\)</span> is equal to <span class="math inline">\(E(X^2) - [E(X)]^2\)</span>.<br>
+$$ (X) = E= E= E(X^2) - E(2X) + E(*^2)$$$$</p>
+<p>The quantity <span class="math inline">\(\mu_{X}\)</span> is a constant with respect to <span class="math inline">\(X\)</span>, so</p>
+<p><span class="math display">\[
+\mbox{Var}(X) = E(X^2) - 2\mu_{X}E(X) + \mu_{X}^2 = E(X^2) - 2\mu_{X}^2 + \mu_{X}^2 = E(X^2) - \mu_{X}^2
+\]</span></p>
+<p>And we recognize that <span class="math inline">\(\mu_{X}^2\)</span> is just <span class="math inline">\([E(X)]^2\)</span>.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->
