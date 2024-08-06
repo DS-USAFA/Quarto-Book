@@ -1,4 +1,4 @@
-# Probability Basics {#sec-PROBRULES}
+# Probability Rules {#sec-PROBRULES}
 
 ```{r}
 #| message: false
