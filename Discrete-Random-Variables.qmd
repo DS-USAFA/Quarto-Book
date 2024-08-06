@@ -160,7 +160,7 @@ The main idea behind the cdf is a summation of probabilities of interest. In thi
     1, & x\geq 3 \end{array}\right .
     $$
 
-    Visually, the cdf of a discrete random variable has a stair-step appearance. In this example, the cdf takes a value 0 up until $X=0$, at which point the cdf increases to 1/8. It stays at this value until $X=1$, and so on. At and beyond $X=3$, the cdf is equal to 1, @fig-cdf101 .
+    Visually, the cdf of a discrete random variable has a stair-step appearance. In this example, the cdf takes a value 0 up until $X=0$, at which point the cdf increases to 1/8. It stays at this value until $X=1$, and so on. At and beyond $X=3$, the cdf is equal to 1.
 
     ![Cumulative distribution function of X from the coin flip example.](figures/drv-cdf101.PNG){fig-align="center"}
 
@@ -266,7 +266,7 @@ $$
 Variance is known as the second moment of $X$ around the mean. It can also be shown[^discrete-random-variables-6] that
 
 [^discrete-random-variables-6]: Show that $\mbox{Var}(X)$ is equal to $E(X^2) - [E(X)]^2$.\
-    \$\$ \mbox{Var}(X) = E\big[(X-\mu_X)^2\big] = E\big[X^2 - 2\mu_{X}X + \mu_{X}^2 \big] = E(X\^2) - E(2\mu*{X}X) + E(*\mu{X}\^2)\$\$\$\$
+    \$\$ \mbox{Var}(X) = E\big[(X-\mu_X)^2\big] = E\big[X^2 - 2\mu_{X}X + \mu_{X}^2 \big] = E(X\^2) - E(2\mu\*{X}X) + E(\*\mu{X}\^2)\$\$\$\$
 
     The quantity $\mu_{X}$ is a constant with respect to $X$, so
 
@@ -317,7 +317,7 @@ $$
 
 The proof of this lemma is left to the reader.
 
-> *Example:* \
+> *Example:*\
 > Consider our coin flip example with $X$ as the number of heads in three coin flips. Find $E(2X + 3)$ and $\mbox{Var}(2X + 3)$.
 
 Using the lemma above, we find

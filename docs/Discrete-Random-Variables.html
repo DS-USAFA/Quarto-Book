@@ -796,7 +796,7 @@ F_X(x)=\mbox{P}(X\leq x)=\left\{\renewcommand{\arraystretch}{1.4} \begin{array}{
 \frac{7}{8}, &amp; 2\leq x &lt; 3 \\
 1, &amp; x\geq 3 \end{array}\right .
 \]</span></p>
-<p>Visually, the cdf of a discrete random variable has a stair-step appearance. In this example, the cdf takes a value 0 up until <span class="math inline">\(X=0\)</span>, at which point the cdf increases to 1/8. It stays at this value until <span class="math inline">\(X=1\)</span>, and so on. At and beyond <span class="math inline">\(X=3\)</span>, the cdf is equal to 1, <span class="quarto-unresolved-ref">?fig-cdf101</span> .</p>
+<p>Visually, the cdf of a discrete random variable has a stair-step appearance. In this example, the cdf takes a value 0 up until <span class="math inline">\(X=0\)</span>, at which point the cdf increases to 1/8. It stays at this value until <span class="math inline">\(X=1\)</span>, and so on. At and beyond <span class="math inline">\(X=3\)</span>, the cdf is equal to 1.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figures/drv-cdf101.PNG" class="img-fluid figure-img"></p>
@@ -812,7 +812,7 @@ F_X(x)=\mbox{P}(X\leq x)=\left\{\renewcommand{\arraystretch}{1.4} \begin{array}{
 </ol>
 <p>In <code>R</code>, we generate the pmf and cdf as vectors. We then generate a random number between 0 and 1. Next, we use the random number to find the value of the random variable as described above. We do this 10,000 (or some other large number) times and plot the estimated pmf.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn6"><p>Show that <span class="math inline">\(\mbox{Var}(X)\)</span> is equal to <span class="math inline">\(E(X^2) - [E(X)]^2\)</span>.<br>
-$$ (X) = E= E= E(X^2) - E(2X) + E(*^2)$$$$</p>
+$$ (X) = E= E= E(X^2) - E(2*{X}X) + E(*^2)$$$$</p>
 <p>The quantity <span class="math inline">\(\mu_{X}\)</span> is a constant with respect to <span class="math inline">\(X\)</span>, so</p>
 <p><span class="math display">\[
 \mbox{Var}(X) = E(X^2) - 2\mu_{X}E(X) + \mu_{X}^2 = E(X^2) - 2\mu_{X}^2 + \mu_{X}^2 = E(X^2) - \mu_{X}^2

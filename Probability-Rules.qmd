@@ -90,9 +90,9 @@ It is sometimes helpful when reading probability notation to think of Union as a
 
 First, let's list all of the outcomes of each event. $A = \{\mbox{blue sedan},\mbox{blue SUV}\}$, $B=\{\mbox{black SUV}\}$, and $C= \{\mbox{grey SUV}, \mbox{black SUV}, \mbox{blue SUV}\}$.
 
-Because all outcomes in $B$ are contained in $C$, we know that $B$ is a subset of $C$. This can be written as $B\subset C$. Also, because $A$ and $B$ have no outcomes in common, $A \cap B = \emptyset$. Note that $\emptyset = \{ \}$ is the empty set and contains no elements.[^probability-basics-1] Further, $A \cup C = \{\mbox{blue sedan}, \mbox{grey SUV}, \mbox{black SUV}, \mbox{blue SUV}\}$. The complement of $C$ is $C'=\{\text{red sedan, red truck, grey truck}\}$.
+Because all outcomes in $B$ are contained in $C$, we know that $B$ is a subset of $C$. This can be written as $B\subset C$. Also, because $A$ and $B$ have no outcomes in common, $A \cap B = \emptyset$. Note that $\emptyset = \{ \}$ is the empty set and contains no elements.[^probability-rules-1] Further, $A \cup C = \{\mbox{blue sedan}, \mbox{grey SUV}, \mbox{black SUV}, \mbox{blue SUV}\}$. The complement of $C$ is $C'=\{\text{red sedan, red truck, grey truck}\}$.
 
-[^probability-basics-1]: We call events $A$ and $B$ *mutually exclusive*. We'll define this term a little later in the chapter.
+[^probability-rules-1]: We call events $A$ and $B$ *mutually exclusive*. We'll define this term a little later in the chapter.
 
 ## Probability
 
@@ -158,16 +158,16 @@ A specific application of this law appears in Bayes' Rule (more to follow in @se
 >
 > -   $P((A\cup B\cup C)\cap (A\cap B\cap C)')$
 
-It can be a good idea to draw a picture to work through exercises like these. @fig-prob-venn is an illustration of the above probability problem. Letters A, B, and C denote the corresponding events, represented by the entire circle in which they reside. The letter S represents the entire sample space. The numbers in the diagram represent the probability of each exclusive event. For example, the value 0.25 represents the probability of only event A (and no other events). Can you figure out where the other probability values come from?[^probability-basics-2]
+It can be a good idea to draw a picture to work through exercises like these. @fig-prob-venn is an illustration of the above probability problem. Letters A, B, and C denote the corresponding events, represented by the entire circle in which they reside. The letter S represents the entire sample space. The numbers in the diagram represent the probability of each exclusive event. For example, the value 0.25 represents the probability of only event A (and no other events). Can you figure out where the other probability values come from?[^probability-rules-2]
 
-[^probability-basics-2]: The easiest way to create this illustration is to start from the middle intersection piece. $P(A\cap B\cap C)=0.05$, represented by the 0.05 at the center of the diagram. $P(A\cap B)=0.2$, which leaves 0.15 for the rest of the $A\cap B$ piece of the diagram. Because $P(A\cap C)=0.1$, the remaining piece of $A\cap C$ not yet accounted for is 0.05. Then the remaining piece of $A$ is 0.25. Thus, $P(A)$ can be found by summing all the pieces in the $A$ circle, which adds up to 0.5. Make sure you can track how the rest of the diagram is appropriately labeled.
+[^probability-rules-2]: The easiest way to create this illustration is to start from the middle intersection piece. $P(A\cap B\cap C)=0.05$, represented by the 0.05 at the center of the diagram. $P(A\cap B)=0.2$, which leaves 0.15 for the rest of the $A\cap B$ piece of the diagram. Because $P(A\cap C)=0.1$, the remaining piece of $A\cap C$ not yet accounted for is 0.05. Then the remaining piece of $A$ is 0.25. Thus, $P(A)$ can be found by summing all the pieces in the $A$ circle, which adds up to 0.5. Make sure you can track how the rest of the diagram is appropriately labeled.
 
 ![Probability illustration.](figures/prob_venn_diag.PNG){#fig-prob-venn fig-align="center"}
 
 ### Equally likely scenarios
 
 In some random experiments, outcomes can be defined such that each individual outcome is equally likely. In this case, probability becomes a counting problem. Let $A$ be an event in an experiment where each outcome is equally likely. $$
-\mbox{P}(A)=\frac{\mbox{# of outcomes in A}}{\mbox{# of outcomes in S}}
+\mbox{P}(A)=\frac{\mbox{Number of outcomes in A}}{\mbox{Number of outcomes in S}}
 $$
 
 > *Example*:\
@@ -353,9 +353,9 @@ The *multiplication rule* is at the center of each of the three methods In this 
 
 We can divide this problem into two sections. In the numeric section, we are selecting 3 objects from 10, *with replacement*. This means that a value can be used more than once. Clearly, *order matters* because a license plate starting with "432" is distinct from a license plate starting with "234". There are $10^3 = 1000$ ways to select the first three digits; 10 for the first, 10 for the second, and 10 for the third.
 
-> *Question:* Why do we multiply and not add these probabilities?[^probability-basics-3]
+> *Question:* Why do we multiply and not add these probabilities?[^probability-rules-3]
 
-[^probability-basics-3]: Multiplication is repeated addition, so in a sense we are adding. For this problem, every value for the first number has 10 possibilities for the second number, and for every value of the second number there are 10 possibilities for the third number. This is an "and" problem and requires multiplication.
+[^probability-rules-3]: Multiplication is repeated addition, so in a sense we are adding. For this problem, every value for the first number has 10 possibilities for the second number, and for every value of the second number there are 10 possibilities for the third number. This is an "and" problem and requires multiplication.
 
 In the alphabet section, we are selecting 3 objects from 26, where again order matters. Thus, there are $26^3=17576$ ways to select the last three letters of the plate. Combined, there are $10^3 \times 26^3 = 17576000$ ways to select license plates. Visually, $$
 \underbrace{\underline{\quad 10 \quad }}_\text{number} \times \underbrace{\underline{\quad 10 \quad }}_\text{number} \times \underbrace{\underline{\quad 10 \quad }}_\text{number} \times \underbrace{\underline{\quad 26 \quad }}_\text{letter} \times \underbrace{\underline{\quad 26 \quad }}_\text{letter} \times \underbrace{\underline{\quad 26 \quad }}_\text{letter} = 17,576,000
@@ -467,9 +467,9 @@ num/denom
 ```
 
 > *Question:\
-> *Why can't we use $\binom{13}{2}$ instead of $\binom{13}{1}\binom{12}{1}$?[^probability-basics-4]
+> *Why can't we use $\binom{13}{2}$ instead of $\binom{13}{1}\binom{12}{1}$?[^probability-rules-4]
 
-[^probability-basics-4]: Because this implies the order selection of the ranks does not matter. In other words, this assumes that, for example, three Kings and two fours is the same full house as 3 fours and 2 Kings. This is not true so we break the rank selection about essentially making it a permutation.
+[^probability-rules-4]: Because this implies the order selection of the ranks does not matter. In other words, this assumes that, for example, three Kings and two fours is the same full house as 3 fours and 2 Kings. This is not true so we break the rank selection about essentially making it a permutation.
 
 We have just determined that a full house has a lower probability of occurring than a flush. This is why in gambling, a flush is valued less than a full house.
 
