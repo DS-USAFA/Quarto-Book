@@ -645,27 +645,25 @@ Follow the signs
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>num_sim <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># generate a large number of candidate points </span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   and uniform random numbers for acceptance</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># generate more points than needed (10000*2) to ensure </span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co">#   enough accepted samples</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co"># We select a value on the range for x and then</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co"># select another value from 0 to the max of the</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co"># pdf </span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>candidates <span class="ot">&lt;-</span> <span class="fu">runif</span>(num_sim<span class="sc">*</span><span class="dv">2</span>)</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>u <span class="ot">&lt;-</span> <span class="fu">runif</span>(num_sim<span class="sc">*</span><span class="dv">2</span>,<span class="at">max=</span><span class="dv">2</span>)</span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="co"># create a tibble for candidates and acceptance probabilities</span></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">candidate =</span> candidates, <span class="at">u =</span> u)</span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="co"># filter out accepted samples based on the acceptance criterion</span></span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>accepted_samples <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="dv">2</span><span class="sc">*</span>candidate <span class="sc">&gt;=</span> u) <span class="sc">%&gt;%</span> </span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> num_sim) <span class="sc">%&gt;%</span>   <span class="co"># ensure exactly n samples </span></span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(candidate)         <span class="co"># use only the accepted candidate values</span></span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a tibble for the accepted samples</span></span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>accepted <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">X =</span> accepted_samples)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># select a candidate value between 0 and 1 for x</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># then, select another value from 0 to the max of the pdf</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">#   This is our acceptance value</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># generate more points than needed (10000*2) to ensure </span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co">#   enough accepted samples</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>candidates <span class="ot">&lt;-</span> <span class="fu">runif</span>(num_sim<span class="sc">*</span><span class="dv">2</span>)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>u <span class="ot">&lt;-</span> <span class="fu">runif</span>(num_sim<span class="sc">*</span><span class="dv">2</span>, <span class="at">max =</span> <span class="dv">2</span>)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co"># create a tibble for candidates and acceptance probabilities</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">candidate =</span> candidates, <span class="at">u =</span> u)</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="co"># filter out accepted samples based on the acceptance criterion</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>accepted_samples <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(u <span class="sc">&lt;=</span> <span class="dv">2</span><span class="sc">*</span>candidate) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> num_sim) <span class="sc">%&gt;%</span>   <span class="co"># ensure exactly n samples </span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(candidate)         <span class="co"># use only the accepted candidate values</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a tibble for the accepted samples</span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>accepted <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">X =</span> accepted_samples)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now, we can plot the estimated pdf.</p>
 <div class="cell">
@@ -693,6 +691,7 @@ Follow the signs
 1 0.249 0.745 0.542</code></pre>
 </div>
 </div>
+<p>The first probability is <span class="math inline">\(P(X &lt; 0.5)\)</span>, the second is <span class="math inline">\(P(X &gt; 0.5)\)</span>, and the third is <span class="math inline">\(P(0.1\leq X &lt; 0.75)\)</span>. All three simulated probabilities are very close to those found mathematically or with integration in <code>R</code> previously.</p>
 <p>The median of <span class="math inline">\(X\)</span> is easily found by calculating the median of our simulated values.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(<span class="sc">~</span>X, <span class="at">data =</span> accepted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -700,6 +699,7 @@ Follow the signs
 <pre><code>[1] 0.7102987</code></pre>
 </div>
 </div>
+<p>This is also very close to the value of 0.707 that can be found mathematically.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
 </section>
 </section>
 <section id="moments" class="level2" data-number="11.3">
@@ -773,6 +773,14 @@ Consider the random variable <span class="math inline">\(X\)</span> from above. 
 <li><p>Find the random variable <span class="math inline">\(X\)</span> from <span class="math inline">\(F_{X}^{-1}(U)\)</span>.</p></li>
 </ol>
 <a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn3"><p>The median of <span class="math inline">\(X\)</span> is the value <span class="math inline">\(x\)</span> such that <span class="math inline">\(P(X\leq x) = 0.5\)</span>.</p>
+<p><span class="math display">\[
+\int_0^t 2xdx = 0.5
+\]</span></p>
+<p><span class="math display">\[
+x^2 \big|_0^t = 0.5
+\]</span></p>
+<p>So, we simply solve <span class="math inline">\(t^2 = 0.5\)</span> for <span class="math inline">\(t\)</span> and find the median of is <span class="math inline">\(\sqrt{0.5} = 0.707\)</span>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
