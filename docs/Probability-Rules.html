@@ -160,9 +160,8 @@ window.Quarto = {
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Computational Probability and Statistics</a> 
-        <div class="sidebar-tools-main tools-wide">
+        <div class="sidebar-tools-main">
     <a href="https://github.com/DS-USAFA/Quarto-Book" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-    <a href="./Computational-Probability-and-Statistics.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
@@ -609,7 +608,7 @@ Consider our rental car example above. Let <span class="math inline">\(A\)</span
 <p>A specific application of this law appears in Bayes’ Rule (more to follow in <a href="Conditional-Probability.html" class="quarto-xref"><span>Chapter 9</span></a>). It says that <span class="math inline">\(\mbox{P}(A)=\mbox{P}(A \cap B)+\mbox{P}(A \cap B')\)</span>. Essentially, it points out that <span class="math inline">\(A\)</span> can be partitioned into two parts: 1) everything in <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> and 2) everything in <span class="math inline">\(A\)</span> and not in <span class="math inline">\(B\)</span>.</p>
 <blockquote class="blockquote">
 <p><em>Example</em>:<br>
-Consider rolling a six sided die. Let event <span class="math inline">\(A\)</span> be that a number less than five is showing on the die. Let event <span class="math inline">\(B\)</span> be that . Then,</p>
+Consider rolling a six sided die. Let event <span class="math inline">\(A\)</span> be that a number less than five is showing on the die. Let event <span class="math inline">\(B\)</span> be that the number is even. Then,</p>
 <p><span class="math display">\[\mbox{P}(A)=\mbox{P}(A \cap B) + \mbox{P}(A \cap B')\]</span></p>
 <p><span class="math display">\[
 \mbox{P}(&lt; 5)=\mbox{P}(&lt;5 \cap \text{Even})+\mbox{P}(&lt;5 \cap \text{Odd})
@@ -693,17 +692,21 @@ Number of Heads: 1 [Proportion Heads: 0.333333333333333]</code></pre>
 6 3     1     2 0.3333333</code></pre>
 </div>
 </div>
-<p>Next, we can visualize the distribution of the number of females, heads, in Figure @ref(fig:bar81-fig).</p>
+<p>Next, we can visualize the distribution of the number of females, heads, in Figure <a href="#fig-bar81" class="quarto-xref">Figure&nbsp;<span>8.2</span></a>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>results <span class="sc">%&gt;%</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_bar</span>(<span class="sc">~</span>heads) <span class="sc">%&gt;%</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_bw</span>()) <span class="sc">%&gt;%</span></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">x =</span> <span class="st">"Number of females"</span>, <span class="at">y =</span> <span class="st">"Count"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="Probability-Rules_files/figure-html/bar81-fig-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Number of females in a family of size 3.</figcaption>
+<div id="fig-bar81" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bar81-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Probability-Rules_files/figure-html/fig-bar81-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bar81-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8.2: Number of females in a family of size 3.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1071,14 +1074,14 @@ When drawing five cards, what is the probability of drawing a “full house” (
 </section>
 <section id="summary-of-counting-rules" class="level3" data-number="8.5.4">
 <h3 data-number="8.5.4" class="anchored" data-anchor-id="summary-of-counting-rules"><span class="header-section-number">8.5.4</span> Summary of counting rules</h3>
-<p>It can be difficult to remember which counting rule to use in each situation. Remember to consider whether we are sampling with or without replacement, and whether order matters. <a href="#fig-count-table" class="quarto-xref">Figure&nbsp;<span>8.2</span></a> summarizes the three counting rules we discussed in this chapter.</p>
+<p>It can be difficult to remember which counting rule to use in each situation. Remember to consider whether we are sampling with or without replacement, and whether order matters. <a href="#fig-count-table" class="quarto-xref">Figure&nbsp;<span>8.3</span></a> summarizes the three counting rules we discussed in this chapter.</p>
 <div id="fig-count-table" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-count-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/counting_rules_table.PNG" class="img-fluid quarto-figure quarto-figure-center figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-count-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8.2: Summary of three counting rules
+Figure&nbsp;8.3: Summary of three counting rules
 </figcaption>
 </figure>
 </div>

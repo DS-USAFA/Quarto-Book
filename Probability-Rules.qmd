@@ -131,7 +131,7 @@ $$
 A specific application of this law appears in Bayes' Rule (more to follow in @sec-CONDPROB). It says that $\mbox{P}(A)=\mbox{P}(A \cap B)+\mbox{P}(A \cap B')$. Essentially, it points out that $A$ can be partitioned into two parts: 1) everything in $A$ and $B$ and 2) everything in $A$ and not in $B$.
 
 > *Example*:\
-> Consider rolling a six sided die. Let event $A$ be that a number less than five is showing on the die. Let event $B$ be that . Then,
+> Consider rolling a six sided die. Let event $A$ be that a number less than five is showing on the die. Let event $B$ be that the number is even. Then,
 >
 > $$\mbox{P}(A)=\mbox{P}(A \cap B) + \mbox{P}(A \cap B')$$
 >
@@ -200,9 +200,9 @@ results <- do(10000)*rflip(3)
 head(results)
 ```
 
-Next, we can visualize the distribution of the number of females, heads, in Figure \@ref(fig:bar81-fig).
+Next, we can visualize the distribution of the number of females, heads, in Figure @fig-bar81.
 
-```{r bar81-fig,fig.cap="Number of females in a family of size 3."}
+```{r fig-bar81,fig.cap="Number of females in a family of size 3."}
 results %>%
   gf_bar(~heads) %>%
   gf_theme(theme_bw()) %>%

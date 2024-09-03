@@ -43,7 +43,7 @@ Some previous research[^studies-2] tells us that using sunscreen actually reduce
 ```{r fig.dim=c(5,3)}
 #| label: fig-confound
 #| echo: false
-#| fig-cap: "un exposure is a confounding variable because it is related to both response and explanatory variables."
+#| fig-cap: "Sun exposure is a confounding variable because it is related to both response and explanatory variables."
 plot(c(-0.05, 1.2), c(0.39, 1), type = 'n', axes = FALSE, xlab = "", ylab = "")
 
 text(0.59, 0.89, 'sun exposure', cex = 0.8)
