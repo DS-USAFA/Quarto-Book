@@ -160,9 +160,8 @@ window.Quarto = {
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Computational Probability and Statistics</a> 
-        <div class="sidebar-tools-main tools-wide">
+        <div class="sidebar-tools-main">
     <a href="https://github.com/DS-USAFA/Quarto-Book" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-    <a href="./Computational-Probability-and-Statistics.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
@@ -605,7 +604,7 @@ Figure&nbsp;9.1: A table of true results and test results for a hypothetical dis
 <p>Now let’s put this in context of Bayes’ Rule as stated above. First, let’s define some events. Let <span class="math inline">\(D\)</span> be the event that someone has the disease. Thus, <span class="math inline">\(D'\)</span> would be the event that someone does not have the disease. Similarly, let <span class="math inline">\(T\)</span> be the event that someone has tested positive. What do we already know? <span class="math display">\[ \mbox{P}(D) = 0.0001 \hspace{1cm} \mbox{P}(D')=0.9999  \]</span> <span class="math display">\[ \mbox{P}(T|D)= 1 \hspace{1cm} \mbox{P}(T'|D)=0 \]</span> <span class="math display">\[ \mbox{P}(T'|D')=0.999 \hspace{1cm} \mbox{P}(T|D') = 0.001 \]</span></p>
 <p>We are looking for <span class="math inline">\(\mbox{P}(D|T)\)</span>, the probability that someone has the disease, given he/she has tested positive. By the definition of conditional probability, <span class="math display">\[ \mbox{P}(D|T)=\frac{\mbox{P}(D \cap T)}{\mbox{P}(T)} \]</span></p>
 <p>The numerator can be rewritten, again utilizing the definition of conditional probability: <span class="math inline">\(\mbox{P}(D\cap T)=\mbox{P}(T|D)\mbox{P}(D)\)</span>.</p>
-<p>The denominator can be rewritten using the Law of Total Probability (discussed [here][Probability properties]) and then the definition of conditional probability: <span class="math inline">\(\mbox{P}(T)=\mbox{P}(T\cap D) + \mbox{P}(T \cap D') = \mbox{P}(T|D)\mbox{P}(D) + \mbox{P}(T|D')\mbox{P}(D')\)</span>. So, putting it all together, <span class="math display">\[ \mbox{P}(D|T)=\frac{\mbox{P}(T|D)\mbox{P}(D)}{\mbox{P}(T|D)\mbox{P}(D) + \mbox{P}(T|D')\mbox{P}(D')} \]</span></p>
+<p>The denominator can be rewritten using the Law of Total Probability (discussed in <a href="Probability-Rules.html#sec-probProps" class="quarto-xref"><span>Section 8.4.2</span></a>) and then the definition of conditional probability: <span class="math inline">\(\mbox{P}(T)=\mbox{P}(T\cap D) + \mbox{P}(T \cap D') = \mbox{P}(T|D)\mbox{P}(D) + \mbox{P}(T|D')\mbox{P}(D')\)</span>. So, putting it all together, <span class="math display">\[ \mbox{P}(D|T)=\frac{\mbox{P}(T|D)\mbox{P}(D)}{\mbox{P}(T|D)\mbox{P}(D) + \mbox{P}(T|D')\mbox{P}(D')} \]</span></p>
 <p>Now we have stated our problem in the context of quantities we know: <span class="math display">\[ \mbox{P}(D|T)=\frac{1\cdot 0.0001}{1\cdot 0.0001 + 0.001\cdot 0.9999} = 0.0909 \]</span></p>
 <p>Note that in the original statement of Bayes’ Rule, we considered <span class="math inline">\(n\)</span> partitions, <span class="math inline">\(B_1, B_2,...,B_n\)</span>. In this example, we only have two: <span class="math inline">\(D\)</span> and <span class="math inline">\(D'\)</span>.</p>
 

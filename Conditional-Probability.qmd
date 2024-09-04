@@ -66,7 +66,7 @@ $$
 
 Thus, $\mbox{P}(A\cap B)=\mbox{P}(A)\mbox{P}(B)$.
 
-> *Example*: \
+> *Example*:\
 > Consider the rental car example from before. Recall events $A$ and $B$: let $A$ be the event that a blue vehicle is selected and let $B$ be the event that a sedan is selected. Are $A$ and $B$ independent?
 
 No, events $A$ and $B$ are not independent. First, recall that $\mbox{P}(A|B)=0.5$. The probability of selecting a blue vehicle ($\mbox{P}(A)$) is $2/7$ (the number of blue vehicles in our sample space divided by 7, the total number vehicles in $S$). This value is different from 0.5; thus, $A$ and $B$ are not independent.
@@ -144,7 +144,7 @@ We are looking for $\mbox{P}(D|T)$, the probability that someone has the disease
 
 The numerator can be rewritten, again utilizing the definition of conditional probability: $\mbox{P}(D\cap T)=\mbox{P}(T|D)\mbox{P}(D)$.
 
-The denominator can be rewritten using the Law of Total Probability (discussed \[here\]\[Probability properties\]) and then the definition of conditional probability: $\mbox{P}(T)=\mbox{P}(T\cap D) + \mbox{P}(T \cap D') = \mbox{P}(T|D)\mbox{P}(D) + \mbox{P}(T|D')\mbox{P}(D')$. So, putting it all together, $$ \mbox{P}(D|T)=\frac{\mbox{P}(T|D)\mbox{P}(D)}{\mbox{P}(T|D)\mbox{P}(D) + \mbox{P}(T|D')\mbox{P}(D')} $$
+The denominator can be rewritten using the Law of Total Probability (discussed in @sec-probProps) and then the definition of conditional probability: $\mbox{P}(T)=\mbox{P}(T\cap D) + \mbox{P}(T \cap D') = \mbox{P}(T|D)\mbox{P}(D) + \mbox{P}(T|D')\mbox{P}(D')$. So, putting it all together, $$ \mbox{P}(D|T)=\frac{\mbox{P}(T|D)\mbox{P}(D)}{\mbox{P}(T|D)\mbox{P}(D) + \mbox{P}(T|D')\mbox{P}(D')} $$
 
 Now we have stated our problem in the context of quantities we know: $$ \mbox{P}(D|T)=\frac{1\cdot 0.0001}{1\cdot 0.0001 + 0.001\cdot 0.9999} = 0.0909 $$
 

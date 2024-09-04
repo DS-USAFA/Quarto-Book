@@ -110,7 +110,7 @@ There are some basic axioms of probability you should know, although this list i
 
 These two axioms essentially say that probability must be positive, and the probability of all outcomes must sum to one.
 
-### Probability properties
+### Probability properties {#sec-probProps}
 
 Let $A$ and $B$ be events in a random experiment. Most of the probabilities below can be proven fairly easily.
 
