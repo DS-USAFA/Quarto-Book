@@ -160,9 +160,8 @@ window.Quarto = {
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Computational Probability and Statistics</a> 
-        <div class="sidebar-tools-main tools-wide">
+        <div class="sidebar-tools-main">
     <a href="https://github.com/DS-USAFA/Quarto-Book" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-    <a href="./Computational-Probability-and-Statistics.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
@@ -495,7 +494,7 @@ window.Quarto = {
 </section>
 <section id="multivariate-distributions" class="level2" data-number="14.2">
 <h2 data-number="14.2" class="anchored" data-anchor-id="multivariate-distributions"><span class="header-section-number">14.2</span> Multivariate distributions</h2>
-<p>Multivariate situations are the more common in practice. We are often dealing with more than one variable. We have seen this in the previous block of material and will see multivariate distributions in the remainder of the book.</p>
+<p>Multivariate situations are more common in practice. We are often dealing with more than one variable. We have seen univariate situations in the previous block of material and will now see multivariate distributions throughout the remainder of the book.</p>
 <p>The basic idea is that we want to determine the relationship between two or more variables to include variable(s) conditional on variables.</p>
 </section>
 <section id="joint-probability" class="level2" data-number="14.3">
@@ -602,7 +601,7 @@ f_{Y|X=2}(x)=\left\{\begin{array}{ll} \frac{0.18}{0.50}, &amp; y=0 \\
 f_X(x)=\int_{S_Y}f_{X,Y}(x,y)\mbox{d}y
 \]</span></p>
 <p>Similarly, <span class="math display">\[
-f_Y(y)=\int_{S_X}f_{X,Y}(x,y)\mbox{d}y
+f_Y(y)=\int_{S_X}f_{X,Y}(x,y)\mbox{d}x
 \]</span></p>
 <p>The conditional pdf of <span class="math inline">\(X\)</span>, given <span class="math inline">\(Y=y\)</span> is denoted as <span class="math inline">\(f_{X|Y=y}(x)\)</span> and is found in the same way as in the discrete case: <span class="math display">\[
 f_{X|Y=y}(x)=\frac{f_{X,Y}(x,y)}{f_Y(y)}

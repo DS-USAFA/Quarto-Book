@@ -21,7 +21,7 @@ library(mosaic)
 
 ## Multivariate distributions
 
-Multivariate situations are the more common in practice. We are often dealing with more than one variable. We have seen this in the previous block of material and will see multivariate distributions in the remainder of the book.
+Multivariate situations are more common in practice. We are often dealing with more than one variable. We have seen univariate situations in the previous block of material and will now see multivariate distributions throughout the remainder of the book.
 
 The basic idea is that we want to determine the relationship between two or more variables to include variable(s) conditional on variables.
 
@@ -142,7 +142,7 @@ f_X(x)=\int_{S_Y}f_{X,Y}(x,y)\mbox{d}y
 $$
 
 Similarly, $$
-f_Y(y)=\int_{S_X}f_{X,Y}(x,y)\mbox{d}y
+f_Y(y)=\int_{S_X}f_{X,Y}(x,y)\mbox{d}x
 $$
 
 The conditional pdf of $X$, given $Y=y$ is denoted as $f_{X|Y=y}(x)$ and is found in the same way as in the discrete case: $$
@@ -218,7 +218,7 @@ f_{Y|X=x}(y)=\frac{f_{X,Y}(x,y)}{f_X(x)}=\frac{xy}{\frac{x}{2}}=2y$$
 
 where $0 \leq y \leq 1$.
 
-> *Question: \
+> *Question:\
 > *Notice that $f_X(x) = f_{X|Y=y}(x)$ and $f_Y(y) = f_{Y|X=x}(y)$ in this example. This is not common and is important. What does this imply about $X$ and $Y$?[^multivariate-distributions-1]
 
 [^multivariate-distributions-1]: Since the conditional density function is always equal to the marginal, it means that $X$ and $Y$ are independent of one another. Also, if the conditioning variable does not appear in the conditional density function and the domain of the joint density is rectangular (i.e., the bounds of the two variables are constants), the random variables are independent.
