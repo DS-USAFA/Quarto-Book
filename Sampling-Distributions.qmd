@@ -48,7 +48,7 @@ Suppose a poll suggested the US President's approval rating is 45%. We would con
 
 ## Understanding the variability of a point estimate
 
-Suppose the proportion of American adults who support the expansion of solar energy is $p = 0.88$, which is our parameter of interest. If we were to take a poll of 1000 American adults on this topic, the estimate would not be perfect, but how close might we expect the sample proportion in the poll would be to 88%? We want to understand, *how does the sample proportion* $\hat{p}$ behave when the true population proportion is 0.88.[^sampling-distributions-1] Let's find out! We can simulate responses we would get from a simple random sample of 1000 American adults, which is only possible because we know the actual support for expanding solar energy is 0.88. Here's how we might go about constructing such a simulation:
+Suppose the proportion of American adults who support the expansion of solar energy is $p = 0.88$, which is our parameter of interest. If we were to take a poll of 1000 American adults on this topic, the estimate would not be perfect, but how close might we expect the sample proportion in the poll would be to 88%? We want to understand, *how does the sample proportion* $\hat{p}$ *behave when the true population proportion is 0.88*.[^sampling-distributions-1] Let's find out! We can simulate responses we would get from a simple random sample of 1000 American adults, which is only possible because we know the actual support for expanding solar energy is 0.88. Here's how we might go about constructing such a simulation:
 
 [^sampling-distributions-1]: We haven't actually conducted a census to measure this value perfectly. However, a very large sample has suggested the actual level of support is about 88%.
 

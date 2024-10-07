@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.53">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -180,9 +180,8 @@ window.Quarto = {
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Computational Probability and Statistics</a> 
-        <div class="sidebar-tools-main tools-wide">
+        <div class="sidebar-tools-main">
     <a href="https://github.com/DS-USAFA/Quarto-Book" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-    <a href="./Computational-Probability-and-Statistics.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
@@ -548,7 +547,7 @@ Figure&nbsp;19.1: A graphical representation of probability and statistics. In p
 </section>
 <section id="understanding-the-variability-of-a-point-estimate" class="level2" data-number="19.5">
 <h2 data-number="19.5" class="anchored" data-anchor-id="understanding-the-variability-of-a-point-estimate"><span class="header-section-number">19.5</span> Understanding the variability of a point estimate</h2>
-<p>Suppose the proportion of American adults who support the expansion of solar energy is <span class="math inline">\(p = 0.88\)</span>, which is our parameter of interest. If we were to take a poll of 1000 American adults on this topic, the estimate would not be perfect, but how close might we expect the sample proportion in the poll would be to 88%? We want to understand, <em>how does the sample proportion</em> <span class="math inline">\(\hat{p}\)</span> behave when the true population proportion is 0.88.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Let’s find out! We can simulate responses we would get from a simple random sample of 1000 American adults, which is only possible because we know the actual support for expanding solar energy is 0.88. Here’s how we might go about constructing such a simulation:</p>
+<p>Suppose the proportion of American adults who support the expansion of solar energy is <span class="math inline">\(p = 0.88\)</span>, which is our parameter of interest. If we were to take a poll of 1000 American adults on this topic, the estimate would not be perfect, but how close might we expect the sample proportion in the poll would be to 88%? We want to understand, <em>how does the sample proportion</em> <span class="math inline">\(\hat{p}\)</span> <em>behave when the true population proportion is 0.88</em>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Let’s find out! We can simulate responses we would get from a simple random sample of 1000 American adults, which is only possible because we know the actual support for expanding solar energy is 0.88. Here’s how we might go about constructing such a simulation:</p>
 <ol type="1">
 <li><p>There were about 250 million American adults in 2018. On 250 million pieces of paper, write “support” on 88% of them and “not” on the other 12%.</p></li>
 <li><p>Mix up the pieces of paper and pull out 1000 pieces to represent our sample of 1000 American adults.</p></li>
@@ -596,6 +595,7 @@ Figure&nbsp;19.1: A graphical representation of probability and statistics. In p
 <img src="Sampling-Distributions_files/figure-html/fig-hist-support-1.png" id="fig-hist-support" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-hist-support-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;19.2
 </figcaption>
 </figure>
 </div>
@@ -672,6 +672,7 @@ Sampling distributions are never observed, but we keep them in mind
 <img src="Sampling-Distributions_files/figure-html/fig-hist-die-1.png" id="fig-hist-die" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-hist-die-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;19.3
 </figcaption>
 </figure>
 </div>
@@ -722,6 +723,7 @@ Figure&nbsp;19.4: Districting map of the state of Idaho.
 <img src="figures/Virginia.PNG" id="fig-virginia-actual" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-virginia-actual-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;19.5
 </figcaption>
 </figure>
 </div>
@@ -732,6 +734,7 @@ Figure&nbsp;19.4: Districting map of the state of Idaho.
 <img src="figures/Virginia_sample1.PNG" id="fig-virginia-sample1" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-virginia-sample1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;19.6
 </figcaption>
 </figure>
 </div>
@@ -745,6 +748,7 @@ Figure&nbsp;19.4: Districting map of the state of Idaho.
 <img src="Sampling-Distributions_files/figure-html/fig-virginia-res1000-1.png" id="fig-virginia-res1000" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-virginia-res1000-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;19.7
 </figcaption>
 </figure>
 </div>
