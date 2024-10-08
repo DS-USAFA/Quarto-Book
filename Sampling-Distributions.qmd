@@ -237,7 +237,7 @@ In contrast to our first example of support for solar energy, we have a populati
 
 Gerrymandering is the practice of drawing the boundaries of electoral districts in a way that gives one political party an unfair advantage over others. This manipulation can influence the outcomes of elections, allowing the controlling party to maintain or increase its power, even if it doesn't have majority support among the voters.
 
-To get a real sense of how gerrymandering works, try it out yourself! Use [this simulation](http://polytrope.com/district) to practice gerrymandering, but stop after the 6th challenge.
+To get a real sense of how gerrymandering works, try it out yourself! Use [this simulation](http://polytrope.com/district){target="_blank"} to practice gerrymandering, but stop after the 6th challenge.
 
 At this point, you might be wondering: *Why can't we just make everything **proportional**? For example, if 60% of people in a state support Republicans, let's just make 6 out of their 10 representatives Republican!*" Unfortunately, it's not so simple.
 
@@ -255,7 +255,7 @@ In order to give one seat to a Democrat though, we would have to make a district
 
 ### The statistician's answer: simulation
 
-Between balancing the need for party representation (proportionality) and the need for geographic representation (no weird shapes), the Supreme Court has struggled to set a consistent standard for evaluating maps. So, in 2019, a group of mathematicians got together and wrote a [Supreme Court brief](https://mggg.org/amicus) that proposed a new **simulation method** for map evaluation:
+Between balancing the need for party representation (proportionality) and the need for geographic representation (no weird shapes), the Supreme Court has struggled to set a consistent standard for evaluating maps. So, in 2019, a group of mathematicians got together and wrote a [Supreme Court brief](https://mggg.org/amicus){target="_blank"} that proposed a new **simulation method** for map evaluation:
 
 -   Have a computer draw a bunch of randomly simulated maps under two rules: a) districts have equal population sizes, and b) no weird shapes.
 
@@ -265,7 +265,7 @@ Between balancing the need for party representation (proportionality) and the ne
 
 By having a computer (with no internal party preference and with rules for shapes) draw random maps, we balance the needs for both proportionality and geography!
 
-Skew the Script [@SkewTheScript2024] developed a simulation [applet](skew-the-script.github.io/Gerrymandering) to help determine if a state gerrymandered its Congressional districts, through the power of simulation. Powered by the ALARM **redist** package[^sampling-distributions-5], the simulation divides states into randomly drawn districts of equal population size. The simulations also follow some rules about "no weird shapes" and the details for that requirements are available through the ALARM Redistricting project [@AlarmRedistricting]. Then, it uses prior election data to find the political lean of the simulated districts. For the state of Idaho, the analysis is based on data from the 2016 and 2020 Presidential elections, 2016 and 2020 US Senate elections, and the 2018 Governor, Attorney General, and Secretary of State elections.
+Skew the Script [@SkewTheScript2024] developed a simulation [applet](https://skew-the-script.github.io/Gerrymandering/){target="_blank"} to help determine if a state gerrymandered its Congressional districts, through the power of simulation. Powered by the ALARM **redist** package[^sampling-distributions-5], the simulation divides states into randomly drawn districts of equal population size. The simulations also follow some rules about "no weird shapes" and the details for that requirements are available through the ALARM Redistricting project [@AlarmRedistricting]. Then, it uses prior election data to find the political lean of the simulated districts. For the state of Idaho, the analysis is based on data from the 2016 and 2020 Presidential elections, 2016 and 2020 US Senate elections, and the 2018 Governor, Attorney General, and Secretary of State elections.
 
 [^sampling-distributions-5]: The ALARM **redist** package in R enables researchers to sample redistricting plans from a pre-specified target distribution. Essentially, the authors of the package simulated a large number of possible redistricting maps. The package supports various constraints in the redistricting process, such as geographic compactness and population parity requirements, just like those requirements for any redistricting done in the state of Idaho.
 
