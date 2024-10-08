@@ -601,9 +601,17 @@ Figure&nbsp;19.2
 </div>
 </div>
 </div>
+<p>We can also use <code>favstats()</code> to calculate summary statistics for our simulations.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(<span class="sc">~</span>sum, <span class="at">data =</span> solar_results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   min    Q1 median    Q3   max      mean         sd     n missing
+ 0.837 0.873   0.88 0.887 0.918 0.8801297 0.01020871 10000       0</code></pre>
+</div>
+</div>
 <p>This distribution of a statistic, in this case the sample proportion, is called a <strong>sampling distribution</strong>. We can characterize this sampling distribution as follows:</p>
-<p><strong>Center.</strong> The center of the distribution is <span class="math inline">\(\bar{x}_p = 0.880\)</span>, which is the same as the parameter. Notice that the simulation mimicked a simple random sample of the population, which is a straightforward sampling strategy that helps avoid sampling bias.</p>
-<p><strong>Spread.</strong> The standard deviation of the distribution is <span class="math inline">\(s_{\hat{p}} = 0.010\)</span>. When we’re talking about a sampling distribution or the variability of a point estimate, we typically use the term <strong>standard error</strong> rather than standard deviation.</p>
+<p><strong>Center.</strong> The center of the distribution is the sample mean of the 10,000 proportions, <span class="math inline">\(\bar{x}_p = 0.880\)</span>, which is the same as the population parameter in this case. Notice that the simulation mimicked a simple random sample of the population, which is a straightforward sampling strategy that helps avoid sampling bias.</p>
+<p><strong>Spread.</strong> The standard deviation of the distribution is <span class="math inline">\(s_{\hat{p}} = 0.010\)</span>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> When we’re talking about a sampling distribution or the variability of a point estimate, we typically use the term <strong>standard error</strong> rather than standard deviation.</p>
 <p><strong>Shape.</strong> The distribution is symmetric and bell-shaped, and it <em>resembles a normal distribution</em>.</p>
 <p>These findings are encouraging! When the population proportion is <span class="math inline">\(p = 0.88\)</span> and the sample size is <span class="math inline">\(n = 1000\)</span>, the sample proportion <span class="math inline">\(\hat{p}\)</span> tends to give a pretty good estimate of the population proportion. We also have the interesting observation that the histogram resembles a normal distribution.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -627,44 +635,44 @@ Sampling distributions are never observed, but we keep them in mind
 </section>
 <section id="sampling-distributions-case-study-rolling-the-dice" class="level2" data-number="19.6">
 <h2 data-number="19.6" class="anchored" data-anchor-id="sampling-distributions-case-study-rolling-the-dice"><span class="header-section-number">19.6</span> Sampling distributions case study: rolling the dice</h2>
-<p>Let’s consider a standard six-sided die and define a random variable <span class="math inline">\(X\)</span> as the result of a single die roll. The sample space is <span class="math inline">\(S = \{1, 2, 3, 4, 5, 6\}\)</span> and each outcome has an equal probability of <span class="math inline">\(1/6\)</span>. The expected value of <span class="math inline">\(X\)</span> is easily found to be <span class="math inline">\(E(X) = 3.5\)</span>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p>Let’s consider a standard six-sided die and define a random variable <span class="math inline">\(X\)</span> as the result of a single die roll. The sample space is <span class="math inline">\(S = \{1, 2, 3, 4, 5, 6\}\)</span> and each outcome has an equal probability of <span class="math inline">\(1/6\)</span>. The expected value of <span class="math inline">\(X\)</span> is easily found to be <span class="math inline">\(E(X) = 3.5\)</span>.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
 <p>We will take a sample by rolling the die <span class="math inline">\(n = 5\)</span> times. We will then compute the mean of each sample. We can easily set up this process in <code>R</code>. Our first sample is <span class="math inline">\(\{2, 5, 5, 4, 1\}\)</span> with a mean value of <span class="math inline">\(\bar{x}_1 = 3.4\)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Create a population/sample space of the six values </span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#    on a standard six-sided die</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>possible_values <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Create a population/sample space of the six values </span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#    on a standard six-sided die</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>possible_values <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Sample 5 entries with replacement.</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2024</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>sampled_values <span class="ot">&lt;-</span> <span class="fu">sample</span>(possible_values, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">replace =</span> T)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>sampled_values</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Sample 5 entries with replacement.</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2024</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>sampled_values <span class="ot">&lt;-</span> <span class="fu">sample</span>(possible_values, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">replace =</span> T)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>sampled_values</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2 5 5 4 1</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Compute the mean value.</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(sampled_values)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Compute the mean value.</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(sampled_values)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3.4</code></pre>
 </div>
 </div>
 <p>Again, one simulation isn’t enough to understand the distribution of means we might expect, so we should run more simulations. In a few further simulations, we get <span class="math inline">\(\bar{x}_2 = 3\)</span>, <span class="math inline">\(\bar{x}_3 = 4.8\)</span><em>,</em> <span class="math inline">\(\bar{x}_4 = 2.4\)</span>, and <span class="math inline">\(\bar{x}_5 = 2.6\)</span>. With the help of a computer, we’ve run the simulation 10,000 times and created a histogram of the results from all 10,000 simulations in <a href="#fig-hist-die" class="quarto-xref">Figure&nbsp;<span>19.3</span></a>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Repeat steps 2 and 3 10,000 times.</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2024</span>)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>dice_results <span class="ot">&lt;-</span> <span class="fu">do</span>(<span class="dv">10000</span>)<span class="sc">*</span><span class="fu">mean</span>(<span class="fu">sample</span>(possible_values, </span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">size =</span> <span class="dv">5</span>, <span class="at">replace =</span> T))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Repeat steps 2 and 3 10,000 times.</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2024</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>dice_results <span class="ot">&lt;-</span> <span class="fu">do</span>(<span class="dv">10000</span>)<span class="sc">*</span><span class="fu">mean</span>(<span class="fu">sample</span>(possible_values, </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">size =</span> <span class="dv">5</span>, <span class="at">replace =</span> T))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>dice_results <span class="sc">%&gt;%</span> </span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_histogram</span>(<span class="sc">~</span>mean, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"cadetblue1"</span>, <span class="at">binwidth =</span> <span class="fl">0.2</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_vline</span>(<span class="at">xintercept =</span> <span class="fu">mean</span>(dice_results<span class="sc">$</span>mean)) <span class="sc">%&gt;%</span> </span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_lims</span>(<span class="at">y =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1100</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_text</span>(<span class="at">label =</span> <span class="st">"mean = 3.499"</span>, <span class="at">x =</span> <span class="dv">4</span>, <span class="at">y =</span> <span class="dv">1050</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">x =</span> <span class="st">"Mean die value"</span>, <span class="at">y =</span> <span class="st">"Number of simulations"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_classic</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>dice_results <span class="sc">%&gt;%</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_histogram</span>(<span class="sc">~</span>mean, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"cadetblue1"</span>, <span class="at">binwidth =</span> <span class="fl">0.2</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_vline</span>(<span class="at">xintercept =</span> <span class="fu">mean</span>(dice_results<span class="sc">$</span>mean)) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_lims</span>(<span class="at">y =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1100</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_text</span>(<span class="at">label =</span> <span class="st">"mean = 3.499"</span>, <span class="at">x =</span> <span class="dv">4</span>, <span class="at">y =</span> <span class="dv">1050</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">x =</span> <span class="st">"Mean die value"</span>, <span class="at">y =</span> <span class="st">"Number of simulations"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_classic</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-hist-die" class="quarto-float quarto-figure quarto-figure-center anchored" width="672">
 <figure class="quarto-float quarto-float-fig figure">
@@ -678,9 +686,17 @@ Figure&nbsp;19.3
 </div>
 </div>
 </div>
+<p>We can also use <code>favstats()</code> to calculate summary statistics for our simulations.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(<span class="sc">~</span>mean, <span class="at">data =</span> dice_results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> min Q1 median Q3 max    mean        sd     n missing
+ 1.2  3    3.4  4 5.8 3.49912 0.7640639 10000       0</code></pre>
+</div>
+</div>
 <p>This distribution of sample means is another example of a sampling distribution. We can characterize this sampling distribution as follows:</p>
-<p><strong>Center.</strong> The center of the distribution is <span class="math inline">\(\bar{x} = 3.499\)</span>, which is almost exactly the same as the parameter value of <span class="math inline">\(\mu = 3.5\)</span>.</p>
-<p><strong>Spread.</strong> The standard deviation of the distribution is <span class="math inline">\(s_{\bar{x}} = 0.764\)</span>. Because this is the standard deviation of the point estimate <span class="math inline">\(\bar{x}\)</span>, we call it the standard error of <span class="math inline">\(\bar{x}\)</span>.</p>
+<p><strong>Center.</strong> The center of the distribution is the sample mean of our 10,000 means, <span class="math inline">\(\bar{x} = 3.499\)</span>, which is almost exactly the same as the parameter value of <span class="math inline">\(\mu = 3.5\)</span>.</p>
+<p><strong>Spread.</strong> The standard deviation of the distribution is <span class="math inline">\(s_{\bar{x}} = 0.764\)</span>.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> Because this is the standard deviation of the point estimate <span class="math inline">\(\bar{x}\)</span>, we call it the standard error of <span class="math inline">\(\bar{x}\)</span>.</p>
 <p><strong>Shape.</strong> The distribution is symmetric and bell-shaped, and it again <em>resembles a normal distribution</em>.</p>
 <p>In contrast to our first example of support for solar energy, we have a population mean of <span class="math inline">\(\mu = 3.5\)</span> and a much smaller sample size of <span class="math inline">\(n = 5\)</span>. Even so, the sample mean is a good estimate of the population mean and the histogram of sample mean values again looks similar to that of a normal distribution.</p>
 </section>
@@ -715,7 +731,7 @@ Figure&nbsp;19.4: Districting map of the state of Idaho.
 <li><p>See if the map drawn by the actual state legislature is unusual (in terms of projected election outcomes) compared to the randomly simulated maps.</p></li>
 </ul>
 <p>By having a computer (with no internal party preference and with rules for shapes) draw random maps, we balance the needs for both proportionality and geography!</p>
-<p>Skew the Script <span class="citation" data-cites="SkewTheScript2024">(<a href="#ref-SkewTheScript2024" role="doc-biblioref">Skew the Script 2024</a>)</span> developed a simulation <a href="skew-the-script.github.io/Gerrymandering">applet</a> to help determine if a state gerrymandered its Congressional districts, through the power of simulation. Powered by the ALARM <strong>redist</strong> package<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>, the simulation divides states into randomly drawn districts of equal population size. The simulations also follow some rules about “no weird shapes” and the details for that requirements are available through the ALARM Redistricting project <span class="citation" data-cites="AlarmRedistricting">(<a href="#ref-AlarmRedistricting" role="doc-biblioref">Alarm Redistricting, n.d.</a>)</span>. Then, it uses prior election data to find the political lean of the simulated districts. For the state of Idaho, the analysis is based on data from the 2016 and 2020 Presidential elections, 2016 and 2020 US Senate elections, and the 2018 Governor, Attorney General, and Secretary of State elections.</p>
+<p>Skew the Script <span class="citation" data-cites="SkewTheScript2024">(<a href="#ref-SkewTheScript2024" role="doc-biblioref">Skew the Script 2024</a>)</span> developed a simulation <a href="skew-the-script.github.io/Gerrymandering">applet</a> to help determine if a state gerrymandered its Congressional districts, through the power of simulation. Powered by the ALARM <strong>redist</strong> package<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>, the simulation divides states into randomly drawn districts of equal population size. The simulations also follow some rules about “no weird shapes” and the details for that requirements are available through the ALARM Redistricting project <span class="citation" data-cites="AlarmRedistricting">(<a href="#ref-AlarmRedistricting" role="doc-biblioref">Alarm Redistricting, n.d.</a>)</span>. Then, it uses prior election data to find the political lean of the simulated districts. For the state of Idaho, the analysis is based on data from the 2016 and 2020 Presidential elections, 2016 and 2020 US Senate elections, and the 2018 Governor, Attorney General, and Secretary of State elections.</p>
 <p>Let’s perform an analysis for Virginia. During redistricting, Virginia’s state legislature was controlled by Republicans. Did the legislature draw an unfair map?</p>
 <div id="fig-virginia-actual" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -739,7 +755,7 @@ Figure&nbsp;19.6
 </figure>
 </div>
 <p>The applet also plots the number of Democrat-leaning districts, in this case seven, for us on a bar chart. We can continue to add one, three, ten, 30, or 100 sample redistricting maps to these results by clicking the appropriate button in the applet. When generating three or more samples at a time, the applet displays the last three simulated redistricting maps for comparison.</p>
-<p>After adding 1,000 samples (for a total of 1,001 samples), we have results that look similar to those shown in <a href="#fig-virginia-res1000" class="quarto-xref">Figure&nbsp;<span>19.7</span></a>. What we’ve done here is create a sampling distribution for the number of Democrat-leaning districts in the state of Virginia by sampling 1,001 redistricting maps.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> In the applet, we’re able to compare the actual number of Democrat-leaning districts to our sampling distribution. Virginia appears to have a fair map. The legislature’s map projects seven Democrat-leaning districts, and the vast majority of simulations ($664/1001 = 66.3%) also had seven Democrat-leaning districts or fewer. So, the actual Virginia map is not unusual. There is little evidence that Republicans gerrymandered the state.</p>
+<p>After adding 1,000 samples (for a total of 1,001 samples), we have results that look similar to those shown in <a href="#fig-virginia-res1000" class="quarto-xref">Figure&nbsp;<span>19.7</span></a>. What we’ve done here is create a sampling distribution for the number of Democrat-leaning districts in the state of Virginia by sampling 1,001 redistricting maps.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> In the applet, we’re able to compare the actual number of Democrat-leaning districts to our sampling distribution. Virginia appears to have a fair map. The legislature’s map projects seven Democrat-leaning districts, and the vast majority of simulations ($664/1001 = 66.3%) also had seven Democrat-leaning districts or fewer. So, the actual Virginia map is not unusual. There is little evidence that Republicans gerrymandered the state.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-virginia-res1000" class="quarto-float quarto-figure quarto-figure-center anchored" width="672">
@@ -755,11 +771,11 @@ Figure&nbsp;19.7
 </div>
 </div>
 <blockquote class="blockquote">
-<p><strong>Exercise:</strong> Using the applet, perform an analysis and comment on the fairness of Illinois (Democrat-controlled legislature) and Texas (Republican-controlled legislature). Then, try your own state or another state of interest (note: states with one house member don’t go through redistricting).<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+<p><strong>Exercise:</strong> Using the applet, perform an analysis and comment on the fairness of Illinois (Democrat-controlled legislature) and Texas (Republican-controlled legislature). Then, try your own state or another state of interest (note: states with one house member don’t go through redistricting).<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
 </blockquote>
 <p>In its most recent landmark decision on gerrymandering (Rucho v. Common Cause), the Supreme Court abdicated to the legislature, saying that the courts could not make decisions on “political questions outside the remit of these courts.” In other words, if change is to happen, state legislatures or Congress have to pass laws to limit gerrymandering.</p>
 <blockquote class="blockquote">
-<p><strong>Exercise:</strong> Write such a law, using the simulation method described in this lesson. Specifically, fill in the blank: “If your map has more Democrat/Republican leaning districts than __% of simulations, it is unfair and should be rejected.” What number would you choose? Why?<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
+<p><strong>Exercise:</strong> Write such a law, using the simulation method described in this lesson. Specifically, fill in the blank: “If your map has more Democrat/Republican leaning districts than __% of simulations, it is unfair and should be rejected.” What number would you choose? Why?<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></p>
 </blockquote>
 <p>In the next few chapters, we’ll learn how to formalize these ideas and implement the four steps of hypothesis testing that we first glimpsed in the Inference Case Study in <a href="Inference-Case-Study.html" class="quarto-xref"><span>Chapter 18</span></a>.</p>
 
@@ -781,12 +797,40 @@ Skew the Script. 2024. <span>“Sampling Distributions.”</span> <a href="https
 <hr>
 <ol>
 <li id="fn1"><p>We haven’t actually conducted a census to measure this value perfectly. However, a very large sample has suggested the actual level of support is about 88%.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p><span class="math inline">\(E(X) = 1*{1\over 6} + 2*{1\over 6} + 3*{1\over 6} + 4*{1\over 6} + 5*{1\over 6} + 6*{1\over 6} = 3.5\)</span><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>The ALARM <strong>redist</strong>&nbsp;package in R enables researchers to sample redistricting plans from a pre-specified target distribution. Essentially, the authors of the package simulated a large number of possible redistricting maps. The package supports various constraints in the redistricting process, such as geographic compactness and population parity requirements, just like those requirements for any redistricting done in the state of Idaho.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>In fact, we’ve actually created a <strong>null distribution</strong> by sampling 1,001 possible fair redistricting maps. This null distribution is developed by sampling under the assumption of fairness, the null hypothesis in this scenario.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>Illinois is heavily gerrymandered: zero of the simulations have as many Democrat-leaning districts as the actual map. In Illinois’ enacted map, there are weirdly shaped districts that “carve out” Democrat-leaning areas. Texas is gerrymandered the opposite way: zero of the simulations have as few Democrat-leaning districts as the actual map. One district connects the east side of San Antonio with the east side of Austin, condensing Democrats in a long, skinny district across two metropolitan areas.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p>This question is building towards a hypothesis test. If the proportion of districts more extreme than the drawn map (the “p-value”) is lower than 5% (the “alpha level”), we reject the map (reject the null hypothesis that the map was fair). Of course, the analogy to hypothesis tests isn’t perfect, but it’s all about building intuition.</p>
-<p>We typically use 5% as the alpha level in hypothesis tests, but it’s okay for your answer to vary a little - as long as you have a relatively low number and use the logic of finding a percent that would be “surprising” or “unusual”.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>The standard error of a proportion <span class="math inline">\(p\)</span> can also be calculated as</p>
+<p><span class="math display">\[
+SE_{p} = \sqrt{\frac{p(1 - p)}{n}}
+\]</span></p>
+<p>where <span class="math inline">\(n\)</span> is the sample size. In the event that we don’t know the population proportion, we can estimate the standard error of a proportion. We simply replace <span class="math inline">\(p\)</span> by <span class="math inline">\(\hat{p}\)</span>, the sample proportion.</p>
+<p><span class="math display">\[
+SE_{\hat{p}} = \sqrt{\frac{\hat{p}(1 - \hat{p})}{n}}
+\]</span><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p><span class="math inline">\(E(X) = 1*{1\over 6} + 2*{1\over 6} + 3*{1\over 6} + 4*{1\over 6} + 5*{1\over 6} + 6*{1\over 6} = 3.5\)</span><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>The standard error of a mean <span class="math inline">\(\bar{x}\)</span> can also be calculated as</p>
+<p><span class="math display">\[
+SE_{\bar{x}} = \frac{\sigma}{\sqrt{n}}
+\]</span></p>
+<p>where <span class="math inline">\(\sigma\)</span> is the population standard deviation and <span class="math inline">\(n\)</span> is the sample size. In the event that we don’t know the population standard deviation, we can estimate the standard error by replacing <span class="math inline">\(\sigma\)</span> by <span class="math inline">\(s\)</span>, the sample standard deviation.</p>
+<p><span class="math display">\[
+SE_{\bar{x}} = \frac{s}{\sqrt{n}}
+\]</span></p>
+<p>In this dice-rolling example, the random variable <span class="math inline">\(X\)</span> follows a uniform distribution, <span class="math inline">\(X \sim \text{Unif}(a = 1, b = 6)\)</span>. Luckily for us, the expected value and variance for a uniform distribution are known:</p>
+<p><span class="math display">\[
+E(X) = \frac{a + b}{2} = \frac{1 + 6}{2} = \frac{7}{2} = 3.5
+\]</span></p>
+<p><span class="math display">\[
+Var(X) = \frac{(b - a + 1)^2 - 1}{12} = \frac{(6 - 1 + 1)^2 - 1}{12} = \frac{35}{12} = 2.916667
+\]</span></p>
+<p>With <span class="math inline">\(\sigma^2 = 2.916667\)</span>, we have <span class="math inline">\(\sigma = 1.707825\)</span> and we can calculate the standard error of <span class="math inline">\(\bar{x}\)</span>:</p>
+<p><span class="math display">\[
+SE_{\bar{x}} = \frac{\sigma}{\sqrt{n}} = \frac{1.707825}{\sqrt{5}} = 0.7637626
+\]</span></p>
+<p>This is very close to the standard deviation of our simulations (also known as the standard error), 0.764.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>The ALARM <strong>redist</strong>&nbsp;package in R enables researchers to sample redistricting plans from a pre-specified target distribution. Essentially, the authors of the package simulated a large number of possible redistricting maps. The package supports various constraints in the redistricting process, such as geographic compactness and population parity requirements, just like those requirements for any redistricting done in the state of Idaho.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>In fact, we’ve actually created a <strong>null distribution</strong> by sampling 1,001 possible fair redistricting maps. This null distribution is developed by sampling under the assumption of fairness, the null hypothesis in this scenario.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Illinois is heavily gerrymandered: zero of the simulations have as many Democrat-leaning districts as the actual map. In Illinois’ enacted map, there are weirdly shaped districts that “carve out” Democrat-leaning areas. Texas is gerrymandered the opposite way: zero of the simulations have as few Democrat-leaning districts as the actual map. One district connects the east side of San Antonio with the east side of Austin, condensing Democrats in a long, skinny district across two metropolitan areas.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>This question is building towards a hypothesis test. If the proportion of districts more extreme than the drawn map (the “p-value”) is lower than 5% (the “alpha level”), we reject the map (reject the null hypothesis that the map was fair). Of course, the analogy to hypothesis tests isn’t perfect, but it’s all about building intuition.</p>
+<p>We typically use 5% as the alpha level in hypothesis tests, but it’s okay for your answer to vary a little - as long as you have a relatively low number and use the logic of finding a percent that would be “surprising” or “unusual”.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 

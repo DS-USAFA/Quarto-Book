@@ -100,11 +100,29 @@ solar_results %>%
   gf_theme(theme_classic())
 ```
 
+We can also use `favstats()` to calculate summary statistics for our simulations.
+
+```{r}
+favstats(~sum, data = solar_results)
+```
+
 This distribution of a statistic, in this case the sample proportion, is called a **sampling distribution**. We can characterize this sampling distribution as follows:
 
-**Center.** The center of the distribution is $\bar{x}_p = 0.880$, which is the same as the parameter. Notice that the simulation mimicked a simple random sample of the population, which is a straightforward sampling strategy that helps avoid sampling bias.
+**Center.** The center of the distribution is the sample mean of the 10,000 proportions, $\bar{x}_p = 0.880$, which is the same as the population parameter in this case. Notice that the simulation mimicked a simple random sample of the population, which is a straightforward sampling strategy that helps avoid sampling bias.
 
-**Spread.** The standard deviation of the distribution is $s_{\hat{p}} = 0.010$. When we're talking about a sampling distribution or the variability of a point estimate, we typically use the term **standard error** rather than standard deviation.
+**Spread.** The standard deviation of the distribution is $s_{\hat{p}} = 0.010$.[^sampling-distributions-2] When we're talking about a sampling distribution or the variability of a point estimate, we typically use the term **standard error** rather than standard deviation.
+
+[^sampling-distributions-2]: The standard error of a proportion $p$ can also be calculated as
+
+    $$
+    SE_{p} = \sqrt{\frac{p(1 - p)}{n}}
+    $$
+
+    where $n$ is the sample size. In the event that we don't know the population proportion, we can estimate the standard error of a proportion. We simply replace $p$ by $\hat{p}$, the sample proportion.
+
+    $$
+    SE_{\hat{p}} = \sqrt{\frac{\hat{p}(1 - \hat{p})}{n}}
+    $$
 
 **Shape.** The distribution is symmetric and bell-shaped, and it *resembles a normal distribution*.
 
@@ -124,9 +142,9 @@ The above exercise highlights an important property we will see again and again:
 
 ## Sampling distributions case study: rolling the dice
 
-Let's consider a standard six-sided die and define a random variable $X$ as the result of a single die roll. The sample space is $S = \{1, 2, 3, 4, 5, 6\}$ and each outcome has an equal probability of $1/6$. The expected value of $X$ is easily found to be $E(X) = 3.5$.[^sampling-distributions-2]
+Let's consider a standard six-sided die and define a random variable $X$ as the result of a single die roll. The sample space is $S = \{1, 2, 3, 4, 5, 6\}$ and each outcome has an equal probability of $1/6$. The expected value of $X$ is easily found to be $E(X) = 3.5$.[^sampling-distributions-3]
 
-[^sampling-distributions-2]: $E(X) = 1*{1\over 6} + 2*{1\over 6} + 3*{1\over 6} + 4*{1\over 6} + 5*{1\over 6} + 6*{1\over 6} = 3.5$
+[^sampling-distributions-3]: $E(X) = 1*{1\over 6} + 2*{1\over 6} + 3*{1\over 6} + 4*{1\over 6} + 5*{1\over 6} + 6*{1\over 6} = 3.5$
 
 We will take a sample by rolling the die $n = 5$ times. We will then compute the mean of each sample. We can easily set up this process in `R`. Our first sample is $\{2, 5, 5, 4, 1\}$ with a mean value of $\bar{x}_1 = 3.4$.
 
@@ -169,11 +187,47 @@ dice_results %>%
   gf_theme(theme_classic())
 ```
 
+We can also use `favstats()` to calculate summary statistics for our simulations.
+
+```{r}
+favstats(~mean, data = dice_results)
+```
+
 This distribution of sample means is another example of a sampling distribution. We can characterize this sampling distribution as follows:
 
-**Center.** The center of the distribution is $\bar{x} = 3.499$, which is almost exactly the same as the parameter value of $\mu = 3.5$.
+**Center.** The center of the distribution is the sample mean of our 10,000 means, $\bar{x} = 3.499$, which is almost exactly the same as the parameter value of $\mu = 3.5$.
 
-**Spread.** The standard deviation of the distribution is $s_{\bar{x}} = 0.764$. Because this is the standard deviation of the point estimate $\bar{x}$, we call it the standard error of $\bar{x}$.
+**Spread.** The standard deviation of the distribution is $s_{\bar{x}} = 0.764$.[^sampling-distributions-4] Because this is the standard deviation of the point estimate $\bar{x}$, we call it the standard error of $\bar{x}$.
+
+[^sampling-distributions-4]: The standard error of a mean $\bar{x}$ can also be calculated as
+
+    $$
+    SE_{\bar{x}} = \frac{\sigma}{\sqrt{n}}
+    $$
+
+    where $\sigma$ is the population standard deviation and $n$ is the sample size. In the event that we don't know the population standard deviation, we can estimate the standard error by replacing $\sigma$ by $s$, the sample standard deviation.
+
+    $$
+    SE_{\bar{x}} = \frac{s}{\sqrt{n}}
+    $$
+
+    In this dice-rolling example, the random variable $X$ follows a uniform distribution, $X \sim \text{Unif}(a = 1, b = 6)$. Luckily for us, the expected value and variance for a uniform distribution are known:
+
+    $$
+    E(X) = \frac{a + b}{2} = \frac{1 + 6}{2} = \frac{7}{2} = 3.5
+    $$
+
+    $$
+    Var(X) = \frac{(b - a + 1)^2 - 1}{12} = \frac{(6 - 1 + 1)^2 - 1}{12} = \frac{35}{12} = 2.916667 
+    $$
+
+    With $\sigma^2 = 2.916667$, we have $\sigma = 1.707825$ and we can calculate the standard error of $\bar{x}$:
+
+    $$
+    SE_{\bar{x}} = \frac{\sigma}{\sqrt{n}} = \frac{1.707825}{\sqrt{5}} = 0.7637626
+    $$
+
+    This is very close to the standard deviation of our simulations (also known as the standard error), 0.764.
 
 **Shape.** The distribution is symmetric and bell-shaped, and it again *resembles a normal distribution*.
 
@@ -211,9 +265,9 @@ Between balancing the need for party representation (proportionality) and the ne
 
 By having a computer (with no internal party preference and with rules for shapes) draw random maps, we balance the needs for both proportionality and geography!
 
-Skew the Script [@SkewTheScript2024] developed a simulation [applet](skew-the-script.github.io/Gerrymandering) to help determine if a state gerrymandered its Congressional districts, through the power of simulation. Powered by the ALARM **redist** package[^sampling-distributions-3], the simulation divides states into randomly drawn districts of equal population size. The simulations also follow some rules about "no weird shapes" and the details for that requirements are available through the ALARM Redistricting project [@AlarmRedistricting]. Then, it uses prior election data to find the political lean of the simulated districts. For the state of Idaho, the analysis is based on data from the 2016 and 2020 Presidential elections, 2016 and 2020 US Senate elections, and the 2018 Governor, Attorney General, and Secretary of State elections.
+Skew the Script [@SkewTheScript2024] developed a simulation [applet](skew-the-script.github.io/Gerrymandering) to help determine if a state gerrymandered its Congressional districts, through the power of simulation. Powered by the ALARM **redist** package[^sampling-distributions-5], the simulation divides states into randomly drawn districts of equal population size. The simulations also follow some rules about "no weird shapes" and the details for that requirements are available through the ALARM Redistricting project [@AlarmRedistricting]. Then, it uses prior election data to find the political lean of the simulated districts. For the state of Idaho, the analysis is based on data from the 2016 and 2020 Presidential elections, 2016 and 2020 US Senate elections, and the 2018 Governor, Attorney General, and Secretary of State elections.
 
-[^sampling-distributions-3]: The ALARM **redist** package in R enables researchers to sample redistricting plans from a pre-specified target distribution. Essentially, the authors of the package simulated a large number of possible redistricting maps. The package supports various constraints in the redistricting process, such as geographic compactness and population parity requirements, just like those requirements for any redistricting done in the state of Idaho.
+[^sampling-distributions-5]: The ALARM **redist** package in R enables researchers to sample redistricting plans from a pre-specified target distribution. Essentially, the authors of the package simulated a large number of possible redistricting maps. The package supports various constraints in the redistricting process, such as geographic compactness and population parity requirements, just like those requirements for any redistricting done in the state of Idaho.
 
 Let's perform an analysis for Virginia. During redistricting, Virginia's state legislature was controlled by Republicans. Did the legislature draw an unfair map?
 
@@ -225,9 +279,9 @@ We get started by selecting the state of Virginia in the applet. The actual Virg
 
 The applet also plots the number of Democrat-leaning districts, in this case seven, for us on a bar chart. We can continue to add one, three, ten, 30, or 100 sample redistricting maps to these results by clicking the appropriate button in the applet. When generating three or more samples at a time, the applet displays the last three simulated redistricting maps for comparison.
 
-After adding 1,000 samples (for a total of 1,001 samples), we have results that look similar to those shown in @fig-virginia-res1000. What we've done here is create a sampling distribution for the number of Democrat-leaning districts in the state of Virginia by sampling 1,001 redistricting maps.[^sampling-distributions-4] In the applet, we're able to compare the actual number of Democrat-leaning districts to our sampling distribution. Virginia appears to have a fair map. The legislature's map projects seven Democrat-leaning districts, and the vast majority of simulations (\$664/1001 = 66.3%) also had seven Democrat-leaning districts or fewer. So, the actual Virginia map is not unusual. There is little evidence that Republicans gerrymandered the state.
+After adding 1,000 samples (for a total of 1,001 samples), we have results that look similar to those shown in @fig-virginia-res1000. What we've done here is create a sampling distribution for the number of Democrat-leaning districts in the state of Virginia by sampling 1,001 redistricting maps.[^sampling-distributions-6] In the applet, we're able to compare the actual number of Democrat-leaning districts to our sampling distribution. Virginia appears to have a fair map. The legislature's map projects seven Democrat-leaning districts, and the vast majority of simulations (\$664/1001 = 66.3%) also had seven Democrat-leaning districts or fewer. So, the actual Virginia map is not unusual. There is little evidence that Republicans gerrymandered the state.
 
-[^sampling-distributions-4]: In fact, we've actually created a **null distribution** by sampling 1,001 possible fair redistricting maps. This null distribution is developed by sampling under the assumption of fairness, the null hypothesis in this scenario.
+[^sampling-distributions-6]: In fact, we've actually created a **null distribution** by sampling 1,001 possible fair redistricting maps. This null distribution is developed by sampling under the assumption of fairness, the null hypothesis in this scenario.
 
 ```{r}
 #| label: fig-virginia-res1000
@@ -247,15 +301,15 @@ virginia_res %>%
   gf_theme(theme_classic())
 ```
 
-> **Exercise:** Using the applet, perform an analysis and comment on the fairness of Illinois (Democrat-controlled legislature) and Texas (Republican-controlled legislature). Then, try your own state or another state of interest (note: states with one house member don't go through redistricting).[^sampling-distributions-5]
+> **Exercise:** Using the applet, perform an analysis and comment on the fairness of Illinois (Democrat-controlled legislature) and Texas (Republican-controlled legislature). Then, try your own state or another state of interest (note: states with one house member don't go through redistricting).[^sampling-distributions-7]
 
-[^sampling-distributions-5]: Illinois is heavily gerrymandered: zero of the simulations have as many Democrat-leaning districts as the actual map. In Illinois' enacted map, there are weirdly shaped districts that "carve out" Democrat-leaning areas. Texas is gerrymandered the opposite way: zero of the simulations have as few Democrat-leaning districts as the actual map. One district connects the east side of San Antonio with the east side of Austin, condensing Democrats in a long, skinny district across two metropolitan areas.
+[^sampling-distributions-7]: Illinois is heavily gerrymandered: zero of the simulations have as many Democrat-leaning districts as the actual map. In Illinois' enacted map, there are weirdly shaped districts that "carve out" Democrat-leaning areas. Texas is gerrymandered the opposite way: zero of the simulations have as few Democrat-leaning districts as the actual map. One district connects the east side of San Antonio with the east side of Austin, condensing Democrats in a long, skinny district across two metropolitan areas.
 
 In its most recent landmark decision on gerrymandering (Rucho v. Common Cause), the Supreme Court abdicated to the legislature, saying that the courts could not make decisions on "political questions outside the remit of these courts." In other words, if change is to happen, state legislatures or Congress have to pass laws to limit gerrymandering.
 
-> **Exercise:** Write such a law, using the simulation method described in this lesson. Specifically, fill in the blank: “If your map has more Democrat/Republican leaning districts than \_\_% of simulations, it is unfair and should be rejected.” What number would you choose? Why?[^sampling-distributions-6]
+> **Exercise:** Write such a law, using the simulation method described in this lesson. Specifically, fill in the blank: “If your map has more Democrat/Republican leaning districts than \_\_% of simulations, it is unfair and should be rejected.” What number would you choose? Why?[^sampling-distributions-8]
 
-[^sampling-distributions-6]: This question is building towards a hypothesis test. If the proportion of districts more extreme than the drawn map (the “p-value”) is lower than 5% (the “alpha level”), we reject the map (reject the null hypothesis that the map was fair). Of course, the analogy to hypothesis tests isn’t perfect, but it’s all about building intuition.
+[^sampling-distributions-8]: This question is building towards a hypothesis test. If the proportion of districts more extreme than the drawn map (the “p-value”) is lower than 5% (the “alpha level”), we reject the map (reject the null hypothesis that the map was fair). Of course, the analogy to hypothesis tests isn’t perfect, but it’s all about building intuition.
 
     We typically use 5% as the alpha level in hypothesis tests, but it’s okay for your answer to vary a little - as long as you have a relatively low number and use the logic of finding a percent that would be “surprising” or “unusual".
 
