@@ -502,7 +502,8 @@ We can also calculate this using `R`.
 
 ```{r}
 s <- sd(obp ~ position, data = mlb_obp_subset)
-obs <- (diffmean(obp ~ position, data = mlb_obp_subset) - 0) / sqrt(s[2]^2/120 + s[1]^2/154)
+obs <- (diffmean(obp ~ position, data = mlb_obp_subset) - 0) / 
+  sqrt(s[2]^2/120 + s[1]^2/154)
 obs
 ```
 
@@ -623,4 +624,168 @@ The two-sided $p$-value is
 
 You should notice that the $p$-value for the two-sample $t$-test is smaller than the $p$-value obtained here. That is because the $p$-value for the two-sample $t$-test involves more assumptions. Still, our results here are consistent with those using the difference of means randomization test and the two-sample $t$-test.
 
-In the next chapter, we will learn how to use the $F$ statistic and ANOVA to test whether there are differences in more than two means simultaneously.
+### Paired data
+
+Are textbooks actually cheaper online? In this example, we compare the price of textbooks at the University of California, Los Angeles' (UCLA's) bookstore and prices at Amazon.com. Seventy-three UCLA courses were randomly sampled in Spring 2010, representing less than 10% of all UCLA courses. When a class had multiple books, only the most expensive text was considered.
+
+The data is in the file `textbooks.csv` under the data folder.
+
+```{r}
+#| message: false 
+#| warning: false 
+textbooks <- read_csv("data/textbooks.csv")
+```
+
+```{r}
+head(textbooks)
+```
+
+Each textbook has two corresponding prices in the data set: one for the UCLA bookstore and one for Amazon. Therefore, each textbook price from the UCLA bookstore has a natural correspondence with a textbook price from Amazon. When two sets of observations have this special correspondence, they are said to be **paired**.
+
+::: callout-note
+## Paired data examples
+
+Paired data arises when two related measurements are collected on the same individual, object, or entity, allowing for comparisons within each pair. Below are some examples of paired data, each involving a before-and-after or matched situation.
+
+-   Blood pressure is measured for patients before and after they take a new medication.
+
+-   A company wants to test two different training programs for employee productivity. Each employee undergoes both training programs, one after the other, in a randomized order.
+
+-   A school measures students' test scores before and after a study skills intervention.
+
+-   A psychological study measures stress levels in identical twins, with one twin assigned to a stress-reduction program and the other twin lives their life as normal.
+
+-   A new mosquito repellent is tested on subjects, with one arm being sprayed with the new product and the other not.
+:::
+
+To analyze paired data, it is often useful to look at the difference in outcomes of each pair of observations. In `textbooks`, we look at the difference in prices, which is represented as the `diff` variable. It is important that we always subtract using a consistent order; here Amazon prices are always subtracted from UCLA prices.
+
+This data is tidy, because each row is a textbook and each column is a variable. We first make a scatterplot of the UCLA price versus the Amazon price. We'll add a 45 degree line to the plot, indicating where both prices are the same.
+
+```{r warning=FALSE}
+textbooks %>%
+  gf_point(ucla_new~amaz_new) %>%
+  gf_abline(slope=1,intercept = 0,color="darkblue") %>%
+  gf_theme(theme_classic()) %>%
+  gf_labs(x="Amazon",y="UCLA")
+```
+
+It appears the books at the UCLA bookstore are more expensive. One way to test this is with a regression model; we will learn more about this method in the next block.
+
+A density plot of the differences in price shows us that the distribution is right skewed.
+
+```{r}
+textbooks %>%
+  gf_dens(~diff,fill="cyan",color="black") %>%
+  gf_theme(theme_classic()) %>%
+  gf_labs(title="Distribution of price differences",
+          x="Price difference between UCLA and Amazon")
+```
+
+The hypotheses are:
+
+$H_0$: $\mu_{diff}=0$. There is no difference in the average textbook price.\
+$H_A$: $\mu_{diff} \neq 0$. There is a difference in average textbook prices.
+
+To use a $t$ distribution, the variable `diff` has to be independent and normally distributed. Since the 73 books represent less than 10% of the population and UCLA courses were randomly sampled, the assumption that the random sample is independent is reasonable. We can check normality using a quantile-quantile plot.
+
+```{r}
+gf_qq(~diff, data = textbooks) %>%
+  gf_qqline(~diff, data = textbooks) %>%
+  gf_theme(theme_bw())
+```
+
+The normality assumption is suspect but we have a large sample so it should be acceptable to use the $t$.
+
+#### Paired $t$-test
+
+Let's run a paired $t$-test on the `diff` variable. We can use the `t_test()` function in `R` for this. Note that we do not have to use the `paired=TRUE` option because we already took the difference in prices.
+
+```{r}
+t_test(~diff, data = textbooks)
+```
+
+We can conduct the same paired $t$-test using the two price variables and `paired=TRUE`, shown below.
+
+```{r}
+t_test(textbooks$ucla_new, textbooks$amaz_new, paired = TRUE)
+```
+
+The $p$-value is extremely small, leading us to reject the null hypothesis and conclude that there is a difference in the average textbook prices. We don't believe the average price of the books from the UCLA bookstore and Amazon are the same.
+
+#### Randomization test
+
+We can also conduct a randomization test on this data using the difference of paired means as our test statistic. The observed test statistic is the mean of the paired differences.
+
+```{r}
+obs_stat <- mean(~diff, data = textbooks)  
+obs_stat
+```
+
+To conduct the randomization, we have to be careful. We want to keep the pairings so we can't just shuffle the names/labels (UCLA or Amazon). We have to shuffle the names within the pairs. We simply want to randomly switch the names within a row. This is easiest to do by multiplying the `diff` column by a random choice of -1 and 1.
+
+```{r}
+sample(c(-1, 1), size = 73, replace = TRUE)
+```
+
+We'll set a seed and generate 1,000 randomizations. In each, we randomly choose -1 or 1 to multiply by the difference in prices. We'll then take the mean of the differences.
+
+```{r}
+#| cache: true  
+set.seed(406) 
+results <- do(1000)*mean((~diff*sample(c(-1, 1), size = 73, replace = TRUE)), 
+                         data = textbooks)
+```
+
+We plot a histogram of the results and include our observed mean of paired differences as a vertical red line.
+
+```{r}
+results %>%   
+  gf_histogram(~mean, fill = "cyan", color = "black") %>%  
+  gf_vline(xintercept = obs_stat, color = "red") %>% 
+  gf_theme(theme_classic()) %>%   
+  gf_labs(title = "Randomization sampling distribution of mean of differences in price",           
+          x = "Mean of price difference")
+```
+
+The $p$-value is the probability of an observed mean difference of 12.76 or something more extreme, if the null hypothesis is really true. The plot above implies that our $p$-value will be very small (because the observed mean difference is so far out to the right), but we'll verify by calculating the $p$-value. Because this is a two-sided hypothesis test, we double the probability.
+
+```{r}
+2*prop((~mean >= obs_stat), data = results)
+```
+
+None of the simulated values is at or greater than the observed value. Using `prop1()` is often preferred, because it includes the observed test statistic in the proportion, so we never end up with exactly zero.
+
+```{r}
+2*prop1((~mean >= obs_stat), data = results)
+```
+
+With a $p$-value of 0.002, we reject the null hypothesis and conclude that the mean of paired differences is different from zero. That is, there is a difference in the average price of textbooks from the UCLA bookstore and Amazon.
+
+#### Using the binomial distribution
+
+We can also approach this problem using known probability distributions. If there is really no difference between book sources, the variable `more` ("Y" for yes and "N" for no) can be viewed as a binomial random variable. Under the null hypothesis, the probability of success (UCLA textbooks costing more than Amazon) is $\pi = 0.5$.
+
+Let's conduct a hypothesis test using the variable `more`. The hypotheses are:
+
+$H_0: \pi = 0.5$, the probability of UCLA textbooks costing more than Amazon is 0.5. $H_A: \pi\neq 0.5$, the probability of UCLA textbooks costing more than Amazon is different from 0.5.
+
+```{r}
+tally(~more, data = textbooks)
+```
+
+We have 45 textbooks that were more expensive from the UCLA bookstore than Amazon, out of the total of 73. The $p$-value is the probability that 45 or more textbooks were more expensive. We can use `pbinom()` to calculate this probability and we multiply by two because we are conducting a two-sided hypothesis test.
+
+```{r}
+2*(1 - pbinom(44, size = 73, prob = 0.5))
+```
+
+We can also use `prop_test()` to find a very similar $p$-value.
+
+```{r}
+prop_test(x = 45, n = 73, p = 0.5)
+```
+
+Because our $p$-value is larger than the significance level of $\alpha = 0.05$, we fail to reject the null hypothesis. There is not enough evidence to say that the probability of UCLA textbooks costing more than Amazon is different from 0.5. In the paired test, the evidence was extremely convincing but in the binomial model it is not. There is a loss of information when we make a discrete variable out of a continuous one.
+
+In the next chapter, we will learn how to use the $F$ statistic and analysis of variance (ANOVA) to test whether there are differences among more than two means simultaneously.
