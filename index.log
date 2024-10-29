@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Debian) (preloaded format=xelatex 2024.5.29)  6 AUG 2024 22:20
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Debian) (preloaded format=xelatex 2024.5.29)  29 OCT 2024 03:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2014,33 +2014,31 @@ LaTeX Warning: Reference `sec-CONDPROB' on page 121 undefined on input line 635
 [121]
 
 LaTeX Warning: Reference `fig-prob-venn' on page 122 undefined on input line 64
-08.
+09.
 
 File: figures/prob_venn_diag.PNG Graphic file (type bmp)
 <figures/prob_venn_diag.PNG>
 [122] [123]
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <12> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 6462.
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 6463.
 [124]
-Underfull \hbox (badness 1077) in paragraph at lines 6518--6520
-[]\TU/lmr/m/n/10.95 Next, we can visualize the distribution of the number of fe
-males, heads, in Figure
- []
 
-File: Probability-Rules_files/figure-pdf/bar81-fig-1.pdf Graphic file (type pdf
+LaTeX Warning: Reference `fig-bar81' on page 125 undefined on input line 6520.
+
+File: Probability-Rules_files/figure-pdf/fig-bar81-1.pdf Graphic file (type pdf
 )
-<use Probability-Rules_files/figure-pdf/bar81-fig-1.pdf>
+<use Probability-Rules_files/figure-pdf/fig-bar81-1.pdf>
 [125] [126] [127] [128] [129] [130] [131] [132] [133] [134] [135] [136]
 
 LaTeX Warning: Reference `fig-count-table' on page 137 undefined on input line 
-7171.
+7174.
 
 File: figures/counting_rules_table.PNG Graphic file (type bmp)
 <figures/counting_rules_table.PNG>
 [137]
 chapter 9.
 
-Overfull \hbox (6.25978pt too wide) detected at line 7229
+Overfull \hbox (6.25978pt too wide) detected at line 7232
 [] [] [][][] [][] [][] [][] [][] [][] [][][]
  []
 
@@ -2048,15 +2046,14 @@ Overfull \hbox (6.25978pt too wide) detected at line 7229
 
 ] [139]
 
-LaTeX Warning: Reference `fig-sens' on page 140 undefined on input line 7339.
+LaTeX Warning: Reference `fig-sens' on page 140 undefined on input line 7342.
 
 File: ./figures/sensitivity-specificity_corrected.jpg Graphic file (type bmp)
 <./figures/sensitivity-specificity_corrected.jpg>
 [140] [141] [142]
-Underfull \hbox (badness 2698) in paragraph at lines 7463--7468
-[]\TU/lmr/m/n/10.95 The denominator can be rewritten using the Law of Total Pro
-bability (discussed
- []
+
+LaTeX Warning: Reference `sec-probProps' on page 143 undefined on input line 74
+67.
 
 [143] [144]
 chapter 10.
@@ -2065,11 +2062,11 @@ chapter 10.
 ] [146]
 
 LaTeX Warning: Reference `sec-PROBRULES' on page 147 undefined on input line 76
-43.
+46.
 
 [147]
 
-LaTeX Warning: Reference `fig-pmf101' on page 148 undefined on input line 7683.
+LaTeX Warning: Reference `fig-pmf101' on page 148 undefined on input line 7686.
 
 
 File: Discrete-Random-Variables_files/figure-pdf/fig-pmf101-1.pdf Graphic file 
@@ -2081,13 +2078,13 @@ File: figures/drv-cdf101.PNG Graphic file (type bmp)
 ! Missing } inserted.
 <inserted text> 
                 }
-l.7784 \end{quote}
+l.7787 \end{quote}
                    
 Here is how much of TeX's memory you used:
- 39418 strings out of 479819
- 779882 string characters out of 5895846
- 1342286 words of memory out of 5000000
- 55838 multiletter control sequences out of 15000+600000
+ 39420 strings out of 479819
+ 779908 string characters out of 5895846
+ 1342285 words of memory out of 5000000
+ 55840 multiletter control sequences out of 15000+600000
  541884 words of font info for 107 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  63i,10n,115p,10100b,522s stack positions out of 5000i,500n,10000p,200000b,80000s

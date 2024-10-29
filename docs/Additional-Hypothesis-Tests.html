@@ -473,6 +473,7 @@ window.Quarto = {
   <li><a href="#mlb-batting-performance" id="toc-mlb-batting-performance" class="nav-link" data-scroll-target="#mlb-batting-performance"><span class="header-section-number">25.5.1</span> MLB batting performance</a></li>
   <li><a href="#two-sample-t-test-in-r" id="toc-two-sample-t-test-in-r" class="nav-link" data-scroll-target="#two-sample-t-test-in-r"><span class="header-section-number">25.5.2</span> Two-sample <span class="math inline">\(t\)</span>-test in <code>R</code></a></li>
   <li><a href="#randomization-test" id="toc-randomization-test" class="nav-link" data-scroll-target="#randomization-test"><span class="header-section-number">25.5.3</span> Randomization test</a></li>
+  <li><a href="#paired-data" id="toc-paired-data" class="nav-link" data-scroll-target="#paired-data"><span class="header-section-number">25.5.4</span> Paired data</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/DS-USAFA/Quarto-Book/edit/main/Additional-Hypothesis-Tests.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
@@ -965,8 +966,9 @@ T = {(\bar{X}_{OF} - \bar{X}_{IF}) - 0 \over \sqrt{{S_{OF}^2\over n_{OF}} + {S_{
 <p>We can also calculate this using <code>R</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">sd</span>(obp <span class="sc">~</span> position, <span class="at">data =</span> mlb_obp_subset)</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>obs <span class="ot">&lt;-</span> (<span class="fu">diffmean</span>(obp <span class="sc">~</span> position, <span class="at">data =</span> mlb_obp_subset) <span class="sc">-</span> <span class="dv">0</span>) <span class="sc">/</span> <span class="fu">sqrt</span>(s[<span class="dv">2</span>]<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="dv">120</span> <span class="sc">+</span> s[<span class="dv">1</span>]<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="dv">154</span>)</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>obs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>obs <span class="ot">&lt;-</span> (<span class="fu">diffmean</span>(obp <span class="sc">~</span> position, <span class="at">data =</span> mlb_obp_subset) <span class="sc">-</span> <span class="dv">0</span>) <span class="sc">/</span> </span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sqrt</span>(s[<span class="dv">2</span>]<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="dv">120</span> <span class="sc">+</span> s[<span class="dv">1</span>]<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="dv">154</span>)</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>obs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> diffmean 
 0.6776293 </code></pre>
@@ -1102,7 +1104,235 @@ Figure&nbsp;25.9: The sampling distribution of the randomization test using the 
 </div>
 </div>
 <p>You should notice that the <span class="math inline">\(p\)</span>-value for the two-sample <span class="math inline">\(t\)</span>-test is smaller than the <span class="math inline">\(p\)</span>-value obtained here. That is because the <span class="math inline">\(p\)</span>-value for the two-sample <span class="math inline">\(t\)</span>-test involves more assumptions. Still, our results here are consistent with those using the difference of means randomization test and the two-sample <span class="math inline">\(t\)</span>-test.</p>
-<p>In the next chapter, we will learn how to use the <span class="math inline">\(F\)</span> statistic and ANOVA to test whether there are differences in more than two means simultaneously.</p>
+</section>
+</section>
+<section id="paired-data" class="level3" data-number="25.5.4">
+<h3 data-number="25.5.4" class="anchored" data-anchor-id="paired-data"><span class="header-section-number">25.5.4</span> Paired data</h3>
+<p>Are textbooks actually cheaper online? In this example, we compare the price of textbooks at the University of California, Los Angeles’ (UCLA’s) bookstore and prices at Amazon.com. Seventy-three UCLA courses were randomly sampled in Spring 2010, representing less than 10% of all UCLA courses. When a class had multiple books, only the most expensive text was considered.</p>
+<p>The data is in the file <code>textbooks.csv</code> under the data folder.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>textbooks <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/textbooks.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(textbooks)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 7
+  dept_abbr course isbn           ucla_new amaz_new more   diff
+  &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;             &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;
+1 Am Ind    C170   978-0803272620     27.7     28.0 Y     -0.28
+2 Anthro    9      978-0030119194     40.6     31.1 Y      9.45
+3 Anthro    135T   978-0300080643     31.7     32   Y     -0.32
+4 Anthro    191HB  978-0226206813     16       11.5 Y      4.48
+5 Art His   M102K  978-0892365999     19.0     14.2 Y      4.74
+6 Art His   118E   978-0394723693     15.0     10.2 Y      4.78</code></pre>
+</div>
+</div>
+<p>Each textbook has two corresponding prices in the data set: one for the UCLA bookstore and one for Amazon. Therefore, each textbook price from the UCLA bookstore has a natural correspondence with a textbook price from Amazon. When two sets of observations have this special correspondence, they are said to be <strong>paired</strong>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Paired data examples
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Paired data arises when two related measurements are collected on the same individual, object, or entity, allowing for comparisons within each pair. Below are some examples of paired data, each involving a before-and-after or matched situation.</p>
+<ul>
+<li><p>Blood pressure is measured for patients before and after they take a new medication.</p></li>
+<li><p>A company wants to test two different training programs for employee productivity. Each employee undergoes both training programs, one after the other, in a randomized order.</p></li>
+<li><p>A school measures students’ test scores before and after a study skills intervention.</p></li>
+<li><p>A psychological study measures stress levels in identical twins, with one twin assigned to a stress-reduction program and the other twin lives their life as normal.</p></li>
+<li><p>A new mosquito repellent is tested on subjects, with one arm being sprayed with the new product and the other not.</p></li>
+</ul>
+</div>
+</div>
+<p>To analyze paired data, it is often useful to look at the difference in outcomes of each pair of observations. In <code>textbooks</code>, we look at the difference in prices, which is represented as the <code>diff</code> variable. It is important that we always subtract using a consistent order; here Amazon prices are always subtracted from UCLA prices.</p>
+<p>This data is tidy, because each row is a textbook and each column is a variable. We first make a scatterplot of the UCLA price versus the Amazon price. We’ll add a 45 degree line to the plot, indicating where both prices are the same.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>textbooks <span class="sc">%&gt;%</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_point</span>(ucla_new<span class="sc">~</span>amaz_new) <span class="sc">%&gt;%</span></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_abline</span>(<span class="at">slope=</span><span class="dv">1</span>,<span class="at">intercept =</span> <span class="dv">0</span>,<span class="at">color=</span><span class="st">"darkblue"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_classic</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">x=</span><span class="st">"Amazon"</span>,<span class="at">y=</span><span class="st">"UCLA"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Additional-Hypothesis-Tests_files/figure-html/unnamed-chunk-44-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>It appears the books at the UCLA bookstore are more expensive. One way to test this is with a regression model; we will learn more about this method in the next block.</p>
+<p>A density plot of the differences in price shows us that the distribution is right skewed.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>textbooks <span class="sc">%&gt;%</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_dens</span>(<span class="sc">~</span>diff,<span class="at">fill=</span><span class="st">"cyan"</span>,<span class="at">color=</span><span class="st">"black"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_classic</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">title=</span><span class="st">"Distribution of price differences"</span>,</span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">x=</span><span class="st">"Price difference between UCLA and Amazon"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Additional-Hypothesis-Tests_files/figure-html/unnamed-chunk-45-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The hypotheses are:</p>
+<p><span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu_{diff}=0\)</span>. There is no difference in the average textbook price.<br>
+<span class="math inline">\(H_A\)</span>: <span class="math inline">\(\mu_{diff} \neq 0\)</span>. There is a difference in average textbook prices.</p>
+<p>To use a <span class="math inline">\(t\)</span> distribution, the variable <code>diff</code> has to be independent and normally distributed. Since the 73 books represent less than 10% of the population and UCLA courses were randomly sampled, the assumption that the random sample is independent is reasonable. We can check normality using a quantile-quantile plot.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_qq</span>(<span class="sc">~</span>diff, <span class="at">data =</span> textbooks) <span class="sc">%&gt;%</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_qqline</span>(<span class="sc">~</span>diff, <span class="at">data =</span> textbooks) <span class="sc">%&gt;%</span></span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_bw</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Additional-Hypothesis-Tests_files/figure-html/unnamed-chunk-46-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The normality assumption is suspect but we have a large sample so it should be acceptable to use the <span class="math inline">\(t\)</span>.</p>
+<section id="paired-t-test" class="level4" data-number="25.5.4.1">
+<h4 data-number="25.5.4.1" class="anchored" data-anchor-id="paired-t-test"><span class="header-section-number">25.5.4.1</span> Paired <span class="math inline">\(t\)</span>-test</h4>
+<p>Let’s run a paired <span class="math inline">\(t\)</span>-test on the <code>diff</code> variable. We can use the <code>t_test()</code> function in <code>R</code> for this. Note that we do not have to use the <code>paired=TRUE</code> option because we already took the difference in prices.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t_test</span>(<span class="sc">~</span>diff, <span class="at">data =</span> textbooks)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    One Sample t-test
+
+data:  diff
+t = 7.6488, df = 72, p-value = 6.928e-11
+alternative hypothesis: true mean is not equal to 0
+95 percent confidence interval:
+  9.435636 16.087652
+sample estimates:
+mean of x 
+ 12.76164 </code></pre>
+</div>
+</div>
+<p>We can conduct the same paired <span class="math inline">\(t\)</span>-test using the two price variables and <code>paired=TRUE</code>, shown below.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t_test</span>(textbooks<span class="sc">$</span>ucla_new, textbooks<span class="sc">$</span>amaz_new, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Paired t-test
+
+data:  textbooks$ucla_new and textbooks$amaz_new
+t = 7.6488, df = 72, p-value = 6.928e-11
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+  9.435636 16.087652
+sample estimates:
+mean difference 
+       12.76164 </code></pre>
+</div>
+</div>
+<p>The <span class="math inline">\(p\)</span>-value is extremely small, leading us to reject the null hypothesis and conclude that there is a difference in the average textbook prices. We don’t believe the average price of the books from the UCLA bookstore and Amazon are the same.</p>
+</section>
+<section id="randomization-test-1" class="level4" data-number="25.5.4.2">
+<h4 data-number="25.5.4.2" class="anchored" data-anchor-id="randomization-test-1"><span class="header-section-number">25.5.4.2</span> Randomization test</h4>
+<p>We can also conduct a randomization test on this data using the difference of paired means as our test statistic. The observed test statistic is the mean of the paired differences.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>obs_stat <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="sc">~</span>diff, <span class="at">data =</span> textbooks)  </span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>obs_stat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 12.76164</code></pre>
+</div>
+</div>
+<p>To conduct the randomization, we have to be careful. We want to keep the pairings so we can’t just shuffle the names/labels (UCLA or Amazon). We have to shuffle the names within the pairs. We simply want to randomly switch the names within a row. This is easiest to do by multiplying the <code>diff</code> column by a random choice of -1 and 1.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>), <span class="at">size =</span> <span class="dv">73</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  1 -1  1  1 -1  1  1 -1 -1  1 -1  1 -1  1 -1  1 -1  1 -1  1 -1 -1 -1 -1  1
+[26]  1 -1 -1 -1 -1  1 -1 -1  1 -1 -1  1  1  1 -1 -1  1  1  1 -1  1 -1  1 -1 -1
+[51] -1 -1  1  1  1  1 -1  1 -1  1 -1 -1 -1 -1  1 -1 -1  1 -1 -1  1  1 -1</code></pre>
+</div>
+</div>
+<p>We’ll set a seed and generate 1,000 randomizations. In each, we randomly choose -1 or 1 to multiply by the difference in prices. We’ll then take the mean of the differences.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">406</span>) </span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">do</span>(<span class="dv">1000</span>)<span class="sc">*</span><span class="fu">mean</span>((<span class="sc">~</span>diff<span class="sc">*</span><span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>), <span class="at">size =</span> <span class="dv">73</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)), </span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">data =</span> textbooks)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We plot a histogram of the results and include our observed mean of paired differences as a vertical red line.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>results <span class="sc">%&gt;%</span>   </span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_histogram</span>(<span class="sc">~</span>mean, <span class="at">fill =</span> <span class="st">"cyan"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">%&gt;%</span>  </span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_vline</span>(<span class="at">xintercept =</span> obs_stat, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_theme</span>(<span class="fu">theme_classic</span>()) <span class="sc">%&gt;%</span>   </span>
+<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_labs</span>(<span class="at">title =</span> <span class="st">"Randomization sampling distribution of mean of differences in price"</span>,           </span>
+<span id="cb68-6"><a href="#cb68-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">x =</span> <span class="st">"Mean of price difference"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Additional-Hypothesis-Tests_files/figure-html/unnamed-chunk-52-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The <span class="math inline">\(p\)</span>-value is the probability of an observed mean difference of 12.76 or something more extreme, if the null hypothesis is really true. The plot above implies that our <span class="math inline">\(p\)</span>-value will be very small (because the observed mean difference is so far out to the right), but we’ll verify by calculating the <span class="math inline">\(p\)</span>-value. Because this is a two-sided hypothesis test, we double the probability.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span><span class="fu">prop</span>((<span class="sc">~</span>mean <span class="sc">&gt;=</span> obs_stat), <span class="at">data =</span> results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>prop_TRUE 
+        0 </code></pre>
+</div>
+</div>
+<p>None of the simulated values is at or greater than the observed value. Using <code>prop1()</code> is often preferred, because it includes the observed test statistic in the proportion, so we never end up with exactly zero.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span><span class="fu">prop1</span>((<span class="sc">~</span>mean <span class="sc">&gt;=</span> obs_stat), <span class="at">data =</span> results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  prop_TRUE 
+0.001998002 </code></pre>
+</div>
+</div>
+<p>With a <span class="math inline">\(p\)</span>-value of 0.002, we reject the null hypothesis and conclude that the mean of paired differences is different from zero. That is, there is a difference in the average price of textbooks from the UCLA bookstore and Amazon.</p>
+</section>
+<section id="using-the-binomial-distribution" class="level4" data-number="25.5.4.3">
+<h4 data-number="25.5.4.3" class="anchored" data-anchor-id="using-the-binomial-distribution"><span class="header-section-number">25.5.4.3</span> Using the binomial distribution</h4>
+<p>We can also approach this problem using known probability distributions. If there is really no difference between book sources, the variable <code>more</code> (“Y” for yes and “N” for no) can be viewed as a binomial random variable. Under the null hypothesis, the probability of success (UCLA textbooks costing more than Amazon) is <span class="math inline">\(\pi = 0.5\)</span>.</p>
+<p>Let’s conduct a hypothesis test using the variable <code>more</code>. The hypotheses are:</p>
+<p><span class="math inline">\(H_0: \pi = 0.5\)</span>, the probability of UCLA textbooks costing more than Amazon is 0.5. <span class="math inline">\(H_A: \pi\neq 0.5\)</span>, the probability of UCLA textbooks costing more than Amazon is different from 0.5.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tally</span>(<span class="sc">~</span>more, <span class="at">data =</span> textbooks)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>more
+ N  Y 
+28 45 </code></pre>
+</div>
+</div>
+<p>We have 45 textbooks that were more expensive from the UCLA bookstore than Amazon, out of the total of 73. The <span class="math inline">\(p\)</span>-value is the probability that 45 or more textbooks were more expensive. We can use <code>pbinom()</code> to calculate this probability and we multiply by two because we are conducting a two-sided hypothesis test.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pbinom</span>(<span class="dv">44</span>, <span class="at">size =</span> <span class="dv">73</span>, <span class="at">prob =</span> <span class="fl">0.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.06037004</code></pre>
+</div>
+</div>
+<p>We can also use <code>prop_test()</code> to find a very similar <span class="math inline">\(p\)</span>-value.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop_test</span>(<span class="at">x =</span> <span class="dv">45</span>, <span class="at">n =</span> <span class="dv">73</span>, <span class="at">p =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    1-sample proportions test with continuity correction
+
+data:  45 out of 73
+X-squared = 3.5068, df = 1, p-value = 0.06112
+alternative hypothesis: true p is not equal to 0.5
+95 percent confidence interval:
+ 0.4948968 0.7256421
+sample estimates:
+        p 
+0.6164384 </code></pre>
+</div>
+</div>
+<p>Because our <span class="math inline">\(p\)</span>-value is larger than the significance level of <span class="math inline">\(\alpha = 0.05\)</span>, we fail to reject the null hypothesis. There is not enough evidence to say that the probability of UCLA textbooks costing more than Amazon is different from 0.5. In the paired test, the evidence was extremely convincing but in the binomial model it is not. There is a loss of information when we make a discrete variable out of a continuous one.</p>
+<p>In the next chapter, we will learn how to use the <span class="math inline">\(F\)</span> statistic and analysis of variance (ANOVA) to test whether there are differences among more than two means simultaneously.</p>
 
 
 </section>
