@@ -212,17 +212,17 @@ $$
 {\bar{X} - \mu\over\sigma/\sqrt{n}} \overset{approx}{\sim} \textsf{Norm}(0, 1)
 $$
 
-Again, $\sigma$ is unknown. Thus, we have to estimate it. We can estimate it with $S$, the sample standard deviation, but now we need to know the distribution of ${\bar{X} - \mu\over S/\sqrt{n}}$. This **does not** follow the normal distribution.
+Again, $\sigma$ is unknown. Thus, we have to estimate it. We can estimate it with $s$, the sample standard deviation, but now we need to know the distribution of ${\bar{X} - \mu\over s/\sqrt{n}}$. This **does not** follow the normal distribution.
 
 > Lemma: Let $X_1, X_2, ..., X_n$ be an i.i.d. sequence of random variables from a normal population with mean $\mu$ and standard deviation $\sigma$. Then, $$
-> {\overline{X} - \mu\over S/\sqrt{n}} \sim \textsf{t}(n - 1)
+> {\overline{X} - \mu\over s/\sqrt{n}} \sim \textsf{t}(n - 1)
 > $$
 
-The $\textsf{t}(n - 1)$ distribution is read as the "$t$" distribution. The $t$ distribution has one parameter: degrees of freedom. The left-hand side of the expression above $\left({\bar{X}-\mu\over S/\sqrt{n}}\right)$ is referred to as the $t$ statistic, and it tells us how many standard deviations our sample mean is from the population mean.
+The $\textsf{t}(n - 1)$ distribution is read as the "$t$" distribution. The $t$ distribution has one parameter: degrees of freedom. The left-hand side of the expression above $\left({\bar{X}-\mu\over s/\sqrt{n}}\right)$ is referred to as the $t$ statistic, and it tells us how many standard deviations our sample mean is from the population mean.
 
-The proof of this lemma is outside the scope of this book, but it is not terribly complicated. It follows from some simple algebra and the fact that the ratio of a standard normal random variable and the square root of a chi-squared random variable, $S$, divided by it's degrees of freedom follows a $t$ distribution.
+The proof of this lemma is outside the scope of this book, but it is not terribly complicated. It follows from some simple algebra and the fact that the ratio of a standard normal random variable and the square root of a chi-squared random variable, $s$, divided by it's degrees of freedom follows a $t$ distribution.
 
-The $t$ distribution is very similar to the standard normal distribution, but has longer tails. This seems to make sense in the context of estimating $\mu$ because substituting the sample standard deviation $S$ for the population standard deviation $\sigma$ adds variability to the random variable.
+The $t$ distribution is very similar to the standard normal distribution, but has longer tails. This seems to make sense in the context of estimating $\mu$ because substituting the sample standard deviation $s$ for the population standard deviation $\sigma$ adds variability to the random variable.
 
 @fig-t211 is a plot of the $t$ distribution, shown as a blue line, and has a bell shape that looks very similar to a normal distribution, show as a red line. However, the tails of the $t$ distribution are thicker, which means observations are more likely to fall beyond two standard deviations from the mean than under the normal distribution. When our sample is small, the value $s$ used to compute the standard error $(s/\sqrt{n})$ isn't very reliable. The extra thick tails of the $t$ distribution are exactly the correction we need to resolve this problem. When the degrees of freedom is about 30 or more, the $t$ distribution is nearly indistinguishable from the normal distribution.
 
@@ -261,7 +261,7 @@ $H_A$: The average body temperature is less than 98.6; $\mu < 98.6$
 The population variance is unknown, so we will use the $t$ distribution. Remember that
 
 $$
-{\bar{X} - \mu\over S/\sqrt{n}} \sim \textsf{t}(n - 1)
+{\bar{X} - \mu\over s/\sqrt{n}} \sim \textsf{t}(n - 1)
 $$ Thus, our test statistic is
 
 $$
